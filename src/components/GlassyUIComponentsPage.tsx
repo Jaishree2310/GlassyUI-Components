@@ -1,7 +1,6 @@
-
 import React, { useState } from 'react';
 import { Star } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Link,useNavigate } from 'react-router-dom';
 
 type Theme = 'pink' | 'brown' | 'white' | 'black';
 
@@ -9,11 +8,13 @@ const GlassyUIComponentsPage: React.FC = () => {
   const [showPopup, setShowPopup] = useState(false);
   const [theme, setTheme] = useState<Theme>('pink');
   const githubRepoUrl = "https://github.com/Jaishree2310/GlassyUI-Components";
+  const navigate = useNavigate();
+
 
   const getThemeClasses = () => {
     switch (theme) {
       case 'white':
-        return 'bg-gradient-to-br from-gray-100 to-white text-gray-800';
+        return 'bg-gradient-to-br from-gray-50 to-white text-gray-800';
       case 'black':
         return 'bg-gradient-to-br from-gray-900 to-black text-white';
       case 'brown':
@@ -71,7 +72,7 @@ const GlassyUIComponentsPage: React.FC = () => {
         </div>
 
         <div className="flex items-center space-x-4 mb-8">
-          <span>themes:</span>
+          <span>Themes:</span>
           {(['pink', 'brown', 'white', 'black'] as Theme[]).map((color) => (
             <button
               key={color}
@@ -85,10 +86,12 @@ const GlassyUIComponentsPage: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           <ComponentCard title="Button" description="Customizable, pixel-art styled buttons">
             <div className="flex space-x-2">
-              <button className={`px-4 py-2 ${getGlassyClasses()}`}>
+              <button className={`px-4 py-2 ${getGlassyClasses()}`}
+               onClick={() => navigate('/button-details')}>
                 Click me
               </button>
-              <button className={`px-4 py-2 ${getGlassyClasses()} bg-purple-500 bg-opacity-50`}>
+              <button className={`px-4 py-2 ${getGlassyClasses()} bg-purple-500 bg-opacity-50`}
+              onClick={() => navigate('/button-details')}>
                 Accent
               </button>
             </div>
