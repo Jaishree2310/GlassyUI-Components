@@ -87,17 +87,18 @@ const GlassyUIComponentsPage: React.FC = () => {
           <ComponentCard title="Button" description="Customizable, pixel-art styled buttons">
             <div className="flex space-x-2">
               <button className={`px-4 py-2 ${getGlassyClasses()}`}
-               onClick={() => navigate('/button-details')}>
+               onClick={() => navigate('/button-details', { state: { currentTheme: theme } })}>
                 Click me
               </button>
               <button className={`px-4 py-2 ${getGlassyClasses()} bg-purple-500 bg-opacity-50`}
-              onClick={() => navigate('/button-details')}>
+              onClick={() => navigate('/button-details', { state: {  currentTheme: theme }})}>
                 Accent
               </button>
             </div>
           </ComponentCard>
 
-          <ComponentCard title="Input" description="Glassy-styled input fields for user">
+          <ComponentCard title="Input" description="Glassy-styled input fields for user"
+          onClick={() => navigate('/input-details', { state: { currentTheme: theme } })}>
             <input
               type="text"
               placeholder="Type here..."
@@ -105,13 +106,16 @@ const GlassyUIComponentsPage: React.FC = () => {
             />
           </ComponentCard>
 
-          <ComponentCard title="Card" description="Pixel-perfect content containers">
+          <ComponentCard title="Card" description="Pixel-perfect content containers"
+          onClick={() => navigate('/card-details', { state: { currentTheme: theme } })}
+          >
             <div className={`p-4 ${getGlassyClasses()}`}>
               Card Content
             </div>
           </ComponentCard>
 
-          <ComponentCard title="ProgressBar" description="Nostalgic progress indicators">
+          <ComponentCard title="ProgressBar" description="Nostalgic progress indicators"
+          onClick={() => navigate('/progress-bar-details', { state: { currentTheme: theme } })}>
             <div className={`w-full h-4 ${getGlassyClasses()} overflow-hidden`}>
               <div className={`bg-purple-500 h-full ${getGlassyClasses()} bg-opacity-50`} style={{ width: '60%' }}></div>
             </div>
@@ -122,12 +126,18 @@ const GlassyUIComponentsPage: React.FC = () => {
               placeholder="Enter multiple lines..."
               className={`w-full px-3 py-2 ${getGlassyClasses()} focus:ring-2 focus:ring-opacity-50 focus:outline-none placeholder-current placeholder-opacity-50`}
               rows={3}
+              onClick={() => navigate('/textarea-details', { state: { currentTheme: theme } })}
             ></textarea>
+    
           </ComponentCard>
 
-          <ComponentCard title="Popup" description="Glassy-inspired modal dialogs">
+          <ComponentCard title="Popup" description="Glassy-inspired modal dialogs"
+          onClick={() => navigate('/popup-details', { state: { currentTheme: theme } })}>
             <button
-              onClick={() => setShowPopup(true)}
+            onClick={(e) => {
+              e.stopPropagation();
+              setShowPopup(true);
+            }}
               className={`px-4 py-2 ${getGlassyClasses()} bg-blue-500 bg-opacity-50`}
             >
               Open Popup
@@ -150,8 +160,8 @@ const GlassyUIComponentsPage: React.FC = () => {
   );
 };
 
-const ComponentCard: React.FC<{ title: string; description: string; children: React.ReactNode }> = ({ title, description, children }) => (
-  <div className="relative overflow-hidden group">
+const ComponentCard: React.FC<{ title: string; description: string; children: React.ReactNode; onClick?: () => void; }> = ({ title, description, children, onClick }) => (
+  <div className="relative overflow-hidden group cursor-pointer" onClick={onClick}>
     <div className="absolute inset-0 bg-current opacity-5 rounded-xl"></div>
     <div className="relative border border-current border-opacity-30 rounded-xl p-6 shadow-xl transition-all duration-300 ease-out group-hover:shadow-2xl group-hover:translate-y-[-5px] h-80 flex flex-col overflow-hidden">
       <div className="glassy-shine"></div>
