@@ -698,17 +698,31 @@ const CardDetailsPage: React.FC = () => {
     </button>
   );
 
+  const meshGlassStyle = {
+    background: `
+      linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.2) 100%),
+      linear-gradient(45deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.2) 100%)
+    `,
+    backgroundSize: '10px 10px, 10px 10px',
+    backgroundPosition: '0 0, 5px 5px',
+    backdropFilter: 'blur(5px)',
+  };
+
+
+
+
   const CardPreview: React.FC = () => {
     const { bg, textColor, borderColor, shadowColor } = getThemeColors();
     return (
       <div style={{
+        ...meshGlassStyle,
         backgroundColor: bg,
         color: textColor,
         borderColor: borderColor,
         boxShadow: `4px 4px 0px ${shadowColor}`,
       }} className="p-4 border-2 rounded-lg">
         <h2 className="text-2xl font-bold mb-2">Card Title</h2>
-        <p>This is the card content.</p>
+        <p>This is the card content with mesh glass effect.</p>
       </div>
     );
   };
@@ -717,13 +731,14 @@ const CardDetailsPage: React.FC = () => {
     const { bg, textColor, borderColor, shadowColor } = getThemeColors();
     return (
       <div style={{
+        ...meshGlassStyle,
         backgroundColor: bg,
         color: textColor,
         borderColor: borderColor,
         boxShadow: `4px 4px 0px ${shadowColor}`,
       }} className="p-4 items-center flex flex-col rounded-lg border-2">
         <h2 className="text-2xl font-bold mb-2">Card Title</h2>
-        <p className="mb-4">This card has custom content and styling.</p>
+        <p className="mb-4">This card has custom content and styling with mesh glass effect.</p>
         <button className="px-4 py-2 bg-gray-600 text-white rounded hover:bg-gray-700 transition-colors duration-300">
           Click me
         </button>
@@ -731,23 +746,174 @@ const CardDetailsPage: React.FC = () => {
     );
   };
   
-  return (
-    <div className="min-h-screen p-8 font-mono bg-gradient-to-br from-blue-100 to-blue-200">
-      <button 
-        onClick={() => navigate(-1)} 
-        className="mb-8 flex items-center px-4 py-2 bg-white bg-opacity-50 backdrop-filter backdrop-blur-md border border-opacity-30 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300"
-      >
-        <ArrowLeft size={20} className="mr-2" />
-        Back to Components
-      </button>
+//   return (
+//     <div className="min-h-screen p-8 font-mono bg-gradient-to-br from-blue-100 to-blue-200">
+//       <button 
+//         onClick={() => navigate(-1)} 
+//         className="mb-8 flex items-center px-4 py-2 bg-white bg-opacity-50 backdrop-filter backdrop-blur-md border border-opacity-30 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300"
+//       >
+//         <ArrowLeft size={20} className="mr-2" />
+//         Back to Components
+//       </button>
 
-      <h1 className="text-4xl font-bold mb-8">Card Component</h1>
+//       <h1 className="text-4xl font-bold mb-8">Card Component</h1>
 
-      {/* Basic Usage */}
-      <div className="bg-white bg-opacity-50 backdrop-filter backdrop-blur-md border border-opacity-30 rounded-lg shadow-lg p-6 mb-8 relative">
-        <h2 className="text-2xl font-bold mb-4">Basic Usage</h2>
-        <pre className="bg-gray-800 text-white p-4 rounded-lg overflow-x-auto">
-          {`import { Card } from 'pixel-retroui';
+//       {/* Basic Usage */}
+//       <div className="bg-white bg-opacity-50 backdrop-filter backdrop-blur-md border border-opacity-30 rounded-lg shadow-lg p-6 mb-8 relative">
+//         <h2 className="text-2xl font-bold mb-4">Basic Usage</h2>
+//         <pre className="bg-gray-800 text-white p-4 rounded-lg overflow-x-auto">
+//           {`import { Card } from 'pixel-retroui';
+
+// function App() {
+//   return (
+//     <Card className="p-4">
+//       <h2>Card Title</h2>
+//       <p>This is the card content.</p>
+//     </Card>
+//   );
+// }`}
+//         </pre>
+//         <CopyButton text={`import { Card } from 'pixel-retroui';\n\nfunction App() {\n  return (\n    <Card className="p-4">\n      <h2>Card Title</h2>\n      <p>This is the card content.</p>\n    </Card>\n  );\n}`} codeKey="basicUsage" />
+//       </div>
+
+//       {/* Props */}
+//       <div className="bg-white bg-opacity-50 backdrop-filter backdrop-blur-md border border-opacity-30 rounded-lg shadow-lg p-6 mb-8">
+//         <h2 className="text-2xl font-bold mb-4">Props</h2>
+//         <table className="w-full">
+//           <thead>
+//             <tr>
+//               <th className="text-left p-2">Prop</th>
+//               <th className="text-left p-2">Type</th>
+//               <th className="text-left p-2">Default</th>
+//               <th className="text-left p-2">Description</th>
+//             </tr>
+//           </thead>
+//           <tbody>
+//             <tr>
+//               <td className="p-2">bg</td>
+//               <td className="p-2">string</td>
+//               <td className="p-2">'#ffffff'</td>
+//               <td className="p-2">Background color of the card</td>
+//             </tr>
+//             <tr>
+//               <td className="p-2">textColor</td>
+//               <td className="p-2">string</td>
+//               <td className="p-2">'#000000'</td>
+//               <td className="p-2">Text color of the card content</td>
+//             </tr>
+//             <tr>
+//               <td className="p-2">borderColor</td>
+//               <td className="p-2">string</td>
+//               <td className="p-2">'#000000'</td>
+//               <td className="p-2">Border color of the card</td>
+//             </tr>
+//             <tr>
+//               <td className="p-2">shadowColor</td>
+//               <td className="p-2">string</td>
+//               <td className="p-2">'#000000'</td>
+//               <td className="p-2">Shadow color of the card</td>
+//             </tr>
+//             <tr>
+//               <td className="p-2">className</td>
+//               <td className="p-2">string</td>
+//               <td className="p-2">''</td>
+//               <td className="p-2">Additional CSS classes to apply to the card</td>
+//             </tr>
+//           </tbody>
+//         </table>
+//       </div>
+
+//       {/* Custom Card */}
+//       <div className="bg-white bg-opacity-50 backdrop-filter backdrop-blur-md border border-opacity-30 rounded-lg shadow-lg p-6 mt-8">
+//         <h2 className="text-2xl font-bold mb-4">Custom Card</h2>
+//         <div className="mb-4">
+//           <span className="text-sm font-bold mr-2">Theme:</span>
+//           {Object.keys(themes).map((theme) => (
+//             <button
+//               key={theme}
+//               onClick={() => setCurrentTheme(theme as Theme)}
+//               className={`w-6 h-6 rounded-full border-2 mr-2 ${
+//                 currentTheme === theme ? 'border-blue-500' : 'border-gray-300'
+//               }`}
+//               style={{ backgroundColor: themes[theme as Theme].bg }}
+//             />
+//           ))}
+//         </div>
+//         <CardPreview />
+//         <pre className="bg-gray-800 text-white p-4 rounded-lg overflow-x-auto mt-4">
+//           {`<Card
+//   bg="${getThemeColors().bg}"
+//   textColor="${getThemeColors().textColor}"
+//   borderColor="${getThemeColors().borderColor}"
+//   shadowColor="${getThemeColors().shadowColor}"
+//   className="p-4"
+// >
+//   <h2>Card Title</h2>
+//   <p>This is the card content.</p>
+// </Card>`}
+//         </pre>
+//       </div>
+
+//       {/* Additional Examples */}
+//       <div className="bg-white bg-opacity-50 backdrop-filter backdrop-blur-md border border-opacity-30 rounded-lg shadow-lg p-6 mt-8">
+//         <h2 className="text-2xl font-bold mb-4">Additional Examples</h2>
+//         <h3 className="text-xl font-semibold mb-2">Card with Custom Content and Classes</h3>
+//         <div className="mb-4">
+//           <AdditionalExamplePreview />
+//         </div>
+//         <pre className="bg-gray-800 text-white p-4 rounded-lg overflow-x-auto mt-4 relative">
+//           {`<Card
+//   bg="${getThemeColors().bg}"
+//   textColor="${getThemeColors().textColor}"
+//   borderColor="${getThemeColors().borderColor}"
+//   shadowColor="${getThemeColors().shadowColor}"
+//   className="p-4 items-center flex flex-col"
+// >
+//   <h2 className="text-2xl font-bold mb-2">Card Title</h2>
+//   <p className="mb-4">This card has custom content and styling.</p>
+//   <Button bg="gray" onClick={() => console.log("Button clicked")}>
+//     Click me
+//   </Button>
+// </Card>`}
+//           <CopyButton 
+//             text={`<Card
+//   bg="${getThemeColors().bg}"
+//   textColor="${getThemeColors().textColor}"
+//   borderColor="${getThemeColors().borderColor}"
+//   shadowColor="${getThemeColors().shadowColor}"
+//   className="p-4 items-center flex flex-col"
+// >
+//   <h2 className="text-2xl font-bold mb-2">Card Title</h2>
+//   <p className="mb-4">This card has custom content and styling.</p>
+//   <Button bg="gray" onClick={() => console.log("Button clicked")}>
+//     Click me
+//   </Button>
+// </Card>`} 
+//             codeKey="additionalExample" 
+//           />
+//         </pre>
+//       </div>
+//     </div>
+//   );
+// };
+
+return (
+  <div className="min-h-screen p-8 font-mono bg-gradient-to-br from-blue-100 to-blue-200">
+    <button 
+      onClick={() => navigate(-1)} 
+      className="mb-8 flex items-center px-4 py-2 bg-white bg-opacity-50 backdrop-filter backdrop-blur-md border border-opacity-30 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300"
+    >
+      <ArrowLeft size={20} className="mr-2" />
+      Back to Components
+    </button>
+
+    <h1 className="text-4xl font-bold mb-8">Card Component</h1>
+
+    {/* Basic Usage */}
+    <div className="bg-white bg-opacity-50 backdrop-filter backdrop-blur-md border border-opacity-30 rounded-lg shadow-lg p-6 mb-8 relative">
+      <h2 className="text-2xl font-bold mb-4">Basic Usage</h2>
+      <pre className="bg-gray-800 text-white p-4 rounded-lg overflow-x-auto">
+        {`import { Card } from 'pixel-retroui';
 
 function App() {
   return (
@@ -757,76 +923,76 @@ function App() {
     </Card>
   );
 }`}
-        </pre>
-        <CopyButton text={`import { Card } from 'pixel-retroui';\n\nfunction App() {\n  return (\n    <Card className="p-4">\n      <h2>Card Title</h2>\n      <p>This is the card content.</p>\n    </Card>\n  );\n}`} codeKey="basicUsage" />
-      </div>
+      </pre>
+      <CopyButton text={`import { Card } from 'pixel-retroui';\n\nfunction App() {\n  return (\n    <Card className="p-4">\n      <h2>Card Title</h2>\n      <p>This is the card content.</p>\n    </Card>\n  );\n}`} codeKey="basicUsage" />
+    </div>
 
-      {/* Props */}
-      <div className="bg-white bg-opacity-50 backdrop-filter backdrop-blur-md border border-opacity-30 rounded-lg shadow-lg p-6 mb-8">
-        <h2 className="text-2xl font-bold mb-4">Props</h2>
-        <table className="w-full">
-          <thead>
-            <tr>
-              <th className="text-left p-2">Prop</th>
-              <th className="text-left p-2">Type</th>
-              <th className="text-left p-2">Default</th>
-              <th className="text-left p-2">Description</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td className="p-2">bg</td>
-              <td className="p-2">string</td>
-              <td className="p-2">'#ffffff'</td>
-              <td className="p-2">Background color of the card</td>
-            </tr>
-            <tr>
-              <td className="p-2">textColor</td>
-              <td className="p-2">string</td>
-              <td className="p-2">'#000000'</td>
-              <td className="p-2">Text color of the card content</td>
-            </tr>
-            <tr>
-              <td className="p-2">borderColor</td>
-              <td className="p-2">string</td>
-              <td className="p-2">'#000000'</td>
-              <td className="p-2">Border color of the card</td>
-            </tr>
-            <tr>
-              <td className="p-2">shadowColor</td>
-              <td className="p-2">string</td>
-              <td className="p-2">'#000000'</td>
-              <td className="p-2">Shadow color of the card</td>
-            </tr>
-            <tr>
-              <td className="p-2">className</td>
-              <td className="p-2">string</td>
-              <td className="p-2">''</td>
-              <td className="p-2">Additional CSS classes to apply to the card</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+    {/* Props */}
+    <div className="bg-white bg-opacity-50 backdrop-filter backdrop-blur-md border border-opacity-30 rounded-lg shadow-lg p-6 mb-8">
+      <h2 className="text-2xl font-bold mb-4">Props</h2>
+      <table className="w-full">
+        <thead>
+          <tr>
+            <th className="text-left p-2">Prop</th>
+            <th className="text-left p-2">Type</th>
+            <th className="text-left p-2">Default</th>
+            <th className="text-left p-2">Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td className="p-2">bg</td>
+            <td className="p-2">string</td>
+            <td className="p-2">'#ffffff'</td>
+            <td className="p-2">Background color of the card</td>
+          </tr>
+          <tr>
+            <td className="p-2">textColor</td>
+            <td className="p-2">string</td>
+            <td className="p-2">'#000000'</td>
+            <td className="p-2">Text color of the card content</td>
+          </tr>
+          <tr>
+            <td className="p-2">borderColor</td>
+            <td className="p-2">string</td>
+            <td className="p-2">'#000000'</td>
+            <td className="p-2">Border color of the card</td>
+          </tr>
+          <tr>
+            <td className="p-2">shadowColor</td>
+            <td className="p-2">string</td>
+            <td className="p-2">'#000000'</td>
+            <td className="p-2">Shadow color of the card</td>
+          </tr>
+          <tr>
+            <td className="p-2">className</td>
+            <td className="p-2">string</td>
+            <td className="p-2">''</td>
+            <td className="p-2">Additional CSS classes to apply to the card</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
 
-      {/* Custom Card */}
-      <div className="bg-white bg-opacity-50 backdrop-filter backdrop-blur-md border border-opacity-30 rounded-lg shadow-lg p-6 mt-8">
-        <h2 className="text-2xl font-bold mb-4">Custom Card</h2>
-        <div className="mb-4">
-          <span className="text-sm font-bold mr-2">Theme:</span>
-          {Object.keys(themes).map((theme) => (
-            <button
-              key={theme}
-              onClick={() => setCurrentTheme(theme as Theme)}
-              className={`w-6 h-6 rounded-full border-2 mr-2 ${
-                currentTheme === theme ? 'border-blue-500' : 'border-gray-300'
-              }`}
-              style={{ backgroundColor: themes[theme as Theme].bg }}
-            />
-          ))}
-        </div>
-        <CardPreview />
-        <pre className="bg-gray-800 text-white p-4 rounded-lg overflow-x-auto mt-4">
-          {`<Card
+    {/* Custom Card */}
+    <div className="bg-white bg-opacity-50 backdrop-filter backdrop-blur-md border border-opacity-30 rounded-lg shadow-lg p-6 mt-8">
+      <h2 className="text-2xl font-bold mb-4">Custom Card</h2>
+      <div className="mb-4">
+        <span className="text-sm font-bold mr-2">Theme:</span>
+        {Object.keys(themes).map((theme) => (
+          <button
+            key={theme}
+            onClick={() => setCurrentTheme(theme as Theme)}
+            className={`w-6 h-6 rounded-full border-2 mr-2 ${
+              currentTheme === theme ? 'border-blue-500' : 'border-gray-300'
+            }`}
+            style={{ backgroundColor: themes[theme as Theme].bg }}
+          />
+        ))}
+      </div>
+      <CardPreview />
+      <pre className="bg-gray-800 text-white p-4 rounded-lg overflow-x-auto mt-4">
+        {`<Card
   bg="${getThemeColors().bg}"
   textColor="${getThemeColors().textColor}"
   borderColor="${getThemeColors().borderColor}"
@@ -836,18 +1002,69 @@ function App() {
   <h2>Card Title</h2>
   <p>This is the card content.</p>
 </Card>`}
-        </pre>
-      </div>
+      </pre>
+    </div>
 
-      {/* Additional Examples */}
-      <div className="bg-white bg-opacity-50 backdrop-filter backdrop-blur-md border border-opacity-30 rounded-lg shadow-lg p-6 mt-8">
-        <h2 className="text-2xl font-bold mb-4">Additional Examples</h2>
-        <h3 className="text-xl font-semibold mb-2">Card with Custom Content and Classes</h3>
-        <div className="mb-4">
-          <AdditionalExamplePreview />
-        </div>
-        <pre className="bg-gray-800 text-white p-4 rounded-lg overflow-x-auto mt-4 relative">
-          {`<Card
+    {/* Mesh Glass Effect Example */}
+    <div className="bg-white bg-opacity-50 backdrop-filter backdrop-blur-md border border-opacity-30 rounded-lg shadow-lg p-6 mt-8">
+      <h2 className="text-2xl font-bold mb-4">Mesh Glass Effect</h2>
+      <div className="mb-4">
+        <CardPreview />
+      </div>
+      <pre className="bg-gray-800 text-white p-4 rounded-lg overflow-x-auto mt-4 relative">
+        {`<Card
+  bg="${getThemeColors().bg}"
+  textColor="${getThemeColors().textColor}"
+  borderColor="${getThemeColors().borderColor}"
+  shadowColor="${getThemeColors().shadowColor}"
+  className="p-4"
+  style={{
+    background: \`
+      linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.2) 100%),
+      linear-gradient(45deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.2) 100%)
+    \`,
+    backgroundSize: '10px 10px, 10px 10px',
+    backgroundPosition: '0 0, 5px 5px',
+    backdropFilter: 'blur(5px)',
+  }}
+>
+  <h2 className="text-2xl font-bold mb-2">Card Title</h2>
+  <p>This is the card content with mesh glass effect.</p>
+</Card>`}
+        <CopyButton 
+          text={`<Card
+  bg="${getThemeColors().bg}"
+  textColor="${getThemeColors().textColor}"
+  borderColor="${getThemeColors().borderColor}"
+  shadowColor="${getThemeColors().shadowColor}"
+  className="p-4"
+  style={{
+    background: \`
+      linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.2) 100%),
+      linear-gradient(45deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.2) 100%)
+    \`,
+    backgroundSize: '10px 10px, 10px 10px',
+    backgroundPosition: '0 0, 5px 5px',
+    backdropFilter: 'blur(5px)',
+  }}
+>
+  <h2 className="text-2xl font-bold mb-2">Card Title</h2>
+  <p>This is the card content with mesh glass effect.</p>
+</Card>`} 
+          codeKey="meshGlassExample" 
+        />
+      </pre>
+    </div>
+
+    {/* Additional Examples */}
+    <div className="bg-white bg-opacity-50 backdrop-filter backdrop-blur-md border border-opacity-30 rounded-lg shadow-lg p-6 mt-8">
+      <h2 className="text-2xl font-bold mb-4">Additional Examples</h2>
+      <h3 className="text-xl font-semibold mb-2">Card with Custom Content and Classes</h3>
+      <div className="mb-4">
+        <AdditionalExamplePreview />
+      </div>
+      <pre className="bg-gray-800 text-white p-4 rounded-lg overflow-x-auto mt-4 relative">
+        {`<Card
   bg="${getThemeColors().bg}"
   textColor="${getThemeColors().textColor}"
   borderColor="${getThemeColors().borderColor}"
@@ -860,8 +1077,8 @@ function App() {
     Click me
   </Button>
 </Card>`}
-          <CopyButton 
-            text={`<Card
+        <CopyButton 
+          text={`<Card
   bg="${getThemeColors().bg}"
   textColor="${getThemeColors().textColor}"
   borderColor="${getThemeColors().borderColor}"
@@ -874,13 +1091,13 @@ function App() {
     Click me
   </Button>
 </Card>`} 
-            codeKey="additionalExample" 
-          />
-        </pre>
-      </div>
+          codeKey="additionalExample" 
+        />
+      </pre>
     </div>
-  );
-};
+  </div>
+);
+}
 
 export default CardDetailsPage;
 
