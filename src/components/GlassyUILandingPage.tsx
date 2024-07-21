@@ -8,7 +8,6 @@ const GlassyUILandingPage: React.FC = () => {
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center p-4 font-mono relative overflow-hidden bg-gradient-to-br from-blue-400 via-purple-500 to-pink-500">
-      {/* Grid background */}
       <div 
         className="absolute inset-0 w-full h-full opacity-20"
         style={{
@@ -20,7 +19,6 @@ const GlassyUILandingPage: React.FC = () => {
         }}
       />
 
-      {/* Content */}
       <div className="relative z-10 w-full max-w-4xl">
         <header className="w-full flex justify-between items-center mb-8">
           <div className="text-xl font-bold text-white">GlassyUI</div>
@@ -36,21 +34,6 @@ const GlassyUILandingPage: React.FC = () => {
         </header>
 
         <main className="text-center p-8 rounded-xl backdrop-filter backdrop-blur-lg bg-white bg-opacity-10 shadow-lg border border-white border-opacity-20 relative transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-2xl hover:bg-opacity-20">
-          {/* Left icons */}
-          {/* <div className="absolute left-4 top-1/4 transform -translate-y-1/2">
-            <GlassyIcon />
-          </div> */}
-          {/* <div className="absolute left-4 bottom-1/4 transform translate-y-1/2">
-            <GlassyIcon />
-          </div> */}
-          
-          {/* Right icons */}
-          {/* <div className="absolute right-4 top-1/4 transform -translate-y-1/2">
-            <GlassyIcon />
-          </div> */}
-          {/* <div className="absolute right-4 bottom-1/4 transform translate-y-1/2">
-            <GlassyIcon />
-          </div> */}
 
           <h1 className="text-6xl font-bold mb-2 text-white">Glassy UI</h1>
           <p className="text-xl mb-6 text-white">A sleek glassmorphism UI library.</p>
@@ -99,12 +82,5 @@ const GlassmorphismButton: React.FC<{
     children
   );
 };
-
-// const GlassyIcon: React.FC = () => (
-//   <div className="w-12 h-12 relative">
-//     <div className="absolute inset-0 bg-white bg-opacity-20 backdrop-filter backdrop-blur-sm rounded-lg transform rotate-45"></div>
-//     <div className="absolute top-1/4 left-1/4 w-1/2 h-1/2 bg-white bg-opacity-30 backdrop-filter backdrop-blur-sm rounded-lg transform -rotate-45"></div>
-//   </div>
-// );
 
 export default GlassyUILandingPage;
