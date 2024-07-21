@@ -3,13 +3,87 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import { ArrowLeft, Copy, Check } from 'lucide-react';
 
 type Theme = 'pink' | 'brown' | 'white' | 'black';
+type CustomTheme = 'blue' | 'brown' | 'white' | 'black' | 'rainbow';
+
+const CustomTextArea: React.FC = () => {
+  const [theme, setTheme] = useState<CustomTheme>('blue');
+
+  const getThemeColors = (theme: CustomTheme) => {
+    switch (theme) {
+      case 'blue':
+        return { bg: '#fefcd0', textColor: 'black', borderColor: 'black' };
+      case 'brown':
+        return { bg: '#d2b48c', textColor: 'black', borderColor: 'black' };
+      case 'white':
+        return { bg: 'white', textColor: 'black', borderColor: 'black' };
+      case 'black':
+        return { bg: 'black', textColor: 'white', borderColor: 'white' };
+      case 'rainbow':
+        return { bg: 'linear-gradient(45deg, red, orange, yellow, green, blue, indigo, violet)', textColor: 'white', borderColor: 'white' };
+      default:
+        return { bg: 'white', textColor: 'black', borderColor: 'black' };
+    }
+  };
+
+  const themeColors = getThemeColors(theme);
+
+  return (
+    <div className="p-4 rounded-lg">
+      <h2 className="text-2xl font-bold mb-4">Custom TextArea</h2>
+      <p className="mb-4">Customize your textarea's appearance by selecting a preset theme or creating your own color scheme.</p>
+      
+      <div className="mb-4">
+        <label className="block mb-2">Theme:</label>
+        <div className="flex space-x-2">
+          {(['blue', 'brown', 'white', 'black', 'rainbow'] as CustomTheme[]).map((t) => (
+            <button
+              key={t}
+              className={`w-6 h-6 rounded-full ${t === theme ? 'ring-2 ring-offset-2 ring-blue-500' : ''}`}
+              style={{ background: t === 'rainbow' ? 'linear-gradient(45deg, red, orange, yellow, green, blue, indigo, violet)' : getThemeColors(t).bg }}
+              onClick={() => setTheme(t)}
+            />
+          ))}
+        </div>
+      </div>
+
+      <textarea
+        className="w-full h-32 p-2 rounded"
+        style={{
+          backgroundColor: themeColors.bg.includes('linear-gradient') ? 'transparent' : themeColors.bg,
+          color: themeColors.textColor,
+          borderColor: themeColors.borderColor,
+          borderWidth: '1px',
+          borderStyle: 'solid',
+          backgroundImage: themeColors.bg.includes('linear-gradient') ? themeColors.bg : 'none'
+        }}
+        placeholder="Enter your text here..."
+      />
+
+      <div className="mt-4 bg-gray-800 p-2 rounded">
+        <pre className="text-sm">
+          {`<textarea
+  style={{
+    backgroundColor: '${themeColors.bg.includes('linear-gradient') ? 'transparent' : themeColors.bg}',
+    color: '${themeColors.textColor}',
+    borderColor: '${themeColors.borderColor}',
+    borderWidth: '1px',
+    borderStyle: 'solid',
+    backgroundImage: '${themeColors.bg.includes('linear-gradient') ? themeColors.bg : 'none'}'
+  }}
+  placeholder="Enter your text here..."
+/>`}
+        </pre>
+      </div>
+    </div>
+  );
+};
 
 const TextareaDetailPage: React.FC = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const currentTheme = (location.state as { currentTheme?: Theme })?.currentTheme || 'pink';
 
-  const [copiedStates, setCopiedStates] = useState<{[key: string]: boolean}>({});
+  const [copiedStates, setCopiedStates] = useState<{ [key: string]: boolean }>({});
 
   const getThemeClasses = () => {
     switch (currentTheme) {
@@ -65,39 +139,114 @@ const TextareaDetailPage: React.FC = () => {
         Back to Components
       </button>
 
-      <h1 className="text-4xl font-bold mb-8">[Component Name] Component</h1>
+      <h1 className="text-4xl font-bold mb-8">TextArea Component</h1>
 
       {/* Basic Usage */}
       <div className={`${getGlassyClasses()} p-6 mb-8 relative`}>
         <h2 className="text-2xl font-bold mb-4">Basic Usage</h2>
         <pre className="bg-gray-800 text-white p-4 rounded-lg overflow-x-auto">
-          {`// Basic usage code here`}
+          {`function App() {
+  return (
+    <textarea
+      placeholder="Enter your text here..."
+      onChange={(e) => console.log(e.target.value)}
+    />
+  );
+}`}
         </pre>
-        <CopyButton text={`// Basic usage code here`} codeKey="basicUsage" />
+        <CopyButton text={`function App() {
+  return (
+    <textarea
+      placeholder="Enter your text here..."
+      onChange={(e) => console.log(e.target.value)}
+    />
+  );
+}`} codeKey="basicUsage" />
       </div>
 
       {/* Props */}
       <div className={`${getGlassyClasses()} p-6 mb-8`}>
         <h2 className="text-2xl font-bold mb-4">Props</h2>
-        <table className="w-full">
-          <thead>
-            <tr>
-              <th className="text-left p-2">Prop</th>
-              <th className="text-left p-2">Type</th>
-              <th className="text-left p-2">Default</th>
-              <th className="text-left p-2">Description</th>
-            </tr>
-          </thead>
-          <tbody>
-            {/* Add props here */}
-          </tbody>
-        </table>
+        <div className="overflow-x-auto">
+          <table className="w-full">
+            <thead>
+              <tr className="bg-white bg-opacity-20">
+                <th className="text-left p-2">Prop</th>
+                <th className="text-left p-2">Type</th>
+                <th className="text-left p-2">Default</th>
+                <th className="text-left p-2">Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td className="p-2">style</td>
+                <td className="p-2">CSSProperties</td>
+                <td className="p-2">{}</td>
+                <td className="p-2">Inline styles for the textarea</td>
+              </tr>
+              <tr className="bg-white bg-opacity-10">
+                <td className="p-2">className</td>
+                <td className="p-2">string</td>
+                <td className="p-2">""</td>
+                <td className="p-2">Additional CSS classes to apply to the textarea</td>
+              </tr>
+              <tr>
+                <td className="p-2">placeholder</td>
+                <td className="p-2">string</td>
+                <td className="p-2">""</td>
+                <td className="p-2">Placeholder text for the textarea</td>
+              </tr>
+              <tr className="bg-white bg-opacity-10">
+                <td className="p-2">onChange</td>
+                <td className="p-2">function</td>
+                <td className="p-2">undefined</td>
+                <td className="p-2">Function to call when the textarea value changes</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
 
-      {/* Examples */}
+      {/* Custom TextArea */}
+      <div className={`${getGlassyClasses()} p-6 mb-8`}>
+        <CustomTextArea />
+      </div>
+
+      {/* Additional Examples */}
       <div className={`${getGlassyClasses()} p-6 mt-8`}>
-        <h2 className="text-2xl font-bold mb-4">Examples</h2>
-        {/* Add examples here */}
+        <h2 className="text-2xl font-bold mb-4">Additional Examples</h2>
+        
+        <h3 className="text-xl font-semibold mb-2">With Custom Styling</h3>
+        <div className={`${getGlassyClasses()} p-4 mb-4`}>
+          <textarea 
+            className="w-full h-32 p-2 bg-gray-100 bg-opacity-50 text-gray-800 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-blue-500 transition-all duration-300"
+            placeholder="Type something..."
+          />
+        </div>
+        <pre className="bg-gray-800 text-white p-4 rounded-lg overflow-x-auto relative">
+          {`<textarea
+  className="w-full h-32 p-2"
+  style={{
+    backgroundColor: '#f0f0f0',
+    color: 'gray',
+    borderColor: 'gray',
+    borderWidth: '1px',
+    borderStyle: 'solid'
+  }}
+  placeholder="Type something..."
+/>`}
+        </pre>
+        <CopyButton text={`<textarea
+  className="w-full h-32 p-2"
+  style={{
+    backgroundColor: '#f0f0f0',
+    color: 'gray',
+    borderColor: 'gray',
+    borderWidth: '1px',
+    borderStyle: 'solid'
+  }}
+  placeholder="Type something..."
+/>`} codeKey="customStyling" />
       </div>
     </div>
   );

@@ -18,9 +18,9 @@ const App: React.FC = () => {
         <Route path="/button-details" element={<ButtonDetailsPage />} />
         <Route path="/card-details" element={<CardDetailsPage />} />
         <Route path="/progress-bar-details" element={<ProgressBarDetailPage />} />
-        <Route path="/popup-detail" element={<PopupDetailPage />} />
+        <Route path="/popup-details" element={<PopupDetailPage />} />
         <Route path="/input-details" element={<InputDetailPage />} />
-        <Route path="/textarea-detail" element={<TextareaDetailPage />} />
+        <Route path="/textarea-details" element={<TextareaDetailPage />} />
       </Routes>
     </Router>
   );
