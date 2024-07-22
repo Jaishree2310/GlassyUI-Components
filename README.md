@@ -3,45 +3,129 @@
 
 Live hosted [Glassy UI](https://glassyui.vercel.app/).
 
-## Available Scripts
+# GlassyUI
 
-In the project directory, you can run:
+**GlassyUI** is a library of elegant and customizable UI components with a glassmorphism theme. Designed for modern web applications, GlassyUI offers a sleek, frosted glass effect to enhance your user interface with a touch of sophistication.
 
-### `npm start`
+## Features
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- **ProgressBar**: Customizable size, color, and progress percentage.
+- **Buttons**: Adjustable colors, border radii, and opacities.
+- **Input Fields**: Customizable background colors, text colors, and border properties.
+- **Animated Progress Bar**: Smoothly transitions progress from 0% to 100%.
+- **Popup**: Stylish popups with glassmorphism effect.
+- **Textarea**: Customizable textareas with modern design elements.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Installation
 
-### `npm test`
+To get started with GlassyUI, you can install it via npm:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```bash
+npm install glassy-ui
+```
 
-### `npm run build`
+Or using yarn:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```bash
+yarn add glassy-ui
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Usage
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Here’s a quick example of how to use the components in your React application:
 
-### `npm run eject`
+### ProgressBar
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+```jsx
+import { ProgressBar } from 'glassy-ui';
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+function App() {
+  return (
+    <ProgressBar
+      size="md"
+      color="#fcfc00"
+      progress={50}
+    />
+  );
+}
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+### Buttons
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+```jsx
+import { Button } from 'glassy-ui';
 
-## Learn More
+function App() {
+  return (
+    <Button
+      color="blue"
+      borderRadius={8}
+      opacity={80}
+    >
+      Click Me
+    </Button>
+  );
+}
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Input Fields
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```jsx
+import { InputField } from 'glassy-ui';
+
+function App() {
+  return (
+    <InputField
+      bgColor="#ffffff"
+      textColor="#000000"
+      borderColor="#cccccc"
+    />
+  );
+}
+```
+
+### Animated Progress Bar
+
+```jsx
+import { AnimatedProgressBar } from 'glassy-ui';
+
+function App() {
+  return <AnimatedProgressBar />;
+}
+```
+
+### Popup
+
+```jsx
+import { Popup } from 'glassy-ui';
+
+function App() {
+  return <Popup message="Hello, World!" />;
+}
+```
+
+### Textarea
+
+```jsx
+import { Textarea } from 'glassy-ui';
+
+function App() {
+  return <Textarea placeholder="Type here..." />;
+}
+```
+
+## Customization
+
+GlassyUI components are highly customizable. You can adjust properties such as color, size, opacity, and more to fit your design needs.
+
+## Contributing
+
+We welcome contributions to improve GlassyUI! Please fork the repository and submit a pull request with your changes.
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+
+## Contact
+
+For any questions or feedback, please reach out to [jaishrees23102001@gmail.com](mailto:jaishrees23102001@gmail.com).
