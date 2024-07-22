@@ -247,7 +247,7 @@ function Example() {
             A button that spans the full width of its container.
           </p>
           <button 
-            className={`w-full py-3 text-lg font-semibold rounded-lg ${getGlassyClasses()} hover:bg-white/40 transition-transform hover:scale-100 text-gray-800`}
+            className={`w-full py-3 text-lg font-semibold rounded-lg ${getGlassyClasses()} hover:bg-white/40 transition-transform hover:scale-105 text-gray-800`}
           >
             Full Width Button
           </button>
