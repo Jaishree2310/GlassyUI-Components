@@ -344,10 +344,7 @@ function App() {
           <h2 className="text-xl font-bold mb-4">Animated Progress</h2>
           <p className="mb-4">You can animate the progress by updating the progress prop over time:</p>
           <pre className="bg-gray-800 text-white p-4 rounded-lg overflow-x-auto mb-4 relative">
-            {`import React, { useState, useEffect } from 'react';
-import { ProgressBar } from 'pixel-retroui';
-
-const AnimatedProgress = () => {
+            {`const AnimatedProgress = () => {
   const [progress, setProgress] = useState(0);
 
   useEffect(() => {
@@ -399,3 +396,18 @@ const AnimatedProgress = () => {
 };
 
 export default ProgressBarDetailPage;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

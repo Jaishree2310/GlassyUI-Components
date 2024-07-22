@@ -9,6 +9,7 @@ import PopupDetailPage from './components/PopupDetailPage'
 import InputDetailPage from './components/InputDetailPage'
 import TextareaDetailPage from './components/TextareaDetailPage'
 
+
 const App: React.FC = () => {
   return (
     <Router>
