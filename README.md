@@ -84,26 +84,6 @@ function App() {
 }
 ```
 
-### Animated Progress Bar
-
-```jsx
-import { AnimatedProgressBar } from 'glassy-ui';
-
-function App() {
-  return <AnimatedProgressBar />;
-}
-```
-
-### Popup
-
-```jsx
-import { Popup } from 'glassy-ui';
-
-function App() {
-  return <Popup message="Hello, World!" />;
-}
-```
-
 ### Textarea
 
 ```jsx
