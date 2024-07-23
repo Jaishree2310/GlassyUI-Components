@@ -68,22 +68,6 @@ function App() {
 }
 ```
 
-### Input Fields
-
-```jsx
-import { InputField } from 'glassy-ui';
-
-function App() {
-  return (
-    <InputField
-      bgColor="#ffffff"
-      textColor="#000000"
-      borderColor="#cccccc"
-    />
-  );
-}
-```
-
 ### Textarea
 
 ```jsx
