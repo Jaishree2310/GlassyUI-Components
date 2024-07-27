@@ -68,42 +68,6 @@ function App() {
 }
 ```
 
-### Input Fields
-
-```jsx
-import { InputField } from 'glassy-ui';
-
-function App() {
-  return (
-    <InputField
-      bgColor="#ffffff"
-      textColor="#000000"
-      borderColor="#cccccc"
-    />
-  );
-}
-```
-
-### Animated Progress Bar
-
-```jsx
-import { AnimatedProgressBar } from 'glassy-ui';
-
-function App() {
-  return <AnimatedProgressBar />;
-}
-```
-
-### Popup
-
-```jsx
-import { Popup } from 'glassy-ui';
-
-function App() {
-  return <Popup message="Hello, World!" />;
-}
-```
-
 ### Textarea
 
 ```jsx
