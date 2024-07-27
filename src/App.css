@@ -68,7 +68,6 @@
   opacity: 1;
 }
 
-/* Custom scrollbar for a more polished look */
 ::-webkit-scrollbar {
   width: 10px;
 }
@@ -86,12 +85,6 @@
 ::-webkit-scrollbar-thumb:hover {
   background: rgba(85, 85, 85, 0.7);
 }
-
-
-
-
-
-
 
 .glassmorphism {
   background: rgba(255, 255, 255, 0.25);
