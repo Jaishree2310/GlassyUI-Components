@@ -1,95 +1,67 @@
+# GlassyUI-Components 
+Live: 
 
-# Getting Started with Create React App
-
-Live hosted [Glassy UI](https://glassyui.vercel.app/).
-
-# GlassyUI
-
-**GlassyUI** is a library of elegant and customizable UI components with a glassmorphism theme. Designed for modern web applications, GlassyUI offers a sleek, frosted glass effect to enhance your user interface with a touch of sophistication.
+**GlassyUI-Components** is an open-source library of React components designed with a stunning glassmorphism effect. This project aims to provide a modern and sleek design for UI elements, making your web applications stand out.
 
 ## Features
 
-- **ProgressBar**: Customizable size, color, and progress percentage.
-- **Buttons**: Adjustable colors, border radii, and opacities.
-- **Input Fields**: Customizable background colors, text colors, and border properties.
-- **Animated Progress Bar**: Smoothly transitions progress from 0% to 100%.
-- **Popup**: Stylish popups with glassmorphism effect.
-- **Textarea**: Customizable textareas with modern design elements.
+- Glassmorphism-themed React components
+- Customizable styles with SCSS
+- Beginner-friendly and easy to contribute to
+- Modular and reusable components
 
-## Installation
+## Components
 
-To get started with GlassyUI, you can install it via npm:
+- **Buttons:** Various button styles with glassmorphism effect.
+- **ProgressBar:** Animated progress bars with a glassy look.
+- **Input Fields:** Sleek input fields with glassmorphism theme.
+- **Textareas:** Stylish textareas with glassmorphism.
+- **Modals:** Elegant modals with glassmorphism effect.
+- **Navigation Bar:** Modern navigation bars with glassmorphism theme.
 
-```bash
-npm install glassy-ui
-```
+## Getting Started
 
-Or using yarn:
+To get started with GlassyUI-Components, follow these instructions:
 
-```bash
-yarn add glassy-ui
-```
+### Prerequisites
+
+- Node.js and npm installed on your machine.
+
+### Installation
+
+1. **Clone the Repository:**
+
+    ```bash
+    git clone https://github.com/Jaishree2310/GlassyUI-Components.git
+    cd GlassyUI-Components
+    ```
+
+2. **Install Dependencies:**
+
+    ```bash
+    npm install
+    ```
+
+3. **Start the Development Server:**
+
+    ```bash
+    npm start
+    ```
+
+4. **Visit the Application:**
+    Open your browser and go to `http://localhost:3000` to see the components in action.
 
 ## Usage
 
-Here’s a quick example of how to use the components in your React application:
-
-### ProgressBar
+Import the desired component into your React project and use it as follows:
 
 ```jsx
-import { ProgressBar } from 'glassy-ui';
+import { GlassyButton } from 'glassyui';
 
 function App() {
   return (
-    <ProgressBar
-      size="md"
-      color="#fcfc00"
-      progress={50}
-    />
+    <div className="App">
+      <GlassyButton>Click Me</GlassyButton>
+    </div>
   );
 }
-```
-
-### Buttons
-
-```jsx
-import { Button } from 'glassy-ui';
-
-function App() {
-  return (
-    <Button
-      color="blue"
-      borderRadius={8}
-      opacity={80}
-    >
-      Click Me
-    </Button>
-  );
-}
-```
-
-### Textarea
-
-```jsx
-import { Textarea } from 'glassy-ui';
-
-function App() {
-  return <Textarea placeholder="Type here..." />;
-}
-```
-
-## Customization
-
-GlassyUI components are highly customizable. You can adjust properties such as color, size, opacity, and more to fit your design needs.
-
-## Contributing
-
-We welcome contributions to improve GlassyUI! Please fork the repository and submit a pull request with your changes.
-
-## License
-
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
-
-## Contact
-
-For any questions or feedback, please reach out to [jaishrees23102001@gmail.com](mailto:jaishrees23102001@gmail.com).
