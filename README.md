@@ -1,5 +1,5 @@
 # GlassyUI-Components 
-Live: [Glassyui](https://glassyui.vercel.app/)
+Live: [glassyui](https://glassyui.vercel.app/)
 
 **GlassyUI-Components** is an open-source library of React components designed with a stunning glassmorphism effect. This project aims to provide a modern and sleek design for UI elements, making your web applications stand out.
 
