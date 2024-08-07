@@ -51,6 +51,9 @@ To get started with GlassyUI-Components, follow these instructions:
 4. **Visit the Application:**
     Open your browser and go to `http://localhost:3000` to see the components in action.
 
+## Contribution Rule
+   - Ask for assigning the issue before raising any PR. 
+
 ## Usage
 
 Import the desired component into your React project and use it as follows:
