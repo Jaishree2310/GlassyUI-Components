@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 interface TooltipProps {
   text: string;
-  position?: 'left' | 'bottom' | 'top' | 'right';
+  position?: 'top' | 'bottom' | 'left' | 'right';
   children: React.ReactNode;
 }
 
@@ -14,16 +14,16 @@ const Tooltip: React.FC<TooltipProps> = ({ text, position = 'top', children }) =
 
   const getPositionClasses = () => {
     switch (position) {
-      case 'left':
+      case 'top':
         return 'bottom-full left-1/2 transform -translate-x-1/2 mb-2';
       case 'bottom':
         return 'top-full left-1/2 transform -translate-x-1/2 mt-2';
-      case 'top':
+      case 'left':
         return 'top-1/2 right-full transform -translate-y-1/2 mr-2';
       case 'right':
         return 'top-1/2 left-full transform -translate-y-1/2 ml-2';
       default:
-        return 'bottom-full left-1/2 transform -translate-x-1/2 mb-2';
+        return 'bottom-full left-1/2 transform -translate-x-1/2 mb-2';  
     }
   };
 
@@ -35,7 +35,7 @@ const Tooltip: React.FC<TooltipProps> = ({ text, position = 'top', children }) =
     <div className="relative inline-block" onMouseEnter={showTooltip} onMouseLeave={hideTooltip}>
       {children}
       {isVisible && (
-        <div className={`absolute z-10 px-3 py-2 text-white text-sm whitespace-nowrap ${getPositionClasses()} ${getGlassyClasses()}`}>
+        <div className={`absolute z-10 px-3 py-2 text-black text-sm whitespace-nowrap ${getPositionClasses()} ${getGlassyClasses()}`}>
           {text}
         </div>
       )}

@@ -192,10 +192,10 @@ const GlassyUIComponentsPage: React.FC = () => {
             >
               <div className="mt-1 mb-4 flex justify-around">
                 <Tooltip text="Tooltip on top!" position="top">
-                  <button className={`${getGlassyClasses()} px-4 py-2`}>Left</button>
+                  <button className={`${getGlassyClasses()} px-4 py-2`}>Top</button>
                 </Tooltip>
                 <Tooltip text="Tooltip on left!" position="left">
-                  <button className={`${getGlassyClasses()} px-4 py-2`}>Top</button>
+                  <button className={`${getGlassyClasses()} px-4 py-2`}>Left</button>
                 </Tooltip>
                 <Tooltip text="Tooltip on bottom!" position="bottom">
                   <button className={`${getGlassyClasses()} px-4 py-2`}>Bottom</button>
