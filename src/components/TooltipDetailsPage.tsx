@@ -128,7 +128,7 @@ function Example() {
         <div className={`${getGlassyClasses()} p-8 mb-8`}>
           <h2 className="text-3xl font-bold mb-6 text-gray-800">Tooltip Positions</h2>
           <p className="mb-6 text-lg text-gray-700">Display tooltips in different positions around the element.</p>
-          <div className="flex justify-around">
+          <div className="flex justify-around py-12">
             <Tooltip text="Tooltip on top!" position="top">
               <button className={`${getGlassyClasses()} px-4 py-2`}>Top</button>
             </Tooltip>

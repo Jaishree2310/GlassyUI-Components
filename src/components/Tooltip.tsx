@@ -35,7 +35,7 @@ const Tooltip: React.FC<TooltipProps> = ({ text, position = 'top', children }) =
     <div className="relative inline-block" onMouseEnter={showTooltip} onMouseLeave={hideTooltip}>
       {children}
       {isVisible && (
-        <div className={`absolute z-10 px-3 py-2 text-black text-sm whitespace-nowrap ${getPositionClasses()} ${getGlassyClasses()}`}>
+        <div className={`absolute z-10 px-4 py-2 text-black text-sm whitespace-nowrap ${getPositionClasses()} ${getGlassyClasses()}`}>
           {text}
         </div>
       )}

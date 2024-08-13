@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Star, ArrowRight, Box, Type, Sliders, MessageSquare, Menu, X, Layout, AlignLeft } from 'lucide-react';
+import { Star, ArrowRight, Info, Box, Type, Sliders, MessageSquare, Menu, X, Layout, AlignLeft } from 'lucide-react';
 import Tooltip from './Tooltip';
 
 const GlassyUIComponentsPage: React.FC = () => {
@@ -186,21 +186,18 @@ const GlassyUIComponentsPage: React.FC = () => {
 
             <ComponentCard 
               title="Tool Tip"
-              description="The Tooltip component will be customizable, support different positions, and be responsive and accessible."
-              icon={<AlignLeft size={24} />}
+              description="Tooltip component support different positions, and be responsive and accessible."
+              icon={<Info size={24} />}
               onClick={() => navigate('/tooltip-details')}
             >
               <div className="mt-1 mb-4 flex justify-around">
-                <Tooltip text="Tooltip on top!" position="top">
-                  <button className={`${getGlassyClasses()} px-4 py-2`}>Top</button>
-                </Tooltip>
-                <Tooltip text="Tooltip on left!" position="left">
+                <Tooltip text="Tooltip" position="left">
                   <button className={`${getGlassyClasses()} px-4 py-2`}>Left</button>
                 </Tooltip>
-                <Tooltip text="Tooltip on bottom!" position="bottom">
+                <Tooltip text="Tooltip" position="bottom">
                   <button className={`${getGlassyClasses()} px-4 py-2`}>Bottom</button>
                 </Tooltip>
-                <Tooltip text="Tooltip on right!" position="right">
+                <Tooltip text="Tooltip" position="right">
                   <button className={`${getGlassyClasses()} px-4 py-2`}>Right</button>
                 </Tooltip>
               </div>
