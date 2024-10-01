@@ -21,7 +21,7 @@ Live: [glassyui](https://glassyui.vercel.app/)
 
 ## Getting Started
 
-To get started with GlassyUI-Components, follow these instructions:
+To get started with GlassyUI-Components, follow these instructions:-
 
 ### Prerequisites
 
