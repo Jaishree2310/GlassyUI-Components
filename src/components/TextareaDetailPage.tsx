@@ -142,7 +142,7 @@ const TextareaDetailPage: React.FC = () => {
       </div>
 
       <div className="relative z-10 text-black">
-        <button 
+        <button style={{color:'black'}}
           onClick={() => navigate(-1)} 
           className={`mb-8 flex items-center ${getGlassyClasses()} px-4 py-2 hover:bg-opacity-20 text-black transition-all duration-300`}
         >
