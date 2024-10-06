@@ -1,28 +1,27 @@
-import React from 'react';
-import { Star } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { Star } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const GlassyUILandingPage: React.FC = () => {
-  
   const githubRepoUrl = "https://github.com/Jaishree2310/GlassyUI-Components";
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center p-4 font-mono relative overflow-hidden bg-gradient-to-br from-blue-400 via-purple-500 to-pink-500">
-      <div 
+      <div
         className="absolute inset-0 w-full h-full opacity-20"
         style={{
           backgroundImage: `
             linear-gradient(to right, #ffffff 1px, transparent 1px),
             linear-gradient(to bottom, #ffffff 1px, transparent 1px)
           `,
-          backgroundSize: '20px 20px'
+          backgroundSize: "20px 20px",
         }}
       />
 
       <div className="relative z-10 w-full max-w-4xl">
         <header className="w-full flex justify-between items-center mb-8">
           <div className="text-xl font-bold text-white">GlassyUI</div>
-          <a 
+          <a
             href={githubRepoUrl}
             target="_blank"
             rel="noopener noreferrer"
@@ -33,17 +32,16 @@ const GlassyUILandingPage: React.FC = () => {
           </a>
         </header>
 
-        <main className="text-center p-8 rounded-xl backdrop-filter backdrop-blur-lg bg-white bg-opacity-10 shadow-lg border border-white border-opacity-20 relative transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-2xl hover:bg-opacity-20">
-
+        <main className="text-center p-8 rounded-xl backdrop-blur-md bg-white/10 bg-opacity-20 shadow-lg border border-white border-opacity-20 relative transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-2xl hover:bg-opacity-20">
           <h1 className="text-6xl font-bold mb-2 text-white">Glassy UI</h1>
-          <p className="text-xl mb-6 text-white">A sleek glassmorphism UI library.</p>
+          <p className="text-xl mb-6 text-white">
+            A sleek glassmorphism UI library.
+          </p>
           <div className="flex justify-center space-x-4">
             <Link to="/components">
-              <GlassmorphismButton>
-                Explore components
-              </GlassmorphismButton>
+              <GlassmorphismButton>Explore components</GlassmorphismButton>
             </Link>
-            <GlassmorphismButton 
+            <GlassmorphismButton
               variant="secondary"
               as="a"
               href={githubRepoUrl}
@@ -61,26 +59,22 @@ const GlassyUILandingPage: React.FC = () => {
 
 const GlassmorphismButton: React.FC<{
   children: React.ReactNode;
-  variant?: 'primary' | 'secondary';
-  as?: 'button' | 'a';
+  variant?: "primary" | "secondary";
+  as?: "button" | "a";
   href?: string;
   target?: string;
   rel?: string;
-}> = ({ children, variant = 'primary', as = 'button', ...props }) => {
+}> = ({ children, variant = "primary", as = "button", ...props }) => {
   const className = `
     px-6 py-3 rounded-full text-white font-semibold
     backdrop-filter backdrop-blur-sm bg-opacity-20 border border-white border-opacity-20
     transition-all duration-300 ease-in-out
     hover:bg-opacity-30 hover:shadow-lg hover:scale-105
     focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-50
-    ${variant === 'primary' ? 'bg-blue-500' : 'bg-purple-500'}
+    ${variant === "primary" ? "bg-blue-500" : "bg-purple-500"}
   `;
 
-  return React.createElement(
-    as,
-    { className, ...props },
-    children
-  );
+  return React.createElement(as, { className, ...props }, children);
 };
 
 export default GlassyUILandingPage;
