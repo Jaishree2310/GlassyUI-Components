@@ -1,9 +1,16 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
+import { MemoryRouter } from 'react-router-dom';
 import App from './App';
 
-test('renders learn react link', () => {
-  render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+// Custom render function
+const renderWithRouter = (ui: React.ReactElement, { route = '/' } = {}) => {
+  window.history.pushState({}, 'Test page', route);
+  return render(ui, { wrapper: MemoryRouter });
+};
+
+test('renders without crashing', () => {
+  renderWithRouter(<App />);
+  const headerElement = screen.getByText(/GlassyUI/i);
+  expect(headerElement).toBeInTheDocument();
 });
