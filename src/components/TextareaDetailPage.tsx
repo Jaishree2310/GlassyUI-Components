@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { ArrowLeft, Copy, Check } from 'lucide-react';
+import BackToTopButton from './BackToTop';
 
 type Theme = 'pink' | 'brown' | 'white' | 'black';
 type CustomTheme = 'blue' | 'brown' | 'white' | 'black' | 'rainbow';
@@ -131,6 +132,7 @@ const TextareaDetailPage: React.FC = () => {
 
   return (
     <div className="min-h-screen p-8 font-mono relative overflow-hidden">
+      <BackToTopButton />
       {/* Background gradient */}
       <div className="absolute inset-0 z-0 bg-gradient-to-r from-[#FFB3B3] via-[#D8B0FF] to-[#FFD5B9] filter blur-3xl opacity-50"></div>
 

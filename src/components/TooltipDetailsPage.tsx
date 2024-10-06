@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ArrowLeft, Copy, Check } from 'lucide-react';
 import Tooltip from './Tooltip'; // Importing the Tooltip component
+import BackToTopButton from './BackToTop';
 
 const TooltipDetailsPage: React.FC = () => {
   const navigate = useNavigate(); // Hook for navigation
@@ -70,6 +71,7 @@ function Example() {
 
   return (
     <div className="min-h-screen p-8 font-sans bg-gradient-to-r from-[#ffc6c6] via-[#ffc6e5] to-[#e7c6ff] relative">
+      <BackToTopButton />
       <div className="relative z-10">
         {/* Back navigation button */}
         <button 
