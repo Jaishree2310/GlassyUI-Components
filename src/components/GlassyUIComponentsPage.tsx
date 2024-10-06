@@ -1,6 +1,14 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import {
+  FaFacebookF,
+  FaTwitter,
+  FaLinkedinIn,
+  FaInstagram,
+} from "react-icons/fa";
+
+import {
+ main
   Star,
   ArrowRight,
   Info,
@@ -14,6 +22,7 @@ import {
   AlignLeft,
 } from "lucide-react";
 import Tooltip from "./Tooltip";
+import SpeedDial from "./SpeedDial";
 
 const GlassyUIComponentsPage: React.FC = () => {
   const navigate = useNavigate();
@@ -83,6 +92,52 @@ const GlassyUIComponentsPage: React.FC = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             <ComponentCard
+              title="Speed Dial"
+              description="Speed dial with glassmorphism effect. Hover on me to see the actions."
+              icon={<Info size={24} />}
+              status="New"
+              onClick={() => navigate("/speed-dial-details")}
+            >
+              <SpeedDial
+                direction="right"
+                actionButtons={[
+                  {
+                    icon: <FaFacebookF size={20} />,
+                    label: "Facebook",
+                    key: "facebook",
+                    action: () => {
+                      window.open("https://www.facebook.com", "_blank");
+                    },
+                  },
+                  {
+                    icon: <FaTwitter size={20} />,
+                    label: "Twitter",
+                    key: "twitter",
+                    action: () => {
+                      window.open("https://www.twitter.com", "_blank");
+                    },
+                  },
+                  {
+                    icon: <FaLinkedinIn size={20} />,
+                    label: "LinkedIn",
+                    key: "linkedin",
+                    action: () => {
+                      window.open("https://www.linkedin.com", "_blank");
+                    },
+                  },
+                  {
+                    icon: <FaInstagram size={20} />,
+                    label: "Instagram",
+                    key: "instagram",
+                    action: () => {
+                      window.open("https://www.instagram.com", "_blank");
+                    },
+                  },
+                ]}
+              />
+            </ComponentCard>
+            <ComponentCard
+
               title="Buttons"
               description="Sleek, customizable buttons with glassmorphic styling."
               icon={<Box size={24} />}
@@ -267,12 +322,13 @@ const ComponentCard: React.FC<{
   description: string;
   icon: React.ReactNode;
   onClick: () => void;
+  status?: string;
   children?: React.ReactNode;
-}> = ({ title, description, icon, onClick, children }) => {
+}> = ({ title, description, icon, onClick, children, status }) => {
   const getGlassyClasses = () => {
     return "bg-white/10 border border-white/20 color-white-500/50 rounded-2xl shadow-lg transition-all duration-300";
+    return "backdrop-filter backdrop-blur-md bg-white/10 border border-white/20 rounded-2xl shadow-lg transition-all duration-300";
   };
-
   return (
     <div
       className={`${getGlassyClasses()} p-6 flex flex-col h-full cursor-pointer group transition-all duration-300 hover:bg-white/20 hover:scale-105 hover:shadow-xl`}
@@ -281,6 +337,11 @@ const ComponentCard: React.FC<{
       <div className="flex items-center mb-4">
         <div className="p-2 bg-white/20 rounded-lg mr-4">{icon}</div>
         <h3 className="text-xl font-bold">{title}</h3>
+        {status && (
+          <span className="ml-2 px-2 py-1 bg-green-200 text-green-700 text-xs font-medium rounded">
+            {status}
+          </span>
+        )}
       </div>
       <p className="text-sm opacity-80 mb-4 flex-grow">{description}</p>
       {children}
