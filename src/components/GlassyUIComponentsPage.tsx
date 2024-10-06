@@ -1,6 +1,13 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import {
+  FaFacebookF,
+  FaTwitter,
+  FaLinkedinIn,
+  FaInstagram,
+} from "react-icons/fa";
+
+import {
   Star,
   ArrowRight,
   Info,
@@ -90,7 +97,43 @@ const GlassyUIComponentsPage: React.FC = () => {
               status="New"
               onClick={() => navigate("/speed-dial-details")}
             >
-              <SpeedDial direction="right" />
+              <SpeedDial
+                direction="right"
+                actionButtons={[
+                  {
+                    icon: <FaFacebookF size={20} />,
+                    label: "Facebook",
+                    key: "facebook",
+                    action: () => {
+                      window.open("https://www.facebook.com", "_blank");
+                    },
+                  },
+                  {
+                    icon: <FaTwitter size={20} />,
+                    label: "Twitter",
+                    key: "twitter",
+                    action: () => {
+                      window.open("https://www.twitter.com", "_blank");
+                    },
+                  },
+                  {
+                    icon: <FaLinkedinIn size={20} />,
+                    label: "LinkedIn",
+                    key: "linkedin",
+                    action: () => {
+                      window.open("https://www.linkedin.com", "_blank");
+                    },
+                  },
+                  {
+                    icon: <FaInstagram size={20} />,
+                    label: "Instagram",
+                    key: "instagram",
+                    action: () => {
+                      window.open("https://www.instagram.com", "_blank");
+                    },
+                  },
+                ]}
+              />
             </ComponentCard>
             <ComponentCard
               title="Buttons"

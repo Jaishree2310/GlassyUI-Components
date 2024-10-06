@@ -1,17 +1,20 @@
 import React, { useState } from "react";
-import {
-  FaFacebookF,
-  FaTwitter,
-  FaLinkedinIn,
-  FaInstagram,
-} from "react-icons/fa";
 
 import { Plus } from "lucide-react";
 interface SpeedDialProps {
   direction: string;
+  actionButtons: Array<{
+    icon: React.ReactNode;
+    label: string;
+    key: string;
+    action: () => void;
+  }>;
 }
 
-export default function SpeedDial({ direction }: SpeedDialProps) {
+export default function SpeedDial({
+  direction,
+  actionButtons,
+}: SpeedDialProps) {
   const [isHovered, setIsHovered] = useState(false);
 
   const getAnimation = () => {
@@ -33,44 +36,8 @@ export default function SpeedDial({ direction }: SpeedDialProps) {
   const handleMouseLeave = () => setIsHovered(false);
 
   const getGlassyClasses = () => {
-    return "backdrop-filter backdrop-blur-xl bg-white border border-white rounded-xl shadow-lg transition-all duration-300";
+    return "backdrop-filter backdrop-blur-md bg-white/30 border border-white/20 rounded-xl shadow-lg";
   };
-
-  // Customize action buttons here with social media icons
-  const actionButtons = [
-    {
-      icon: <FaFacebookF size={20} />,
-      label: "Facebook",
-      key: "facebook",
-      action: () => {
-        window.open("https://www.facebook.com", "_blank");
-      },
-    },
-    {
-      icon: <FaTwitter size={20} />,
-      label: "Twitter",
-      key: "twitter",
-      action: () => {
-        window.open("https://www.twitter.com", "_blank");
-      },
-    },
-    {
-      icon: <FaLinkedinIn size={20} />,
-      label: "LinkedIn",
-      key: "linkedin",
-      action: () => {
-        window.open("https://www.linkedin.com", "_blank");
-      },
-    },
-    {
-      icon: <FaInstagram size={20} />,
-      label: "Instagram",
-      key: "instagram",
-      action: () => {
-        window.open("https://www.instagram.com", "_blank");
-      },
-    },
-  ];
 
   return (
     <div
