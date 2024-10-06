@@ -139,6 +139,7 @@ function App() {
       {/* Props */}
       <div className={`${getGlassyClasses()} p-6 mb-8`}>
         <h2 className="text-2xl font-bold mb-4 text-gray-800">Props</h2>
+        <div className='overflow-x-auto'>
         <table className="w-full">
           <thead>
             <tr>
@@ -175,6 +176,7 @@ function App() {
             </tr>
           </tbody>
         </table>
+        </div>
       </div>
 
       {/* Custom ProgressBar */}

@@ -161,6 +161,7 @@ function Example() {
       <section className="mb-12">
         <h2 className="text-2xl font-bold mb-4 text-gray-800">Props</h2>
         <div className="bg-white bg-opacity-30 backdrop-filter backdrop-blur-md border border-white border-opacity-20 rounded-lg p-6">
+          <div className='overflow-x-auto'>
           <table className="w-full">
             <thead>
               <tr>
@@ -191,6 +192,7 @@ function Example() {
               </tr>
             </tbody>
           </table>
+          </div>
         </div>
       </section>
 
