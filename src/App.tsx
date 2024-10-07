@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import GlassyUILandingPage from "./components/GlassyUILandingPage";
 import GlassyUIComponentsPage from "./components/GlassyUIComponentsPage";
@@ -12,8 +12,31 @@ import NotFoundPage from "./components/NotFoundPage";
 import TooltipDetailsPage from "./components/TooltipDetailsPage";
 import SpeedDialDetailsPage from "./components/SpeedDialDetailsPage";
 import ModalDetailsPage from "./components/ModalDetailsPage";
+import './index.css';  // Import custom CSS
 
 const App: React.FC = () => {
+  // Function to handle mouse movement and create the fairy dust effect
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      const dot = document.createElement("div");
+      dot.className = "fairy-dust";
+      document.body.appendChild(dot);
+      
+      dot.style.left = `${e.pageX}px`;
+      dot.style.top = `${e.pageY}px`;
+
+      setTimeout(() => {
+        dot.remove();
+      }, 1000);  // Remove the dot after 1 second
+    };
+
+    window.addEventListener("mousemove", handleMouseMove);
+
+    return () => {
+      window.removeEventListener("mousemove", handleMouseMove);
+    };
+  }, []);
+
   return (
     <Router>
       <Routes>
