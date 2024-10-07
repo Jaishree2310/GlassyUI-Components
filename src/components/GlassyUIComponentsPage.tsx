@@ -81,11 +81,11 @@ const GlassyUIComponentsPage: React.FC = () => {
           </div>
         )}
 
-        <main>
-          <h1 className="text-4xl lg:text-6xl font-extrabold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-white to-pink-200">
+        <main className="fade-in">
+          <h1 className="text-4xl flex item-center justify-center lg:text-6xl font-extrabold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-white to-pink-200">
             Glassmorphic Components
           </h1>
-          <p className="text-lg lg:text-xl mb-12 max-w-2xl leading-relaxed">
+          <p className="flex justify-center text-lg lg:text-xl mb-12 max-w-2l leading-relaxed">
             Elevate your UI with our collection of beautifully crafted,
             glassmorphic components. Perfect for creating modern, sleek
             interfaces with depth and style.
