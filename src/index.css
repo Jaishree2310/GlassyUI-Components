@@ -23,7 +23,26 @@ code {
   border: 1px solid rgba(255, 255, 255, 0.18);
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
 }
+/* Fade In Effect */
+@keyframes fade {
+  from{
+    transform: translateY(50px);
+    opacity: 0;
+  }
+}
 
+.fade-in{
+  animation: fade 350ms ease-out;
+}
+
+@keyframes shine {
+  0% {
+    transform: translateX(-100%) translateY(-100%) rotate(45deg);
+  }
+  100% {
+    transform: translateX(100%) translateY(100%) rotate(45deg);
+  }
+}
 @keyframes shine {
   0% {
     transform: translateX(-100%) translateY(-100%) rotate(45deg);

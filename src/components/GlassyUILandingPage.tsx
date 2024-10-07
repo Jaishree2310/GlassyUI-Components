@@ -33,7 +33,7 @@ const GlassyUILandingPage: React.FC = () => {
           </a>
         </header>
 
-        <main className="text-center p-8 rounded-xl backdrop-filter backdrop-blur-lg bg-white bg-opacity-10 shadow-lg border border-white border-opacity-20 relative transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-2xl hover:bg-opacity-20">
+        <main className="fade-in text-center p-8 rounded-xl backdrop-filter backdrop-blur-lg bg-white bg-opacity-10 shadow-lg border border-white border-opacity-20 relative transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-2xl hover:bg-opacity-20">
 
           <h1 className="text-6xl font-bold mb-2 text-white">Glassy UI</h1>
           <p className="text-xl mb-6 text-white">A sleek glassmorphism UI library.</p>
