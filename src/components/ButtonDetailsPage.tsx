@@ -95,6 +95,7 @@ function Example() {
 
         <div className={`${getGlassyClasses()} p-8 mb-8`}>
           <h2 className="text-3xl font-bold mb-6 text-gray-800">Props</h2>
+          <div className="overflow-x-auto">
           <table className="w-full">
             <thead>
               <tr className="border-b border-gray-400">
@@ -125,6 +126,7 @@ function Example() {
               </tr>
             </tbody>
           </table>
+          </div>
         </div>
 
         <div className={`${getGlassyClasses()} p-8 mb-8`}>
