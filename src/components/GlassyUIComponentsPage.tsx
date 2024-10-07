@@ -23,6 +23,7 @@ import {
 import Tooltip from "./Tooltip";
 import SpeedDial from "./SpeedDial";
 import BackToTopButton from "./BackToTop";
+import { HiOutlineWrenchScrewdriver } from "react-icons/hi2";
 
 const GlassyUIComponentsPage: React.FC = () => {
   const navigate = useNavigate();
@@ -51,16 +52,29 @@ const GlassyUIComponentsPage: React.FC = () => {
           >
             GlassyUI
           </div>
-          <div className="hidden md:flex items-center space-x-4">
-            <a
-              href={githubRepoUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={`flex items-center space-x-2 ${getGlassyClasses()} px-4 py-2 hover:bg-white/20 transition-colors duration-300`}
-            >
-              <Star size={18} />
-              <span className="text-sm font-medium">Star on GitHub</span>
-            </a>
+          <div className="flex gap-4">
+            <div className="hidden md:flex items-center space-x-4">
+              <a
+                href='/generator'
+                
+                rel="noopener noreferrer"
+                className={`flex items-center space-x-2 ${getGlassyClasses()} px-4 py-2 hover:bg-white/20 transition-colors duration-300`}
+              >
+                <HiOutlineWrenchScrewdriver />
+                <span className="text-sm font-medium">Generate Glass effect</span>
+              </a>
+            </div>
+            <div className="hidden md:flex items-center space-x-4">
+              <a
+                href={githubRepoUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`flex items-center space-x-2 ${getGlassyClasses()} px-4 py-2 hover:bg-white/20 transition-colors duration-300`}
+              >
+                <Star size={18} />
+                <span className="text-sm font-medium">Star on GitHub</span>
+              </a>
+            </div>
           </div>
           <button className="md:hidden" onClick={toggleMenu}>
             {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
