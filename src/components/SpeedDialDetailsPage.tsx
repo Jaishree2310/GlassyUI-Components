@@ -8,6 +8,7 @@ import {
   FaLinkedinIn,
   FaInstagram,
 } from "react-icons/fa";
+import BackToTopButton from "./BackToTop";
 
 // Utility function for reusable glassy class styles
 const getGlassyClasses = (): string =>
@@ -164,6 +165,7 @@ const SpeedDialDetailsPage: React.FC = () => {
 
   return (
     <div className="min-h-screen p-8 font-sans bg-gradient-to-r from-[#ffc6c6] via-[#ffc6e5] to-[#e7c6ff] relative">
+      <BackToTopButton />
       <div className="relative z-10">
         {/* Back Button */}
         <button

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ArrowLeft, Copy, Check, Search } from 'lucide-react';
+import BackToTopButton from './BackToTop';
 
 interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   icon?: React.ReactNode;
@@ -110,6 +111,7 @@ const InputDetailPage: React.FC = () => {
 
   return (
     <div className="min-h-screen p-8 font-sans bg-gradient-to-r from-[#ffc6c6] via-[#ffc6e5] to-[#e7c6ff] relative">
+      <BackToTopButton />
       <nav className="mb-8 flex items-center justify-between relative z-10">
         <button 
           onClick={handleBackToComponents}

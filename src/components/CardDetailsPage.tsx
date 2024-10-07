@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ArrowLeft, Copy, Check, CreditCard, Wifi } from 'lucide-react';
+import BackToTopButton from './BackToTop';
 
 interface ThemeColors {
   bg: string;
@@ -118,6 +119,7 @@ const CardDetailsPage: React.FC = () => {
 
   return (
     <div className="min-h-screen p-8 font-sans bg-gradient-to-r from-[#ffc6c6] via-[#ffc6e5] to-[#e7c6ff] relative">
+      <BackToTopButton />
       <button 
         onClick={() => navigate(-1)} 
         className="mb-8 flex items-center px-4 py-2 bg-white bg-opacity-30 backdrop-filter backdrop-blur-md border border-white border-opacity-20 rounded-lg shadow-lg hover:bg-opacity-40 transition-all duration-300 text-gray-800"
