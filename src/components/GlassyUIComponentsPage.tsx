@@ -41,7 +41,7 @@ const GlassyUIComponentsPage: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen font-sans bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 text-white">
+    <div className="min-h-screen font-sans bg-gradient-to-br from-gray-800 via-gray-900 to-black text-white">
       <BackToTopButton />
       <div className="container mx-auto px-4 py-8 lg:py-12">
         <header className="flex justify-between items-center mb-16">
