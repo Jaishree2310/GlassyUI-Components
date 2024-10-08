@@ -13,6 +13,8 @@ import TooltipDetailsPage from "./components/TooltipDetailsPage";
 import SpeedDialDetailsPage from "./components/SpeedDialDetailsPage";
 import ModalDetailsPage from "./components/ModalDetailsPage";
 import GlassMorphismGenrator from "./components/GlassMorphismGenrator";
+import NavigationDetailsPage from "./components/NavigationDetailsPage";
+
 
 const App: React.FC = () => {
   return (
