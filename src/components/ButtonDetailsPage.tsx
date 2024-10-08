@@ -12,7 +12,7 @@ const ButtonDetailsPage: React.FC = () => {
   const [customBorder, setCustomBorder] = useState('#833AB4');
 
   const getGlassyClasses = () => {
-    return 'backdrop-filter backdrop-blur-xl bg-white/30 border border-white/20 rounded-xl shadow-lg transition-all duration-300';
+    return 'backdrop-filter backdrop-blur-xl bg-white/30 border border-white/20 rounded-xl shadow-lg transition-all duration-300 max-sm:px-0';
   };
 
   const copyToClipboard = (text: string, key: string) => {
@@ -86,7 +86,7 @@ function Example() {
         <div className={`${getGlassyClasses()} p-8 mb-8 relative`}>
           <h2 className="text-3xl font-bold mb-6 text-white">Basic Usage</h2>
           <div className="relative">
-            <pre className="bg-gray-800 text-white p-6 rounded-lg overflow-x-auto whitespace-pre-wrap">
+            <pre className="bg-gray-800 text-white p-6 rounded-lg overflow-x-auto whitespace-pre-wrap  max-sm:text-[0.55rem]">
               {basicUsageCode}
             </pre>
             <CopyButton text={basicUsageCode} codeKey="basicUsage" />
@@ -99,30 +99,30 @@ function Example() {
             <table className="w-full">
               <thead>
                 <tr className="border-b border-gray-400">
-                  <th className="text-left p-2 text-white">Prop</th>
-                  <th className="text-left p-2 text-white">Type</th>
-                  <th className="text-left p-2 text-white">Default</th>
-                  <th className="text-left p-2 text-white">Description</th>
+                  <th className="text-left p-2 text-gray-800">Prop</th>
+                  <th className="text-left p-2 text-gray-800">Type</th>
+                  <th className="text-left p-2 text-gray-800">Default</th>
+                  <th className="text-left p-2 text-gray-800">Description</th>
                 </tr>
               </thead>
               <tbody>
                 <tr className="border-b border-gray-300">
-                  <td className="p-2 text-white">backgroundColor</td>
-                  <td className="p-2 text-white">string</td>
-                  <td className="p-2 text-white">-</td>
-                  <td className="p-2 text-white">The background color of the button</td>
+                  <td className="p-2 text-gray-700">backgroundColor</td>
+                  <td className="p-2 text-gray-700">string</td>
+                  <td className="p-2 text-gray-700">-</td>
+                  <td className="p-2 text-gray-700">The background color of the button</td>
                 </tr>
                 <tr className="border-b border-gray-300">
-                  <td className="p-2 text-white">color</td>
-                  <td className="p-2 text-white">string</td>
-                  <td className="p-2 text-white">-</td>
-                  <td className="p-2 text-white">The text color of the button</td>
+                  <td className="p-2 text-gray-700">color</td>
+                  <td className="p-2 text-gray-700">string</td>
+                  <td className="p-2 text-gray-700">-</td>
+                  <td className="p-2 text-gray-700">The text color of the button</td>
                 </tr>
                 <tr className="border-b border-gray-300">
-                  <td className="p-2 text-white">borderColor</td>
-                  <td className="p-2 text-white">string</td>
-                  <td className="p-2 text-white">-</td>
-                  <td className="p-2 text-white">The border color of the button</td>
+                  <td className="p-2 text-gray-700">borderColor</td>
+                  <td className="p-2 text-gray-700">string</td>
+                  <td className="p-2 text-gray-700">-</td>
+                  <td className="p-2 text-gray-700">The border color of the button</td>
                 </tr>
               </tbody>
             </table>
@@ -218,7 +218,7 @@ function Example() {
               >
                 Themed Button
               </button>
-              <pre className="bg-gray-800 text-white p-6 rounded-lg mt-4 overflow-x-auto whitespace-pre-wrap">
+              <pre className="bg-gray-800 text-white p-6 rounded-lg mt-4 overflow-x-auto whitespace-pre-wrap max-sm:text-[0.55rem]">
                 {themedButtonCode}
               </pre>
               <CopyButton text={themedButtonCode} codeKey="themedButton" />
@@ -238,7 +238,7 @@ function Example() {
             Alert!
           </button>
           <div className="relative mt-8">
-            <pre className="bg-gray-800 text-white p-6 rounded-lg overflow-x-auto whitespace-pre-wrap">
+            <pre className="bg-gray-800 text-white p-6 rounded-lg overflow-x-auto whitespace-pre-wrap max-sm:text-[0.55rem]">
               {alertButtonCode}
             </pre>
             <CopyButton text={alertButtonCode} codeKey="alertButton" />
@@ -256,7 +256,7 @@ function Example() {
             Full Width Button
           </button>
           <div className="relative mt-8">
-            <pre className="bg-gray-800 text-white p-6 rounded-lg overflow-x-auto whitespace-pre-wrap">
+            <pre className="bg-gray-800 text-white p-6 rounded-lg overflow-x-auto whitespace-pre-wrap max-sm:text-[0.55rem]">
               {fullWidthButtonCode}
             </pre>
             <CopyButton text={fullWidthButtonCode} codeKey="fullWidthButton" />

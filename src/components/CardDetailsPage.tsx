@@ -133,8 +133,8 @@ const CardDetailsPage: React.FC = () => {
       {/* Basic Usage */}
       <section className="mb-12">
         <h2 className="text-2xl font-bold mb-4 text-gray-800">Basic Usage</h2>
-        <div className="bg-white bg-opacity-30 backdrop-filter backdrop-blur-md border border-white border-opacity-20 rounded-lg p-6">
-          <pre className="bg-gray-800 text-white p-4 rounded-lg overflow-x-auto relative">
+        <div className="bg-white bg-opacity-30 backdrop-filter backdrop-blur-md border border-white border-opacity-20 rounded-lg p-6 max-sm:px-1">
+          <pre className="bg-gray-800 text-white p-4 rounded-lg overflow-x-auto relative max-sm:text-[0.55rem]">
             {`import { Card } from './components/Card';
 
 function Example() {
@@ -162,7 +162,7 @@ function Example() {
       {/* Props */}
       <section className="mb-12">
         <h2 className="text-2xl font-bold mb-4 text-gray-800">Props</h2>
-        <div className="bg-white bg-opacity-30 backdrop-filter backdrop-blur-md border border-white border-opacity-20 rounded-lg p-6">
+        <div className="bg-white bg-opacity-30 backdrop-filter backdrop-blur-md border border-white border-opacity-20 rounded-lg p-6 max-sm:px-1">
           <div className='overflow-x-auto'>
             <table className="w-full">
               <thead>
@@ -202,7 +202,7 @@ function Example() {
       <section className="mb-12">
         <h2 className="text-2xl font-bold mb-4 text-gray-800">Custom Card</h2>
         <p className="mb-4 text-gray-700">Customize your card's appearance by selecting a preset theme or creating your own color scheme.</p>
-        <div className="bg-white bg-opacity-30 backdrop-filter backdrop-blur-md border border-white border-opacity-20 rounded-lg p-6">
+        <div className="bg-white bg-opacity-30 backdrop-filter backdrop-blur-md border border-white border-opacity-20 rounded-lg p-6 max-sm:px-1">
           <div className="mb-4">
             <span className="text-sm font-bold mr-2">Theme:</span>
             {Object.keys(themes).map((theme) => (
@@ -218,7 +218,7 @@ function Example() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <CustomCardPreview />
             <div className="relative">
-              <pre className="bg-gray-800 text-white p-4 rounded-lg overflow-x-auto text-sm">
+              <pre className="bg-gray-800 text-white p-4 rounded-lg overflow-x-auto text-sm  max-sm:text-[0.55rem]">
                 {updateCustomCode()}
               </pre>
               <CopyButton text={updateCustomCode()} codeKey="customStyling" />

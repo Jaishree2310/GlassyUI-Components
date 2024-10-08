@@ -90,7 +90,7 @@ function Example() {
         <div className={`${getGlassyClasses()} p-8 mb-8 relative`}>
           <h2 className="text-3xl font-bold mb-6 text-gray-100">Basic Usage</h2>
           <div className="relative">
-            <pre className="bg-gray-800 text-white p-6 rounded-lg overflow-x-auto whitespace-pre-wrap">
+            <pre className="bg-gray-800 text-white p-6 rounded-lg overflow-x-auto whitespace-pre-wrap max-sm:text-[0.55rem] max-sm:text-[0.55rem]">
               {basicUsageCode}
             </pre>
             <CopyButton text={basicUsageCode} codeKey="basicUsage" />
@@ -148,25 +148,25 @@ function Example() {
           </div>
           {/* Code snippets for different tooltip positions */}
           <div className="relative mt-8">
-            <pre className="bg-gray-800 text-white p-6 rounded-lg overflow-x-auto whitespace-pre-wrap">
+            <pre className="bg-gray-800 text-white p-6 rounded-lg overflow-x-auto whitespace-pre-wrap max-sm:text-[0.55rem]">
               {topTooltipCode}
             </pre>
             <CopyButton text={topTooltipCode} codeKey="topTooltip" />
           </div>
           <div className="relative mt-8">
-            <pre className="bg-gray-800 text-white p-6 rounded-lg overflow-x-auto whitespace-pre-wrap">
+            <pre className="bg-gray-800 text-white p-6 rounded-lg overflow-x-auto whitespace-pre-wrap max-sm:text-[0.55rem]">
               {bottomTooltipCode}
             </pre>
             <CopyButton text={bottomTooltipCode} codeKey="bottomTooltip" />
           </div>
           <div className="relative mt-8">
-            <pre className="bg-gray-800 text-white p-6 rounded-lg overflow-x-auto whitespace-pre-wrap">
+            <pre className="bg-gray-800 text-white p-6 rounded-lg overflow-x-auto whitespace-pre-wrap max-sm:text-[0.55rem]">
               {leftTooltipCode}
             </pre>
             <CopyButton text={leftTooltipCode} codeKey="leftTooltip" />
           </div>
           <div className="relative mt-8">
-            <pre className="bg-gray-800 text-white p-6 rounded-lg overflow-x-auto whitespace-pre-wrap">
+            <pre className="bg-gray-800 text-white p-6 rounded-lg overflow-x-auto whitespace-pre-wrap max-sm:text-[0.55rem]">
               {rightTooltipCode}
             </pre>
             <CopyButton text={rightTooltipCode} codeKey="rightTooltip" />

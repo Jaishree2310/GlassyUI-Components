@@ -61,7 +61,7 @@ const CustomTextArea: React.FC = () => {
       />
 
       <div className="mt-4 bg-gray-800 p-2 rounded">
-        <pre className="text-sm">
+        <pre className="text-sm max-sm:text-[0.55rem]">
           {`<textarea
   style={{
     backgroundColor: '${themeColors.bg.includes('linear-gradient') ? 'transparent' : themeColors.bg}',
