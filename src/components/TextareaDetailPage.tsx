@@ -32,7 +32,7 @@ const CustomTextArea: React.FC = () => {
     <div className="p-4 rounded-lg">
       <h2 className="text-2xl text-black font-bold mb-4">Custom TextArea</h2>
       <p className="text-gray-700 mb-4">Customize your textarea's appearance by selecting a preset theme or creating your own color scheme.</p>
-      
+
       <div className="mb-4">
         <label className="block text-black mb-2">Theme:</label>
         <div className="flex space-x-2">
@@ -61,7 +61,7 @@ const CustomTextArea: React.FC = () => {
       />
 
       <div className="mt-4 bg-gray-800 p-2 rounded">
-        <pre className="text-sm">
+        <pre className="text-sm max-sm:text-[0.55rem]">
           {`<textarea
   style={{
     backgroundColor: '${themeColors.bg.includes('linear-gradient') ? 'transparent' : themeColors.bg}',
@@ -121,7 +121,7 @@ const TextareaDetailPage: React.FC = () => {
   };
 
   const CopyButton: React.FC<{ text: string, codeKey: string }> = ({ text, codeKey }) => (
-    <button 
+    <button
       onClick={() => copyToClipboard(text, codeKey)}
       className={`absolute top-4 right-4 ${getGlassyClasses()} p-2 hover:bg-opacity-20 transition-all duration-300`}
       title="Copy to clipboard"
@@ -144,8 +144,8 @@ const TextareaDetailPage: React.FC = () => {
       </div>
 
       <div className="relative z-10 text-black">
-        <button style={{color:'black'}}
-          onClick={() => navigate(-1)} 
+        <button style={{ color: 'black' }}
+          onClick={() => navigate(-1)}
           className={`mb-8 flex items-center ${getGlassyClasses()} px-4 py-2 hover:bg-opacity-20 text-black transition-all duration-300`}
         >
           <ArrowLeft size={20} className="mr-2 text-black" />
@@ -194,7 +194,7 @@ const TextareaDetailPage: React.FC = () => {
                 <tr>
                   <td className="p-2">style</td>
                   <td className="p-2">CSSProperties</td>
-                  <td className="p-2">{}</td>
+                  <td className="p-2">{ }</td>
                   <td className="p-2">Inline styles for the textarea</td>
                 </tr>
                 <tr className="bg-white bg-opacity-10">
@@ -228,10 +228,10 @@ const TextareaDetailPage: React.FC = () => {
         {/* Additional Examples */}
         <div className={`${getGlassyClasses()} p-6 mt-8`}>
           <h2 className="text-2xl text-black font-bold mb-4">Additional Examples</h2>
-          
+
           <h3 className="text-xl text-gray-600 font-semibold mb-2">With Custom Styling</h3>
           <div className={`${getGlassyClasses()} p-4 mb-4`}>
-            <textarea 
+            <textarea
               className="w-full h-32 p-2 bg-gray-100 bg-opacity-50 text-gray-800 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-blue-500 transition-all duration-300"
               placeholder="Type something..."
             />

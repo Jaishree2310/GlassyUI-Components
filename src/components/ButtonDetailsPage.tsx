@@ -5,14 +5,14 @@ import BackToTopButton from './BackToTop';
 
 const ButtonDetailsPage: React.FC = () => {
   const navigate = useNavigate();
-  const [copiedStates, setCopiedStates] = useState<{[key: string]: boolean}>({});
+  const [copiedStates, setCopiedStates] = useState<{ [key: string]: boolean }>({});
 
   const [customBg, setCustomBg] = useState('#FD1D1D');
   const [customText, setCustomText] = useState('#ffffff');
   const [customBorder, setCustomBorder] = useState('#833AB4');
 
   const getGlassyClasses = () => {
-    return 'backdrop-filter backdrop-blur-xl bg-white/30 border border-white/20 rounded-xl shadow-lg transition-all duration-300';
+    return 'backdrop-filter backdrop-blur-xl bg-white/30 border border-white/20 rounded-xl shadow-lg transition-all duration-300 max-sm:px-0';
   };
 
   const copyToClipboard = (text: string, key: string) => {
@@ -23,7 +23,7 @@ const ButtonDetailsPage: React.FC = () => {
   };
 
   const CopyButton: React.FC<{ text: string, codeKey: string }> = ({ text, codeKey }) => (
-    <button 
+    <button
       onClick={() => copyToClipboard(text, codeKey)}
       className={`absolute top-2 right-2 ${getGlassyClasses()} p-2 hover:bg-white/40 transition-all duration-300 z-10`}
       title="Copy to clipboard"
@@ -69,11 +69,11 @@ function Example() {
 </Button>`;
 
   return (
-    <div className="min-h-screen p-8 font-sans bg-gradient-to-r from-[#ffc6c6] via-[#ffc6e5] to-[#e7c6ff] relative">
+    <div className="min-h-screen p-8 font-sans bg-gradient-to-r from-[#ffc6c6] via-[#ffc6e5] to-[#e7c6ff] relative max-sm:px-2">
       <BackToTopButton />
       <div className="relative z-10">
-        <button 
-          onClick={() => navigate(-1)} 
+        <button
+          onClick={() => navigate(-1)}
           className={`mb-8 flex items-center ${getGlassyClasses()} px-4 py-2 hover:bg-white/40 transition-all duration-300 text-gray-800`}
         >
           <ArrowLeft size={20} className="mr-2" />
@@ -86,7 +86,7 @@ function Example() {
         <div className={`${getGlassyClasses()} p-8 mb-8 relative`}>
           <h2 className="text-3xl font-bold mb-6 text-gray-800">Basic Usage</h2>
           <div className="relative">
-            <pre className="bg-gray-800 text-white p-6 rounded-lg overflow-x-auto whitespace-pre-wrap">
+            <pre className="bg-gray-800 text-white p-6 rounded-lg overflow-x-auto whitespace-pre-wrap  max-sm:text-[0.55rem]">
               {basicUsageCode}
             </pre>
             <CopyButton text={basicUsageCode} codeKey="basicUsage" />
@@ -96,36 +96,36 @@ function Example() {
         <div className={`${getGlassyClasses()} p-8 mb-8`}>
           <h2 className="text-3xl font-bold mb-6 text-gray-800">Props</h2>
           <div className="overflow-x-auto">
-          <table className="w-full">
-            <thead>
-              <tr className="border-b border-gray-400">
-                <th className="text-left p-2 text-gray-800">Prop</th>
-                <th className="text-left p-2 text-gray-800">Type</th>
-                <th className="text-left p-2 text-gray-800">Default</th>
-                <th className="text-left p-2 text-gray-800">Description</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr className="border-b border-gray-300">
-                <td className="p-2 text-gray-700">backgroundColor</td>
-                <td className="p-2 text-gray-700">string</td>
-                <td className="p-2 text-gray-700">-</td>
-                <td className="p-2 text-gray-700">The background color of the button</td>
-              </tr>
-              <tr className="border-b border-gray-300">
-                <td className="p-2 text-gray-700">color</td>
-                <td className="p-2 text-gray-700">string</td>
-                <td className="p-2 text-gray-700">-</td>
-                <td className="p-2 text-gray-700">The text color of the button</td>
-              </tr>
-              <tr className="border-b border-gray-300">
-                <td className="p-2 text-gray-700">borderColor</td>
-                <td className="p-2 text-gray-700">string</td>
-                <td className="p-2 text-gray-700">-</td>
-                <td className="p-2 text-gray-700">The border color of the button</td>
-              </tr>
-            </tbody>
-          </table>
+            <table className="w-full">
+              <thead>
+                <tr className="border-b border-gray-400">
+                  <th className="text-left p-2 text-gray-800">Prop</th>
+                  <th className="text-left p-2 text-gray-800">Type</th>
+                  <th className="text-left p-2 text-gray-800">Default</th>
+                  <th className="text-left p-2 text-gray-800">Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr className="border-b border-gray-300">
+                  <td className="p-2 text-gray-700">backgroundColor</td>
+                  <td className="p-2 text-gray-700">string</td>
+                  <td className="p-2 text-gray-700">-</td>
+                  <td className="p-2 text-gray-700">The background color of the button</td>
+                </tr>
+                <tr className="border-b border-gray-300">
+                  <td className="p-2 text-gray-700">color</td>
+                  <td className="p-2 text-gray-700">string</td>
+                  <td className="p-2 text-gray-700">-</td>
+                  <td className="p-2 text-gray-700">The text color of the button</td>
+                </tr>
+                <tr className="border-b border-gray-300">
+                  <td className="p-2 text-gray-700">borderColor</td>
+                  <td className="p-2 text-gray-700">string</td>
+                  <td className="p-2 text-gray-700">-</td>
+                  <td className="p-2 text-gray-700">The border color of the button</td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
 
@@ -163,9 +163,9 @@ function Example() {
                     onChange={(e) => setCustomBg(e.target.value)}
                     className="w-8 h-8 rounded-full border-2 border-white shadow-lg mr-4"
                   />
-                  <input 
-                    type="text" 
-                    value={customBg} 
+                  <input
+                    type="text"
+                    value={customBg}
                     onChange={(e) => setCustomBg(e.target.value)}
                     className="bg-transparent border-b border-gray-400 w-full py-1 px-2 text-gray-800"
                   />
@@ -180,9 +180,9 @@ function Example() {
                     onChange={(e) => setCustomText(e.target.value)}
                     className="w-8 h-8 rounded-full border-2 border-white shadow-lg mr-4"
                   />
-                  <input 
-                    type="text" 
-                    value={customText} 
+                  <input
+                    type="text"
+                    value={customText}
                     onChange={(e) => setCustomText(e.target.value)}
                     className="bg-transparent border-b border-gray-400 w-full py-1 px-2 text-gray-800"
                   />
@@ -197,9 +197,9 @@ function Example() {
                     onChange={(e) => setCustomBorder(e.target.value)}
                     className="w-8 h-8 rounded-full border-2 border-white shadow-lg mr-4"
                   />
-                  <input 
-                    type="text" 
-                    value={customBorder} 
+                  <input
+                    type="text"
+                    value={customBorder}
                     onChange={(e) => setCustomBorder(e.target.value)}
                     className="bg-transparent border-b border-gray-400 w-full py-1 px-2 text-gray-800"
                   />
@@ -218,7 +218,7 @@ function Example() {
               >
                 Themed Button
               </button>
-              <pre className="bg-gray-800 text-white p-6 rounded-lg mt-4 overflow-x-auto whitespace-pre-wrap">
+              <pre className="bg-gray-800 text-white p-6 rounded-lg mt-4 overflow-x-auto whitespace-pre-wrap max-sm:text-[0.55rem]">
                 {themedButtonCode}
               </pre>
               <CopyButton text={themedButtonCode} codeKey="themedButton" />
@@ -231,14 +231,14 @@ function Example() {
           <p className="mb-6 text-lg text-gray-700">
             A button that triggers an alert message when clicked.
           </p>
-          <button 
-            onClick={() => alert('Button clicked!')} 
+          <button
+            onClick={() => alert('Button clicked!')}
             className={`${getGlassyClasses()} px-6 py-3 text-lg font-semibold rounded-lg hover:bg-white/40 transition-transform hover:scale-110 text-gray-800`}
           >
             Alert!
           </button>
           <div className="relative mt-8">
-            <pre className="bg-gray-800 text-white p-6 rounded-lg overflow-x-auto whitespace-pre-wrap">
+            <pre className="bg-gray-800 text-white p-6 rounded-lg overflow-x-auto whitespace-pre-wrap max-sm:text-[0.55rem]">
               {alertButtonCode}
             </pre>
             <CopyButton text={alertButtonCode} codeKey="alertButton" />
@@ -250,13 +250,13 @@ function Example() {
           <p className="mb-6 text-lg text-gray-700">
             A button that spans the full width of its container.
           </p>
-          <button 
+          <button
             className={`w-full py-3 text-lg font-semibold rounded-lg ${getGlassyClasses()} hover:bg-white/40 transition-transform hover:scale-105 text-gray-800`}
           >
             Full Width Button
           </button>
           <div className="relative mt-8">
-            <pre className="bg-gray-800 text-white p-6 rounded-lg overflow-x-auto whitespace-pre-wrap">
+            <pre className="bg-gray-800 text-white p-6 rounded-lg overflow-x-auto whitespace-pre-wrap max-sm:text-[0.55rem]">
               {fullWidthButtonCode}
             </pre>
             <CopyButton text={fullWidthButtonCode} codeKey="fullWidthButton" />

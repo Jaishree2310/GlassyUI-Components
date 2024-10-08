@@ -12,7 +12,7 @@ import BackToTopButton from "./BackToTop";
 
 // Utility function for reusable glassy class styles
 const getGlassyClasses = (): string =>
-  "backdrop-filter backdrop-blur-xl bg-white/30 border border-white/20 rounded-xl shadow-lg transition-all duration-300";
+  "backdrop-filter backdrop-blur-xl bg-white/30 border border-white/20 rounded-xl shadow-lg transition-all duration-300 max-sm:px-0";
 
 // Function to copy text to clipboard and handle feedback
 const copyToClipboard = (
@@ -164,7 +164,7 @@ const SpeedDialDetailsPage: React.FC = () => {
               />`;
 
   return (
-    <div className="min-h-screen p-8 font-sans bg-gradient-to-r from-[#ffc6c6] via-[#ffc6e5] to-[#e7c6ff] relative">
+    <div className="min-h-screen p-8 font-sans bg-gradient-to-r from-[#ffc6c6] via-[#ffc6e5] to-[#e7c6ff] relative max-sm:px-1">
       <BackToTopButton />
       <div className="relative z-10">
         {/* Back Button */}
@@ -187,7 +187,7 @@ const SpeedDialDetailsPage: React.FC = () => {
           <h2 className="text-3xl font-bold mb-6 text-gray-800">Basic Usage</h2>
           {/* Basic Usage Code Block */}
           <div className="relative mb-4">
-            <pre className="bg-gray-800 text-white p-6 rounded-lg overflow-x-auto whitespace-pre-wrap">
+            <pre className="bg-gray-800 text-white p-6 rounded-lg overflow-x-auto whitespace-pre-wrap max-sm:p-2 max-sm:text-[0.55rem]">
               {basicUsage}
             </pre>
             <CopyButton text={basicUsage} codeKey="basicUsage" />
@@ -197,36 +197,36 @@ const SpeedDialDetailsPage: React.FC = () => {
         <div className={`${getGlassyClasses()} p-8 mb-8`}>
           <h2 className="text-3xl font-bold mb-6 text-gray-800">Props</h2>
           <div className="overflow-x-auto">
-          <table className="w-full">
-            <thead>
-              <tr className="border-b border-gray-400">
-                <th className="text-left p-2 text-gray-800">Prop</th>
-                <th className="text-left p-2 text-gray-800">Type</th>
-                <th className="text-left p-2 text-gray-800">Default</th>
-                <th className="text-left p-2 text-gray-800">Description</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr className="border-b border-gray-300">
-                <td className="p-2 text-gray-700">direction</td>
-                <td className="p-2 text-gray-700">string</td>
-                <td className="p-2 text-gray-700">-</td>
-                <td className="p-2 text-gray-700">
-                  The direction of the speed dial. Can be "up", "down", "left",
-                  or "right"
-                </td>
-              </tr>
-              <tr className="border-b border-gray-300">
-                <td className="p-2 text-gray-700">actionButtons</td>
-                <td className="p-2 text-gray-700">array</td>
-                <td className="p-2 text-gray-700">-</td>
-                <td className="p-2 text-gray-700">
-                  An array of objects containing the icon, label, key, and
-                  action.
-                </td>
-              </tr>
-            </tbody>
-          </table>
+            <table className="w-full">
+              <thead>
+                <tr className="border-b border-gray-400">
+                  <th className="text-left p-2 text-gray-800">Prop</th>
+                  <th className="text-left p-2 text-gray-800">Type</th>
+                  <th className="text-left p-2 text-gray-800">Default</th>
+                  <th className="text-left p-2 text-gray-800">Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr className="border-b border-gray-300">
+                  <td className="p-2 text-gray-700">direction</td>
+                  <td className="p-2 text-gray-700">string</td>
+                  <td className="p-2 text-gray-700">-</td>
+                  <td className="p-2 text-gray-700">
+                    The direction of the speed dial. Can be "up", "down", "left",
+                    or "right"
+                  </td>
+                </tr>
+                <tr className="border-b border-gray-300">
+                  <td className="p-2 text-gray-700">actionButtons</td>
+                  <td className="p-2 text-gray-700">array</td>
+                  <td className="p-2 text-gray-700">-</td>
+                  <td className="p-2 text-gray-700">
+                    An array of objects containing the icon, label, key, and
+                    action.
+                  </td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
 
@@ -273,7 +273,7 @@ const SpeedDialDetailsPage: React.FC = () => {
                 },
               ]}
             ></SpeedDial>
-            <pre className="bg-gray-800 text-white p-6 rounded-lg overflow-x-auto whitespace-pre-wrap">
+            <pre className="bg-gray-800 text-white p-6 rounded-lg overflow-x-auto whitespace-pre-wrap max-sm:p-2 max-sm:text-[0.55rem]">
               {speedDialRight}
             </pre>
             <CopyButton text={speedDialRight} codeKey="speedDialRight" />
@@ -322,7 +322,7 @@ const SpeedDialDetailsPage: React.FC = () => {
                 },
               ]}
             ></SpeedDial>
-            <pre className="bg-gray-800 text-white p-6 rounded-lg overflow-x-auto whitespace-pre-wrap">
+            <pre className="bg-gray-800 text-white p-6 rounded-lg overflow-x-auto whitespace-pre-wrap max-sm:p-2 max-sm:text-[0.55rem]">
               {speedDialTop}
             </pre>
             <CopyButton text={speedDialTop} codeKey="speedDialRight" />

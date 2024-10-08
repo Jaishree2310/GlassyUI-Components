@@ -20,14 +20,14 @@ const Button: React.FC<ButtonProps> = ({ onClick, children, className = '', styl
   </button>
 );
 
-const CopyButton: React.FC<{ 
-  text: string, 
-  codeKey: string, 
-  copiedStates: {[key: string]: boolean}, 
-  copyToClipboard: (text: string, key: string) => void, 
-  getGlassyClasses: () => string 
+const CopyButton: React.FC<{
+  text: string,
+  codeKey: string,
+  copiedStates: { [key: string]: boolean },
+  copyToClipboard: (text: string, key: string) => void,
+  getGlassyClasses: () => string
 }> = ({ text, codeKey, copiedStates, copyToClipboard, getGlassyClasses }) => (
-  <button 
+  <button
     onClick={() => copyToClipboard(text, codeKey)}
     className={`absolute top-4 right-4 ${getGlassyClasses()} p-2 hover:bg-opacity-20 transition-all duration-300`}
     title="Copy to clipboard"
@@ -94,10 +94,10 @@ const Popup: React.FC<PopupProps> = ({
   );
 };
 
-const CustomPopup: React.FC<{ 
-  getGlassyClasses: () => string, 
-  copiedStates: {[key: string]: boolean}, 
-  copyToClipboard: (text: string, key: string) => void 
+const CustomPopup: React.FC<{
+  getGlassyClasses: () => string,
+  copiedStates: { [key: string]: boolean },
+  copyToClipboard: (text: string, key: string) => void
 }> = ({ getGlassyClasses, copiedStates, copyToClipboard }) => {
   const [theme, setTheme] = useState<'blue' | 'brown' | 'white' | 'black' | 'custom'>('blue');
   const [isPopupOpen, setIsPopupOpen] = useState(false);
@@ -147,7 +147,7 @@ const CustomPopup: React.FC<{
     <div className="p-4 rounded-lg">
       <h2 className="text-2xl font-bold mb-4">Glassmorphism Popup</h2>
       <p className="mb-4">Customize your popup's appearance and glassmorphism effect.</p>
-      
+
       <div className="mb-4">
         <label className="block mb-2">Theme:</label>
         <div className="flex space-x-2">
@@ -229,7 +229,7 @@ const CustomPopup: React.FC<{
       </Popup>
 
       <div className="mt-4 bg-gray-800 p-2 rounded relative">
-        <pre className="text-sm overflow-x-auto text-white">
+        <pre className="text-sm overflow-x-auto text-white max-sm:text-[0.55rem]">
           {`const Popup = ({ isOpen, onClose, children, bg, textColor, borderColor, opacity, blur }) => {
   if (!isOpen) return null;
 
@@ -290,12 +290,12 @@ const CustomPopup: React.FC<{
 
 const PopupDetailPage: React.FC = () => {
   const navigate = useNavigate();
-  const [copiedStates, setCopiedStates] = useState<{[key: string]: boolean}>({});
+  const [copiedStates, setCopiedStates] = useState<{ [key: string]: boolean }>({});
 
   const getGlassyClasses = () => {
-    return 'backdrop-filter backdrop-blur-md bg-white bg-opacity-30 border border-white border-opacity-20 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300';
+    return 'backdrop-filter backdrop-blur-md bg-white bg-opacity-30 border border-white border-opacity-20 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 max-sm:px-0';
   };
-  
+
   const copyToClipboard = (text: string, key: string) => {
     navigator.clipboard.writeText(text).then(() => {
       setCopiedStates(prev => ({ ...prev, [key]: true }));
@@ -304,10 +304,10 @@ const PopupDetailPage: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen p-8 font-sans bg-gradient-to-r from-[#ffc6c6] via-[#ffc6e5] to-[#e7c6ff] relative">
+    <div className="min-h-screen p-8 font-sans bg-gradient-to-r from-[#ffc6c6] via-[#ffc6e5] to-[#e7c6ff] relative max-sm:px-2">
       <BackToTopButton />
-      <button 
-        onClick={() => navigate(-1)} 
+      <button
+        onClick={() => navigate(-1)}
         className={`mb-8 flex items-center ${getGlassyClasses()} px-4 py-2 hover:bg-opacity-40 transition-all duration-300 text-gray-800`}
       >
         <ArrowLeft size={20} className="mr-2" />
@@ -315,13 +315,13 @@ const PopupDetailPage: React.FC = () => {
       </button>
 
       <h1 className="text-4xl font-bold mb-8 text-gray-900">Glassmorphism Popup</h1>
-      
+
       <p className="mb-8 text-gray-800">A customizable, glassmorphism-styled popup component for displaying modal content with adjustable blur and opacity effects.</p>
 
       {/* Basic Usage */}
       <div className={`${getGlassyClasses()} p-6 mb-8 relative`}>
         <h2 className="text-2xl font-bold mb-4 text-gray-800">Basic Usage</h2>
-        <pre className="bg-gray-800 text-white p-4 rounded-lg overflow-x-auto">
+        <pre className="bg-gray-800 text-white p-4 rounded-lg overflow-x-auto max-sm:text-[0.55rem]">
           {`<div>
   <button onClick={openPopup}>Open Popup</button>
   <Popup
@@ -339,7 +339,7 @@ const PopupDetailPage: React.FC = () => {
   </Popup>
 </div>`}
         </pre>
-        <CopyButton 
+        <CopyButton
           text={`import React, { useState } from 'react';
 import { Popup } from './components';
 
@@ -369,7 +369,7 @@ function App() {
       </Popup>
     </div>
   );
-}`} 
+}`}
           codeKey="basicUsage"
           copiedStates={copiedStates}
           copyToClipboard={copyToClipboard}
@@ -451,4 +451,3 @@ function App() {
 };
 
 export default PopupDetailPage;
-    
