@@ -3,10 +3,18 @@ import { Star } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const GlassyUILandingPage: React.FC = () => {
+<<<<<<< HEAD
   const githubRepoUrl = "https://github.com/Jaishree2310/GlassyUI-Components";
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center p-4 font-mono relative overflow-hidden bg-gradient-to-br from-blue-400 via-purple-500 to-pink-500">
+=======
+
+  const githubRepoUrl = "https://github.com/Jaishree2310/GlassyUI-Components";
+
+  return (
+    <div className="min-h-screen flex flex-col items-center justify-center p-4 font-mono relative overflow-hidden bg-gradient-to-br from-gray-800 via-gray-900 to-black">
+>>>>>>> 28fce2fe2787dde31a61de7c3db8cd8fd6ce7749
       <div
         className="absolute inset-0 w-full h-full opacity-20"
         style={{
@@ -32,7 +40,12 @@ const GlassyUILandingPage: React.FC = () => {
           </a>
         </header>
 
+<<<<<<< HEAD
         <main className="text-center p-8 rounded-xl backdrop-blur-md bg-white/10 bg-opacity-20 shadow-lg border border-white border-opacity-20 relative transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-2xl hover:bg-opacity-20">
+=======
+        <main className="fade-in text-center p-8 rounded-xl backdrop-filter backdrop-blur-lg bg-white bg-opacity-10 shadow-lg border border-white border-opacity-20 relative transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-2xl hover:bg-opacity-20">
+
+>>>>>>> 28fce2fe2787dde31a61de7c3db8cd8fd6ce7749
           <h1 className="text-6xl font-bold mb-2 text-white">Glassy UI</h1>
           <p className="text-xl mb-6 text-white">
             A sleek glassmorphism UI library.
@@ -71,7 +84,12 @@ const GlassmorphismButton: React.FC<{
     transition-all duration-300 ease-in-out
     hover:bg-opacity-30 hover:shadow-lg hover:scale-105
     focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-50
+<<<<<<< HEAD
     ${variant === "primary" ? "bg-blue-500" : "bg-purple-500"}
+=======
+    bg-indigo-600 hover:bg-indigo-700 text-white
+    ${variant === 'primary' ? 'bg-blue-500' : 'bg-purple-500'}
+>>>>>>> 28fce2fe2787dde31a61de7c3db8cd8fd6ce7749
   `;
 
   return React.createElement(as, { className, ...props }, children);

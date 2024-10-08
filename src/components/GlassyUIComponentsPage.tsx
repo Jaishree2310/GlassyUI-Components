@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import {
+<<<<<<< HEAD
   FaFacebookF,
   FaTwitter,
   FaLinkedinIn,
@@ -9,6 +10,8 @@ import {
 
 import {
  main
+=======
+>>>>>>> 28fce2fe2787dde31a61de7c3db8cd8fd6ce7749
   Star,
   ArrowRight,
   Info,
@@ -23,6 +26,9 @@ import {
 } from "lucide-react";
 import Tooltip from "./Tooltip";
 import SpeedDial from "./SpeedDial";
+import BackToTopButton from "./BackToTop";
+import { HiOutlineWrenchScrewdriver } from "react-icons/hi2";
+
 
 const GlassyUIComponentsPage: React.FC = () => {
   const navigate = useNavigate();
@@ -41,7 +47,16 @@ const GlassyUIComponentsPage: React.FC = () => {
   };
 
   return (
+<<<<<<< HEAD
     <div className="min-h-screen font-sans bg-gradient-to-br from-indigo-800 via-purple-700 to-pink-900 text-white">
+=======
+
+    <div className="min-h-screen font-sans bg-gradient-to-br from-indigo-800 via-purple-700 to-pink-900 text-white">
+
+    <div className="min-h-screen font-sans bg-gradient-to-br from-gray-800 via-gray-900 to-black text-white">
+      <BackToTopButton />
+
+>>>>>>> 28fce2fe2787dde31a61de7c3db8cd8fd6ce7749
       <div className="container mx-auto px-4 py-8 lg:py-12">
         <header className="flex justify-between items-center mb-16">
           <div
@@ -50,16 +65,29 @@ const GlassyUIComponentsPage: React.FC = () => {
           >
             GlassyUI
           </div>
-          <div className="hidden md:flex items-center space-x-4">
-            <a
-              href={githubRepoUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={`flex items-center space-x-2 ${getGlassyClasses()} px-4 py-2 hover:bg-white/20 transition-colors duration-300`}
-            >
-              <Star size={18} />
-              <span className="text-sm font-medium">Star on GitHub</span>
-            </a>
+          <div className="flex gap-4">
+            <div className="hidden md:flex items-center space-x-4">
+              <a
+                href='/generator'
+                
+                rel="noopener noreferrer"
+                className={`flex items-center space-x-2 ${getGlassyClasses()} px-4 py-2 hover:bg-white/20 transition-colors duration-300`}
+              >
+                <HiOutlineWrenchScrewdriver />
+                <span className="text-sm font-medium">Generate Glass effect</span>
+              </a>
+            </div>
+            <div className="hidden md:flex items-center space-x-4">
+              <a
+                href={githubRepoUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`flex items-center space-x-2 ${getGlassyClasses()} px-4 py-2 hover:bg-white/20 transition-colors duration-300`}
+              >
+                <Star size={18} />
+                <span className="text-sm font-medium">Star on GitHub</span>
+              </a>
+            </div>
           </div>
           <button className="md:hidden" onClick={toggleMenu}>
             {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -92,6 +120,7 @@ const GlassyUIComponentsPage: React.FC = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             <ComponentCard
+<<<<<<< HEAD
               title="Speed Dial"
               description="Speed dial with glassmorphism effect. Hover on me to see the actions."
               icon={<Info size={24} />}
@@ -138,6 +167,8 @@ const GlassyUIComponentsPage: React.FC = () => {
             </ComponentCard>
             <ComponentCard
 
+=======
+>>>>>>> 28fce2fe2787dde31a61de7c3db8cd8fd6ce7749
               title="Buttons"
               description="Sleek, customizable buttons with glassmorphic styling."
               icon={<Box size={24} />}
@@ -322,12 +353,14 @@ const ComponentCard: React.FC<{
   description: string;
   icon: React.ReactNode;
   onClick: () => void;
-  status?: string;
   children?: React.ReactNode;
-}> = ({ title, description, icon, onClick, children, status }) => {
+}> = ({ title, description, icon, onClick, children }) => {
   const getGlassyClasses = () => {
     return "bg-white/10 border border-white/20 color-white-500/50 rounded-2xl shadow-lg transition-all duration-300";
+<<<<<<< HEAD
     return "backdrop-filter backdrop-blur-md bg-white/10 border border-white/20 rounded-2xl shadow-lg transition-all duration-300";
+=======
+>>>>>>> 28fce2fe2787dde31a61de7c3db8cd8fd6ce7749
   };
   return (
     <div
@@ -337,11 +370,6 @@ const ComponentCard: React.FC<{
       <div className="flex items-center mb-4">
         <div className="p-2 bg-white/20 rounded-lg mr-4">{icon}</div>
         <h3 className="text-xl font-bold">{title}</h3>
-        {status && (
-          <span className="ml-2 px-2 py-1 bg-green-200 text-green-700 text-xs font-medium rounded">
-            {status}
-          </span>
-        )}
       </div>
       <p className="text-sm opacity-80 mb-4 flex-grow">{description}</p>
       {children}
