@@ -279,6 +279,7 @@ const SpeedDialDetailsPage: React.FC = () => {
             <CopyButton text={speedDialRight} codeKey="speedDialRight" />
           </div>
         </div>
+
         <div className={`${getGlassyClasses()} p-8 mb-8 relative`}>
           <h2 className="text-3xl font-bold mb-6 text-gray-100">
             Speed Dial: Down
@@ -286,7 +287,7 @@ const SpeedDialDetailsPage: React.FC = () => {
           {/* Basic Usage Code Block */}
           <div className="relative mb-4">
             <SpeedDial
-              direction="down"
+              direction="right"
               actionButtons={[
                 {
                   icon: <FaFacebookF size={20} />,
