@@ -65,7 +65,7 @@ const ProgressBarDetailPage: React.FC = () => {
       className={`absolute top-2 right-2 ${getGlassyClasses()} p-2 hover:bg-opacity-40 transition-all duration-300`}
       title="Copy to clipboard"
     >
-      {copiedStates[codeKey] ? <Check size={16} className="text-green-600" /> : <Copy size={16} className="text-gray-800" />}
+      {copiedStates[codeKey] ? <Check size={16} className="text-green-600" /> : <Copy size={16} className=" text-gray-100" />}
     </button>
   );
 
@@ -89,24 +89,25 @@ const ProgressBarDetailPage: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen p-8 font-sans bg-gradient-to-r from-[#ffc6c6] via-[#ffc6e5] to-[#e7c6ff] relative max-sm:px-2">
+    <div className="min-h-screen p-8 font-sans bg-gradient-to-r from-gray-800 via-gray-900 to-black text-white relative">
       <BackToTopButton />
       <button
         onClick={() => navigate(-1)}
-        className={`mb-8 flex items-center ${getGlassyClasses()} px-4 py-2 hover:bg-opacity-40 transition-all duration-300 text-gray-800`}
+        className={`mb-8 flex items-center ${getGlassyClasses()} px-4 py-2 hover:bg-opacity-40 transition-all duration-300  text-gray-100`}
       >
         <ArrowLeft size={20} className="mr-2" />
         Back to Components
       </button>
 
-      <h1 className="text-4xl font-bold mb-8 text-gray-900">ProgressBar Component</h1>
+      <h1 className="text-4xl font-bold mb-8 text-white">ProgressBar Component</h1>
 
-      <p className="mb-8 text-gray-800">A customizable, mesh frosted glass styled progress bar component with a glassmorphism effect.</p>
+      <p className="mb-8  text-gray-100">A customizable, mesh frosted glass styled progress bar component with a glassmorphism effect.</p>
 
       {/* Basic Usage */}
       <div className={`${getGlassyClasses()} p-6 mb-8 relative`}>
-        <h2 className="text-2xl font-bold mb-4 text-gray-800">Basic Usage</h2>
-        <pre className="bg-gray-800 text-white p-4 rounded-lg overflow-x-auto  max-sm:text-[0.55rem]">
+
+        <h2 className="text-2xl font-bold mb-4  text-gray-100">Basic Usage</h2>
+        <pre className="bg-gray-800 text-white p-4 rounded-lg overflow-x-auto">
           {`import { ProgressBar } from 'glassy-ui';
 
 function App() {
@@ -140,7 +141,7 @@ function App() {
 
       {/* Props */}
       <div className={`${getGlassyClasses()} p-6 mb-8`}>
-        <h2 className="text-2xl font-bold mb-4 text-gray-800">Props</h2>
+        <h2 className="text-2xl font-bold mb-4  text-gray-100">Props</h2>
         <div className='overflow-x-auto'>
           <table className="w-full">
             <thead>
@@ -183,7 +184,7 @@ function App() {
 
       {/* Custom ProgressBar */}
       <div className={`${getGlassyClasses()} p-6 mb-8`}>
-        <h2 className="text-2xl font-bold mb-4 text-gray-800">Custom ProgressBar</h2>
+        <h2 className="text-2xl font-bold mb-4  text-gray-100">Custom ProgressBar</h2>
         <p className="mb-4">Customize your progress bar's appearance by selecting a preset theme or creating your own color scheme.</p>
 
         <div className="flex items-center mb-4">
@@ -233,7 +234,8 @@ function App() {
 
       {/* Examples */}
       <div className={`${getGlassyClasses()} p-6 mt-8`}>
-        <h2 className="text-2xl font-bold mb-4 text-gray-800">Examples for mesh morphism</h2>
+
+        <h2 className="text-2xl font-bold mb-4  text-gray-100">Examples for mesh morphism</h2>
 
         {/* Different Sizes */}
         <div className="mb-8">
@@ -260,7 +262,7 @@ function App() {
 
       {/* Animated Progress */}
       <div className={`${getGlassyClasses()} p-6 mt-8`}>
-        <h2 className="text-2xl font-bold mb-4 text-gray-800">Other Examples</h2>
+        <h2 className="text-2xl font-bold mb-4  text-gray-100">Other Examples</h2>
 
         <div className="mb-8">
           <h2 className="text-xl font-bold mb-4">Animated Progress</h2>

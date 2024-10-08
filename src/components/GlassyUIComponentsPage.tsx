@@ -23,6 +23,7 @@ import {
 import Tooltip from "./Tooltip";
 import SpeedDial from "./SpeedDial";
 import BackToTopButton from "./BackToTop";
+import { HiOutlineWrenchScrewdriver } from "react-icons/hi2";
 
 const GlassyUIComponentsPage: React.FC = () => {
   const navigate = useNavigate();
@@ -41,7 +42,7 @@ const GlassyUIComponentsPage: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen font-sans bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 text-white">
+    <div className="min-h-screen font-sans bg-gradient-to-br from-gray-800 via-gray-900 to-black text-white">
       <BackToTopButton />
       <div className="container mx-auto px-4 py-8 lg:py-12">
         <header className="flex justify-between items-center mb-16">
@@ -51,16 +52,29 @@ const GlassyUIComponentsPage: React.FC = () => {
           >
             GlassyUI
           </div>
-          <div className="hidden md:flex items-center space-x-4">
-            <a
-              href={githubRepoUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={`flex items-center space-x-2 ${getGlassyClasses()} px-4 py-2 hover:bg-white/20 transition-colors duration-300`}
-            >
-              <Star size={18} />
-              <span className="text-sm font-medium">Star on GitHub</span>
-            </a>
+          <div className="flex gap-4">
+            <div className="hidden md:flex items-center space-x-4">
+              <a
+                href='/generator'
+                
+                rel="noopener noreferrer"
+                className={`flex items-center space-x-2 ${getGlassyClasses()} px-4 py-2 hover:bg-white/20 transition-colors duration-300`}
+              >
+                <HiOutlineWrenchScrewdriver />
+                <span className="text-sm font-medium">Generate Glass effect</span>
+              </a>
+            </div>
+            <div className="hidden md:flex items-center space-x-4">
+              <a
+                href={githubRepoUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`flex items-center space-x-2 ${getGlassyClasses()} px-4 py-2 hover:bg-white/20 transition-colors duration-300`}
+              >
+                <Star size={18} />
+                <span className="text-sm font-medium">Star on GitHub</span>
+              </a>
+            </div>
           </div>
           <button className="md:hidden" onClick={toggleMenu}>
             {isMenuOpen ? <X size={24} /> : <Menu size={24} />}

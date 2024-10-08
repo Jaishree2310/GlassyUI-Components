@@ -62,7 +62,7 @@ const InputDetailPage: React.FC = () => {
   const CopyButton: React.FC<{ text: string, codeKey: string }> = ({ text, codeKey }) => (
     <button
       onClick={() => copyToClipboard(text, codeKey)}
-      className={`absolute top-4 right-4 ${getGlassyClasses()} p-2 hover:bg-opacity-20 text-gray-800`}
+      className={`absolute top-4 right-4 ${getGlassyClasses()} p-2 hover:bg-opacity-20 text-white`}
       title="Copy to clipboard"
     >
       {copiedStates[codeKey] ? <Check size={20} /> : <Copy size={20} />}
@@ -109,26 +109,26 @@ const InputDetailPage: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen p-8 font-sans bg-gradient-to-r from-[#ffc6c6] via-[#ffc6e5] to-[#e7c6ff] relative max-sm:px-2">
+    <div className="min-h-screen p-8 font-sans bg-gradient-to-r from-gray-800 via-gray-900 to-black text-white relative">
       <BackToTopButton />
       <nav className="mb-8 flex items-center justify-between relative z-10">
         <button
           onClick={handleBackToComponents}
-          className={`flex items-center ${getGlassyClasses()} px-4 py-2 hover:bg-opacity-20 text-gray-800`}
+          className={`flex items-center ${getGlassyClasses()} px-4 py-2 hover:bg-opacity-20 text-white`}
         >
           <ArrowLeft size={20} className="mr-2" />
           Back to Components
         </button>
       </nav>
 
-      <h1 className="text-4xl font-bold mb-8 text-gray-900 relative z-10">Glassmorphic Input Component</h1>
+      <h1 className="text-4xl font-bold mb-8 text-white relative z-10">Glassmorphic Input Component</h1>
 
-      <section className={`${getGlassyClasses(20)} p-6 mb-8 text-gray-800 relative z-10`}>
+      <section className={`${getGlassyClasses(20)} p-6 mb-8 text-white relative z-10`}>
         <h2 className="text-2xl font-bold mb-4">Basic Usage</h2>
         <div className={`${getGlassyClasses()} p-4 hover:shadow-xl mb-4`}>
           <Input
             placeholder="Enter text..."
-            className={`${getGlassyClasses(50)} text-gray-800 placeholder-gray-500`}
+            className={`${getGlassyClasses(50)} text-white placeholder-gray-500`}
           />
         </div>
         <pre className="bg-gray-800 text-white p-4 rounded-lg overflow-x-auto relative  max-sm:text-[0.55rem]">
@@ -155,7 +155,7 @@ function MyComponent() {
         </pre>
       </section>
 
-      <section className={`${getGlassyClasses(20)} p-6 mb-8 text-gray-800 relative z-10`}>
+      <section className={`${getGlassyClasses(20)} p-6 mb-8 text-white relative z-10`}>
         <h2 className="text-2xl font-bold mb-4">Props</h2>
         <div className="overflow-x-auto">
           <table className="w-full">
@@ -197,7 +197,7 @@ function MyComponent() {
         </div>
       </section>
 
-      <section className={`${getGlassyClasses(20)} p-6 mb-8 text-gray-800 relative z-10`}>
+      <section className={`${getGlassyClasses(20)} p-6 mb-8 text-white relative z-10`}>
         <h2 className="text-2xl font-bold mb-4">Custom Styling</h2>
         <div className="mb-12">
           <h3 className="text-2xl font-semibold mb-6 flex items-center">
@@ -217,7 +217,7 @@ function MyComponent() {
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               <div className="space-y-2">
-                <label className="block text-sm font-medium text-gray-700">Background Color</label>
+                <label className="block text-sm font-medium text-white">Background Color</label>
                 <div className="flex items-center space-x-3">
                   <input
                     type="color"
@@ -229,7 +229,7 @@ function MyComponent() {
                 </div>
               </div>
               <div className="space-y-2">
-                <label className="block text-sm font-medium text-gray-700">Text Color</label>
+                <label className="block text-sm font-medium text-white">Text Color</label>
                 <div className="flex items-center space-x-3">
                   <input
                     type="color"
@@ -241,7 +241,7 @@ function MyComponent() {
                 </div>
               </div>
               <div className="space-y-2">
-                <label className="block text-sm font-medium text-gray-700">Border Color</label>
+                <label className="block text-sm font-medium text-white">Border Color</label>
                 <div className="flex items-center space-x-3">
                   <input
                     type="color"
@@ -253,7 +253,7 @@ function MyComponent() {
                 </div>
               </div>
               <div className="space-y-2">
-                <label className="block text-sm font-medium text-gray-700">Opacity</label>
+                <label className="block text-sm font-medium text-white">Opacity</label>
                 <input
                   type="range"
                   min="0"
@@ -265,7 +265,7 @@ function MyComponent() {
                 <span className="text-sm">{customOpacity}%</span>
               </div>
               <div className="space-y-2">
-                <label className="block text-sm font-medium text-gray-700">Border Width</label>
+                <label className="block text-sm font-medium text-white">Border Width</label>
                 <input
                   type="number"
                   min="0"
@@ -276,7 +276,7 @@ function MyComponent() {
                 <span className="text-sm">{customBorderWidth}px</span>
               </div>
               <div className="space-y-2">
-                <label className="block text-sm font-medium text-gray-700">Border Radius</label>
+                <label className="block text-sm font-medium text-white">Border Radius</label>
                 <input
                   type="number"
                   min="0"

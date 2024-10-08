@@ -42,9 +42,8 @@ export default function SpeedDial({
   return (
     <div
       onMouseLeave={handleMouseLeave}
-      className={`relative mb-3 flex w-fit items-center gap-3 ${
-        direction === "up" || direction === "down" ? "flex-col" : "flex-row"
-      }`}
+      className={`relative mb-3 flex w-fit items-center gap-3 ${direction === "up" || direction === "down" ? "flex-col" : "flex-row"
+        }`}
     >
       <button
         onMouseEnter={handleMouseEnter}
@@ -55,9 +54,8 @@ export default function SpeedDial({
 
       {/* Speed Dial Actions */}
       <div
-        className={`${
-          isHovered ? "scale-100 opacity-100" : "scale-0 opacity-0"
-        } flex items-center gap-3 transition-all duration-500 ease-in-out ${getAnimation()}`}
+        className={`${isHovered ? "scale-100 opacity-100" : "scale-0 opacity-0"
+          } flex items-center gap-3 transition-all duration-500 ease-in-out ${getAnimation()}`}
       >
         {actionButtons.map((action, index) => (
           <button
