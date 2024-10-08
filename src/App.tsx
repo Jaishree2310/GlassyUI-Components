@@ -13,7 +13,7 @@ import TooltipDetailsPage from "./components/TooltipDetailsPage";
 import SpeedDialDetailsPage from "./components/SpeedDialDetailsPage";
 import ModalDetailsPage from "./components/ModalDetailsPage";
 import NavigationDetailsPage from "./components/NavigationDetailsPage";
-
+import GlassMorphismGenrator from "./components/GlassMorphismGenrator";
 
 const App: React.FC = () => {
   return (
@@ -34,6 +34,7 @@ const App: React.FC = () => {
         <Route path="/speed-dial-details" element={<SpeedDialDetailsPage />} />
         <Route path="/modal-details" element={<ModalDetailsPage />} />
         <Route path="/navigation-details" element={<NavigationDetailsPage />} />
+        <Route path="/generator" element={<GlassMorphismGenrator />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </Router>
