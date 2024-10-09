@@ -56,7 +56,7 @@ const GlassyUIComponentsPage: React.FC = () => {
             <div className="hidden md:flex items-center space-x-4">
               <a
                 href='/generator'
-                
+
                 rel="noopener noreferrer"
                 className={`flex items-center space-x-2 ${getGlassyClasses()} px-4 py-2 hover:bg-white/20 transition-colors duration-300`}
               >
@@ -107,10 +107,34 @@ const GlassyUIComponentsPage: React.FC = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             <ComponentCard
+              title="Sliders"
+              description="Elegant sliders with glassmorphic styling."
+              icon={<Sliders size={24} />}
+              status="New"
+              onClick={() => navigate("/slider-details")}
+            >
+              <div className="flex flex-col space-y-4 mt-4">
+                <input
+                  type="range"
+                  min="0"
+                  max="100"
+                  defaultValue={75} 
+                  onChange={(e) => {
+                    const value = e.target.value;
+                    e.target.style.background = `linear-gradient(90deg, rgba(255, 255, 255, 0.3) ${value}%, rgba(255, 255, 255, 0.1) ${value}%)`;
+                  }}
+                  className={`${getGlassyClasses()} w-full h-2 rounded-lg appearance-none cursor-pointer`}
+                  style={{
+                    background: 'linear-gradient(90deg, rgba(255, 255, 255, 0.3) 75%, rgba(255, 255, 255, 0.1) 75%)',
+                  }}
+                />
+              </div>
+            </ComponentCard>
+
+            <ComponentCard
               title="Speed Dial"
               description="Speed dial with glassmorphism effect. Hover on me to see the actions."
               icon={<Info size={24} />}
-              status="New"
               onClick={() => navigate("/speed-dial-details")}
             >
               <SpeedDial
@@ -324,26 +348,7 @@ const GlassyUIComponentsPage: React.FC = () => {
                 </Tooltip>
               </div>
             </ComponentCard>
-            <ComponentCard
-  title="Sliders"
-  description="Elegant sliders with glassmorphic styling."
-  icon={<Sliders size={24} />}
-  onClick={() => navigate("/slider-details")}
->
-  <div className="flex flex-col space-y-4 mt-4">
-    
-    <input
-      type="range"
-      min="0"
-      max="100"
-      defaultValue={75} // Different default value for variety
-      className={`${getGlassyClasses()} w-full h-2 rounded-lg appearance-none cursor-pointer`}
-      style={{
-        background: 'linear-gradient(90deg, rgba(255, 255, 255, 0.3) 75%, rgba(255, 255, 255, 0.1) 75%)',
-      }}
-    />
-  </div>
-</ComponentCard>
+
 
           </div>
         </main>

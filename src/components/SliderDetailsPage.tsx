@@ -9,15 +9,32 @@ const SliderDetailsPage: React.FC = () => {
   const [customBgColor, setCustomBgColor] = useState('#ffffff');
   const [customOpacity, setCustomOpacity] = useState(50);
   const [customCode, setCustomCode] = useState('');
-  const [sliderValue, setSliderValue] = useState(50); // Track slider value
+  const [sliderValue, setSliderValue] = useState(50);
+
+  // Update customCode whenever sliderValue, customBgColor, or customOpacity changes
+  useEffect(() => {
+    const code = `<input
+  type="range"
+  min="0"
+  max="100"
+  value={${sliderValue}}
+  onChange={handleSliderChange}
+  class="${getGlassyClasses(customOpacity)} 
+  w-full h-2 rounded-lg appearance-none cursor-pointer"
+  style={{
+    background: \`linear-gradient(90deg, '${customBgColor}' \${sliderValue}%, '#cccccc' \${sliderValue}%)\`,
+  }} />`;
+    setCustomCode(code);
+  }, [sliderValue, customBgColor, customOpacity]);
 
   const getGlassyClasses = (opacity = 10) => {
-    return `backdrop-filter backdrop-blur-lg bg-white bg-opacity-${opacity} border border-white border-opacity-20 rounded-lg shadow-lg transition-all duration-300`;
-  };
-  const handleSliderChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setSliderValue(Number(e.target.value)); // Update slider value
+    return `backdrop-filter backdrop-blur-lg bg-white bg-opacity-${opacity} 
+  border border-white border-opacity-20 rounded-lg shadow-lg transition-all duration-300`;
   };
 
+  const handleSliderChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSliderValue(Number(e.target.value));
+  };
 
   const copyToClipboard = (text: string, key: string) => {
     navigator.clipboard.writeText(text).then(() => {
@@ -38,15 +55,6 @@ const SliderDetailsPage: React.FC = () => {
 
   const handleBackToComponents = () => {
     navigate('/components');
-  };
-
-  useEffect(() => {
-    updateCustomCode();
-  }, [customBgColor, customOpacity]);
-
-  const updateCustomCode = () => {
-    const code = `<input type="range" min="0" max="100" value={${sliderValue}} className="${getGlassyClasses(customOpacity)}" style={{ backgroundColor: '${customBgColor}' }} />`;
-    setCustomCode(code);
   };
 
   return (
@@ -71,11 +79,11 @@ const SliderDetailsPage: React.FC = () => {
             type="range"
             min="0"
             max="100"
-            value={sliderValue} // Use value instead of defaultValue
-            onChange={(e) => setSliderValue(Number(e.target.value))} // Update slider value
+            value={sliderValue}
+            onChange={handleSliderChange}
             className={`${getGlassyClasses(50)} w-full h-2 rounded-lg appearance-none cursor-pointer`}
             style={{
-              background: `linear-gradient(90deg, rgba(255, 255, 255, 0.3) ${sliderValue}%, rgba(255, 255, 255, 0.1) ${sliderValue}%)`, // Dynamic gradient
+              background: `linear-gradient(90deg, rgba(255, 255, 255, 0.3) ${sliderValue}%, rgba(255, 255, 255, 0.1) ${sliderValue}%)`,
             }}
           />
         </div>
@@ -85,11 +93,12 @@ const SliderDetailsPage: React.FC = () => {
   min="0" 
   max="100" 
   value={${sliderValue}} 
-  className="${getGlassyClasses(50)}" 
+  class="${getGlassyClasses(50)}" 
   style={{ backgroundColor: '${customBgColor}' }} />`}
-          <CopyButton text={`<input type="range" min="0" max="100" value={${sliderValue}} className="${getGlassyClasses(50)}" style={{ backgroundColor: '${customBgColor}' }} />`} codeKey="basicUsage" />
+          <CopyButton text={`<input type="range" min="0" max="100" value={${sliderValue}} class="${getGlassyClasses(50)}" style={{ backgroundColor: '${customBgColor}' }} />`} codeKey="basicUsage" />
         </pre>
       </section>
+
       <section className={`${getGlassyClasses(20)} p-6 mb-14 text-white relative z-10`}>
         <h2 className="text-2xl font-bold mb-4">Props</h2>
         <div className="overflow-x-auto">
@@ -131,52 +140,47 @@ const SliderDetailsPage: React.FC = () => {
           </table>
         </div>
       </section>
+
       <section className={`${getGlassyClasses(20)} p-6 mb-8 text-white relative z-10`}>
-      <h2 className="text-2xl font-bold mb-4">Custom Styling</h2>
-      <div className="mb-12">
-        <h3 className="text-2xl font-semibold mb-6">Slider Customization</h3>
-        <div className={`${getGlassyClasses(30)} p-8 hover:shadow-xl rounded-xl`}>
-          <div className="mb-8">
-            <input
-              type="range"
-              min="0"
-              max="100"
-              value={sliderValue}
-              onChange={handleSliderChange}
-              className={`${getGlassyClasses()} w-full h-2 rounded-lg appearance-none cursor-pointer`}
-              style={{
-                background: `linear-gradient(90deg, ${customBgColor} ${sliderValue}%, #cccccc ${sliderValue}%)`, 
-              }}
-            />
+        <h2 className="text-2xl font-bold mb-4">Custom Styling</h2>
+        <div className="mb-12">
+          <h3 className="text-2xl font-semibold mb-6">Slider Customization</h3>
+          <div className={`${getGlassyClasses(30)} p-8 hover:shadow-xl rounded-xl`}>
+            <div className="mb-8">
+              <input
+                type="range"
+                min="0"
+                max="100"
+                value={sliderValue}
+                onChange={handleSliderChange}
+                className={`${getGlassyClasses()} w-full h-2 rounded-lg appearance-none cursor-pointer`}
+                style={{
+                  background: `linear-gradient(90deg, ${customBgColor} ${sliderValue}%, #cccccc ${sliderValue}%)`,
+                }}
+              />
+            </div>
+            <div className="space-y-2">
+              <label className="block text-sm font-medium text-white">Background Color</label>
+              <input
+                type="color"
+                value={customBgColor}
+                onChange={(e) => setCustomBgColor(e.target.value)}
+                className="w-8 h-8 cursor-pointer border-none bg-transparent"
+              />
+              <span className="text-sm p-2 font-semibold">{customBgColor}</span>
+            </div>
+            <div className="mt-8">
+              <h4 className="text-xl font-semibold mb-4">Generated Code</h4>
+              <div className="relative">
+                <pre className="bg-gray-800 text-white p-4 rounded-lg overflow-x-auto">
+                  {customCode}
+                </pre>
+                <CopyButton text={customCode} codeKey="customStyling" />
+              </div>
+            </div>
           </div>
-          <div className="space-y-2">
-            <label className="block text-sm font-medium text-white">Background Color</label>
-            <input
-              type="color"
-              value={customBgColor}
-              onChange={(e) => setCustomBgColor(e.target.value)}
-              className="w-8 h-8 cursor-pointer border-none bg-transparent "
-            />
-            <span className="text-sm p-2 font-semibold">{customBgColor}</span>
-          </div>
-          <div className="mt-8">
-        <h4 className="text-xl font-semibold mb-4">Generated Code</h4>
-        <div className="relative ">
-          <pre className="bg-gray-800 text-white p-4 rounded-lg overflow-x-auto">
-            {customCode}
-          </pre>
-          <CopyButton text={customCode} codeKey="customStyling" />
         </div>
-      </div>
-        </div>
-      </div>
-    </section>
-
-
-
-      
-
-      
+      </section>
     </div>
   );
 };
