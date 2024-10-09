@@ -62,17 +62,17 @@ const GlassmorphismGenerator: React.FC = () => {
     return "backdrop-filter backdrop-blur-md bg-white bg-opacity-30 border border-white border-opacity-20 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300";
   };
   return (
-    <div className="min-h-screen flex flex-col gap-6 justify-center items-center px-6 bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 text-white p-8">
-     <div className="w-full mb-0 pb-0">
+    <div className="min-h-screen flex flex-col gap-6 justify-center items-center px-6 bg-gradient-to-br from-gray-800 via-gray-900 to-black text-white p-8">
+      <div className="w-full mb-0 pb-0">
 
-      <button
-        onClick={() => navigate(-1)}
-        className={` flex items-center ${getGlassyClasses()} px-4 py-2 hover:bg-opacity-40 transition-all duration-300 text-gray-800`}
-      >
-        <ArrowLeft size={20} className="mr-2" />
-        Back to Components
-      </button>
-     </div>
+        <button
+          onClick={() => navigate(-1)}
+          className={` flex items-center ${getGlassyClasses()} px-4 py-2 hover:bg-opacity-40 transition-all duration-300 text-gray-800`}
+        >
+          <ArrowLeft size={20} className="mr-2" />
+          Back to Components
+        </button>
+      </div>
       <h1 className="text-4xl font-bold text-white  ">
         Glassmorphism Generator{" "}
       </h1>
@@ -270,22 +270,20 @@ const GlassmorphismGenerator: React.FC = () => {
             <div className="flex space-x-4 mb-4">
               <button
                 onClick={() => setActiveTab("custom")}
-                className={`px-4 py-2 rounded-md transition duration-200 ${
-                  activeTab === "custom"
+                className={`px-4 py-2 rounded-md transition duration-200 ${activeTab === "custom"
                     ? "bg-blue-600 text-white shadow-md"
                     : "bg-gray-800 text-gray-300 hover:bg-gray-700"
-                }`}
+                  }`}
               >
                 Custom CSS
               </button>
 
               <button
                 onClick={() => setActiveTab("tailwind")}
-                className={`px-4 py-2 rounded-md transition duration-200 ${
-                  activeTab === "tailwind"
+                className={`px-4 py-2 rounded-md transition duration-200 ${activeTab === "tailwind"
                     ? "bg-blue-600 text-white shadow-md"
                     : "bg-gray-800 text-gray-300 hover:bg-gray-700"
-                }`}
+                  }`}
               >
                 Tailwind CSS
               </button>

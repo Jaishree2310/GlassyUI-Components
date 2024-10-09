@@ -15,7 +15,7 @@ import BackToTopButton from "./BackToTop";
 
 // Utility function for reusable glassy class styles
 const getGlassyClasses = (): string =>
-  "backdrop-filter backdrop-blur-xl bg-white/30 border border-white/20 rounded-xl shadow-lg transition-all duration-300";
+  "backdrop-filter backdrop-blur-xl bg-white/30 border border-white/20 rounded-xl shadow-lg transition-all duration-300 max-sm:px-0";
 
 // Function to copy text to clipboard and handle feedback
 const copyToClipboard = (
@@ -190,7 +190,7 @@ const SpeedDialDetailsPage: React.FC = () => {
           <h2 className="text-3xl font-bold mb-6 text-gray-100">Basic Usage</h2>
           {/* Basic Usage Code Block */}
           <div className="relative mb-4">
-            <pre className="bg-gray-800 text-white p-6 rounded-lg overflow-x-auto whitespace-pre-wrap">
+            <pre className="bg-gray-800 text-white p-6 rounded-lg overflow-x-auto whitespace-pre-wrap max-sm:p-2 max-sm:text-[0.55rem]">
               {basicUsage}
             </pre>
             <CopyButton text={basicUsage} codeKey="basicUsage" />
@@ -276,7 +276,7 @@ const SpeedDialDetailsPage: React.FC = () => {
                 },
               ]}
             ></SpeedDial>
-            <pre className="bg-gray-800 text-white p-6 rounded-lg overflow-x-auto whitespace-pre-wrap">
+            <pre className="bg-gray-800 text-white p-6 rounded-lg overflow-x-auto whitespace-pre-wrap max-sm:p-2 max-sm:text-[0.55rem]">
               {speedDialRight}
             </pre>
             <CopyButton text={speedDialRight} codeKey="speedDialRight" />
@@ -326,7 +326,7 @@ const SpeedDialDetailsPage: React.FC = () => {
                 },
               ]}
             ></SpeedDial>
-            <pre className="bg-gray-800 text-white p-6 rounded-lg overflow-x-auto whitespace-pre-wrap">
+            <pre className="bg-gray-800 text-white p-6 rounded-lg overflow-x-auto whitespace-pre-wrap max-sm:p-2 max-sm:text-[0.55rem]">
               {speedDialTop}
             </pre>
             <CopyButton text={speedDialTop} codeKey="speedDialRight" />

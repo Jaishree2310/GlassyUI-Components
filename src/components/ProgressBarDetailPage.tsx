@@ -20,7 +20,7 @@ const ProgressBar: React.FC<ProgressBarProps> = ({ progress, color, size = 'md',
   };
 
   const getGlassyClasses = () => {
-    return 'backdrop-filter backdrop-blur-md bg-white bg-opacity-30 border border-white border-opacity-20 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300';
+    return 'backdrop-filter backdrop-blur-md bg-white bg-opacity-30 border border-white border-opacity-20 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 max-sm:px-0';
   };
 
   return (
@@ -105,6 +105,7 @@ const ProgressBarDetailPage: React.FC = () => {
 
       {/* Basic Usage */}
       <div className={`${getGlassyClasses()} p-6 mb-8 relative`}>
+
         <h2 className="text-2xl font-bold mb-4  text-gray-100">Basic Usage</h2>
         <pre className="bg-gray-800 text-white p-4 rounded-lg overflow-x-auto">
           {`import { ProgressBar } from 'glassy-ui';
@@ -215,7 +216,7 @@ function App() {
           <ProgressBar progress={customProgress} color={customColor} theme={progressBarTheme} />
         </div>
 
-        <pre className="bg-gray-800 text-white p-4 rounded-lg overflow-x-auto mt-4 relative">
+        <pre className="bg-gray-800 text-white p-4 rounded-lg overflow-x-auto mt-4 relative max-sm:text-[0.55rem]">
           {`<ProgressBar
   size="md"
   color="${customColor}"
@@ -233,12 +234,13 @@ function App() {
 
       {/* Examples */}
       <div className={`${getGlassyClasses()} p-6 mt-8`}>
+
         <h2 className="text-2xl font-bold mb-4  text-gray-100">Examples for mesh morphism</h2>
 
         {/* Different Sizes */}
         <div className="mb-8">
           <h3 className="text-xl font-bold mb-4">Different Sizes</h3>
-          <pre className="bg-gray-800 text-white p-4 rounded-lg overflow-x-auto mb-4 relative">
+          <pre className="bg-gray-800 text-white p-4 rounded-lg overflow-x-auto mb-4 relative max-sm:text-[0.55rem]">
             {`<ProgressBar size="sm" color="gray" progress={25} theme="${progressBarTheme}" />
 <ProgressBar size="md" color="blue" progress={50} theme="${progressBarTheme}" />
 <ProgressBar size="lg" color="green" progress={75} theme="${progressBarTheme}" />`}
@@ -265,7 +267,7 @@ function App() {
         <div className="mb-8">
           <h2 className="text-xl font-bold mb-4">Animated Progress</h2>
           <p className="mb-4">You can animate the progress by updating the progress prop over time:</p>
-          <pre className="bg-gray-800 text-white p-4 rounded-lg overflow-x-auto mb-4 relative">
+          <pre className="bg-gray-800 text-white p-4 rounded-lg overflow-x-auto mb-4 relative max-sm:text-[0.55rem]">
             {`const AnimatedProgress = () => {
   const [progress, setProgress] = useState(0);
 

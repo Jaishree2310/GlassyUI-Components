@@ -3,7 +3,7 @@ import { ArrowLeft, Copy, Check, X } from "lucide-react";
 import React, { useState } from "react";
 
 const getGlassyClasses = () => {
-  return "backdrop-filter backdrop-blur-xl bg-white/30 border border-white/20 rounded-xl shadow-lg transition-all duration-300";
+  return "backdrop-filter backdrop-blur-xl bg-white/30 border border-white/20 rounded-xl shadow-lg transition-all duration-300 max-sm:px-1";
 };
 
 type ModalProps = {
@@ -124,7 +124,7 @@ function Example() {
         <h2 className="text-3xl font-bold mb-6 text-gray-100">Basic Usage</h2>
         <button onClick={() => setModal(true)} className={`mb-8 flex items-center ${getGlassyClasses()} px-4 py-2 hover:bg-white/40 transition-all duration-300 text-gray-100`}>Open Modal</button>
         <div className="relative">
-          <pre className="bg-gray-800 text-white p-6 rounded-lg overflow-x-auto whitespace-pre-wrap">
+          <pre className="bg-gray-800 text-white p-6 rounded-lg overflow-x-auto whitespace-pre-wrap max-sm:text-[0.55rem]">
             {basicUsageCode}
           </pre>
           <CopyButton text={basicUsageCode} codeKey="basicUsage" />
@@ -132,6 +132,7 @@ function Example() {
       </div>
 
       <div className={`${getGlassyClasses()} p-8 mb-8`}>
+
         <h2 className="text-3xl font-bold mb-6 text-gray-100">Props</h2>
         <table className="w-full">
           <thead>
