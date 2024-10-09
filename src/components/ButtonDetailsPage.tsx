@@ -74,7 +74,7 @@ function Example() {
       <div className="relative z-10">
         <button
           onClick={() => navigate(-1)}
-          className={`mb-8 flex items-center ${getGlassyClasses()} px-4 py-2 hover:bg-white/40 transition-all duration-300 text-white`}
+          className={`mb-8 flex items-center ${getGlassyClasses()} px-4 py-2 hover:bg-white/40 transition-all duration-300 text-gray-800`}
         >
           <ArrowLeft size={20} className="mr-2" />
           Back to Components
@@ -233,7 +233,7 @@ function Example() {
           </p>
           <button
             onClick={() => alert('Button clicked!')}
-            className={`${getGlassyClasses()} px-6 py-3 text-lg font-semibold rounded-lg hover:bg-white/40 transition-transform hover:scale-110 text-white`}
+            className={`${getGlassyClasses()} px-6 py-3 text-lg font-semibold rounded-lg hover:bg-white/40 transition-transform hover:scale-110 text-gray-800`}
           >
             Alert!
           </button>
@@ -251,7 +251,7 @@ function Example() {
             A button that spans the full width of its container.
           </p>
           <button
-            className={`w-full py-3 text-lg font-semibold rounded-lg ${getGlassyClasses()} hover:bg-white/40 transition-transform hover:scale-105 text-white`}
+            className={`w-full py-3 text-lg font-semibold rounded-lg ${getGlassyClasses()} hover:bg-white/40 transition-transform hover:scale-105 text-gray-800`}
           >
             Full Width Button
           </button>

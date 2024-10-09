@@ -10,7 +10,7 @@ const TooltipDetailsPage: React.FC = () => {
 
   // Function to get glassmorphism styled classes
   const getGlassyClasses = () =>
-    'backdrop-filter backdrop-blur-md bg-white/10 border border-white/20 rounded-2xl shadow-lg transition-all duration-300';
+    'backdrop-filter backdrop-blur-md bg-white/10 border border-white/20 rounded-2xl shadow-lg transition-all duration-300 max-sm:px-0';
 
   // Function to handle copying text to clipboard
   const copyToClipboard = (text: string, key: string) => {

@@ -32,7 +32,6 @@ const CustomTextArea: React.FC = () => {
     <div className="p-4 rounded-lg">
       <h2 className="text-2xl text-white font-bold mb-4">Custom TextArea</h2>
       <p className="text-gray-200 mb-4">Customize your textarea's appearance by selecting a preset theme or creating your own color scheme.</p>
-
       <div className="mb-4">
         <label className="block text-white mb-2">Theme:</label>
         <div className="flex space-x-2">

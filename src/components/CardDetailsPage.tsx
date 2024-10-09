@@ -231,7 +231,7 @@ function Example() {
       {/* Credit Card Example */}
       <section className="mb-12">
         <h2 className="text-2xl font-bold mb-4 text-gray-800">Credit Card Example</h2>
-        <div className="bg-white bg-opacity-30 backdrop-filter backdrop-blur-md border border-white border-opacity-20 rounded-lg p-6">
+        <div className="bg-white bg-opacity-30 backdrop-filter backdrop-blur-md border border-white border-opacity-20 rounded-lg p-6 max-sm:px-1">
           <div className="flex flex-col lg:flex-row gap-8">
             <div className="lg:w-1/3 flex justify-center items-center bg-gradient-to-br from-purple-400 to-blue-300 p-8 rounded-xl">
               <CreditCardExample />
@@ -239,7 +239,7 @@ function Example() {
             <div className="lg:w-2/3">
               <h3 className="text-xl font-semibold mb-4 text-gray-800">Code</h3>
               <div className="relative">
-                <pre className="bg-gray-800 text-white p-4 rounded-lg overflow-x-auto text-sm max-h-[400px] whitespace-pre-wrap break-words">
+                <pre className="bg-gray-800 text-white p-4 rounded-lg overflow-x-auto text-sm max-h-[400px] whitespace-pre-wrap break-words max-sm:text-[0.55rem]">
                   <code>
                     {`const GlassmorphicCreditCard: React.FC = () => (
   <div className="w-96 h-56 bg-gradient-to-br from-purple-100 
@@ -299,12 +299,11 @@ function Example() {
   </div>
 );`} codeKey="creditCardExample" />
               </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-    </div>
+            </div >
+          </div >
+        </div >
+      </section >
+    </div >
   );
 };
 
