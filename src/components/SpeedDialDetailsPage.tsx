@@ -4,11 +4,14 @@ import { ArrowLeft, Check, Copy } from "lucide-react";
 import SpeedDial from "./SpeedDial";
 import {
   FaFacebookF,
-  FaTwitter,
   FaLinkedinIn,
   FaInstagram,
 } from "react-icons/fa";
+
+import { FaXTwitter } from "react-icons/fa6";
+
 import BackToTopButton from "./BackToTop";
+
 
 // Utility function for reusable glassy class styles
 const getGlassyClasses = (): string =>
@@ -96,7 +99,7 @@ const SpeedDialDetailsPage: React.FC = () => {
                     },
                   },
                   {
-                    icon: <FaTwitter size={20} />,
+                    icon: <FaXTwitter size={20} />,
                     label: "Twitter",
                     key: "twitter",
                     action: () => {
@@ -137,7 +140,7 @@ const SpeedDialDetailsPage: React.FC = () => {
                     },
                   },
                   {
-                    icon: <FaTwitter size={20} />,
+                    icon: <FaXTwitter size={20} />,
                     label: "Twitter",
                     key: "twitter",
                     action: () => {
@@ -248,7 +251,7 @@ const SpeedDialDetailsPage: React.FC = () => {
                   },
                 },
                 {
-                  icon: <FaTwitter size={20} />,
+                  icon: <FaXTwitter size={20} />,
                   label: "Twitter",
                   key: "twitter",
                   action: () => {
@@ -298,7 +301,7 @@ const SpeedDialDetailsPage: React.FC = () => {
                   },
                 },
                 {
-                  icon: <FaTwitter size={20} />,
+                  icon: <FaXTwitter size={20} />,
                   label: "Twitter",
                   key: "twitter",
                   action: () => {
