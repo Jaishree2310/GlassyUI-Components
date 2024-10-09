@@ -2,10 +2,11 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import {
   FaFacebookF,
-  FaTwitter,
   FaLinkedinIn,
   FaInstagram,
 } from "react-icons/fa";
+
+import { FaXTwitter } from "react-icons/fa6";
 
 import {
   Star,
@@ -125,7 +126,7 @@ const GlassyUIComponentsPage: React.FC = () => {
                     },
                   },
                   {
-                    icon: <FaTwitter size={20} />,
+                    icon: <FaXTwitter size={20} />,
                     label: "Twitter",
                     key: "twitter",
                     action: () => {
