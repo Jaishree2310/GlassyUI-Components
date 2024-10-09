@@ -325,6 +325,27 @@ const GlassyUIComponentsPage: React.FC = () => {
                 </Tooltip>
               </div>
             </ComponentCard>
+            <ComponentCard
+  title="Sliders"
+  description="Elegant sliders with glassmorphic styling."
+  icon={<Sliders size={24} />}
+  onClick={() => navigate("/slider-details")}
+>
+  <div className="flex flex-col space-y-4 mt-4">
+    
+    <input
+      type="range"
+      min="0"
+      max="100"
+      defaultValue={75} // Different default value for variety
+      className={`${getGlassyClasses()} w-full h-2 rounded-lg appearance-none cursor-pointer`}
+      style={{
+        background: 'linear-gradient(90deg, rgba(255, 255, 255, 0.3) 75%, rgba(255, 255, 255, 0.1) 75%)',
+      }}
+    />
+  </div>
+</ComponentCard>
+
           </div>
         </main>
       </div>
