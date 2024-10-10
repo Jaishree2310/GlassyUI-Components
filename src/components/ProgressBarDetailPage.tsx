@@ -105,7 +105,6 @@ const ProgressBarDetailPage: React.FC = () => {
 
       {/* Basic Usage */}
       <div className={`${getGlassyClasses()} p-6 mb-8 relative`}>
-
         <h2 className="text-2xl font-bold mb-4  text-gray-100">Basic Usage</h2>
         <pre className="bg-gray-800 text-white p-4 rounded-lg overflow-x-auto">
           {`import { ProgressBar } from 'glassy-ui';
@@ -234,7 +233,6 @@ function App() {
 
       {/* Examples */}
       <div className={`${getGlassyClasses()} p-6 mt-8`}>
-
         <h2 className="text-2xl font-bold mb-4  text-gray-100">Examples for mesh morphism</h2>
 
         {/* Different Sizes */}

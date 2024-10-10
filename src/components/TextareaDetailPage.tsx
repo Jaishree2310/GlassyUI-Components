@@ -226,7 +226,6 @@ const TextareaDetailPage: React.FC = () => {
 
         {/* Additional Examples */}
         <div className={`${getGlassyClasses()} p-6 mt-8`}>
-
           <h2 className="text-2xl text-white font-bold mb-4">Additional Examples</h2>
 
           <h3 className="text-xl text-gray-600 font-semibold mb-2">With Custom Styling</h3>
