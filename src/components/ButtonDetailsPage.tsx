@@ -28,7 +28,7 @@ const ButtonDetailsPage: React.FC = () => {
       className={`absolute top-2 right-2 ${getGlassyClasses()} p-2 hover:bg-white/40 transition-all duration-300 z-10`}
       title="Copy to clipboard"
     >
-      {copiedStates[codeKey] ? <Check size={16} className="text-green-600" /> : <Copy size={16} className="text-white" />}
+      {copiedStates[codeKey] ? <Check size={16} className="text-white" /> : <Copy size={16} className="text-white" />}
     </button>
   );
 
@@ -74,7 +74,7 @@ function Example() {
       <div className="relative z-10">
         <button
           onClick={() => navigate(-1)}
-          className={`mb-8 flex items-center ${getGlassyClasses()} px-4 py-2 hover:bg-white/40 transition-all duration-300 text-gray-800`}
+          className={`mb-8 flex items-center ${getGlassyClasses()} px-4 py-2 hover:bg-white/40 transition-all duration-300 text-white`}
         >
           <ArrowLeft size={20} className="mr-2" />
           Back to Components
@@ -99,30 +99,30 @@ function Example() {
             <table className="w-full">
               <thead>
                 <tr className="border-b border-gray-400">
-                  <th className="text-left p-2 text-gray-800">Prop</th>
-                  <th className="text-left p-2 text-gray-800">Type</th>
-                  <th className="text-left p-2 text-gray-800">Default</th>
-                  <th className="text-left p-2 text-gray-800">Description</th>
+                  <th className="text-left p-2 text-white">Prop</th>
+                  <th className="text-left p-2 text-white">Type</th>
+                  <th className="text-left p-2 text-white">Default</th>
+                  <th className="text-left p-2 text-white">Description</th>
                 </tr>
               </thead>
               <tbody>
                 <tr className="border-b border-gray-300">
-                  <td className="p-2 text-gray-700">backgroundColor</td>
-                  <td className="p-2 text-gray-700">string</td>
-                  <td className="p-2 text-gray-700">-</td>
-                  <td className="p-2 text-gray-700">The background color of the button</td>
+                  <td className="p-2 text-white">backgroundColor</td>
+                  <td className="p-2 text-white">string</td>
+                  <td className="p-2 text-white">-</td>
+                  <td className="p-2 text-white">The background color of the button</td>
                 </tr>
                 <tr className="border-b border-gray-300">
-                  <td className="p-2 text-gray-700">color</td>
-                  <td className="p-2 text-gray-700">string</td>
-                  <td className="p-2 text-gray-700">-</td>
-                  <td className="p-2 text-gray-700">The text color of the button</td>
+                  <td className="p-2 text-white">color</td>
+                  <td className="p-2 text-white">string</td>
+                  <td className="p-2 text-white">-</td>
+                  <td className="p-2 text-white">The text color of the button</td>
                 </tr>
                 <tr className="border-b border-gray-300">
-                  <td className="p-2 text-gray-700">borderColor</td>
-                  <td className="p-2 text-gray-700">string</td>
-                  <td className="p-2 text-gray-700">-</td>
-                  <td className="p-2 text-gray-700">The border color of the button</td>
+                  <td className="p-2 text-white">borderColor</td>
+                  <td className="p-2 text-white">string</td>
+                  <td className="p-2 text-white">-</td>
+                  <td className="p-2 text-white">The border color of the button</td>
                 </tr>
               </tbody>
             </table>
@@ -200,7 +200,7 @@ function Example() {
                   <input
                     type="text"
                     value={customBorder}
-                    onChange={(e) => setCustomBorder(e.target.value)}
+                    onChange={(e ) => setCustomBorder(e.target.value)}
                     className="bg-transparent border-b border-gray-400 w-full py-1 px-2 text-white"
                   />
                 </div>
@@ -233,7 +233,7 @@ function Example() {
           </p>
           <button
             onClick={() => alert('Button clicked!')}
-            className={`${getGlassyClasses()} px-6 py-3 text-lg font-semibold rounded-lg hover:bg-white/40 transition-transform hover:scale-110 text-gray-800`}
+            className={`${getGlassyClasses()} px-6 py-3 text-lg font-semibold rounded-lg hover:bg-white/40 transition-transform hover:scale-110 text-white`}
           >
             Alert!
           </button>
@@ -251,7 +251,7 @@ function Example() {
             A button that spans the full width of its container.
           </p>
           <button
-            className={`w-full py-3 text-lg font-semibold rounded-lg ${getGlassyClasses()} hover:bg-white/40 transition-transform hover:scale-105 text-gray-800`}
+            className={`w-full py-3 text-lg font-semibold rounded-lg ${getGlassyClasses()} hover:bg-white/40 transition-transform hover:scale-105 text-white`}
           >
             Full Width Button
           </button>
