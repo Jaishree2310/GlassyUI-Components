@@ -1,3 +1,4 @@
+
 import React, { useEffect } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import GlassyUILandingPage from "./components/GlassyUILandingPage";
@@ -39,22 +40,31 @@ const App: React.FC = () => {
 
   return (
     <Router>
+      <Header />
       <Routes>
-        <Route path="/" element={<GlassyUILandingPage />} />
-        <Route path="/components" element={<GlassyUIComponentsPage />} />
-        <Route path="/button-details" element={<ButtonDetailsPage />} />
-        <Route path="/card-details" element={<CardDetailsPage />} />
+        <Route path='/' element={<GlassyUILandingPage />} />
+        <Route path='/components' element={<GlassyUIComponentsPage />} />
+        <Route path='/button-details' element={<ButtonDetailsPage />} />
+        <Route path='/card-details' element={<CardDetailsPage />} />
         <Route
-          path="/progress-bar-details"
+          path='/progress-bar-details'
           element={<ProgressBarDetailPage />}
         />
-        <Route path="/popup-details" element={<PopupDetailPage />} />
-        <Route path="/input-details" element={<InputDetailPage />} />
-        <Route path="/textarea-details" element={<TextareaDetailPage />} />
-        <Route path="/tooltip-details" element={<TooltipDetailsPage />} />
-        <Route path="/speed-dial-details" element={<SpeedDialDetailsPage />} />
-        <Route path="/modal-details" element={<ModalDetailsPage />} />
-        <Route path="*" element={<NotFoundPage />} />
+        <Route path='/popup-details' element={<PopupDetailPage />} />
+        <Route path='/input-details' element={<InputDetailPage />} />
+        <Route path='/textarea-details' element={<TextareaDetailPage />} />
+        <Route path='/tooltip-details' element={<TooltipDetailsPage />} />
+        <Route path='/speed-dial-details' element={<SpeedDialDetailsPage />} />
+        <Route path='/modal-details' element={<ModalDetailsPage />} />
+        <Route path='/navigation-details' element={<NavigationDetailsPage />} />
+        <Route path='/generator' element={<GlassMorphismGenrator />} />
+        <Route path='/slider-details' element={<SliderDetailsPage />} />
+
+        {/*the DonationPage route */}
+        <Route path='/' element={<GlassyUILandingPage />} />
+        <Route path='/donate' element={<DonationPage />} />
+
+        <Route path='*' element={<NotFoundPage />} />
       </Routes>
     </Router>
   );

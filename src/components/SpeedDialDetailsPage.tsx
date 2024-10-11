@@ -4,15 +4,18 @@ import { ArrowLeft, Check, Copy } from "lucide-react";
 import SpeedDial from "./SpeedDial";
 import {
   FaFacebookF,
-  FaTwitter,
   FaLinkedinIn,
   FaInstagram,
 } from "react-icons/fa";
+
+import { FaXTwitter } from "react-icons/fa6";
+
 import BackToTopButton from "./BackToTop";
+
 
 // Utility function for reusable glassy class styles
 const getGlassyClasses = (): string =>
-  "backdrop-filter backdrop-blur-xl bg-white/30 border border-white/20 rounded-xl shadow-lg transition-all duration-300";
+  "backdrop-filter backdrop-blur-xl bg-white/30 border border-white/20 rounded-xl shadow-lg transition-all duration-300 max-sm:px-0";
 
 // Function to copy text to clipboard and handle feedback
 const copyToClipboard = (
@@ -48,7 +51,7 @@ const CopyButton: React.FC<{ text: string; codeKey: string }> = ({
       {copiedStates[codeKey] ? (
         <Check size={16} className="text-green-600" />
       ) : (
-        <Copy size={16} className="text-gray-800" />
+        <Copy size={16} className="text-gray-100" />
       )}
     </button>
   );
@@ -96,7 +99,7 @@ const SpeedDialDetailsPage: React.FC = () => {
                     },
                   },
                   {
-                    icon: <FaTwitter size={20} />,
+                    icon: <FaXTwitter size={20} />,
                     label: "Twitter",
                     key: "twitter",
                     action: () => {
@@ -137,7 +140,7 @@ const SpeedDialDetailsPage: React.FC = () => {
                     },
                   },
                   {
-                    icon: <FaTwitter size={20} />,
+                    icon: <FaXTwitter size={20} />,
                     label: "Twitter",
                     key: "twitter",
                     action: () => {
@@ -164,30 +167,30 @@ const SpeedDialDetailsPage: React.FC = () => {
               />`;
 
   return (
-    <div className="min-h-screen p-8 font-sans bg-gradient-to-r from-[#ffc6c6] via-[#ffc6e5] to-[#e7c6ff] relative">
+    <div className="min-h-screen p-8 font-sans bg-gradient-to-r from-gray-800 via-gray-900 to-black text-white relative">
       <BackToTopButton />
       <div className="relative z-10">
         {/* Back Button */}
         <button
           onClick={() => navigate(-1)}
-          className={`mb-8 flex items-center ${getGlassyClasses()} px-4 py-2 hover:bg-white/40 transition-all duration-300 text-gray-800`}
+          className={`mb-8 flex items-center ${getGlassyClasses()} px-4 py-2 hover:bg-white/40 transition-all duration-300 text-gray-100`}
         >
           <ArrowLeft size={20} className="mr-2" />
           Back to Components
         </button>
 
         {/* Page Title and Description */}
-        <h1 className="text-6xl font-bold mb-8 text-gray-900">Speed Dial</h1>
-        <p className="text-xl mb-8 text-gray-800">
+        <h1 className="text-6xl font-bold mb-8 text-white">Speed Dial</h1>
+        <p className="text-xl mb-8 text-gray-100">
           A customizable, glassmorphism-styled Speed Dial component.
         </p>
 
         {/* Speed Dial Demo and Code Section */}
         <div className={`${getGlassyClasses()} p-8 mb-8 relative`}>
-          <h2 className="text-3xl font-bold mb-6 text-gray-800">Basic Usage</h2>
+          <h2 className="text-3xl font-bold mb-6 text-gray-100">Basic Usage</h2>
           {/* Basic Usage Code Block */}
           <div className="relative mb-4">
-            <pre className="bg-gray-800 text-white p-6 rounded-lg overflow-x-auto whitespace-pre-wrap">
+            <pre className="bg-gray-800 text-white p-6 rounded-lg overflow-x-auto whitespace-pre-wrap max-sm:p-2 max-sm:text-[0.55rem]">
               {basicUsage}
             </pre>
             <CopyButton text={basicUsage} codeKey="basicUsage" />
@@ -195,43 +198,43 @@ const SpeedDialDetailsPage: React.FC = () => {
         </div>
 
         <div className={`${getGlassyClasses()} p-8 mb-8`}>
-          <h2 className="text-3xl font-bold mb-6 text-gray-800">Props</h2>
+          <h2 className="text-3xl font-bold mb-6 text-gray-100">Props</h2>
           <div className="overflow-x-auto">
-          <table className="w-full">
-            <thead>
-              <tr className="border-b border-gray-400">
-                <th className="text-left p-2 text-gray-800">Prop</th>
-                <th className="text-left p-2 text-gray-800">Type</th>
-                <th className="text-left p-2 text-gray-800">Default</th>
-                <th className="text-left p-2 text-gray-800">Description</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr className="border-b border-gray-300">
-                <td className="p-2 text-gray-700">direction</td>
-                <td className="p-2 text-gray-700">string</td>
-                <td className="p-2 text-gray-700">-</td>
-                <td className="p-2 text-gray-700">
-                  The direction of the speed dial. Can be "up", "down", "left",
-                  or "right"
-                </td>
-              </tr>
-              <tr className="border-b border-gray-300">
-                <td className="p-2 text-gray-700">actionButtons</td>
-                <td className="p-2 text-gray-700">array</td>
-                <td className="p-2 text-gray-700">-</td>
-                <td className="p-2 text-gray-700">
-                  An array of objects containing the icon, label, key, and
-                  action.
-                </td>
-              </tr>
-            </tbody>
-          </table>
+            <table className="w-full">
+              <thead>
+                <tr className="border-b border-gray-400">
+                  <th className="text-left p-2 text-gray-100">Prop</th>
+                  <th className="text-left p-2 text-gray-100">Type</th>
+                  <th className="text-left p-2 text-gray-100">Default</th>
+                  <th className="text-left p-2 text-gray-100">Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr className="border-b border-gray-300">
+                  <td className="p-2 text-gray-200">direction</td>
+                  <td className="p-2 text-gray-200">string</td>
+                  <td className="p-2 text-gray-200">-</td>
+                  <td className="p-2 text-gray-200">
+                    The direction of the speed dial. Can be "up", "down", "left",
+                    or "right"
+                  </td>
+                </tr>
+                <tr className="border-b border-gray-300">
+                  <td className="p-2 text-gray-200">actionButtons</td>
+                  <td className="p-2 text-gray-200">array</td>
+                  <td className="p-2 text-gray-200">-</td>
+                  <td className="p-2 text-gray-200">
+                    An array of objects containing the icon, label, key, and
+                    action.
+                  </td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
 
         <div className={`${getGlassyClasses()} p-8 mb-8 relative`}>
-          <h2 className="text-3xl font-bold mb-6 text-gray-800">
+          <h2 className="text-3xl font-bold mb-6 text-gray-100">
             Speed Dial: Right
           </h2>
           {/* Basic Usage Code Block */}
@@ -248,7 +251,7 @@ const SpeedDialDetailsPage: React.FC = () => {
                   },
                 },
                 {
-                  icon: <FaTwitter size={20} />,
+                  icon: <FaXTwitter size={20} />,
                   label: "Twitter",
                   key: "twitter",
                   action: () => {
@@ -273,20 +276,21 @@ const SpeedDialDetailsPage: React.FC = () => {
                 },
               ]}
             ></SpeedDial>
-            <pre className="bg-gray-800 text-white p-6 rounded-lg overflow-x-auto whitespace-pre-wrap">
+            <pre className="bg-gray-800 text-white p-6 rounded-lg overflow-x-auto whitespace-pre-wrap max-sm:p-2 max-sm:text-[0.55rem]">
               {speedDialRight}
             </pre>
             <CopyButton text={speedDialRight} codeKey="speedDialRight" />
           </div>
         </div>
+
         <div className={`${getGlassyClasses()} p-8 mb-8 relative`}>
-          <h2 className="text-3xl font-bold mb-6 text-gray-800">
+          <h2 className="text-3xl font-bold mb-6 text-gray-100">
             Speed Dial: Down
           </h2>
           {/* Basic Usage Code Block */}
           <div className="relative mb-4">
             <SpeedDial
-              direction="down"
+              direction="right"
               actionButtons={[
                 {
                   icon: <FaFacebookF size={20} />,
@@ -297,7 +301,7 @@ const SpeedDialDetailsPage: React.FC = () => {
                   },
                 },
                 {
-                  icon: <FaTwitter size={20} />,
+                  icon: <FaXTwitter size={20} />,
                   label: "Twitter",
                   key: "twitter",
                   action: () => {
@@ -322,7 +326,7 @@ const SpeedDialDetailsPage: React.FC = () => {
                 },
               ]}
             ></SpeedDial>
-            <pre className="bg-gray-800 text-white p-6 rounded-lg overflow-x-auto whitespace-pre-wrap">
+            <pre className="bg-gray-800 text-white p-6 rounded-lg overflow-x-auto whitespace-pre-wrap max-sm:p-2 max-sm:text-[0.55rem]">
               {speedDialTop}
             </pre>
             <CopyButton text={speedDialTop} codeKey="speedDialRight" />
