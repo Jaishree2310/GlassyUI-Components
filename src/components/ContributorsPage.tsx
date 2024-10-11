@@ -166,7 +166,7 @@ export default function Component() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            Shaping the future of Git Trace, one commit at a time
+            Shaping the future of GlasslyUI-Components, one commit at a time
           </motion.p>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -303,7 +303,8 @@ export default function Component() {
             Ready to Make an Impact?
           </h2>
           <p className='text-xl mb-8 text-white/80'>
-            Join our community and help shape the future of Git Trace.
+            Join our community and help shape the future of
+            GlasslyUI-Components.
           </p>
           <form
             onSubmit={handleSubmit}
