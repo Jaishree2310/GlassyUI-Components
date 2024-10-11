@@ -50,7 +50,7 @@ const InputDetailPage: React.FC = () => {
   const [customCode, setCustomCode] = useState('');
 
   const getGlassyClasses = (opacity = 10) => {
-    return `backdrop-filter backdrop-blur-lg bg-white bg-opacity-${opacity} border border-white border-opacity-20 rounded-lg shadow-lg transition-all duration-300`;
+    return `backdrop-filter backdrop-blur-lg bg-white bg-opacity-${opacity} border border-white border-opacity-20 rounded-lg shadow-lg transition-all duration-300 max-sm:px-1`;
   };
 
   const copyToClipboard = (text: string, key: string) => {
@@ -132,7 +132,7 @@ const InputDetailPage: React.FC = () => {
             className={`${getGlassyClasses(50)} text-gray-800 placeholder-gray-500`}
           />
         </div>
-        <pre className="bg-gray-800 text-white p-4 rounded-lg overflow-x-auto relative">
+        <pre className="bg-gray-800 text-white p-4 rounded-lg overflow-x-auto relative  max-sm:text-[0.55rem]">
           {`import { Input } from './Input';
 
 function MyComponent() {
@@ -291,7 +291,7 @@ function MyComponent() {
             <div className="mt-8">
               <h4 className="text-xl font-semibold mb-4">Generated Code</h4>
               <div className="relative">
-                <pre className="bg-gray-800 text-white p-4 rounded-lg overflow-x-auto">
+                <pre className="bg-gray-800 text-white p-4 rounded-lg overflow-x-auto  max-sm:text-[0.55rem]">
                   {customCode}
                 </pre>
                 <CopyButton text={customCode} codeKey="customStyling" />

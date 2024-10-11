@@ -4,15 +4,18 @@ import { ArrowLeft, Check, Copy } from "lucide-react";
 import SpeedDial from "./SpeedDial";
 import {
   FaFacebookF,
-  FaTwitter,
   FaLinkedinIn,
   FaInstagram,
 } from "react-icons/fa";
+
+import { FaXTwitter } from "react-icons/fa6";
+
 import BackToTopButton from "./BackToTop";
+
 
 // Utility function for reusable glassy class styles
 const getGlassyClasses = (): string =>
-  "backdrop-filter backdrop-blur-xl bg-white/30 border border-white/20 rounded-xl shadow-lg transition-all duration-300";
+  "backdrop-filter backdrop-blur-xl bg-white/30 border border-white/20 rounded-xl shadow-lg transition-all duration-300 max-sm:px-0";
 
 // Function to copy text to clipboard and handle feedback
 const copyToClipboard = (
@@ -96,7 +99,7 @@ const SpeedDialDetailsPage: React.FC = () => {
                     },
                   },
                   {
-                    icon: <FaTwitter size={20} />,
+                    icon: <FaXTwitter size={20} />,
                     label: "Twitter",
                     key: "twitter",
                     action: () => {
@@ -137,7 +140,7 @@ const SpeedDialDetailsPage: React.FC = () => {
                     },
                   },
                   {
-                    icon: <FaTwitter size={20} />,
+                    icon: <FaXTwitter size={20} />,
                     label: "Twitter",
                     key: "twitter",
                     action: () => {
@@ -187,7 +190,7 @@ const SpeedDialDetailsPage: React.FC = () => {
           <h2 className="text-3xl font-bold mb-6 text-gray-800">Basic Usage</h2>
           {/* Basic Usage Code Block */}
           <div className="relative mb-4">
-            <pre className="bg-gray-800 text-white p-6 rounded-lg overflow-x-auto whitespace-pre-wrap">
+            <pre className="bg-gray-800 text-white p-6 rounded-lg overflow-x-auto whitespace-pre-wrap max-sm:p-2 max-sm:text-[0.55rem]">
               {basicUsage}
             </pre>
             <CopyButton text={basicUsage} codeKey="basicUsage" />
@@ -248,7 +251,7 @@ const SpeedDialDetailsPage: React.FC = () => {
                   },
                 },
                 {
-                  icon: <FaTwitter size={20} />,
+                  icon: <FaXTwitter size={20} />,
                   label: "Twitter",
                   key: "twitter",
                   action: () => {
@@ -273,12 +276,13 @@ const SpeedDialDetailsPage: React.FC = () => {
                 },
               ]}
             ></SpeedDial>
-            <pre className="bg-gray-800 text-white p-6 rounded-lg overflow-x-auto whitespace-pre-wrap">
+            <pre className="bg-gray-800 text-white p-6 rounded-lg overflow-x-auto whitespace-pre-wrap max-sm:p-2 max-sm:text-[0.55rem]">
               {speedDialRight}
             </pre>
             <CopyButton text={speedDialRight} codeKey="speedDialRight" />
           </div>
         </div>
+
         <div className={`${getGlassyClasses()} p-8 mb-8 relative`}>
           <h2 className="text-3xl font-bold mb-6 text-gray-800">
             Speed Dial: Down
@@ -286,7 +290,7 @@ const SpeedDialDetailsPage: React.FC = () => {
           {/* Basic Usage Code Block */}
           <div className="relative mb-4">
             <SpeedDial
-              direction="down"
+              direction="right"
               actionButtons={[
                 {
                   icon: <FaFacebookF size={20} />,
@@ -297,7 +301,7 @@ const SpeedDialDetailsPage: React.FC = () => {
                   },
                 },
                 {
-                  icon: <FaTwitter size={20} />,
+                  icon: <FaXTwitter size={20} />,
                   label: "Twitter",
                   key: "twitter",
                   action: () => {
@@ -322,7 +326,7 @@ const SpeedDialDetailsPage: React.FC = () => {
                 },
               ]}
             ></SpeedDial>
-            <pre className="bg-gray-800 text-white p-6 rounded-lg overflow-x-auto whitespace-pre-wrap">
+            <pre className="bg-gray-800 text-white p-6 rounded-lg overflow-x-auto whitespace-pre-wrap max-sm:p-2 max-sm:text-[0.55rem]">
               {speedDialTop}
             </pre>
             <CopyButton text={speedDialTop} codeKey="speedDialRight" />

@@ -30,9 +30,8 @@ const CustomTextArea: React.FC = () => {
 
   return (
     <div className="p-4 rounded-lg">
-      <h2 className="text-2xl text-black font-bold mb-4">Custom TextArea</h2>
-      <p className="text-gray-700 mb-4">Customize your textarea's appearance by selecting a preset theme or creating your own color scheme.</p>
-      
+      <h2 className="text-2xl text-white font-bold mb-4">Custom TextArea</h2>
+      <p className="text-gray-200 mb-4">Customize your textarea's appearance by selecting a preset theme or creating your own color scheme.</p>
       <div className="mb-4">
         <label className="block text-black mb-2">Theme:</label>
         <div className="flex space-x-2">
@@ -61,7 +60,7 @@ const CustomTextArea: React.FC = () => {
       />
 
       <div className="mt-4 bg-gray-800 p-2 rounded">
-        <pre className="text-sm">
+        <pre className="text-sm max-sm:text-[0.55rem]">
           {`<textarea
   style={{
     backgroundColor: '${themeColors.bg.includes('linear-gradient') ? 'transparent' : themeColors.bg}',
@@ -227,8 +226,9 @@ const TextareaDetailPage: React.FC = () => {
 
         {/* Additional Examples */}
         <div className={`${getGlassyClasses()} p-6 mt-8`}>
-          <h2 className="text-2xl text-black font-bold mb-4">Additional Examples</h2>
-          
+
+          <h2 className="text-2xl text-white font-bold mb-4">Additional Examples</h2>
+
           <h3 className="text-xl text-gray-600 font-semibold mb-2">With Custom Styling</h3>
           <div className={`${getGlassyClasses()} p-4 mb-4`}>
             <textarea 
