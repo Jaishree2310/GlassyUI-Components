@@ -16,10 +16,13 @@ import NavigationDetailsPage from './components/NavigationDetailsPage';
 import GlassMorphismGenrator from './components/GlassMorphismGenrator';
 import SliderDetailsPage from './components/SliderDetailsPage';
 import ContributorsPage from './components/ContributorsPage';
+import DonationPage from './components/DonationPage';
+import Header from './components/Header';
 
 const App: React.FC = () => {
   return (
     <Router>
+      <Header />
       <Routes>
         <Route path='/' element={<GlassyUILandingPage />} />
         <Route path='/components' element={<GlassyUIComponentsPage />} />
@@ -39,6 +42,10 @@ const App: React.FC = () => {
         <Route path='/generator' element={<GlassMorphismGenrator />} />
         <Route path='/slider-details' element={<SliderDetailsPage />} />
         <Route path='/contributors' element={<ContributorsPage />} />
+
+        {/*the DonationPage route */}
+        <Route path='/' element={<GlassyUILandingPage />} />
+        <Route path='/donate' element={<DonationPage />} />
 
         <Route path='*' element={<NotFoundPage />} />
       </Routes>
