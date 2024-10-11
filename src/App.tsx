@@ -1,5 +1,10 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+  useLocation,
+} from 'react-router-dom';
 import GlassyUILandingPage from './components/GlassyUILandingPage';
 import GlassyUIComponentsPage from './components/GlassyUIComponentsPage';
 import ButtonDetailsPage from './components/ButtonDetailsPage';
@@ -22,27 +27,130 @@ const App: React.FC = () => {
     <Router>
       <Routes>
         <Route path='/' element={<GlassyUILandingPage />} />
-        <Route path='/components' element={<GlassyUIComponentsPage />} />
-        <Route path='/button-details' element={<ButtonDetailsPage />} />
-        <Route path='/card-details' element={<CardDetailsPage />} />
+        <Route
+          path='/components'
+          element={
+            <Layout>
+              <GlassyUIComponentsPage />
+            </Layout>
+          }
+        />
+        <Route
+          path='/button-details'
+          element={
+            <Layout>
+              <ButtonDetailsPage />
+            </Layout>
+          }
+        />
+        <Route
+          path='/card-details'
+          element={
+            <Layout>
+              <CardDetailsPage />
+            </Layout>
+          }
+        />
         <Route
           path='/progress-bar-details'
-          element={<ProgressBarDetailPage />}
+          element={
+            <Layout>
+              <ProgressBarDetailPage />
+            </Layout>
+          }
         />
-        <Route path='/popup-details' element={<PopupDetailPage />} />
-        <Route path='/input-details' element={<InputDetailPage />} />
-        <Route path='/textarea-details' element={<TextareaDetailPage />} />
-        <Route path='/tooltip-details' element={<TooltipDetailsPage />} />
-        <Route path='/speed-dial-details' element={<SpeedDialDetailsPage />} />
-        <Route path='/modal-details' element={<ModalDetailsPage />} />
-        <Route path='/navigation-details' element={<NavigationDetailsPage />} />
-        <Route path='/generator' element={<GlassMorphismGenrator />} />
-        <Route path='/slider-details' element={<SliderDetailsPage />} />
+        <Route
+          path='/popup-details'
+          element={
+            <Layout>
+              <PopupDetailPage />
+            </Layout>
+          }
+        />
+        <Route
+          path='/input-details'
+          element={
+            <Layout>
+              <InputDetailPage />
+            </Layout>
+          }
+        />
+        <Route
+          path='/textarea-details'
+          element={
+            <Layout>
+              <TextareaDetailPage />
+            </Layout>
+          }
+        />
+        <Route
+          path='/tooltip-details'
+          element={
+            <Layout>
+              <TooltipDetailsPage />
+            </Layout>
+          }
+        />
+        <Route
+          path='/speed-dial-details'
+          element={
+            <Layout>
+              <SpeedDialDetailsPage />
+            </Layout>
+          }
+        />
+        <Route
+          path='/modal-details'
+          element={
+            <Layout>
+              <ModalDetailsPage />
+            </Layout>
+          }
+        />
+        <Route
+          path='/navigation-details'
+          element={
+            <Layout>
+              <NavigationDetailsPage />
+            </Layout>
+          }
+        />
+        <Route
+          path='/generator'
+          element={
+            <Layout>
+              <GlassMorphismGenrator />
+            </Layout>
+          }
+        />
+        <Route
+          path='/slider-details'
+          element={
+            <Layout>
+              <SliderDetailsPage />
+            </Layout>
+          }
+        />
 
-        <Route path='*' element={<NotFoundPage />} />
+        <Route
+          path='*'
+          element={
+            <Layout>
+              <NotFoundPage />
+            </Layout>
+          }
+        />
       </Routes>
-      <Footer />
     </Router>
+  );
+};
+
+const Layout = ({ children }: { children: React.ReactNode }) => {
+  return (
+    <>
+      {children}
+      <Footer />
+    </>
   );
 };
 
