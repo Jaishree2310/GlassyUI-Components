@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+
 import GlassyUILandingPage from './components/GlassyUILandingPage';
 import GlassyUIComponentsPage from './components/GlassyUIComponentsPage';
 import ButtonDetailsPage from './components/ButtonDetailsPage';
@@ -15,8 +15,7 @@ import ModalDetailsPage from './components/ModalDetailsPage';
 import NavigationDetailsPage from './components/NavigationDetailsPage';
 import GlassMorphismGenrator from './components/GlassMorphismGenrator';
 import SliderDetailsPage from './components/SliderDetailsPage';
-import DonationPage from './components/DonationPage';
-import Header from './components/Header';
+
 
 const App: React.FC = () => {
   return (
@@ -24,30 +23,18 @@ const App: React.FC = () => {
       <Header />
       <Routes>
         <Route path='/' element={<GlassyUILandingPage />} />
-        <Route path='/components' element={<GlassyUIComponentsPage />} />
-        <Route path='/button-details' element={<ButtonDetailsPage />} />
-        <Route path='/card-details' element={<CardDetailsPage />} />
-        <Route
-          path='/progress-bar-details'
-          element={<ProgressBarDetailPage />}
-        />
-        <Route path='/popup-details' element={<PopupDetailPage />} />
-        <Route path='/input-details' element={<InputDetailPage />} />
-        <Route path='/textarea-details' element={<TextareaDetailPage />} />
-        <Route path='/tooltip-details' element={<TooltipDetailsPage />} />
-        <Route path='/speed-dial-details' element={<SpeedDialDetailsPage />} />
-        <Route path='/modal-details' element={<ModalDetailsPage />} />
-        <Route path='/navigation-details' element={<NavigationDetailsPage />} />
-        <Route path='/generator' element={<GlassMorphismGenrator />} />
-        <Route path='/slider-details' element={<SliderDetailsPage />} />
 
-        {/*the DonationPage route */}
-        <Route path='/' element={<GlassyUILandingPage />} />
-        <Route path='/donate' element={<DonationPage />} />
-
-        <Route path='*' element={<NotFoundPage />} />
       </Routes>
     </Router>
+  );
+};
+
+const Layout = ({ children }: { children: React.ReactNode }) => {
+  return (
+    <>
+      {children}
+      <Footer />
+    </>
   );
 };
 
