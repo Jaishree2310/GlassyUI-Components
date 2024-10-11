@@ -20,6 +20,7 @@ import {
   X,
   Layout,
   AlignLeft,
+  DollarSign,
 } from "lucide-react";
 import Tooltip from "./Tooltip";
 import SpeedDial from "./SpeedDial";
@@ -119,7 +120,7 @@ const GlassyUIComponentsPage: React.FC = () => {
                   type="range"
                   min="0"
                   max="100"
-                  defaultValue={75} 
+                  defaultValue={75}
                   onChange={(e) => {
                     const value = e.target.value;
                     e.target.style.background = `linear-gradient(90deg, rgba(255, 255, 255, 0.3) ${value}%, rgba(255, 255, 255, 0.1) ${value}%)`;
@@ -350,6 +351,33 @@ const GlassyUIComponentsPage: React.FC = () => {
               </div>
             </ComponentCard>
 
+            <ComponentCard
+              title="Pricing Plans"
+              description="Choose a pricing plan that suits your needs. Affordable and flexible."
+              icon={<DollarSign size={24} />} // Replace with a suitable icon for pricing
+              onClick={() => navigate("/pricing-details")}
+            >
+              <div className="mt-1 mb-4 flex justify-around">
+                <div className="text-center">
+                  <h3 className="text-lg font-semibold">Basic</h3>
+                  <button className={`${getGlassyClasses()} px-4 py-2 mt-2`}>
+                    Select
+                  </button>
+                </div>
+                <div className="text-center">
+                  <h3 className="text-lg font-semibold">Standard</h3>
+                  <button className={`${getGlassyClasses()} px-4 py-2 mt-2`}>
+                    Select
+                  </button>
+                </div>
+                <div className="text-center">
+                  <h3 className="text-lg font-semibold">Premium</h3>
+                  <button className={`${getGlassyClasses()} px-4 py-2 mt-2`}>
+                    Select
+                  </button>
+                </div>
+              </div>
+            </ComponentCard>
 
           </div>
         </main>

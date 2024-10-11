@@ -15,6 +15,7 @@ import ModalDetailsPage from "./components/ModalDetailsPage";
 import NavigationDetailsPage from "./components/NavigationDetailsPage";
 import GlassMorphismGenrator from "./components/GlassMorphismGenrator";
 import SliderDetailsPage from "./components/SliderDetailsPage";
+import PricingDetailPage from "./components/PricingDetailPage";
 
 const App: React.FC = () => {
   return (
@@ -36,7 +37,8 @@ const App: React.FC = () => {
         <Route path="/modal-details" element={<ModalDetailsPage />} />
         <Route path="/navigation-details" element={<NavigationDetailsPage />} />
         <Route path="/generator" element={<GlassMorphismGenrator />} />
-        <Route path="/slider-details" element={<SliderDetailsPage/>} />
+        <Route path="/slider-details" element={<SliderDetailsPage />} />
+        <Route path="/pricing-details" element={<PricingDetailPage />} />
 
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
