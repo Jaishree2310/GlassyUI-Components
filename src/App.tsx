@@ -17,6 +17,7 @@ import GlassMorphismGenrator from './components/GlassMorphismGenrator';
 import SliderDetailsPage from './components/SliderDetailsPage';
 import DonationPage from './components/DonationPage';
 import Header from './components/Header';
+import BackToTopDetailsPage from './components/BackToTopDetailsPage';
 
 const App: React.FC = () => {
   return (
@@ -40,6 +41,7 @@ const App: React.FC = () => {
         <Route path='/navigation-details' element={<NavigationDetailsPage />} />
         <Route path='/generator' element={<GlassMorphismGenrator />} />
         <Route path='/slider-details' element={<SliderDetailsPage />} />
+        <Route path='/back-to-top-details' element={<BackToTopDetailsPage />} />
 
         {/*the DonationPage route */}
         <Route path='/' element={<GlassyUILandingPage />} />
