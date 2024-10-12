@@ -1,9 +1,15 @@
-import React from 'react';
-import { Star } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { Star, Code, Package, Zap } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import './GlassyUILandingPage.css'; // Create this CSS file in the same directory
 
 const GlassyUILandingPage: React.FC = () => {
+  const [isVisible, setIsVisible] = useState(false);
   const githubRepoUrl = 'https://github.com/Jaishree2310/GlassyUI-Components';
+
+  useEffect(() => {
+    setIsVisible(true);
+  }, []);
 
   return (
     <div className='min-h-screen flex flex-col items-center justify-center p-4 font-mono relative overflow-hidden bg-gradient-to-br from-gray-800 via-gray-900 to-black'>
@@ -20,7 +26,9 @@ const GlassyUILandingPage: React.FC = () => {
 
       <div className='relative z-10 w-full max-w-4xl'>
         <header className='w-full flex justify-between items-center mb-8'>
-          <div className='text-xl font-bold text-white'>GlassyUI</div>
+          <div className='text-2xl font-bold text-white'>
+            <span className='text-blue-400'>Glassy</span>UI
+          </div>
           <a
             href={githubRepoUrl}
             target='_blank'
@@ -32,14 +40,37 @@ const GlassyUILandingPage: React.FC = () => {
           </a>
         </header>
 
-        <main className='fade-in text-center p-8 rounded-xl backdrop-filter backdrop-blur-lg bg-white bg-opacity-10 shadow-lg border border-white border-opacity-20 relative transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-2xl hover:bg-opacity-20'>
-          <h1 className='text-6xl font-bold mb-2 text-white'>Glassy UI</h1>
-          <p className='text-xl mb-6 text-white'>
-            A sleek glassmorphism UI library.
+        <main
+          className={`fade-in text-center p-12 rounded-xl backdrop-filter backdrop-blur-lg bg-white bg-opacity-10 shadow-lg border border-white border-opacity-20 relative transition-all duration-700 ease-in-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
+        >
+          <h1 className='text-7xl font-bold mb-4 text-white'>
+            <span className='animated-glossy-text'>Glassy UI</span>
+          </h1>
+          <p className='text-2xl mb-8 text-white'>
+            A sleek glassmorphism UI library for modern web applications.
           </p>
-          <div className='flex justify-center space-x-4'>
+
+          <div className='grid grid-cols-1 md:grid-cols-3 gap-6 mb-10'>
+            <FeatureCard
+              icon={<Code size={24} />}
+              title='Easy to Use'
+              description='Simple API for quick integration'
+            />
+            <FeatureCard
+              icon={<Package size={24} />}
+              title='Customizable'
+              description='Tailor components to your needs'
+            />
+            <FeatureCard
+              icon={<Zap size={24} />}
+              title='Performant'
+              description='Optimized for smooth interactions'
+            />
+          </div>
+
+          <div className='flex justify-center space-x-6'>
             <Link to='/components'>
-              <GlassmorphismButton>Explore components</GlassmorphismButton>
+              <GlassmorphismButton>Explore Components</GlassmorphismButton>
             </Link>
             <Link to='/contributors'>
               <GlassmorphismButton variant='secondary'>
@@ -53,7 +84,7 @@ const GlassyUILandingPage: React.FC = () => {
               target='_blank'
               rel='noopener noreferrer'
             >
-              GitHub
+              GitHub Repository
             </GlassmorphismButton>
           </div>
         </main>
@@ -61,6 +92,18 @@ const GlassyUILandingPage: React.FC = () => {
     </div>
   );
 };
+
+const FeatureCard: React.FC<{
+  icon: React.ReactNode;
+  title: string;
+  description: string;
+}> = ({ icon, title, description }) => (
+  <div className='p-6 rounded-lg backdrop-filter backdrop-blur-sm bg-white bg-opacity-5 border border-white border-opacity-10 transition-all duration-300 hover:bg-opacity-10 hover:scale-105'>
+    <div className='text-blue-400 mb-4'>{icon}</div>
+    <h3 className='text-xl font-semibold text-white mb-2'>{title}</h3>
+    <p className='text-gray-300'>{description}</p>
+  </div>
+);
 
 const GlassmorphismButton: React.FC<{
   children: React.ReactNode;
@@ -76,8 +119,7 @@ const GlassmorphismButton: React.FC<{
     transition-all duration-300 ease-in-out
     hover:bg-opacity-30 hover:shadow-lg hover:scale-105
     focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-50
-    bg-indigo-600 hover:bg-indigo-700 text-white
-    ${variant === 'primary' ? 'bg-blue-500' : 'bg-purple-500'}
+    ${variant === 'primary' ? 'bg-blue-500 hover:bg-blue-600' : 'bg-purple-500 hover:bg-purple-600'}
   `;
 
   return React.createElement(as, { className, ...props }, children);

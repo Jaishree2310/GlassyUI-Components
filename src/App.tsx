@@ -18,6 +18,7 @@ import SliderDetailsPage from './components/SliderDetailsPage';
 import ContributorsPage from './components/ContributorsPage';
 import DonationPage from './components/DonationPage';
 import Header from './components/Header';
+import AuthenticationCard from './components/AuthenticationCards';
 
 const App: React.FC = () => {
   return (
@@ -42,6 +43,7 @@ const App: React.FC = () => {
         <Route path='/generator' element={<GlassMorphismGenrator />} />
         <Route path='/slider-details' element={<SliderDetailsPage />} />
         <Route path='/contributors' element={<ContributorsPage />} />
+        <Route path='/authentication-card' element={<AuthenticationCard />} />
 
         {/*the DonationPage route */}
         <Route path='/' element={<GlassyUILandingPage />} />
