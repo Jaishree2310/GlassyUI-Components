@@ -18,7 +18,9 @@ import SliderDetailsPage from './components/SliderDetailsPage';
 import DonationPage from './components/DonationPage';
 import Header from './components/Header';
 import BackToTopDetailsPage from './components/BackToTopDetailsPage';
+import DropdowndetailsPage from './components/DropdowndetailsPage';
 import AuthenticationCard from './components/AuthenticationCards';
+import ToastPage from './components/ToastPage';
 
 const App: React.FC = () => {
   return (
@@ -27,6 +29,7 @@ const App: React.FC = () => {
       <Routes>
         <Route path='/' element={<GlassyUILandingPage />} />
         <Route path='/components' element={<GlassyUIComponentsPage />} />
+        <Route path='/toast-page' element={<ToastPage />} />
         <Route path='/button-details' element={<ButtonDetailsPage />} />
         <Route path='/card-details' element={<CardDetailsPage />} />
         <Route
@@ -43,6 +46,7 @@ const App: React.FC = () => {
         <Route path='/generator' element={<GlassMorphismGenrator />} />
         <Route path='/slider-details' element={<SliderDetailsPage />} />
         <Route path='/back-to-top-details' element={<BackToTopDetailsPage />} />
+        <Route path='/dropdown-details' element={<DropdowndetailsPage />} />
         <Route path='/authentication-card' element={<AuthenticationCard />} />
 
         {/*the DonationPage route */}

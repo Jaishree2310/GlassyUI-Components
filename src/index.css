@@ -25,14 +25,55 @@ code {
 }
 /* Fade In Effect */
 @keyframes fade {
-  from{
+  from {
     transform: translateY(50px);
     opacity: 0;
   }
 }
 
-.fade-in{
+.fade-in {
   animation: fade 350ms ease-out;
+}
+
+/* Toast Animations */
+.toast {
+  animation: toast-start cubic-bezier(0.18, 0.89, 0.32, 1.28) 800ms forwards;
+  opacity: 1;
+  overflow: hidden;
+  max-height: 400px;
+  opacity: 1;
+  transform: translateX(0);
+}
+.hide-toast {
+  animation: toast-end cubic-bezier(0.18, 0.89, 0.32, 1.28) 600ms forwards;
+}
+@keyframes toast-start {
+  from {
+    opacity: 0;
+    transform: translateX(100px);
+    max-height: 0;
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+    max-height: 350px;
+  }
+}
+@keyframes toast-end {
+  50% {
+    opacity: 0;
+    transform: translateX(100px);
+  }
+  51% {
+    opacity: 0;
+    transform: translateX(100px);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(100px);
+    max-height: 0;
+    padding: 0;
+  }
 }
 
 @keyframes shine {
@@ -82,13 +123,23 @@ code {
 }
 
 @keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-20px); }
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
 }
 
 @keyframes float-slow {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
 }
 
 .animate-float {
