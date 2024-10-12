@@ -105,10 +105,22 @@ const GlassyUIComponentsPage: React.FC = () => {
 
           <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8'>
             <ComponentCard
+              title='Toast'
+              description='Glassmorphic Toast Component. Click the button below to try it out!'
+              icon={<MessageSquare size={24} />}
+              status='New'
+              onClick={() => navigate('/toast-page/')}
+            >
+              <button
+                className={`${getGlassyClasses()} px-4 py-2 hover:bg-white/20`}
+              >
+                Try out!
+              </button>
+            </ComponentCard>
+            <ComponentCard
               title='Sliders'
               description='Elegant sliders with glassmorphic styling.'
               icon={<Sliders size={24} />}
-              status='New'
               onClick={() => navigate('/slider-details')}
             >
               <div className='flex flex-col space-y-4 mt-4'>
