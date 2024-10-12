@@ -18,6 +18,7 @@ import SliderDetailsPage from './components/SliderDetailsPage';
 import DonationPage from './components/DonationPage';
 import Header from './components/Header';
 import AuthenticationCard from './components/AuthenticationCards';
+import ToastPage from './components/ToastPage';
 
 const App: React.FC = () => {
   return (
@@ -26,6 +27,7 @@ const App: React.FC = () => {
       <Routes>
         <Route path='/' element={<GlassyUILandingPage />} />
         <Route path='/components' element={<GlassyUIComponentsPage />} />
+        <Route path='/toast-page' element={<ToastPage />} />
         <Route path='/button-details' element={<ButtonDetailsPage />} />
         <Route path='/card-details' element={<CardDetailsPage />} />
         <Route
