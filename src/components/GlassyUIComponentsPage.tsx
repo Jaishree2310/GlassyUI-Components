@@ -393,6 +393,20 @@ const GlassyUIComponentsPage: React.FC = () => {
               </div>
             </ComponentCard>
 
+            <ComponentCard
+              title='Authentication Cards'
+              description='Versatile content containers with a frosted glass effect.'
+              icon={<Layout size={24} />}
+              onClick={() => navigate('/authentication-card')}>
+              <div className='mt-1 mb-4 flex justify-around'>
+                <button className={`${getGlassyClasses()} px-4 py-2`}>
+                  Login
+                </button>
+                <button className={`${getGlassyClasses()} px-4 py-2`}>
+                  Sign Up
+                </button>
+              </div>
+            </ComponentCard>
           </div>
         </main>
       </div>
