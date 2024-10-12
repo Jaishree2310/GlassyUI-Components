@@ -16,13 +16,13 @@ import {
   X,
   Layout,
   AlignLeft,
+  ArrowUp,
   DollarSign,
-} from "lucide-react";
-import Tooltip from "./Tooltip";
-import SpeedDial from "./SpeedDial";
-import BackToTopButton from "./BackToTop";
-import { HiOutlineWrenchScrewdriver } from "react-icons/hi2";
-
+} from 'lucide-react';
+import Tooltip from './Tooltip';
+import SpeedDial from './SpeedDial';
+import BackToTopButton from './BackToTop';
+import { HiOutlineWrenchScrewdriver } from 'react-icons/hi2';
 
 const GlassyUIComponentsPage: React.FC = () => {
   const navigate = useNavigate();
@@ -115,12 +115,11 @@ const GlassyUIComponentsPage: React.FC = () => {
             >
               <div className='flex flex-col space-y-4 mt-4'>
                 <input
-                  type="range"
-                  min="0"
-                  max="100"
+                  type='range'
+                  min='0'
+                  max='100'
                   defaultValue={75}
-                  onChange={(e) => {
-
+                  onChange={e => {
                     const value = e.target.value;
                     e.target.style.background = `linear-gradient(90deg, rgba(255, 255, 255, 0.3) ${value}%, rgba(255, 255, 255, 0.1) ${value}%)`;
                   }}
@@ -352,9 +351,25 @@ const GlassyUIComponentsPage: React.FC = () => {
             </ComponentCard>
 
             <ComponentCard
+              title='Back to Top'
+              description='A button that scrolls the page back to the top, improving user navigation.'
+              icon={<ArrowUp size={24} />}
+              onClick={() => navigate('/back-to-top-details')}
+            >
+              <div className='mt-1 mb-4 flex justify-around'>
+                <button
+                  onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                  className={`${getGlassyClasses()} px-4 py-2`}
+                >
+                  Back to Top
+                </button>
+              </div>
+            </ComponentCard>
+
+            <ComponentCard
               title="Pricing Plans"
               description="Choose a pricing plan that suits your needs. Affordable and flexible."
-              icon={<DollarSign size={24} />} // Replace with a suitable icon for pricing
+              icon={<DollarSign size={24} />}
               onClick={() => navigate("/pricing-details")}
             >
               <div className="mt-1 mb-4 flex justify-around">
@@ -376,6 +391,22 @@ const GlassyUIComponentsPage: React.FC = () => {
                     Select
                   </button>
                 </div>
+              </div>
+            </ComponentCard>
+
+            <ComponentCard
+              title='Authentication Cards'
+              description='Versatile content containers with a frosted glass effect.'
+              icon={<Layout size={24} />}
+              onClick={() => navigate('/authentication-card')}
+            >
+              <div className='mt-1 mb-4 flex justify-around'>
+                <button className={`${getGlassyClasses()} px-4 py-2`}>
+                  Login
+                </button>
+                <button className={`${getGlassyClasses()} px-4 py-2`}>
+                  Sign Up
+                </button>
               </div>
             </ComponentCard>
           </div>
