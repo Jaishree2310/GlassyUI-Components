@@ -17,6 +17,16 @@ const Header: React.FC = () => {
         </li>
         <li style={liStyle}>
           <Link
+            to='/login'
+            style={linkStyle}
+            onMouseEnter={e => (e.currentTarget.style.color = '#fde047')} // Change to yellow on hover
+            onMouseLeave={e => (e.currentTarget.style.color = 'white')} // Change back to white when not hovered
+          >
+            Login
+          </Link>
+        </li>
+        <li style={liStyle}>
+          <Link
             to='/donate'
             style={linkStyle}
             onMouseEnter={e => (e.currentTarget.style.color = '#fde047')} // Change to yellow on hover
