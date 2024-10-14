@@ -1,31 +1,45 @@
-import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import GlassyUILandingPage from './components/GlassyUILandingPage';
-import GlassyUIComponentsPage from './components/GlassyUIComponentsPage';
-import ButtonDetailsPage from './components/ButtonDetailsPage';
-import CardDetailsPage from './components/CardDetailsPage';
-import ProgressBarDetailPage from './components/ProgressBarDetailPage';
-import PopupDetailPage from './components/PopupDetailPage';
-import InputDetailPage from './components/InputDetailPage';
-import TextareaDetailPage from './components/TextareaDetailPage';
-import NotFoundPage from './components/NotFoundPage';
-import TooltipDetailsPage from './components/TooltipDetailsPage';
-import SpeedDialDetailsPage from './components/SpeedDialDetailsPage';
-import ModalDetailsPage from './components/ModalDetailsPage';
-import NavigationDetailsPage from './components/NavigationDetailsPage';
-import GlassMorphismGenrator from './components/GlassMorphismGenrator';
-import SliderDetailsPage from './components/SliderDetailsPage';
-import ContributorsPage from './components/ContributorsPage';
-import DonationPage from './components/DonationPage';
-import AboutUsPage from './components/AboutUsPage';
-import Header from './components/Header';
-import BackToTopDetailsPage from './components/BackToTopDetailsPage';
-import DropdowndetailsPage from './components/DropdowndetailsPage';
-import AuthenticationCard from './components/AuthenticationCards';
-import ToastPage from './components/ToastPage';
-import AccordionDetails from './components/AccordionDetails';
+
+
+import React, { useEffect } from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import GlassyUILandingPage from "./components/GlassyUILandingPage";
+import GlassyUIComponentsPage from "./components/GlassyUIComponentsPage";
+import ButtonDetailsPage from "./components/ButtonDetailsPage";
+import CardDetailsPage from "./components/CardDetailsPage";
+import ProgressBarDetailPage from "./components/ProgressBarDetailPage";
+import PopupDetailPage from "./components/PopupDetailPage";
+import InputDetailPage from "./components/InputDetailPage";
+import TextareaDetailPage from "./components/TextareaDetailPage";
+import NotFoundPage from "./components/NotFoundPage";
+import TooltipDetailsPage from "./components/TooltipDetailsPage";
+import SpeedDialDetailsPage from "./components/SpeedDialDetailsPage";
+import ModalDetailsPage from "./components/ModalDetailsPage";
+import './index.css';  // Import custom CSS
+
 
 const App: React.FC = () => {
+  // Function to handle mouse movement and create the fairy dust effect
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      const dot = document.createElement("div");
+      dot.className = "fairy-dust";
+      document.body.appendChild(dot);
+      
+      dot.style.left = `${e.pageX}px`;
+      dot.style.top = `${e.pageY}px`;
+
+      setTimeout(() => {
+        dot.remove();
+      }, 1000);  // Remove the dot after 1 second
+    };
+
+    window.addEventListener("mousemove", handleMouseMove);
+
+    return () => {
+      window.removeEventListener("mousemove", handleMouseMove);
+    };
+  }, []);
+
   return (
     <Router>
       <Header />
