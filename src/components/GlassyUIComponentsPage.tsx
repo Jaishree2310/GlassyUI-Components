@@ -46,7 +46,6 @@ const GlassyUIComponentsPage: React.FC = () => {
     setIsPopupOpen2(false); // Close the dropdown after selection
   };
 
-
   return (
     <div className='min-h-screen font-sans bg-gradient-to-br from-gray-800 via-gray-900 to-black text-white'>
       <BackToTopButton />
@@ -375,31 +374,32 @@ const GlassyUIComponentsPage: React.FC = () => {
               icon={<AlignLeft size={24} />}
               onClick={() => navigate('/dropdown-details')}
             >
-              <div className="relative p-4 rounded-lg shadow-lg bg-white/10 pt-0">
+              <div className='relative p-4 rounded-lg shadow-lg bg-white/10 pt-0'>
                 <div
-                  className="flex items-center mt-4 cursor-pointer rounded-3xl"
-                  onClick={(e) => {
+                  className='flex items-center mt-4 cursor-pointer rounded-3xl'
+                  onClick={e => {
                     e.stopPropagation();
-                    setIsPopupOpen2((prev) => !prev); // Toggle dropdown visibility
+                    setIsPopupOpen2(prev => !prev); // Toggle dropdown visibility
                   }}
                 >
-                  <span className="w-full px-4 py-2 mt-2 bg-transparent border rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
+                  <span className='w-full px-4 py-2 mt-2 bg-transparent border rounded focus:outline-none focus:ring-2 focus:ring-blue-500'>
                     {selectedOption || 'Select an option'}
                   </span>
                 </div>
 
                 {isPopupOpen2 && (
-                  <div className="absolute z-10 mt-1 w-full bg-gray-800 text-white rounded shadow-lg">
-                    {['options1', 'options2', 'options3'].map((option, index) => (
-
-                      <div
-                        key={option}
-                        className="px-4 py-2 hover:bg-gray-700 cursor-pointer"
-                        onClick={() => handleOptionSelect(option)}
-                      >
-                        {option}
-                      </div>
-                    ))}
+                  <div className='absolute z-10 mt-1 w-full bg-gray-800 text-white rounded shadow-lg'>
+                    {['options1', 'options2', 'options3'].map(
+                      (option, index) => (
+                        <div
+                          key={option}
+                          className='px-4 py-2 hover:bg-gray-700 cursor-pointer'
+                          onClick={() => handleOptionSelect(option)}
+                        >
+                          {option}
+                        </div>
+                      ),
+                    )}
                   </div>
                 )}
               </div>
@@ -409,7 +409,8 @@ const GlassyUIComponentsPage: React.FC = () => {
               title='Authentication Cards'
               description='Versatile content containers with a frosted glass effect.'
               icon={<Layout size={24} />}
-              onClick={() => navigate('/authentication-card')}>
+              onClick={() => navigate('/authentication-card')}
+            >
               <div className='mt-1 mb-4 flex justify-around'>
                 <button className={`${getGlassyClasses()} px-4 py-2`}>
                   Login
