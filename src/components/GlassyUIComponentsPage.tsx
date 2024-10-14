@@ -17,6 +17,10 @@ import {
   Layout,
   AlignLeft,
   ArrowUp,
+<<<<<<< HEAD
+  DollarSign,
+=======
+>>>>>>> main
 } from 'lucide-react';
 import Tooltip from './Tooltip';
 import SpeedDial from './SpeedDial';
@@ -386,6 +390,34 @@ const GlassyUIComponentsPage: React.FC = () => {
                 </button>
               </div>
             </ComponentCard>
+
+            <ComponentCard
+              title="Pricing Plans"
+              description="Choose a pricing plan that suits your needs. Affordable and flexible."
+              icon={<DollarSign size={24} />}
+              onClick={() => navigate("/pricing-details")}
+            >
+              <div className="mt-1 mb-4 flex justify-around">
+                <div className="text-center">
+                  <h3 className="text-lg font-semibold">Basic</h3>
+                  <button className={`${getGlassyClasses()} px-4 py-2 mt-2`}>
+                    Select
+                  </button>
+                </div>
+                <div className="text-center">
+                  <h3 className="text-lg font-semibold">Standard</h3>
+                  <button className={`${getGlassyClasses()} px-4 py-2 mt-2`}>
+                    Select
+                  </button>
+                </div>
+                <div className="text-center">
+                  <h3 className="text-lg font-semibold">Premium</h3>
+                  <button className={`${getGlassyClasses()} px-4 py-2 mt-2`}>
+                    Select
+                  </button>
+                </div>
+              </div>
+            </ComponentCard>
             <ComponentCard
               title='Dropdown Menu'
               description='Select an option from the dropdown menu.'
@@ -438,20 +470,20 @@ const GlassyUIComponentsPage: React.FC = () => {
                 </button>
               </div>
             </ComponentCard>
-            <ComponentCard 
+            <ComponentCard
               title='Accordion'
               description='Accordion component with glassmorphic styling.'
               icon={<Layout size={24} />}
               onClick={() => navigate('/accordion-details')}>
-                  <Accordion
-                    title='Accordion Title 1'
-                    content='This is the content of the first accordion.'
-                  />
-                  <Accordion
-                    title='Accordion Title 2'
-                    content='This is the content of the second accordion.'
-                  />
-              </ComponentCard>
+              <Accordion
+                title='Accordion Title 1'
+                content='This is the content of the first accordion.'
+              />
+              <Accordion
+                title='Accordion Title 2'
+                content='This is the content of the second accordion.'
+              />
+            </ComponentCard>
           </div>
         </main>
       </div>

@@ -1,3 +1,5 @@
+
+import PricingDetailPage from "./components/PricingDetailPage";
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import GlassyUILandingPage from './components/GlassyUILandingPage';
@@ -39,6 +41,7 @@ const App: React.FC = () => {
           path='/progress-bar-details'
           element={<ProgressBarDetailPage />}
         />
+        <Route path="/pricing-details" element={<PricingDetailPage />} />
         <Route path='/popup-details' element={<PopupDetailPage />} />
         <Route path='/input-details' element={<InputDetailPage />} />
         <Route path='/textarea-details' element={<TextareaDetailPage />} />
@@ -55,11 +58,10 @@ const App: React.FC = () => {
 
         <Route path='/contributors' element={<ContributorsPage />} />
 
-        {/*the DonationPage route */}
         <Route path='/' element={<GlassyUILandingPage />} />
         <Route path='/donate' element={<DonationPage />} />
 
-        {/* the AboutUs Page route */}
+
         <Route path='/about' element={<AboutUsPage />} />
 
         <Route path='*' element={<NotFoundPage />} />
