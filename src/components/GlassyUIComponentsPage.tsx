@@ -17,17 +17,13 @@ import {
   Layout,
   AlignLeft,
   ArrowUp,
-<<<<<<< HEAD
   DollarSign,
-=======
->>>>>>> main
 } from 'lucide-react';
 import Tooltip from './Tooltip';
 import SpeedDial from './SpeedDial';
 import BackToTopButton from './BackToTop';
 import { HiOutlineWrenchScrewdriver } from 'react-icons/hi2';
 import Accordion from './Accordion';
-
 
 const GlassyUIComponentsPage: React.FC = () => {
   const navigate = useNavigate();
@@ -383,7 +379,9 @@ const GlassyUIComponentsPage: React.FC = () => {
             >
               <div className='mt-1 mb-4 flex justify-around'>
                 <button
-                  onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                  onClick={() =>
+                    window.scrollTo({ top: 0, behavior: 'smooth' })
+                  }
                   className={`${getGlassyClasses()} px-4 py-2`}
                 >
                   Back to Top
@@ -392,26 +390,26 @@ const GlassyUIComponentsPage: React.FC = () => {
             </ComponentCard>
 
             <ComponentCard
-              title="Pricing Plans"
-              description="Choose a pricing plan that suits your needs. Affordable and flexible."
+              title='Pricing Plans'
+              description='Choose a pricing plan that suits your needs. Affordable and flexible.'
               icon={<DollarSign size={24} />}
-              onClick={() => navigate("/pricing-details")}
+              onClick={() => navigate('/pricing-details')}
             >
-              <div className="mt-1 mb-4 flex justify-around">
-                <div className="text-center">
-                  <h3 className="text-lg font-semibold">Basic</h3>
+              <div className='mt-1 mb-4 flex justify-around'>
+                <div className='text-center'>
+                  <h3 className='text-lg font-semibold'>Basic</h3>
                   <button className={`${getGlassyClasses()} px-4 py-2 mt-2`}>
                     Select
                   </button>
                 </div>
-                <div className="text-center">
-                  <h3 className="text-lg font-semibold">Standard</h3>
+                <div className='text-center'>
+                  <h3 className='text-lg font-semibold'>Standard</h3>
                   <button className={`${getGlassyClasses()} px-4 py-2 mt-2`}>
                     Select
                   </button>
                 </div>
-                <div className="text-center">
-                  <h3 className="text-lg font-semibold">Premium</h3>
+                <div className='text-center'>
+                  <h3 className='text-lg font-semibold'>Premium</h3>
                   <button className={`${getGlassyClasses()} px-4 py-2 mt-2`}>
                     Select
                   </button>
@@ -474,7 +472,8 @@ const GlassyUIComponentsPage: React.FC = () => {
               title='Accordion'
               description='Accordion component with glassmorphic styling.'
               icon={<Layout size={24} />}
-              onClick={() => navigate('/accordion-details')}>
+              onClick={() => navigate('/accordion-details')}
+            >
               <Accordion
                 title='Accordion Title 1'
                 content='This is the content of the first accordion.'
@@ -483,6 +482,44 @@ const GlassyUIComponentsPage: React.FC = () => {
                 title='Accordion Title 2'
                 content='This is the content of the second accordion.'
               />
+            </ComponentCard>
+            <ComponentCard
+              title='Testimonials'
+              description='What our clients say about us.'
+              icon={<Layout size={24} />}
+              onClick={() => navigate('/testimonial-details')}
+            >
+              <div className='lg:w-full max-sm:mx-2 max-sm:px-0  w-full testimonialBox  rounded-3xl'>
+                <div className='h-full bg-gray-600 text-white z-30 bg-opacity-40 p-8 max-sm:py-7 max-sm:px-4 rounded-3xl py-4'>
+                  <svg
+                    xmlns='http://www.w3.org/2000/svg'
+                    fill='currentColor'
+                    className='block w-5 h-5  mb-4 text-red-500'
+                    viewBox='0 0 975.036 975.036'
+                  >
+                    <path d='M925.036 57.197h-304c-27.6 0-50 22.4-50 50v304c0 27.601 22.4 50 50 50h145.5c-1.9 79.601-20.4 143.3-55.4 191.2-27.6 37.8-69.399 69.1-125.3 93.8-25.7 11.3-36.8 41.7-24.8 67.101l36 76c11.6 24.399 40.3 35.1 65.1 24.399 66.2-28.6 122.101-64.8 167.7-108.8 55.601-53.7 93.7-114.3 114.3-181.9 20.601-67.6 30.9-159.8 30.9-276.8v-239c0-27.599-22.401-50-50-50zM106.036 913.497c65.4-28.5 121-64.699 166.9-108.6 56.1-53.7 94.4-114.1 115-181.2 20.6-67.1 30.899-159.6 30.899-277.5v-239c0-27.6-22.399-50-50-50h-304c-27.6 0-50 22.4-50 50v304c0 27.601 22.4 50 50 50h145.5c-1.9 79.601-20.4 143.3-55.4 191.2-27.6 37.8-69.4 69.1-125.3 93.8-25.7 11.3-36.8 41.7-24.8 67.101l35.9 75.8c11.601 24.399 40.501 35.2 65.301 24.399z'></path>
+                  </svg>
+                  <p className='leading-relaxed mb-4'>
+                    GlassyUI&apos;s components are not only beautiful but also
+                    functional. A perfect blend of style and usability!
+                  </p>
+                  <a className='inline-flex items-center'>
+                    <img
+                      alt='testimonial'
+                      src='https://media.licdn.com/dms/image/v2/D4D03AQExi2L1iZoycg/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1713621091204?e=1734566400&v=beta&t=V765paSmxipOO47auCPoBLzdgFKnnT3dEiYdh0Sp-Oo'
+                      className='w-12 h-12 rounded-full flex-shrink-0 object-cover object-center'
+                    />
+                    <span className='flex-grow flex flex-col pl-4'>
+                      <span className='title-font font-medium text-white'>
+                        Sawan Kushwah
+                      </span>
+                      <span className='text-gray-500 text-sm'>
+                        Third-year Student
+                      </span>
+                    </span>
+                  </a>
+                </div>
+              </div>
             </ComponentCard>
           </div>
         </main>
