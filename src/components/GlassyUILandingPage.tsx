@@ -92,15 +92,12 @@ const GlassyUILandingPage: React.FC = () => {
               description='Optimized for smooth interactions'
             />
           </div>
-
-          <div className='flex justify-center space-x-6'>
+          <div className='flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-6'>
             <Link to='/components'>
               <GlassmorphismButton>Explore Components</GlassmorphismButton>
             </Link>
             <Link to='/contributors'>
-              <GlassmorphismButton variant='secondary'>
-                Our Contributors
-              </GlassmorphismButton>
+              <GlassmorphismButton variant='secondary'>Our Contributors</GlassmorphismButton>
             </Link>
             <GlassmorphismButton
               variant='secondary'
@@ -129,7 +126,6 @@ const FeatureCard: React.FC<{
     <p className='text-gray-300'>{description}</p>
   </div>
 );
-
 const GlassmorphismButton: React.FC<{
   children: React.ReactNode;
   variant?: 'primary' | 'secondary';
