@@ -1,4 +1,5 @@
 
+
 import React, { useEffect } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import GlassyUILandingPage from "./components/GlassyUILandingPage";
@@ -14,6 +15,7 @@ import TooltipDetailsPage from "./components/TooltipDetailsPage";
 import SpeedDialDetailsPage from "./components/SpeedDialDetailsPage";
 import ModalDetailsPage from "./components/ModalDetailsPage";
 import './index.css';  // Import custom CSS
+
 
 const App: React.FC = () => {
   // Function to handle mouse movement and create the fairy dust effect
@@ -44,6 +46,7 @@ const App: React.FC = () => {
       <Routes>
         <Route path='/' element={<GlassyUILandingPage />} />
         <Route path='/components' element={<GlassyUIComponentsPage />} />
+        <Route path='/toast-page' element={<ToastPage />} />
         <Route path='/button-details' element={<ButtonDetailsPage />} />
         <Route path='/card-details' element={<CardDetailsPage />} />
         <Route
@@ -59,10 +62,19 @@ const App: React.FC = () => {
         <Route path='/navigation-details' element={<NavigationDetailsPage />} />
         <Route path='/generator' element={<GlassMorphismGenrator />} />
         <Route path='/slider-details' element={<SliderDetailsPage />} />
+        <Route path='/back-to-top-details' element={<BackToTopDetailsPage />} />
+        <Route path='/dropdown-details' element={<DropdowndetailsPage />} />
+        <Route path='/authentication-card' element={<AuthenticationCard />} />
+        <Route path="/accordion-details" element={<AccordionDetails />} />
+
+        <Route path='/contributors' element={<ContributorsPage />} />
 
         {/*the DonationPage route */}
         <Route path='/' element={<GlassyUILandingPage />} />
         <Route path='/donate' element={<DonationPage />} />
+
+        {/* the AboutUs Page route */}
+        <Route path='/about' element={<AboutUsPage />} />
 
         <Route path='*' element={<NotFoundPage />} />
       </Routes>
