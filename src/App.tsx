@@ -17,6 +17,7 @@ import GlassMorphismGenrator from './components/GlassMorphismGenrator';
 import SliderDetailsPage from './components/SliderDetailsPage';
 import ContributorsPage from './components/ContributorsPage';
 import DonationPage from './components/DonationPage';
+import AboutUsPage from './components/AboutUsPage';
 import Header from './components/Header';
 import DropdowndetailsPage from './components/DropdowndetailsPage';
 import AuthenticationCard from './components/AuthenticationCards';
@@ -55,6 +56,9 @@ const App: React.FC = () => {
         {/*the DonationPage route */}
         <Route path='/' element={<GlassyUILandingPage />} />
         <Route path='/donate' element={<DonationPage />} />
+
+        {/* the AboutUs Page route */}
+        <Route path='/about' element={<AboutUsPage />} />
 
         <Route path='*' element={<NotFoundPage />} />
       </Routes>
