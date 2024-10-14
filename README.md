@@ -120,6 +120,19 @@ git push origin my-feature-branch
 
 -If more than 1 week issue is not resolved then it will be assigned to someone else.
 
+## Our Contributors
+
+- We truly appreciate your incredible contributions to this project! Your dedication and hard work are vital to its continued growth and success. If you’ve found value in it, don’t forget to show your support by giving our repository a star! ⭐
+
+
+<div align="center">
+  <a href="https://github.com/Jaishree2310/GlassyUI-Components">
+    <img src="https://contrib.rocks/image?repo=Jaishree2310/GlassyUI-Components&&max=1000&&cachebust=1" />
+  </a>
+</div>
+
+---
+
 ## ⭐ Give it a Star!
 
 If you enjoy using GlassyUI-Components and find it helpful, **please give it a star**! Your support encourages further development and improvement.
