@@ -161,7 +161,7 @@ const TestimonialDetails: React.FC = () => {
                       Ayush Sharma
                     </span>
                     <span className='text-gray-500 text-sm'>
-                      Third-year Student
+                      Second-year Student
                     </span>
                   </span>
                 </a>
