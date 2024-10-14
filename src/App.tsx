@@ -19,6 +19,7 @@ import ContributorsPage from './components/ContributorsPage';
 import DonationPage from './components/DonationPage';
 import AboutUsPage from './components/AboutUsPage';
 import Header from './components/Header';
+import BackToTopDetailsPage from './components/BackToTopDetailsPage';
 import DropdowndetailsPage from './components/DropdowndetailsPage';
 import AuthenticationCard from './components/AuthenticationCards';
 import ToastPage from './components/ToastPage';
@@ -47,6 +48,7 @@ const App: React.FC = () => {
         <Route path='/navigation-details' element={<NavigationDetailsPage />} />
         <Route path='/generator' element={<GlassMorphismGenrator />} />
         <Route path='/slider-details' element={<SliderDetailsPage />} />
+        <Route path='/back-to-top-details' element={<BackToTopDetailsPage />} />
         <Route path='/dropdown-details' element={<DropdowndetailsPage />} />
         <Route path='/authentication-card' element={<AuthenticationCard />} />
         <Route path="/accordion-details" element={<AccordionDetails />} />

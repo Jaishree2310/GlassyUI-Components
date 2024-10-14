@@ -16,6 +16,7 @@ import {
   X,
   Layout,
   AlignLeft,
+  ArrowUp,
 } from 'lucide-react';
 import Tooltip from './Tooltip';
 import SpeedDial from './SpeedDial';
@@ -370,6 +371,21 @@ const GlassyUIComponentsPage: React.FC = () => {
               </div>
             </ComponentCard>
 
+            <ComponentCard
+              title='Back to Top'
+              description='A button that scrolls the page back to the top, improving user navigation.'
+              icon={<ArrowUp size={24} />}
+              onClick={() => navigate('/back-to-top-details')}
+            >
+              <div className='mt-1 mb-4 flex justify-around'>
+                <button
+                  onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                  className={`${getGlassyClasses()} px-4 py-2`}
+                >
+                  Back to Top
+                </button>
+              </div>
+            </ComponentCard>
             <ComponentCard
               title='Dropdown Menu'
               description='Select an option from the dropdown menu.'
