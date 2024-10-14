@@ -21,6 +21,8 @@ import Tooltip from './Tooltip';
 import SpeedDial from './SpeedDial';
 import BackToTopButton from './BackToTop';
 import { HiOutlineWrenchScrewdriver } from 'react-icons/hi2';
+import Accordion from './Accordion';
+
 
 const GlassyUIComponentsPage: React.FC = () => {
   const navigate = useNavigate();
@@ -420,6 +422,20 @@ const GlassyUIComponentsPage: React.FC = () => {
                 </button>
               </div>
             </ComponentCard>
+            <ComponentCard 
+              title='Accordion'
+              description='Accordion component with glassmorphic styling.'
+              icon={<Layout size={24} />}
+              onClick={() => navigate('/accordion-details')}>
+                  <Accordion
+                    title='Accordion Title 1'
+                    content='This is the content of the first accordion.'
+                  />
+                  <Accordion
+                    title='Accordion Title 2'
+                    content='This is the content of the second accordion.'
+                  />
+              </ComponentCard>
           </div>
         </main>
       </div>
