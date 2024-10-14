@@ -17,17 +17,13 @@ import {
   Layout,
   AlignLeft,
   ArrowUp,
-<<<<<<< HEAD
   DollarSign,
-=======
->>>>>>> main
 } from 'lucide-react';
 import Tooltip from './Tooltip';
 import SpeedDial from './SpeedDial';
 import BackToTopButton from './BackToTop';
 import { HiOutlineWrenchScrewdriver } from 'react-icons/hi2';
 import Accordion from './Accordion';
-
 
 const GlassyUIComponentsPage: React.FC = () => {
   const navigate = useNavigate();
@@ -383,7 +379,9 @@ const GlassyUIComponentsPage: React.FC = () => {
             >
               <div className='mt-1 mb-4 flex justify-around'>
                 <button
-                  onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                  onClick={() =>
+                    window.scrollTo({ top: 0, behavior: 'smooth' })
+                  }
                   className={`${getGlassyClasses()} px-4 py-2`}
                 >
                   Back to Top
@@ -392,26 +390,26 @@ const GlassyUIComponentsPage: React.FC = () => {
             </ComponentCard>
 
             <ComponentCard
-              title="Pricing Plans"
-              description="Choose a pricing plan that suits your needs. Affordable and flexible."
+              title='Pricing Plans'
+              description='Choose a pricing plan that suits your needs. Affordable and flexible.'
               icon={<DollarSign size={24} />}
-              onClick={() => navigate("/pricing-details")}
+              onClick={() => navigate('/pricing-details')}
             >
-              <div className="mt-1 mb-4 flex justify-around">
-                <div className="text-center">
-                  <h3 className="text-lg font-semibold">Basic</h3>
+              <div className='mt-1 mb-4 flex justify-around'>
+                <div className='text-center'>
+                  <h3 className='text-lg font-semibold'>Basic</h3>
                   <button className={`${getGlassyClasses()} px-4 py-2 mt-2`}>
                     Select
                   </button>
                 </div>
-                <div className="text-center">
-                  <h3 className="text-lg font-semibold">Standard</h3>
+                <div className='text-center'>
+                  <h3 className='text-lg font-semibold'>Standard</h3>
                   <button className={`${getGlassyClasses()} px-4 py-2 mt-2`}>
                     Select
                   </button>
                 </div>
-                <div className="text-center">
-                  <h3 className="text-lg font-semibold">Premium</h3>
+                <div className='text-center'>
+                  <h3 className='text-lg font-semibold'>Premium</h3>
                   <button className={`${getGlassyClasses()} px-4 py-2 mt-2`}>
                     Select
                   </button>
@@ -474,7 +472,8 @@ const GlassyUIComponentsPage: React.FC = () => {
               title='Accordion'
               description='Accordion component with glassmorphic styling.'
               icon={<Layout size={24} />}
-              onClick={() => navigate('/accordion-details')}>
+              onClick={() => navigate('/accordion-details')}
+            >
               <Accordion
                 title='Accordion Title 1'
                 content='This is the content of the first accordion.'

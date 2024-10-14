@@ -60,6 +60,16 @@ const Header: React.FC = () => {
             About Us
           </Link>
         </li>
+        <li style={liStyle} className='navbar-item'>
+          <Link
+            to='/contact'
+            style={linkStyle}
+            onMouseEnter={e => (e.currentTarget.style.color = '#fde047')}
+            onMouseLeave={e => (e.currentTarget.style.color = 'white')}
+          >
+            Contact Us
+          </Link>
+        </li>
       </ul>
     </nav>
   );
