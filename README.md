@@ -117,6 +117,7 @@ git push origin my-feature-branch
 ## Contribution Rule
 
 Please ask for issue assignment before raising any PR.
+If more than 1 week issue is not resolved then it will be assigned to someone else.
 
 ## ⭐ Give it a Star!
 
