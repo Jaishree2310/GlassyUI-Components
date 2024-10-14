@@ -17,17 +17,15 @@ import {
   Layout,
   AlignLeft,
   ArrowUp,
-<<<<<<< HEAD
   DollarSign,
-=======
->>>>>>> main
+  PanelRightInactive,
+  SlidersHorizontalIcon,
 } from 'lucide-react';
 import Tooltip from './Tooltip';
 import SpeedDial from './SpeedDial';
 import BackToTopButton from './BackToTop';
 import { HiOutlineWrenchScrewdriver } from 'react-icons/hi2';
 import Accordion from './Accordion';
-
 
 const GlassyUIComponentsPage: React.FC = () => {
   const navigate = useNavigate();
@@ -51,6 +49,34 @@ const GlassyUIComponentsPage: React.FC = () => {
     setSelectedOption(option);
     console.log('Selected option:', option);
     setIsPopupOpen2(false); // Close the dropdown after selection
+  };
+
+  const [currentPage, setCurrentPage] = useState<number>(1);
+  const totalPages = 10; // Set your total number of pages
+  const maxVisiblePages = 2; // Maximum number of visible pages
+
+  const handlePageChange = (page: number) => {
+    if (page >= 1 && page <= totalPages) {
+      setCurrentPage(page);
+      console.log(`Page changed to: ${page}`);
+    }
+  };
+
+  const getVisiblePages = () => {
+    let startPage = Math.max(1, currentPage - Math.floor(maxVisiblePages / 2));
+    const endPage = Math.min(totalPages, startPage + maxVisiblePages - 1);
+
+    // Adjust startPage if we're near the end
+    if (endPage - startPage + 1 < maxVisiblePages) {
+      startPage = Math.max(1, endPage - maxVisiblePages + 1);
+    }
+
+    const visiblePages = [];
+    for (let i = startPage; i <= endPage; i++) {
+      visiblePages.push(i);
+    }
+
+    return visiblePages;
   };
 
   return (
@@ -383,7 +409,9 @@ const GlassyUIComponentsPage: React.FC = () => {
             >
               <div className='mt-1 mb-4 flex justify-around'>
                 <button
-                  onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                  onClick={() =>
+                    window.scrollTo({ top: 0, behavior: 'smooth' })
+                  }
                   className={`${getGlassyClasses()} px-4 py-2`}
                 >
                   Back to Top
@@ -392,26 +420,26 @@ const GlassyUIComponentsPage: React.FC = () => {
             </ComponentCard>
 
             <ComponentCard
-              title="Pricing Plans"
-              description="Choose a pricing plan that suits your needs. Affordable and flexible."
+              title='Pricing Plans'
+              description='Choose a pricing plan that suits your needs. Affordable and flexible.'
               icon={<DollarSign size={24} />}
-              onClick={() => navigate("/pricing-details")}
+              onClick={() => navigate('/pricing-details')}
             >
-              <div className="mt-1 mb-4 flex justify-around">
-                <div className="text-center">
-                  <h3 className="text-lg font-semibold">Basic</h3>
+              <div className='mt-1 mb-4 flex justify-around'>
+                <div className='text-center'>
+                  <h3 className='text-lg font-semibold'>Basic</h3>
                   <button className={`${getGlassyClasses()} px-4 py-2 mt-2`}>
                     Select
                   </button>
                 </div>
-                <div className="text-center">
-                  <h3 className="text-lg font-semibold">Standard</h3>
+                <div className='text-center'>
+                  <h3 className='text-lg font-semibold'>Standard</h3>
                   <button className={`${getGlassyClasses()} px-4 py-2 mt-2`}>
                     Select
                   </button>
                 </div>
-                <div className="text-center">
-                  <h3 className="text-lg font-semibold">Premium</h3>
+                <div className='text-center'>
+                  <h3 className='text-lg font-semibold'>Premium</h3>
                   <button className={`${getGlassyClasses()} px-4 py-2 mt-2`}>
                     Select
                   </button>
@@ -474,7 +502,8 @@ const GlassyUIComponentsPage: React.FC = () => {
               title='Accordion'
               description='Accordion component with glassmorphic styling.'
               icon={<Layout size={24} />}
-              onClick={() => navigate('/accordion-details')}>
+              onClick={() => navigate('/accordion-details')}
+            >
               <Accordion
                 title='Accordion Title 1'
                 content='This is the content of the first accordion.'
@@ -483,6 +512,89 @@ const GlassyUIComponentsPage: React.FC = () => {
                 title='Accordion Title 2'
                 content='This is the content of the second accordion.'
               />
+            </ComponentCard>
+            <ComponentCard
+              title='Pagination'
+              description='Custom pagination component for navigating through pages.'
+              icon={<SlidersHorizontalIcon size={24} />}
+              onClick={() => navigate('/pagination-details')}
+            >
+              <div
+                className='flex justify-center items-center space-x-2'
+                onClick={e => {
+                  e.stopPropagation();
+                }}
+              >
+                <button
+                  onClick={() => handlePageChange(currentPage - 1)}
+                  disabled={currentPage === 1}
+                  className={`px-4 py-2 rounded-full transition-colors duration-200 border border-gray-500 ${
+                    currentPage === 1
+                      ? 'bg-gray-600 text-gray-500 cursor-not-allowed opacity-50'
+                      : 'bg-gray-600 text-white hover:bg-gray-700'
+                  }`}
+                >
+                  {'<<'}
+                </button>
+
+                {/* Conditionally show first page and ellipsis */}
+                {currentPage > 2 && (
+                  <>
+                    <button
+                      onClick={() => handlePageChange(1)}
+                      className='px-4 py-2 rounded-full transition-colors duration-200 border border-gray-500 bg-gray-600 text-white hover:bg-gray-700'
+                    >
+                      1
+                    </button>
+                    {currentPage > Math.floor(maxVisiblePages / 2) + 1 && (
+                      <span className='px-3 text-gray-400'>...</span>
+                    )}
+                  </>
+                )}
+
+                {/* Render visible pages */}
+                {getVisiblePages().map(page => (
+                  <button
+                    key={page}
+                    onClick={() => handlePageChange(page)}
+                    className={`px-4 py-2 rounded-full transition-colors duration-200 border border-gray-500 ${
+                      currentPage === page
+                        ? 'bg-blue-600 text-white'
+                        : 'bg-gray-600 text-white hover:bg-gray-600'
+                    }`}
+                  >
+                    {page}
+                  </button>
+                ))}
+
+                {/* Conditionally show last page and ellipsis */}
+                {currentPage < totalPages - Math.floor(maxVisiblePages / 2) && (
+                  <>
+                    {currentPage <
+                      totalPages - Math.floor(maxVisiblePages / 2) - 1 && (
+                      <span className='px-3 text-gray-400'>...</span>
+                    )}
+                    <button
+                      onClick={() => handlePageChange(totalPages)}
+                      className='px-4 py-2 rounded-full transition-colors duration-200 border border-gray-500 bg-gray-600 text-white hover:bg-gray-700'
+                    >
+                      {totalPages}
+                    </button>
+                  </>
+                )}
+
+                <button
+                  onClick={() => handlePageChange(currentPage + 1)}
+                  disabled={currentPage === totalPages}
+                  className={`px-4 py-2 rounded-full transition-colors duration-200 border border-gray-500 ${
+                    currentPage === totalPages
+                      ? 'bg-gray-700 text-gray-500 cursor-not-allowed opacity-50'
+                      : 'bg-gray-600 text-white hover:bg-gray-700'
+                  }`}
+                >
+                  {'>>'}
+                </button>
+              </div>
             </ComponentCard>
           </div>
         </main>
