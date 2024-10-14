@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 
 const Header: React.FC = () => {
@@ -9,8 +9,8 @@ const Header: React.FC = () => {
           <Link
             to='/'
             style={linkStyle}
-            onMouseEnter={e => (e.currentTarget.style.color = '#fde047')} // Change to yellow on hover
-            onMouseLeave={e => (e.currentTarget.style.color = 'white')} // Change back to white when not hovered
+            onMouseEnter={e => (e.currentTarget.style.color = '#fde047')}
+            onMouseLeave={e => (e.currentTarget.style.color = 'white')}
           >
             Home
           </Link>
@@ -29,10 +29,20 @@ const Header: React.FC = () => {
           <Link
             to='/donate'
             style={linkStyle}
-            onMouseEnter={e => (e.currentTarget.style.color = '#fde047')} // Change to yellow on hover
-            onMouseLeave={e => (e.currentTarget.style.color = 'white')} // Change back to white when not hovered
+            onMouseEnter={e => (e.currentTarget.style.color = '#fde047')}
+            onMouseLeave={e => (e.currentTarget.style.color = 'white')}
           >
             Donate
+          </Link>
+        </li>
+        <li style={liStyle}>
+          <Link
+            to='/about'
+            style={linkStyle}
+            onMouseEnter={e => (e.currentTarget.style.color = '#fde047')}
+            onMouseLeave={e => (e.currentTarget.style.color = 'white')}
+          >
+            About Us
           </Link>
         </li>
       </ul>
@@ -59,9 +69,9 @@ const liStyle: React.CSSProperties = {
 };
 
 const linkStyle: React.CSSProperties = {
-  color: 'white', // Initial color is white
-  textDecoration: 'none', // Remove underline
-  transition: 'color 0.3s ease', // Smooth transition for color change
+  color: 'white',
+  textDecoration: 'none',
+  transition: 'color 0.3s ease',
 };
 
 export default Header;

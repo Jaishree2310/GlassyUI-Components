@@ -18,13 +18,14 @@ import ModalDetailsPage from './components/ModalDetailsPage';
 import NavigationDetailsPage from './components/NavigationDetailsPage';
 import GlassMorphismGenrator from './components/GlassMorphismGenrator';
 import SliderDetailsPage from './components/SliderDetailsPage';
+import ContributorsPage from './components/ContributorsPage';
 import DonationPage from './components/DonationPage';
+import AboutUsPage from './components/AboutUsPage';
 import Header from './components/Header';
+import BackToTopDetailsPage from './components/BackToTopDetailsPage';
 import DropdowndetailsPage from './components/DropdowndetailsPage';
 import AuthenticationCard from './components/AuthenticationCards';
-import ToastPage from './components/ToastPage';
-import Login from './components/Login';
-import Register from './components/Register';
+import ToastPage from './components/ToastPage
 
 const App: React.FC = () => {
   return (
@@ -51,12 +52,19 @@ const App: React.FC = () => {
         <Route path='/navigation-details' element={<NavigationDetailsPage />} />
         <Route path='/generator' element={<GlassMorphismGenrator />} />
         <Route path='/slider-details' element={<SliderDetailsPage />} />
+        <Route path='/back-to-top-details' element={<BackToTopDetailsPage />} />
         <Route path='/dropdown-details' element={<DropdowndetailsPage />} />
         <Route path='/authentication-card' element={<AuthenticationCard />} />
+        <Route path="/accordion-details" element={<AccordionDetails />} />
+
+        <Route path='/contributors' element={<ContributorsPage />} />
 
         {/*the DonationPage route */}
         <Route path='/' element={<GlassyUILandingPage />} />
         <Route path='/donate' element={<DonationPage />} />
+
+        {/* the AboutUs Page route */}
+        <Route path='/about' element={<AboutUsPage />} />
 
         <Route path='*' element={<NotFoundPage />} />
       </Routes>
