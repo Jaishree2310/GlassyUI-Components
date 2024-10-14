@@ -126,7 +126,6 @@ const FeatureCard: React.FC<{
     <p className='text-gray-300'>{description}</p>
   </div>
 );
-
 const GlassmorphismButton: React.FC<{
   children: React.ReactNode;
   variant?: 'primary' | 'secondary';
