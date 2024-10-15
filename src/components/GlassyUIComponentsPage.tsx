@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {
   Star,
@@ -68,8 +68,8 @@ const ComponentCard: React.FC<ComponentCardProps> = ({
 const GlassyUIComponentsPage: React.FC = () => {
   const navigate = useNavigate();
   const [currentPage, setCurrentPage] = useState(1);
+  const [searchFilter, setSearchFilter] = useState<string | null>('');
   const componentsPerPage = 9;
-
   const componentsData = [
     {
       title: 'Toast',
@@ -185,6 +185,19 @@ const GlassyUIComponentsPage: React.FC = () => {
       onClick: () => navigate('/generator'),
     },
   ];
+  const [filteredData, setFilteredData] = useState(componentsData);
+  useEffect(() => {
+    const data = componentsData.filter(component => {
+      if (searchFilter != null) {
+        return component.title
+          .replace(/ /g, '')
+          .toLowerCase()
+          .includes(searchFilter.trim().replace(/ /g, '').toLowerCase());
+      }
+      return component;
+    });
+    setFilteredData(data);
+  }, [searchFilter]);
 
   const totalPages = Math.ceil(componentsData.length / componentsPerPage);
 
@@ -205,13 +218,20 @@ const GlassyUIComponentsPage: React.FC = () => {
     <div className='min-h-screen font-sans bg-gradient-to-br from-gray-800 via-gray-900 to-black text-white'>
       <BackToTopButton />
       <div className='container mx-auto px-4 py-8 lg:py-12'>
-        <header className='flex justify-between items-center mb-16'>
+        <header className='grid grid-cols-3 mb-16'>
           <div
             className='text-3xl lg:text-4xl font-bold tracking-tight cursor-pointer hover:text-pink-200 transition-colors duration-300'
             onClick={() => navigate('/')}
           >
             GlassyUI
           </div>
+          <input
+            className='rounded-full  text-black p-2'
+            placeholder='Search Component'
+            onChange={e => {
+              setSearchFilter(e.target.value);
+            }}
+          ></input>
         </header>
 
         <main>
@@ -225,7 +245,7 @@ const GlassyUIComponentsPage: React.FC = () => {
           </p>
 
           <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8'>
-            {currentComponents.map((component, index) => (
+            {filteredData.map((component, index) => (
               <ComponentCard
                 key={index}
                 title={component.title}
