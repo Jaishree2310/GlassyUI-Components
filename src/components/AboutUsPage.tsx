@@ -238,25 +238,11 @@ const AboutUsPage: React.FC = () => {
           </p>
           <SocialLinks>
             <a
-              href='https://github.com/glassyui'
+              href='https://github.com/Jaishree2310/GlassyUI-Components'
               target='_blank'
               rel='noopener noreferrer'
             >
               <FaGithub /> {/* GitHub icon */}
-            </a>
-            <a
-              href='https://twitter.com/glassyui'
-              target='_blank'
-              rel='noopener noreferrer'
-            >
-              <FaTwitter /> {/* Twitter icon */}
-            </a>
-            <a
-              href='https://linkedin.com/company/glassyui'
-              target='_blank'
-              rel='noopener noreferrer'
-            >
-              <FaLinkedin /> {/* LinkedIn icon */}
             </a>
           </SocialLinks>
         </AboutUsFooter>
