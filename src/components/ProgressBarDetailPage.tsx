@@ -244,7 +244,7 @@ function App() {
             max='100'
             value={customProgress}
             onChange={e => setCustomProgress(parseInt(e.target.value))}
-            className='w-80 max-sm:w-72'
+            className='w-80 max-sm:w-full'
           />
         </div>
 
