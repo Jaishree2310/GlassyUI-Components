@@ -11,6 +11,7 @@ import {
   AlignLeft,
   ArrowUp,
   DollarSign,
+  ThumbsUpIcon,
 } from 'lucide-react';
 import BackToTopButton from './BackToTop';
 
@@ -181,6 +182,12 @@ const GlassyUIComponentsPage: React.FC = () => {
       onClick: () => navigate('/pagination-details'),
     },
 
+    {
+      title: 'Testimonial',
+      description: 'Testimonial component with glassmorphic styling.',
+      icon: <ThumbsUpIcon size={24} />,
+      onClick: () => navigate('/testimonial-details'),
+    },
     {
       title: 'Glassmorphism Effect Generator',
       description: 'Create stunning Glassmorphic effects with ease.',
