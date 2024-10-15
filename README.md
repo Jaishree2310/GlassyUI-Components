@@ -101,6 +101,16 @@ function App() {
   );
 }
 ```
+## 🚀 Future Enhancements / Roadmap
+
+The roadmap outlines the upcoming features and improvements planned for GlassyUI-Components:
+
+- **Theme Customization**: Allow users to customize the glassmorphism effect with different colors and opacities.
+- **Accessibility Improvements**: Ensure all components are fully accessible to users with disabilities.
+- **Additional Components**: Introduce new components such as dropdowns, tooltips, and tabs.
+- **Performance Optimization**: Optimize the library for faster load times and better performance.
+- **Documentation Expansion**: Provide comprehensive guides and examples for each component to facilitate easier usage and contribution.
+---
 
 ## 🤝 **Contributing**
 
