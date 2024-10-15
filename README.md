@@ -70,6 +70,27 @@ npm start
 
 4. Open your browser and go to `http://localhost:3000` to see the components in action.
 
+---
+
+## 📜 Changelog
+
+All notable changes to this project will be documented in this file.
+
+### [Unreleased]
+
+- **Added**: A new button component with hover effects.
+- **Changed**: Updated SCSS styles for improved responsiveness.
+- **Fixed**: Resolved an issue with the modal not closing properly on mobile devices.
+
+### [1.0.0] - 2024-10-15
+
+- **Added**: Initial release of GlassyUI-Components.
+  - Features glassmorphism-themed buttons, progress bars, input fields, text areas, modals, and navigation bars.
+- **Improved**: Documentation and examples for each component.
+- **Fixed**: Minor bugs in the button component.
+
+---
+
 ## 📝 Usage
 
 Import the desired component into your React project and use it as follows:
