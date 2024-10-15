@@ -1,4 +1,5 @@
-import PricingDetailPage from './components/PricingDetailPage';
+
+import PricingDetailPage from "./components/PricingDetailPage";
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import GlassyUILandingPage from './components/GlassyUILandingPage';
@@ -25,7 +26,6 @@ import DropdowndetailsPage from './components/DropdowndetailsPage';
 import AuthenticationCard from './components/AuthenticationCards';
 import ToastPage from './components/ToastPage';
 import AccordionDetails from './components/AccordionDetails';
-import SearchbarDetails from './components/SearchbarDetails';
 
 const App: React.FC = () => {
   return (
@@ -41,7 +41,7 @@ const App: React.FC = () => {
           path='/progress-bar-details'
           element={<ProgressBarDetailPage />}
         />
-        <Route path='/pricing-details' element={<PricingDetailPage />} />
+        <Route path="/pricing-details" element={<PricingDetailPage />} />
         <Route path='/popup-details' element={<PopupDetailPage />} />
         <Route path='/input-details' element={<InputDetailPage />} />
         <Route path='/textarea-details' element={<TextareaDetailPage />} />
@@ -54,13 +54,13 @@ const App: React.FC = () => {
         <Route path='/back-to-top-details' element={<BackToTopDetailsPage />} />
         <Route path='/dropdown-details' element={<DropdowndetailsPage />} />
         <Route path='/authentication-card' element={<AuthenticationCard />} />
-        <Route path='/accordion-details' element={<AccordionDetails />} />
-        <Route path='/searchbar-details' element={<SearchbarDetails />} />
+        <Route path="/accordion-details" element={<AccordionDetails />} />
 
         <Route path='/contributors' element={<ContributorsPage />} />
 
         <Route path='/' element={<GlassyUILandingPage />} />
         <Route path='/donate' element={<DonationPage />} />
+
 
         <Route path='/about' element={<AboutUsPage />} />
 
