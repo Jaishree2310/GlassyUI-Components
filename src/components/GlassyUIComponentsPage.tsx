@@ -191,7 +191,6 @@ const GlassyUIComponentsPage: React.FC = () => {
     {
       title: 'Glassmorphism Effect Generator',
       description: 'Create stunning Glassmorphic effects with ease.',
-      icon: <HiOutlineWrenchScrewdriver size={24} />,
       onClick: () => navigate('/generator'),
     },
   ];
