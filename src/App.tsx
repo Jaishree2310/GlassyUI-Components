@@ -25,6 +25,7 @@ import DropdowndetailsPage from './components/DropdowndetailsPage';
 import AuthenticationCard from './components/AuthenticationCards';
 import ToastPage from './components/ToastPage';
 import AccordionDetails from './components/AccordionDetails';
+import PaginationDetails from './components/PaginationDetails';
 import TestimonialDetails from './components/TestimonialDetails';
 
 const App: React.FC = () => {
@@ -62,6 +63,7 @@ const App: React.FC = () => {
         <Route path='/donate' element={<DonationPage />} />
 
         <Route path='/about' element={<AboutUsPage />} />
+        <Route path='/pagination-details' element={<PaginationDetails />} />
         <Route path='/testimonial-details' element={<TestimonialDetails />} />
 
         <Route path='*' element={<NotFoundPage />} />

@@ -176,6 +176,13 @@ const GlassyUIComponentsPage: React.FC = () => {
       onClick: () => navigate('/accordion-details'),
     },
     {
+      title: 'Pagination',
+      description: 'Pagination component with glassmorphic styling.',
+      icon: <Layout size={24} />,
+      onClick: () => navigate('/pagination-details'),
+    },
+
+    {
       title: 'Testimonial',
       description: 'Testimonial component with glassmorphic styling.',
       icon: <ThumbsUpIcon size={24} />,
