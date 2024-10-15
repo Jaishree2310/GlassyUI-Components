@@ -1,21 +1,18 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {
-  Star,
   ArrowRight,
   Info,
   Box,
   Type,
   Sliders,
   MessageSquare,
-  Menu,
-  X,
   Layout,
   AlignLeft,
   ArrowUp,
   DollarSign,
+  ThumbsUpIcon,
 } from 'lucide-react';
-import { HiOutlineWrenchScrewdriver } from 'react-icons/hi2';
 import BackToTopButton from './BackToTop';
 
 interface ComponentCardProps {
@@ -177,6 +174,25 @@ const GlassyUIComponentsPage: React.FC = () => {
       description: 'Accordion component with glassmorphic styling.',
       icon: <Layout size={24} />,
       onClick: () => navigate('/accordion-details'),
+    },
+    {
+      title: 'Pagination',
+      description: 'Pagination component with glassmorphic styling.',
+      icon: <Layout size={24} />,
+      onClick: () => navigate('/pagination-details'),
+    },
+
+    {
+      title: 'Testimonial',
+      description: 'Testimonial component with glassmorphic styling.',
+      icon: <ThumbsUpIcon size={24} />,
+      onClick: () => navigate('/testimonial-details'),
+    },
+    {
+      title: 'Glassmorphism Effect Generator',
+      description: 'Create stunning Glassmorphic effects with ease.',
+      icon: <HiOutlineWrenchScrewdriver size={24} />,
+      onClick: () => navigate('/generator'),
     },
   ];
 
