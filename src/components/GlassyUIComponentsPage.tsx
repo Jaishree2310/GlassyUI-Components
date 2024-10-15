@@ -181,6 +181,12 @@ const GlassyUIComponentsPage: React.FC = () => {
       icon: <ThumbsUpIcon size={24} />,
       onClick: () => navigate('/testimonial-details'),
     },
+    {
+      title: 'Glassmorphism Effect Generator',
+      description: 'Create stunning Glassmorphic effects with ease.',
+      icon: <HiOutlineWrenchScrewdriver size={24} />,
+      onClick: () => navigate('/generator'),
+    },
   ];
 
   const totalPages = Math.ceil(componentsData.length / componentsPerPage);
