@@ -26,6 +26,8 @@ import AuthenticationCard from './components/AuthenticationCards';
 import ToastPage from './components/ToastPage';
 import AccordionDetails from './components/AccordionDetails';
 import ContactUsPage from './components/ContactUsPage';
+import PaginationDetails from './components/PaginationDetails';
+import TestimonialDetails from './components/TestimonialDetails';
 
 const App: React.FC = () => {
   return (
@@ -63,6 +65,8 @@ const App: React.FC = () => {
 
         <Route path='/about' element={<AboutUsPage />} />
         <Route path='/contact' element={<ContactUsPage />} />
+        <Route path='/pagination-details' element={<PaginationDetails />} />
+        <Route path='/testimonial-details' element={<TestimonialDetails />} />
 
         <Route path='*' element={<NotFoundPage />} />
       </Routes>
