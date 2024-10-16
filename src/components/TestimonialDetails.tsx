@@ -8,8 +8,9 @@ const TestimonialDetails: React.FC = () => {
     {},
   );
 
-  const getGlassyClasses = () => {
-    return 'backdrop-filter backdrop-blur-xl bg-white/20 border border-white/20 rounded-xl shadow-lg transition-all duration-300 max-sm:px-0';
+  const getGlassyClasses = (opacity = 20) => {
+    return `backdrop-filter backdrop-blur-lg bg-white bg-opacity-${opacity} 
+  border border-white border-opacity-20 rounded-lg shadow-lg transition-all duration-300`;
   };
 
   const copyToClipboard = (text: string, key: string) => {
@@ -66,7 +67,7 @@ const TestimonialDetails: React.FC = () => {
       <div className='relative z-10'>
         <button
           onClick={() => navigate(-1)}
-          className={`mb-8 flex items-center ${getGlassyClasses()} px-4 py-2 hover:bg-white/40 transition-all duration-300 text-gray-300`}
+          className={`mb-8 flex items-center ${getGlassyClasses(10)} px-4 py-2 hover:bg-white/40 transition-all duration-300 text-gray-300`}
         >
           <ArrowLeft size={20} className='mr-2' />
           Back to Components
@@ -79,7 +80,7 @@ const TestimonialDetails: React.FC = () => {
           A simple component to display user testimonials.
         </p>
 
-        <div className={`${getGlassyClasses()} p-8 mb-8 relative`}>
+        <div className={`${getGlassyClasses()} p-6 mb-14 relative`}>
           <h2 className='text-3xl font-bold mb-6 text-white'>Basic Usage</h2>
           <div className='relative'>
             <pre className='bg-gray-800 text-white p-6 rounded-lg overflow-x-auto whitespace-pre-wrap max-sm:text-[0.55rem]'>
@@ -89,12 +90,12 @@ const TestimonialDetails: React.FC = () => {
           </div>
         </div>
 
-        <div className={`${getGlassyClasses()} p-8 mb-8`}>
+        <div className={`${getGlassyClasses()} p-6 mb-14`}>
           <h2 className='text-3xl font-bold mb-6 text-white'>Props</h2>
           <div className='overflow-x-auto'>
             <table className='w-full'>
               <thead>
-                <tr className='border-b border-gray-400'>
+                <tr className='bg-white bg-opacity-20'>
                   <th className='text-left p-2 text-gray-300'>Prop</th>
                   <th className='text-left p-2 text-gray-300'>Type</th>
                   <th className='text-left p-2 text-gray-300'>Default</th>
@@ -102,7 +103,7 @@ const TestimonialDetails: React.FC = () => {
                 </tr>
               </thead>
               <tbody>
-                <tr className='border-b border-gray-300'>
+                <tr>
                   <td className='p-2 text-gray-200'>name</td>
                   <td className='p-2 text-gray-200'>string</td>
                   <td className='p-2 text-gray-200'>-</td>
@@ -110,7 +111,7 @@ const TestimonialDetails: React.FC = () => {
                     Name of the person giving the testimonial
                   </td>
                 </tr>
-                <tr className='border-b border-gray-300'>
+                <tr className='bg-white bg-opacity-10'>
                   <td className='p-2 text-gray-200'>message</td>
                   <td className='p-2 text-gray-200'>string</td>
                   <td className='p-2 text-gray-200'>-</td>
@@ -118,7 +119,7 @@ const TestimonialDetails: React.FC = () => {
                     The testimonial message from the user
                   </td>
                 </tr>
-                <tr className='border-b border-gray-300'>
+                <tr>
                   <td className='p-2 text-gray-200'>imageSrc</td>
                   <td className='p-2 text-gray-200'>string</td>
                   <td className='p-2 text-gray-200'>-</td>
@@ -131,7 +132,7 @@ const TestimonialDetails: React.FC = () => {
           </div>
         </div>
 
-        <section className={`${getGlassyClasses()} p-8 mb-8`}>
+        <section className={`${getGlassyClasses()} p-6 mb-14`}>
           <h2 className='text-2xl font-bold mb-4 text-white'>
             Testimonial Example
           </h2>

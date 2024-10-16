@@ -13,8 +13,9 @@ const ButtonDetailsPage: React.FC = () => {
   const [customText, setCustomText] = useState('#ffffff');
   const [customBorder, setCustomBorder] = useState('#833AB4');
 
-  const getGlassyClasses = () => {
-    return 'backdrop-filter backdrop-blur-xl bg-white/30 border border-white/20 rounded-xl shadow-lg transition-all duration-300 max-sm:px-0';
+  const getGlassyClasses = (opacity = 20) => {
+    return `backdrop-filter backdrop-blur-lg bg-white bg-opacity-${opacity} 
+  border border-white border-opacity-20 rounded-lg shadow-lg transition-all duration-300`;
   };
 
   const copyToClipboard = (text: string, key: string) => {
@@ -94,7 +95,7 @@ function Example() {
       <div className='relative z-10'>
         <button
           onClick={() => navigate(-1)}
-          className={`mb-8 flex items-center ${getGlassyClasses()} px-4 py-2 hover:bg-white/40 transition-all duration-300 text-white`}
+          className={`mb-8 flex items-center ${getGlassyClasses(10)} px-4 py-2 hover:bg-white/40 transition-all duration-300 text-white`}
         >
           <ArrowLeft size={20} className='mr-2' />
           Back to Components
@@ -105,7 +106,7 @@ function Example() {
           A customizable, glassmorphism styled button component.
         </p>
 
-        <div className={`${getGlassyClasses()} p-8 mb-8 relative`}>
+        <div className={`${getGlassyClasses()} p-6 mb-14 relative`}>
           <h2 className='text-3xl font-bold mb-6 text-white'>Basic Usage</h2>
           <div className='relative'>
             <pre className='bg-gray-800 text-white p-6 rounded-lg overflow-x-auto whitespace-pre-wrap  max-sm:text-[0.55rem]'>
@@ -115,12 +116,12 @@ function Example() {
           </div>
         </div>
 
-        <div className={`${getGlassyClasses()} p-8 mb-8`}>
+        <div className={`${getGlassyClasses()} p-6 mb-14`}>
           <h2 className='text-3xl font-bold mb-6 text-white'>Props</h2>
           <div className='overflow-x-auto'>
             <table className='w-full'>
               <thead>
-                <tr className='border-b border-gray-400'>
+                <tr className='bg-white bg-opacity-20'>
                   <th className='text-left p-2 text-white'>Prop</th>
                   <th className='text-left p-2 text-white'>Type</th>
                   <th className='text-left p-2 text-white'>Default</th>
@@ -128,7 +129,7 @@ function Example() {
                 </tr>
               </thead>
               <tbody>
-                <tr className='border-b border-gray-300'>
+                <tr>
                   <td className='p-2 text-white'>backgroundColor</td>
                   <td className='p-2 text-white'>string</td>
                   <td className='p-2 text-white'>-</td>
@@ -136,7 +137,7 @@ function Example() {
                     The background color of the button
                   </td>
                 </tr>
-                <tr className='border-b border-gray-300'>
+                <tr className='bg-white bg-opacity-10'>
                   <td className='p-2 text-white'>color</td>
                   <td className='p-2 text-white'>string</td>
                   <td className='p-2 text-white'>-</td>
@@ -144,7 +145,7 @@ function Example() {
                     The text color of the button
                   </td>
                 </tr>
-                <tr className='border-b border-gray-300'>
+                <tr>
                   <td className='p-2 text-white'>borderColor</td>
                   <td className='p-2 text-white'>string</td>
                   <td className='p-2 text-white'>-</td>
@@ -157,7 +158,7 @@ function Example() {
           </div>
         </div>
 
-        <div className={`${getGlassyClasses()} p-8 mb-8`}>
+        <div className={`${getGlassyClasses()} p-6 mb-14`}>
           <h2 className='text-3xl font-bold mb-6 text-white'>Themed Button</h2>
           <p className='mb-6 text-lg text-white'>
             Customize your button's appearance by selecting a preset theme or
@@ -185,7 +186,7 @@ function Example() {
             </div>
 
             <div className='grid grid-cols-1 md:grid-cols-3 gap-6'>
-              <div className={`${getGlassyClasses()} p-6`}>
+              <div className={`${getGlassyClasses(10)} p-6`}>
                 <label className='block mb-2 font-semibold text-lg text-white'>
                   Background Color
                 </label>
@@ -204,7 +205,7 @@ function Example() {
                   />
                 </div>
               </div>
-              <div className={`${getGlassyClasses()} p-6`}>
+              <div className={`${getGlassyClasses(10)} p-6`}>
                 <label className='block mb-2 font-semibold text-lg text-white'>
                   Text Color
                 </label>
@@ -223,7 +224,7 @@ function Example() {
                   />
                 </div>
               </div>
-              <div className={`${getGlassyClasses()} p-6`}>
+              <div className={`${getGlassyClasses(10)} p-6`}>
                 <label className='block mb-2 font-semibold text-lg text-white'>
                   Border Color
                 </label>
@@ -263,7 +264,7 @@ function Example() {
           </div>
         </div>
 
-        <div className={`${getGlassyClasses()} p-8 mb-8`}>
+        <div className={`${getGlassyClasses()} p-6 mb-14`}>
           <h2 className='text-3xl font-bold mb-6 text-white'>Alert Button</h2>
           <p className='mb-6 text-lg text-white'>
             A button that triggers an alert message when clicked.
@@ -282,7 +283,7 @@ function Example() {
           </div>
         </div>
 
-        <div className={`${getGlassyClasses()} p-8 mb-8`}>
+        <div className={`${getGlassyClasses()} p-6 mb-14`}>
           <h2 className='text-3xl font-bold mb-6 text-white'>
             Full Width Button
           </h2>
