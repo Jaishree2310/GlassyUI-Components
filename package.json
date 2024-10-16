@@ -14,7 +14,6 @@
     "framer-motion": "^11.11.7",
     "gsap": "^3.12.5",
     "lucide-react": "^0.408.0",
-    "my-typescript-app": "file:",
     "pixel-retroui": "^1.0.61",
     "react": "^18.3.1",
     "react-components": "^0.5.1",
@@ -35,7 +34,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "prepare": "husky"
+    "prepare": "husky install"
   },
   "eslintConfig": {
     "extends": [
@@ -57,15 +56,15 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.12.0",
+    "@typescript-eslint/eslint-plugin": "^6.3.0",
+    "@typescript-eslint/parser": "^6.3.0",
     "autoprefixer": "^10.4.20",
     "eslint": "^8.57.1",
     "eslint-plugin-react": "^7.37.1",
-    "globals": "^15.10.0",
     "husky": "^9.1.6",
     "postcss": "^8.4.47",
     "prettier": "^3.3.3",
-    "tailwindcss": "^3.4.13",
-    "typescript-eslint": "^8.8.1"
+    "tailwindcss": "^3.4.13"
   },
   "husky": {
     "hooks": {
@@ -73,7 +72,7 @@
     }
   },
   "lint-staged": {
-    "**/*": "prettier --write --ignore-unknown",
-    "*.ts": "npx tslint"
+    "**/*.{js,jsx,ts,tsx}": "prettier --write",
+    "*.ts?(x)": "eslint --fix"
   }
 }
