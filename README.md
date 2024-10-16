@@ -22,9 +22,9 @@ Welcome to **GlassyUI-Components**! This open-source library features stunning R
 
 ## 🖥️ Website Preview
 
-<img src = "https://github.com/neeru24/Connect_icons/blob/main/Screenshot%202024-10-07%20204717.png" alt = "image">
-<img src = "https://github.com/neeru24/Connect_icons/blob/main/Screenshot%202024-10-07%20204835.png" alt = "image">
-<img src = "https://github.com/neeru24/Connect_icons/blob/main/Screenshot%202024-10-07%20204928.png" alt = "image">
+![Home Page](https://github.com/user-attachments/assets/f6f73936-ca0d-4232-a646-67189f5aa901)
+![Components](https://github.com/user-attachments/assets/472a38eb-73dc-459a-95ce-e5b3684cb74d)
+![Button](https://github.com/user-attachments/assets/3fa878f6-735c-4a21-8cfc-edb74ba1052a)
 
 ## 🚀 Getting Started
 
@@ -69,6 +69,27 @@ npm start
 ```
 
 4. Open your browser and go to `http://localhost:3000` to see the components in action.
+
+---
+
+## 📜 Changelog
+
+All notable changes to this project will be documented in this file.
+
+### [Unreleased]
+
+- **Added**: A new button component with hover effects.
+- **Changed**: Updated SCSS styles for improved responsiveness.
+- **Fixed**: Resolved an issue with the modal not closing properly on mobile devices.
+
+### [1.0.0] - 2024-10-15
+
+- **Added**: Initial release of GlassyUI-Components.
+  - Features glassmorphism-themed buttons, progress bars, input fields, text areas, modals, and navigation bars.
+- **Improved**: Documentation and examples for each component.
+- **Fixed**: Minor bugs in the button component.
+
+---
 
 ## 📝 Usage
 
@@ -116,7 +137,21 @@ git push origin my-feature-branch
 
 ## Contribution Rule
 
-Please ask for issue assignment before raising any PR.
+-Please ask for issue assignment before raising any PR.
+
+-If more than 1 week issue is not resolved then it will be assigned to someone else.
+
+## Our Contributors
+
+- We truly appreciate your incredible contributions to this project! Your dedication and hard work are vital to its continued growth and success. If you’ve found value in it, don’t forget to show your support by giving our repository a star! ⭐
+
+<div align="center">
+  <a href="https://github.com/Jaishree2310/GlassyUI-Components">
+    <img src="https://contrib.rocks/image?repo=Jaishree2310/GlassyUI-Components&&max=1000&&cachebust=1" />
+  </a>
+</div>
+
+---
 
 ## ⭐ Give it a Star!
 

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Star, Code, Package, Zap } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import './GlassyUILandingPage.css'; // Create this CSS file in the same directory
+import gsap from 'gsap';
 
 const GlassyUILandingPage: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -11,10 +12,34 @@ const GlassyUILandingPage: React.FC = () => {
     setIsVisible(true);
   }, []);
 
+  useEffect(() => {
+    // GSAP animation for the navbar
+    const tl = gsap.timeline();
+    tl.fromTo(
+      '.homeGSap', // Targeting elements with this class
+      {
+        scale: 0, // Initial position (from)
+        opacity: 0, // Initial opacity (from)
+      },
+      {
+        scale: 1, // Final position (to)
+        opacity: 1, // Final opacity (to)
+        duration: 0.5,
+        ease: 'sine.inOut',
+        // Stagger for smooth effect
+      },
+    );
+
+    return () => {
+      // Cleanup GSAP animations
+      tl.kill();
+    };
+  }, []);
+
   return (
-    <div className='min-h-screen flex flex-col items-center justify-center p-4 font-mono relative overflow-hidden bg-gradient-to-br from-gray-800 via-gray-900 to-black'>
+    <div className=' min-h-screen flex flex-col items-center justify-center p-4 font-mono relative overflow-hidden bg-gradient-to-br from-gray-800 via-gray-900 to-black'>
       <div
-        className='absolute inset-0 w-full h-full opacity-20'
+        className=' absolute inset-0 w-full h-full opacity-20'
         style={{
           backgroundImage: `
             linear-gradient(to right, #ffffff 1px, transparent 1px),
@@ -24,7 +49,7 @@ const GlassyUILandingPage: React.FC = () => {
         }}
       />
 
-      <div className='relative z-10 w-full max-w-4xl'>
+      <div className='homeGSap relative z-10 w-full max-w-4xl'>
         <header className='w-full flex justify-between items-center mb-8'>
           <div className='text-2xl font-bold text-white'>
             <span className='text-blue-400'>Glassy</span>UI
@@ -67,8 +92,7 @@ const GlassyUILandingPage: React.FC = () => {
               description='Optimized for smooth interactions'
             />
           </div>
-
-          <div className='flex justify-center space-x-6'>
+          <div className='flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-6'>
             <Link to='/components'>
               <GlassmorphismButton>Explore Components</GlassmorphismButton>
             </Link>
