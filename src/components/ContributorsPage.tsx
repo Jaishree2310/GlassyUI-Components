@@ -114,12 +114,27 @@ export default function Component() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const contributorsResponse = await fetch(
-          'https://api.github.com/repos/Jaishree2310/GlassyUI-Components/contributors',
-        );
-        const contributorsData: Contributor[] =
-          await contributorsResponse.json();
-        setContributors(contributorsData);
+        let allContributors: Contributor[] = [];
+        let page = 1;
+        const perPage = 100;
+
+        while (true) {
+          const contributorsResponse = await fetch(
+            `https://api.github.com/repos/Jaishree2310/GlassyUI-Components/contributors?page=${page}&per_page=${perPage}`,
+          );
+
+          if (!contributorsResponse.ok) {
+            throw new Error('Failed to fetch contributors data');
+          }
+          const contributorsData: Contributor[] =
+            await contributorsResponse.json();
+
+          if (contributorsData.length === 0) break;
+
+          allContributors = [...allContributors, ...contributorsData];
+          page++;
+        }
+        setContributors(allContributors);
 
         const repoResponse = await fetch(
           'https://api.github.com/repos/Jaishree2310/GlassyUI-Components',
