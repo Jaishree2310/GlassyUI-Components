@@ -1,6 +1,6 @@
 # 🌟 GlassyUI-Components
 
-**Live Demo:** [GlassyUI](https://glassyui.com)
+**Live Demo:** [GlassyUI](https://glassyui.vercel.app)
 
 Welcome to **GlassyUI-Components**! This open-source library features stunning React components designed with a captivating glassmorphism effect, perfect for giving your web applications a modern and sleek design.
 
