@@ -67,8 +67,15 @@ const Header: React.FC = () => {
 
 // Inline styles for the nav bar
 const navStyle: React.CSSProperties = {
-  backgroundColor: '#2b303c',
+  //backgroundColor: '#2b303c',
   padding: '10px',
+  position: 'fixed', // Fix the navbar
+  top: '0', // Align it to the top of the page
+  width: '100%', // Ensure it spans the width of the page
+  zIndex: 1000, // Ensure it stays above other elements
+  backdropFilter: 'blur(10px)', // Apply the blur effect
+  WebkitBackdropFilter: 'blur(10px)', // For Safari compatibility
+  boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)', // Optional shadow for better contrast
 };
 
 const ulStyle: React.CSSProperties = {
