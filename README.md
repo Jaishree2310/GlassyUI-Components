@@ -7,14 +7,18 @@ Welcome to **GlassyUI-Components**! This open-source library features stunning R
 ## 📚 Table of Contents
 
 - [Project Overview](#project-overview)
-- [Features](#features)
+- [Features](#Features)
 - [Components](#components)
 - [Tech Stack](#tech-stack)
-- [Installation](#installation)
-- [Changelog](#changelog)
+- [Website Preview](#WebsitePreview)
+- [Prerequisites](#Prerequisites)
+- [Installation with docker](#Installationwithdocker)
+- [Installation without docker](#Installationwithoutdocker)
+- [Changelog](#Changelog)
+- [Usage](#Usage)
 - [Future Enhancements / Roadmap](#future-enhancements--roadmap)
 - [Contributing](#contributing)
-- [Pull Request Guidelines](#pull-request-guidelines)
+- [Contribution Rule](#ContributionRule)
 - [Code of Conduct](#code-of-conduct)
 - [Our Contributors](#our-contributors)
 
