@@ -9,8 +9,9 @@ const PaginationDetails: React.FC = () => {
     {},
   );
 
-  const getGlassyClasses = () => {
-    return 'backdrop-filter backdrop-blur-xl bg-white/20 border border-white/20 rounded-xl shadow-lg transition-all duration-300 max-sm:px-0';
+  const getGlassyClasses = (opacity = 20) => {
+    return `backdrop-filter backdrop-blur-lg bg-white bg-opacity-${opacity} 
+  border border-white border-opacity-20 rounded-lg shadow-lg transition-all duration-300`;
   };
 
   const copyToClipboard = (text: string, key: string) => {
@@ -172,7 +173,7 @@ const PaginationDetails: React.FC = () => {
       <div className='relative z-10'>
         <button
           onClick={() => navigate(-1)}
-          className={`mb-8 flex items-center ${getGlassyClasses()} px-4 py-2 hover:bg-white/40 transition-all duration-300 text-white`}
+          className={`mb-8 flex items-center ${getGlassyClasses(10)} px-4 py-2 hover:bg-white/40 transition-all duration-300 text-white`}
         >
           <ArrowLeft size={20} className='mr-2' />
           Back to Components
@@ -184,7 +185,7 @@ const PaginationDetails: React.FC = () => {
         </p>
 
         {/* logical part Section */}
-        <div className={`${getGlassyClasses()} p-8 mb-8 relative`}>
+        <div className={`${getGlassyClasses()} p-6 mb-14 relative`}>
           <h2 className='text-3xl font-bold mb-6 text-white'>
             Pagination logic
           </h2>
@@ -197,7 +198,7 @@ const PaginationDetails: React.FC = () => {
         </div>
 
         {/* Basic Usage Section */}
-        <div className={`${getGlassyClasses()} p-8 mb-8 relative`}>
+        <div className={`${getGlassyClasses()} p-6 mb-14 relative`}>
           <h2 className='text-3xl font-bold mb-6 text-white'>Basic Usage</h2>
           <div className='relative'>
             <pre className='bg-gray-800 text-white p-6 rounded-lg overflow-x-auto whitespace-pre-wrap max-sm:text-[0.55rem]'>
@@ -208,12 +209,12 @@ const PaginationDetails: React.FC = () => {
         </div>
 
         {/* Props Table */}
-        <div className={`${getGlassyClasses()} p-8 mb-8`}>
+        <div className={`${getGlassyClasses()} p-6 mb-14`}>
           <h2 className='text-3xl font-bold mb-6 text-white'>Props</h2>
           <div className='overflow-x-auto'>
             <table className='w-full'>
               <thead>
-                <tr className='border-b border-gray-400'>
+                <tr className='bg-white bg-opacity-20'>
                   <th className='text-left p-2 text-white'>Prop</th>
                   <th className='text-left p-2 text-white'>Type</th>
                   <th className='text-left p-2 text-white'>Default</th>
@@ -221,31 +222,31 @@ const PaginationDetails: React.FC = () => {
                 </tr>
               </thead>
               <tbody>
-                <tr className='border-b border-gray-300'>
+                <tr>
                   <td className='p-2 text-white'>total</td>
                   <td className='p-2 text-white'>number</td>
                   <td className='p-2 text-white'>-</td>
                   <td className='p-2 text-white'>Total number of items</td>
                 </tr>
-                <tr className='border-b border-gray-300'>
+                <tr className='bg-white bg-opacity-10'>
                   <td className='p-2 text-white'>currentPage</td>
                   <td className='p-2 text-white'>number</td>
                   <td className='p-2 text-white'>1</td>
                   <td className='p-2 text-white'>The current active page</td>
                 </tr>
-                <tr className='border-b border-gray-300'>
+                <tr>
                   <td className='p-2 text-white'>pageSize</td>
                   <td className='p-2 text-white'>number</td>
                   <td className='p-2 text-white'>10</td>
                   <td className='p-2 text-white'>Number of items per page</td>
                 </tr>
-                <tr className='border-b border-gray-300'>
+                <tr className='bg-white bg-opacity-10'>
                   <td className='p-2 text-white'>onPageChange</td>
                   <td className='p-2 text-white'>function</td>
                   <td className='p-2 text-white'>-</td>
                   <td className='p-2 text-white'>Callback when page changes</td>
                 </tr>
-                <tr className='border-b border-gray-300'>
+                <tr>
                   <td className='p-2 text-white'>maxVisiblePages</td>
                   <td className='p-2 text-white'>Number</td>
                   <td className='p-2 text-white'>5</td>
@@ -257,8 +258,8 @@ const PaginationDetails: React.FC = () => {
         </div>
 
         {/* Pagination Example */}
-        <section className={`${getGlassyClasses()} p-8 mb-8`}>
-          <h2 className='text-2xl font-bold mb-4 text-white'>
+        <section className={`${getGlassyClasses()} p-6 mb-14`}>
+          <h2 className='text-3xl font-bold mb-4 text-white'>
             Pagination Example
           </h2>
           <div

@@ -57,8 +57,9 @@ const ProgressBarDetailPage: React.FC = () => {
     {},
   );
 
-  const getGlassyClasses = () => {
-    return 'backdrop-filter backdrop-blur-md bg-white bg-opacity-30 border border-white border-opacity-20 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300';
+  const getGlassyClasses = (opacity = 20) => {
+    return `backdrop-filter backdrop-blur-lg bg-white bg-opacity-${opacity} 
+  border border-white border-opacity-20 rounded-lg shadow-lg transition-all duration-300`;
   };
 
   const copyToClipboard = (text: string, key: string) => {
@@ -112,23 +113,23 @@ const ProgressBarDetailPage: React.FC = () => {
       <BackToTopButton />
       <button
         onClick={() => navigate(-1)}
-        className={`mb-8 flex items-center ${getGlassyClasses()} px-4 py-2 hover:bg-opacity-40 transition-all duration-300  text-gray-100`}
+        className={`mb-8 flex items-center ${getGlassyClasses(10)} px-4 py-2 hover:bg-opacity-40 transition-all duration-300  text-gray-100`}
       >
         <ArrowLeft size={20} className='mr-2' />
         Back to Components
       </button>
 
-      <h1 className='text-4xl font-bold mb-8 text-white'>
+      <h1 className='text-6xl font-bold mb-8 text-white'>
         ProgressBar Component
       </h1>
 
-      <p className='mb-8  text-gray-100'>
+      <p className='text-xl mb-8  text-gray-100'>
         A customizable, mesh frosted glass styled progress bar component with a
         glassmorphism effect.
       </p>
 
       {/* Basic Usage */}
-      <div className={`${getGlassyClasses()} p-6 mb-8 relative`}>
+      <div className={`${getGlassyClasses()} p-6 mb-14 relative`}>
         <h2 className='text-2xl font-bold mb-4  text-gray-100'>Basic Usage</h2>
         <pre className='bg-gray-800 text-white p-4 rounded-lg overflow-x-auto'>
           {`import { ProgressBar } from 'glassy-ui';
@@ -166,12 +167,12 @@ function App() {
       </div>
 
       {/* Props */}
-      <div className={`${getGlassyClasses()} p-6 mb-8`}>
-        <h2 className='text-2xl font-bold mb-4  text-gray-100'>Props</h2>
+      <div className={`${getGlassyClasses()} p-6 mb-14`}>
+        <h2 className='text-3xl font-bold mb-4  text-gray-100'>Props</h2>
         <div className='overflow-x-auto'>
           <table className='w-full'>
             <thead>
-              <tr>
+              <tr className='bg-white bg-opacity-20'>
                 <th className='text-left p-2'>Prop</th>
                 <th className='text-left p-2'>Type</th>
                 <th className='text-left p-2'>Default</th>
@@ -185,7 +186,7 @@ function App() {
                 <td className='p-2'>'md'</td>
                 <td className='p-2'>Size of the progress bar</td>
               </tr>
-              <tr>
+              <tr className='bg-white bg-opacity-10'>
                 <td className='p-2'>color</td>
                 <td className='p-2'>string</td>
                 <td className='p-2'>'pink'</td>
@@ -197,7 +198,7 @@ function App() {
                 <td className='p-2'>0</td>
                 <td className='p-2'>Progress value (0-100)</td>
               </tr>
-              <tr>
+              <tr className='bg-white bg-opacity-10'>
                 <td className='p-2'>theme</td>
                 <td className='p-2'>
                   'pink' | 'brown' | 'white' | 'black' | 'pop'
@@ -211,11 +212,11 @@ function App() {
       </div>
 
       {/* Custom ProgressBar */}
-      <div className={`${getGlassyClasses()} p-6 mb-8`}>
-        <h2 className='text-2xl font-bold mb-4  text-gray-100'>
+      <div className={`${getGlassyClasses()} p-6 mb-14`}>
+        <h2 className='text-3xl font-bold mb-4  text-gray-100'>
           Custom ProgressBar
         </h2>
-        <p className='mb-4'>
+        <p className='text-xl mb-4'>
           Customize your progress bar's appearance by selecting a preset theme
           or creating your own color scheme.
         </p>
@@ -244,7 +245,7 @@ function App() {
             max='100'
             value={customProgress}
             onChange={e => setCustomProgress(parseInt(e.target.value))}
-            className='w-80'
+            className='w-80 max-sm:w-full'
           />
         </div>
 
@@ -277,14 +278,14 @@ function App() {
       </div>
 
       {/* Examples */}
-      <div className={`${getGlassyClasses()} p-6 mt-8`}>
-        <h2 className='text-2xl font-bold mb-4  text-gray-100'>
+      <div className={`${getGlassyClasses()} p-6 mt-14`}>
+        <h2 className='text-3xl font-bold mb-4  text-gray-100'>
           Examples for mesh morphism
         </h2>
 
         {/* Different Sizes */}
         <div className='mb-8'>
-          <h3 className='text-xl font-bold mb-4'>Different Sizes</h3>
+          <h3 className='text-xl mb-4'>Different Sizes</h3>
           <pre className='bg-gray-800 text-white p-4 rounded-lg overflow-x-auto mb-4 relative max-sm:text-[0.55rem]'>
             {`<ProgressBar size="sm" color="gray" progress={25} theme="${progressBarTheme}" />
 <ProgressBar size="md" color="blue" progress={50} theme="${progressBarTheme}" />
@@ -298,7 +299,7 @@ function App() {
           </pre>
 
           <div className='mt-4'>
-            <h4 className='text-lg font-bold mb-2'>Preview:</h4>
+            <h4 className='text-xl  mb-2'>Preview:</h4>
             <div className='space-y-4'>
               <ProgressBar
                 size='sm'
@@ -324,13 +325,13 @@ function App() {
       </div>
 
       {/* Animated Progress */}
-      <div className={`${getGlassyClasses()} p-6 mt-8`}>
-        <h2 className='text-2xl font-bold mb-4  text-gray-100'>
+      <div className={`${getGlassyClasses()} p-6 mt-14`}>
+        <h2 className='text-3xl font-bold mb-4  text-gray-100'>
           Other Examples
         </h2>
 
         <div className='mb-8'>
-          <h2 className='text-xl font-bold mb-4'>Animated Progress</h2>
+          <h2 className='text-xl mb-4'>Animated Progress</h2>
           <p className='mb-4'>
             You can animate the progress by updating the progress prop over
             time:
