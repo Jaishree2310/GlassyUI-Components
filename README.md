@@ -168,3 +168,4 @@ git push origin my-feature-branch
 ## ⭐ Give it a Star!
 
 If you enjoy using GlassyUI-Components and find it helpful, **please give it a star**! Your support encourages further development and improvement.
+ 
