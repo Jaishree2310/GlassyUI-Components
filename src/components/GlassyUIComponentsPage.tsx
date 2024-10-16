@@ -13,6 +13,7 @@ import {
   DollarSign,
   ThumbsUpIcon,
   Contact,
+  Search,
 } from 'lucide-react';
 import { HiOutlineWrenchScrewdriver } from 'react-icons/hi2';
 import BackToTopButton from './BackToTop';
@@ -236,22 +237,22 @@ const GlassyUIComponentsPage: React.FC = () => {
     <div className='min-h-screen font-sans bg-gradient-to-br from-gray-800 via-gray-900 to-black text-white'>
       <BackToTopButton />
       <div className='container mx-auto px-4 py-8 lg:py-12'>
-        <header className='grid grid-cols-3 mb-16'>
+        <header className='flex justify-between items-center mb-16 px-6 py-4 rounded-lg pl-0'>
           <div
-            className='text-3xl lg:text-4xl font-bold tracking-tight cursor-pointer hover:text-pink-200 transition-colors duration-300'
+            className='text-3xl lg:text-4xl font-extrabold tracking-tight cursor-pointer hover:text-pink-300 transition-colors duration-300 text-white'
             onClick={() => navigate('/')}
           >
             GlassyUI
           </div>
-          <input
-            className='rounded-full  text-black p-2'
-            placeholder='Search Component'
-            onChange={e => {
-              setSearchFilter(e.target.value);
-            }}
-          ></input>
+          <div className='flex items-center bg-gradient-to-r from-slate-800 via-slate-700 to-slate-900 text-white w-2/5 rounded-lg shadow-lg overflow-hidden'>
+            <input
+              className='w-full px-6 py-3 bg-transparent text-white outline-none focus:ring-2 focus:ring-gray-500 transition-all duration-300'
+              placeholder='Search Components...'
+              onChange={e => setSearchFilter(e.target.value)}
+            />
+            <Search className='mx-4 cursor-pointer text-pink-300 hover:text-pink-400 transition-all duration-300' />
+          </div>
         </header>
-
         <main>
           <h1 className='text-4xl lg:text-6xl font-extrabold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-white to-pink-200'>
             Glassmorphic Components
@@ -272,6 +273,30 @@ const GlassyUIComponentsPage: React.FC = () => {
                 onClick={component.onClick}
               />
             ))}
+            {filteredData.length === 0 && (
+              <section className='bg-white dark:bg-gray-900'>
+                <div className='py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6'>
+                  <div className='mx-auto max-w-screen-sm text-center'>
+                    <h1 className='mb-4 text-7xl tracking-tight font-extrabold lg:text-9xl text-blue-600 dark:text-primary-500'>
+                      404
+                    </h1>
+                    <p className='mb-4 text-3xl tracking-tight font-bold text-gray-900 md:text-4xl dark:text-white'>
+                      Something&apos;s missing.
+                    </p>
+                    <p className='mb-4 text-lg font-light text-gray-500 dark:text-gray-400'>
+                      Sorry, we can&apos;t find that component. You&apos;ll find
+                      lots to explore on the home page.{' '}
+                    </p>
+                    <button
+                      className='mt-6 px-4 py-2 bg-blue-600 hover:bg-blue-500 text-white rounded-lg shadow-md transition-all duration-300'
+                      onClick={() => navigate('/')}
+                    >
+                      Back to Homepage
+                    </button>
+                  </div>
+                </div>
+              </section>
+            )}
           </div>
 
           <div className='flex justify-center mt-8'>
