@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import BackToTopButton from './BackToTop';
 
 interface Contributor {
   id: number;
@@ -148,6 +149,7 @@ export default function Component() {
 
   return (
     <div className='min-h-screen bg-gradient-to-br from-gray-900 to-black text-white'>
+      <BackToTopButton />
       {/* Hero Section */}
       <section className='relative h-[70vh] flex items-center justify-center text-center bg-gradient-to-br from-gray-900 via-black to-gray-800'>
         <div className='absolute inset-0 bg-black/50 backdrop-blur-sm' />
