@@ -21,7 +21,9 @@ import Tooltip from './Tooltip';
 import SpeedDial from './SpeedDial';
 import BackToTopButton from './BackToTop';
 import { HiOutlineWrenchScrewdriver } from 'react-icons/hi2';
+import { Calendar } from 'lucide-react';
 import Accordion from './Accordion';
+import { BasicDatePicker, RangeDatePicker } from '../components/DatePicker';
 
 
 const GlassyUIComponentsPage: React.FC = () => {
@@ -434,6 +436,19 @@ const GlassyUIComponentsPage: React.FC = () => {
                     title='Accordion Title 2'
                     content='This is the content of the second accordion.'
                   />
+              </ComponentCard>
+              <ComponentCard
+                title='Date Picker'
+                description='Date Picker component with basic and range selection.'
+                icon={<Calendar size={24} />}
+                onClick={() => navigate('/date-picker-details')}
+              >
+                <div className="mb-4">
+                  <BasicDatePicker />
+                </div>
+                <div>
+                  <RangeDatePicker />
+                </div>
               </ComponentCard>
           </div>
         </main>
