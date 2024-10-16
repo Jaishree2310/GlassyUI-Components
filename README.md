@@ -4,6 +4,25 @@
 
 Welcome to **GlassyUI-Components**! This open-source library features stunning React components designed with a captivating glassmorphism effect, perfect for giving your web applications a modern and sleek design.
 
+## 📚 Table of Contents
+
+- [Project Overview](#project-overview)
+- [Features](#features)
+- [Components](#components)
+- [Tech Stack](#tech-stack)
+- [Installation](#installation)
+- [Changelog](#changelog)
+- [Future Enhancements / Roadmap](#future-enhancements--roadmap)
+- [Contributing](#contributing)
+- [Pull Request Guidelines](#pull-request-guidelines)
+- [Code of Conduct](#code-of-conduct)
+- [Our Contributors](#our-contributors)
+
+## Project Overview
+
+This open-source library features stunning React components designed with a captivating glassmorphism effect, perfect for giving your web applications a modern and sleek design.
+
+
 ## ✨ Features
 
 - Glassmorphism-themed React components
@@ -20,6 +39,14 @@ Welcome to **GlassyUI-Components**! This open-source library features stunning R
 - **Modals:** Elegant modals featuring the glassmorphism effect.
 - **Navigation Bar:** Modern navigation bars with a glassy theme.
 
+## 🛠️ Tech Stack
+
+- **React**: JavaScript library for building user interfaces.
+- **SCSS**: A CSS preprocessor for more manageable styles.
+- **Docker**: For containerization and easy deployment.
+- **Node.js**: JavaScript runtime for server-side development.
+
+  
 ## 🖥️ Website Preview
 
 ![Home Page](https://github.com/user-attachments/assets/f6f73936-ca0d-4232-a646-67189f5aa901)
@@ -151,6 +178,11 @@ git push origin my-feature-branch
 -Please ask for issue assignment before raising any PR.
 
 -If more than 1 week issue is not resolved then it will be assigned to someone else.
+
+### Code of conduct:
+- This README structure includes all the sections you wanted.
+- Adjust the contributors section as needed based on your actual contributors.
+- Feel free to add or modify any content to better fit your project’s specific needs!
 
 ## Our Contributors
 
