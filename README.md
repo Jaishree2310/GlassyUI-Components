@@ -1,6 +1,6 @@
 # 🌟 GlassyUI-Components
 
-**Live Demo:** [GlassyUI](https://glassyui.com)
+**Live Demo:** [GlassyUI](https://glassyui.vercel.app)
 
 Welcome to **GlassyUI-Components**! This open-source library features stunning React components designed with a captivating glassmorphism effect, perfect for giving your web applications a modern and sleek design.
 
@@ -106,6 +106,17 @@ function App() {
   );
 }
 ```
+## 🚀 Future Enhancements / Roadmap
+
+| Feature/Improvement          | Description                                                                                     |
+|------------------------------|-------------------------------------------------------------------------------------------------|
+| 🎨 **Theme Customization**      | Allow users to customize the glassmorphism effect with different colors and opacities.        |
+| ♿ **Accessibility Improvements** | Ensure all components are fully accessible to users with disabilities.                          |
+| ➕ **Additional Components**    | Introduce new components such as dropdowns, tooltips, and tabs.                               |
+| ⚡ **Performance Optimization** | Optimize the library for faster load times and better performance.                             |
+| 📚 **Documentation Expansion**  | Provide comprehensive guides and examples for each component to facilitate easier usage and contribution. |
+
+---
 
 ## 🤝 **Contributing**
 

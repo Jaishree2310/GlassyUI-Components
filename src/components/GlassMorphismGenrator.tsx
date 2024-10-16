@@ -58,15 +58,16 @@ const GlassmorphismGenerator: React.FC = () => {
     const b = parseInt(hexColor.slice(5, 7), 16);
     setColorFunction(`rgba(${r}, ${g}, ${b}, ${opacity})`); // Keep opacity as is
   };
-  const getGlassyClasses = () => {
-    return 'backdrop-filter backdrop-blur-md bg-white bg-opacity-30 border border-white border-opacity-20 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300';
+  const getGlassyClasses = (opacity = 20) => {
+    return `backdrop-filter backdrop-blur-lg bg-white bg-opacity-${opacity} 
+  border border-white border-opacity-20 rounded-lg shadow-lg transition-all duration-300`;
   };
   return (
     <div className='min-h-screen flex flex-col gap-6 justify-center items-center px-6 bg-gradient-to-br from-gray-800 via-gray-900 to-black text-white p-8'>
       <div className='w-full mb-0 pb-0'>
         <button
           onClick={() => navigate(-1)}
-          className={` flex items-center ${getGlassyClasses()} px-4 py-2 hover:bg-opacity-40 transition-all duration-300 text-gray-800`}
+          className={`mb-8 flex items-center ${getGlassyClasses()} px-4 py-2 hover:bg-white/40 transition-all duration-300 text-gray-100`}
         >
           <ArrowLeft size={20} className='mr-2' />
           Back to Components
