@@ -196,6 +196,7 @@ const GlassyUIComponentsPage: React.FC = () => {
       onClick: () => navigate('/generator'),
     },
   ];
+
   const [filteredData, setFilteredData] = useState(componentsData);
   useEffect(() => {
     const data = componentsData.filter(component => {
@@ -210,9 +211,9 @@ const GlassyUIComponentsPage: React.FC = () => {
     setFilteredData(data);
   }, [searchFilter]);
 
-  const totalPages = Math.ceil(componentsData.length / componentsPerPage);
+  const totalPages = Math.ceil(filteredData.length / componentsPerPage);
 
-  const currentComponents = componentsData.slice(
+  const currentComponents = filteredData.slice(
     (currentPage - 1) * componentsPerPage,
     currentPage * componentsPerPage,
   );
@@ -256,7 +257,7 @@ const GlassyUIComponentsPage: React.FC = () => {
           </p>
 
           <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8'>
-            {filteredData.map((component, index) => (
+            {currentComponents.map((component, index) => (
               <ComponentCard
                 key={index}
                 title={component.title}
