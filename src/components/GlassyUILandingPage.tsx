@@ -97,7 +97,9 @@ const GlassyUILandingPage: React.FC = () => {
               <GlassmorphismButton>Explore Components</GlassmorphismButton>
             </Link>
             <Link to='/contributors'>
-              <GlassmorphismButton variant='secondary'>Our Contributors</GlassmorphismButton>
+              <GlassmorphismButton variant='secondary'>
+                Our Contributors
+              </GlassmorphismButton>
             </Link>
             <GlassmorphismButton
               variant='secondary'
