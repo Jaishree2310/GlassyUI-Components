@@ -2,10 +2,6 @@
   "name": "my-typescript-app",
   "version": "0.1.0",
   "private": true,
-  "dependencies": {{
-  "name": "my-typescript-app",
-  "version": "0.1.0",
-  "private": true,
   "dependencies": {
     "@tailwindcss/aspect-ratio": "^0.4.2",
     "@testing-library/jest-dom": "^5.17.0",
@@ -79,78 +75,5 @@
   "lint-staged": {
     "**/*": "prettier --write --ignore-unknown",
     "*.ts": "npx tslint"
-  }
-}
-    "@tailwindcss/aspect-ratio": "^0.4.2",
-    "@testing-library/jest-dom": "^5.17.0",
-    "@testing-library/react": "^13.4.0",
-    "@testing-library/user-event": "^13.5.0",
-    "@types/jest": "^27.5.2",
-    "@types/node": "^16.18.102",
-    "@types/react": "^18.3.3",
-    "@types/react-dom": "^18.3.0",
-    "framer-motion": "^11.11.7",
-    "gsap": "^3.12.5",
-    "lucide-react": "^0.408.0",
-    "pixel-retroui": "^1.0.61",
-    "react": "^18.3.1",
-    "react-components": "^0.5.1",
-    "react-dom": "^18.3.1",
-    "react-feather": "^2.0.10",
-    "react-icons": "^5.3.0",
-    "react-router-dom": "^6.25.1",
-    "react-scripts": "5.0.1",
-    "styled-components": "^6.1.13",
-    "typescript": "^4.9.5",
-    "web-vitals": "^2.1.4",
-    "zod": "^3.23.8"
-  },
-  "scripts": {
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "prepare": "husky install"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  },
-  "devDependencies": {
-    "@eslint/js": "^9.12.0",
-    "@typescript-eslint/eslint-plugin": "^6.3.0",
-    "@typescript-eslint/parser": "^6.3.0",
-    "autoprefixer": "^10.4.20",
-    "eslint": "^8.57.1",
-    "eslint-plugin-react": "^7.37.1",
-    "husky": "^9.1.6",
-    "postcss": "^8.4.47",
-    "prettier": "^3.3.3",
-    "tailwindcss": "^3.4.13"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "npx lint-staged"
-    }
-  },
-  "lint-staged": {
-    "**/*.{js,jsx,ts,tsx}": "prettier --write",
-    "*.ts?(x)": "eslint --fix"
   }
 }
