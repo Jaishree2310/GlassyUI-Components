@@ -177,11 +177,12 @@ const CardDetailsPage: React.FC = () => {
         Back to Components
       </button>
 
-      <h1 className='text-4xl font-bold mb-8 text-gray-900'>Card Component</h1>
+      <h1 className='text-4xl font-bold mb-8 text-white'>Card Component</h1>
 
       {/* Basic Usage */}
       <section className='mb-12'>
-        <h2 className='text-2xl font-bold mb-4 text-gray-800'>Basic Usage</h2>
+        <h2 className='text-2xl font-bold mb-4 text-white'>Basic Usage</h2>
+
         <div className='bg-white bg-opacity-30 backdrop-filter backdrop-blur-md border border-white border-opacity-20 rounded-lg p-6 max-sm:px-1'>
           <pre className='bg-gray-800 text-white p-4 rounded-lg overflow-x-auto relative max-sm:text-[0.55rem]'>
             {`import { Card } from './components/Card';
