@@ -12,6 +12,7 @@ import {
   ArrowUp,
   DollarSign,
   ThumbsUpIcon,
+  Contact,
 } from 'lucide-react';
 import { HiOutlineWrenchScrewdriver } from 'react-icons/hi2';
 import BackToTopButton from './BackToTop';
@@ -188,6 +189,12 @@ const GlassyUIComponentsPage: React.FC = () => {
       description: 'Testimonial component with glassmorphic styling.',
       icon: <ThumbsUpIcon size={24} />,
       onClick: () => navigate('/testimonial-details'),
+    },
+    {
+      title: 'Contact Form',
+      description: 'Contact Form component with glassmorphic styling.',
+      icon: <Contact size={24} />,
+      onClick: () => navigate('/contact-details'),
     },
     {
       title: 'Glassmorphism Effect Generator',
