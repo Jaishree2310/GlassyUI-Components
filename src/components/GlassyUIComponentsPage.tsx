@@ -15,7 +15,7 @@ import {
   Contact,
   Search,
 } from 'lucide-react';
-import { HiOutlineWrenchScrewdriver } from 'react-icons/hi2';
+// import { HiOutlineWrenchScrewdriver } from 'react-icons/hi2';
 import BackToTopButton from './BackToTop';
 
 interface ComponentCardProps {
@@ -70,6 +70,7 @@ const GlassyUIComponentsPage: React.FC = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [searchFilter, setSearchFilter] = useState<string | null>('');
   const componentsPerPage = 9;
+
   const componentsData = [
     {
       title: 'Toast',
@@ -204,9 +205,11 @@ const GlassyUIComponentsPage: React.FC = () => {
       onClick: () => navigate('/generator'),
     },
   ];
+
   const [filteredData, setFilteredData] = useState(componentsData);
+
   useEffect(() => {
-    const data = componentsData.filter(component => {
+    const filteredComponents = componentsData.filter(component => {
       if (searchFilter != null) {
         return component.title
           .replace(/ /g, '')
@@ -215,12 +218,13 @@ const GlassyUIComponentsPage: React.FC = () => {
       }
       return component;
     });
-    setFilteredData(data);
+    setFilteredData(filteredComponents);
+    setCurrentPage(1); // Reset to first page when searching
   }, [searchFilter]);
 
-  const totalPages = Math.ceil(componentsData.length / componentsPerPage);
+  const totalPages = Math.ceil(filteredData.length / componentsPerPage);
 
-  const currentComponents = componentsData.slice(
+  const currentComponents = filteredData.slice(
     (currentPage - 1) * componentsPerPage,
     currentPage * componentsPerPage,
   );
@@ -264,7 +268,7 @@ const GlassyUIComponentsPage: React.FC = () => {
           </p>
 
           <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8'>
-            {filteredData.map((component, index) => (
+            {currentComponents.map((component, index) => (
               <ComponentCard
                 key={index}
                 title={component.title}
@@ -302,7 +306,11 @@ const GlassyUIComponentsPage: React.FC = () => {
           <div className='flex justify-center mt-8'>
             <button
               onClick={prevPage}
-              className={`px-4 py-2 mx-2 rounded-lg ${currentPage === 1 ? 'opacity-50 cursor-not-allowed' : 'hover:bg-white/20'}`}
+              className={`px-4 py-2 mx-2 rounded-lg ${
+                currentPage === 1
+                  ? 'opacity-50 cursor-not-allowed'
+                  : 'hover:bg-white/20'
+              }`}
               disabled={currentPage === 1}
             >
               Previous
@@ -312,7 +320,11 @@ const GlassyUIComponentsPage: React.FC = () => {
             </span>
             <button
               onClick={nextPage}
-              className={`px-4 py-2 mx-2 rounded-lg ${currentPage === totalPages ? 'opacity-50 cursor-not-allowed' : 'hover:bg-white/20'}`}
+              className={`px-4 py-2 mx-2 rounded-lg ${
+                currentPage === totalPages
+                  ? 'opacity-50 cursor-not-allowed'
+                  : 'hover:bg-white/20'
+              }`}
               disabled={currentPage === totalPages}
             >
               Next
