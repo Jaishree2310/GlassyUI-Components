@@ -99,15 +99,6 @@ const TermsAndConditions: React.FC = () => {
           limitations of liability.
         </p>
 
-        <h2 className='text-3xl font-bold mb-6 text-gray-100'>Governing Law</h2>
-        <p className='text-gray-100 mb-6'>
-          These terms shall be governed by and construed in accordance with the
-          laws of the jurisdiction in which we operate, without regard to its
-          conflict of law principles. Any legal action or proceeding arising out
-          of or related to these terms shall be brought exclusively in the
-          courts located in that jurisdiction.
-        </p>
-
         <h2 className='text-3xl font-bold mb-6 text-gray-100'>
           Changes to Terms
         </h2>

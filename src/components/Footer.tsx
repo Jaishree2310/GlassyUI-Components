@@ -28,7 +28,10 @@ const Footer: React.FC = () => {
           with depth and style.
         </p>
         <p>
-          <Link to={'/terms'} style={{ textDecoration: 'none', color: 'gold' }}>
+          <Link
+            to={'/terms'}
+            style={{ textDecoration: 'none', color: 'skyblue' }}
+          >
             Terms and Conditions
           </Link>
         </p>
