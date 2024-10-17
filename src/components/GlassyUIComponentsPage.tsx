@@ -12,9 +12,22 @@ import {
   ArrowUp,
   DollarSign,
   ThumbsUpIcon,
+  Contact,
 } from 'lucide-react';
 import { HiOutlineWrenchScrewdriver } from 'react-icons/hi2';
+
+import Accordion from './Accordion';
+
+const GlassyUIComponentsPage: React.FC = () => {
+  const navigate = useNavigate();
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
+  const [isPopupOpen2, setIsPopupOpen2] = useState(false);
+  const githubRepoUrl = 'https://github.com/Jaishree2310/GlassyUI-Components';
+
 import BackToTopButton from './BackToTop';
+import { HiOutlineWrenchScrewdriver } from 'react-icons/hi2';
+import { HiOutlineChevronDoubleDown } from 'react-icons/hi2';
 
 interface ComponentCardProps {
   title: string;
@@ -24,6 +37,7 @@ interface ComponentCardProps {
   status?: string;
   children?: React.ReactNode;
 }
+
 
 const ComponentCard: React.FC<ComponentCardProps> = ({
   title,
@@ -68,6 +82,14 @@ const GlassyUIComponentsPage: React.FC = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [searchFilter, setSearchFilter] = useState<string | null>('');
   const componentsPerPage = 9;
+
+  const scrollToNextSection = () => {
+    window.scrollBy({
+      top: window.innerHeight,
+      behavior: 'smooth',
+    });
+  };
+    
   const componentsData = [
     {
       title: 'Toast',
@@ -190,9 +212,15 @@ const GlassyUIComponentsPage: React.FC = () => {
       onClick: () => navigate('/testimonial-details'),
     },
     {
+      title: 'Contact Form',
+      description: 'Contact Form component with glassmorphic styling.',
+      icon: <Contact size={24} />,
+      onClick: () => navigate('/contact-details'),
+    },
+    {
       title: 'Glassmorphism Effect Generator',
       description: 'Create stunning Glassmorphic effects with ease.',
-      // icon: <HiOutlineWrenchScrewdriver size={24} />,
+
       onClick: () => navigate('/generator'),
     },
   ];
@@ -245,6 +273,16 @@ const GlassyUIComponentsPage: React.FC = () => {
           ></input>
         </header>
 
+        {/* Scroll Down Button */}
+        <div className='fixed top-15 right-10 z-50'>
+          <button
+            onClick={scrollToNextSection}
+            className='animate-bounce bg-white/20 text-white hover:bg-pink-200 hover:text-black p-4 rounded-full shadow-lg transition-all duration-300'
+          >
+            <HiOutlineChevronDoubleDown size={20} />
+          </button>
+        </div>
+
         <main>
           <h1 className='text-4xl lg:text-6xl font-extrabold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-white to-pink-200'>
             Glassmorphic Components
@@ -264,6 +302,295 @@ const GlassyUIComponentsPage: React.FC = () => {
                 icon={component.icon}
                 onClick={component.onClick}
               />
+
+            </ComponentCard>
+            <ComponentCard
+              title='Buttons'
+              description='Sleek, customizable buttons with glassmorphic styling.'
+              icon={<Box size={24} />}
+              onClick={() => navigate('/button-details')}
+            >
+              <div className='flex space-x-2 mt-4'>
+                <button
+                  className={`${getGlassyClasses()} px-4 py-2 hover:bg-white/20`}
+                >
+                  Click me
+                </button>
+                <button
+                  className={`${getGlassyClasses()} px-4 py-2 bg-white/20 hover:bg-white/30`}
+                >
+                  Accent
+                </button>
+              </div>
+            </ComponentCard>
+
+            <ComponentCard
+              title='Inputs'
+              description='Elegant input fields with a glass-like appearance.'
+              icon={<Type size={24} />}
+              onClick={() => navigate('/input-details')}
+            >
+              <input
+                type='text'
+                placeholder='Type here...'
+                className={`${getGlassyClasses()} w-full px-4 py-2 mt-4 placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-white/50`}
+              />
+            </ComponentCard>
+
+            <ComponentCard
+              title='Cards'
+              description='Versatile content containers with a frosted glass effect.'
+              icon={<Layout size={24} />}
+              onClick={() => navigate('/card-details')}
+            >
+              <div className={`${getGlassyClasses()} p-4 mt-4`}>
+                <h4 className='font-semibold'>Card Title</h4>
+                <p className='text-sm opacity-80'>Card content goes here.</p>
+              </div>
+            </ComponentCard>
+
+            <ComponentCard
+              title='Progress Bars'
+              description='Stylish progress indicators with a glass-like finish.'
+              icon={<Sliders size={24} />}
+              onClick={() => navigate('/progress-bar-details')}
+            >
+              <div className={`${getGlassyClasses()} w-full h-4 mt-4`}>
+                <div
+                  className='bg-white/30 h-full rounded-2xl'
+                  style={{ width: '60%' }}
+                ></div>
+              </div>
+            </ComponentCard>
+
+            <ComponentCard
+              title='Modals'
+              description='Eye-catching dialog boxes with glassmorphism effects.'
+              icon={<MessageSquare size={24} />}
+              onClick={() => navigate('/modal-details')}
+            >
+              <button
+                onClick={e => {
+                  e.stopPropagation();
+                  alert('Modal would open here');
+                }}
+                className={`${getGlassyClasses()} px-4 py-2 mt-4 hover:bg-white/20`}
+              >
+                Open Modal
+              </button>
+            </ComponentCard>
+
+            <ComponentCard
+              title='Navigation'
+              description='Sleek navigation components with a frosted glass look.'
+              icon={<ArrowRight size={24} />}
+              onClick={() => navigate('/navigation-details')}
+            >
+              <nav
+                className={`${getGlassyClasses()} flex justify-around mt-4 py-2`}
+              >
+                <a href='#' className='hover:bg-white/20 px-2 py-1 rounded'>
+                  Home
+                </a>
+                <a href='#' className='hover:bg-white/20 px-2 py-1 rounded'>
+                  About
+                </a>
+                <a href='#' className='hover:bg-white/20 px-2 py-1 rounded'>
+                  Contact
+                </a>
+              </nav>
+            </ComponentCard>
+
+            <ComponentCard
+              title='Popups'
+              description='Attention-grabbing popup notifications with glassmorphic styling.'
+              icon={<MessageSquare size={24} />}
+              onClick={() => navigate('/popup-details')}
+            >
+              <button
+                onClick={e => {
+                  e.stopPropagation();
+                  setIsPopupOpen(true);
+                }}
+                className={`${getGlassyClasses()} px-4 py-2 mt-4 hover:bg-white/20`}
+              >
+                Show Popup
+              </button>
+              {isPopupOpen && (
+                <div
+                  className='fixed inset-0 flex items-center justify-center z-50'
+                  onClick={() => setIsPopupOpen(false)}
+                >
+                  <div
+                    className={`${getGlassyClasses()} p-6 max-w-sm mx-auto`}
+                    onClick={e => e.stopPropagation()}
+                  >
+                    <h3 className='text-xl font-bold mb-2'>Popup Title</h3>
+                    <p className='mb-4'>
+                      This is a sample popup with glassmorphism effect.
+                    </p>
+                    <button
+                      onClick={() => setIsPopupOpen(false)}
+                      className={`${getGlassyClasses()} px-4 py-2 hover:bg-white/20`}
+                    >
+                      Close
+                    </button>
+                  </div>
+                </div>
+              )}
+            </ComponentCard>
+
+            <ComponentCard
+              title='Textarea'
+              description='Multi-line input fields with elegant glassmorphic design.'
+              icon={<AlignLeft size={24} />}
+              onClick={() => navigate('/textarea-details')}
+            >
+              <textarea
+                placeholder='Enter your message...'
+                className={`${getGlassyClasses()} w-full px-4 py-2 mt-4 placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-white/50 resize-none`}
+                rows={3}
+              />
+            </ComponentCard>
+
+            <ComponentCard
+              title='Tool Tip'
+              description='Tooltip component support different positions, and be responsive and accessible.'
+              icon={<Info size={24} />}
+              onClick={() => navigate('/tooltip-details')}
+            >
+              <div className='mt-1 mb-4 flex justify-around'>
+                <Tooltip text='Tooltip' position='left'>
+                  <button className={`${getGlassyClasses()} px-4 py-2`}>
+                    Left
+                  </button>
+                </Tooltip>
+                <Tooltip text='Tooltip' position='bottom'>
+                  <button className={`${getGlassyClasses()} px-4 py-2`}>
+                    Bottom
+                  </button>
+                </Tooltip>
+                <Tooltip text='Tooltip' position='right'>
+                  <button className={`${getGlassyClasses()} px-4 py-2`}>
+                    Right
+                  </button>
+                </Tooltip>
+              </div>
+            </ComponentCard>
+
+            <ComponentCard
+              title='Back to Top'
+              description='A button that scrolls the page back to the top, improving user navigation.'
+              icon={<ArrowUp size={24} />}
+              onClick={() => navigate('/back-to-top-details')}
+            >
+              <div className='mt-1 mb-4 flex justify-around'>
+                <button
+                  onClick={() =>
+                    window.scrollTo({ top: 0, behavior: 'smooth' })
+                  }
+                  className={`${getGlassyClasses()} px-4 py-2`}
+                >
+                  Back to Top
+                </button>
+              </div>
+            </ComponentCard>
+
+            <ComponentCard
+              title='Pricing Plans'
+              description='Choose a pricing plan that suits your needs. Affordable and flexible.'
+              icon={<DollarSign size={24} />}
+              onClick={() => navigate('/pricing-details')}
+            >
+              <div className='mt-1 mb-4 flex justify-around'>
+                <div className='text-center'>
+                  <h3 className='text-lg font-semibold'>Basic</h3>
+                  <button className={`${getGlassyClasses()} px-4 py-2 mt-2`}>
+                    Select
+                  </button>
+                </div>
+                <div className='text-center'>
+                  <h3 className='text-lg font-semibold'>Standard</h3>
+                  <button className={`${getGlassyClasses()} px-4 py-2 mt-2`}>
+                    Select
+                  </button>
+                </div>
+                <div className='text-center'>
+                  <h3 className='text-lg font-semibold'>Premium</h3>
+                  <button className={`${getGlassyClasses()} px-4 py-2 mt-2`}>
+                    Select
+                  </button>
+                </div>
+              </div>
+            </ComponentCard>
+            <ComponentCard
+              title='Dropdown Menu'
+              description='Select an option from the dropdown menu.'
+              icon={<AlignLeft size={24} />}
+              onClick={() => navigate('/dropdown-details')}
+            >
+              <div className='relative p-4 rounded-lg shadow-lg bg-white/10 pt-0'>
+                <div
+                  className='flex items-center mt-4 cursor-pointer rounded-3xl'
+                  onClick={e => {
+                    e.stopPropagation();
+                    setIsPopupOpen2(prev => !prev); // Toggle dropdown visibility
+                  }}
+                >
+                  <span className='w-full px-4 py-2 mt-2 bg-transparent border rounded focus:outline-none focus:ring-2 focus:ring-blue-500'>
+                    {selectedOption || 'Select an option'}
+                  </span>
+                </div>
+
+                {isPopupOpen2 && (
+                  <div className='absolute z-10 mt-1 w-full bg-gray-800 text-white rounded shadow-lg'>
+                    {['options1', 'options2', 'options3'].map(
+                      (option, index) => (
+                        <div
+                          key={option}
+                          className='px-4 py-2 hover:bg-gray-700 cursor-pointer'
+                          onClick={() => handleOptionSelect(option)}
+                        >
+                          {option}
+                        </div>
+                      ),
+                    )}
+                  </div>
+                )}
+              </div>
+            </ComponentCard>
+
+            <ComponentCard
+              title='Authentication Cards'
+              description='Versatile content containers with a frosted glass effect.'
+              icon={<Layout size={24} />}
+              onClick={() => navigate('/authentication-card')}
+            >
+              <div className='mt-1 mb-4 flex justify-around'>
+                <button className={`${getGlassyClasses()} px-4 py-2`}>
+                  Login
+                </button>
+                <button className={`${getGlassyClasses()} px-4 py-2`}>
+                  Sign Up
+                </button>
+              </div>
+            </ComponentCard>
+            <ComponentCard
+              title='Accordion'
+              description='Accordion component with glassmorphic styling.'
+              icon={<Layout size={24} />}
+              onClick={() => navigate('/accordion-details')}
+            >
+              <Accordion
+                title='Accordion Title 1'
+                content='This is the content of the first accordion.'
+              />
+              <Accordion
+                title='Accordion Title 2'
+                content='This is the content of the second accordion.'
+              />
+            </ComponentCard>
+
             ))}
           </div>
 
@@ -285,6 +612,7 @@ const GlassyUIComponentsPage: React.FC = () => {
             >
               Next
             </button>
+
           </div>
         </main>
       </div>
