@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {
   ArrowRight,
@@ -12,8 +12,13 @@ import {
   ArrowUp,
   DollarSign,
   ThumbsUpIcon,
+  Contact,
+  Search,
 } from 'lucide-react';
+import { HiOutlineWrenchScrewdriver } from 'react-icons/hi2';
 import BackToTopButton from './BackToTop';
+import { HiOutlineWrenchScrewdriver } from 'react-icons/hi2';
+import { HiOutlineChevronDoubleDown } from 'react-icons/hi2';
 
 interface ComponentCardProps {
   title: string;
@@ -65,8 +70,16 @@ const ComponentCard: React.FC<ComponentCardProps> = ({
 const GlassyUIComponentsPage: React.FC = () => {
   const navigate = useNavigate();
   const [currentPage, setCurrentPage] = useState(1);
+  const [searchFilter, setSearchFilter] = useState<string | null>('');
   const componentsPerPage = 9;
 
+  const scrollToNextSection = () => {
+    window.scrollBy({
+      top: window.innerHeight,
+      behavior: 'smooth',
+    });
+  };
+    
   const componentsData = [
     {
       title: 'Toast',
@@ -189,19 +202,33 @@ const GlassyUIComponentsPage: React.FC = () => {
       onClick: () => navigate('/testimonial-details'),
     },
     {
+      title: 'Contact Form',
+      description: 'Contact Form component with glassmorphic styling.',
+      icon: <Contact size={24} />,
+      onClick: () => navigate('/contact-details'),
+    },
+    {
       title: 'Glassmorphism Effect Generator',
       description: 'Create stunning Glassmorphic effects with ease.',
       icon: <HiOutlineWrenchScrewdriver size={24} />,
       onClick: () => navigate('/generator'),
     },
   ];
+  const [filteredData, setFilteredData] = useState(componentsData);
+  useEffect(() => {
+    const data = componentsData.filter(component => {
+      if (searchFilter != null) {
+        return component.title
+          .replace(/ /g, '')
+          .toLowerCase()
+          .includes(searchFilter.trim().replace(/ /g, '').toLowerCase());
+      }
+      return component;
+    });
+    setFilteredData(data);
+  }, [searchFilter]);
 
   const totalPages = Math.ceil(componentsData.length / componentsPerPage);
-
-  const currentComponents = componentsData.slice(
-    (currentPage - 1) * componentsPerPage,
-    currentPage * componentsPerPage,
-  );
 
   const nextPage = () => {
     if (currentPage < totalPages) setCurrentPage(currentPage + 1);
@@ -215,14 +242,32 @@ const GlassyUIComponentsPage: React.FC = () => {
     <div className='min-h-screen font-sans bg-gradient-to-br from-gray-800 via-gray-900 to-black text-white'>
       <BackToTopButton />
       <div className='container mx-auto px-4 py-8 lg:py-12'>
-        <header className='flex justify-between items-center mb-16'>
+        <header className='grid grid-cols-3 mb-16'>
           <div
             className='text-3xl lg:text-4xl font-bold tracking-tight cursor-pointer hover:text-pink-200 transition-colors duration-300'
             onClick={() => navigate('/')}
           >
             GlassyUI
           </div>
+
+          <input
+            className='rounded-full text-white bg-gradient-to-br border border-white/20 p-3'
+            placeholder='Search Component...'
+            onChange={e => {
+              setSearchFilter(e.target.value);
+            }}
+          ></input>
         </header>
+
+        {/* Scroll Down Button */}
+        <div className='fixed top-15 right-10 z-50'>
+          <button
+            onClick={scrollToNextSection}
+            className='animate-bounce bg-white/20 text-white hover:bg-pink-200 hover:text-black p-4 rounded-full shadow-lg transition-all duration-300'
+          >
+            <HiOutlineChevronDoubleDown size={20} />
+          </button>
+        </div>
 
         <main>
           <h1 className='text-4xl lg:text-6xl font-extrabold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-white to-pink-200'>
@@ -235,7 +280,7 @@ const GlassyUIComponentsPage: React.FC = () => {
           </p>
 
           <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8'>
-            {currentComponents.map((component, index) => (
+            {filteredData.map((component, index) => (
               <ComponentCard
                 key={index}
                 title={component.title}
