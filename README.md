@@ -175,13 +175,14 @@ git push origin my-feature-branch
 -If more than 1 week issue is not resolved then it will be assigned to someone else.
 
 -Important Rule for Creating component to follow the order of component.
-Basic Usage
-Props
-Customizable component
-Theme 
-Example
-Copy code 
-for eg: Button component,Progress Bar components 
+
+1. Basic Usage
+2. Props
+3.Customizable component
+4. Theme (of your new component)
+5. Example
+6. Copy code 
+-for eg: Button component,Progress Bar components 
 
 
 ## Our Contributors
