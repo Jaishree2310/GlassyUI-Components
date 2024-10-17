@@ -1,8 +1,29 @@
 # 🌟 GlassyUI-Components
 
-**Live Demo:** [GlassyUI](https://glassyui.vercel.app)
+### **Live Demo:** [GlassyUI](https://glassyui.vercel.app)
 
 Welcome to **GlassyUI-Components**! This open-source library features stunning React components designed with a captivating glassmorphism effect, perfect for giving your web applications a modern and sleek design.
+
+<table align="center">
+    <thead align="center">
+        <tr border: 2px;>
+            <td><b>🌟 Stars</b></td>
+            <td><b>🍴 Forks</b></td>
+            <td><b>🐛 Issues</b></td>
+            <td><b>🔔 Open PRs</b></td>
+            <td><b>🔕 Close PRs</b></td>
+        </tr>
+     </thead>
+    <tbody>
+         <tr>
+            <td><img alt="Stars" src="https://img.shields.io/github/stars/Jaishree2310/GlassyUI-Components?style=flat&logo=github"/></td>
+             <td><img alt="Forks" src="https://img.shields.io/github/forks/Jaishree2310/GlassyUI-Components?style=flat&logo=github"/></td>
+            <td><img alt="Issues" src="https://img.shields.io/github/issues/Jaishree2310/GlassyUI-Components?style=flat&logo=github"/></td>
+            <td><img alt="Open Pull Requests" src="https://img.shields.io/github/issues-pr/Jaishree2310/GlassyUI-Components?style=flat&logo=github"/></td>
+           <td><img alt="Close Pull Requests" src="https://img.shields.io/github/issues-pr-closed/Jaishree2310/GlassyUI-Components?style=flat&color=green&logo=github"/></td>
+        </tr>
+    </tbody>
+</table>
 
 ## ✨ Features
 
@@ -153,6 +174,18 @@ git push origin my-feature-branch
 
 -If more than 1 week issue is not resolved then it will be assigned to someone else.
 
+-Important Rule for Creating component to follow the order of component.
+
+1. Basic Usage
+2. Props
+3.Customizable component
+4. Theme (of your new component)
+5. Example
+6. Copy code 
+
+-for eg: Button component,Progress Bar components 
+
+
 ## Our Contributors
 
 - We truly appreciate your incredible contributions to this project! Your dedication and hard work are vital to its continued growth and success. If you’ve found value in it, don’t forget to show your support by giving our repository a star! ⭐
@@ -168,3 +201,5 @@ git push origin my-feature-branch
 ## ⭐ Give it a Star!
 
 If you enjoy using GlassyUI-Components and find it helpful, **please give it a star**! Your support encourages further development and improvement.
+
+
