@@ -29,6 +29,7 @@ import ContactUsDetailsPage from './components/ContactUsDetailsPage';
 import PaginationDetails from './components/PaginationDetails';
 import TestimonialDetails from './components/TestimonialDetails';
 import Footer from './components/Footer';
+import Checkbox from './components/Checkbox';
 
 const App: React.FC = () => {
   return (
@@ -61,13 +62,13 @@ const App: React.FC = () => {
 
         <Route path='/contributors' element={<ContributorsPage />} />
 
-        <Route path='/' element={<GlassyUILandingPage />} />
         <Route path='/donate' element={<DonationPage />} />
 
         <Route path='/about' element={<AboutUsPage />} />
         <Route path='/contact-details' element={<ContactUsDetailsPage />} />
         <Route path='/pagination-details' element={<PaginationDetails />} />
         <Route path='/testimonial-details' element={<TestimonialDetails />} />
+        <Route path='/checkbox' element={<Checkbox />} />
 
         <Route path='*' element={<NotFoundPage />} />
       </Routes>

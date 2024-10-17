@@ -27,6 +27,9 @@ interface ComponentCardProps {
   status?: string;
   children?: React.ReactNode;
 }
+const getGlassyClasses = () => {
+  return 'backdrop-filter backdrop-blur-md bg-white/10 border border-white/20 rounded-2xl shadow-lg transition-all duration-300';
+};
 
 const ComponentCard: React.FC<ComponentCardProps> = ({
   title,
@@ -36,10 +39,6 @@ const ComponentCard: React.FC<ComponentCardProps> = ({
   status,
   children,
 }) => {
-  const getGlassyClasses = () => {
-    return 'backdrop-filter backdrop-blur-md bg-white/10 border border-white/20 rounded-2xl shadow-lg transition-all duration-300';
-  };
-
   return (
     <div
       className={`${getGlassyClasses()} p-6 flex flex-col h-full cursor-pointer group transition-all duration-300 hover:bg-white/20 hover:scale-105 hover:shadow-xl`}
@@ -71,6 +70,15 @@ const GlassyUIComponentsPage: React.FC = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [searchFilter, setSearchFilter] = useState<string | null>('');
   const componentsPerPage = 9;
+
+
+  const scrollToNextSection = () => {
+    window.scrollBy({
+      top: window.innerHeight,
+      behavior: 'smooth',
+    });
+  };
+
 
   const componentsData = [
     {
@@ -205,6 +213,12 @@ const GlassyUIComponentsPage: React.FC = () => {
       icon: <HiOutlineWrenchScrewdriver size={24} />,
       onClick: () => navigate('/generator'),
     },
+    {
+      title: 'Checkbox',
+      description: 'Checkbox component with glassmorphic styling.',
+      icon: <Layout size={24} />,
+      onClick: () => navigate('/checkbox'),
+    },
   ];
 
   const [filteredData, setFilteredData] = useState(componentsData);
@@ -249,6 +263,7 @@ const GlassyUIComponentsPage: React.FC = () => {
           >
             GlassyUI
           </div>
+
           <div className='flex items-center bg-gradient-to-r from-slate-800 via-slate-700 to-slate-900 text-white w-2/5 rounded-lg shadow-lg overflow-hidden'>
             <input
               className='w-full px-6 py-3 bg-transparent text-white outline-none focus:ring-2 focus:ring-gray-500 transition-all duration-300'
@@ -257,6 +272,7 @@ const GlassyUIComponentsPage: React.FC = () => {
             />
             <Search className='mx-4 cursor-pointer text-pink-300 hover:text-pink-400 transition-all duration-300' />
           </div>
+
         </header>
 
         <main>
