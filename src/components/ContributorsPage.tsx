@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import BackToTopButton from './BackToTop';
 
 interface Contributor {
   id: number;
@@ -117,12 +118,27 @@ export default function Component() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const contributorsResponse = await fetch(
-          'https://api.github.com/repos/Jaishree2310/GlassyUI-Components/contributors',
-        );
-        const contributorsData: Contributor[] =
-          await contributorsResponse.json();
-        setContributors(contributorsData);
+        let allContributors: Contributor[] = [];
+        let page = 1;
+        const perPage = 100;
+
+        while (true) {
+          const contributorsResponse = await fetch(
+            `https://api.github.com/repos/Jaishree2310/GlassyUI-Components/contributors?page=${page}&per_page=${perPage}`,
+          );
+
+          if (!contributorsResponse.ok) {
+            throw new Error('Failed to fetch contributors data');
+          }
+          const contributorsData: Contributor[] =
+            await contributorsResponse.json();
+
+          if (contributorsData.length === 0) break;
+
+          allContributors = [...allContributors, ...contributorsData];
+          page++;
+        }
+        setContributors(allContributors);
 
         const repoResponse = await fetch(
           'https://api.github.com/repos/Jaishree2310/GlassyUI-Components',
@@ -160,8 +176,16 @@ export default function Component() {
     setEmail('');
   };
 
+  const scrollToNextSection = () => {
+    window.scrollBy({
+      top: window.innerHeight,
+      behavior: 'smooth',
+    });
+  };
+
   return (
     <div className='min-h-screen bg-gradient-to-br from-gray-900 to-black text-white'>
+      <BackToTopButton />
       {/* Hero Section */}
       <section className='relative h-[70vh] flex items-center justify-center text-center bg-gradient-to-br from-gray-900 via-black to-gray-800'>
         <div className='absolute inset-0 bg-black/50 backdrop-blur-sm' />

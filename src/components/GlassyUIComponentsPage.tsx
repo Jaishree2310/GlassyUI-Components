@@ -12,9 +12,13 @@ import {
   ArrowUp,
   DollarSign,
   ThumbsUpIcon,
+  Contact,
+  Search,
 } from 'lucide-react';
 import { HiOutlineWrenchScrewdriver } from 'react-icons/hi2';
 import BackToTopButton from './BackToTop';
+import { HiOutlineWrenchScrewdriver } from 'react-icons/hi2';
+import { HiOutlineChevronDoubleDown } from 'react-icons/hi2';
 
 interface ComponentCardProps {
   title: string;
@@ -68,6 +72,14 @@ const GlassyUIComponentsPage: React.FC = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [searchFilter, setSearchFilter] = useState<string | null>('');
   const componentsPerPage = 9;
+
+  const scrollToNextSection = () => {
+    window.scrollBy({
+      top: window.innerHeight,
+      behavior: 'smooth',
+    });
+  };
+    
   const componentsData = [
     {
       title: 'Toast',
@@ -190,9 +202,15 @@ const GlassyUIComponentsPage: React.FC = () => {
       onClick: () => navigate('/testimonial-details'),
     },
     {
+      title: 'Contact Form',
+      description: 'Contact Form component with glassmorphic styling.',
+      icon: <Contact size={24} />,
+      onClick: () => navigate('/contact-details'),
+    },
+    {
       title: 'Glassmorphism Effect Generator',
       description: 'Create stunning Glassmorphic effects with ease.',
-      // icon: <HiOutlineWrenchScrewdriver size={24} />,
+      icon: <HiOutlineWrenchScrewdriver size={24} />,
       onClick: () => navigate('/generator'),
     },
   ];
@@ -211,11 +229,6 @@ const GlassyUIComponentsPage: React.FC = () => {
   }, [searchFilter]);
 
   const totalPages = Math.ceil(componentsData.length / componentsPerPage);
-
-  const currentComponents = componentsData.slice(
-    (currentPage - 1) * componentsPerPage,
-    currentPage * componentsPerPage,
-  );
 
   const nextPage = () => {
     if (currentPage < totalPages) setCurrentPage(currentPage + 1);
@@ -236,14 +249,25 @@ const GlassyUIComponentsPage: React.FC = () => {
           >
             GlassyUI
           </div>
+
           <input
-            className='rounded-full  text-black p-2'
-            placeholder='Search Component'
+            className='rounded-full text-white bg-gradient-to-br border border-white/20 p-3'
+            placeholder='Search Component...'
             onChange={e => {
               setSearchFilter(e.target.value);
             }}
           ></input>
         </header>
+
+        {/* Scroll Down Button */}
+        <div className='fixed top-15 right-10 z-50'>
+          <button
+            onClick={scrollToNextSection}
+            className='animate-bounce bg-white/20 text-white hover:bg-pink-200 hover:text-black p-4 rounded-full shadow-lg transition-all duration-300'
+          >
+            <HiOutlineChevronDoubleDown size={20} />
+          </button>
+        </div>
 
         <main>
           <h1 className='text-4xl lg:text-6xl font-extrabold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-white to-pink-200'>
