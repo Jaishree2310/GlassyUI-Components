@@ -120,7 +120,7 @@ const SliderDetailsPage: React.FC = () => {
       <section
         className={`${getGlassyClasses(20)} p-6 mb-14 text-white relative z-10`}
       >
-        <h2 className='text-2xl font-bold mb-4'>Props</h2>
+        <h2 className='text-3xl font-bold mb-4'>Props</h2>
         <div className='overflow-x-auto'>
           <table className='w-full'>
             <thead>
