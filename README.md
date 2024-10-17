@@ -169,19 +169,11 @@ git push origin my-feature-branch
 
 - We truly appreciate your incredible contributions to this project! Your dedication and hard work are vital to its continued growth and success. If you’ve found value in it, don’t forget to show your support by giving our repository a star! ⭐
 
-
-## Contributor Leaderboard
-
 <div align="center">
-  <h2>Our Contributors ❤️</h2>
-  <p>Thank you for contributing to the GlassyUI Components repository!</p>
   <a href="https://github.com/Jaishree2310/GlassyUI-Components">
     <img src="https://contrib.rocks/image?repo=Jaishree2310/GlassyUI-Components&&max=1000&&cachebust=1" />
   </a>
 </div>
-
-### How It Works
-This badge shows the total number of contributors to the GlassyUI Components project. You can click on the badge to view detailed statistics about contributions, including commits, pull requests, and issues.
 
 ---
 
