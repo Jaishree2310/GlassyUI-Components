@@ -27,6 +27,11 @@ const Footer: React.FC = () => {
           glassmorphic components. Perfect for creating modern, sleek interfaces
           with depth and style.
         </p>
+        <p>
+          <Link to={'/terms'} style={{ textDecoration: 'none', color: 'gold' }}>
+            Terms and Conditions
+          </Link>
+        </p>
       </div>
       <div
         className='footer_container'
