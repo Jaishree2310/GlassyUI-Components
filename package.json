@@ -14,6 +14,7 @@
     "framer-motion": "^11.11.9",
     "gsap": "^3.12.5",
     "lucide-react": "^0.408.0",
+    "my-typescript-app": "file:",
     "pixel-retroui": "^1.0.61",
     "react": "^18.3.1",
     "react-components": "^0.5.1",
