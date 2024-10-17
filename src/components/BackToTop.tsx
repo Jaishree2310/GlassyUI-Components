@@ -3,9 +3,9 @@ import React, { useState, useEffect } from 'react';
 const BackToTopButton: React.FC = () => {
   const [isVisible, setIsVisible] = useState<boolean>(false);
 
-  // Show button when the user scrolls down 300px
+  // Show button when the user scrolls down 100px
   const toggleVisibility = (): void => {
-    if (window.scrollY > 300) {
+    if (window.scrollY > 100) {
       setIsVisible(true);
     } else {
       setIsVisible(false);
@@ -34,7 +34,7 @@ const BackToTopButton: React.FC = () => {
       {isVisible && (
         <button
           onClick={scrollToTop}
-          className="z-50 fixed bottom-12 right-8 bg-indigo-500 hover:bg-purple-500 transition-all text-white px-4 py-2 rounded-md shadow-lg transition-opacity duration-300"
+          className='z-50 fixed bottom-12 right-8 bg-gray-500 bg-opacity-75 hover:bg-opacity-90 transition-all text-white w-12 h-12 rounded-full shadow-lg shadow-white/50 hover:shadow-white/70 transition-shadow duration-300 flex items-center justify-center text-2xl' // Increase font size here
         >
           ↑
         </button>
