@@ -21,10 +21,8 @@ import Tooltip from './Tooltip';
 import SpeedDial from './SpeedDial';
 import BackToTopButton from './BackToTop';
 import { HiOutlineWrenchScrewdriver } from 'react-icons/hi2';
-import { Calendar } from 'lucide-react';
 import Accordion from './Accordion';
-import { BasicDatePicker, RangeDatePicker } from '../components/DatePicker';
-
+import { Tabs,Tab } from './Tabs';
 
 const GlassyUIComponentsPage: React.FC = () => {
   const navigate = useNavigate();
@@ -394,7 +392,7 @@ const GlassyUIComponentsPage: React.FC = () => {
 
                 {isPopupOpen2 && (
                   <div className="absolute z-10 mt-1 w-full bg-gray-800 text-white rounded shadow-lg">
-                    {['options1', 'options2', 'options3'].map((option, index) => (
+                    {['options1', 'options2', 'options3'].map((option) => (
 
                       <div
                         key={option}
@@ -436,20 +434,24 @@ const GlassyUIComponentsPage: React.FC = () => {
                     title='Accordion Title 2'
                     content='This is the content of the second accordion.'
                   />
-              </ComponentCard>
+              </ComponentCard>   
               <ComponentCard
-                title='Date Picker'
-                description='Date Picker component with basic and range selection.'
-                icon={<Calendar size={24} />}
-                onClick={() => navigate('/date-picker-details')}
-              >
-                <div className="mb-4">
-                  <BasicDatePicker />
-                </div>
-                <div>
-                  <RangeDatePicker />
-                </div>
-              </ComponentCard>
+                title='Tabs'
+                description='Tabs component with filled, outlined, and ghost variants.'
+                icon={<Layout size={24} />}
+                onClick={() => navigate('/tabs-details')}>
+                  <section
+                   title="Filled Tabs">
+                    <Tabs>
+                      <Tab label="Tab 1" variant="filled">
+                        <div className="text-white">Content for Tab 1</div>
+                      </Tab>
+                      <Tab label="Tab 2" variant="filled">
+                        <div className="text-white">Content for Tab 2</div>
+                      </Tab>
+                    </Tabs>
+                  </section>                
+              </ComponentCard>        
           </div>
         </main>
       </div>

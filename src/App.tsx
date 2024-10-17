@@ -21,7 +21,7 @@ import DropdowndetailsPage from './components/DropdowndetailsPage';
 import AuthenticationCard from './components/AuthenticationCards';
 import ToastPage from './components/ToastPage';
 import AccordionDetails from './components/AccordionDetails';
-import DatePickerDetails from './components/DatePickerDetails';
+import TabsDetail from './components/TabsDetails';
 
 const App: React.FC = () => {
   return (
@@ -49,7 +49,7 @@ const App: React.FC = () => {
         <Route path='/dropdown-details' element={<DropdowndetailsPage />} />
         <Route path='/authentication-card' element={<AuthenticationCard />} />
         <Route path="/accordion-details" element={<AccordionDetails />} />
-        <Route path="/date-picker-details" element={<DatePickerDetails />} />
+        <Route path="/tabs-details" element={<TabsDetail />} />
 
         {/*the DonationPage route */}
         <Route path='/' element={<GlassyUILandingPage />} />
