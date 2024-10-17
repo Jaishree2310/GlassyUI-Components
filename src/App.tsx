@@ -29,6 +29,7 @@ import AccordionDetails from './components/AccordionDetails';
 import ContactUsDetailsPage from './components/ContactUsDetailsPage';
 import PaginationDetails from './components/PaginationDetails';
 import TestimonialDetails from './components/TestimonialDetails';
+import TermsAndConditions from './components/TermsAndConditions';
 import Footer from './components/Footer';
 
 const App: React.FC = () => {
@@ -66,6 +67,7 @@ const App: React.FC = () => {
         <Route path='/contact-details' element={<ContactUsDetailsPage />} />
         <Route path='/pagination-details' element={<PaginationDetails />} />
         <Route path='/testimonial-details' element={<TestimonialDetails />} />
+        <Route path='/terms' element={<TermsAndConditions />} />
         <Route path='*' element={<NotFoundPage />} />
       </Routes>
       <Footer />
