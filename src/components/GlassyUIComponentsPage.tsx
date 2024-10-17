@@ -15,8 +15,9 @@ import {
   Contact,
   Search,
 } from 'lucide-react';
-// import { HiOutlineWrenchScrewdriver } from 'react-icons/hi2';
+
 import BackToTopButton from './BackToTop';
+import { HiOutlineWrenchScrewdriver } from 'react-icons/hi2';
 
 interface ComponentCardProps {
   title: string;
@@ -201,7 +202,7 @@ const GlassyUIComponentsPage: React.FC = () => {
     {
       title: 'Glassmorphism Effect Generator',
       description: 'Create stunning Glassmorphic effects with ease.',
-      // icon: <HiOutlineWrenchScrewdriver size={24} />,
+      icon: <HiOutlineWrenchScrewdriver size={24} />,
       onClick: () => navigate('/generator'),
     },
   ];
@@ -257,6 +258,7 @@ const GlassyUIComponentsPage: React.FC = () => {
             <Search className='mx-4 cursor-pointer text-pink-300 hover:text-pink-400 transition-all duration-300' />
           </div>
         </header>
+
         <main>
           <h1 className='text-4xl lg:text-6xl font-extrabold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-white to-pink-200'>
             Glassmorphic Components

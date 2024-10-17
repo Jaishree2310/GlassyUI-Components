@@ -13,6 +13,7 @@ const DonationPage: React.FC = () => {
     name: '',
     email: '',
   });
+
   const donationSchema = z.object({
     amount: z
       .string()
@@ -29,29 +30,33 @@ const DonationPage: React.FC = () => {
     };
   }, []);
 
-  // Enhanced CSS styles
   const containerStyle: React.CSSProperties = {
     maxWidth: '500px',
     margin: '50px auto',
-    padding: '30px',
-    backgroundColor: '#ffffff',
-    borderRadius: '15px',
-    boxShadow: '0px 4px 30px rgba(0, 0, 0, 0.1)',
+    padding: '40px',
+    background: 'rgba(255, 255, 255, 0.15)',
+    borderRadius: '20px',
+    boxShadow: '0 8px 32px rgba(0, 0, 0, 0.25)',
+    backdropFilter: 'blur(15px)',
+    border: '1px solid rgba(255, 255, 255, 0.2)',
     textAlign: 'center',
-    fontFamily: "'Roboto', sans-serif",
+    fontFamily: "'Poppins', sans-serif",
+    color: '#ffffff',
   };
 
   const headingStyle: React.CSSProperties = {
-    fontSize: '1.8rem',
+    fontSize: '2rem',
     fontWeight: 'bold',
     marginBottom: '20px',
-    color: '#333',
+    background: 'linear-gradient(90deg, #ff8a00, #e52e71)',
+    WebkitBackgroundClip: 'text',
+    WebkitTextFillColor: 'transparent',
   };
 
   const paragraphStyle: React.CSSProperties = {
-    fontSize: '1rem',
+    fontSize: '1.1rem',
     marginBottom: '30px',
-    color: '#555',
+    color: '#e0e0e0',
   };
 
   const formStyle: React.CSSProperties = {
@@ -63,45 +68,50 @@ const DonationPage: React.FC = () => {
   const labelStyle: React.CSSProperties = {
     width: '100%',
     textAlign: 'left',
-    marginBottom: '8px',
-    fontWeight: '500',
-    color: '#444',
+    marginBottom: '10px',
+    fontWeight: '600',
+    color: '#eeeeee',
   };
 
   const inputStyle: React.CSSProperties = {
     width: '100%',
+    padding: '14px',
     marginBottom: '20px',
-    padding: '12px',
-    borderRadius: '8px',
-    border: '1px solid #ccc',
-    fontSize: '1rem',
-    boxShadow: '0px 2px 6px rgba(0, 0, 0, 0.05)',
-    transition: 'border-color 0.3s ease',
+    borderRadius: '12px',
+    border: '1px solid rgba(255, 255, 255, 0.2)',
+    background: 'rgba(255, 255, 255, 0.1)',
+    color: '#ffffff',
+    boxShadow: '0 4px 12px rgba(0, 0, 0, 0.15)',
+    transition: 'border-color 0.4s ease, transform 0.3s ease',
   };
 
   const inputFocusStyle: React.CSSProperties = {
-    borderColor: '#4CAF50',
+    borderColor: '#e52e71',
+    transform: 'scale(1.02)',
   };
 
   const buttonStyle: React.CSSProperties = {
-    padding: '12px 20px',
-    backgroundColor: isHovering ? '#45a049' : '#4CAF50',
-    color: 'white',
+    marginTop: '10px',
+    padding: '14px 24px',
+    background: isHovering
+      ? 'linear-gradient(90deg, #ff8a00, #e52e71)'
+      : 'linear-gradient(90deg, #e52e71, #ff8a00)',
+    color: '#ffffff',
     border: 'none',
     borderRadius: '25px',
-    fontSize: '1rem',
+    fontSize: '1.1rem',
     cursor: 'pointer',
-    transition: 'background-color 0.3s ease, transform 0.2s ease',
+    transition: 'background 0.4s ease, transform 0.3s ease',
+    boxShadow: '0 4px 15px rgba(229, 46, 113, 0.4)',
   };
 
   const buttonHoverStyle: React.CSSProperties = {
-    transform: 'scale(1.05)',
+    transform: 'scale(1.08)',
   };
 
   const errorStyle: React.CSSProperties = {
     color: 'red',
-    fontSize: '0.875rem',
-    marginBottom: '10px',
+    fontSize: '1.2rem',
   };
 
   const handleMouseEnter = () => {

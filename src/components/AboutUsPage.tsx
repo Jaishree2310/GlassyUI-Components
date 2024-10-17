@@ -1,7 +1,7 @@
-// Importing necessary libraries and icons
-import React from 'react';
+import React, { useEffect } from 'react';
+import BackToTopButton from './BackToTop';
 import styled from 'styled-components';
-import { FaGithub, FaTwitter, FaLinkedin } from 'react-icons/fa'; // Importing social media icons
+import { FaGithub } from 'react-icons/fa';
 
 // Styled component for the main container of the About Us page
 const AboutUsContainer = styled.div`
@@ -12,7 +12,6 @@ const AboutUsContainer = styled.div`
   border-radius: 15px; // Rounded corners
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2); // Shadow for depth
   position: relative; // For pseudo-element positioning
-
 
   @media (max-width: 600px) {
     padding: 20px; // Adjust padding for smaller screens
@@ -251,36 +250,40 @@ const AboutUsPage: React.FC = () => {
     </div>
   );
   return (
-    <div style={pageContainerStyle}>
-      <div style={aboutContainerStyle}>
-        <h1 style={headingStyle}>About Us</h1>
-        <p style={paragraphStyle}>
-          At <strong>GlassyUI-Components</strong>, we are more than just a
-          library. We are a community-driven organization dedicated to making a
-          meaningful impact in the world of web development. Our mission is
-          clear, to unite creators, foster collaboration, and pave the way for a
-          brighter future through innovation.
-        </p>
-        <h2 style={subheadingStyle}>Who We Welcome:</h2>
-        <ul style={listStyle}>
-          <li style={listItemStyle}>
-            <strong>Developers</strong>: Whether you're just starting out or a
-            seasoned expert, your skills can help shape our offerings.
-          </li>
-          <li style={listItemStyle}>
-            <strong>Designers</strong>: Bring your unique vision and creativity
-            to enhance our beautiful glassmorphism components.
-          </li>
-          <li style={listItemStyle}>
-            <strong>Contributors</strong>: If you share our passion for building
-            stunning user experiences, we invite you to join our journey.
-          </li>
-        </ul>
-        <p style={paragraphStyle}>
-          Together, we can achieve incredible things! Let's collaborate,
-          innovate, and transform ideas into reality. Join us in crafting a more
-          beautiful and functional web for everyone.
-        </p>
+    <div className='min-h-screen font-sans bg-gradient-to-br from-gray-800 via-gray-900 to-black text-white'>
+      <BackToTopButton />
+      <div style={pageContainerStyle}>
+        <div style={aboutContainerStyle}>
+          <h1 style={headingStyle}>About Us</h1>
+          <p style={paragraphStyle}>
+            At <strong>GlassyUI-Components</strong>, we are more than just a
+            library. We are a community-driven organization dedicated to making
+            a meaningful impact in the world of web development. Our mission is
+            clear, to unite creators, foster collaboration, and pave the way for
+            a brighter future through innovation.
+          </p>
+          <h2 style={subheadingStyle}>Who We Welcome:</h2>
+          <ul style={listStyle}>
+            <li style={listItemStyle}>
+              <strong>Developers</strong>: Whether you're just starting out or a
+              seasoned expert, your skills can help shape our offerings.
+            </li>
+            <li style={listItemStyle}>
+              <strong>Designers</strong>: Bring your unique vision and
+              creativity to enhance our beautiful glassmorphism components.
+            </li>
+            <li style={listItemStyle}>
+              <strong>Contributors</strong>: If you share our passion for
+              building stunning user experiences, we invite you to join our
+              journey.
+            </li>
+          </ul>
+          <p style={paragraphStyle}>
+            Together, we can achieve incredible things! Let's collaborate,
+            innovate, and transform ideas into reality. Join us in crafting a
+            more beautiful and functional web for everyone.
+          </p>
+        </div>
       </div>
     </div>
   );
