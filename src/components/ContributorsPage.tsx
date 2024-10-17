@@ -2,6 +2,8 @@
 
 import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import BackToTopButton from './BackToTop';
+import { HiOutlineChevronDoubleDown } from 'react-icons/hi2';
 
 interface Contributor {
   id: number;
@@ -114,12 +116,27 @@ export default function Component() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const contributorsResponse = await fetch(
-          'https://api.github.com/repos/Jaishree2310/GlassyUI-Components/contributors',
-        );
-        const contributorsData: Contributor[] =
-          await contributorsResponse.json();
-        setContributors(contributorsData);
+        let allContributors: Contributor[] = [];
+        let page = 1;
+        const perPage = 100;
+
+        while (true) {
+          const contributorsResponse = await fetch(
+            `https://api.github.com/repos/Jaishree2310/GlassyUI-Components/contributors?page=${page}&per_page=${perPage}`,
+          );
+
+          if (!contributorsResponse.ok) {
+            throw new Error('Failed to fetch contributors data');
+          }
+          const contributorsData: Contributor[] =
+            await contributorsResponse.json();
+
+          if (contributorsData.length === 0) break;
+
+          allContributors = [...allContributors, ...contributorsData];
+          page++;
+        }
+        setContributors(allContributors);
 
         const repoResponse = await fetch(
           'https://api.github.com/repos/Jaishree2310/GlassyUI-Components',
@@ -146,8 +163,16 @@ export default function Component() {
     setEmail('');
   };
 
+  const scrollToNextSection = () => {
+    window.scrollBy({
+      top: window.innerHeight,
+      behavior: 'smooth',
+    });
+  };
+
   return (
     <div className='min-h-screen bg-gradient-to-br from-gray-900 to-black text-white'>
+      <BackToTopButton />
       {/* Hero Section */}
       <section className='relative h-[70vh] flex items-center justify-center text-center bg-gradient-to-br from-gray-900 via-black to-gray-800'>
         <div className='absolute inset-0 bg-black/50 backdrop-blur-sm' />
@@ -180,6 +205,15 @@ export default function Component() {
               Become a Contributor
             </a>
           </motion.div>
+          {/* Scroll Down Button */}
+          <div className='fixed top-10 right-10 z-50'>
+            <button
+              onClick={scrollToNextSection}
+              className='animate-bounce bg-white/20 text-white hover:bg-pink-200 hover:text-black p-4 rounded-full shadow-lg transition-all duration-300'
+            >
+              <HiOutlineChevronDoubleDown size={20} />
+            </button>
+          </div>
         </div>
       </section>
 
