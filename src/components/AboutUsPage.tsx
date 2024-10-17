@@ -1,5 +1,7 @@
 import React, { useEffect } from 'react';
 import BackToTopButton from './BackToTop';
+import styled from 'styled-components';
+import { FaGithub } from 'react-icons/fa';
 
 // Styled component for the main container of the About Us page
 const AboutUsContainer = styled.div`
