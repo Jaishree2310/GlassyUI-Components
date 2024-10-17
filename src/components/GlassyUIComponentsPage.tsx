@@ -18,6 +18,7 @@ import {
 
 import BackToTopButton from './BackToTop';
 import { HiOutlineWrenchScrewdriver } from 'react-icons/hi2';
+import { on } from 'events';
 
 interface ComponentCardProps {
   title: string;
@@ -204,6 +205,12 @@ const GlassyUIComponentsPage: React.FC = () => {
       description: 'Create stunning Glassmorphic effects with ease.',
       icon: <HiOutlineWrenchScrewdriver size={24} />,
       onClick: () => navigate('/generator'),
+    },
+    {
+      title: 'Tabs',
+      description: 'Tabs component with varients in glassmorphic styling.',
+      icon: <Layout size={24} />,
+      onClick: () => navigate('/tabs-details'),
     },
   ];
 
