@@ -182,6 +182,7 @@ git push origin my-feature-branch
 4. Theme (of your new component)
 5. Example
 6. Copy code 
+
 -for eg: Button component,Progress Bar components 
 
 
