@@ -26,6 +26,8 @@ const GlassyUIComponentsPage: React.FC = () => {
   const githubRepoUrl = 'https://github.com/Jaishree2310/GlassyUI-Components';
 
 import BackToTopButton from './BackToTop';
+import { HiOutlineWrenchScrewdriver } from 'react-icons/hi2';
+import { HiOutlineChevronDoubleDown } from 'react-icons/hi2';
 
 interface ComponentCardProps {
   title: string;
@@ -80,6 +82,14 @@ const GlassyUIComponentsPage: React.FC = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [searchFilter, setSearchFilter] = useState<string | null>('');
   const componentsPerPage = 9;
+
+  const scrollToNextSection = () => {
+    window.scrollBy({
+      top: window.innerHeight,
+      behavior: 'smooth',
+    });
+  };
+    
   const componentsData = [
     {
       title: 'Toast',
@@ -262,6 +272,16 @@ const GlassyUIComponentsPage: React.FC = () => {
             }}
           ></input>
         </header>
+
+        {/* Scroll Down Button */}
+        <div className='fixed top-15 right-10 z-50'>
+          <button
+            onClick={scrollToNextSection}
+            className='animate-bounce bg-white/20 text-white hover:bg-pink-200 hover:text-black p-4 rounded-full shadow-lg transition-all duration-300'
+          >
+            <HiOutlineChevronDoubleDown size={20} />
+          </button>
+        </div>
 
         <main>
           <h1 className='text-4xl lg:text-6xl font-extrabold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-white to-pink-200'>

@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { HiOutlineChevronDoubleDown } from 'react-icons/hi2';
 
 interface Contributor {
   id: number;
@@ -146,6 +147,13 @@ export default function Component() {
     setEmail('');
   };
 
+  const scrollToNextSection = () => {
+    window.scrollBy({
+      top: window.innerHeight,
+      behavior: 'smooth',
+    });
+  };
+
   return (
     <div className='min-h-screen bg-gradient-to-br from-gray-900 to-black text-white'>
       {/* Hero Section */}
@@ -180,6 +188,15 @@ export default function Component() {
               Become a Contributor
             </a>
           </motion.div>
+          {/* Scroll Down Button */}
+          <div className='fixed top-10 right-10 z-50'>
+            <button
+              onClick={scrollToNextSection}
+              className='animate-bounce bg-white/20 text-white hover:bg-pink-200 hover:text-black p-4 rounded-full shadow-lg transition-all duration-300'
+            >
+              <HiOutlineChevronDoubleDown size={20} />
+            </button>
+          </div>
         </div>
       </section>
 
