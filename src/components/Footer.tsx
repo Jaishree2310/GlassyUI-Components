@@ -152,8 +152,7 @@ const Footer: React.FC = () => {
           fontSize: '14px',
           color: '#fff',
           position: 'relative',
-          top: '135px',
-          right: '100px',
+          right: '-300px',
         }}
       >
         &copy; 2023 GlassyUI. All rights reserved.

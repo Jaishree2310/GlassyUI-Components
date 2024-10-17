@@ -13,18 +13,9 @@ import {
   DollarSign,
   ThumbsUpIcon,
   Contact,
+  Search,
 } from 'lucide-react';
-import { HiOutlineWrenchScrewdriver } from 'react-icons/hi2';
-
-import Accordion from './Accordion';
-
-const GlassyUIComponentsPage: React.FC = () => {
-  const navigate = useNavigate();
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isPopupOpen, setIsPopupOpen] = useState(false);
-  const [isPopupOpen2, setIsPopupOpen2] = useState(false);
-  const githubRepoUrl = 'https://github.com/Jaishree2310/GlassyUI-Components';
-
+// import { HiOutlineWrenchScrewdriver } from 'react-icons/hi2';
 import BackToTopButton from './BackToTop';
 
 interface ComponentCardProps {
@@ -35,7 +26,6 @@ interface ComponentCardProps {
   status?: string;
   children?: React.ReactNode;
 }
-
 
 const ComponentCard: React.FC<ComponentCardProps> = ({
   title,
@@ -80,6 +70,7 @@ const GlassyUIComponentsPage: React.FC = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [searchFilter, setSearchFilter] = useState<string | null>('');
   const componentsPerPage = 9;
+
   const componentsData = [
     {
       title: 'Toast',
@@ -210,13 +201,15 @@ const GlassyUIComponentsPage: React.FC = () => {
     {
       title: 'Glassmorphism Effect Generator',
       description: 'Create stunning Glassmorphic effects with ease.',
-
+      // icon: <HiOutlineWrenchScrewdriver size={24} />,
       onClick: () => navigate('/generator'),
     },
   ];
+
   const [filteredData, setFilteredData] = useState(componentsData);
+
   useEffect(() => {
-    const data = componentsData.filter(component => {
+    const filteredComponents = componentsData.filter(component => {
       if (searchFilter != null) {
         return component.title
           .replace(/ /g, '')
@@ -225,12 +218,13 @@ const GlassyUIComponentsPage: React.FC = () => {
       }
       return component;
     });
-    setFilteredData(data);
+    setFilteredData(filteredComponents);
+    setCurrentPage(1); // Reset to first page when searching
   }, [searchFilter]);
 
-  const totalPages = Math.ceil(componentsData.length / componentsPerPage);
+  const totalPages = Math.ceil(filteredData.length / componentsPerPage);
 
-  const currentComponents = componentsData.slice(
+  const currentComponents = filteredData.slice(
     (currentPage - 1) * componentsPerPage,
     currentPage * componentsPerPage,
   );
@@ -247,22 +241,22 @@ const GlassyUIComponentsPage: React.FC = () => {
     <div className='min-h-screen font-sans bg-gradient-to-br from-gray-800 via-gray-900 to-black text-white'>
       <BackToTopButton />
       <div className='container mx-auto px-4 py-8 lg:py-12'>
-        <header className='grid grid-cols-3 mb-16'>
+        <header className='flex justify-between items-center mb-16 px-6 py-4 rounded-lg pl-0'>
           <div
-            className='text-3xl lg:text-4xl font-bold tracking-tight cursor-pointer hover:text-pink-200 transition-colors duration-300'
+            className='text-3xl lg:text-4xl font-extrabold tracking-tight cursor-pointer hover:text-pink-300 transition-colors duration-300 text-white'
             onClick={() => navigate('/')}
           >
             GlassyUI
           </div>
-          <input
-            className='rounded-full  text-black p-2'
-            placeholder='Search Component'
-            onChange={e => {
-              setSearchFilter(e.target.value);
-            }}
-          ></input>
+          <div className='flex items-center bg-gradient-to-r from-slate-800 via-slate-700 to-slate-900 text-white w-2/5 rounded-lg shadow-lg overflow-hidden'>
+            <input
+              className='w-full px-6 py-3 bg-transparent text-white outline-none focus:ring-2 focus:ring-gray-500 transition-all duration-300'
+              placeholder='Search Components...'
+              onChange={e => setSearchFilter(e.target.value)}
+            />
+            <Search className='mx-4 cursor-pointer text-pink-300 hover:text-pink-400 transition-all duration-300' />
+          </div>
         </header>
-
         <main>
           <h1 className='text-4xl lg:text-6xl font-extrabold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-white to-pink-200'>
             Glassmorphic Components
@@ -274,7 +268,7 @@ const GlassyUIComponentsPage: React.FC = () => {
           </p>
 
           <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8'>
-            {filteredData.map((component, index) => (
+            {currentComponents.map((component, index) => (
               <ComponentCard
                 key={index}
                 title={component.title}
@@ -282,302 +276,41 @@ const GlassyUIComponentsPage: React.FC = () => {
                 icon={component.icon}
                 onClick={component.onClick}
               />
-
-            </ComponentCard>
-            <ComponentCard
-              title='Buttons'
-              description='Sleek, customizable buttons with glassmorphic styling.'
-              icon={<Box size={24} />}
-              onClick={() => navigate('/button-details')}
-            >
-              <div className='flex space-x-2 mt-4'>
-                <button
-                  className={`${getGlassyClasses()} px-4 py-2 hover:bg-white/20`}
-                >
-                  Click me
-                </button>
-                <button
-                  className={`${getGlassyClasses()} px-4 py-2 bg-white/20 hover:bg-white/30`}
-                >
-                  Accent
-                </button>
-              </div>
-            </ComponentCard>
-
-            <ComponentCard
-              title='Inputs'
-              description='Elegant input fields with a glass-like appearance.'
-              icon={<Type size={24} />}
-              onClick={() => navigate('/input-details')}
-            >
-              <input
-                type='text'
-                placeholder='Type here...'
-                className={`${getGlassyClasses()} w-full px-4 py-2 mt-4 placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-white/50`}
-              />
-            </ComponentCard>
-
-            <ComponentCard
-              title='Cards'
-              description='Versatile content containers with a frosted glass effect.'
-              icon={<Layout size={24} />}
-              onClick={() => navigate('/card-details')}
-            >
-              <div className={`${getGlassyClasses()} p-4 mt-4`}>
-                <h4 className='font-semibold'>Card Title</h4>
-                <p className='text-sm opacity-80'>Card content goes here.</p>
-              </div>
-            </ComponentCard>
-
-            <ComponentCard
-              title='Progress Bars'
-              description='Stylish progress indicators with a glass-like finish.'
-              icon={<Sliders size={24} />}
-              onClick={() => navigate('/progress-bar-details')}
-            >
-              <div className={`${getGlassyClasses()} w-full h-4 mt-4`}>
-                <div
-                  className='bg-white/30 h-full rounded-2xl'
-                  style={{ width: '60%' }}
-                ></div>
-              </div>
-            </ComponentCard>
-
-            <ComponentCard
-              title='Modals'
-              description='Eye-catching dialog boxes with glassmorphism effects.'
-              icon={<MessageSquare size={24} />}
-              onClick={() => navigate('/modal-details')}
-            >
-              <button
-                onClick={e => {
-                  e.stopPropagation();
-                  alert('Modal would open here');
-                }}
-                className={`${getGlassyClasses()} px-4 py-2 mt-4 hover:bg-white/20`}
-              >
-                Open Modal
-              </button>
-            </ComponentCard>
-
-            <ComponentCard
-              title='Navigation'
-              description='Sleek navigation components with a frosted glass look.'
-              icon={<ArrowRight size={24} />}
-              onClick={() => navigate('/navigation-details')}
-            >
-              <nav
-                className={`${getGlassyClasses()} flex justify-around mt-4 py-2`}
-              >
-                <a href='#' className='hover:bg-white/20 px-2 py-1 rounded'>
-                  Home
-                </a>
-                <a href='#' className='hover:bg-white/20 px-2 py-1 rounded'>
-                  About
-                </a>
-                <a href='#' className='hover:bg-white/20 px-2 py-1 rounded'>
-                  Contact
-                </a>
-              </nav>
-            </ComponentCard>
-
-            <ComponentCard
-              title='Popups'
-              description='Attention-grabbing popup notifications with glassmorphic styling.'
-              icon={<MessageSquare size={24} />}
-              onClick={() => navigate('/popup-details')}
-            >
-              <button
-                onClick={e => {
-                  e.stopPropagation();
-                  setIsPopupOpen(true);
-                }}
-                className={`${getGlassyClasses()} px-4 py-2 mt-4 hover:bg-white/20`}
-              >
-                Show Popup
-              </button>
-              {isPopupOpen && (
-                <div
-                  className='fixed inset-0 flex items-center justify-center z-50'
-                  onClick={() => setIsPopupOpen(false)}
-                >
-                  <div
-                    className={`${getGlassyClasses()} p-6 max-w-sm mx-auto`}
-                    onClick={e => e.stopPropagation()}
-                  >
-                    <h3 className='text-xl font-bold mb-2'>Popup Title</h3>
-                    <p className='mb-4'>
-                      This is a sample popup with glassmorphism effect.
+            ))}
+            {filteredData.length === 0 && (
+              <section className='bg-white dark:bg-gray-900'>
+                <div className='py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6'>
+                  <div className='mx-auto max-w-screen-sm text-center'>
+                    <h1 className='mb-4 text-7xl tracking-tight font-extrabold lg:text-9xl text-blue-600 dark:text-primary-500'>
+                      404
+                    </h1>
+                    <p className='mb-4 text-3xl tracking-tight font-bold text-gray-900 md:text-4xl dark:text-white'>
+                      Something&apos;s missing.
+                    </p>
+                    <p className='mb-4 text-lg font-light text-gray-500 dark:text-gray-400'>
+                      Sorry, we can&apos;t find that component. You&apos;ll find
+                      lots to explore on the home page.{' '}
                     </p>
                     <button
-                      onClick={() => setIsPopupOpen(false)}
-                      className={`${getGlassyClasses()} px-4 py-2 hover:bg-white/20`}
+                      className='mt-6 px-4 py-2 bg-blue-600 hover:bg-blue-500 text-white rounded-lg shadow-md transition-all duration-300'
+                      onClick={() => navigate('/')}
                     >
-                      Close
+                      Back to Homepage
                     </button>
                   </div>
                 </div>
-              )}
-            </ComponentCard>
-
-            <ComponentCard
-              title='Textarea'
-              description='Multi-line input fields with elegant glassmorphic design.'
-              icon={<AlignLeft size={24} />}
-              onClick={() => navigate('/textarea-details')}
-            >
-              <textarea
-                placeholder='Enter your message...'
-                className={`${getGlassyClasses()} w-full px-4 py-2 mt-4 placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-white/50 resize-none`}
-                rows={3}
-              />
-            </ComponentCard>
-
-            <ComponentCard
-              title='Tool Tip'
-              description='Tooltip component support different positions, and be responsive and accessible.'
-              icon={<Info size={24} />}
-              onClick={() => navigate('/tooltip-details')}
-            >
-              <div className='mt-1 mb-4 flex justify-around'>
-                <Tooltip text='Tooltip' position='left'>
-                  <button className={`${getGlassyClasses()} px-4 py-2`}>
-                    Left
-                  </button>
-                </Tooltip>
-                <Tooltip text='Tooltip' position='bottom'>
-                  <button className={`${getGlassyClasses()} px-4 py-2`}>
-                    Bottom
-                  </button>
-                </Tooltip>
-                <Tooltip text='Tooltip' position='right'>
-                  <button className={`${getGlassyClasses()} px-4 py-2`}>
-                    Right
-                  </button>
-                </Tooltip>
-              </div>
-            </ComponentCard>
-
-            <ComponentCard
-              title='Back to Top'
-              description='A button that scrolls the page back to the top, improving user navigation.'
-              icon={<ArrowUp size={24} />}
-              onClick={() => navigate('/back-to-top-details')}
-            >
-              <div className='mt-1 mb-4 flex justify-around'>
-                <button
-                  onClick={() =>
-                    window.scrollTo({ top: 0, behavior: 'smooth' })
-                  }
-                  className={`${getGlassyClasses()} px-4 py-2`}
-                >
-                  Back to Top
-                </button>
-              </div>
-            </ComponentCard>
-
-            <ComponentCard
-              title='Pricing Plans'
-              description='Choose a pricing plan that suits your needs. Affordable and flexible.'
-              icon={<DollarSign size={24} />}
-              onClick={() => navigate('/pricing-details')}
-            >
-              <div className='mt-1 mb-4 flex justify-around'>
-                <div className='text-center'>
-                  <h3 className='text-lg font-semibold'>Basic</h3>
-                  <button className={`${getGlassyClasses()} px-4 py-2 mt-2`}>
-                    Select
-                  </button>
-                </div>
-                <div className='text-center'>
-                  <h3 className='text-lg font-semibold'>Standard</h3>
-                  <button className={`${getGlassyClasses()} px-4 py-2 mt-2`}>
-                    Select
-                  </button>
-                </div>
-                <div className='text-center'>
-                  <h3 className='text-lg font-semibold'>Premium</h3>
-                  <button className={`${getGlassyClasses()} px-4 py-2 mt-2`}>
-                    Select
-                  </button>
-                </div>
-              </div>
-            </ComponentCard>
-            <ComponentCard
-              title='Dropdown Menu'
-              description='Select an option from the dropdown menu.'
-              icon={<AlignLeft size={24} />}
-              onClick={() => navigate('/dropdown-details')}
-            >
-              <div className='relative p-4 rounded-lg shadow-lg bg-white/10 pt-0'>
-                <div
-                  className='flex items-center mt-4 cursor-pointer rounded-3xl'
-                  onClick={e => {
-                    e.stopPropagation();
-                    setIsPopupOpen2(prev => !prev); // Toggle dropdown visibility
-                  }}
-                >
-                  <span className='w-full px-4 py-2 mt-2 bg-transparent border rounded focus:outline-none focus:ring-2 focus:ring-blue-500'>
-                    {selectedOption || 'Select an option'}
-                  </span>
-                </div>
-
-                {isPopupOpen2 && (
-                  <div className='absolute z-10 mt-1 w-full bg-gray-800 text-white rounded shadow-lg'>
-                    {['options1', 'options2', 'options3'].map(
-                      (option, index) => (
-                        <div
-                          key={option}
-                          className='px-4 py-2 hover:bg-gray-700 cursor-pointer'
-                          onClick={() => handleOptionSelect(option)}
-                        >
-                          {option}
-                        </div>
-                      ),
-                    )}
-                  </div>
-                )}
-              </div>
-            </ComponentCard>
-
-            <ComponentCard
-              title='Authentication Cards'
-              description='Versatile content containers with a frosted glass effect.'
-              icon={<Layout size={24} />}
-              onClick={() => navigate('/authentication-card')}
-            >
-              <div className='mt-1 mb-4 flex justify-around'>
-                <button className={`${getGlassyClasses()} px-4 py-2`}>
-                  Login
-                </button>
-                <button className={`${getGlassyClasses()} px-4 py-2`}>
-                  Sign Up
-                </button>
-              </div>
-            </ComponentCard>
-            <ComponentCard
-              title='Accordion'
-              description='Accordion component with glassmorphic styling.'
-              icon={<Layout size={24} />}
-              onClick={() => navigate('/accordion-details')}
-            >
-              <Accordion
-                title='Accordion Title 1'
-                content='This is the content of the first accordion.'
-              />
-              <Accordion
-                title='Accordion Title 2'
-                content='This is the content of the second accordion.'
-              />
-            </ComponentCard>
-
-            ))}
+              </section>
+            )}
           </div>
 
           <div className='flex justify-center mt-8'>
             <button
               onClick={prevPage}
-              className={`px-4 py-2 mx-2 rounded-lg ${currentPage === 1 ? 'opacity-50 cursor-not-allowed' : 'hover:bg-white/20'}`}
+              className={`px-4 py-2 mx-2 rounded-lg ${
+                currentPage === 1
+                  ? 'opacity-50 cursor-not-allowed'
+                  : 'hover:bg-white/20'
+              }`}
               disabled={currentPage === 1}
             >
               Previous
@@ -587,12 +320,15 @@ const GlassyUIComponentsPage: React.FC = () => {
             </span>
             <button
               onClick={nextPage}
-              className={`px-4 py-2 mx-2 rounded-lg ${currentPage === totalPages ? 'opacity-50 cursor-not-allowed' : 'hover:bg-white/20'}`}
+              className={`px-4 py-2 mx-2 rounded-lg ${
+                currentPage === totalPages
+                  ? 'opacity-50 cursor-not-allowed'
+                  : 'hover:bg-white/20'
+              }`}
               disabled={currentPage === totalPages}
             >
               Next
             </button>
-
           </div>
         </main>
       </div>
