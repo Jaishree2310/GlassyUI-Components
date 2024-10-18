@@ -15,10 +15,9 @@ import {
   Contact,
   Search,
 } from 'lucide-react';
-import { HiOutlineWrenchScrewdriver } from 'react-icons/hi2';
+
 import BackToTopButton from './BackToTop';
 import { HiOutlineWrenchScrewdriver } from 'react-icons/hi2';
-import { HiOutlineChevronDoubleDown } from 'react-icons/hi2';
 
 interface ComponentCardProps {
   title: string;
@@ -73,13 +72,6 @@ const GlassyUIComponentsPage: React.FC = () => {
   const [searchFilter, setSearchFilter] = useState<string | null>('');
   const componentsPerPage = 9;
 
-  const scrollToNextSection = () => {
-    window.scrollBy({
-      top: window.innerHeight,
-      behavior: 'smooth',
-    });
-  };
-    
   const componentsData = [
     {
       title: 'Toast',
@@ -216,8 +208,9 @@ const GlassyUIComponentsPage: React.FC = () => {
   ];
 
   const [filteredData, setFilteredData] = useState(componentsData);
+
   useEffect(() => {
-    const data = componentsData.filter(component => {
+    const filteredComponents = componentsData.filter(component => {
       if (searchFilter != null) {
         return component.title
           .replace(/ /g, '')
@@ -226,11 +219,11 @@ const GlassyUIComponentsPage: React.FC = () => {
       }
       return component;
     });
-    setFilteredData(data);
+    setFilteredData(filteredComponents);
+    setCurrentPage(1); // Reset to first page when searching
   }, [searchFilter]);
 
   const totalPages = Math.ceil(filteredData.length / componentsPerPage);
-
 
   const currentComponents = filteredData.slice(
     (currentPage - 1) * componentsPerPage,
@@ -249,32 +242,22 @@ const GlassyUIComponentsPage: React.FC = () => {
     <div className='min-h-screen font-sans bg-gradient-to-br from-gray-800 via-gray-900 to-black text-white'>
       <BackToTopButton />
       <div className='container mx-auto px-4 py-8 lg:py-12'>
-        <header className='grid grid-cols-3 mb-16'>
+        <header className='flex justify-between items-center mb-16 px-6 py-4 rounded-lg pl-0'>
           <div
-            className='text-3xl lg:text-4xl font-bold tracking-tight cursor-pointer hover:text-pink-200 transition-colors duration-300'
+            className='text-3xl lg:text-4xl font-extrabold tracking-tight cursor-pointer hover:text-pink-300 transition-colors duration-300 text-white'
             onClick={() => navigate('/')}
           >
             GlassyUI
           </div>
-
-          <input
-            className='rounded-full text-white bg-gradient-to-br border border-white/20 p-3'
-            placeholder='Search Component...'
-            onChange={e => {
-              setSearchFilter(e.target.value);
-            }}
-          ></input>
+          <div className='flex items-center bg-gradient-to-r from-slate-800 via-slate-700 to-slate-900 text-white w-2/5 rounded-lg shadow-lg overflow-hidden'>
+            <input
+              className='w-full px-6 py-3 bg-transparent text-white outline-none focus:ring-2 focus:ring-gray-500 transition-all duration-300'
+              placeholder='Search Components...'
+              onChange={e => setSearchFilter(e.target.value)}
+            />
+            <Search className='mx-4 cursor-pointer text-pink-300 hover:text-pink-400 transition-all duration-300' />
+          </div>
         </header>
-
-        {/* Scroll Down Button */}
-        <div className='fixed top-15 right-10 z-50'>
-          <button
-            onClick={scrollToNextSection}
-            className='animate-bounce bg-white/20 text-white hover:bg-pink-200 hover:text-black p-4 rounded-full shadow-lg transition-all duration-300'
-          >
-            <HiOutlineChevronDoubleDown size={20} />
-          </button>
-        </div>
 
         <main>
           <h1 className='text-4xl lg:text-6xl font-extrabold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-white to-pink-200'>
@@ -296,12 +279,40 @@ const GlassyUIComponentsPage: React.FC = () => {
                 onClick={component.onClick}
               />
             ))}
+            {filteredData.length === 0 && (
+              <section className='bg-white dark:bg-gray-900'>
+                <div className='py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6'>
+                  <div className='mx-auto max-w-screen-sm text-center'>
+                    <h1 className='mb-4 text-7xl tracking-tight font-extrabold lg:text-9xl text-blue-600 dark:text-primary-500'>
+                      404
+                    </h1>
+                    <p className='mb-4 text-3xl tracking-tight font-bold text-gray-900 md:text-4xl dark:text-white'>
+                      Something&apos;s missing.
+                    </p>
+                    <p className='mb-4 text-lg font-light text-gray-500 dark:text-gray-400'>
+                      Sorry, we can&apos;t find that component. You&apos;ll find
+                      lots to explore on the home page.{' '}
+                    </p>
+                    <button
+                      className='mt-6 px-4 py-2 bg-blue-600 hover:bg-blue-500 text-white rounded-lg shadow-md transition-all duration-300'
+                      onClick={() => navigate('/')}
+                    >
+                      Back to Homepage
+                    </button>
+                  </div>
+                </div>
+              </section>
+            )}
           </div>
 
           <div className='flex justify-center mt-8'>
             <button
               onClick={prevPage}
-              className={`px-4 py-2 mx-2 rounded-lg ${currentPage === 1 ? 'opacity-50 cursor-not-allowed' : 'hover:bg-white/20'}`}
+              className={`px-4 py-2 mx-2 rounded-lg ${
+                currentPage === 1
+                  ? 'opacity-50 cursor-not-allowed'
+                  : 'hover:bg-white/20'
+              }`}
               disabled={currentPage === 1}
             >
               Previous
@@ -311,7 +322,11 @@ const GlassyUIComponentsPage: React.FC = () => {
             </span>
             <button
               onClick={nextPage}
-              className={`px-4 py-2 mx-2 rounded-lg ${currentPage === totalPages ? 'opacity-50 cursor-not-allowed' : 'hover:bg-white/20'}`}
+              className={`px-4 py-2 mx-2 rounded-lg ${
+                currentPage === totalPages
+                  ? 'opacity-50 cursor-not-allowed'
+                  : 'hover:bg-white/20'
+              }`}
               disabled={currentPage === totalPages}
             >
               Next
