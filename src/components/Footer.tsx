@@ -23,6 +23,7 @@ const Footer: React.FC = () => {
           <Link to='/about' className='footer-link'>
             About
           </Link>
+          <GoogleTranslate />
         </div>
       </div>
       <div className='footer-bottom'>
