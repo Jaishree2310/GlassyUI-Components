@@ -1,6 +1,11 @@
 import PricingDetailPage from './components/PricingDetailPage';
 import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+  useLocation,
+} from 'react-router-dom';
 import GlassyUILandingPage from './components/GlassyUILandingPage';
 import GlassyUIComponentsPage from './components/GlassyUIComponentsPage';
 import ButtonDetailsPage from './components/ButtonDetailsPage';
@@ -71,9 +76,13 @@ const App: React.FC = () => {
 
         <Route path='*' element={<NotFoundPage />} />
       </Routes>
-      <Footer />
+      <ConditionalFooter />
     </Router>
   );
 };
+const ConditionalFooter: React.FC = () => {
+  const location = useLocation();
 
+  return location.pathname === '/' ? <Footer /> : null;
+};
 export default App;

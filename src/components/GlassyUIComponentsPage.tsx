@@ -17,7 +17,6 @@ import {
 } from 'lucide-react';
 import { HiOutlineWrenchScrewdriver } from 'react-icons/hi2';
 import BackToTopButton from './BackToTop';
-import { HiOutlineWrenchScrewdriver } from 'react-icons/hi2';
 import { HiOutlineChevronDoubleDown } from 'react-icons/hi2';
 
 interface ComponentCardProps {
@@ -79,7 +78,7 @@ const GlassyUIComponentsPage: React.FC = () => {
       behavior: 'smooth',
     });
   };
-    
+
   const componentsData = [
     {
       title: 'Toast',

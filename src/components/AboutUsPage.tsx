@@ -1,8 +1,10 @@
-
 import React, { useEffect } from 'react';
 import BackToTopButton from './BackToTop';
+import { FaGithub } from 'react-icons/fa';
 
 // Styled component for the main container of the About Us page
+import styled from 'styled-components';
+
 const AboutUsContainer = styled.div`
   max-width: 900px; // Maximum width of the container
   margin: 0 auto; // Center the container horizontally
@@ -11,7 +13,6 @@ const AboutUsContainer = styled.div`
   border-radius: 15px; // Rounded corners
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2); // Shadow for depth
   position: relative; // For pseudo-element positioning
-
 
   @media (max-width: 600px) {
     padding: 20px; // Adjust padding for smaller screens
