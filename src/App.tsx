@@ -1,11 +1,16 @@
-import PricingDetailPage from './components/PricingDetailPage';
 import React from 'react';
+
 import {
   BrowserRouter as Router,
   Route,
   Routes,
   useLocation,
 } from 'react-router-dom';
+
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import ScrollProgressBar from './components/ScrollProgress'; // Import your ScrollProgressBar component
+import PricingDetailPage from './components/PricingDetailPage';
+
 import GlassyUILandingPage from './components/GlassyUILandingPage';
 import GlassyUIComponentsPage from './components/GlassyUIComponentsPage';
 import ButtonDetailsPage from './components/ButtonDetailsPage';
@@ -39,6 +44,7 @@ const App: React.FC = () => {
   return (
     <Router>
       <Header />
+      <ScrollProgressBar /> {/* Add the ScrollProgressBar component here */}
       <Routes>
         <Route path='/' element={<GlassyUILandingPage />} />
         <Route path='/components' element={<GlassyUIComponentsPage />} />
@@ -63,20 +69,17 @@ const App: React.FC = () => {
         <Route path='/dropdown-details' element={<DropdowndetailsPage />} />
         <Route path='/authentication-card' element={<AuthenticationCard />} />
         <Route path='/accordion-details' element={<AccordionDetails />} />
-
         <Route path='/contributors' element={<ContributorsPage />} />
-
-        <Route path='/' element={<GlassyUILandingPage />} />
         <Route path='/donate' element={<DonationPage />} />
-
         <Route path='/about' element={<AboutUsPage />} />
         <Route path='/contact-details' element={<ContactUsDetailsPage />} />
         <Route path='/pagination-details' element={<PaginationDetails />} />
         <Route path='/testimonial-details' element={<TestimonialDetails />} />
-
         <Route path='*' element={<NotFoundPage />} />
       </Routes>
+
       <ConditionalFooter />
+
     </Router>
   );
 };

@@ -466,6 +466,59 @@ const ContactUsDetailsPage: React.FC = () => {
             </div>
           </div>
         </div>
+
+        {/* Props */}
+        <section
+          className={`${getGlassyClasses()} p-6 mb-14 text-white relative z-10`}
+        >
+          <h2 className='text-3xl font-bold mb-4 text-gray-100'>Props</h2>
+          <div className='overflow-x-auto'>
+            <table className='w-full'>
+              <thead>
+                <tr className='bg-white bg-opacity-20'>
+                  <th className='text-left p-2 text-gray-100'>Prop</th>
+                  <th className='text-left p-2 text-gray-100'>Type</th>
+                  <th className='text-left p-2 text-gray-100'>Default</th>
+                  <th className='text-left p-2 text-gray-100'>Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td className='p-2 text-gray-200'>name</td>
+                  <td className='p-2 text-gray-200'>string</td>
+                  <td className='p-2 text-gray-200'>''</td>
+                  <td className='p-2 text-gray-200'>
+                    The full name of the user.
+                  </td>
+                </tr>
+                <tr className='bg-white bg-opacity-10'>
+                  <td className='p-2 text-gray-200'>phone</td>
+                  <td className='p-2 text-gray-200'>string</td>
+                  <td className='p-2 text-gray-200'>''</td>
+                  <td className='p-2 text-gray-200'>
+                    The user's contact number.
+                  </td>
+                </tr>
+                <tr>
+                  <td className='p-2 text-gray-200'>email</td>
+                  <td className='p-2 text-gray-200'>string</td>
+                  <td className='p-2 text-gray-200'>''</td>
+                  <td className='p-2 text-gray-200'>
+                    The email address of the user.
+                  </td>
+                </tr>
+                <tr className='bg-white bg-opacity-10'>
+                  <td className='p-2 text-gray-200'>message</td>
+                  <td className='p-2 text-gray-200'>string</td>
+                  <td className='p-2 text-gray-200'>''</td>
+                  <td className='p-2 text-gray-200'>
+                    The message content that the user wishes to send.
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
       </div>
     </div>
   );
