@@ -14,6 +14,7 @@ import {
   ThumbsUpIcon,
   Contact,
   Search,
+  AlignStartVertical,
 } from 'lucide-react';
 
 import BackToTopButton from './BackToTop';
@@ -200,6 +201,12 @@ const GlassyUIComponentsPage: React.FC = () => {
       onClick: () => navigate('/contact-details'),
     },
     {
+      title: 'Statistic',
+      description: 'Statistic component with glassmorphic styling.',
+      icon: <AlignStartVertical size={24} />,
+      onClick: () => navigate('/statistic-details'),
+    },
+    {
       title: 'Glassmorphism Effect Generator',
       description: 'Create stunning Glassmorphic effects with ease.',
       icon: <HiOutlineWrenchScrewdriver size={24} />,
@@ -308,11 +315,10 @@ const GlassyUIComponentsPage: React.FC = () => {
           <div className='flex justify-center mt-8'>
             <button
               onClick={prevPage}
-              className={`px-4 py-2 mx-2 rounded-lg ${
-                currentPage === 1
+              className={`px-4 py-2 mx-2 rounded-lg ${currentPage === 1
                   ? 'opacity-50 cursor-not-allowed'
                   : 'hover:bg-white/20'
-              }`}
+                }`}
               disabled={currentPage === 1}
             >
               Previous
@@ -322,11 +328,10 @@ const GlassyUIComponentsPage: React.FC = () => {
             </span>
             <button
               onClick={nextPage}
-              className={`px-4 py-2 mx-2 rounded-lg ${
-                currentPage === totalPages
+              className={`px-4 py-2 mx-2 rounded-lg ${currentPage === totalPages
                   ? 'opacity-50 cursor-not-allowed'
                   : 'hover:bg-white/20'
-              }`}
+                }`}
               disabled={currentPage === totalPages}
             >
               Next
