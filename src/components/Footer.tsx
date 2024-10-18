@@ -1,8 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import GoogleTranslate from './GoogleTranslator';
 
 const Footer: React.FC = () => {
   return (
+
     <footer
       style={{
         backgroundColor: 'rgba(43, 48, 60, 0.85)',
@@ -22,6 +24,7 @@ const Footer: React.FC = () => {
             width: '300px',
             marginLeft: '100px',
             marginTop: '20px',
+
           }}
         >
           <p>
@@ -29,6 +32,7 @@ const Footer: React.FC = () => {
             glassmorphic components. Perfect for creating modern, sleek
             interfaces with depth and style.
           </p>
+
           <p>
             <Link
               to={'/terms'}
@@ -150,6 +154,7 @@ const Footer: React.FC = () => {
         &copy; 2023 GlassyUI. All rights reserved.
       </p>
     </footer>
+
   );
 };
 
