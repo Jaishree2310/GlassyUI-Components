@@ -1,4 +1,8 @@
 import React, { useEffect, useState } from 'react';
+
+import { HiOutlineChevronDoubleDown } from 'react-icons/hi';
+
+
 import BackToTopButton from './BackToTop';
 import { useNavigate } from 'react-router-dom';
 import {
@@ -17,9 +21,11 @@ import {
   Search,
 } from 'lucide-react';
 
+
+
 import Accordion from './Accordion';
 
-// Define the ComponentCardProps interface
+
 
 
 interface ComponentCardProps {
@@ -31,12 +37,20 @@ interface ComponentCardProps {
   children?: React.ReactNode; // Include the children prop
 }
 
-
 const GlassyUIComponentsPage: React.FC = () => {
   const navigate = useNavigate();
   const [currentPage, setCurrentPage] = useState(1);
   const [searchFilter, setSearchFilter] = useState<string>('');
   const componentsPerPage = 9;
+
+
+  const scrollToNextSection = () => {
+    window.scrollBy({
+      top: window.innerHeight,
+      behavior: 'smooth',
+    });
+  };
+
 
   const componentsData = [
     {
