@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
+
 import { HiOutlineChevronDoubleDown } from 'react-icons/hi';
+
 
 import BackToTopButton from './BackToTop';
 import { useNavigate } from 'react-router-dom';
@@ -20,7 +22,9 @@ import {
 } from 'lucide-react';
 
 
+
 import Accordion from './Accordion';
+
 
 
 
@@ -32,6 +36,7 @@ interface ComponentCardProps {
   status?: string; // Optional status prop
   children?: React.ReactNode; // Include the children prop
 }
+
 const GlassyUIComponentsPage: React.FC = () => {
   const navigate = useNavigate();
   const [currentPage, setCurrentPage] = useState(1);
@@ -205,6 +210,7 @@ const GlassyUIComponentsPage: React.FC = () => {
     currentPage * componentsPerPage,
   );
 
+
   const nextPage = () => {
     if (currentPage < totalPages) setCurrentPage(currentPage + 1);
   };
@@ -263,8 +269,10 @@ const GlassyUIComponentsPage: React.FC = () => {
 
 
           <input
+
             className='rounded-full text-black p-2'
             placeholder='Search Component'
+
             onChange={e => {
               setSearchFilter(e.target.value);
             }}

@@ -5,6 +5,7 @@ import GoogleTranslate from './GoogleTranslator';
 const Footer: React.FC = () => {
   return (
 
+
     <footer
       style={{
         backgroundColor: 'rgba(43, 48, 60, 0.85)',
@@ -153,6 +154,7 @@ const Footer: React.FC = () => {
       >
         &copy; 2023 GlassyUI. All rights reserved.
       </p>
+
     </footer>
 
   );
