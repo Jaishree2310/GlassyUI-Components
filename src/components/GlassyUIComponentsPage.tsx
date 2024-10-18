@@ -30,6 +30,44 @@ interface ComponentCardProps {
   status?: string; // Optional status prop
   children?: React.ReactNode; // Include the children prop
 }
+const getGlassyClasses = () => {
+  return 'backdrop-filter backdrop-blur-md bg-white/10 border border-white/20 rounded-2xl shadow-lg transition-all duration-300';
+};
+
+
+const ComponentCard: React.FC<ComponentCardProps> = ({
+  title,
+  description,
+  icon,
+  onClick,
+  status,
+  children,
+}) => {
+  return (
+    <div
+      className={`${getGlassyClasses()} p-6 flex flex-col h-full cursor-pointer group transition-all duration-300 hover:bg-white/20 hover:scale-105 hover:shadow-xl`}
+      onClick={onClick}
+    >
+      <div className='flex items-center mb-4'>
+        <div className='p-2 bg-white/20 rounded-lg mr-4'>{icon}</div>
+        <h3 className='text-xl font-bold'>{title}</h3>
+        {status && (
+          <span className='ml-2 px-2 py-1 bg-green-200 text-green-700 text-xs font-medium rounded'>
+            {status}
+          </span>
+        )}
+      </div>
+      <p className='text-sm opacity-80 mb-4 flex-grow'>{description}</p>
+      {children}
+      <div className='flex items-center text-sm font-medium text-pink-200 mt-4'>
+        <div className='flex justify-center items-center'>
+          <span>Learn more</span>
+          <ArrowUp className='ml-2 w-6 pt-1 group-hover:translate-x-1 transition-transform duration-300' />
+        </div>
+      </div>
+    </div>
+  );
+};
 
 
 const GlassyUIComponentsPage: React.FC = () => {
@@ -37,6 +75,15 @@ const GlassyUIComponentsPage: React.FC = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [searchFilter, setSearchFilter] = useState<string>('');
   const componentsPerPage = 9;
+
+
+  const scrollToNextSection = () => {
+    window.scrollBy({
+      top: window.innerHeight,
+      behavior: 'smooth',
+    });
+  };
+
 
   const componentsData = [
     {
@@ -170,6 +217,12 @@ const GlassyUIComponentsPage: React.FC = () => {
 
       onClick: () => navigate('/generator'),
     },
+    {
+      title: 'Checkbox',
+      description: 'Checkbox component with glassmorphic styling.',
+      icon: <Layout size={24} />,
+      onClick: () => navigate('/checkbox'),
+    },
   ];
 
   const [filteredData, setFilteredData] = useState(componentsData);
@@ -254,15 +307,17 @@ const GlassyUIComponentsPage: React.FC = () => {
           </div>
 
 
-          <input
+          <div className='flex items-center bg-gradient-to-r from-slate-800 via-slate-700 to-slate-900 text-white w-2/5 rounded-lg shadow-lg overflow-hidden'>
+            <input
+              className='w-full px-6 py-3 bg-transparent text-white outline-none focus:ring-2 focus:ring-gray-500 transition-all duration-300'
+              placeholder='Search Components...'
+              onChange={e => setSearchFilter(e.target.value)}
+            />
+            <Search className='mx-4 cursor-pointer text-pink-300 hover:text-pink-400 transition-all duration-300' />
+          </div>
 
-            className='rounded-full text-black p-2'
-            placeholder='Search Component'
 
-            onChange={e => {
-              setSearchFilter(e.target.value);
-            }}
-          />
+  
 
         </header>
 
