@@ -3,7 +3,8 @@
 import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import BackToTopButton from './BackToTop';
-import { HiOutlineChevronDoubleDown } from 'react-icons/hi';
+
+import { HiOutlineChevronDoubleDown } from 'react-icons/hi2';
 
 interface Contributor {
   id: number;
