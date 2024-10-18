@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from 'react';
+import { HiOutlineChevronDoubleDown } from 'react-icons/hi';
+
 import BackToTopButton from './BackToTop';
 import { useNavigate } from 'react-router-dom';
 import {
@@ -41,7 +43,7 @@ const GlassyUIComponentsPage: React.FC = () => {
       behavior: 'smooth',
     });
   };
-    
+
   const componentsData = [
     {
       title: 'Toast',
@@ -254,10 +256,8 @@ const GlassyUIComponentsPage: React.FC = () => {
           </div>
 
           <input
-
             className='rounded-full text-black p-2'
             placeholder='Search Component'
-
             onChange={e => {
               setSearchFilter(e.target.value);
             }}
