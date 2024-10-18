@@ -159,7 +159,7 @@ const Footer: React.FC = () => {
               right: '-300px',
             }}
           >
-            &copy; 2023 GlassyUI. All rights reserved.
+            &copy; 2024 GlassyUI. All rights reserved.
           </p>
           <div
             style={{
