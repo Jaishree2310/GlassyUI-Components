@@ -6,7 +6,7 @@ const ProductCardDetailsPage: React.FC = () => {
     const navigate = useNavigate();
     const [copiedStates, setCopiedStates] = useState<{ [key: string]: boolean }>({});
 
-    const getGlassyClasses = (opacity = 20) => {
+    const getGlassyClasses = (opacity = 5) => {
         return `backdrop-filter backdrop-blur-lg bg-white bg-opacity-${opacity} 
       border border-white border-opacity-20 rounded-lg shadow-lg transition-all duration-300`;
     };
@@ -38,94 +38,136 @@ const ProductCardDetailsPage: React.FC = () => {
         </button>
     );
 
+    const svgs = {
+        star: (
+            <svg fill="currentColor" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-4 h-4 text-blue-400" viewBox="0 0 24 24">
+                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+            </svg>
+        ),
+        facebook: (
+            <svg fill="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-5 h-5" viewBox="0 0 24 24">
+                <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path>
+            </svg>
+        ),
+        twitter: (
+            <svg fill="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-5 h-5" viewBox="0 0 24 24">
+                <path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"></path>
+            </svg>
+        ),
+        chat: (
+            <svg fill="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-5 h-5" viewBox="0 0 24 24">
+                <path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"></path>
+            </svg>
+        ),
+        heart: (
+            <svg fill="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-5 h-5" viewBox="0 0 24 24">
+                <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78v0z"></path>
+            </svg>
+        ),
+        dropdownArrow: (
+            <svg fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-4 h-4" viewBox="0 0 24 24">
+                <path d="M6 9l6 6 6-6"></path>
+            </svg>
+        )
+    };
+
+
+
     const productCardCode = `
-     <section className="text-gray-400 bg-gray-900 body-font overflow-hidden">
-        <div className="container px-5 py-16 mx-auto">
-            <div className="lg:w-4/5 mx-auto flex flex-wrap">
-                <img alt="ecommerce" className="lg:w-1/2 w-full lg:h-auto h-64 object-cover object-center rounded-[25px]" src="https://dummyimage.com/400x400" />
-                <div className="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
-                    <h2 className="text-sm title-font text-gray-500 tracking-widest">BRAND NAME</h2>
-                    <h1 className="text-white text-3xl title-font font-medium mb-1">PRODUCT NAME</h1>
-                    <div className="flex mb-4">
-                        <span className="flex items-center">
-                            <svg fill="currentColor" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-4 h-4 text-blue-400" viewBox="0 0 24 24">
-                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
-                            </svg>
-                            <svg fill="currentColor" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-4 h-4 text-blue-400" viewBox="0 0 24 24">
-                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
-                            </svg>
-                            <svg fill="currentColor" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-4 h-4 text-blue-400" viewBox="0 0 24 24">
-                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
-                            </svg>
-                            <svg fill="currentColor" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-4 h-4 text-blue-400" viewBox="0 0 24 24">
-                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
-                            </svg>
-                            <svg fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-4 h-4 text-blue-400" viewBox="0 0 24 24">
-                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
-                            </svg>
-                            <span className="ml-3">15 Reviews</span>
-                        </span>
-                        <span className="flex ml-3 pl-3 py-2 border-l-2 border-gray-800 text-gray-500 space-x-2">
-                            <a>
-                                <svg fill="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-5 h-5" viewBox="0 0 24 24">
-                                    <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path>
-                                </svg>
-                            </a>
-                            <a>
-                                <svg fill="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-5 h-5" viewBox="0 0 24 24">
-                                    <path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"></path>
-                                </svg>
-                            </a>
-                            <a>
-                                <svg fill="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-5 h-5" viewBox="0 0 24 24">
-                                    <path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"></path>
-                                </svg>
-                            </a>
-                        </span>
-                    </div>
-                    <p className="leading-relaxed">PRODUCT DESCRIPTION</p>
-                    <div className="flex mt-6 items-center pb-5 border-b-2 border-gray-800 mb-5">
-                        <div className="flex">
-                            <span className="mr-3">Color</span>
-                            <button className="border-2 border-gray-800 rounded-full w-6 h-6 focus:outline-none"></button>
-                            <button className="border-2 border-gray-800 ml-1 bg-gray-700 rounded-full w-6 h-6 focus:outline-none"></button>
-                            <button className="border-2 border-gray-800 ml-1 bg-blue-500 rounded-full w-6 h-6 focus:outline-none"></button>
+          const getGlassyClasses = (opacity = 5) => { return \`backdrop-filter backdrop-blur-lg bg-white bg-opacity-$\{opacity} border border-white border-opacity-20 rounded-lg shadow-lg transition-all duration-300\`; };
+
+     <section className={\`$\{getGlassyClasses()} p-6 mb-14 relative\`}>
+            <div className="container px-5 py-16 mx-auto">
+                <div className="lg:w-full mx-auto flex flex-wrap">
+                    <img alt="ecommerce" className="lg:w-1/2 w-full  h-[430px] object-cover object-top rounded-[25px]" src="https://rukminim2.flixcart.com/image/416/416/xif0q/shoe/y/3/3/10-mexico-11-10-asian-lgrey-black-original-imah5agrpzsagpy2.jpeg?q=70&crop=false" />
+                    <div className="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
+                        <h2 className="text-sm title-font text-gray-300 tracking-widest">ASIAN</h2>
+                        <h1 className="text-white text-3xl title-font font-medium mb-1">Casual Sneakers Shoes For Men Mexico-11</h1>
+                        <div className="flex mb-4">
+                            <span className="flex items-center">
+                                {Array(4).fill(svgs.star)}
+                                {svgs.star} {/* Non-filled star */}
+                                <span className="ml-3">15 Reviews</span>
+                            </span>
+                            <span className="flex ml-3 pl-3 py-2 border-l-2 border-[#535d6a] text-gray-500 space-x-2">
+                                <a>{svgs.facebook}</a>
+                                <a>{svgs.twitter}</a>
+                                <a>{svgs.chat}</a>
+                            </span>
                         </div>
-                        <div className="flex ml-6 items-center">
-                            <span className="mr-3">Size</span>
-                            <div className="relative">
-                                <select className="rounded border border-gray-700 focus:ring-2 focus:ring-blue-900 bg-transparent appearance-none py-2 focus:outline-none focus:border-blue-500 text-white pl-3 pr-10">
-                                    <option className='bg-gray-800'>8</option>
-                                    <option className='bg-gray-800'>9</option>
-                                    <option className='bg-gray-800'>10</option>
-                                    <option className='bg-gray-800'>11</option>
-                                </select>
-                                <span className="absolute right-0 top-0 h-full w-10 text-center text-gray-600 pointer-events-none flex items-center justify-center">
-                                    <svg fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-4 h-4" viewBox="0 0 24 24">
-                                        <path d="M6 9l6 6 6-6"></path>
-                                    </svg>
-                                </span>
+                        <p className="leading-relaxed">These casual Mexico-11 sneakers offer ultimate comfort and style for your everyday use. Crafted with a breathable mesh upper and durable sole, they are perfect for walks, runs, or casual outings. The versatile grey color goes well with various outfits, making it a wardrobe staple.</p>
+                        <div className="flex mt-6 items-center pb-5 border-b-2 border-[#535d6a] mb-5">
+                            <div className="flex">
+                                <span className="mr-3 text-gray-300">Color</span>
+                                <button className="border-2 border-[#535d6a] rounded-full w-6 h-6 focus:outline-none"></button>
+                                <button className="border-2 border-[#535d6a] ml-1 bg-gray-700 rounded-full w-6 h-6 focus:outline-none"></button>
+                                <button className="border-2 border-[#535d6a] ml-1 bg-blue-500 rounded-full w-6 h-6 focus:outline-none"></button>
+                            </div>
+                            <div className="flex ml-6 items-center">
+                                <span className="mr-3 text-gray-300">Size</span>
+                                <div className="relative">
+                                    <select className="rounded border cursor-pointer bg-gray-300 text-black border-gray-700 focus:ring-2 focus:ring-blue-900 bg-transparent appearance-none py-2 focus:outline-none focus:border-blue-500 pl-3 pr-10">
+                                        <option className='bg-gray-300 cursor-pointer'>8</option>
+                                        <option className='bg-gray-300 cursor-pointer'>9</option>
+                                        <option className='bg-gray-300 cursor-pointer'>10</option>
+                                        <option className='bg-gray-300 cursor-pointer'>11</option>
+                                    </select>
+                                    <span className="absolute right-0 top-0 h-full w-10 text-center text-gray-600 pointer-events-none flex items-center justify-center">
+                                        {svgs.dropdownArrow}
+                                    </span>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div className="flex">
-                        <div className="flex items-center">
-                            <span className="title-font font-medium text-2xl text-white">₹846.00</span>
-                            <span className="ml-4 text-gray-500 line-through text-lg">₹1499.00</span>
-                            <span className="ml-4 text-green-500 text-lg">43% off</span>
+                        <div className="flex">
+                            <div className="flex items-center">
+                                <span className="title-font font-medium text-2xl text-white">₹846.00</span>
+                                <span className="ml-4 text-gray-500 line-through text-lg">₹1499.00</span>
+                                <span className="ml-4 text-green-500 text-lg">43% off</span>
+                            </div>
+                            <button className="flex ml-auto text-white bg-blue-500 border-0 py-2 px-6 focus:outline-none hover:bg-blue-600 rounded">Add to Cart</button>
+                            <button className="rounded-full w-10 h-10 bg-gray-800 p-0 border-0 inline-flex items-center justify-center text-gray-500 ml-4">
+                                {svgs.heart}
+                            </button>
                         </div>
-                        <button className="flex ml-auto text-white bg-blue-500 border-0 py-2 px-6 focus:outline-none hover:bg-blue-600 rounded">Add to Cart</button>
-                        <button className="rounded-full w-10 h-10 bg-gray-800 p-0 border-0 inline-flex items-center justify-center text-gray-500 ml-4">
-                            <svg fill="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-5 h-5" viewBox="0 0 24 24">
-                                <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78v0z"></path>
-                            </svg>
-                        </button>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
   `;
+
+    const svgUsed = `
+    const svgs = {
+            star: (
+                <svg fill="currentColor" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-4 h-4 text-blue-400" viewBox="0 0 24 24">
+                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+                </svg>
+            ),
+            facebook: (
+                <svg fill="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-5 h-5" viewBox="0 0 24 24">
+                    <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path>
+                </svg>
+            ),
+            twitter: (
+                <svg fill="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-5 h-5" viewBox="0 0 24 24">
+                    <path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"></path>
+                </svg>
+            ),
+            chat: (
+                <svg fill="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-5 h-5" viewBox="0 0 24 24">
+                    <path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"></path>
+                </svg>
+            ),
+            heart: (
+                <svg fill="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-5 h-5" viewBox="0 0 24 24">
+                    <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78v0z"></path>
+                </svg>
+            ),
+            dropdownArrow: (
+                <svg fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-4 h-4" viewBox="0 0 24 24">
+                    <path d="M6 9l6 6 6-6"></path>
+                </svg>
+            )
+        };`
 
     return (
         <div className='min-h-screen p-8 font-sans bg-gradient-to-r from-gray-800 via-gray-900 to-black text-white relative'>
@@ -152,6 +194,16 @@ const ProductCardDetailsPage: React.FC = () => {
                             {productCardCode}
                         </pre>
                         <CopyButton text={productCardCode} codeKey='productCard' />
+                    </div>
+                </div>
+
+                <div className={`${getGlassyClasses()} p-8 mb-8 relative`}>
+                    <h2 className='text-3xl font-bold mb-6 text-white'>SVG&apos;s Used</h2>
+                    <div className='relative'>
+                        <pre className='bg-gray-800 text-white p-6 rounded-lg overflow-x-auto whitespace-pre-wrap max-sm:text-[0.55rem]'>
+                            {svgUsed}
+                        </pre>
+                        <CopyButton text={svgUsed} codeKey='svgUsed' />
                     </div>
                 </div>
 
@@ -219,71 +271,44 @@ const ProductCardDetailsPage: React.FC = () => {
                     <p className='mb-6 text-lg text-white'>
                         Customize the card&apos;s style through the className prop or inline styles.
                     </p>
-                    <section className="text-gray-400 bg-gray-900 body-font overflow-hidden">
+                    <section className={`${getGlassyClasses()} p-6 mb-14 relative`}>
                         <div className="container px-5 py-16 mx-auto">
-                            <div className="lg:w-4/5 mx-auto flex flex-wrap">
-                                <img alt="ecommerce" className="lg:w-1/2 w-full lg:h-auto h-64 object-cover object-center rounded-[25px]" src="https://rukminim2.flixcart.com/image/416/416/xif0q/shoe/y/3/3/10-mexico-11-10-asian-lgrey-black-original-imah5agrpzsagpy2.jpeg?q=70&crop=false" />
+                            <div className="lg:w-full mx-auto flex flex-wrap">
+                                <img alt="ecommerce" className="lg:w-1/2 w-full  h-[430px] object-cover object-top rounded-[25px]" src="https://rukminim2.flixcart.com/image/416/416/xif0q/shoe/y/3/3/10-mexico-11-10-asian-lgrey-black-original-imah5agrpzsagpy2.jpeg?q=70&crop=false" />
                                 <div className="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
-                                    <h2 className="text-sm title-font text-gray-500 tracking-widest">ASIAN</h2>
+                                    <h2 className="text-sm title-font text-gray-300 tracking-widest">ASIAN</h2>
                                     <h1 className="text-white text-3xl title-font font-medium mb-1">Casual Sneakers Shoes For Men Mexico-11</h1>
                                     <div className="flex mb-4">
                                         <span className="flex items-center">
-                                            <svg fill="currentColor" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-4 h-4 text-blue-400" viewBox="0 0 24 24">
-                                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
-                                            </svg>
-                                            <svg fill="currentColor" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-4 h-4 text-blue-400" viewBox="0 0 24 24">
-                                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
-                                            </svg>
-                                            <svg fill="currentColor" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-4 h-4 text-blue-400" viewBox="0 0 24 24">
-                                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
-                                            </svg>
-                                            <svg fill="currentColor" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-4 h-4 text-blue-400" viewBox="0 0 24 24">
-                                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
-                                            </svg>
-                                            <svg fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-4 h-4 text-blue-400" viewBox="0 0 24 24">
-                                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
-                                            </svg>
+                                            {Array(4).fill(svgs.star)}
+                                            {svgs.star} {/* Non-filled star */}
                                             <span className="ml-3">15 Reviews</span>
                                         </span>
-                                        <span className="flex ml-3 pl-3 py-2 border-l-2 border-gray-800 text-gray-500 space-x-2">
-                                            <a>
-                                                <svg fill="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-5 h-5" viewBox="0 0 24 24">
-                                                    <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path>
-                                                </svg>
-                                            </a>
-                                            <a>
-                                                <svg fill="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-5 h-5" viewBox="0 0 24 24">
-                                                    <path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"></path>
-                                                </svg>
-                                            </a>
-                                            <a>
-                                                <svg fill="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-5 h-5" viewBox="0 0 24 24">
-                                                    <path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"></path>
-                                                </svg>
-                                            </a>
+                                        <span className="flex ml-3 pl-3 py-2 border-l-2 border-[#535d6a] text-gray-500 space-x-2">
+                                            <a>{svgs.facebook}</a>
+                                            <a>{svgs.twitter}</a>
+                                            <a>{svgs.chat}</a>
                                         </span>
                                     </div>
                                     <p className="leading-relaxed">These casual Mexico-11 sneakers offer ultimate comfort and style for your everyday use. Crafted with a breathable mesh upper and durable sole, they are perfect for walks, runs, or casual outings. The versatile grey color goes well with various outfits, making it a wardrobe staple.</p>
-                                    <div className="flex mt-6 items-center pb-5 border-b-2 border-gray-800 mb-5">
+                                    <div className="flex mt-6 items-center pb-5 border-b-2 border-[#535d6a] mb-5">
                                         <div className="flex">
-                                            <span className="mr-3">Color</span>
-                                            <button className="border-2 border-gray-800 rounded-full w-6 h-6 focus:outline-none"></button>
-                                            <button className="border-2 border-gray-800 ml-1 bg-gray-700 rounded-full w-6 h-6 focus:outline-none"></button>
-                                            <button className="border-2 border-gray-800 ml-1 bg-blue-500 rounded-full w-6 h-6 focus:outline-none"></button>
+                                            <span className="mr-3 text-gray-300">Color</span>
+                                            <button className="border-2 border-[#535d6a] rounded-full w-6 h-6 focus:outline-none"></button>
+                                            <button className="border-2 border-[#535d6a] ml-1 bg-gray-700 rounded-full w-6 h-6 focus:outline-none"></button>
+                                            <button className="border-2 border-[#535d6a] ml-1 bg-blue-500 rounded-full w-6 h-6 focus:outline-none"></button>
                                         </div>
                                         <div className="flex ml-6 items-center">
-                                            <span className="mr-3">Size</span>
+                                            <span className="mr-3 text-gray-300">Size</span>
                                             <div className="relative">
-                                                <select className="rounded border border-gray-700 focus:ring-2 focus:ring-blue-900 bg-transparent appearance-none py-2 focus:outline-none focus:border-blue-500 text-white pl-3 pr-10">
-                                                    <option className='bg-gray-800'>8</option>
-                                                    <option className='bg-gray-800'>9</option>
-                                                    <option className='bg-gray-800'>10</option>
-                                                    <option className='bg-gray-800'>11</option>
+                                                <select className="rounded border cursor-pointer bg-gray-300 text-black border-gray-700 focus:ring-2 focus:ring-blue-900 bg-transparent appearance-none py-2 focus:outline-none focus:border-blue-500 pl-3 pr-10">
+                                                    <option className='bg-gray-300 cursor-pointer'>8</option>
+                                                    <option className='bg-gray-300 cursor-pointer'>9</option>
+                                                    <option className='bg-gray-300 cursor-pointer'>10</option>
+                                                    <option className='bg-gray-300 cursor-pointer'>11</option>
                                                 </select>
                                                 <span className="absolute right-0 top-0 h-full w-10 text-center text-gray-600 pointer-events-none flex items-center justify-center">
-                                                    <svg fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-4 h-4" viewBox="0 0 24 24">
-                                                        <path d="M6 9l6 6 6-6"></path>
-                                                    </svg>
+                                                    {svgs.dropdownArrow}
                                                 </span>
                                             </div>
                                         </div>
@@ -296,15 +321,14 @@ const ProductCardDetailsPage: React.FC = () => {
                                         </div>
                                         <button className="flex ml-auto text-white bg-blue-500 border-0 py-2 px-6 focus:outline-none hover:bg-blue-600 rounded">Add to Cart</button>
                                         <button className="rounded-full w-10 h-10 bg-gray-800 p-0 border-0 inline-flex items-center justify-center text-gray-500 ml-4">
-                                            <svg fill="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-5 h-5" viewBox="0 0 24 24">
-                                                <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78v0z"></path>
-                                            </svg>
+                                            {svgs.heart}
                                         </button>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </section>
+
 
                 </div>
             </div>
