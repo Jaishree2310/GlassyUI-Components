@@ -16,7 +16,7 @@ const TermsAndConditions: React.FC = () => {
       {/* Back Button */}
       <button
         onClick={() => navigate(-1)}
-        className={`mb-8 flex items-center ${getGlassyClasses(10)} px-4 py-2 hover:bg-white/40 transition-all duration-300 text-gray-100`}
+        className={`mb-8 mt-10 flex items-center ${getGlassyClasses(10)} px-4 py-2 hover:bg-white/40 transition-all duration-300 text-gray-100`}
       >
         <ArrowLeft size={20} className='mr-2' />
         Back
