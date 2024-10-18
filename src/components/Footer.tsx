@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import GoogleTranslate from './GoogleTranslator';
 
 const Footer: React.FC = () => {
   return (
@@ -126,6 +127,7 @@ const Footer: React.FC = () => {
         }
       `}</style>
     </footer>
+
   );
 };
 
