@@ -68,7 +68,6 @@ const App: React.FC = () => {
         <Route path='/testimonial-details' element={<TestimonialDetails />} />
         <Route path='*' element={<NotFoundPage />} />
       </Routes>
-      <Footer />
     </Router>
   );
 };
