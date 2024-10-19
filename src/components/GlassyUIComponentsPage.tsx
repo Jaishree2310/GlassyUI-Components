@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import BackToTopButton from './BackToTop';
 import { useNavigate } from 'react-router-dom';
 import {
   ArrowRight,
@@ -16,60 +17,25 @@ import {
   Search,
 } from 'lucide-react';
 
-import BackToTopButton from './BackToTop';
-import { HiOutlineWrenchScrewdriver } from 'react-icons/hi2';
+import Accordion from './Accordion';
+
+// Define the ComponentCardProps interface
+
 
 interface ComponentCardProps {
   title: string;
   description: string;
   icon: React.ReactNode;
   onClick: () => void;
-  status?: string;
-  children?: React.ReactNode;
+  status?: string; // Optional status prop
+  children?: React.ReactNode; // Include the children prop
 }
 
-const ComponentCard: React.FC<ComponentCardProps> = ({
-  title,
-  description,
-  icon,
-  onClick,
-  status,
-  children,
-}) => {
-  const getGlassyClasses = () => {
-    return 'backdrop-filter backdrop-blur-md bg-white/10 border border-white/20 rounded-2xl shadow-lg transition-all duration-300';
-  };
-
-  return (
-    <div
-      className={`${getGlassyClasses()} p-6 flex flex-col h-full cursor-pointer group transition-all duration-300 hover:bg-white/20 hover:scale-105 hover:shadow-xl`}
-      onClick={onClick}
-    >
-      <div className='flex items-center mb-4'>
-        <div className='p-2 bg-white/20 rounded-lg mr-4'>{icon}</div>
-        <h3 className='text-xl font-bold'>{title}</h3>
-        {status && (
-          <span className='ml-2 px-2 py-1 bg-green-200 text-green-700 text-xs font-medium rounded'>
-            {status}
-          </span>
-        )}
-      </div>
-      <p className='text-sm opacity-80 mb-4 flex-grow'>{description}</p>
-      {children}
-      <div className='flex items-center text-sm font-medium text-pink-200 mt-4'>
-        <div className='flex justify-center items-center'>
-          <span>Learn more</span>
-          <ArrowUp className='ml-2 w-6 pt-1 group-hover:translate-x-1 transition-transform duration-300' />
-        </div>
-      </div>
-    </div>
-  );
-};
 
 const GlassyUIComponentsPage: React.FC = () => {
   const navigate = useNavigate();
   const [currentPage, setCurrentPage] = useState(1);
-  const [searchFilter, setSearchFilter] = useState<string | null>('');
+  const [searchFilter, setSearchFilter] = useState<string>('');
   const componentsPerPage = 9;
 
   const componentsData = [
@@ -186,7 +152,6 @@ const GlassyUIComponentsPage: React.FC = () => {
       icon: <Layout size={24} />,
       onClick: () => navigate('/pagination-details'),
     },
-
     {
       title: 'Testimonial',
       description: 'Testimonial component with glassmorphic styling.',
@@ -202,7 +167,7 @@ const GlassyUIComponentsPage: React.FC = () => {
     {
       title: 'Glassmorphism Effect Generator',
       description: 'Create stunning Glassmorphic effects with ease.',
-      icon: <HiOutlineWrenchScrewdriver size={24} />,
+
       onClick: () => navigate('/generator'),
     },
   ];
@@ -210,14 +175,15 @@ const GlassyUIComponentsPage: React.FC = () => {
   const [filteredData, setFilteredData] = useState(componentsData);
 
   useEffect(() => {
-    const filteredComponents = componentsData.filter(component => {
-      if (searchFilter != null) {
+
+    const data = componentsData.filter(component => {
+      if (searchFilter) {
+
         return component.title
-          .replace(/ /g, '')
           .toLowerCase()
-          .includes(searchFilter.trim().replace(/ /g, '').toLowerCase());
+          .includes(searchFilter.trim().toLowerCase());
       }
-      return component;
+      return true; // return all components if no filter is set
     });
     setFilteredData(filteredComponents);
     setCurrentPage(1); // Reset to first page when searching
@@ -230,6 +196,7 @@ const GlassyUIComponentsPage: React.FC = () => {
     currentPage * componentsPerPage,
   );
 
+
   const nextPage = () => {
     if (currentPage < totalPages) setCurrentPage(currentPage + 1);
   };
@@ -237,6 +204,42 @@ const GlassyUIComponentsPage: React.FC = () => {
   const prevPage = () => {
     if (currentPage > 1) setCurrentPage(currentPage - 1);
   };
+
+  const getGlassyClasses = () => {
+    return 'backdrop-filter backdrop-blur-md bg-white/10 border border-white/20 rounded-2xl shadow-lg transition-all duration-300';
+  };
+
+  const ComponentCard: React.FC<ComponentCardProps> = ({
+    title,
+    description,
+    icon,
+    onClick,
+    status,
+    children,
+  }) => (
+    <div
+      className={`${getGlassyClasses()} p-6 flex flex-col h-full cursor-pointer group transition-all duration-300 hover:bg-white/20 hover:scale-105 hover:shadow-xl`}
+      onClick={onClick}
+    >
+      <div className='flex items-center mb-4'>
+        <div className='p-2 bg-white/20 rounded-lg mr-4'>{icon}</div>
+        <h3 className='text-xl font-bold'>{title}</h3>
+        {status && (
+          <span className='ml-2 px-2 py-1 bg-green-200 text-green-700 text-xs font-medium rounded'>
+            {status}
+          </span>
+        )}
+      </div>
+      <p className='text-sm opacity-80 mb-4 flex-grow'>{description}</p>
+      {children}
+      <div className='flex items-center text-sm font-medium text-pink-200 mt-4'>
+        <div className='flex justify-center items-center'>
+          <span>Learn more</span>
+          <ArrowUp className='ml-2 w-6 pt-1 group-hover:translate-x-1 transition-transform duration-300' />
+        </div>
+      </div>
+    </div>
+  );
 
   return (
     <div className='min-h-screen font-sans bg-gradient-to-br from-gray-800 via-gray-900 to-black text-white'>
@@ -249,14 +252,18 @@ const GlassyUIComponentsPage: React.FC = () => {
           >
             GlassyUI
           </div>
-          <div className='flex items-center bg-gradient-to-r from-slate-800 via-slate-700 to-slate-900 text-white w-2/5 rounded-lg shadow-lg overflow-hidden'>
-            <input
-              className='w-full px-6 py-3 bg-transparent text-white outline-none focus:ring-2 focus:ring-gray-500 transition-all duration-300'
-              placeholder='Search Components...'
-              onChange={e => setSearchFilter(e.target.value)}
-            />
-            <Search className='mx-4 cursor-pointer text-pink-300 hover:text-pink-400 transition-all duration-300' />
-          </div>
+
+
+          <input
+
+            className='rounded-full text-black p-2'
+            placeholder='Search Component'
+
+            onChange={e => {
+              setSearchFilter(e.target.value);
+            }}
+          />
+
         </header>
 
         <main>
@@ -305,28 +312,24 @@ const GlassyUIComponentsPage: React.FC = () => {
             )}
           </div>
 
-          <div className='flex justify-center mt-8'>
+          <div className='flex justify-between items-center mt-8'>
             <button
               onClick={prevPage}
-              className={`px-4 py-2 mx-2 rounded-lg ${
-                currentPage === 1
-                  ? 'opacity-50 cursor-not-allowed'
-                  : 'hover:bg-white/20'
-              }`}
+
+              className='bg-pink-500 text-white py-2 px-4 rounded-md disabled:opacity-50'
+
               disabled={currentPage === 1}
             >
               Previous
             </button>
-            <span className='px-4 py-2'>
+            <span className='text-lg'>
               Page {currentPage} of {totalPages}
             </span>
             <button
               onClick={nextPage}
-              className={`px-4 py-2 mx-2 rounded-lg ${
-                currentPage === totalPages
-                  ? 'opacity-50 cursor-not-allowed'
-                  : 'hover:bg-white/20'
-              }`}
+
+              className='bg-pink-500 text-white py-2 px-4 rounded-md disabled:opacity-50'
+
               disabled={currentPage === totalPages}
             >
               Next
@@ -339,3 +342,5 @@ const GlassyUIComponentsPage: React.FC = () => {
 };
 
 export default GlassyUIComponentsPage;
+
+// dropdown menu, accordian, contact us,
