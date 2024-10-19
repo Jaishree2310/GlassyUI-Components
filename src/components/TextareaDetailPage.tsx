@@ -225,7 +225,7 @@ const TextareaDetailPage: React.FC = () => {
                 <tr className='bg-white bg-opacity-10'>
                   <td className='p-2'>className</td>
                   <td className='p-2'>string</td>
-                  <td className='p-2'>""</td>
+                  <td className='p-2'>-</td>
                   <td className='p-2'>
                     Additional CSS classes to apply to the textarea
                   </td>
@@ -233,7 +233,7 @@ const TextareaDetailPage: React.FC = () => {
                 <tr>
                   <td className='p-2'>placeholder</td>
                   <td className='p-2'>string</td>
-                  <td className='p-2'>""</td>
+                  <td className='p-2'>-</td>
                   <td className='p-2'>Placeholder text for the textarea</td>
                 </tr>
                 <tr className='bg-white bg-opacity-10'>

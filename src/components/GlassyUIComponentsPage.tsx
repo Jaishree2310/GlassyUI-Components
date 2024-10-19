@@ -21,7 +21,6 @@ import Accordion from './Accordion';
 
 // Define the ComponentCardProps interface
 
-
 interface ComponentCardProps {
   title: string;
   description: string;
@@ -30,7 +29,6 @@ interface ComponentCardProps {
   status?: string; // Optional status prop
   children?: React.ReactNode; // Include the children prop
 }
-
 
 const GlassyUIComponentsPage: React.FC = () => {
   const navigate = useNavigate();
@@ -175,17 +173,15 @@ const GlassyUIComponentsPage: React.FC = () => {
   const [filteredData, setFilteredData] = useState(componentsData);
 
   useEffect(() => {
-
     const data = componentsData.filter(component => {
       if (searchFilter) {
-
         return component.title
           .toLowerCase()
           .includes(searchFilter.trim().toLowerCase());
       }
       return true; // return all components if no filter is set
     });
-    setFilteredData(filteredComponents);
+    setFilteredData(data);
     setCurrentPage(1); // Reset to first page when searching
   }, [searchFilter]);
 
@@ -195,7 +191,6 @@ const GlassyUIComponentsPage: React.FC = () => {
     (currentPage - 1) * componentsPerPage,
     currentPage * componentsPerPage,
   );
-
 
   const nextPage = () => {
     if (currentPage < totalPages) setCurrentPage(currentPage + 1);
@@ -253,17 +248,13 @@ const GlassyUIComponentsPage: React.FC = () => {
             GlassyUI
           </div>
 
-
           <input
-
             className='rounded-full text-black p-2'
             placeholder='Search Component'
-
             onChange={e => {
               setSearchFilter(e.target.value);
             }}
           />
-
         </header>
 
         <main>
@@ -315,9 +306,7 @@ const GlassyUIComponentsPage: React.FC = () => {
           <div className='flex justify-between items-center mt-8'>
             <button
               onClick={prevPage}
-
               className='bg-pink-500 text-white py-2 px-4 rounded-md disabled:opacity-50'
-
               disabled={currentPage === 1}
             >
               Previous
@@ -327,9 +316,7 @@ const GlassyUIComponentsPage: React.FC = () => {
             </span>
             <button
               onClick={nextPage}
-
               className='bg-pink-500 text-white py-2 px-4 rounded-md disabled:opacity-50'
-
               disabled={currentPage === totalPages}
             >
               Next
