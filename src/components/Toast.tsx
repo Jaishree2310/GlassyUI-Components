@@ -31,7 +31,7 @@ const Toast: React.FC<ToastProps> = ({
       setHide(true);
     }, autoDismiss);
     return () => clearTimeout(timer);
-  }, []);
+  });
 
   const getGlassyClasses = () => {
     return 'backdrop-filter backdrop-blur-md bg-white/10 border border-white/20 rounded-2xl shadow-lg transition-all duration-300';

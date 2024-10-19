@@ -43,49 +43,14 @@ const NavigationDetailsPage: React.FC = () => {
     navigate('/components');
   };
 
-  function getNavigationCode() {
-    const selectedClass = (item: string) => {
-      return selected === item ? 'bg-pink-300 text-pink-600' : '';
-    };
-
-    return `
-  <nav className="${getGlassyClasses()} flex justify-around flex-col md:flex-row mt-4 py-2">
-    <button 
-      className="md:hidden flex items-center justify-start p-3"
-      onClick={() => setMenuOpen(!menuOpen)}
-    >
-      <Menu size={20} className="mr-2" />
-    </button>
-    <div className="${`w-full md:w-auto ${menuOpen ? 'block' : 'hidden'} md:block`}">
-      <ul className="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-5 p-3 m-2">
-        <li>
-          <a href="#home" className="hover:bg-white/20 hover:text-pink-600 rounded flex justify-center ">
-            <button onClick={() => setSelected('Home')} className="hover:text-pink-600 px-2 py-1 rounded ${selectedClass('Home')}">
-              Home
-            </button>
-          </a>
-        </li>
-        <li>
-          <a href="#about" className="hover:bg-white/20 hover:text-pink-600 rounded flex justify-center">
-            <button onClick={() => setSelected('About')} className="hover:text-pink-600 px-2 py-1 rounded ${selectedClass('About')}">
-              About
-            </button>
-          </a>
-        </li>
-        <li>
-          <a href="#contact" className="hover:bg-white/20 hover:text-pink-600 rounded flex justify-center">
-            <button onClick={() => setSelected('Contact')} className="hover:text-pink-600 px-2 py-1 rounded ${selectedClass('Contact')}">
-              Contact
-            </button>
-          </a>
-        </li>
-      </ul>
-    </div>
-  </nav>
-  `;
-  }
-
-  const navigationCode = getNavigationCode();
+  const basicUsageCode = `<Navigation 
+  items={[
+      { label: 'Home', href: '/' },
+      { label: 'About', href: '/about' },
+      { label: 'Contact', href: '/contact' },
+  ]}
+  initialSelected='Home'        
+/>`;
 
   return (
     <div className='min-h-screen p-8 font-sans bg-gradient-to-r from-gray-800 via-gray-900 to-black text-white relative'>
@@ -110,9 +75,9 @@ const NavigationDetailsPage: React.FC = () => {
         <section className={`${getGlassyClasses()} p-6 mb-14`}>
           <h2 className='text-3xl font-bold mb-6 text-gray-100'>Basic Usage</h2>
           <pre className='bg-gray-800 text-white p-4 rounded-lg overflow-x-auto relative'>
-            {navigationCode}
+            {basicUsageCode}
           </pre>
-          <CopyButton text={navigationCode} codeKey='basicUsage' />
+          <CopyButton text={basicUsageCode} codeKey='basicUsage' />
         </section>
 
         {/* Props */}
@@ -132,7 +97,7 @@ const NavigationDetailsPage: React.FC = () => {
                 <tr>
                   <td className='p-2'>className</td>
                   <td className='p-2'>string</td>
-                  <td className='p-2'>''</td>
+                  <td className='p-2'>-</td>
                   <td className='p-2'>Additional CSS classes</td>
                 </tr>
                 <tr className='bg-white bg-opacity-10'>
@@ -161,7 +126,7 @@ const NavigationDetailsPage: React.FC = () => {
                 <tr>
                   <td className='p-2'>selected</td>
                   <td className='p-2'>string</td>
-                  <td className='p-2'>''</td>
+                  <td className='p-2'>-</td>
                   <td className='p-2'>
                     The currently selected navigation item
                   </td>
