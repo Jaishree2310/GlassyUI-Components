@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import GoogleTranslate from './GoogleTranslator';
 
+
 const Footer: React.FC = () => {
   return (
     <footer className='glass-footer'>
@@ -23,6 +24,7 @@ const Footer: React.FC = () => {
           <Link to='/about' className='footer-link'>
             About
           </Link>
+          <GoogleTranslate />
         </div>
       </div>
       <div className='footer-bottom'>
