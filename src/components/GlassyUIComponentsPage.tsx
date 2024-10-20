@@ -17,7 +17,6 @@ import {
   Search,
 } from 'lucide-react';
 import Accordion from './Accordion';
-import axios from 'axios'; // Make sure you import axios
 
 // Define the ComponentCardProps interface
 interface ComponentCardProps {

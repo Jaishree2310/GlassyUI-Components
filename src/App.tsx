@@ -1,5 +1,10 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+  useLocation,
+} from 'react-router-dom';
 import ScrollProgressBar from './components/ScrollProgress'; // Import your ScrollProgressBar component
 import PricingDetailPage from './components/PricingDetailPage';
 import GlassyUILandingPage from './components/GlassyUILandingPage';
@@ -32,6 +37,7 @@ import TestimonialDetails from './components/TestimonialDetails';
 import Footer from './components/Footer';
 import LoginPage from './components/LoginPage'; // Import Login component
 import SignupPage from './components/SignupPage'; // Import Signup component
+import Checkboxx from './components/Checkboxx';
 
 const App: React.FC = () => {
   return (
@@ -43,6 +49,7 @@ const App: React.FC = () => {
         <Route path='/' element={<GlassyUIComponentsPage />} />
         <Route path='/login' element={<LoginPage />} />
         <Route path='/signup' element={<SignupPage />} />
+        <Route path='/checkbox' element={<Checkboxx />} />
         <Route path='/toast-page' element={<ToastPage />} />
         <Route path='/button-details' element={<ButtonDetailsPage />} />
         <Route path='/card-details' element={<CardDetailsPage />} />
@@ -74,6 +81,11 @@ const App: React.FC = () => {
       </Routes>
     </Router>
   );
+};
+
+const ConditionalFooter: React.FC = () => {
+  const location = useLocation();
+  return location.pathname === '/' ? <Footer /> : null;
 };
 
 export default App;
