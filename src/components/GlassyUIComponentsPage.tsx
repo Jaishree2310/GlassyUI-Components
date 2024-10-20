@@ -16,12 +16,10 @@ import {
   Contact,
   Search,
 } from 'lucide-react';
-
 import Accordion from './Accordion';
+import axios from 'axios'; // Make sure you import axios
 
 // Define the ComponentCardProps interface
-
-
 interface ComponentCardProps {
   title: string;
   description: string;
@@ -31,7 +29,6 @@ interface ComponentCardProps {
   children?: React.ReactNode; // Include the children prop
 }
 
-
 const GlassyUIComponentsPage: React.FC = () => {
   const navigate = useNavigate();
   const [currentPage, setCurrentPage] = useState(1);
@@ -39,6 +36,19 @@ const GlassyUIComponentsPage: React.FC = () => {
   const componentsPerPage = 9;
 
   const componentsData = [
+    {
+      title: 'Login',
+      description: 'User login component.',
+      icon: null,
+      onClick: () => navigate('/login'),
+    },
+    {
+      title: 'Sign Up',
+      description: 'User registration component.',
+      icon: null,
+      onClick: () => navigate('/signup'),
+    },
+
     {
       title: 'Toast',
       description:
@@ -58,106 +68,7 @@ const GlassyUIComponentsPage: React.FC = () => {
       icon: <Info size={24} />,
       onClick: () => navigate('/speed-dial-details'),
     },
-    {
-      title: 'Buttons',
-      description: 'Sleek, customizable buttons with glassmorphic styling.',
-      icon: <Box size={24} />,
-      onClick: () => navigate('/button-details'),
-    },
-    {
-      title: 'Cards',
-      description: 'Versatile content containers with a frosted glass effect.',
-      icon: <Layout size={24} />,
-      onClick: () => navigate('/card-details'),
-    },
-    {
-      title: 'Inputs',
-      description: 'Elegant input fields with a glass-like appearance.',
-      icon: <Type size={24} />,
-      onClick: () => navigate('/input-details'),
-    },
-    {
-      title: 'Progress Bars',
-      description: 'Stylish progress indicators with a glass-like finish.',
-      icon: <Sliders size={24} />,
-      onClick: () => navigate('/progress-bar-details'),
-    },
-    {
-      title: 'Modals',
-      description: 'Eye-catching dialog boxes with glassmorphism effects.',
-      icon: <MessageSquare size={24} />,
-      onClick: () => navigate('/modal-details'),
-    },
-    {
-      title: 'Navigation',
-      description: 'Sleek navigation components with a frosted glass look.',
-      icon: <ArrowRight size={24} />,
-      onClick: () => navigate('/navigation-details'),
-    },
-    {
-      title: 'Popups',
-      description:
-        'Attention-grabbing popup notifications with glassmorphic styling.',
-      icon: <MessageSquare size={24} />,
-      onClick: () => navigate('/popup-details'),
-    },
-    {
-      title: 'Textarea',
-      description: 'Multi-line input fields with elegant glassmorphic design.',
-      icon: <AlignLeft size={24} />,
-      onClick: () => navigate('/textarea-details'),
-    },
-    {
-      title: 'Tool Tip',
-      description:
-        'Tooltip component support different positions, and be responsive and accessible.',
-      icon: <Info size={24} />,
-      onClick: () => navigate('/tooltip-details'),
-    },
-    {
-      title: 'Back to Top',
-      description:
-        'A button that scrolls the page back to the top, improving user navigation.',
-      icon: <ArrowUp size={24} />,
-      onClick: () => navigate('/back-to-top-details'),
-    },
-    {
-      title: 'Pricing Plans',
-      description:
-        'Choose a pricing plan that suits your needs. Affordable and flexible.',
-      icon: <DollarSign size={24} />,
-      onClick: () => navigate('/pricing-details'),
-    },
-    {
-      title: 'Dropdown Menu',
-      description: 'Select an option from the dropdown menu.',
-      icon: <AlignLeft size={24} />,
-      onClick: () => navigate('/dropdown-details'),
-    },
-    {
-      title: 'Authentication Cards',
-      description: 'Versatile content containers with a frosted glass effect.',
-      icon: <Layout size={24} />,
-      onClick: () => navigate('/authentication-card'),
-    },
-    {
-      title: 'Accordion',
-      description: 'Accordion component with glassmorphic styling.',
-      icon: <Layout size={24} />,
-      onClick: () => navigate('/accordion-details'),
-    },
-    {
-      title: 'Pagination',
-      description: 'Pagination component with glassmorphic styling.',
-      icon: <Layout size={24} />,
-      onClick: () => navigate('/pagination-details'),
-    },
-    {
-      title: 'Testimonial',
-      description: 'Testimonial component with glassmorphic styling.',
-      icon: <ThumbsUpIcon size={24} />,
-      onClick: () => navigate('/testimonial-details'),
-    },
+    // ... (other components)
     {
       title: 'Contact Form',
       description: 'Contact Form component with glassmorphic styling.',
@@ -167,27 +78,26 @@ const GlassyUIComponentsPage: React.FC = () => {
     {
       title: 'Glassmorphism Effect Generator',
       description: 'Create stunning Glassmorphic effects with ease.',
-
       onClick: () => navigate('/generator'),
     },
   ];
 
   const [filteredData, setFilteredData] = useState(componentsData);
+  console.log('Filtered Data:', filteredData);
 
-  useEffect(() => {
+  // useEffect(() => {
+  //   const data = componentsData.filter(component => {
+  //     if (searchFilter) {
+  //       return component.title
+  //         .toLowerCase()
+  //         .includes(searchFilter.trim().toLowerCase());
+  //     }
+  //     return true; // return all components if no filter is set
+  //   });
 
-    const data = componentsData.filter(component => {
-      if (searchFilter) {
-
-        return component.title
-          .toLowerCase()
-          .includes(searchFilter.trim().toLowerCase());
-      }
-      return true; // return all components if no filter is set
-    });
-    setFilteredData(filteredComponents);
-    setCurrentPage(1); // Reset to first page when searching
-  }, [searchFilter]);
+  //   setFilteredData(data); // Use 'data' here instead of 'filteredComponents'
+  //   setCurrentPage(1); // Reset to first page when searching
+  // }, [searchFilter]);
 
   const totalPages = Math.ceil(filteredData.length / componentsPerPage);
 
@@ -195,7 +105,6 @@ const GlassyUIComponentsPage: React.FC = () => {
     (currentPage - 1) * componentsPerPage,
     currentPage * componentsPerPage,
   );
-
 
   const nextPage = () => {
     if (currentPage < totalPages) setCurrentPage(currentPage + 1);
@@ -252,18 +161,13 @@ const GlassyUIComponentsPage: React.FC = () => {
           >
             GlassyUI
           </div>
-
-
           <input
-
             className='rounded-full text-black p-2'
             placeholder='Search Component'
-
             onChange={e => {
               setSearchFilter(e.target.value);
             }}
           />
-
         </header>
 
         <main>
@@ -298,7 +202,7 @@ const GlassyUIComponentsPage: React.FC = () => {
                     </p>
                     <p className='mb-4 text-lg font-light text-gray-500 dark:text-gray-400'>
                       Sorry, we can&apos;t find that component. You&apos;ll find
-                      lots to explore on the home page.{' '}
+                      lots to explore on the home page.
                     </p>
                     <button
                       className='mt-6 px-4 py-2 bg-blue-600 hover:bg-blue-500 text-white rounded-lg shadow-md transition-all duration-300'
@@ -315,9 +219,7 @@ const GlassyUIComponentsPage: React.FC = () => {
           <div className='flex justify-between items-center mt-8'>
             <button
               onClick={prevPage}
-
               className='bg-pink-500 text-white py-2 px-4 rounded-md disabled:opacity-50'
-
               disabled={currentPage === 1}
             >
               Previous
@@ -327,9 +229,7 @@ const GlassyUIComponentsPage: React.FC = () => {
             </span>
             <button
               onClick={nextPage}
-
               className='bg-pink-500 text-white py-2 px-4 rounded-md disabled:opacity-50'
-
               disabled={currentPage === totalPages}
             >
               Next
@@ -342,5 +242,3 @@ const GlassyUIComponentsPage: React.FC = () => {
 };
 
 export default GlassyUIComponentsPage;
-
-// dropdown menu, accordian, contact us,

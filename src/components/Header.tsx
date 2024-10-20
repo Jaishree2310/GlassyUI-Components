@@ -52,6 +52,27 @@ const Header: React.FC = () => {
         </li>
         <li style={liStyle} className='navbar-item'>
           <Link
+            to='/login'
+            style={linkStyle}
+            onMouseEnter={e => (e.currentTarget.style.color = '#fde047')}
+            onMouseLeave={e => (e.currentTarget.style.color = 'white')}
+          >
+            Login
+          </Link>
+        </li>
+        <li style={liStyle} className='navbar-item'>
+          <Link
+            to='/signup'
+            style={linkStyle}
+            onMouseEnter={e => (e.currentTarget.style.color = '#fde047')}
+            onMouseLeave={e => (e.currentTarget.style.color = 'white')}
+          >
+            Signup
+          </Link>
+        </li>
+
+        <li style={liStyle} className='navbar-item'>
+          <Link
             to='/about'
             style={linkStyle}
             onMouseEnter={e => (e.currentTarget.style.color = '#fde047')}

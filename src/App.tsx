@@ -30,6 +30,8 @@ import ContactUsDetailsPage from './components/ContactUsDetailsPage';
 import PaginationDetails from './components/PaginationDetails';
 import TestimonialDetails from './components/TestimonialDetails';
 import Footer from './components/Footer';
+import LoginPage from './components/LoginPage'; // Import Login component
+import SignupPage from './components/SignupPage'; // Import Signup component
 
 const App: React.FC = () => {
   return (
@@ -38,7 +40,9 @@ const App: React.FC = () => {
       <ScrollProgressBar /> {/* Add the ScrollProgressBar component here */}
       <Routes>
         <Route path='/' element={<GlassyUILandingPage />} />
-        <Route path='/components' element={<GlassyUIComponentsPage />} />
+        <Route path='/' element={<GlassyUIComponentsPage />} />
+        <Route path='/login' element={<LoginPage />} />
+        <Route path='/signup' element={<SignupPage />} />
         <Route path='/toast-page' element={<ToastPage />} />
         <Route path='/button-details' element={<ButtonDetailsPage />} />
         <Route path='/card-details' element={<CardDetailsPage />} />
