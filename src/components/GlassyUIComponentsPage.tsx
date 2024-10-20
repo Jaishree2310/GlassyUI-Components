@@ -15,8 +15,9 @@ import {
   ThumbsUpIcon,
   Contact,
   Search,
-  GalleryThumbnails,
-} from 'lucide-react';
+   AlignStartVertical,
+   GalleryThumbnails,
+ } from 'lucide-react';
 
 import Accordion from './Accordion';
 
@@ -213,11 +214,17 @@ const GlassyUIComponentsPage: React.FC = () => {
       onClick: () => navigate('/contact-details'),
     },
     {
-      title: 'Gallery',
+       title: 'Statistic',
+      description: 'Statistic component with glassmorphic styling.',
+      icon: <AlignStartVertical size={24} />,
+      onClick: () => navigate('/statistic-details'),
+    },
+    {
+       title: 'Gallery',
       description: 'Gallery component with glassmorphic styling.',
       icon: <GalleryThumbnails size={24} />,
       onClick: () => navigate('/gallery-details'),
-    },
+     },
     {
       title: 'Glassmorphism Effect Generator',
       description: 'Create stunning Glassmorphic effects with ease.',
@@ -391,9 +398,11 @@ const GlassyUIComponentsPage: React.FC = () => {
             </span>
             <button
               onClick={nextPage}
-
-
-              className='bg-pink-500 text-white py-2 px-4 rounded-md disabled:opacity-50'
+               className={`px-4 py-2 mx-2 rounded-lg ${currentPage === totalPages
+                ? 'opacity-50 cursor-not-allowed'
+                : 'hover:bg-white/20'
+                }`}
+ 
 
               disabled={currentPage === totalPages}
             >
