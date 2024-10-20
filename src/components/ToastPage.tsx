@@ -5,6 +5,7 @@ import { ArrowLeft, Check, Copy } from 'lucide-react';
 import BackToTopButton from './BackToTop';
 import ToastGenerator from './ToastGenerator';
 import Toast from './Toast';
+import Footer from './Footer';
 
 // Utility function for reusable glassy class styles
 const getGlassyClasses = (): string =>
@@ -280,7 +281,7 @@ const Toast: React.FC<ToastProps> = ({ id, title, message, autoDismiss = 9000, t
           <div className='overflow-x-auto'>
             <table className='w-full'>
               <thead>
-                <tr className='border-b border-gray-400'>
+                <tr className='bg-white bg-opacity-20'>
                   <th className='text-left p-2 text-gray-100'>Prop</th>
                   <th className='text-left p-2 text-gray-100'>Type</th>
                   <th className='text-left p-2 text-gray-100'>Default</th>
@@ -288,13 +289,13 @@ const Toast: React.FC<ToastProps> = ({ id, title, message, autoDismiss = 9000, t
                 </tr>
               </thead>
               <tbody>
-                <tr className='border-b border-gray-300'>
+                <tr>
                   <td className='p-2 text-gray-200'>title</td>
                   <td className='p-2 text-gray-200'>string</td>
                   <td className='p-2 text-gray-200'>-</td>
                   <td className='p-2 text-gray-200'>The title of the toast</td>
                 </tr>
-                <tr className='border-b border-gray-300'>
+                <tr className='bg-white bg-opacity-10'>
                   <td className='p-2 text-gray-200'>message</td>
                   <td className='p-2 text-gray-200'>string</td>
                   <td className='p-2 text-gray-200'>-</td>
@@ -302,7 +303,7 @@ const Toast: React.FC<ToastProps> = ({ id, title, message, autoDismiss = 9000, t
                     the message of the toast
                   </td>
                 </tr>
-                <tr className='border-b border-gray-300'>
+                <tr>
                   <td className='p-2 text-gray-200'>autoDismiss</td>
                   <td className='p-2 text-gray-200'>number</td>
                   <td className='p-2 text-gray-200'>9000</td>
@@ -310,7 +311,7 @@ const Toast: React.FC<ToastProps> = ({ id, title, message, autoDismiss = 9000, t
                     the time in milliseconds after which the toast gets removed
                   </td>
                 </tr>
-                <tr className='border-b border-gray-300'>
+                <tr className='bg-white bg-opacity-10'>
                   <td className='p-2 text-gray-200'>id</td>
                   <td className='p-2 text-gray-200'>number</td>
                   <td className='p-2 text-gray-200'>Date.now()</td>
@@ -318,7 +319,7 @@ const Toast: React.FC<ToastProps> = ({ id, title, message, autoDismiss = 9000, t
                     the id of each toast component
                   </td>
                 </tr>
-                <tr className='border-b border-gray-300'>
+                <tr>
                   <td className='p-2 text-gray-200'>toaster</td>
                   <td className='p-2 text-gray-200'>React.SetStateAction</td>
                   <td className='p-2 text-gray-200'>-</td>
@@ -331,6 +332,14 @@ const Toast: React.FC<ToastProps> = ({ id, title, message, autoDismiss = 9000, t
           </div>
         </div>
       </div>
+     
+      <Footer />
+      <style jsx>{`
+          .glass-footer {
+            width: 100%;
+          }
+      `}</style>
+
     </div>
   );
 };
