@@ -181,9 +181,9 @@ const GlassyUIComponentsPage: React.FC = () => {
       }
       return true; // return all components if no filter is set
     });
-    setFilteredData(filteredComponents);
+    setFilteredData(data);
     setCurrentPage(1); // Reset to first page when searching
-  }, [searchFilter]);
+  }, [searchFilter, componentsData]);
 
   const totalPages = Math.ceil(filteredData.length / componentsPerPage);
 
