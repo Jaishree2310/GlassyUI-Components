@@ -37,7 +37,9 @@ import TestimonialDetails from './components/TestimonialDetails';
 import Footer from './components/Footer';
 import LoginPage from './components/LoginPage'; // Import Login component
 import SignupPage from './components/SignupPage'; // Import Signup component
-import Checkboxx from './components/Checkboxx';
+import Checkbox from './components/Checkbox'; // Import Checkbox component
+import Statistic from './components/StatisticDetails';
+import GalleryDetailsPage from './components/GalleryDetailsPage';
 
 const App: React.FC = () => {
   return (
@@ -46,17 +48,14 @@ const App: React.FC = () => {
       <ScrollProgressBar /> {/* Add the ScrollProgressBar component here */}
       <Routes>
         <Route path='/' element={<GlassyUILandingPage />} />
-        <Route path='/' element={<GlassyUIComponentsPage />} />
+        <Route path='/components' element={<GlassyUIComponentsPage />} />
         <Route path='/login' element={<LoginPage />} />
         <Route path='/signup' element={<SignupPage />} />
-        <Route path='/checkbox' element={<Checkboxx />} />
+        <Route path='/checkbox' element={<Checkbox />} />
         <Route path='/toast-page' element={<ToastPage />} />
         <Route path='/button-details' element={<ButtonDetailsPage />} />
         <Route path='/card-details' element={<CardDetailsPage />} />
-        <Route
-          path='/progress-bar-details'
-          element={<ProgressBarDetailPage />}
-        />
+        <Route path='/progress-bar-details' element={<ProgressBarDetailPage />} />
         <Route path='/pricing-details' element={<PricingDetailPage />} />
         <Route path='/popup-details' element={<PopupDetailPage />} />
         <Route path='/input-details' element={<InputDetailPage />} />
@@ -76,9 +75,14 @@ const App: React.FC = () => {
         <Route path='/about' element={<AboutUsPage />} />
         <Route path='/contact-details' element={<ContactUsDetailsPage />} />
         <Route path='/pagination-details' element={<PaginationDetails />} />
-        <Route path='/testimonial-details' element={<TestimonialDetails />} />
+        <Route path='/testimonial-details' element ={<TestimonialDetails />} />
+        <Route path='/statistic-details' element={<Statistic />} />
+        <Route path='/gallery-details' element={<GalleryDetailsPage />} />
         <Route path='*' element={<NotFoundPage />} />
       </Routes>
+
+      <ConditionalFooter />
+
     </Router>
   );
 };
