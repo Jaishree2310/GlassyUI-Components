@@ -21,6 +21,24 @@ Welcome to **GlassyUI-Components**! This open-source library features stunning R
 <!--Line-->
 <img src="https://raw.githubusercontent.com/alo7lika/GlassyUI-Components/refs/heads/main/Images/212284100-561aa473-3905-4a80-b561-0d28506553ee.gif" width="900">
 
+## Table of Contents
+
+- [Features](#features)
+- [Components](#components)
+- [Website Preview](#website-preview)
+- [Getting Started](#getting-started)
+  - [Prerequisites](#prerequisites)
+  - [Installation with Docker](#installation-with-docker)
+  - [Installation without Docker](#installation-without-docker)
+- [Changelog](#changelog)
+- [Usage](#usage)
+- [Future Enhancements / Roadmap](#future-enhancements--roadmap)
+- [Contributing](#contributing)
+- [Contribution Rule](#contribution-rule)
+- [Our Contributors](#our-contributors)
+- [License](#license)
+- [Give it a Star!](#give-it-a-star)
+
 
 ## ✨ Features
 
@@ -174,6 +192,11 @@ git push origin my-feature-branch
     <img src="https://contrib.rocks/image?repo=Jaishree2310/GlassyUI-Components&&max=1000&&cachebust=1" />
   </a>
 </div>
+
+---
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](./LICENSE) file for details.
 
 ---
 
