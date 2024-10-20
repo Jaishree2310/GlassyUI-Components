@@ -73,7 +73,8 @@ const AboutUsHeader = styled.div`
   }
 
   h1:hover {
-    transform: scale(1.1); // Scale up the heading on hover
+    transform: scale(1.2) rotate(0deg); // Scale and rotate for dynamic effect
+    text-shadow: 0px 0px 20px rgba(255, 255, 255, 0.5); // Stronger glow
   }
 
   p {
@@ -100,7 +101,7 @@ const AboutUsContent = styled.section`
   margin-bottom: 30px; // Space below the content section
   display: flex; // Flexbox for vertical layout
   flex-direction: column; // Arrange children in a column
-  gap: 20px; // Space between sections
+  gap: 25px; // Space between sections
 
   h2 {
     font-size: 2em; // Increase font size for subheadings
@@ -111,9 +112,10 @@ const AboutUsContent = styled.section`
   }
 
   h2:hover {
-    color: #2980b9; // Change color on hover
+    color: #ffffff; // Slightly darker blue on hover
+    transform: translateX(5px); // Slide right slightly
+    //text-shadow: 1px 1px 5px rgba(52, 152, 219, 0.8); // Glow effect
   }
-
   p {
     font-size: 1.2em; // Larger font size for paragraph text
     color: #f9f9f9; // Light gray color for text

@@ -4,20 +4,18 @@ import { ArrowLeft, Copy, Check } from 'lucide-react';
 import BackToTopButton from './BackToTop';
 
 // Custom Checkbox component
-const Checkbox = ({
-  checked,
-  onChange,
-  label,
-}: {
+interface CheckboxProps {
   checked: boolean;
-  onChange: () => void;
+  onChange: (checked: boolean) => void; // Updated to accept boolean
   label: string;
-}) => (
+}
+
+const Checkbox: React.FC<CheckboxProps> = ({ checked, onChange, label }) => (
   <label className='inline-flex items-center'>
     <input
       type='checkbox'
       checked={checked}
-      onChange={onChange}
+      onChange={() => onChange(!checked)} // Toggle checked state
       className='form-checkbox h-5 w-5 text-blue-600 rounded'
     />
     <span className='ml-2 text-white'>{label}</span>
@@ -29,11 +27,11 @@ const CheckboxDetailsPage: React.FC = () => {
   const [copiedStates, setCopiedStates] = useState<{ [key: string]: boolean }>(
     {},
   );
-  const [isChecked, setIsChecked] = useState<any>(false);
+  const [isChecked, setIsChecked] = useState(false); // Changed to boolean
 
   const getGlassyClasses = (opacity = 20) => {
     return `backdrop-filter backdrop-blur-lg bg-white bg-opacity-${opacity} 
-  border border-white border-opacity-20 rounded-lg shadow-lg transition-all duration-300`;
+    border border-white border-opacity-20 rounded-lg shadow-lg transition-all duration-300`;
   };
 
   const copyToClipboard = (text: string, key: string) => {
@@ -79,7 +77,6 @@ const CheckboxDetailsPage: React.FC = () => {
   checked={isChecked} 
   onChange={() => setIsChecked(!isChecked)} 
   label="Custom Styled Checkbox" 
-  className={getGlassyClasses()} 
 />`;
 
   const propsTable = (
@@ -165,7 +162,7 @@ const CheckboxDetailsPage: React.FC = () => {
           <div className='relative mt-8'>
             <Checkbox
               checked={isChecked}
-              onChange={() => setIsChecked(!isChecked)}
+              onChange={setIsChecked} // Directly pass setIsChecked
               label='Custom Styled Checkbox'
             />
             <pre className='bg-gray-800 text-white p-6 rounded-lg mt-4 overflow-x-auto whitespace-pre-wrap max-sm:text-[0.55rem]'>
