@@ -248,13 +248,14 @@ const GlassyUIComponentsPage: React.FC = () => {
             GlassyUI
           </div>
 
-          <input
-            className='rounded-full text-black p-2'
-            placeholder='Search Component'
-            onChange={e => {
-              setSearchFilter(e.target.value);
-            }}
-          />
+          <div className='flex items-center bg-gradient-to-r from-slate-800 via-slate-700 to-slate-900 text-white w-2/5 rounded-lg shadow-lg overflow-hidden'>
+            <input
+              className='w-full px-6 py-3 bg-transparent text-white outline-none focus:ring-2 focus:ring-gray-500 transition-all duration-300'
+              placeholder='Search Components...'
+              onChange={e => setSearchFilter(e.target.value)}
+            />
+            <Search className='mx-4 cursor-pointer text-pink-300 hover:text-pink-400 transition-all duration-300' />
+          </div>
         </header>
 
         <main>
@@ -306,7 +307,11 @@ const GlassyUIComponentsPage: React.FC = () => {
           <div className='flex justify-between items-center mt-8'>
             <button
               onClick={prevPage}
-              className='bg-pink-500 text-white py-2 px-4 rounded-md disabled:opacity-50'
+              className={`px-4 py-2 mx-2 rounded-lg ${
+                currentPage === 1
+                  ? 'opacity-50 cursor-not-allowed'
+                  : 'hover:bg-white/20'
+              }`}
               disabled={currentPage === 1}
             >
               Previous
@@ -316,7 +321,11 @@ const GlassyUIComponentsPage: React.FC = () => {
             </span>
             <button
               onClick={nextPage}
-              className='bg-pink-500 text-white py-2 px-4 rounded-md disabled:opacity-50'
+              className={`px-4 py-2 mx-2 rounded-lg ${
+                currentPage === totalPages
+                  ? 'opacity-50 cursor-not-allowed'
+                  : 'hover:bg-white/20'
+              }`}
               disabled={currentPage === totalPages}
             >
               Next
