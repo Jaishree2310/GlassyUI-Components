@@ -15,14 +15,10 @@ import {
   ThumbsUpIcon,
   Contact,
   Search,
-   AlignStartVertical,
-   GalleryThumbnails,
- } from 'lucide-react';
-
-import Accordion from './Accordion';
+  GalleryThumbnails,
+} from 'lucide-react';
 
 // Define the ComponentCardProps interface
-
 
 interface ComponentCardProps {
   title: string;
@@ -35,7 +31,6 @@ interface ComponentCardProps {
 const getGlassyClasses = () => {
   return 'backdrop-filter backdrop-blur-md bg-white/10 border border-white/20 rounded-2xl shadow-lg transition-all duration-300';
 };
-
 
 const ComponentCard: React.FC<ComponentCardProps> = ({
   title,
@@ -71,13 +66,11 @@ const ComponentCard: React.FC<ComponentCardProps> = ({
   );
 };
 
-
 const GlassyUIComponentsPage: React.FC = () => {
   const navigate = useNavigate();
   const [currentPage, setCurrentPage] = useState(1);
   const [searchFilter, setSearchFilter] = useState<string>('');
   const componentsPerPage = 9;
-
 
   const scrollToNextSection = () => {
     window.scrollBy({
@@ -85,7 +78,6 @@ const GlassyUIComponentsPage: React.FC = () => {
       behavior: 'smooth',
     });
   };
-
 
   const componentsData = [
     {
@@ -214,17 +206,11 @@ const GlassyUIComponentsPage: React.FC = () => {
       onClick: () => navigate('/contact-details'),
     },
     {
-       title: 'Statistic',
-      description: 'Statistic component with glassmorphic styling.',
-      icon: <AlignStartVertical size={24} />,
-      onClick: () => navigate('/statistic-details'),
-    },
-    {
-       title: 'Gallery',
+      title: 'Gallery',
       description: 'Gallery component with glassmorphic styling.',
       icon: <GalleryThumbnails size={24} />,
       onClick: () => navigate('/gallery-details'),
-     },
+    },
     {
       title: 'Glassmorphism Effect Generator',
       description: 'Create stunning Glassmorphic effects with ease.',
@@ -237,15 +223,27 @@ const GlassyUIComponentsPage: React.FC = () => {
       icon: <Layout size={24} />,
       onClick: () => navigate('/checkbox'),
     },
+    {
+      title: 'Tabs',
+      description:
+        'Tabs component with Four variation in glassmorphic styling.',
+      icon: <Layout size={24} />,
+      onClick: () => navigate('/tabs-details'),
+    },
+    {
+      title: 'Tabs',
+      description:
+        'Tabs component with Four variation in glassmorphic styling.',
+      icon: <Layout size={24} />,
+      onClick: () => navigate('/tabs-details'),
+    },
   ];
 
   const [filteredData, setFilteredData] = useState(componentsData);
 
   useEffect(() => {
-
     const data = componentsData.filter(component => {
       if (searchFilter) {
-
         return component.title
           .toLowerCase()
           .includes(searchFilter.trim().toLowerCase());
@@ -262,7 +260,6 @@ const GlassyUIComponentsPage: React.FC = () => {
     (currentPage - 1) * componentsPerPage,
     currentPage * componentsPerPage,
   );
-
 
   const nextPage = () => {
     if (currentPage < totalPages) setCurrentPage(currentPage + 1);
@@ -320,7 +317,6 @@ const GlassyUIComponentsPage: React.FC = () => {
             GlassyUI
           </div>
 
-
           <div className='flex items-center bg-gradient-to-r from-slate-800 via-slate-700 to-slate-900 text-white w-2/5 rounded-lg shadow-lg overflow-hidden'>
             <input
               className='w-full px-6 py-3 bg-transparent text-white outline-none focus:ring-2 focus:ring-gray-500 transition-all duration-300'
@@ -329,10 +325,6 @@ const GlassyUIComponentsPage: React.FC = () => {
             />
             <Search className='mx-4 cursor-pointer text-pink-300 hover:text-pink-400 transition-all duration-300' />
           </div>
-
-
-  
-
         </header>
 
         <main>
@@ -384,11 +376,11 @@ const GlassyUIComponentsPage: React.FC = () => {
           <div className='flex justify-between items-center mt-8'>
             <button
               onClick={prevPage}
-              className={`px-4 py-2 mx-2 rounded-lg ${currentPage === 1
-                ? 'opacity-50 cursor-not-allowed'
-                : 'hover:bg-white/20'
-                }`}
-
+              className={`px-4 py-2 mx-2 rounded-lg ${
+                currentPage === 1
+                  ? 'opacity-50 cursor-not-allowed'
+                  : 'hover:bg-white/20'
+              }`}
               disabled={currentPage === 1}
             >
               Previous
@@ -398,12 +390,12 @@ const GlassyUIComponentsPage: React.FC = () => {
             </span>
             <button
               onClick={nextPage}
-               className={`px-4 py-2 mx-2 rounded-lg ${currentPage === totalPages
-                ? 'opacity-50 cursor-not-allowed'
-                : 'hover:bg-white/20'
-                }`}
- 
-
+              className='bg-pink-500 text-white py-2 px-4 rounded-md disabled:opacity-50'
+              className={`px-4 py-2 mx-2 rounded-lg ${
+                currentPage === totalPages
+                  ? 'opacity-50 cursor-not-allowed'
+                  : 'hover:bg-white/20'
+              }`}
               disabled={currentPage === totalPages}
             >
               Next
