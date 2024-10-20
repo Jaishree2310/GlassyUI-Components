@@ -5,6 +5,7 @@ import { ArrowLeft, Check, Copy } from 'lucide-react';
 import BackToTopButton from './BackToTop';
 import ToastGenerator from './ToastGenerator';
 import Toast from './Toast';
+import Footer from './Footer';
 
 // Utility function for reusable glassy class styles
 const getGlassyClasses = (): string =>
@@ -331,6 +332,14 @@ const Toast: React.FC<ToastProps> = ({ id, title, message, autoDismiss = 9000, t
           </div>
         </div>
       </div>
+     
+      <Footer />
+      <style jsx>{`
+          .glass-footer {
+            width: 100%;
+          }
+      `}</style>
+
     </div>
   );
 };

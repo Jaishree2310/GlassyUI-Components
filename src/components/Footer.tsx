@@ -126,8 +126,31 @@ const Footer: React.FC = () => {
           }
         }
       `}</style>
-    </footer>
-
+        <div>
+          <p
+            style={{
+              fontSize: '14px',
+              color: '#fff',
+              position: 'relative',
+              right: '-300px',
+            }}
+          >
+            &copy; 2024 GlassyUI. All rights reserved.
+          </p>
+          <div
+            style={{
+              fontSize: '14px',
+              color: '#fff',
+              position: 'relative',
+              right: '-300px',
+              top: '10px',
+            }}
+          >
+            <GoogleTranslate />
+          </div>
+        </div>
+      </footer>
+    </>
   );
 };
 
