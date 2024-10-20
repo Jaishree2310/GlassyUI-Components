@@ -15,6 +15,7 @@ import {
   ThumbsUpIcon,
   Contact,
   Search,
+  GalleryThumbnails,
 } from 'lucide-react';
 
 import Accordion from './Accordion';
@@ -212,6 +213,12 @@ const GlassyUIComponentsPage: React.FC = () => {
       onClick: () => navigate('/contact-details'),
     },
     {
+      title: 'Gallery',
+      description: 'Gallery component with glassmorphic styling.',
+      icon: <GalleryThumbnails size={24} />,
+      onClick: () => navigate('/gallery-details'),
+    },
+    {
       title: 'Glassmorphism Effect Generator',
       description: 'Create stunning Glassmorphic effects with ease.',
 
@@ -238,7 +245,7 @@ const GlassyUIComponentsPage: React.FC = () => {
       }
       return true; // return all components if no filter is set
     });
-    setFilteredData(filteredComponents);
+    setFilteredData(data);
     setCurrentPage(1); // Reset to first page when searching
   }, [searchFilter]);
 
@@ -370,8 +377,10 @@ const GlassyUIComponentsPage: React.FC = () => {
           <div className='flex justify-between items-center mt-8'>
             <button
               onClick={prevPage}
-
-              className='bg-pink-500 text-white py-2 px-4 rounded-md disabled:opacity-50'
+              className={`px-4 py-2 mx-2 rounded-lg ${currentPage === 1
+                ? 'opacity-50 cursor-not-allowed'
+                : 'hover:bg-white/20'
+                }`}
 
               disabled={currentPage === 1}
             >
@@ -382,6 +391,7 @@ const GlassyUIComponentsPage: React.FC = () => {
             </span>
             <button
               onClick={nextPage}
+
 
               className='bg-pink-500 text-white py-2 px-4 rounded-md disabled:opacity-50'
 
