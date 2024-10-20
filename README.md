@@ -43,7 +43,6 @@ This open-source library features stunning React components designed with a capt
 <br>
 
 <img src="https://raw.githubusercontent.com/alo7lika/GlassyUI-Components/refs/heads/main/Images/212284100-561aa473-3905-4a80-b561-0d28506553ee.gif" width="900">
-
 <table align="center">
     <thead align="center">
         <tr style="border: 2px;">
@@ -64,7 +63,6 @@ This open-source library features stunning React components designed with a capt
         </tr>
     </tbody>
 </table>
-
 
 ## ✨ Features
 
@@ -249,6 +247,11 @@ git push origin my-feature-branch
     <img src="https://contrib.rocks/image?repo=Jaishree2310/GlassyUI-Components&&max=1000&&cachebust=1" />
   </a>
 </div>
+
+---
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](./LICENSE) file for details.
 
 ---
 
