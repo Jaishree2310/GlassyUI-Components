@@ -39,7 +39,6 @@ import ContactUsDetailsPage from './components/ContactUsDetailsPage';
 import PaginationDetails from './components/PaginationDetails';
 import TestimonialDetails from './components/TestimonialDetails';
 import Footer from './components/Footer';
-import Statistic from './components/StatisticDetails';
 import GalleryDetailsPage from './components/GalleryDetailsPage';
 import Checkbox from './components/Checkbox';
 import TabsDetails from './components/TabsDetails';
@@ -80,10 +79,11 @@ const App: React.FC = () => {
         <Route path='/contact-details' element={<ContactUsDetailsPage />} />
         <Route path='/pagination-details' element={<PaginationDetails />} />
         <Route path='/testimonial-details' element={<TestimonialDetails />} />
-        <Route path='/statistic-details' element={<Statistic />} />
         <Route path='/gallery-details' element={<GalleryDetailsPage />} />
 
         <Route path='/checkbox' element={<Checkbox />} />
+        <Route path='/tabs-details' element={<TabsDetails />} />
+
         <Route path='/tabs-details' element={<TabsDetails />} />
 
         <Route path='*' element={<NotFoundPage />} />
