@@ -21,7 +21,7 @@ Welcome to **GlassyUI-Components**! This open-source library features stunning R
 <!--Line-->
 <img src="https://raw.githubusercontent.com/alo7lika/GlassyUI-Components/refs/heads/main/Images/212284100-561aa473-3905-4a80-b561-0d28506553ee.gif" width="900">
 
-## Table of Contents
+## 📚 Table of Contents
 
 - [Features](#features)
 - [Components](#components)
