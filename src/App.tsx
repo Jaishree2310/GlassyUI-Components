@@ -7,7 +7,7 @@ import {
   useLocation,
 } from 'react-router-dom';
 
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+//import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import ScrollProgressBar from './components/ScrollProgress'; // Import your ScrollProgressBar component
 import PricingDetailPage from './components/PricingDetailPage';
 
@@ -39,10 +39,10 @@ import ContactUsDetailsPage from './components/ContactUsDetailsPage';
 import PaginationDetails from './components/PaginationDetails';
 import TestimonialDetails from './components/TestimonialDetails';
 import Footer from './components/Footer';
-  import Statistic from './components/StatisticDetails';
-  import GalleryDetailsPage from './components/GalleryDetailsPage';
-  import Checkbox from './components/Checkbox';
- 
+import Statistic from './components/StatisticDetails';
+import GalleryDetailsPage from './components/GalleryDetailsPage';
+import Checkbox from './components/Checkbox';
+
 const App: React.FC = () => {
   return (
     <Router>
@@ -79,17 +79,14 @@ const App: React.FC = () => {
         <Route path='/contact-details' element={<ContactUsDetailsPage />} />
         <Route path='/pagination-details' element={<PaginationDetails />} />
         <Route path='/testimonial-details' element={<TestimonialDetails />} />
-          <Route path='/statistic-details' element={<Statistic />} />
-          <Route path='/gallery-details' element={<GalleryDetailsPage />} />
+        <Route path='/statistic-details' element={<Statistic />} />
+        <Route path='/gallery-details' element={<GalleryDetailsPage />} />
 
-  
         <Route path='/checkbox' element={<Checkbox />} />
- 
+
         <Route path='*' element={<NotFoundPage />} />
       </Routes>
-
       <ConditionalFooter />
-
     </Router>
   );
 };

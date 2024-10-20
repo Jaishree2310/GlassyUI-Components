@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-
-import CheckboxDetails from './CheckboxDetails';
+import CheckboxDetails from './CheckboxDetails'; // Ensure the path is correct
 
 const Checkbox: React.FC = () => {
   const [isChecked, setIsChecked] = useState(false);
@@ -8,13 +7,13 @@ const Checkbox: React.FC = () => {
   return (
     <div>
       <CheckboxDetails
-        checked={isChecked}
-        onChange={checked => setIsChecked(checked)}
-        label='I agree to the terms'
-        size='medium'
-        borderColor='#4A90E2'
-        backgroundColor='#E5F1FB'
-        checkColor='#007bff'
+      //checked={setIsChecked}
+      //onChange={setIsChecked} // Directly pass setIsChecked
+      //label="I agree to the terms"
+      //size="medium" // Pass size if necessary
+      //borderColor="#4A90E2" // Pass border color
+      //backgroundColor="#fff" // Pass background color
+      //checkColor="#000" // Pass check color
       />
     </div>
   );
