@@ -85,19 +85,19 @@ const GlassyUIComponentsPage: React.FC = () => {
   const [filteredData, setFilteredData] = useState(componentsData);
   console.log('Filtered Data:', filteredData);
 
-  // useEffect(() => {
-  //   const data = componentsData.filter(component => {
-  //     if (searchFilter) {
-  //       return component.title
-  //         .toLowerCase()
-  //         .includes(searchFilter.trim().toLowerCase());
-  //     }
-  //     return true; // return all components if no filter is set
-  //   });
+  useEffect(() => {
+    const data = componentsData.filter(component => {
+      if (searchFilter) {
+        return component.title
+          .toLowerCase()
+          .includes(searchFilter.trim().toLowerCase());
+      }
+      return true; // return all components if no filter is set
+    });
 
-  //   setFilteredData(data); // Use 'data' here instead of 'filteredComponents'
-  //   setCurrentPage(1); // Reset to first page when searching
-  // }, [searchFilter]);
+    setFilteredData(data); // Use 'data' here instead of 'filteredComponents'
+    setCurrentPage(1); // Reset to first page when searching
+  }, [searchFilter]);
 
   const totalPages = Math.ceil(filteredData.length / componentsPerPage);
 

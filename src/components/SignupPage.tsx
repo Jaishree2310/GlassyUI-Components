@@ -19,15 +19,12 @@ const Signup: React.FC = () => {
         body: JSON.stringify({ username, email, password }),
       });
 
-      // const data = await response.json();
-      // console.log(data)
-
+      const data = await response.json();
       if (response.ok) {
-        const data = await response.json(); // Parse JSON response
-        console.log(data.message); // Log the message from the response
+        console.log(data.message);
         navigate('/');
       } else {
-        console.log('Signup failed');
+        alert(data.message || 'An error occurred');
       }
     } catch (error) {
       console.error('Error during signup:', error);

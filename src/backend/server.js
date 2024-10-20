@@ -20,7 +20,14 @@ app.use(express.json());
 
 app.post('/api/signup', async (req, res) => {
   const { username, email, password } = req.body;
+  if (!username || !email || !password) {
+    alert('Please enter all information');
+  }
   try {
+    const existingUser = await User.findOne({ email });
+    if (existingUser) {
+      return res.status(400).json({ message: 'User already exists' });
+    }
     const hashedPassword = await bcrypt.hash(password, 10);
     const user = new User({ username, email, password: hashedPassword });
     await user.save();
