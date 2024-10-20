@@ -232,10 +232,10 @@ git push origin my-feature-branch
 
 1. Basic Usage
 2. Props
-   3.Customizable component
-3. Theme (of your new component)
-4. Example
-5. Copy code
+3.Customizable component
+4. Theme (of your new component)
+5. Example
+6. Copy code
 
 -for eg: Button component,Progress Bar components
 
