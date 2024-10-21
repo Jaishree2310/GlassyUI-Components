@@ -5,41 +5,42 @@ import GoogleTranslate from './GoogleTranslator';
 
 const Footer: React.FC = () => {
   return (
-    <footer className='glass-footer'>
-      <div className='footer-content'>
-        <p className='footer-description'>
-          Elevate your UI with beautifully crafted, glassmorphic components.
-          Perfect for creating modern, sleek interfaces.
-        </p>
-        <div className='footer-links'>
-          <Link to='/components' className='footer-link'>
-            Components
-          </Link>
-          <Link to='/contributors' className='footer-link'>
-            Contributors
-          </Link>
-          <Link to='/donation' className='footer-link'>
-            Donation
-          </Link>
-          <Link to='/about' className='footer-link'>
-            About
-          </Link>
-          <GoogleTranslate />
+    <>
+      <footer className='glass-footer'>
+        <div className='footer-content'>
+          <p className='footer-description'>
+            Elevate your UI with beautifully crafted, glassmorphic components.
+            Perfect for creating modern, sleek interfaces.
+          </p>
+          <div className='footer-links'>
+            <Link to='/components' className='footer-link'>
+              Components
+            </Link>
+            <Link to='/contributors' className='footer-link'>
+              Contributors
+            </Link>
+            <Link to='/donation' className='footer-link'>
+              Donation
+            </Link>
+            <Link to='/about' className='footer-link'>
+              About
+            </Link>
+            <GoogleTranslate />
+          </div>
         </div>
-      </div>
-      <div className='footer-bottom'>
-        <a
-          href='https://github.com/Jaishree2310/GlassyUI-Components'
-          target='_blank'
-          rel='noopener noreferrer'
-          className='github-link'
-        >
-          <i className='fa-brands fa-github'></i>
-        </a>
-        <p>&copy; 2023 GlassyUI. All rights reserved.</p>
-      </div>
+        <div className='footer-bottom'>
+          <a
+            href='https://github.com/Jaishree2310/GlassyUI-Components'
+            target='_blank'
+            rel='noopener noreferrer'
+            className='github-link'
+          >
+            <i className='fa-brands fa-github'></i>
+          </a>
+          <p>&copy; 2023 GlassyUI. All rights reserved.</p>
+        </div>
 
-      <style jsx>{`
+        <style jsx>{`
         .glass-footer {
           backdrop-filter: blur(10px) saturate(180%);
           -webkit-backdrop-filter: blur(10px) saturate(180%);
@@ -128,6 +129,7 @@ const Footer: React.FC = () => {
           }
         }
       `}</style>
+
         <div>
           <p
             style={{
