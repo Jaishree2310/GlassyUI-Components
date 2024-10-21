@@ -19,7 +19,7 @@ type ModalProps = {
 const Modal: React.FC<ModalProps> = props => {
   const { imageUrl, heading, paragraph, CTA, unmount, onCtaClick } = props;
   return (
-    <div className=' w-[100vw] h-[100vh] fixed z-10 top-0 left-0 bg-opacity-50 backdrop-blur-sm flex items-center justify-center bg-black/20'>
+    <div className=' w-[35vw] h-[40vh] fixed z-10 mt-9 top-15 left-10 bg-opacity-50 backdrop-blur-sm flex items-center justify-center bg-black/20'>
       <div className=' min-w-[30vw] relative h-auto min-h-[30vh] flex flex-col items-center justify-center gap-6 p-4 backdrop-filter backdrop-blur-xl bg-white/50 border border-white/20 rounded-xl shadow-lg transition-all duration-300'>
         <X
           className='absolute top-4 right-4 hover:bg-white/80 transition-colors p-1 cursor-pointer'
@@ -33,7 +33,7 @@ const Modal: React.FC<ModalProps> = props => {
             className='w-[80%] h-[20vw] object-cover'
           />
         )}
-        <p className='text-gray-100'>{paragraph}</p>
+        <p className='text-black'>{paragraph}</p>
         <button
           onClick={onCtaClick}
           className={`px-3 py-1 rounded hover:bg-opacity-50 font-medium text-gray-100 transition-colors duration-300`}
@@ -77,24 +77,25 @@ const Modal: React.FC<ModalProps> = (props) => {
       </div>
     );
 };
+`;
 
-
-function Example() {
-    const [modal, setModal] = useState(false)
-    return(
+  function Example() {
+    const [modal, setModal] = useState(false);
+    return (
       <>
         <button onClick={() => setModal(true)}>Open Modal</button>
-        {modal && <Modal
-           heading="This is a heading"
-           paragraph="This is a paragraph"
-           CTA={{text: "Save", color: "#00dd43"}}
-           imageUrl=""
-           unmount={() => setModal(false)}
-        />}
+        {modal && (
+          <Modal
+            heading='This is a heading'
+            paragraph='This is a paragraph'
+            CTA={{ text: 'Save', color: '#00dd43' }}
+            imageUrl=''
+            unmount={() => setModal(false)}
+          />
+        )}
       </>
-    )
+    );
   }
-`;
 
   const copyToClipboard = (text: string, key: string) => {
     navigator.clipboard.writeText(text).then(() => {
@@ -219,7 +220,7 @@ function Example() {
         </table>
       </div>
 
-      {modal && (
+      {/* {modal && (
         <Modal
           heading='This is a heading'
           paragraph='This is a paragraph'
@@ -227,7 +228,17 @@ function Example() {
           imageUrl=''
           unmount={() => setModal(false)}
         />
-      )}
+      )}  */}
+
+      <div className={`${getGlassyClasses()} p-6 mb-16`}>
+        <Example />
+      </div>
+
+      <div>
+        <div className='h-14'></div>
+        <div className='h-14'></div>
+        <div className='h-14'></div>
+      </div>
     </div>
   );
 };
