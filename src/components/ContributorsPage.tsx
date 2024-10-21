@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import BackToTopButton from './BackToTop';
+
 import { HiOutlineChevronDoubleDown } from 'react-icons/hi2';
 
 interface Contributor {
@@ -113,6 +114,9 @@ export default function Component() {
   const [loading, setLoading] = useState(true);
   const [email, setEmail] = useState('');
 
+  const [currentPage, setCurrentPage] = useState(1);
+  const contributorsPerPage = 9;
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -157,6 +161,17 @@ export default function Component() {
     fetchData();
   }, []);
 
+  const indexOfLastContributor = currentPage * contributorsPerPage;
+  const indexOfFirstContributor = indexOfLastContributor - contributorsPerPage;
+  const currentContributors = contributors.slice(
+    indexOfFirstContributor,
+    indexOfLastContributor,
+  );
+
+  const paginate = (pageNumber: number) => setCurrentPage(pageNumber);
+
+  const totalPages = Math.ceil(contributors.length / contributorsPerPage);
+
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     console.log('Submitted email:', email);
@@ -193,31 +208,9 @@ export default function Component() {
           >
             Shaping the future of GlasslyUI-Components, one commit at a time
           </motion.p>
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-          >
-            <a
-              href='#contribute'
-              className='mt-8 px-8 py-4 bg-white/10 backdrop-blur-md text-white font-bold rounded-full shadow-lg hover:bg-white/20 transition duration-300 ease-in-out inline-block border border-white/30'
-            >
-              Become a Contributor
-            </a>
-          </motion.div>
-          {/* Scroll Down Button */}
-          <div className='fixed top-10 right-10 z-50'>
-            <button
-              onClick={scrollToNextSection}
-              className='animate-bounce bg-white/20 text-white hover:bg-pink-200 hover:text-black p-4 rounded-full shadow-lg transition-all duration-300'
-            >
-              <HiOutlineChevronDoubleDown size={20} />
-            </button>
-          </div>
         </div>
       </section>
 
-      {/* Stats Section */}
       <section className='py-16 px-4 sm:px-6 lg:px-8 bg-black/30 backdrop-blur-md'>
         <div className='max-w-7xl mx-auto'>
           <h2 className='text-3xl font-bold text-center mb-12 text-white'>
@@ -295,39 +288,36 @@ export default function Component() {
         </div>
       </section>
 
-      {/* Contributors Grid */}
       <section className='py-16 px-4 sm:px-6 lg:px-8 bg-black/20 backdrop-blur-sm'>
         <div className='max-w-7xl mx-auto'>
           <h2 className='text-4xl font-bold text-center mb-12 text-white'>
             Meet Our Contributors
           </h2>
-          <AnimatePresence>
-            {loading ? (
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                className='flex justify-center items-center h-64'
-              >
-                <div className='animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-primary'></div>
-              </motion.div>
-            ) : (
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8'
-              >
-                {contributors.map(contributor => (
-                  <ContributorCard key={contributor.id} {...contributor} />
-                ))}
-              </motion.div>
-            )}
-          </AnimatePresence>
+          <div className='grid grid-cols-1 md:grid-cols-3 gap-8'>
+            {currentContributors.map(contributor => (
+              <ContributorCard key={contributor.id} {...contributor} />
+            ))}
+          </div>
+
+          <div className='mt-8 flex justify-center space-x-4'>
+            <button
+              onClick={() => paginate(currentPage - 1)}
+              disabled={currentPage === 1}
+              className='px-4 py-2 bg-primary text-white rounded disabled:opacity-50'
+            >
+              Previous
+            </button>
+            <button
+              onClick={() => paginate(currentPage + 1)}
+              disabled={currentPage === totalPages}
+              className='px-4 py-2 bg-primary text-white rounded disabled:opacity-50'
+            >
+              Next
+            </button>
+          </div>
         </div>
       </section>
 
-      {/* Call to Action */}
       <section
         id='contribute'
         className='py-16 px-4 sm:px-6 lg:px-8 bg-black/40  backdrop-blur-md'
