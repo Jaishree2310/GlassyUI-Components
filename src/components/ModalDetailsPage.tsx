@@ -309,49 +309,61 @@ const ModalDetail: React.FC = () => {
   const [copiedText, setCopiedText] = useState<string | null>(null);
   const [modal, setModal] = useState(false);
 
-  const basicUsageCode = `type ModalProps = {
-  imageUrl?: string
-  heading: string
-  paragraph: string
-  bgColor?: string
-  CTA: { text: string; color: string } // button text and colors
-  unmount: () => void
-  onCtaClick?: (props: any) => void
-};
+  const basicUsageCode = `interface CustomModalProps {
+  heading: string;
+  paragraph: string;
+  CTA: {
+    text: string;
+    color: string;
+  };
+  imageUrl?: string;
+  bgColor?: string; // Make this optional
+  unmount: () => void;
+}
 
-const Modal: React.FC<ModalProps> = (props) => {
-    const { imageUrl, heading, paragraph, CTA, unmount, onCtaClick, bgColor } = props
-    return (
-      <div className=" w-[100vw] h-[100vh] fixed z-10 top-0 left-0 bg-opacity-50 backdrop-blur-sm flex items-center justify-center bg-black/20">
-        <div className=" min-w-[30vw] relative h-auto min-h-[30vh] flex flex-col items-center justify-center gap-6 p-4 backdrop-filter backdrop-blur-xl bg-white/50 border border-white/20 rounded-xl shadow-lg transition-all duration-300" style:{{backgroundColor: bgColor}}>
-          <X className="absolute top-4 right-4 hover:bg-white/80 transition-colors p-1 cursor-pointer" onClick={unmount} />
-          <h1 className="text-black text-2xl font-bold">{heading}</h1>
-          {imageUrl && <img src={props.imageUrl} alt="image" className="w-[80%] h-[20vw] object-cover" />}
-          <p className="text-gray-100">{paragraph}</p>
-            <button onClick={onCtaClick} className={\`px-3 py-1 rounded hover:bg-opacity-50 font-medium text-gray-100 transition-colors duration-300\`} style={{backgroundColor: CTA.color}}>
-              {CTA.text}
-            </button>
-        </div>
+const CustomModal: React.FC<CustomModalProps> = ({
+  heading,
+  paragraph,
+  CTA,
+  imageUrl,
+  bgColor = 'white',
+  unmount,
+}) => {
+  return (
+    <div
+      className='fixed inset-0 flex items-center justify-center bg-black/50'
+      onClick={unmount}
+    >
+      <div
+        className='relative p-6 rounded-lg shadow-lg'
+        style={{ backgroundColor: bgColor, maxWidth: '500px', width: '100%' }}
+        onClick={(e) => e.stopPropagation()} // Prevent closing on modal click
+      >
+        <h2 className='text-2xl font-bold mb-4'>{heading}</h2>
+        {imageUrl && (
+          <div className='mb-4'>
+            <img src={imageUrl} alt={heading} className='w-full h-auto' />
+          </div>
+        )}
+        <p className='mb-4'>{paragraph}</p>
+        <button
+          className='px-4 py-2 rounded text-white'
+          style={{ backgroundColor: CTA.color }}
+          onClick={unmount}
+        >
+          {CTA.text}
+        </button>
+        <button
+          className='absolute top-2 right-2 text-black'
+          onClick={unmount}
+        >
+          &#x2715;
+        </button>
       </div>
-    );
+    </div>
+  );
 };
 
-
-function Example() {
-    const [modal, setModal] = useState(false)
-    return(
-      <>
-        <button onClick={() => setModal(true)}>Open Modal</button>
-        {modal && <Modal
-           heading="This is a heading"
-           paragraph="This is a paragraph"
-           CTA={{text: "Save", color: "#00dd43"}}
-           imageUrl=""
-           unmount={() => setModal(false)}
-        />}
-      </>
-    )
-  }
 `;
 
   const copyToClipboard = (text: string, key: string) => {
