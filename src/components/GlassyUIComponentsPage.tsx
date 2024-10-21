@@ -205,6 +205,12 @@ const GlassyUIComponentsPage: React.FC = () => {
       icon: <HiOutlineWrenchScrewdriver size={24} />,
       onClick: () => navigate('/generator'),
     },
+    {
+      title: 'Spinner',
+      description: 'Design and customize CSS spinners for your projects.',
+      icon: <HiOutlineWrenchScrewdriver size={24} />,
+      onClick: () => navigate('/spinner'),
+    },
   ];
 
   const [filteredData, setFilteredData] = useState(componentsData);
