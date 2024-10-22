@@ -1,12 +1,7 @@
 import React from 'react';
-import {
-  BrowserRouter as Router,
-  Route,
-  Routes,
-  useLocation,
-} from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, useLocation } from 'react-router-dom';
 
-import ScrollProgressBar from './components/ScrollProgress'; // Import your ScrollProgressBar component
+import ScrollProgressBar from './components/ScrollProgress';
 import PricingDetailPage from './components/PricingDetailPage';
 import GlassyUILandingPage from './components/GlassyUILandingPage';
 import GlassyUIComponentsPage from './components/GlassyUIComponentsPage';
@@ -36,10 +31,14 @@ import ContactUsDetailsPage from './components/ContactUsDetailsPage';
 import PaginationDetails from './components/PaginationDetails';
 import TestimonialDetails from './components/TestimonialDetails';
 import Footer from './components/Footer';
-import LoginPage from './components/LoginPage'; // Import Login component
-import SignupPage from './components/SignupPage'; // Import Signup component
-import Checkboxx from './components/Checkboxx'; // Import Checkbox component
-import SpinnerDetailsPage from './components/SpinnerDetailsPage';
+import LoginPage from './components/LoginPage';
+import SignupPage from './components/SignupPage';
+import Checkbox from './components/Checkbox'; // Resolve conflict here by keeping Checkbox
+import SpinnerDetailsPage from './components/SpinnerDetailsPage'; // Spinner was duplicated, keeping one
+
+import ProductCardDetailsPage from './components/ProductCardDetailsPage';
+import Statistic from './components/StatisticDetails';
+import GalleryDetailsPage from './components/GalleryDetailsPage';
 
 const App: React.FC = () => {
   return (
@@ -51,7 +50,7 @@ const App: React.FC = () => {
         <Route path='/components' element={<GlassyUIComponentsPage />} />
         <Route path='/login' element={<LoginPage />} />
         <Route path='/signup' element={<SignupPage />} />
-        <Route path='/checkbox' element={<Checkboxx />} />
+        <Route path='/checkbox' element={<Checkbox />} />
         <Route path='/toast-page' element={<ToastPage />} />
         <Route path='/button-details' element={<ButtonDetailsPage />} />
         <Route path='/card-details' element={<CardDetailsPage />} />
@@ -77,6 +76,9 @@ const App: React.FC = () => {
         <Route path='/pagination-details' element={<PaginationDetails />} />
         <Route path='/testimonial-details' element={<TestimonialDetails />} />
         <Route path='/spinner' element={<SpinnerDetailsPage />} />
+        <Route path='/product-details' element={<ProductCardDetailsPage />} />
+        <Route path='/gallery-details' element={<GalleryDetailsPage />} />
+        <Route path='/statistic-details' element={<Statistic />} />
         <Route path='*' element={<NotFoundPage />} />
       </Routes>
 
@@ -87,9 +89,8 @@ const App: React.FC = () => {
 
 const ConditionalFooter: React.FC = () => {
   const location = useLocation();
-  const noFooterRoutes = ['/login', '/signup']; // Add any other paths you don't want the footer on
+  const noFooterRoutes = ['/login', '/signup'];
   return !noFooterRoutes.includes(location.pathname) ? <Footer /> : null;
 };
-
 
 export default App;

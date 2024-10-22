@@ -15,8 +15,9 @@ import {
   ThumbsUpIcon,
   Contact,
   Search,
-  AlignStartVertical,
+  ShoppingCart,
   GalleryThumbnails,
+  AlignStartVertical,
 } from 'lucide-react';
 import Accordion from './Accordion';
 
@@ -117,6 +118,12 @@ const GlassyUIComponentsPage: React.FC = () => {
       onClick: () => navigate('/contact-details'),
     },
     {
+      title: 'E-Commerce Product Card',
+      description: 'E-Commerce Product Card component with glassmorphic styling.',
+      icon: <ShoppingCart size={24} />,
+      onClick: () => navigate('/product-details'),
+    },
+    {
       title: 'Statistic',
       description: 'Statistic component with glassmorphic styling.',
       icon: <AlignStartVertical size={24} />,
@@ -136,7 +143,7 @@ const GlassyUIComponentsPage: React.FC = () => {
     {
       title: 'Spinner',
       description: 'Design and customize CSS spinners for your projects.',
-      icon: <HiOutlineWrenchScrewdriver size={24} />,
+      icon: null, // Adjust icon if necessary
       onClick: () => navigate('/spinner'),
     },
   ];
@@ -217,39 +224,29 @@ const GlassyUIComponentsPage: React.FC = () => {
                       404
                     </h1>
                     <p className='mb-4 text-3xl tracking-tight font-bold text-gray-900 md:text-4xl dark:text-white'>
-                      Something&apos;s missing.
+                      Component Not Found.
                     </p>
                     <p className='mb-4 text-lg font-light text-gray-500 dark:text-gray-400'>
-                      Sorry, we can&apos;t find that component. You&apos;ll find lots to explore on the home page.
+                      Sorry, we can’t find the component you're searching for. The component might not exist in our library yet.
                     </p>
-                    <button
-                      className='mt-6 px-4 py-2 bg-blue-600 hover:bg-blue-500 text-white rounded-lg shadow-md transition-all duration-300'
-                      onClick={() => navigate('/')}
-                    >
-                      Back to Homepage
-                    </button>
                   </div>
                 </div>
               </section>
             )}
           </div>
 
-          <div className='flex justify-between items-center mt-12'>
+          <div className='flex justify-center mt-8 space-x-4'>
             <button
+              className='px-4 py-2 bg-pink-200 text-black font-bold rounded hover:bg-pink-300 disabled:opacity-50'
               onClick={prevPage}
               disabled={currentPage === 1}
-              className={`py-2 px-4 text-lg font-bold bg-transparent text-pink-300 rounded-lg hover:bg-pink-200 hover:bg-opacity-30 hover:text-pink-200 transition-all duration-300 ${
-                currentPage === 1 ? 'opacity-50 cursor-not-allowed' : ''
-              }`}
             >
-              Prev
+              Previous
             </button>
             <button
+              className='px-4 py-2 bg-pink-200 text-black font-bold rounded hover:bg-pink-300 disabled:opacity-50'
               onClick={nextPage}
               disabled={currentPage === totalPages}
-              className={`py-2 px-4 text-lg font-bold bg-transparent text-pink-300 rounded-lg hover:bg-pink-200 hover:bg-opacity-30 hover:text-pink-200 transition-all duration-300 ${
-                currentPage === totalPages ? 'opacity-50 cursor-not-allowed' : ''
-              }`}
             >
               Next
             </button>
