@@ -16,9 +16,21 @@ const GlassyUILandingPage: React.FC = () => {
   useEffect(() => {
     const tl = gsap.timeline();
     tl.fromTo(
-      '.homeGSap',
-      { scale: 0, opacity: 0 },
-      { scale: 1, opacity: 1, duration: 0.5, ease: 'sine.inOut' },
+
+      '.homeGSap', // Targeting elements with this class
+      {
+        scale: 0, // Initial position (from)
+        opacity: 0,
+        marginTop: 80, // Initial opacity (from)
+      },
+      {
+        scale: 1, // Final position (to)
+        opacity: 1, // Final opacity (to)
+        duration: 0.5,
+        ease: 'sine.inOut',
+        // Stagger for smooth effect
+      },
+
     );
 
     return () => {
@@ -41,11 +53,8 @@ const GlassyUILandingPage: React.FC = () => {
 
       <div className='homeGSap relative z-10 w-full max-w-4xl'>
 
-        <header className='w-full flex justify-between items-center mb-19'>
-          
-        <header className='w-full flex justify-between items-center mb-4'>
-          {' '}
-          {/* Adjusted mb-8 to mb-4 */}
+        <header className='w-full flex justify-between items-center mb-8 -mt-10'>
+
 
           <div className='text-2xl font-bold text-white'>
             <span className='text-blue-400'>Glassy</span>UI

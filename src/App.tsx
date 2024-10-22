@@ -38,6 +38,7 @@ import AccordionDetails from './components/AccordionDetails';
 import ContactUsDetailsPage from './components/ContactUsDetailsPage';
 import PaginationDetails from './components/PaginationDetails';
 import TestimonialDetails from './components/TestimonialDetails';
+import TermsAndConditions from './components/TermsAndConditions';
 import Footer from './components/Footer';
     import ProductCardDetailsPage from './components/ProductCardDetailsPage';
    import Statistic from './components/StatisticDetails';
@@ -82,6 +83,11 @@ import Footer from './components/Footer';
         <Route path='/contact-details' element={<ContactUsDetailsPage />} />
         <Route path='/pagination-details' element={<PaginationDetails />} />
         <Route path='/testimonial-details' element={<TestimonialDetails />} />
+
+
+        <Route path='/terms' element={<TermsAndConditions />} />
+
+        <Route path='*' element={<NotFoundPage />} />
            <Route path='/product-details' element={<ProductCardDetailsPage />} />
           <Route path='/gallery-details' element={<GalleryDetailsPage />} />
  
@@ -94,7 +100,6 @@ import Footer from './components/Footer';
  
          <Route path='/spinner' element={<SpinnerDetailsPage />} />
 
-         <Route path='*' element={<NotFoundPage />} />
       </Routes>
 
       <ConditionalFooter />

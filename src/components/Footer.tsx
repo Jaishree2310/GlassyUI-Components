@@ -5,6 +5,7 @@ import GoogleTranslate from './GoogleTranslator';
 
 const Footer: React.FC = () => {
   return (
+
     <footer className='glass-footer'>
       <div className='footer-content'>
         <p className='footer-description'>
@@ -68,59 +69,159 @@ const Footer: React.FC = () => {
           max-width: 500px;
         }
 
-        .footer-links {
-          display: flex;
-          gap: 20px;
-        }
 
-        .footer-link {
-          color: #fff;
-          text-decoration: none;
-          font-weight: 500;
-          position: relative;
-          padding: 5px 10px;
-          transition: all 0.3s ease;
-        }
 
-        .footer-link::after {
-          content: '';
-          position: absolute;
-          left: 0;
-          bottom: -2px;
-          width: 0;
-          height: 2px;
-          background-color: #48dbfb;
-          transition: width 0.3s;
-        }
+    <footer
+      style={{
+        backgroundColor: 'rgba(43, 48, 60, 0.85)',
+        color: '#fff',
+        borderTop: '1px solid #fff',
+        padding: '20px',
+        textAlign: 'center',
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'space-between',
+        minHeight: '200px', // Adjust the height as needed
+      }}
+    >
+      <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+        <div
+          style={{
+            width: '300px',
+            marginLeft: '100px',
+            marginTop: '20px',
 
-        .footer-link:hover::after {
-          width: 100%;
-        }
+          }}
+        >
+          <p>
+            Elevate your UI with our collection of beautifully crafted,
+            glassmorphic components. Perfect for creating modern, sleek
+            interfaces with depth and style.
+          </p>
 
-        .footer-bottom {
-          display: flex;
-          gap: 10px;
-          align-items: center;
-          justify-content: center;
-          margin-top: 20px;
-          color: #fff;
-        }
+          <p>
+            <Link
+              to={'/terms'}
+              style={{ textDecoration: 'none', color: 'skyblue' }}
+            >
+              Terms and Conditions
+            </Link>
+          </p>
+        </div>
 
-        .github-link {
-          font-size: 24px;
-          color: #fff;
-          transition: transform 0.3s;
-        }
+        <div style={{ display: 'flex', gap: '40px', marginRight: '100px' }}>
+          <div className='social_media_links'>
+            <div style={{ display: 'flex', flexDirection: 'column' }}>
+              <p>Social</p>
+              <div
+                style={{
+                  display: 'flex',
+                  justifyContent: 'space-evenly',
+                  fontSize: '20px',
+                  gap: '10px',
+                }}
+              >
+                <a href=''>
+                  <i className='fa-brands fa-instagram'></i>
+                </a>
+                <a href=''>
+                  <i className='fa-brands fa-facebook'></i>
+                </a>
+                <a href=''>
+                  <i className='fa-brands fa-youtube'></i>
+                </a>
+                <a href=''>
+                  <i className='fa-brands fa-x-twitter'></i>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div
+            style={{
+              width: '2px',
+              height: '120px',
+              backgroundColor: '#fff',
+            }}
+          ></div>
+          <div className='links_container'>
+            <Link
+              to='/slider-details'
+              style={{ textDecoration: 'none', color: '#fff' }}
+            >
+              <p>Sliders</p>
+            </Link>
+            <Link
+              to='/speed-dial-details'
+              style={{ textDecoration: 'none', color: '#fff' }}
+            >
+              <p>Speed Dial</p>
+            </Link>
+            <Link
+              to='/button-details'
+              style={{ textDecoration: 'none', color: '#fff' }}
+            >
+              <p>Buttons</p>
+            </Link>
+            <Link
+              to='/input-details'
+              style={{ textDecoration: 'none', color: '#fff' }}
+            >
+              <p>Inputs</p>
+            </Link>
+            <Link
+              to='/card-details'
+              style={{ textDecoration: 'none', color: '#fff' }}
+            >
+              <p>Cards</p>
+            </Link>
+          </div>
+          <div className='links_container'>
+            <Link
+              to='/progress-bar-details'
+              style={{ textDecoration: 'none', color: '#fff' }}
+            >
+              <p>Progress Bar</p>
+            </Link>
+            <Link
+              to='/modal-details'
+              style={{ textDecoration: 'none', color: '#fff' }}
+            >
+              <p>Modals</p>
+            </Link>
+            <Link
+              to='/navigation-details'
+              style={{ textDecoration: 'none', color: '#fff' }}
+            >
+              <p>Navigation</p>
+            </Link>
+            <Link
+              to='/popup-details'
+              style={{ textDecoration: 'none', color: '#fff' }}
+            >
+              <p>Popups</p>
+            </Link>
+            <Link
+              to='/textarea-details'
+              style={{ textDecoration: 'none', color: '#fff' }}
+            >
+              <p>Textarea</p>
+            </Link>
+          </div>
+        </div>
+      </div>
 
-        .github-link:hover {
-          transform: scale(1.1);
-        }
+      <p
+        style={{
+          fontSize: '14px',
+          color: '#fff',
+          marginTop: '20px', // Ensure enough space between content
+        }}
+      >
+        &copy; 2023 GlassyUI. All rights reserved.
+      </p>
 
-        @media (max-width: 768px) {
-          .glass-footer {
-            flex-direction: column;
-            padding: 20px;
-          }
+
+    </footer>
 
           .footer-links {
             flex-direction: column;
@@ -153,6 +254,7 @@ const Footer: React.FC = () => {
         </div>
       </footer>
     </>
+
   );
 };
 
