@@ -1,5 +1,4 @@
 import React from 'react';
-
 import {
   BrowserRouter as Router,
   Route,
@@ -7,10 +6,8 @@ import {
   useLocation,
 } from 'react-router-dom';
 
-//import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import ScrollProgressBar from './components/ScrollProgress'; // Import your ScrollProgressBar component
+import ScrollProgressBar from './components/ScrollProgress'; // Ensure this import path is correct
 import PricingDetailPage from './components/PricingDetailPage';
-
 import GlassyUILandingPage from './components/GlassyUILandingPage';
 import GlassyUIComponentsPage from './components/GlassyUIComponentsPage';
 import ButtonDetailsPage from './components/ButtonDetailsPage';
@@ -39,9 +36,11 @@ import ContactUsDetailsPage from './components/ContactUsDetailsPage';
 import PaginationDetails from './components/PaginationDetails';
 import TestimonialDetails from './components/TestimonialDetails';
 import Footer from './components/Footer';
+import ProductCardDetailsPage from './components/ProgressBarDetailPage';
 import Statistic from './components/StatisticDetails';
 import GalleryDetailsPage from './components/GalleryDetailsPage';
 import Checkbox from './components/Checkbox';
+import SpinnerDetailsPage from './components/SliderDetailsPage';
 
 const App: React.FC = () => {
   return (
@@ -73,26 +72,26 @@ const App: React.FC = () => {
         <Route path='/authentication-card' element={<AuthenticationCard />} />
         <Route path='/accordion-details' element={<AccordionDetails />} />
         <Route path='/contributors' element={<ContributorsPage />} />
-
         <Route path='/donate' element={<DonationPage />} />
         <Route path='/about' element={<AboutUsPage />} />
         <Route path='/contact-details' element={<ContactUsDetailsPage />} />
         <Route path='/pagination-details' element={<PaginationDetails />} />
         <Route path='/testimonial-details' element={<TestimonialDetails />} />
-        <Route path='/statistic-details' element={<Statistic />} />
+        <Route path='/product-details' element={<ProductCardDetailsPage />} />
         <Route path='/gallery-details' element={<GalleryDetailsPage />} />
-
+        <Route path='/statistic-details' element={<Statistic />} />
         <Route path='/checkbox' element={<Checkbox />} />
-
+        <Route path='/spinner' element={<SpinnerDetailsPage />} />
         <Route path='*' element={<NotFoundPage />} />
       </Routes>
       <ConditionalFooter />
     </Router>
   );
 };
+
 const ConditionalFooter: React.FC = () => {
   const location = useLocation();
-
   return location.pathname === '/' ? <Footer /> : null;
 };
+
 export default App;
