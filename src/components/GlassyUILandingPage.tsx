@@ -40,27 +40,24 @@ const GlassyUILandingPage: React.FC = () => {
       />
 
       <div className='homeGSap relative z-10 w-full max-w-4xl'>
-
         <header className='w-full flex justify-between items-center mb-19'>
-          
-        <header className='w-full flex justify-between items-center mb-4'>
-          {' '}
-          {/* Adjusted mb-8 to mb-4 */}
-
-          <div className='text-2xl font-bold text-white'>
-            <span className='text-blue-400'>Glassy</span>UI
-          </div>
-          <a
-            href={githubRepoUrl}
-            target='_blank'
-            rel='noopener noreferrer'
-            className='flex items-center space-x-2 text-sm text-white hover:text-yellow-300 transition-colors duration-300'
-          >
-            <Star size={18} />
-            <span>Star the repo</span>
-          </a>
+          <header className='w-full flex justify-between items-center mb-4'>
+            {' '}
+            {/* Adjusted mb-8 to mb-4 */}
+            <div className='text-2xl font-bold text-white'>
+              <span className='text-blue-400'>Glassy</span>UI
+            </div>
+            <a
+              href={githubRepoUrl}
+              target='_blank'
+              rel='noopener noreferrer'
+              className='flex items-center space-x-2 text-sm text-white hover:text-yellow-300 transition-colors duration-300'
+            >
+              <Star size={18} />
+              <span>Star the repo</span>
+            </a>
+          </header>
         </header>
-
         <main
           className={`fade-in text-center p-12 rounded-xl backdrop-filter backdrop-blur-lg bg-white bg-opacity-10 shadow-lg border border-white border-opacity-20 relative transition-all duration-700 ease-in-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
           style={{ marginTop: '20px' }} // Added marginTop for spacing
