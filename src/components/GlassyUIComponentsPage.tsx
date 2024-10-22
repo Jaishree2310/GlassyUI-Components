@@ -233,6 +233,7 @@ const GlassyUIComponentsPage: React.FC = () => {
     },
     {
 
+
       title: 'Calendar',
       description: 'Calendar component with glassmorphic styling.',
       icon: <Calendar size={24} />,
@@ -243,6 +244,13 @@ const GlassyUIComponentsPage: React.FC = () => {
       description: 'Checkbox component with glassmorphic styling.',
       icon: <Layout size={24} />,
       onClick: () => navigate('/checkbox'),
+    },
+    {
+      title: 'Spinner',
+      description: 'Design and customize CSS spinners for your projects.',
+      icon: <HiOutlineWrenchScrewdriver size={24} />,
+      onClick: () => navigate('/spinner'),
+
 
     },
   ];
