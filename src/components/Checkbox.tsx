@@ -1,15 +1,15 @@
+// Checkbox.tsx
 import React, { useState } from 'react';
-
 import CheckboxDetails from './CheckboxDetails';
 
 const Checkbox: React.FC = () => {
-  const [isChecked, setIsChecked] = useState(false);
+  const [isChecked, setIsChecked] = useState<boolean>(false);
 
   return (
     <div>
       <CheckboxDetails
         checked={isChecked}
-        onChange={checked => setIsChecked(checked)}
+        onChange={(checked: boolean) => setIsChecked(checked)}
         label='I agree to the terms'
         size='medium'
         borderColor='#4A90E2'
