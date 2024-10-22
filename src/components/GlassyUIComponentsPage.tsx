@@ -16,12 +16,11 @@ import {
   Contact,
   Search,
     ShoppingCart,
- 
   GalleryThumbnails,
     AlignStartVertical,
    GalleryThumbnails,
   } from 'lucide-react';
-
+ 
 import Accordion from './Accordion';
 
 // Define the ComponentCardProps interface
@@ -217,6 +216,7 @@ const GlassyUIComponentsPage: React.FC = () => {
       onClick: () => navigate('/contact-details'),
     },
     {
+ 
         title: 'E-Commerce Product Card',
       description: 'E-Commerce Product Card component with glassmorphic styling.',
       icon: <ShoppingCart size={24} />,
@@ -226,16 +226,17 @@ const GlassyUIComponentsPage: React.FC = () => {
       
  
        title: 'Statistic',
-      description: 'Statistic component with glassmorphic styling.',
+       description: 'Statistic component with glassmorphic styling.',
       icon: <AlignStartVertical size={24} />,
       onClick: () => navigate('/statistic-details'),
     },
     {
+ 
        title: 'Gallery',
        description: 'Gallery component with glassmorphic styling.',
-      icon: <GalleryThumbnails size={24} />,
+       icon: <GalleryThumbnails size={24} />,
       onClick: () => navigate('/gallery-details'),
-     },
+    },
     {
       title: 'Glassmorphism Effect Generator',
       description: 'Create stunning Glassmorphic effects with ease.',
@@ -343,7 +344,7 @@ const GlassyUIComponentsPage: React.FC = () => {
           </div>
 
 
-  
+
 
         </header>
 
@@ -410,11 +411,11 @@ const GlassyUIComponentsPage: React.FC = () => {
             </span>
             <button
               onClick={nextPage}
-               className={`px-4 py-2 mx-2 rounded-lg ${currentPage === totalPages
+              className={`px-4 py-2 mx-2 rounded-lg ${currentPage === totalPages
                 ? 'opacity-50 cursor-not-allowed'
                 : 'hover:bg-white/20'
                 }`}
- 
+
 
               disabled={currentPage === totalPages}
             >
