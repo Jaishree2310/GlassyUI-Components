@@ -253,7 +253,7 @@ const PricingDetailPage: React.FC = () => {
         </div>
 
         {/* Add more sections similar to your ButtonDetailsPage here */}
-        <div className={`${getGlassyClasses()} p-8 mb-8`}>
+        <div className={`${getGlassyClasses()} p-8 mb-8 `}>
           <h2 className='text-3xl font-bold mb-6 text-white'>Props</h2>
           <div className='overflow-x-auto'>
             <table className='w-full'>
