@@ -55,6 +55,7 @@ const GlassyUILandingPage: React.FC = () => {
 
         <header className='w-full flex justify-between items-center mb-8 -mt-10'>
 
+
           <div className='text-2xl font-bold text-white'>
             <span className='text-blue-400'>Glassy</span>UI
           </div>
