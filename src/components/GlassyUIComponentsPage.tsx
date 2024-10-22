@@ -15,14 +15,16 @@ import {
   ThumbsUpIcon,
   Contact,
   Search,
-   AlignStartVertical,
-   GalleryThumbnails,
- } from 'lucide-react';
+  AlignStartVertical,
+  GalleryThumbnails,
+} from 'lucide-react';
 
 import Accordion from './Accordion';
+import { HiOutlineWrenchScrewdriver } from 'react-icons/hi2';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 // Define the ComponentCardProps interface
-
 
 interface ComponentCardProps {
   title: string;
@@ -35,7 +37,6 @@ interface ComponentCardProps {
 const getGlassyClasses = () => {
   return 'backdrop-filter backdrop-blur-md bg-white/10 border border-white/20 rounded-2xl shadow-lg transition-all duration-300';
 };
-
 
 const ComponentCard: React.FC<ComponentCardProps> = ({
   title,
@@ -71,13 +72,11 @@ const ComponentCard: React.FC<ComponentCardProps> = ({
   );
 };
 
-
 const GlassyUIComponentsPage: React.FC = () => {
   const navigate = useNavigate();
   const [currentPage, setCurrentPage] = useState(1);
   const [searchFilter, setSearchFilter] = useState<string>('');
   const componentsPerPage = 9;
-
 
   const scrollToNextSection = () => {
     window.scrollBy({
@@ -86,6 +85,18 @@ const GlassyUIComponentsPage: React.FC = () => {
     });
   };
 
+  useEffect(() => {
+    // Initialize AOS if it hasn't been initialized
+    if (AOS.init) {
+      AOS.init({
+        duration: 1000,
+        once: true,
+      });
+    }
+
+    // Refresh AOS on currentPage change
+    AOS.refresh();
+  }, [currentPage]);
 
   const componentsData = [
     {
@@ -214,17 +225,17 @@ const GlassyUIComponentsPage: React.FC = () => {
       onClick: () => navigate('/contact-details'),
     },
     {
-       title: 'Statistic',
+      title: 'Statistic',
       description: 'Statistic component with glassmorphic styling.',
       icon: <AlignStartVertical size={24} />,
       onClick: () => navigate('/statistic-details'),
     },
     {
-       title: 'Gallery',
+      title: 'Gallery',
       description: 'Gallery component with glassmorphic styling.',
       icon: <GalleryThumbnails size={24} />,
       onClick: () => navigate('/gallery-details'),
-     },
+    },
     {
       title: 'Glassmorphism Effect Generator',
       description: 'Create stunning Glassmorphic effects with ease.',
@@ -236,17 +247,14 @@ const GlassyUIComponentsPage: React.FC = () => {
       description: 'Design and customize CSS spinners for your projects.',
       icon: <HiOutlineWrenchScrewdriver size={24} />,
       onClick: () => navigate('/spinner'),
-
     },
   ];
 
   const [filteredData, setFilteredData] = useState(componentsData);
 
   useEffect(() => {
-
     const data = componentsData.filter(component => {
       if (searchFilter) {
-
         return component.title
           .toLowerCase()
           .includes(searchFilter.trim().toLowerCase());
@@ -263,7 +271,6 @@ const GlassyUIComponentsPage: React.FC = () => {
     (currentPage - 1) * componentsPerPage,
     currentPage * componentsPerPage,
   );
-
 
   const nextPage = () => {
     if (currentPage < totalPages) setCurrentPage(currentPage + 1);
@@ -288,6 +295,8 @@ const GlassyUIComponentsPage: React.FC = () => {
     <div
       className={`${getGlassyClasses()} p-6 flex flex-col h-full cursor-pointer group transition-all duration-300 hover:bg-white/20 hover:scale-105 hover:shadow-xl`}
       onClick={onClick}
+      data-aos='fade-up'
+      data-aos-duration='2000'
     >
       <div className='flex items-center mb-4'>
         <div className='p-2 bg-white/20 rounded-lg mr-4'>{icon}</div>
@@ -317,12 +326,15 @@ const GlassyUIComponentsPage: React.FC = () => {
           <div
             className='text-3xl lg:text-4xl font-extrabold tracking-tight cursor-pointer hover:text-pink-300 transition-colors duration-300 text-white'
             onClick={() => navigate('/')}
+            data-aos='fade-right'
           >
             GlassyUI
           </div>
 
-
-          <div className='flex items-center bg-gradient-to-r from-slate-800 via-slate-700 to-slate-900 text-white w-2/5 rounded-lg shadow-lg overflow-hidden'>
+          <div
+            className='flex items-center bg-gradient-to-r from-slate-800 via-slate-700 to-slate-900 text-white w-2/5 rounded-lg shadow-lg overflow-hidden'
+            data-aos='fade-left'
+          >
             <input
               className='w-full px-6 py-3 bg-transparent text-white outline-none focus:ring-2 focus:ring-gray-500 transition-all duration-300'
               placeholder='Search Components...'
@@ -330,17 +342,23 @@ const GlassyUIComponentsPage: React.FC = () => {
             />
             <Search className='mx-4 cursor-pointer text-pink-300 hover:text-pink-400 transition-all duration-300' />
           </div>
-
-
-  
-
         </header>
 
         <main>
-          <h1 className='text-4xl lg:text-6xl font-extrabold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-white to-pink-200'>
+          <h1
+            className='text-4xl lg:text-6xl font-extrabold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-white to-pink-200'
+            data-aos='fade-right'
+            data-aos-delay='400'
+            data-aos-duration='1300'
+          >
             Glassmorphic Components
           </h1>
-          <p className='text-lg lg:text-xl mb-12 max-w-2xl leading-relaxed'>
+          <p
+            className='text-lg lg:text-xl mb-12 max-w-2xl leading-relaxed'
+            data-aos='fade-right'
+            data-aos-delay='600'
+            data-aos-duration='1500'
+          >
             Elevate your UI with our collection of beautifully crafted,
             glassmorphic components. Perfect for creating modern, sleek
             interfaces with depth and style.
@@ -357,7 +375,11 @@ const GlassyUIComponentsPage: React.FC = () => {
               />
             ))}
             {filteredData.length === 0 && (
-              <section className='bg-white dark:bg-gray-900'>
+              <section
+                className='bg-white dark:bg-gray-900'
+                data-aos='fade-up'
+                data-aos-duration='2000'
+              >
                 <div className='py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6'>
                   <div className='mx-auto max-w-screen-sm text-center'>
                     <h1 className='mb-4 text-7xl tracking-tight font-extrabold lg:text-9xl text-blue-600 dark:text-primary-500'>
@@ -382,14 +404,14 @@ const GlassyUIComponentsPage: React.FC = () => {
             )}
           </div>
 
-          <div className='flex justify-between items-center mt-8'>
+          <div className='flex justify-center items-center mt-8'>
             <button
               onClick={prevPage}
-              className={`px-4 py-2 mx-2 rounded-lg ${currentPage === 1
-                ? 'opacity-50 cursor-not-allowed'
-                : 'hover:bg-white/20'
-                }`}
-
+              className={`px-4 py-2 mx-2 rounded-lg ${
+                currentPage === 1
+                  ? 'opacity-50 cursor-not-allowed'
+                  : 'hover:bg-white/20'
+              }`}
               disabled={currentPage === 1}
             >
               Previous
@@ -399,12 +421,11 @@ const GlassyUIComponentsPage: React.FC = () => {
             </span>
             <button
               onClick={nextPage}
-               className={`px-4 py-2 mx-2 rounded-lg ${currentPage === totalPages
-                ? 'opacity-50 cursor-not-allowed'
-                : 'hover:bg-white/20'
-                }`}
- 
-
+              className={`px-4 py-2 mx-2 rounded-lg ${
+                currentPage === totalPages
+                  ? 'opacity-50 cursor-not-allowed'
+                  : 'hover:bg-white/20'
+              }`}
               disabled={currentPage === totalPages}
             >
               Next

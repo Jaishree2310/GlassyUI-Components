@@ -7,7 +7,6 @@ import {
   useLocation,
 } from 'react-router-dom';
 
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import ScrollProgressBar from './components/ScrollProgress'; // Import your ScrollProgressBar component
 import PricingDetailPage from './components/PricingDetailPage';
 
@@ -40,6 +39,8 @@ import PaginationDetails from './components/PaginationDetails';
 import TestimonialDetails from './components/TestimonialDetails';
 import Footer from './components/Footer';
 import SpinnerDetailsPage from './components/SpinnerDetailsPage';
+import StatisticDetails from './components/StatisticDetails';
+import GalleryDetailsPage from './components/GalleryDetailsPage';
 
 const App: React.FC = () => {
   return (
@@ -77,16 +78,14 @@ const App: React.FC = () => {
         <Route path='/contact-details' element={<ContactUsDetailsPage />} />
         <Route path='/pagination-details' element={<PaginationDetails />} />
         <Route path='/testimonial-details' element={<TestimonialDetails />} />
-          <Route path='/statistic-details' element={<Statistic />} />
-          <Route path='/gallery-details' element={<GalleryDetailsPage />} />
+        <Route path='/statistic-details' element={<StatisticDetails />} />
+        <Route path='/gallery-details' element={<GalleryDetailsPage />} />
 
         <Route path='/spinner' element={<SpinnerDetailsPage />} />
 
         <Route path='*' element={<NotFoundPage />} />
       </Routes>
-
       <ConditionalFooter />
-
     </Router>
   );
 };
