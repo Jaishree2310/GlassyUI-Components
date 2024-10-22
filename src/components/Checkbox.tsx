@@ -8,13 +8,13 @@ const Checkbox: React.FC = () => {
   return (
     <div>
       <CheckboxDetails
-        checked={isChecked}
-        onChange={checked => setIsChecked(checked)}
-        label='I agree to the terms'
-        size='medium'
-        borderColor='#4A90E2'
-        backgroundColor='#E5F1FB'
-        checkColor='#007bff'
+      // checked={isChecked}
+      // onChange={checked => setIsChecked(checked)}
+      // label='I agree to the terms'
+      // size='medium'
+      // borderColor='#4A90E2'
+      // backgroundColor='#E5F1FB'
+      // checkColor='#007bff'
       />
     </div>
   );

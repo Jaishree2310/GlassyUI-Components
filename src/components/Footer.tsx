@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import GoogleTranslate from './GoogleTranslator';
 
-
 const Footer: React.FC = () => {
   return (
     <footer className='glass-footer'>
@@ -39,7 +38,7 @@ const Footer: React.FC = () => {
         <p>&copy; 2023 GlassyUI. All rights reserved.</p>
       </div>
 
-      <style jsx>{`
+      <style>{`
         .glass-footer {
           backdrop-filter: blur(10px) saturate(180%);
           -webkit-backdrop-filter: blur(10px) saturate(180%);
@@ -128,31 +127,31 @@ const Footer: React.FC = () => {
           }
         }
       `}</style>
-        <div>
-          <p
-            style={{
-              fontSize: '14px',
-              color: '#fff',
-              position: 'relative',
-              right: '-300px',
-            }}
-          >
-            &copy; 2024 GlassyUI. All rights reserved.
-          </p>
-          <div
-            style={{
-              fontSize: '14px',
-              color: '#fff',
-              position: 'relative',
-              right: '-300px',
-              top: '10px',
-            }}
-          >
-            <GoogleTranslate />
-          </div>
+      <div>
+        <p
+          style={{
+            fontSize: '14px',
+            color: '#fff',
+            position: 'relative',
+            right: '-300px',
+          }}
+        >
+          &copy; 2024 GlassyUI. All rights reserved.
+        </p>
+        <div
+          style={{
+            fontSize: '14px',
+            color: '#fff',
+            position: 'relative',
+            right: '-300px',
+            top: '10px',
+          }}
+        >
+          <GoogleTranslate />
         </div>
-      </footer>
-    </>
+      </div>
+    </footer>
+    // </>
   );
 };
 
