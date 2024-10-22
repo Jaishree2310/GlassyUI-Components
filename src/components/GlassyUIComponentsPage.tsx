@@ -218,17 +218,10 @@ const GlassyUIComponentsPage: React.FC = () => {
       onClick: () => navigate('/generator'),
     },
     {
-      title: 'Spinner',
-      description: 'Design and customize CSS spinners for your projects.',
-      icon: <HiOutlineWrenchScrewdriver size={24} />,
-      onClick: () => navigate('/spinner'),
-    },
-    {
-      title: 'Tabs',
-      description:
-        'Tabs component with Four variation in glassmorphic styling.',
+      title: 'Checkbox',
+      description: 'Checkbox component with glassmorphic styling.',
       icon: <Layout size={24} />,
-      onClick: () => navigate('/tabs-details'),
+      onClick: () => navigate('/checkbox'),
     },
     {
       title: 'Tabs',
@@ -391,11 +384,6 @@ const GlassyUIComponentsPage: React.FC = () => {
             <button
               onClick={nextPage}
               className='bg-pink-500 text-white py-2 px-4 rounded-md disabled:opacity-50'
-              className={`px-4 py-2 mx-2 rounded-lg ${
-                currentPage === totalPages
-                  ? 'opacity-50 cursor-not-allowed'
-                  : 'hover:bg-white/20'
-              }`}
               disabled={currentPage === totalPages}
             >
               Next
