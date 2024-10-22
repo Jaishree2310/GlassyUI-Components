@@ -38,10 +38,11 @@ import ContactUsDetailsPage from './components/ContactUsDetailsPage';
 import PaginationDetails from './components/PaginationDetails';
 import TestimonialDetails from './components/TestimonialDetails';
 import Footer from './components/Footer';
-import Statistic from './components/StatisticDetails';
+ import Statistic from './components/StatisticDetails';
 import GalleryDetailsPage from './components/GalleryDetailsPage';
 import Checkbox from './components/Checkbox';
-
+ import SpinnerDetailsPage from './components/SpinnerDetailsPage';
+ 
 const App: React.FC = () => {
   return (
     <Router>
@@ -82,8 +83,9 @@ const App: React.FC = () => {
         <Route path='/gallery-details' element={<GalleryDetailsPage />} />
 
 
-        <Route path='/checkbox' element={<Checkbox />} />
-
+         <Route path='/checkbox' element={<Checkbox />} />
+         <Route path='/spinner' element={<SpinnerDetailsPage />} />
+ 
         <Route path='*' element={<NotFoundPage />} />
       </Routes>
 
