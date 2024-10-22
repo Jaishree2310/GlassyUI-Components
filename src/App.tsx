@@ -39,12 +39,14 @@ import ContactUsDetailsPage from './components/ContactUsDetailsPage';
 import PaginationDetails from './components/PaginationDetails';
 import TestimonialDetails from './components/TestimonialDetails';
 import Footer from './components/Footer';
-   import ProductCardDetailsPage from './components/ProductCardDetailsPage';
+    import ProductCardDetailsPage from './components/ProductCardDetailsPage';
    import Statistic from './components/StatisticDetails';
    import GalleryDetailsPage from './components/GalleryDetailsPage';
   import Checkbox from './components/Checkbox';
  
-const App: React.FC = () => {
+ import SpinnerDetailsPage from './components/SpinnerDetailsPage';
+
+ const App: React.FC = () => {
   return (
     <Router>
       <Header />
@@ -87,10 +89,12 @@ const App: React.FC = () => {
            <Route path='/statistic-details' element={<Statistic />} />
           <Route path='/gallery-details' element={<GalleryDetailsPage />} />
 
-  
+   
          <Route path='/checkbox' element={<Checkbox />} />
  
-        <Route path='*' element={<NotFoundPage />} />
+         <Route path='/spinner' element={<SpinnerDetailsPage />} />
+
+         <Route path='*' element={<NotFoundPage />} />
       </Routes>
 
       <ConditionalFooter />
