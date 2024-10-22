@@ -7,7 +7,6 @@ import {
   useLocation,
 } from 'react-router-dom';
 
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import ScrollProgressBar from './components/ScrollProgress'; // Import your ScrollProgressBar component
 import PricingDetailPage from './components/PricingDetailPage';
 
@@ -39,13 +38,16 @@ import ContactUsDetailsPage from './components/ContactUsDetailsPage';
 import PaginationDetails from './components/PaginationDetails';
 import TestimonialDetails from './components/TestimonialDetails';
 import Footer from './components/Footer';
-    import ProductCardDetailsPage from './components/ProductCardDetailsPage';
+ import SpinnerDetailsPage from './components/SpinnerDetailsPage';
+import StatisticDetails from './components/StatisticDetails';
+import GalleryDetailsPage from './components/GalleryDetailsPage';
+     import ProductCardDetailsPage from './components/ProductCardDetailsPage';
    import Statistic from './components/StatisticDetails';
    import GalleryDetailsPage from './components/GalleryDetailsPage';
   import Checkbox from './components/Checkbox';
  
  import SpinnerDetailsPage from './components/SpinnerDetailsPage';
-
+ 
  const App: React.FC = () => {
   return (
     <Router>
@@ -82,12 +84,13 @@ import Footer from './components/Footer';
         <Route path='/contact-details' element={<ContactUsDetailsPage />} />
         <Route path='/pagination-details' element={<PaginationDetails />} />
         <Route path='/testimonial-details' element={<TestimonialDetails />} />
-           <Route path='/product-details' element={<ProductCardDetailsPage />} />
+         <Route path='/statistic-details' element={<StatisticDetails />} />
+        <Route path='/gallery-details' element={<GalleryDetailsPage />} />
+            <Route path='/product-details' element={<ProductCardDetailsPage />} />
           <Route path='/gallery-details' element={<GalleryDetailsPage />} />
  
  
-           <Route path='/statistic-details' element={<Statistic />} />
-          <Route path='/gallery-details' element={<GalleryDetailsPage />} />
+         
 
    
          <Route path='/checkbox' element={<Checkbox />} />
@@ -96,9 +99,7 @@ import Footer from './components/Footer';
 
          <Route path='*' element={<NotFoundPage />} />
       </Routes>
-
       <ConditionalFooter />
-
     </Router>
   );
 };

@@ -29,7 +29,7 @@ const CheckboxDetailsPage: React.FC = () => {
   const [copiedStates, setCopiedStates] = useState<{ [key: string]: boolean }>(
     {},
   );
-  const [isChecked, setIsChecked] = useState<any>(false);
+  const [isChecked, setIsChecked] = useState<boolean>(false);
 
   const getGlassyClasses = (opacity = 20) => {
     return `backdrop-filter backdrop-blur-lg bg-white bg-opacity-${opacity} 
@@ -112,7 +112,7 @@ const CheckboxDetailsPage: React.FC = () => {
         <tr>
           <td className='p-2 text-white'>label</td>
           <td className='p-2 text-white'>string</td>
-          <td className='p-2 text-white'>""</td>
+          <td className='p-2 text-white'>-</td>
           <td className='p-2 text-white'>Text label next to the checkbox</td>
         </tr>
       </tbody>
