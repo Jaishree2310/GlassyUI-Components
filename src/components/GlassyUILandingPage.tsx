@@ -40,13 +40,11 @@ const GlassyUILandingPage: React.FC = () => {
       />
 
       <div className='homeGSap relative z-10 w-full max-w-4xl'>
+        {/* <header className='w-full flex justify-between items-center mb-19'> */}
 
-        <header className='w-full flex justify-between items-center mb-19'>
-          
         <header className='w-full flex justify-between items-center mb-4'>
           {' '}
           {/* Adjusted mb-8 to mb-4 */}
-
           <div className='text-2xl font-bold text-white'>
             <span className='text-blue-400'>Glassy</span>UI
           </div>
