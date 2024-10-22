@@ -15,10 +15,12 @@ import {
   ThumbsUpIcon,
   Contact,
   Search,
-  AlignStartVertical,
+    ShoppingCart,
   GalleryThumbnails,
-} from 'lucide-react';
-
+    AlignStartVertical,
+   GalleryThumbnails,
+  } from 'lucide-react';
+ 
 import Accordion from './Accordion';
 
 // Define the ComponentCardProps interface
@@ -214,15 +216,25 @@ const GlassyUIComponentsPage: React.FC = () => {
       onClick: () => navigate('/contact-details'),
     },
     {
-      title: 'Statistic',
-      description: 'Statistic component with glassmorphic styling.',
+ 
+        title: 'E-Commerce Product Card',
+      description: 'E-Commerce Product Card component with glassmorphic styling.',
+      icon: <ShoppingCart size={24} />,
+      onClick: () => navigate('/product-details'),
+    },
+    {
+      
+ 
+       title: 'Statistic',
+       description: 'Statistic component with glassmorphic styling.',
       icon: <AlignStartVertical size={24} />,
       onClick: () => navigate('/statistic-details'),
     },
     {
-      title: 'Gallery',
-      description: 'Gallery component with glassmorphic styling.',
-      icon: <GalleryThumbnails size={24} />,
+ 
+       title: 'Gallery',
+       description: 'Gallery component with glassmorphic styling.',
+       icon: <GalleryThumbnails size={24} />,
       onClick: () => navigate('/gallery-details'),
     },
     {
