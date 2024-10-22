@@ -39,9 +39,14 @@ import ContactUsDetailsPage from './components/ContactUsDetailsPage';
 import PaginationDetails from './components/PaginationDetails';
 import TestimonialDetails from './components/TestimonialDetails';
 import Footer from './components/Footer';
-import SpinnerDetailsPage from './components/SpinnerDetailsPage';
+    import ProductCardDetailsPage from './components/ProductCardDetailsPage';
+   import Statistic from './components/StatisticDetails';
+   import GalleryDetailsPage from './components/GalleryDetailsPage';
+  import Checkbox from './components/Checkbox';
+ 
+ import SpinnerDetailsPage from './components/SpinnerDetailsPage';
 
-const App: React.FC = () => {
+ const App: React.FC = () => {
   return (
     <Router>
       <Header />
@@ -77,12 +82,19 @@ const App: React.FC = () => {
         <Route path='/contact-details' element={<ContactUsDetailsPage />} />
         <Route path='/pagination-details' element={<PaginationDetails />} />
         <Route path='/testimonial-details' element={<TestimonialDetails />} />
-          <Route path='/statistic-details' element={<Statistic />} />
+           <Route path='/product-details' element={<ProductCardDetailsPage />} />
+          <Route path='/gallery-details' element={<GalleryDetailsPage />} />
+ 
+ 
+           <Route path='/statistic-details' element={<Statistic />} />
           <Route path='/gallery-details' element={<GalleryDetailsPage />} />
 
-        <Route path='/spinner' element={<SpinnerDetailsPage />} />
+   
+         <Route path='/checkbox' element={<Checkbox />} />
+ 
+         <Route path='/spinner' element={<SpinnerDetailsPage />} />
 
-        <Route path='*' element={<NotFoundPage />} />
+         <Route path='*' element={<NotFoundPage />} />
       </Routes>
 
       <ConditionalFooter />
