@@ -218,10 +218,10 @@ const GlassyUIComponentsPage: React.FC = () => {
       onClick: () => navigate('/generator'),
     },
     {
-      title: 'Checkbox',
-      description: 'Checkbox component with glassmorphic styling.',
-      icon: <Layout size={24} />,
-      onClick: () => navigate('/checkbox'),
+      title: 'Spinner',
+      description: 'Design and customize CSS spinners for your projects.',
+      icon: <HiOutlineWrenchScrewdriver size={24} />,
+      onClick: () => navigate('/spinner'),
     },
     {
       title: 'Tabs',

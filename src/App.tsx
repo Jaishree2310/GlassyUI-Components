@@ -84,8 +84,6 @@ const App: React.FC = () => {
         <Route path='/checkbox' element={<Checkbox />} />
         <Route path='/tabs-details' element={<TabsDetails />} />
 
-        <Route path='/tabs-details' element={<TabsDetails />} />
-
         <Route path='*' element={<NotFoundPage />} />
       </Routes>
       <ConditionalFooter />
