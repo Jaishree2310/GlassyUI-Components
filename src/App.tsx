@@ -5,6 +5,7 @@ import {
   Routes,
   useLocation,
 } from 'react-router-dom';
+
 import ScrollProgressBar from './components/ScrollProgress'; // Import your ScrollProgressBar component
 import PricingDetailPage from './components/PricingDetailPage';
 import GlassyUILandingPage from './components/GlassyUILandingPage';
@@ -37,7 +38,8 @@ import TestimonialDetails from './components/TestimonialDetails';
 import Footer from './components/Footer';
 import LoginPage from './components/LoginPage'; // Import Login component
 import SignupPage from './components/SignupPage'; // Import Signup component
-import Checkboxx from './components/Checkboxx';
+import Checkboxx from './components/Checkboxx'; // Import Checkbox component
+import SpinnerDetailsPage from './components/SpinnerDetailsPage';
 
 const App: React.FC = () => {
   return (
@@ -46,17 +48,14 @@ const App: React.FC = () => {
       <ScrollProgressBar /> {/* Add the ScrollProgressBar component here */}
       <Routes>
         <Route path='/' element={<GlassyUILandingPage />} />
-        <Route path='/' element={<GlassyUIComponentsPage />} />
+        <Route path='/components' element={<GlassyUIComponentsPage />} />
         <Route path='/login' element={<LoginPage />} />
         <Route path='/signup' element={<SignupPage />} />
         <Route path='/checkbox' element={<Checkboxx />} />
         <Route path='/toast-page' element={<ToastPage />} />
         <Route path='/button-details' element={<ButtonDetailsPage />} />
         <Route path='/card-details' element={<CardDetailsPage />} />
-        <Route
-          path='/progress-bar-details'
-          element={<ProgressBarDetailPage />}
-        />
+        <Route path='/progress-bar-details' element={<ProgressBarDetailPage />} />
         <Route path='/pricing-details' element={<PricingDetailPage />} />
         <Route path='/popup-details' element={<PopupDetailPage />} />
         <Route path='/input-details' element={<InputDetailPage />} />
@@ -77,15 +76,20 @@ const App: React.FC = () => {
         <Route path='/contact-details' element={<ContactUsDetailsPage />} />
         <Route path='/pagination-details' element={<PaginationDetails />} />
         <Route path='/testimonial-details' element={<TestimonialDetails />} />
+        <Route path='/spinner' element={<SpinnerDetailsPage />} />
         <Route path='*' element={<NotFoundPage />} />
       </Routes>
+
+      <ConditionalFooter />
     </Router>
   );
 };
 
 const ConditionalFooter: React.FC = () => {
   const location = useLocation();
-  return location.pathname === '/' ? <Footer /> : null;
+  const noFooterRoutes = ['/login', '/signup']; // Add any other paths you don't want the footer on
+  return !noFooterRoutes.includes(location.pathname) ? <Footer /> : null;
 };
+
 
 export default App;
