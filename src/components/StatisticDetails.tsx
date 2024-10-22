@@ -42,31 +42,32 @@ const StatisticDetails: React.FC = () => {
 
   const statsData = [
     {
-      iconColor: "text-red-400",
-      iconPath1: "M8 17l4 4 4-4m-4-5v9",
-      iconPath2: "M20.88 18.09A5 5 0 0018 9h-1.26A8 8 0 103 16.29",
-      number: "2.7K",
-      label: "Downloads",
+      iconColor: 'text-red-400',
+      iconPath1: 'M8 17l4 4 4-4m-4-5v9',
+      iconPath2: 'M20.88 18.09A5 5 0 0018 9h-1.26A8 8 0 103 16.29',
+      number: '2.7K',
+      label: 'Downloads',
     },
     {
-      iconColor: "text-red-400",
-      iconPath1: "M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2",
-      iconPath2: "M23 21v-2a4 4 0 00-3-3.87m-4-12a4 4 0 010 7.75",
-      number: "1.3K",
-      label: "Users",
+      iconColor: 'text-red-400',
+      iconPath1: 'M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2',
+      iconPath2: 'M23 21v-2a4 4 0 00-3-3.87m-4-12a4 4 0 010 7.75',
+      number: '1.3K',
+      label: 'Users',
     },
     {
-      iconColor: "text-red-400",
-      iconPath1: "M3 18v-6a9 9 0 0118 0v6",
-      iconPath2: "M21 19a2 2 0 01-2 2h-1a2 2 0 01-2-2v-3a2 2 0 012-2h3zM3 19a2 2 0 002 2h1a2 2 0 002-2v-3a2 2 0 00-2-2H3z",
-      number: "74",
-      label: "Files",
+      iconColor: 'text-red-400',
+      iconPath1: 'M3 18v-6a9 9 0 0118 0v6',
+      iconPath2:
+        'M21 19a2 2 0 01-2 2h-1a2 2 0 01-2-2v-3a2 2 0 012-2h3zM3 19a2 2 0 002 2h1a2 2 0 002-2v-3a2 2 0 00-2-2H3z',
+      number: '74',
+      label: 'Files',
     },
     {
-      iconColor: "text-red-400",
-      iconPath1: "M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z",
-      number: "46",
-      label: "Places",
+      iconColor: 'text-red-400',
+      iconPath1: 'M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z',
+      number: '46',
+      label: 'Places',
     },
   ];
 
@@ -100,7 +101,7 @@ const StatisticDetails: React.FC = () => {
           label: "Places",
         },
       ];
-  `
+  `;
 
   const statisticCode = `
         const getGlassyClasses = (opacity = 5) => { return \`backdrop-filter backdrop-blur-lg bg-white bg-opacity-$\{opacity} border border-white border-opacity-20 rounded-lg shadow-lg transition-all duration-300\`; };
@@ -163,7 +164,6 @@ const StatisticDetails: React.FC = () => {
           </div>
         </div>
 
-
         <div className={`${getGlassyClasses()} p-6 mb-14`}>
           <h2 className='text-3xl font-bold mb-6 text-white'>Props</h2>
           <div className='overflow-x-auto'>
@@ -215,7 +215,9 @@ const StatisticDetails: React.FC = () => {
         </div>
 
         <div className={`${getGlassyClasses()} p-6 mb-14 relative`}>
-          <h2 className='text-3xl font-bold mb-6 text-white'>Example Props Array</h2>
+          <h2 className='text-3xl font-bold mb-6 text-white'>
+            Example Props Array
+          </h2>
           <div className='relative'>
             <pre className='bg-gray-800 text-white p-6 rounded-lg overflow-x-auto whitespace-pre-wrap max-sm:text-[0.55rem]'>
               {exampleProps}
@@ -229,27 +231,30 @@ const StatisticDetails: React.FC = () => {
             Statistic Example
           </h2>
           <section className={`${getGlassyClasses()} p-6 mb-14`}>
-            <div className="container px-5 py-24 mx-auto">
-              <div className="flex flex-wrap -m-4 text-center">
+            <div className='container px-5 py-24 mx-auto'>
+              <div className='flex flex-wrap -m-4 text-center'>
                 {statsData.map((stat, index) => (
-                  <div key={index} className="p-4 md:w-1/4 sm:w-1/2 w-full cursor-pointer">
-                    <div className="border-2 border-gray-300 px-4 py-6 rounded-lg">
+                  <div
+                    key={index}
+                    className='p-4 md:w-1/4 sm:w-1/2 w-full cursor-pointer'
+                  >
+                    <div className='border-2 border-gray-300 px-4 py-6 rounded-lg'>
                       <svg
-                        fill="none"
-                        stroke="currentColor"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth="2"
+                        fill='none'
+                        stroke='currentColor'
+                        strokeLinecap='round'
+                        strokeLinejoin='round'
+                        strokeWidth='2'
                         className={`${stat.iconColor} w-12 h-12 mb-3 inline-block`}
-                        viewBox="0 0 24 24"
+                        viewBox='0 0 24 24'
                       >
                         <path d={stat.iconPath1}></path>
                         {stat.iconPath2 && <path d={stat.iconPath2}></path>}
                       </svg>
-                      <h2 className="title-font font-medium text-3xl text-white">
+                      <h2 className='title-font font-medium text-3xl text-white'>
                         {stat.number}
                       </h2>
-                      <p className="leading-relaxed">{stat.label}</p>
+                      <p className='leading-relaxed'>{stat.label}</p>
                     </div>
                   </div>
                 ))}
