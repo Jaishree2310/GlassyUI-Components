@@ -7,7 +7,13 @@ type Theme = 'pink' | 'brown' | 'white' | 'black';
 type CustomTheme = 'blue' | 'brown' | 'white' | 'black' | 'rainbow';
 
 const CustomTextArea: React.FC = () => {
+  const location = useLocation();
+  const currentTheme =
+    (location.state as { currentTheme?: Theme })?.currentTheme || 'pink';
   const [theme, setTheme] = useState<CustomTheme>('blue');
+  const [copiedStates, setCopiedStates] = useState<{ [key: string]: boolean }>(
+    {},
+  );
 
   const getThemeColors = (theme: CustomTheme) => {
     switch (theme) {
@@ -30,7 +36,44 @@ const CustomTextArea: React.FC = () => {
     }
   };
 
+  const getGlassyClasses = (opacity = 20) => {
+    const baseClasses =
+      'backdrop-filter backdrop-blur-md border border-opacity-20 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300';
+    switch (currentTheme) {
+      case 'white':
+        return `${baseClasses} bg-gray-500 bg-opacity-${opacity} border-gray-300 text-gray-100`;
+      case 'black':
+        return `${baseClasses} bg-white bg-opacity-${opacity} border-gray-600 text-white`;
+      case 'brown':
+        return `${baseClasses} bg-white bg-opacity-${opacity} border-yellow-300 text-white`;
+      default:
+        return `${baseClasses} bg-white bg-opacity-${opacity} border-white text-white`;
+    }
+  };
+
   const themeColors = getThemeColors(theme);
+  const copyToClipboard = (text: string, key: string) => {
+    navigator.clipboard.writeText(text).then(() => {
+      setCopiedStates(prev => ({ ...prev, [key]: true }));
+      setTimeout(
+        () => setCopiedStates(prev => ({ ...prev, [key]: false })),
+        2000,
+      );
+    });
+  };
+
+  const CopyButton: React.FC<{ text: string; codeKey: string }> = ({
+    text,
+    codeKey,
+  }) => (
+    <button
+      onClick={() => copyToClipboard(text, codeKey)}
+      className={`absolute top-4 right-4 ${getGlassyClasses()} p-2 hover:bg-opacity-20 transition-all duration-300`}
+      title='Copy to clipboard'
+    >
+      {copiedStates[codeKey] ? <Check size={20} /> : <Copy size={20} />}
+    </button>
+  );
 
   return (
     <div className='rounded-lg'>
@@ -91,6 +134,20 @@ const CustomTextArea: React.FC = () => {
   placeholder="Enter your text here..."
 />`}
         </pre>
+        <CopyButton
+          text={`<textarea
+  style={{
+    backgroundColor: '${themeColors.bg.includes('linear-gradient') ? 'transparent' : themeColors.bg}',
+    color: '${themeColors.textColor}',
+    borderColor: '${themeColors.borderColor}',
+    borderWidth: '1px',
+    borderStyle: 'solid',
+    backgroundImage: '${themeColors.bg.includes('linear-gradient') ? themeColors.bg : 'none'}'
+  }}
+  placeholder="Enter your text here..."
+/>`}
+          codeKey='basicUsage'
+        />
       </div>
     </div>
   );

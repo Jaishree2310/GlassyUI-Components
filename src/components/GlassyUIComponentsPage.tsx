@@ -15,14 +15,13 @@ import {
   ThumbsUpIcon,
   Contact,
   Search,
-    ShoppingCart,
- 
+  ShoppingCart,
   GalleryThumbnails,
-    AlignStartVertical,
-   GalleryThumbnails,
-  } from 'lucide-react';
+  AlignStartVertical,
+} from 'lucide-react';
 
 import Accordion from './Accordion';
+import { HiOutlineWrenchScrewdriver } from 'react-icons/hi2';
 
 // Define the ComponentCardProps interface
 
@@ -37,7 +36,6 @@ interface ComponentCardProps {
 const getGlassyClasses = () => {
   return 'backdrop-filter backdrop-blur-md bg-white/10 border border-white/20 rounded-2xl shadow-lg transition-all duration-300';
 };
-
 
 const ComponentCard: React.FC<ComponentCardProps> = ({
   title,
@@ -79,14 +77,12 @@ const GlassyUIComponentsPage: React.FC = () => {
   const [searchFilter, setSearchFilter] = useState<string>('');
   const componentsPerPage = 9;
 
-
   const scrollToNextSection = () => {
     window.scrollBy({
       top: window.innerHeight,
       behavior: 'smooth',
     });
   };
-
 
   const componentsData = [
     {
@@ -215,25 +211,24 @@ const GlassyUIComponentsPage: React.FC = () => {
       onClick: () => navigate('/contact-details'),
     },
     {
-        title: 'E-Commerce Product Card',
-      description: 'E-Commerce Product Card component with glassmorphic styling.',
+      title: 'E-Commerce Product Card',
+      description:
+        'E-Commerce Product Card component with glassmorphic styling.',
       icon: <ShoppingCart size={24} />,
       onClick: () => navigate('/product-details'),
     },
     {
-      
- 
-       title: 'Statistic',
+      title: 'Statistic',
       description: 'Statistic component with glassmorphic styling.',
       icon: <AlignStartVertical size={24} />,
       onClick: () => navigate('/statistic-details'),
     },
     {
-       title: 'Gallery',
-       description: 'Gallery component with glassmorphic styling.',
+      title: 'Gallery',
+      description: 'Gallery component with glassmorphic styling.',
       icon: <GalleryThumbnails size={24} />,
       onClick: () => navigate('/gallery-details'),
-     },
+    },
     {
       title: 'Glassmorphism Effect Generator',
       description: 'Create stunning Glassmorphic effects with ease.',
@@ -245,7 +240,6 @@ const GlassyUIComponentsPage: React.FC = () => {
       description: 'Design and customize CSS spinners for your projects.',
       icon: <HiOutlineWrenchScrewdriver size={24} />,
       onClick: () => navigate('/spinner'),
-
     },
   ];
 
@@ -390,7 +384,6 @@ const GlassyUIComponentsPage: React.FC = () => {
                   ? 'opacity-50 cursor-not-allowed'
                   : 'hover:bg-white/20'
               }`}
-
               disabled={currentPage === 1}
             >
               Previous
@@ -405,7 +398,6 @@ const GlassyUIComponentsPage: React.FC = () => {
                   ? 'opacity-50 cursor-not-allowed'
                   : 'hover:bg-white/20'
               }`}
-
               disabled={currentPage === totalPages}
             >
               Next
