@@ -4,15 +4,13 @@ import { ArrowLeft, Copy, Check } from 'lucide-react';
 import BackToTopButton from './BackToTop';
 
 // Custom Checkbox component
-const Checkbox = ({
-  checked,
-  onChange,
-  label,
-}: {
+interface checkBoxInterface {
   checked: boolean;
   onChange: () => void;
   label: string;
-}) => (
+}
+
+var Checkbox: React.FC<checkBoxInterface> = ({ checked, onChange, label }) => (
   <label className='inline-flex items-center'>
     <input
       type='checkbox'
