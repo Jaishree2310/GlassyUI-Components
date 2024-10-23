@@ -266,7 +266,7 @@ const Toast: React.FC<ToastProps> = ({ id, title, message, autoDismiss = 9000, t
             <CopyButton text={toastCode} codeKey='basicUsage' />
           </div>
           <h2 className='text-3xl font-bold mb-6 text-gray-100'>
-            Aniamtion CSS
+            Animation CSS
           </h2>
           <div className='relative mb-4'>
             <pre className='bg-gray-800 text-white p-6 rounded-lg overflow-x-auto whitespace-pre-wrap max-sm:p-2 max-sm:text-[0.55rem]'>

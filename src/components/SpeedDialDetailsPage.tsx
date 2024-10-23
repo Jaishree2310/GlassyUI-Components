@@ -64,104 +64,104 @@ const SpeedDialDetailsPage: React.FC = () => {
   function Example () {
   return 
    <SpeedDial
-                direction="right"
-                actionButtons={[
-                  {
-                    icon: <FaFacebookF size={20} />,
-                    label: "Facebook",
-                    key: "facebook",
-                    action: () => {
-                      window.open("https://www.facebook.com", "_blank");
-                    },
-                  },
-                  {
-                  other icons objects of your wish...
-                  }
-                ]}
-              />
+      direction="right"
+      actionButtons={[
+        {
+          icon: <FaFacebookF size={20} />,
+          label: "Facebook",
+          key: "facebook",
+          action: () => {
+            window.open("https://www.facebook.com", "_blank");
+          },
+        },
+        {
+        other icons objects of your wish...
+        }
+      ]}
+    />
   
   }
   `;
 
   const speedDialRight = `
    <SpeedDial
-                direction="right"
-                actionButtons={[
-                  {
-                    icon: <FaFacebookF size={20} />,
-                    label: "Facebook",
-                    key: "facebook",
-                    action: () => {
-                      window.open("https://www.facebook.com", "_blank");
-                    },
-                  },
-                  {
-                    icon: <FaXTwitter size={20} />,
-                    label: "Twitter",
-                    key: "twitter",
-                    action: () => {
-                      window.open("https://www.twitter.com", "_blank");
-                    },
-                  },
-                  {
-                    icon: <FaLinkedinIn size={20} />,
-                    label: "LinkedIn",
-                    key: "linkedin",
-                    action: () => {
-                      window.open("https://www.linkedin.com", "_blank");
-                    },
-                  },
-                  {
-                    icon: <FaInstagram size={20} />,
-                    label: "Instagram",
-                    key: "instagram",
-                    action: () => {
-                      window.open("https://www.instagram.com", "_blank");
-                    },
-                  },
-                ]}
-              />
+    direction="right"
+    actionButtons={[
+      {
+        icon: <FaFacebookF size={20} />,
+        label: "Facebook",
+        key: "facebook",
+        action: () => {
+          window.open("https://www.facebook.com", "_blank");
+        },
+      },
+      {
+        icon: <FaXTwitter size={20} />,
+        label: "Twitter",
+        key: "twitter",
+        action: () => {
+          window.open("https://www.twitter.com", "_blank");
+        },
+      },
+      {
+        icon: <FaLinkedinIn size={20} />,
+        label: "LinkedIn",
+        key: "linkedin",
+        action: () => {
+          window.open("https://www.linkedin.com", "_blank");
+        },
+      },
+      {
+        icon: <FaInstagram size={20} />,
+        label: "Instagram",
+        key: "instagram",
+        action: () => {
+          window.open("https://www.instagram.com", "_blank");
+        },
+      },
+    ]}
+  />
 
   `;
 
   const speedDialUp = `
   <SpeedDial
-                direction="up"
-                actionButtons={[
-                  {
-                    icon: <FaFacebookF size={20} />,
-                    label: "Facebook",
-                    key: "facebook",
-                    action: () => {
-                      window.open("https://www.facebook.com", "_blank");
-                    },
-                  },
-                  {
-                    icon: <FaXTwitter size={20} />,
-                    label: "Twitter",
-                    key: "twitter",
-                    action: () => {
-                      window.open("https://www.twitter.com", "_blank");
-                    },
-                  },
-                  {
-                    icon: <FaLinkedinIn size={20} />,
-                    label: "LinkedIn",
-                    key: "linkedin",
-                    action: () => {
-                      window.open("https://www.linkedin.com", "_blank");
-                    },
-                  },
-                  {
-                    icon: <FaInstagram size={20} />,
-                    label: "Instagram",
-                    key: "instagram",
-                    action: () => {
-                      window.open("https://www.instagram.com", "_blank");
-                    },
-                  },
-                ]}
-              />`;
+    direction="up"
+    actionButtons={[
+      {
+        icon: <FaFacebookF size={20} />,
+        label: "Facebook",
+        key: "facebook",
+        action: () => {
+          window.open("https://www.facebook.com", "_blank");
+        },
+      },
+      {
+        icon: <FaXTwitter size={20} />,
+        label: "Twitter",
+        key: "twitter",
+        action: () => {
+          window.open("https://www.twitter.com", "_blank");
+        },
+      },
+      {
+        icon: <FaLinkedinIn size={20} />,
+        label: "LinkedIn",
+        key: "linkedin",
+        action: () => {
+          window.open("https://www.linkedin.com", "_blank");
+        },
+      },
+      {
+        icon: <FaInstagram size={20} />,
+        label: "Instagram",
+        key: "instagram",
+        action: () => {
+          window.open("https://www.instagram.com", "_blank");
+        },
+      },
+    ]}
+  />`;
 
   return (
     <div className='min-h-screen p-8 font-sans bg-gradient-to-r from-gray-800 via-gray-900 to-black text-white relative'>
