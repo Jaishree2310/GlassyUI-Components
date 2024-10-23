@@ -24,7 +24,6 @@ import BackToTopButton from './BackToTop';
 import { HiOutlineWrenchScrewdriver } from 'react-icons/hi2';
 import Accordion from './Accordion';
 
-
 const GlassyUIComponentsPage: React.FC = () => {
   const navigate = useNavigate();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -50,12 +49,12 @@ const GlassyUIComponentsPage: React.FC = () => {
   };
 
   return (
-    <div className='min-h-screen font-sans bg-gradient-to-br from-gray-800 via-gray-900 to-black text-white'>
+    <div className='min-h-screen font-sans bg-gradient-to-br from-pink-300 to-pink-200 text-gray-800'>
       <BackToTopButton />
       <div className='container mx-auto px-4 py-8 lg:py-12'>
         <header className='flex justify-between items-center mb-16'>
           <div
-            className='text-3xl lg:text-4xl font-bold tracking-tight cursor-pointer hover:text-pink-200 transition-colors duration-300'
+            className='text-3xl lg:text-4xl font-bold tracking-tight cursor-pointer hover:text-blue-600 transition-colors duration-300'
             onClick={navigateToLandingPage}
           >
             GlassyUI
@@ -65,7 +64,7 @@ const GlassyUIComponentsPage: React.FC = () => {
               <a
                 href='/generator'
                 rel='noopener noreferrer'
-                className={`flex items-center space-x-2 ${getGlassyClasses()} px-4 py-2 hover:bg-white/20 transition-colors duration-300`}
+                className={`flex items-center space-x-2 bg-teal-100 border border-blue-700 rounded-2xl shadow-lg  px-4 py-2 hover:bg-rose-300 transition-colors duration-300`}
               >
                 <HiOutlineWrenchScrewdriver />
                 <span className='text-sm font-medium'>
@@ -78,7 +77,7 @@ const GlassyUIComponentsPage: React.FC = () => {
                 href={githubRepoUrl}
                 target='_blank'
                 rel='noopener noreferrer'
-                className={`flex items-center space-x-2 ${getGlassyClasses()} px-4 py-2 hover:bg-white/20 transition-colors duration-300`}
+                className={`flex items-center space-x-2 bg-teal-100 border border-blue-700 rounded-2xl shadow-lg  px-4 py-2 hover:bg-rose-300 transition-colors duration-300`}
               >
                 <Star size={18} />
                 <span className='text-sm font-medium'>Star on GitHub</span>
@@ -105,7 +104,7 @@ const GlassyUIComponentsPage: React.FC = () => {
         )}
 
         <main>
-          <h1 className='text-4xl lg:text-6xl font-extrabold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-white to-pink-200'>
+          <h1 className='text-4xl lg:text-6xl font-extrabold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-green-500'>
             Glassmorphic Components
           </h1>
           <p className='text-lg lg:text-xl mb-12 max-w-2xl leading-relaxed'>
@@ -123,7 +122,7 @@ const GlassyUIComponentsPage: React.FC = () => {
               onClick={() => navigate('/toast-page/')}
             >
               <button
-                className={`${getGlassyClasses()} px-4 py-2 hover:bg-white/20`}
+                className={`bg-emerald-400 border border-black text-black rounded-2xl shadow-lg transition-all duration-300 px-4 py-2 hover:bg-white/20`}
               >
                 Try out!
               </button>
@@ -142,12 +141,12 @@ const GlassyUIComponentsPage: React.FC = () => {
                   defaultValue={75}
                   onChange={e => {
                     const value = e.target.value;
-                    e.target.style.background = `linear-gradient(90deg, rgba(255, 255, 255, 0.3) ${value}%, rgba(255, 255, 255, 0.1) ${value}%)`;
+                    e.target.style.background = `linear-gradient(90deg, rgba(255, 165, 0, 0.3) ${value}%, rgba(255, 165, 0, 0.1) ${value}%)`;
                   }}
-                  className={`${getGlassyClasses()} w-full h-2 rounded-lg appearance-none cursor-pointer`}
+                  className={`bg-orange-400 border border-black rounded-2xl shadow-lg transition-all duration-300 w-full h-2  appearance-none cursor-pointer`}
                   style={{
                     background:
-                      'linear-gradient(90deg, rgba(255, 255, 255, 0.3) 75%, rgba(255, 255, 255, 0.1) 75%)',
+                      'linear-gradient(90deg, rgba(255, 165, 0, 0.3) ${value}%, rgba(255, 165, 0, 0.1) ${value}%)',
                   }}
                 />
               </div>
@@ -205,12 +204,12 @@ const GlassyUIComponentsPage: React.FC = () => {
             >
               <div className='flex space-x-2 mt-4'>
                 <button
-                  className={`${getGlassyClasses()} px-4 py-2 hover:bg-white/20`}
+                  className={`bg-green-100 border border-black rounded-2xl shadow-lg transition-all duration-300 px-4 py-2 hover:bg-white/20`}
                 >
                   Click me
                 </button>
                 <button
-                  className={`${getGlassyClasses()} px-4 py-2 bg-white/20 hover:bg-white/30`}
+                  className={`bg-green-100 border border-black rounded-2xl shadow-lg transition-all duration-300 px-4 py-2 hover:bg-white/30`}
                 >
                   Accent
                 </button>
@@ -226,7 +225,7 @@ const GlassyUIComponentsPage: React.FC = () => {
               <input
                 type='text'
                 placeholder='Type here...'
-                className={`${getGlassyClasses()} w-full px-4 py-2 mt-4 placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-white/50`}
+                className={`bg-purple-200 border border-black rounded-2xl shadow-lg transition-all duration-300 w-full px-4 py-2 mt-4 placeholder-black focus:outline-none focus:ring-2 focus:ring-white/50`}
               />
             </ComponentCard>
 
@@ -236,9 +235,13 @@ const GlassyUIComponentsPage: React.FC = () => {
               icon={<Layout size={24} />}
               onClick={() => navigate('/card-details')}
             >
-              <div className={`${getGlassyClasses()} p-4 mt-4`}>
+              <div
+                className={`bg-green-300 border border-black rounded-2xl shadow-lg transition-all duration-300 p-4 mt-4`}
+              >
                 <h4 className='font-semibold'>Card Title</h4>
-                <p className='text-sm opacity-80'>Card content goes here.</p>
+                <p className='text-black text-sm opacity-80'>
+                  Card content goes here.
+                </p>
               </div>
             </ComponentCard>
 
@@ -248,9 +251,11 @@ const GlassyUIComponentsPage: React.FC = () => {
               icon={<Sliders size={24} />}
               onClick={() => navigate('/progress-bar-details')}
             >
-              <div className={`${getGlassyClasses()} w-full h-4 mt-4`}>
+              <div
+                className={`bg-stone-400 border-black rounded-2xl shadow-lg transition-all duration-300 w-full h-4 mt-4`}
+              >
                 <div
-                  className='bg-white/30 h-full rounded-2xl'
+                  className='bg-blue-500 h-full rounded-2xl'
                   style={{ width: '60%' }}
                 ></div>
               </div>
@@ -267,7 +272,7 @@ const GlassyUIComponentsPage: React.FC = () => {
                   e.stopPropagation();
                   alert('Modal would open here');
                 }}
-                className={`${getGlassyClasses()} px-4 py-2 mt-4 hover:bg-white/20`}
+                className={`bg-teal-200 border border-black rounded-2xl shadow-lg transition-all duration-300 px-4 py-2 mt-4 hover:bg-white/20`}
               >
                 Open Modal
               </button>
@@ -280,7 +285,7 @@ const GlassyUIComponentsPage: React.FC = () => {
               onClick={() => navigate('/navigation-details')}
             >
               <nav
-                className={`${getGlassyClasses()} flex justify-around mt-4 py-2`}
+                className={`bg-slate-300 border border-black text-black rounded-2xl shadow-lg transition-all duration-300 flex justify-around mt-4 py-2`}
               >
                 <a href='#' className='hover:bg-white/20 px-2 py-1 rounded'>
                   Home
@@ -305,7 +310,7 @@ const GlassyUIComponentsPage: React.FC = () => {
                   e.stopPropagation();
                   setIsPopupOpen(true);
                 }}
-                className={`${getGlassyClasses()} px-4 py-2 mt-4 hover:bg-white/20`}
+                className={`bg-sky-200 border border-black rounded-2xl shadow-lg transition-all duration-300 px-4 py-2 mt-4 hover:bg-white/20`}
               >
                 Show Popup
               </button>
@@ -341,7 +346,7 @@ const GlassyUIComponentsPage: React.FC = () => {
             >
               <textarea
                 placeholder='Enter your message...'
-                className={`${getGlassyClasses()} w-full px-4 py-2 mt-4 placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-white/50 resize-none`}
+                className={`bg-rose-300 border border-black rounded-2xl shadow-lg transition-all duration-300 w-full px-4 py-2 mt-4 placeholder-black focus:outline-none focus:ring-2 focus:ring-white/50 resize-none`}
                 rows={3}
               />
             </ComponentCard>
@@ -354,17 +359,23 @@ const GlassyUIComponentsPage: React.FC = () => {
             >
               <div className='mt-1 mb-4 flex justify-around'>
                 <Tooltip text='Tooltip' position='left'>
-                  <button className={`${getGlassyClasses()} px-4 py-2`}>
+                  <button
+                    className={`bg-yellow-200 border border-black rounded-2xl shadow-lg transition-all duration-300 px-4 py-2`}
+                  >
                     Left
                   </button>
                 </Tooltip>
                 <Tooltip text='Tooltip' position='bottom'>
-                  <button className={`${getGlassyClasses()} px-4 py-2`}>
+                  <button
+                    className={`bg-cyan-200 border border-black rounded-2xl shadow-lg transition-all duration-300 px-4 py-2`}
+                  >
                     Bottom
                   </button>
                 </Tooltip>
                 <Tooltip text='Tooltip' position='right'>
-                  <button className={`${getGlassyClasses()} px-4 py-2`}>
+                  <button
+                    className={`bg-slate-400 border border-black rounded-2xl shadow-lg transition-all duration-300 px-4 py-2`}
+                  >
                     Right
                   </button>
                 </Tooltip>
@@ -379,8 +390,10 @@ const GlassyUIComponentsPage: React.FC = () => {
             >
               <div className='mt-1 mb-4 flex justify-around'>
                 <button
-                  onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-                  className={`${getGlassyClasses()} px-4 py-2`}
+                  onClick={() =>
+                    window.scrollTo({ top: 0, behavior: 'smooth' })
+                  }
+                  className={`bg-lime-200 border border-black rounded-2xl shadow-lg transition-all duration-300 px-4 py-2`}
                 >
                   Back to Top
                 </button>
@@ -392,7 +405,7 @@ const GlassyUIComponentsPage: React.FC = () => {
               icon={<AlignLeft size={24} />}
               onClick={() => navigate('/dropdown-details')}
             >
-              <div className='relative p-4 rounded-lg shadow-lg bg-white/10 pt-0'>
+              <div className='relative p-4 rounded-lg shadow-lg bg-zinc-300 pt-0'>
                 <div
                   className='flex items-center mt-4 cursor-pointer rounded-3xl'
                   onClick={e => {
@@ -400,7 +413,7 @@ const GlassyUIComponentsPage: React.FC = () => {
                     setIsPopupOpen2(prev => !prev); // Toggle dropdown visibility
                   }}
                 >
-                  <span className='w-full px-4 py-2 mt-2 bg-transparent border rounded focus:outline-none focus:ring-2 focus:ring-blue-500'>
+                  <span className='w-full px-4 py-2 mt-2 bg-transparent border border-black text-black rounded focus:outline-none focus:ring-2 focus:ring-blue-500'>
                     {selectedOption || 'Select an option'}
                   </span>
                 </div>
@@ -430,28 +443,33 @@ const GlassyUIComponentsPage: React.FC = () => {
               onClick={() => navigate('/authentication-card')}
             >
               <div className='mt-1 mb-4 flex justify-around'>
-                <button className={`${getGlassyClasses()} px-4 py-2`}>
+                <button
+                  className={`bg-cyan-200 border border-black rounded-2xl shadow-lg transition-all duration-300 px-4 py-2`}
+                >
                   Login
                 </button>
-                <button className={`${getGlassyClasses()} px-4 py-2`}>
+                <button
+                  className={`bg-cyan-200 border border-black rounded-2xl shadow-lg transition-all duration-300 px-4 py-2`}
+                >
                   Sign Up
                 </button>
               </div>
             </ComponentCard>
-            <ComponentCard 
+            <ComponentCard
               title='Accordion'
               description='Accordion component with glassmorphic styling.'
               icon={<Layout size={24} />}
-              onClick={() => navigate('/accordion-details')}>
-                  <Accordion
-                    title='Accordion Title 1'
-                    content='This is the content of the first accordion.'
-                  />
-                  <Accordion
-                    title='Accordion Title 2'
-                    content='This is the content of the second accordion.'
-                  />
-              </ComponentCard>
+              onClick={() => navigate('/accordion-details')}
+            >
+              <Accordion
+                title='Accordion Title 1'
+                content='This is the content of the first accordion.'
+              />
+              <Accordion
+                title='Accordion Title 2'
+                content='This is the content of the second accordion.'
+              />
+            </ComponentCard>
           </div>
         </main>
       </div>
@@ -468,7 +486,7 @@ const ComponentCard: React.FC<{
   children?: React.ReactNode;
 }> = ({ title, description, icon, onClick, children, status }) => {
   const getGlassyClasses = () => {
-    return 'backdrop-filter backdrop-blur-md bg-white/10 border border-white/20 rounded-2xl shadow-lg transition-all duration-300';
+    return 'backdrop-filter backdrop-blur-md bg-white/10 border border-blue-600 rounded-2xl shadow-lg transition-all duration-300';
   };
 
   return (
@@ -487,9 +505,9 @@ const ComponentCard: React.FC<{
       </div>
       <p className='text-sm opacity-80 mb-4 flex-grow'>{description}</p>
       {children}
-      <div className='flex items-center text-sm font-medium text-pink-200 mt-4'>
+      <div className='flex items-center text-sm font-medium text-black mt-4'>
         <div className='flex justify-center items-center '>
-          <span>Learn more</span>
+          <span className='text-black font-medium'>Learn more</span>
           <ArrowRight className='ml-2 w-6 pt-1 group-hover:translate-x-1 transition-transform duration-300' />
         </div>
       </div>

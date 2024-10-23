@@ -20,7 +20,7 @@ const DropdownMenu: React.FC<DropdownMenuProps> = ({ options, onSelect }) => {
         Select an option
       </button>
       {isOpen && (
-        <ul className='absolute mt-2 bg-gray-800 rounded-md shadow-lg z-10'>
+        <ul className='absolute mt-2 bg-sky-200  rounded-md shadow-lg z-10'>
           {options.map(option => (
             <li
               key={option}
@@ -28,7 +28,7 @@ const DropdownMenu: React.FC<DropdownMenuProps> = ({ options, onSelect }) => {
                 onSelect(option);
                 setIsOpen(false);
               }}
-              className='p-2 hover:bg-gray-600 cursor-pointer'
+              className='p-2 hover:bg-rose-200 cursor-pointer'
             >
               {option}
             </li>
@@ -72,7 +72,7 @@ const DropdownMenuDetailsPage: React.FC = () => {
       {copiedStates[codeKey] ? (
         <Check size={16} className='text-green-600' />
       ) : (
-        <Copy size={16} className='text-white' />
+        <Copy size={16} className='text-black' />
       )}
     </button>
   );
@@ -113,26 +113,26 @@ const DropdownMenuDetailsPage: React.FC = () => {
 />`;
 
   return (
-    <div className='min-h-screen p-8 font-sans bg-gradient-to-r from-gray-800 via-gray-900 to-black text-white relative'>
+    <div className='min-h-screen p-8 font-sans bg-gradient-to-br from-pink-300 to-pink-300 text-gray-800 relative'>
       <BackToTopButton />
       <div className='relative z-10'>
         <button
           onClick={() => navigate(-1)}
-          className={`mb-8 flex items-center ${getGlassyClasses()} px-4 py-2 hover:bg-white/40 transition-all duration-300 text-gray-800`}
+          className={`mb-8 flex items-center bg-yellow-200 border border-white/20 rounded-xl shadow-lg  max-sm:px-0 px-4 py-2 hover:bg-white/40 transition-all duration-300 text-black`}
         >
           <ArrowLeft size={20} className='mr-2' />
           Back to Components
         </button>
 
-        <h1 className='text-6xl font-bold mb-8 text-white'>Dropdown Menu</h1>
-        <p className='text-xl mb-8 text-white'>
+        <h1 className='text-6xl font-bold mb-8 text-black'>Dropdown Menu</h1>
+        <p className='text-xl mb-8 text-black'>
           A customizable dropdown menu component.
         </p>
 
         <div className={`${getGlassyClasses()} p-8 mb-8 relative`}>
-          <h2 className='text-3xl font-bold mb-6 text-white'>Basic Usage</h2>
+          <h2 className='text-3xl font-bold mb-6 text-black'>Basic Usage</h2>
           <div className='relative'>
-            <pre className='bg-gray-800 text-white p-6 rounded-lg overflow-x-auto whitespace-pre-wrap max-sm:text-[0.55rem]'>
+            <pre className='bg-zinc-400 text-black p-6 rounded-lg overflow-x-auto whitespace-pre-wrap max-sm:text-[0.55rem]'>
               {basicUsageCode}
             </pre>
             <CopyButton text={basicUsageCode} codeKey='basicUsage' />
@@ -140,19 +140,21 @@ const DropdownMenuDetailsPage: React.FC = () => {
         </div>
 
         <div className={`${getGlassyClasses()} p-8 mb-8`}>
-          <h2 className='text-3xl font-bold mb-6 text-white'>
+          <h2 className='text-3xl font-bold mb-6 text-black'>
             Example Dropdown Menu
           </h2>
-          <p className='mb-6 text-lg text-white'>
+          <p className='mb-6 text-lg text-black'>
             An example implementation of a dropdown menu.
           </p>
           <DropdownMenu
             options={['Option 1', 'Option 2', 'Option 3']}
             onSelect={option => setSelectedOption(option)}
           />
-          <p className='mt-4'>Selected: {selectedOption}</p>
+          <p className='mt-4 text-black font-medium'>
+            Selected: {selectedOption}
+          </p>
           <div className='relative mt-8'>
-            <pre className='bg-gray-800 text-white p-6 rounded-lg overflow-x-auto whitespace-pre-wrap max-sm:text-[0.55rem]'>
+            <pre className='bg-zinc-400 text-black p-6 rounded-lg overflow-x-auto whitespace-pre-wrap max-sm:text-[0.55rem]'>
               {dropdownExampleCode}
             </pre>
             <CopyButton text={dropdownExampleCode} codeKey='dropdownExample' />

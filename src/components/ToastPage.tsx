@@ -43,7 +43,7 @@ const CopyButton: React.FC<{ text: string; codeKey: string }> = ({
       {copiedStates[codeKey] ? (
         <Check size={16} className='text-green-600' />
       ) : (
-        <Copy size={16} className='text-gray-100' />
+        <Copy size={16} className='text-black' />
       )}
     </button>
   );
@@ -198,7 +198,7 @@ const Toast: React.FC<ToastProps> = ({ id, title, message, autoDismiss = 9000, t
 `;
 
   return (
-    <div className='min-h-screen p-8 font-sans bg-gradient-to-r from-gray-800 via-gray-900 to-black text-white relative'>
+    <div className='min-h-screen flex flex-col gap-6 justify-center items-center px-6 bg-gradient-to-br from-pink-300 to-pink-300 text-black p-8'>
       <div
         className={`fixed w-screen h-screen flex flex-col gap-4 justify-end items-end z-[51] pointer-events-none bottom-0 right-0 p-4`}
       >
@@ -219,56 +219,52 @@ const Toast: React.FC<ToastProps> = ({ id, title, message, autoDismiss = 9000, t
         {/* Back Button */}
         <button
           onClick={() => navigate(-1)}
-          className={`mb-8 flex items-center ${getGlassyClasses()} px-4 py-2 hover:bg-white/40 transition-all duration-300 text-gray-100`}
+          className={`mb-8 flex items-center bg-lime-300 border border-black rounded-2xl shadow-lg  px-4 py-2 hover:bg-white/40 transition-all duration-300 text-black`}
         >
           <ArrowLeft size={20} className='mr-2' />
           Back to Components
         </button>
 
         {/* Page Title and Description */}
-        <h1 className='text-6xl font-bold mb-8 text-white'>
+        <h1 className='text-6xl font-bold mb-8 text-black'>
           Glassmorphic Toast
         </h1>
-        <p className='text-xl mb-8 text-gray-100'>
+        <p className='text-xl mb-8 text-black'>
           A glassmorphism-styled Toast component.
         </p>
 
         {/* Speed Dial Demo and Code Section */}
         <div className={`${getGlassyClasses()} p-8 mb-8 relative`}>
           <ToastGenerator toaster={setToasts} />
-          <h2 className='text-3xl font-bold mt-6 mb-6 text-gray-100'>
-            Main App
-          </h2>
+          <h2 className='text-3xl font-bold mt-6 mb-6 text-black'>Main App</h2>
           {/* Basic Usage Code Block */}
           <div className='relative mb-4'>
-            <pre className='bg-gray-800 text-white p-6 rounded-lg overflow-x-auto whitespace-pre-wrap max-sm:p-2 max-sm:text-[0.55rem]'>
+            <pre className='bg-cyan-100 text-black p-6 rounded-lg overflow-x-auto whitespace-pre-wrap max-sm:p-2 max-sm:text-[0.55rem]'>
               {basicUsage}
             </pre>
             <CopyButton text={basicUsage} codeKey='basicUsage' />
           </div>
-          <h2 className='text-3xl font-bold mb-6 text-gray-100'>
+          <h2 className='text-3xl font-bold mb-6 text-black'>
             Toast Generator Component
           </h2>
           <div className='relative mb-4'>
-            <pre className='bg-gray-800 text-white p-6 rounded-lg overflow-x-auto whitespace-pre-wrap max-sm:p-2 max-sm:text-[0.55rem]'>
+            <pre className='bg-cyan-100 text-black p-6 rounded-lg overflow-x-auto whitespace-pre-wrap max-sm:p-2 max-sm:text-[0.55rem]'>
               {generatorCode}
             </pre>
             <CopyButton text={generatorCode} codeKey='basicUsage' />
           </div>
-          <h2 className='text-3xl font-bold mb-6 text-gray-100'>
+          <h2 className='text-3xl font-bold mb-6 text-black'>
             Toast Component
           </h2>
           <div className='relative mb-4'>
-            <pre className='bg-gray-800 text-white p-6 rounded-lg overflow-x-auto whitespace-pre-wrap max-sm:p-2 max-sm:text-[0.55rem]'>
+            <pre className='bg-cyan-100 text-black p-6 rounded-lg overflow-x-auto whitespace-pre-wrap max-sm:p-2 max-sm:text-[0.55rem]'>
               {toastCode}
             </pre>
             <CopyButton text={toastCode} codeKey='basicUsage' />
           </div>
-          <h2 className='text-3xl font-bold mb-6 text-gray-100'>
-            Aniamtion CSS
-          </h2>
+          <h2 className='text-3xl font-bold mb-6 text-black'>Aniamtion CSS</h2>
           <div className='relative mb-4'>
-            <pre className='bg-gray-800 text-white p-6 rounded-lg overflow-x-auto whitespace-pre-wrap max-sm:p-2 max-sm:text-[0.55rem]'>
+            <pre className='bg-cyan-100 text-black p-6 rounded-lg overflow-x-auto whitespace-pre-wrap max-sm:p-2 max-sm:text-[0.55rem]'>
               {animationCSS}
             </pre>
             <CopyButton text={animationCSS} codeKey='basicUsage' />
@@ -276,53 +272,51 @@ const Toast: React.FC<ToastProps> = ({ id, title, message, autoDismiss = 9000, t
         </div>
 
         <div className={`${getGlassyClasses()} p-8 mb-8`}>
-          <h2 className='text-3xl font-bold mb-6 text-gray-100'>Props</h2>
+          <h2 className='text-3xl font-bold mb-6 text-black'>Props</h2>
           <div className='overflow-x-auto'>
             <table className='w-full'>
               <thead>
-                <tr className='border-b border-gray-400'>
-                  <th className='text-left p-2 text-gray-100'>Prop</th>
-                  <th className='text-left p-2 text-gray-100'>Type</th>
-                  <th className='text-left p-2 text-gray-100'>Default</th>
-                  <th className='text-left p-2 text-gray-100'>Description</th>
+                <tr className='border-b border-gray-800'>
+                  <th className='text-left p-2 text-black'>Prop</th>
+                  <th className='text-left p-2 text-black'>Type</th>
+                  <th className='text-left p-2 text-black'>Default</th>
+                  <th className='text-left p-2 text-black'>Description</th>
                 </tr>
               </thead>
               <tbody>
-                <tr className='border-b border-gray-300'>
-                  <td className='p-2 text-gray-200'>title</td>
-                  <td className='p-2 text-gray-200'>string</td>
-                  <td className='p-2 text-gray-200'>-</td>
-                  <td className='p-2 text-gray-200'>The title of the toast</td>
+                <tr className='border-b border-gray-800'>
+                  <td className='p-2 text-black'>title</td>
+                  <td className='p-2 text-black'>string</td>
+                  <td className='p-2 text-black'>-</td>
+                  <td className='p-2 text-black'>The title of the toast</td>
                 </tr>
-                <tr className='border-b border-gray-300'>
-                  <td className='p-2 text-gray-200'>message</td>
-                  <td className='p-2 text-gray-200'>string</td>
-                  <td className='p-2 text-gray-200'>-</td>
-                  <td className='p-2 text-gray-200'>
-                    the message of the toast
-                  </td>
+                <tr className='border-b border-gray-800'>
+                  <td className='p-2 text-black'>message</td>
+                  <td className='p-2 text-black'>string</td>
+                  <td className='p-2 text-black'>-</td>
+                  <td className='p-2 text-black'>the message of the toast</td>
                 </tr>
-                <tr className='border-b border-gray-300'>
-                  <td className='p-2 text-gray-200'>autoDismiss</td>
-                  <td className='p-2 text-gray-200'>number</td>
-                  <td className='p-2 text-gray-200'>9000</td>
-                  <td className='p-2 text-gray-200'>
+                <tr className='border-b border-gray-800'>
+                  <td className='p-2 text-black'>autoDismiss</td>
+                  <td className='p-2 text-black'>number</td>
+                  <td className='p-2 text-black'>9000</td>
+                  <td className='p-2 text-black'>
                     the time in milliseconds after which the toast gets removed
                   </td>
                 </tr>
-                <tr className='border-b border-gray-300'>
-                  <td className='p-2 text-gray-200'>id</td>
-                  <td className='p-2 text-gray-200'>number</td>
-                  <td className='p-2 text-gray-200'>Date.now()</td>
-                  <td className='p-2 text-gray-200'>
+                <tr className='border-b border-gray-800'>
+                  <td className='p-2 text-black'>id</td>
+                  <td className='p-2 text-black'>number</td>
+                  <td className='p-2 text-black'>Date.now()</td>
+                  <td className='p-2 text-black'>
                     the id of each toast component
                   </td>
                 </tr>
-                <tr className='border-b border-gray-300'>
-                  <td className='p-2 text-gray-200'>toaster</td>
-                  <td className='p-2 text-gray-200'>React.SetStateAction</td>
-                  <td className='p-2 text-gray-200'>-</td>
-                  <td className='p-2 text-gray-200'>
+                <tr className='border-b border-gray-800'>
+                  <td className='p-2 text-black'>toaster</td>
+                  <td className='p-2 text-black'>React.SetStateAction</td>
+                  <td className='p-2 text-black'>-</td>
+                  <td className='p-2 text-black'>
                     The main toast state setter
                   </td>
                 </tr>

@@ -76,7 +76,7 @@ const AuthenticationCardDetailsPage: React.FC = () => {
       {copiedStates[codeKey] ? (
         <Check size={16} className='text-green-600' />
       ) : (
-        <Copy size={16} className='text-gray-800' />
+        <Copy size={16} className='text-black' />
       )}
     </button>
   );
@@ -111,7 +111,7 @@ const AuthenticationCardDetailsPage: React.FC = () => {
       >
         <div
           style={getGlassmorphismStyle(colors)}
-          className='p-6 rounded-lg relative z-10'
+          className='p-6 rounded-lg relative z-10 bg-sky-200'
         >
           <h2 className='text-2xl font-bold mb-4'>Login</h2>
           <form>
@@ -338,28 +338,28 @@ const AuthenticationCardDetailsPage: React.FC = () => {
   );
 
   return (
-    <div className='min-h-screen p-8 font-sans bg-gradient-to-r from-gray-800 via-gray-900 to-black text-white relative'>
+    <div className='min-h-screen p-8 font-sans bg-gradient-to-br from-pink-300 to-pink-300 text-gray-800 relative'>
       <BackToTopButton />
       <button
         onClick={() => navigate(-1)}
-        className={`mb-8 flex items-center ${getGlassyClasses()} px-4 py-2 hover:bg-opacity-40 transition-all duration-300  text-gray-100`}
+        className={`mb-8 flex items-center bg-yellow-500 bg-opacity-30 border border-black border-opacity-20 rounded-lg shadow-lg hover:shadow-xl px-4 py-2 hover:bg-opacity-40 transition-all duration-300  text-black`}
       >
         <ArrowLeft size={20} className='mr-2' />
         Back to Components
       </button>
 
-      <h1 className='text-4xl font-bold mb-8 text-white'>
+      <h1 className='text-4xl font-bold mb-8 text-black'>
         Authentication Card Component
       </h1>
 
       {/* Props */}
       <section className='mb-12'>
         <h2 className='text-2xl font-bold mb-4 text-gray-800'>Props</h2>
-        <div className='bg-white bg-opacity-30 backdrop-filter backdrop-blur-md border border-white border-opacity-20 rounded-lg p-6'>
+        <div className='bg-sky-300 bg-opacity-30 backdrop-filter backdrop-blur-md border border-white border-opacity-20 rounded-lg p-6'>
           <div className='overflow-x-auto'>
             <table className='w-full'>
               <thead>
-                <tr>
+                <tr className='border-b border-gray-800'>
                   <th className='text-left p-2'>Prop</th>
                   <th className='text-left p-2'>Type</th>
                   <th className='text-left p-2'>Default</th>
@@ -367,19 +367,19 @@ const AuthenticationCardDetailsPage: React.FC = () => {
                 </tr>
               </thead>
               <tbody>
-                <tr>
+                <tr className='border-b border-gray-800'>
                   <td className='p-2'>className</td>
                   <td className='p-2'>string</td>
                   <td className='p-2'>''</td>
                   <td className='p-2'>Additional CSS classes</td>
                 </tr>
-                <tr>
+                <tr className='border-b border-gray-800'>
                   <td className='p-2'>style</td>
                   <td className='p-2'>object</td>
                   <td className='p-2'>{'{}'}</td>
                   <td className='p-2'>Inline styles for the card</td>
                 </tr>
-                <tr>
+                <tr className='border-b border-gray-800'>
                   <td className='p-2'>children</td>
                   <td className='p-2'>ReactNode</td>
                   <td className='p-2'>-</td>
@@ -392,7 +392,7 @@ const AuthenticationCardDetailsPage: React.FC = () => {
       </section>
 
       <section className='mb-12'>
-        <h2 className='text-2xl font-bold mb-4 text-white'>
+        <h2 className='text-2xl font-bold mb-4 text-black'>
           Login Card Example
         </h2>
         <div className='bg-white bg-opacity-30 backdrop-filter backdrop-blur-md border border-white border-opacity-20 rounded-lg p-6'>
@@ -401,9 +401,9 @@ const AuthenticationCardDetailsPage: React.FC = () => {
             <LoginCardExample />
             {/* </div> */}
             <div className='lg:w-2/3'>
-              <h3 className='text-xl font-semibold mb-4 text-white'>Code</h3>
+              <h3 className='text-xl font-semibold mb-4 text-black'>Code</h3>
               <div className='relative'>
-                <pre className='bg-gray-800 text-white p-4 rounded-lg overflow-x-auto text-sm max-h-[400px] whitespace-pre-wrap break-words'>
+                <pre className='bg-sky-200 text-black p-4 rounded-lg overflow-x-auto text-sm max-h-[400px] whitespace-pre-wrap break-words'>
                   <code>
                     {` const LoginCardExample: React.FC = () => (
     <div
@@ -523,7 +523,7 @@ const AuthenticationCardDetailsPage: React.FC = () => {
       </section>
 
       <section className='mb-12'>
-        <h2 className='text-2xl font-bold mb-4 text-white'>
+        <h2 className='text-2xl font-bold mb-4 text-black'>
           Sign Up Card Example
         </h2>
         <div className='bg-white bg-opacity-30 backdrop-filter backdrop-blur-md border border-white border-opacity-20 rounded-lg p-6'>
@@ -532,9 +532,9 @@ const AuthenticationCardDetailsPage: React.FC = () => {
             <SignUpCardExample />
             {/* </div> */}
             <div className='lg:w-2/3'>
-              <h3 className='text-xl font-semibold mb-4 text-white'>Code</h3>
+              <h3 className='text-xl font-semibold mb-4 text-black'>Code</h3>
               <div className='relative'>
-                <pre className='bg-gray-800 text-white p-4 rounded-lg overflow-x-auto text-sm max-h-[400px] whitespace-pre-wrap break-words'>
+                <pre className='bg-sky-200 text-black p-4 rounded-lg overflow-x-auto text-sm max-h-[400px] whitespace-pre-wrap break-words'>
                   <code>
                     {` const SignUpCardExample: React.FC = () => (
     <div

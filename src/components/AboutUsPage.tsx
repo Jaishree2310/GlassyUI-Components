@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 
 const AboutUsPage: React.FC = () => {
   useEffect(() => {
-    document.body.style.backgroundColor = '#3f434a';
+    document.body.style.backgroundColor = '#d8cefe';
     return () => {
       document.body.style.backgroundColor = '';
     };
@@ -53,8 +53,8 @@ const pageContainerStyle: React.CSSProperties = {
 };
 
 const aboutContainerStyle: React.CSSProperties = {
-  backgroundColor: '#2b303c',
-  color: 'white',
+  backgroundColor: '#fca5a5',
+  color: 'black',
   padding: '20px',
   borderRadius: '10px',
   maxWidth: '800px',
@@ -62,7 +62,7 @@ const aboutContainerStyle: React.CSSProperties = {
 };
 
 const headingStyle: React.CSSProperties = {
-  color: '#fde047',
+  color: '#1e3a8a',
   fontSize: '36px',
   marginBottom: '20px',
 };
@@ -74,7 +74,7 @@ const paragraphStyle: React.CSSProperties = {
 };
 
 const subheadingStyle: React.CSSProperties = {
-  color: '#fde047',
+  color: '#1e3a8a',
   fontSize: '28px',
   marginTop: '40px',
   marginBottom: '10px',
@@ -90,7 +90,7 @@ const listItemStyle: React.CSSProperties = {
   marginBottom: '10px',
   fontSize: '18px',
   lineHeight: '1.5',
-  color: 'white',
+  color: 'black',
 };
 
 export default AboutUsPage;

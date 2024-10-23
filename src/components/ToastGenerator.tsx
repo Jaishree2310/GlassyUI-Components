@@ -86,13 +86,13 @@ const ToastGenerator: React.FC<GeneratorProps> = ({ toaster }) => {
   };
 
   const getGlassyClasses = () => {
-    return 'backdrop-filter backdrop-blur-md bg-white/10 border border-white/20 rounded-2xl shadow-lg transition-all duration-300';
+    return 'backdrop-filter backdrop-blur-sm bg-pink-200 border border-white/20 rounded-2xl shadow-lg transition-all duration-300';
   };
 
   return (
     <>
       <button
-        className={`${getGlassyClasses()} px-4 py-2 hover:bg-white/20`}
+        className={`${getGlassyClasses()} px-4 py-2 hover:bg-pink-300`}
         onClick={addItem}
       >
         Show Toast
