@@ -48,41 +48,14 @@ const NavigationDetailsPage: React.FC = () => {
       return selected === item ? 'bg-pink-300 text-pink-600' : '';
     };
 
-    return `
-  <nav className="${getGlassyClasses()} flex justify-around flex-col md:flex-row mt-4 py-2">
-    <button 
-      className="md:hidden flex items-center justify-start p-3"
-      onClick={() => setMenuOpen(!menuOpen)}
-    >
-      <Menu size={20} className="mr-2" />
-    </button>
-    <div className="${`w-full md:w-auto ${menuOpen ? 'block' : 'hidden'} md:block`}">
-      <ul className="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-5 p-3 m-2">
-        <li>
-          <a href="#home" className="hover:bg-white/20 hover:text-pink-600 rounded flex justify-center ">
-            <button onClick={() => setSelected('Home')} className="hover:text-pink-600 px-2 py-1 rounded ${selectedClass('Home')}">
-              Home
-            </button>
-          </a>
-        </li>
-        <li>
-          <a href="#about" className="hover:bg-white/20 hover:text-pink-600 rounded flex justify-center">
-            <button onClick={() => setSelected('About')} className="hover:text-pink-600 px-2 py-1 rounded ${selectedClass('About')}">
-              About
-            </button>
-          </a>
-        </li>
-        <li>
-          <a href="#contact" className="hover:bg-white/20 hover:text-pink-600 rounded flex justify-center">
-            <button onClick={() => setSelected('Contact')} className="hover:text-pink-600 px-2 py-1 rounded ${selectedClass('Contact')}">
-              Contact
-            </button>
-          </a>
-        </li>
-      </ul>
-    </div>
-  </nav>
-  `;
+    return `<Navigation 
+  items={[
+      { label: 'Home', href: '/', className: '${selectedClass('Home')}' },
+      { label: 'About', href: '/about', className: '${selectedClass('About')}' },
+      { label: 'Contact', href: '/contact', className: '${selectedClass('Contact')}' },
+  ]}
+  initialSelected='Home'        
+/>`;
   }
 
   const navigationCode = getNavigationCode();
