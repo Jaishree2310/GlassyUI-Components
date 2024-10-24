@@ -243,10 +243,13 @@ git push origin my-feature-branch
 - We truly appreciate your incredible contributions to this project! Your dedication and hard work are vital to its continued growth and success. If you’ve found value in it, don’t forget to show your support by giving our repository a star! ⭐
 
 <div align="center">
+  <h2>Contributors</h2>
   <a href="https://github.com/Jaishree2310/GlassyUI-Components">
-    <img src="https://contrib.rocks/image?repo=Jaishree2310/GlassyUI-Components&&max=1000&&cachebust=1" />
+    <img src="https://contrib.rocks/image?repo=Jaishree2310/GlassyUI-Components&max=1000&cachebust=1" alt="Contributors" />
   </a>
+  <p>Thank you to all the contributors for your valuable contributions!</p>
 </div>
+
 
 ---
 ## License
