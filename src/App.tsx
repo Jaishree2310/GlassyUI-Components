@@ -1,5 +1,5 @@
+import React, { useState, useEffect } from 'react';
 import PricingDetailPage from './components/PricingDetailPage';
-import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import GlassyUILandingPage from './components/GlassyUILandingPage';
 import GlassyUIComponentsPage from './components/GlassyUIComponentsPage';
@@ -30,10 +30,41 @@ import PaginationDetails from './components/PaginationDetails';
 import TestimonialDetails from './components/TestimonialDetails';
 import Footer from './components/Footer';
 
+const ThemeToggle: React.FC = () => {
+  const [theme, setTheme] = useState(localStorage.getItem('theme') || 'light');
+
+  useEffect(() => {
+    if (theme === 'dark') {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+    localStorage.setItem('theme', theme);
+  }, [theme]);
+
+  const toggleTheme = () => {
+    setTheme(theme === 'light' ? 'dark' : 'light');
+  };
+
+  return (
+    <button
+      onClick={toggleTheme}
+      className="p-2 bg-gray-200 dark:bg-gray-800 text-black dark:text-white rounded"
+    >
+      {theme === 'light' ? 'Switch to Dark Mode' : 'Switch to Light Mode'}
+    </button>
+  );
+};
+
+
 const App: React.FC = () => {
   return (
     <Router>
       <Header />
+      {/* Theme Toggle Button */}
+       className="theme-toggle-container p-4"
+        <ThemeToggle />
+      
       <Routes>
         <Route path='/' element={<GlassyUILandingPage />} />
         <Route path='/components' element={<GlassyUIComponentsPage />} />
