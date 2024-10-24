@@ -254,7 +254,10 @@ git push origin my-feature-branch
 
 </div>
 <p>🌟 **So many talented contributors!** 🎉 Want to meet them all? Click <a href="https://github.com/Jaishree2310/GlassyUI-Components/graphs/contributors">here</a> to discover the amazing team! 👩‍💻👨‍💻</p>
+
+
 ---
+
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](./LICENSE) file for details.
