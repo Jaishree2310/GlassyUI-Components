@@ -244,26 +244,121 @@ git push origin my-feature-branch
 
 <div align="center">
   <h2>Contributors</h2>
-  <div style="display: flex; justify-content: center; flex-wrap: wrap; gap: 20px;">
-    <div style="text-align: center; border: 2px solid #ccc; border-radius: 10px; padding: 10px; width: 150px;">
-      <a href="https://github.com/Contributor1">
-        <img src="https://contrib.rocks/image?repo=Jaishree2310/GlassyUI-Components&max=1000&cachebust=1" alt="Contributor 1" style="width: 100%; border-radius: 5px;" />
+  <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; max-width: 1200px; margin: auto;">
+    <div style="text-align: center; border: 2px solid #ccc; border-radius: 10px; padding: 10px;">
+      <a href="https://github.com/Jaishree2310">
+        <img src="https://avatars.githubusercontent.com/u/1?v=4" alt="Jaishree2310" style="width: 100px; height: 100px; border-radius: 50%;" />
+        <p>Jaishree2310</p>
       </a>
-      <p>Contributor 1</p>
     </div>
-    <div style="text-align: center; border: 2px solid #ccc; border-radius: 10px; padding: 10px; width: 150px;">
-      <a href="https://github.com/Contributor2">
-        <img src="https://contrib.rocks/image?repo=Jaishree2310/GlassyUI-Components&max=1000&cachebust=1" alt="Contributor 2" style="width: 100%; border-radius: 5px;" />
+    <div style="text-align: center; border: 2px solid #ccc; border-radius: 10px; padding: 10px;">
+      <a href="https://github.com/Sawan-Kushwah">
+        <img src="https://avatars.githubusercontent.com/u/2?v=4" alt="Sawan-Kushwah" style="width: 100px; height: 100px; border-radius: 50%;" />
+        <p>Sawan-Kushwah</p>
       </a>
-      <p>Contributor 2</p>
     </div>
-    <div style="text-align: center; border: 2px solid #ccc; border-radius: 10px; padding: 10px; width: 150px;">
-      <a href="https://github.com/Contributor3">
-        <img src="https://contrib.rocks/image?repo=Jaishree2310/GlassyUI-Components&max=1000&cachebust=1" alt="Contributor 3" style="width: 100%; border-radius: 5px;" />
+    <div style="text-align: center; border: 2px solid #ccc; border-radius: 10px; padding: 10px;">
+      <a href="https://github.com/Gauravtb2253">
+        <img src="https://avatars.githubusercontent.com/u/3?v=4" alt="Gauravtb2253" style="width: 100px; height: 100px; border-radius: 50%;" />
+        <p>Gauravtb2253</p>
       </a>
-      <p>Contributor 3</p>
     </div>
-    <!-- Add more contributors as needed -->
+    <div style="text-align: center; border: 2px solid #ccc; border-radius: 10px; padding: 10px;">
+      <a href="https://github.com/alo7lika">
+        <img src="https://avatars.githubusercontent.com/u/4?v=4" alt="alo7lika" style="width: 100px; height: 100px; border-radius: 50%;" />
+        <p>alo7lika</p>
+      </a>
+    </div>
+    <div style="text-align: center; border: 2px solid #ccc; border-radius: 10px; padding: 10px;">
+      <a href="https://github.com/hritika2409">
+        <img src="https://avatars.githubusercontent.com/u/5?v=4" alt="hritika2409" style="width: 100px; height: 100px; border-radius: 50%;" />
+        <p>hritika2409</p>
+      </a>
+    </div>
+    <div style="text-align: center; border: 2px solid #ccc; border-radius: 10px; padding: 10px;">
+      <a href="https://github.com/AdityaInnovates">
+        <img src="https://avatars.githubusercontent.com/u/6?v=4" alt="AdityaInnovates" style="width: 100px; height: 100px; border-radius: 50%;" />
+        <p>AdityaInnovates</p>
+      </a>
+    </div>
+    <div style="text-align: center; border: 2px solid #ccc; border-radius: 10px; padding: 10px;">
+      <a href="https://github.com/neeru24">
+        <img src="https://avatars.githubusercontent.com/u/7?v=4" alt="neeru24" style="width: 100px; height: 100px; border-radius: 50%;" />
+        <p>neeru24</p>
+      </a>
+    </div>
+    <div style="text-align: center; border: 2px solid #ccc; border-radius: 10px; padding: 10px;">
+      <a href="https://github.com/haseebzaki-07">
+        <img src="https://avatars.githubusercontent.com/u/8?v=4" alt="haseebzaki-07" style="width: 100px; height: 100px; border-radius: 50%;" />
+        <p>haseebzaki-07</p>
+      </a>
+    </div>
+    <div style="text-align: center; border: 2px solid #ccc; border-radius: 10px; padding: 10px;">
+      <a href="https://github.com/gurliv21">
+        <img src="https://avatars.githubusercontent.com/u/9?v=4" alt="gurliv21" style="width: 100px; height: 100px; border-radius: 50%;" />
+        <p>gurliv21</p>
+      </a>
+    </div>
+    <div style="text-align: center; border: 2px solid #ccc; border-radius: 10px; padding: 10px;">
+      <a href="https://github.com/abhishekHegde2000">
+        <img src="https://avatars.githubusercontent.com/u/10?v=4" alt="abhishekHegde2000" style="width: 100px; height: 100px; border-radius: 50%;" />
+        <p>abhishekHegde2000</p>
+      </a>
+    </div>
+    <div style="text-align: center; border: 2px solid #ccc; border-radius: 10px; padding: 10px;">
+      <a href="https://github.com/NazTM">
+        <img src="https://avatars.githubusercontent.com/u/11?v=4" alt="NazTM" style="width: 100px; height: 100px; border-radius: 50%;" />
+        <p>NazTM</p>
+      </a>
+    </div>
+    <div style="text-align: center; border: 2px solid #ccc; border-radius: 10px; padding: 10px;">
+      <a href="https://github.com/kodeCraze">
+        <img src="https://avatars.githubusercontent.com/u/12?v=4" alt="kodeCraze" style="width: 100px; height: 100px; border-radius: 50%;" />
+        <p>kodeCraze</p>
+      </a>
+    </div>
+    <div style="text-align: center; border: 2px solid #ccc; border-radius: 10px; padding: 10px;">
+      <a href="https://github.com/masabinhok">
+        <img src="https://avatars.githubusercontent.com/u/13?v=4" alt="masabinhok" style="width: 100px; height: 100px; border-radius: 50%;" />
+        <p>masabinhok</p>
+      </a>
+    </div>
+    <div style="text-align: center; border: 2px solid #ccc; border-radius: 10px; padding: 10px;">
+      <a href="https://github.com/Ameerjafar">
+        <img src="https://avatars.githubusercontent.com/u/14?v=4" alt="Ameerjafar" style="width: 100px; height: 100px; border-radius: 50%;" />
+        <p>Ameerjafar</p>
+      </a>
+    </div>
+    <div style="text-align: center; border: 2px solid #ccc; border-radius: 10px; padding: 10px;">
+      <a href="https://github.com/devxMani">
+        <img src="https://avatars.githubusercontent.com/u/15?v=4" alt="devxMani" style="width: 100px; height: 100px; border-radius: 50%;" />
+        <p>devxMani</p>
+      </a>
+    </div>
+    <div style="text-align: center; border: 2px solid #ccc; border-radius: 10px; padding: 10px;">
+      <a href="https://github.com/ashish-um">
+        <img src="https://avatars.githubusercontent.com/u/16?v=4" alt="ashish-um" style="width: 100px; height: 100px; border-radius: 50%;" />
+        <p>ashish-um</p>
+      </a>
+    </div>
+    <div style="text-align: center; border: 2px solid #ccc; border-radius: 10px; padding: 10px;">
+      <a href="https://github.com/VAmanjain">
+        <img src="https://avatars.githubusercontent.com/u/17?v=4" alt="VAmanjain" style="width: 100px; height: 100px; border-radius: 50%;" />
+        <p>VAmanjain</p>
+      </a>
+    </div>
+    <div style="text-align: center; border: 2px solid #ccc; border-radius: 10px; padding: 10px;">
+      <a href="https://github.com/lakshmirajvagu">
+        <img src="https://avatars.githubusercontent.com/u/18?v=4" alt="lakshmirajvagu" style="width: 100px; height: 100px; border-radius: 50%;" />
+        <p>lakshmirajvagu</p>
+      </a>
+    </div>
+    <div style="text-align: center; border: 2px solid #ccc; border-radius: 10px; padding: 10px;">
+      <a href="https://github.com/knighthinata">
+        <img src="https://avatars.githubusercontent.com/u/19?v=4" alt="knighthinata" style="width: 100px; height: 100px; border-radius: 50%;" />
+        <p>knighthinata</p>
+      </a>
+    </div>
   </div>
 </div>
 
