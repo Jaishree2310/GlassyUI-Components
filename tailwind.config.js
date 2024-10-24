@@ -7,6 +7,7 @@ module.exports = {
       backdropFilter: {
         'none': 'none',
         'blur': 'blur(20px)',
+        'darkmode' : 'class',
       },
       animation: {
         blob: "blob 7s infinite",
@@ -27,9 +28,9 @@ module.exports = {
           },
         },
       },
-      backgroundImage: {
+      /*backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-      },
+      },*/
     },
   },
   variants: {
@@ -47,9 +48,9 @@ module.exports = {
         '.backdrop-blur-2xl': {
           'backdrop-filter': 'blur(40px)',
         },
-        '.bg-opacity-30': {
+        /*'.bg-opacity-30': {
           'background-opacity': '0.3',
-        },
+        },*/
       }
       addUtilities(newUtilities, ['responsive', 'hover'])
     },
