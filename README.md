@@ -253,7 +253,9 @@ git push origin my-feature-branch
 | <img src="https://github.com/VAmanjain.png" alt="Va Manjain" width="80"/> <br> <p align="center">[Va Manjain](https://github.com/VAmanjain) 👩‍💻</p> | <img src="https://github.com/lakshmirajvagu.png" alt="Lakshmi Rajvagu" width="80"/> <br> <p align="center">[Lakshmi Rajvagu](https://github.com/lakshmirajvagu) 👩‍💻</p> | <img src="https://github.com/knighthinata.png" alt="Knight Hinata" width="80"/> <br> <p align="center">[Knight Hinata](https://github.com/knighthinata) 👨‍💻</p> | <img src="https://github.com/ADeshmukh80.png" alt="ADeshmukh" width="80"/> <br> <p align="center">[ADeshmukh](https://github.com/ADeshmukh80) 👨‍💻</p> |
 
 </div>
-<p>🌟 **So many talented contributors!** 🎉 Want to meet them all? Click <a href="https://github.com/Jaishree2310/GlassyUI-Components/graphs/contributors">here</a> to discover the amazing team! 👩‍💻👨‍💻</p>
+
+🌟 **So many talented contributors!** 🎉 Want to meet them all? Click [here](https://github.com/Jaishree2310/GlassyUI-Components/graphs/contributors) to discover the amazing team! 👩‍💻👨‍💻
+
 
 
 ---
