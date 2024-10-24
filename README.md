@@ -244,11 +244,29 @@ git push origin my-feature-branch
 
 <div align="center">
   <h2>Contributors</h2>
-  <a href="https://github.com/Jaishree2310/GlassyUI-Components">
-    <img src="https://contrib.rocks/image?repo=Jaishree2310/GlassyUI-Components&max=1000&cachebust=1" alt="Contributors" />
-  </a>
-  <p>Thank you to all the contributors for your valuable contributions!</p>
+  <div style="display: flex; justify-content: center; flex-wrap: wrap; gap: 20px;">
+    <div style="text-align: center; border: 2px solid #ccc; border-radius: 10px; padding: 10px; width: 150px;">
+      <a href="https://github.com/Contributor1">
+        <img src="https://contrib.rocks/image?repo=Jaishree2310/GlassyUI-Components&max=1000&cachebust=1" alt="Contributor 1" style="width: 100%; border-radius: 5px;" />
+      </a>
+      <p>Contributor 1</p>
+    </div>
+    <div style="text-align: center; border: 2px solid #ccc; border-radius: 10px; padding: 10px; width: 150px;">
+      <a href="https://github.com/Contributor2">
+        <img src="https://contrib.rocks/image?repo=Jaishree2310/GlassyUI-Components&max=1000&cachebust=1" alt="Contributor 2" style="width: 100%; border-radius: 5px;" />
+      </a>
+      <p>Contributor 2</p>
+    </div>
+    <div style="text-align: center; border: 2px solid #ccc; border-radius: 10px; padding: 10px; width: 150px;">
+      <a href="https://github.com/Contributor3">
+        <img src="https://contrib.rocks/image?repo=Jaishree2310/GlassyUI-Components&max=1000&cachebust=1" alt="Contributor 3" style="width: 100%; border-radius: 5px;" />
+      </a>
+      <p>Contributor 3</p>
+    </div>
+    <!-- Add more contributors as needed -->
+  </div>
 </div>
+
 
 
 ---
