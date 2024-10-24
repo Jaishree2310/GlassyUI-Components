@@ -14,6 +14,7 @@
     "framer-motion": "^11.11.9",
     "gsap": "^3.12.5",
     "lucide-react": "^0.408.0",
+    "my-typescript-app": "file:",
     "pixel-retroui": "^1.0.61",
     "react": "^18.3.1",
     "react-components": "^0.5.1",
@@ -24,7 +25,8 @@
     "react-scripts": "5.0.1",
     "styled-components": "^6.1.13",
     "typescript": "^4.9.5",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "zod": "^3.23.8"
   },
   "scripts": {
     "predeploy": "npm run build",

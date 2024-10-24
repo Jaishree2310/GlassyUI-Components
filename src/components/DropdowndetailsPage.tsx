@@ -159,6 +159,41 @@ const DropdownMenuDetailsPage: React.FC = () => {
             <CopyButton text={dropdownExampleCode} codeKey='dropdownExample' />
           </div>
         </div>
+
+        {/* Props */}
+        <section
+          className={`${getGlassyClasses()} p-6 mb-14 text-white relative z-10`}
+        >
+          <h2 className='text-3xl font-bold mb-4 text-gray-100'>Props</h2>
+          <div className='overflow-x-auto'>
+            <table className='w-full'>
+              <thead>
+                <tr className='bg-white bg-opacity-20'>
+                  <th className='text-left p-2 text-gray-100'>Prop</th>
+                  <th className='text-left p-2 text-gray-100'>Type</th>
+                  <th className='text-left p-2 text-gray-100'>Default</th>
+                  <th className='text-left p-2 text-gray-100'>Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td className='p-2 text-gray-200'>options</td>
+                  <td className='p-2 text-gray-200'>array</td>
+                  <td className='p-2 text-gray-200'>[ ]</td>
+                  <td className='p-2 text-gray-200'>Items in the dropdown</td>
+                </tr>
+                <tr className='bg-white bg-opacity-10'>
+                  <td className='p-2 text-gray-200'>onSelect</td>
+                  <td className='p-2 text-gray-200'>function</td>
+                  <td className='p-2 text-gray-200'>-</td>
+                  <td className='p-2 text-gray-200'>
+                    Task to do after selecting the option
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
       </div>
     </div>
   );
