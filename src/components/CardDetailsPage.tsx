@@ -228,32 +228,30 @@ function Example() {
           <table className='w-full'>
             <thead>
               <tr className='bg-white bg-opacity-20'>
-                <th className='text-left p-2 text-gray-100'>Prop</th>
-                <th className='text-left p-2 text-gray-100'>Type</th>
-                <th className='text-left p-2 text-gray-100'>Default</th>
-                <th className='text-left p-2 text-gray-100'>Description</th>
+                <th className='text-left p-2'>Prop</th>
+                <th className='text-left p-2'>Type</th>
+                <th className='text-left p-2'>Default</th>
+                <th className='text-left p-2'>Description</th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <td className='p-2 text-gray-200'>className</td>
-                <td className='p-2 text-gray-200'>string</td>
-                <td className='p-2 text-gray-200'>''</td>
-                <td className='p-2 text-gray-200'>Additional CSS classes</td>
+                <td className='p-2'>className</td>
+                <td className='p-2'>string</td>
+                <td className='p-2'>''</td>
+                <td className='p-2'>Additional CSS classes</td>
               </tr>
               <tr className='bg-white bg-opacity-10'>
-                <td className='p-2 text-gray-200'>style</td>
-                <td className='p-2 text-gray-200'>object</td>
-                <td className='p-2 text-gray-200'>{'{}'}</td>
-                <td className='p-2 text-gray-200'>
-                  Inline styles for the card
-                </td>
+                <td className='p-2'>style</td>
+                <td className='p-2'>object</td>
+                <td className='p-2'>{'{}'}</td>
+                <td className='p-2'>Inline styles for the card</td>
               </tr>
               <tr>
-                <td className='p-2 text-gray-200'>children</td>
-                <td className='p-2 text-gray-200'>ReactNode</td>
-                <td className='p-2 text-gray-200'>-</td>
-                <td className='p-2 text-gray-200'>Card content</td>
+                <td className='p-2'>children</td>
+                <td className='p-2'>ReactNode</td>
+                <td className='p-2'>-</td>
+                <td className='p-2'>Card content</td>
               </tr>
             </tbody>
           </table>
