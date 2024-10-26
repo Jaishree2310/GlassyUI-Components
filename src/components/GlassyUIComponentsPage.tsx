@@ -15,10 +15,16 @@ import {
   ThumbsUpIcon,
   Contact,
   Search,
-  ShoppingCart,
-  GalleryThumbnails,
-  AlignStartVertical,
-} from 'lucide-react';
+
+
+   Calendar,
+   AlignStartVertical,
+
+   ShoppingCart,
+    GalleryThumbnails,
+  } from 'lucide-react';
+
+
 
 import Accordion from './Accordion';
 
@@ -235,10 +241,25 @@ const GlassyUIComponentsPage: React.FC = () => {
       onClick: () => navigate('/generator'),
     },
     {
+
+
+      title: 'Calendar',
+      description: 'Calendar component with glassmorphic styling.',
+      icon: <Calendar size={24} />,
+      onClick: () => navigate('/calendar-details'),
+    },
+    {
+      title: 'Checkbox',
+      description: 'Checkbox component with glassmorphic styling.',
+      icon: <Layout size={24} />,
+      onClick: () => navigate('/checkbox'),
+    },
+    {
       title: 'Spinner',
       description: 'Design and customize CSS spinners for your projects.',
       icon: <HiOutlineWrenchScrewdriver size={24} />,
       onClick: () => navigate('/spinner'),
+
     },
   ];
 
@@ -328,6 +349,7 @@ const GlassyUIComponentsPage: React.FC = () => {
             />
             <Search className='mx-4 cursor-pointer text-pink-300 hover:text-pink-400 transition-all duration-300' />
           </div>
+
         </header>
 
         <main>
@@ -393,11 +415,13 @@ const GlassyUIComponentsPage: React.FC = () => {
             </span>
             <button
               onClick={nextPage}
-              className={`px-4 py-2 mx-2 rounded-lg ${
-                currentPage === totalPages
-                  ? 'opacity-50 cursor-not-allowed'
-                  : 'hover:bg-white/20'
-              }`}
+
+              className={`px-4 py-2 mx-2 rounded-lg ${currentPage === totalPages
+                ? 'opacity-50 cursor-not-allowed'
+                : 'hover:bg-white/20'
+                }`}
+
+
               disabled={currentPage === totalPages}
             >
               Next
