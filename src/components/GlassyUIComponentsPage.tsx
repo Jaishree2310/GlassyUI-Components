@@ -15,10 +15,12 @@ import {
   ThumbsUpIcon,
   Contact,
   Search,
-  ShoppingCart,
+  Calendar,
   AlignStartVertical,
-  GalleryThumbnails,
-} from 'lucide-react';
+  ShoppingCart,
+    GalleryThumbnails,
+  } from 'lucide-react';
+
 
 import Accordion from './Accordion';
 import { HiOutlineWrenchScrewdriver } from 'react-icons/hi2';
@@ -236,6 +238,20 @@ const GlassyUIComponentsPage: React.FC = () => {
       onClick: () => navigate('/generator'),
     },
     {
+
+
+      title: 'Calendar',
+      description: 'Calendar component with glassmorphic styling.',
+      icon: <Calendar size={24} />,
+      onClick: () => navigate('/calendar-details'),
+    },
+    {
+      title: 'Checkbox',
+      description: 'Checkbox component with glassmorphic styling.',
+      icon: <Layout size={24} />,
+      onClick: () => navigate('/checkbox'),
+    },
+    {
       title: 'Spinner',
       description: 'Design and customize CSS spinners for your projects.',
       icon: <HiOutlineWrenchScrewdriver size={24} />,
@@ -320,7 +336,6 @@ const GlassyUIComponentsPage: React.FC = () => {
           >
             GlassyUI
           </div>
-
           <div className='flex items-center mt-[0.5rem] /bg-gradient-to-r bg-slate-800 text-white w-2/5 rounded-lg shadow-lg overflow-hidden'>
             <input
               className='w-full px-6 py-3 bg-transparent text-white outline-none /focus:ring-2 /focus:ring-gray-500 transition-all duration-300'
