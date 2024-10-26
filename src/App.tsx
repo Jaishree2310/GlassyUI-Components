@@ -1,3 +1,7 @@
+ upd-feature-branch
+import React, { useState, useEffect } from 'react';
+import PricingDetailPage from './components/PricingDetailPage';
+
 import React from 'react';
 
 // import {
@@ -44,20 +48,55 @@ import ContactUsDetailsPage from './components/ContactUsDetailsPage';
 import PaginationDetails from './components/PaginationDetails';
 import TestimonialDetails from './components/TestimonialDetails';
 import Footer from './components/Footer';
-import SpinnerDetailsPage from './components/SpinnerDetailsPage';
-import StatisticDetails from './components/StatisticDetails';
+import CalendarDetails from './components/CalendarDetails';
+import Checkbox from './components/Checkbox';
+import Statistic from './components/StatisticDetails';
 import GalleryDetailsPage from './components/GalleryDetailsPage';
+import Checkbox from './components/Checkbox';
+import SpinnerDetailsPage from './components/SpinnerDetailsPage';
+
 import ProductCardDetailsPage from './components/ProductCardDetailsPage';
+import Statistic from './components/StatisticDetails';
+import GalleryDetailsPage from './components/GalleryDetailsPage';
 import Checkbox from './components/Checkbox';
  
  import SpinnerDetailsPage from './components/SpinnerDetailsPage';
 
+const ThemeToggle: React.FC = () => {
+  const [theme, setTheme] = useState(localStorage.getItem('theme') || 'light');
+
+  useEffect(() => {
+    if (theme === 'dark') {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+    localStorage.setItem('theme', theme);
+  }, [theme]);
+
+  const toggleTheme = () => {
+    setTheme(theme === 'light' ? 'dark' : 'light');
+  };
+
+  return (
+    <button
+      onClick={toggleTheme}
+      className="p-2 bg-gray-200 dark:bg-gray-800 text-black dark:text-white rounded"
+    >
+      {theme === 'light' ? 'Switch to Dark Mode' : 'Switch to Light Mode'}
+    </button>
+  );
+};
+
 
  const App: React.FC = () => {
+
   return (
     <Router>
       <Header />
+      <ThemeToggle/>
       <ScrollProgressBar /> {/* Add the ScrollProgressBar component here */}
+ main
       <Routes>
         <Route path='/' element={<GlassyUILandingPage />} />
         <Route path='/components' element={<GlassyUIComponentsPage />} />
@@ -91,7 +130,11 @@ import Checkbox from './components/Checkbox';
         <Route path='/testimonial-details' element={<TestimonialDetails />} />
 
         <Route path='/statistic-details' element={<StatisticDetails />} />
-        <Route path='/gallery-details' element={<GalleryDetailsPage />} />
+
+        <Route path='/calendar-details' element={<CalendarDetails />} />
+ 
+
+        <Route path='/spinner' element={<SpinnerDetailsPage />} />
 
            <Route path='/product-details' element={<ProductCardDetailsPage />} />
           <Route path='/gallery-details' element={<GalleryDetailsPage />} />
@@ -101,6 +144,7 @@ import Checkbox from './components/Checkbox';
          <Route path='/checkbox' element={<Checkbox />} />
  
          <Route path='/spinner' element={<SpinnerDetailsPage />} />
+
 
          <Route path='*' element={<NotFoundPage />} />
       </Routes>
