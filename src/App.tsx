@@ -1,9 +1,4 @@
- upd-feature-branch
 import React, { useState, useEffect } from 'react';
-import PricingDetailPage from './components/PricingDetailPage';
-
-import React from 'react';
-
 import {
   BrowserRouter as Router,
   Route,
@@ -11,11 +6,10 @@ import {
   useLocation,
 } from 'react-router-dom';
 
- main
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import ScrollProgressBar from './components/ScrollProgress'; // Import your ScrollProgressBar component
+import Header from './components/Header';
+import Footer from './components/Footer';
 import PricingDetailPage from './components/PricingDetailPage';
-
 import GlassyUILandingPage from './components/GlassyUILandingPage';
 import GlassyUIComponentsPage from './components/GlassyUIComponentsPage';
 import ButtonDetailsPage from './components/ButtonDetailsPage';
@@ -34,7 +28,6 @@ import SliderDetailsPage from './components/SliderDetailsPage';
 import ContributorsPage from './components/ContributorsPage';
 import DonationPage from './components/DonationPage';
 import AboutUsPage from './components/AboutUsPage';
-import Header from './components/Header';
 import BackToTopDetailsPage from './components/BackToTopDetailsPage';
 import DropdowndetailsPage from './components/DropdowndetailsPage';
 import AuthenticationCard from './components/AuthenticationCards';
@@ -43,25 +36,15 @@ import AccordionDetails from './components/AccordionDetails';
 import ContactUsDetailsPage from './components/ContactUsDetailsPage';
 import PaginationDetails from './components/PaginationDetails';
 import TestimonialDetails from './components/TestimonialDetails';
-import Footer from './components/Footer';
-
-
-
+import LoginPage from './components/LoginPage'; // Import Login component
+import SignupPage from './components/SignupPage'; // Import Signup component
 import CalendarDetails from './components/CalendarDetails';
 import Checkbox from './components/Checkbox';
 import Statistic from './components/StatisticDetails';
 import GalleryDetailsPage from './components/GalleryDetailsPage';
-import Checkbox from './components/Checkbox';
 import SpinnerDetailsPage from './components/SpinnerDetailsPage';
-
 import ProductCardDetailsPage from './components/ProductCardDetailsPage';
-import Statistic from './components/StatisticDetails';
-import GalleryDetailsPage from './components/GalleryDetailsPage';
-import Checkbox from './components/Checkbox';
- 
- import SpinnerDetailsPage from './components/SpinnerDetailsPage';
 
- upd-feature-branch
 const ThemeToggle: React.FC = () => {
   const [theme, setTheme] = useState(localStorage.getItem('theme') || 'light');
 
@@ -88,39 +71,29 @@ const ThemeToggle: React.FC = () => {
   );
 };
 
-
 const App: React.FC = () => {
   return (
     <Router>
       <Header />
-      {/* Theme Toggle Button */}
-       className="theme-toggle-container p-4"
+      <div className="theme-toggle-container p-4">
         <ThemeToggle />
-      
-
- const App: React.FC = () => {
-
-  return (
-    <Router>
-      <Header />
+      </div>
       <ScrollProgressBar /> {/* Add the ScrollProgressBar component here */}
- main
       <Routes>
         <Route path='/' element={<GlassyUILandingPage />} />
         <Route path='/components' element={<GlassyUIComponentsPage />} />
+        <Route path='/login' element={<LoginPage />} />
+        <Route path='/signup' element={<SignupPage />} />
         <Route path='/toast-page' element={<ToastPage />} />
         <Route path='/button-details' element={<ButtonDetailsPage />} />
         <Route path='/card-details' element={<CardDetailsPage />} />
-        <Route
-          path='/progress-bar-details'
-          element={<ProgressBarDetailPage />}
-        />
+        <Route path='/progress-bar-details' element={<ProgressBarDetailPage />} />
         <Route path='/pricing-details' element={<PricingDetailPage />} />
         <Route path='/popup-details' element={<PopupDetailPage />} />
         <Route path='/input-details' element={<InputDetailPage />} />
         <Route path='/textarea-details' element={<TextareaDetailPage />} />
         <Route path='/tooltip-details' element={<TooltipDetailsPage />} />
-        <Route path='/speed-dial-details' element={<SpeedDialDetailsPage />} />
+        <Route path='/speed-dial -details' element={<SpeedDialDetailsPage />} />
         <Route path='/modal-details' element={<ModalDetailsPage />} />
         <Route path='/navigation-details' element={<NavigationDetailsPage />} />
         <Route path='/generator' element={<GlassMorphismGenrator />} />
@@ -130,51 +103,28 @@ const App: React.FC = () => {
         <Route path='/authentication-card' element={<AuthenticationCard />} />
         <Route path='/accordion-details' element={<AccordionDetails />} />
         <Route path='/contributors' element={<ContributorsPage />} />
-
         <Route path='/donate' element={<DonationPage />} />
         <Route path='/about' element={<AboutUsPage />} />
         <Route path='/contact-details' element={<ContactUsDetailsPage />} />
         <Route path='/pagination-details' element={<PaginationDetails />} />
         <Route path='/testimonial-details' element={<TestimonialDetails />} />
-
-
         <Route path='/calendar-details' element={<CalendarDetails />} />
         <Route path='/checkbox' element={<Checkbox />} />
-
-          <Route path='/statistic-details' element={<Statistic />} />
-          <Route path='/gallery-details' element={<GalleryDetailsPage />} />
-
-
-  
-        <Route path='/checkbox' element={<Checkbox />} />
- 
-
+        <Route path='/statistic-details' element={<Statistic />} />
+        <Route path='/gallery-details' element={<GalleryDetailsPage />} />
         <Route path='/spinner' element={<SpinnerDetailsPage />} />
-
-           <Route path='/product-details' element={<ProductCardDetailsPage />} />
-          <Route path='/gallery-details' element={<GalleryDetailsPage />} />
- 
- 
-           <Route path='/statistic-details' element={<Statistic />} />
-          <Route path='/gallery-details' element={<GalleryDetailsPage />} />
-
-   
-         <Route path='/checkbox' element={<Checkbox />} />
- 
-         <Route path='/spinner' element={<SpinnerDetailsPage />} />
-
-
-         <Route path='*' element={<NotFoundPage />} />
+        <Route path='/product-details' element={<ProductCardDetailsPage />} />
+        <Route path='*' element={<NotFoundPage />} />
       </Routes>
-
       <ConditionalFooter />
-
     </Router>
   );
 };
+
 const ConditionalFooter: React.FC = () => {
   const location = useLocation();
 
   return location.pathname === '/' ? <Footer /> : null;
 };
+
 export default App;
