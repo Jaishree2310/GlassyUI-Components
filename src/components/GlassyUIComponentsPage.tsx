@@ -15,7 +15,6 @@ import {
   ThumbsUpIcon,
   Contact,
   Search,
-
    Calendar,
    AlignStartVertical,
 
@@ -24,7 +23,9 @@ import {
   } from 'lucide-react';
 
 
+
 import Accordion from './Accordion';
+import { HiOutlineWrenchScrewdriver } from 'react-icons/hi2';
 
 // Define the ComponentCardProps interface
 
@@ -39,7 +40,6 @@ interface ComponentCardProps {
 const getGlassyClasses = () => {
   return 'backdrop-filter backdrop-blur-md bg-white/10 border border-white/20 rounded-2xl shadow-lg transition-all duration-300';
 };
-
 
 const ComponentCard: React.FC<ComponentCardProps> = ({
   title,
@@ -81,14 +81,12 @@ const GlassyUIComponentsPage: React.FC = () => {
   const [searchFilter, setSearchFilter] = useState<string>('');
   const componentsPerPage = 9;
 
-
   const scrollToNextSection = () => {
     window.scrollBy({
       top: window.innerHeight,
       behavior: 'smooth',
     });
   };
-
 
   const componentsData = [
     {
@@ -217,25 +215,25 @@ const GlassyUIComponentsPage: React.FC = () => {
       onClick: () => navigate('/contact-details'),
     },
     {
-        title: 'E-Commerce Product Card',
+
+      title: 'E-Commerce Product Card',
       description: 'E-Commerce Product Card component with glassmorphic styling.',
       icon: <ShoppingCart size={24} />,
       onClick: () => navigate('/product-details'),
     },
     {
-      
- 
-       title: 'Statistic',
+      title: 'Statistic',
       description: 'Statistic component with glassmorphic styling.',
       icon: <AlignStartVertical size={24} />,
       onClick: () => navigate('/statistic-details'),
     },
     {
-       title: 'Gallery',
-       description: 'Gallery component with glassmorphic styling.',
+
+      title: 'Gallery',
+      description: 'Gallery component with glassmorphic styling.',
       icon: <GalleryThumbnails size={24} />,
       onClick: () => navigate('/gallery-details'),
-     },
+    },
     {
       title: 'Glassmorphism Effect Generator',
       description: 'Create stunning Glassmorphic effects with ease.',
@@ -261,10 +259,6 @@ const GlassyUIComponentsPage: React.FC = () => {
       description: 'Design and customize CSS spinners for your projects.',
       icon: <HiOutlineWrenchScrewdriver size={24} />,
       onClick: () => navigate('/spinner'),
-
-
-    },
-  ];
 
   const [filteredData, setFilteredData] = useState(componentsData);
 
@@ -345,7 +339,6 @@ const GlassyUIComponentsPage: React.FC = () => {
           </div>
 
 
-
           <div className='flex items-center bg-gradient-to-r from-slate-800 via-slate-700 to-slate-900 text-white w-2/5 rounded-lg shadow-lg overflow-hidden'>
             <input
               className='w-full px-6 py-3 bg-transparent text-white outline-none focus:ring-2 focus:ring-gray-500 transition-all duration-300'
@@ -406,11 +399,11 @@ const GlassyUIComponentsPage: React.FC = () => {
           <div className='flex justify-between items-center mt-8'>
             <button
               onClick={prevPage}
-              className={`px-4 py-2 mx-2 rounded-lg ${currentPage === 1
-                ? 'opacity-50 cursor-not-allowed'
-                : 'hover:bg-white/20'
-                }`}
-
+              className={`px-4 py-2 mx-2 rounded-lg ${
+                currentPage === 1
+                  ? 'opacity-50 cursor-not-allowed'
+                  : 'hover:bg-white/20'
+              }`}
               disabled={currentPage === 1}
             >
               Previous
@@ -420,11 +413,11 @@ const GlassyUIComponentsPage: React.FC = () => {
             </span>
             <button
               onClick={nextPage}
-              className={`px-4 py-2 mx-2 rounded-lg ${currentPage === totalPages
-                ? 'opacity-50 cursor-not-allowed'
-                : 'hover:bg-white/20'
-                }`}
-
+              className={`px-4 py-2 mx-2 rounded-lg ${
+                currentPage === totalPages
+                  ? 'opacity-50 cursor-not-allowed'
+                  : 'hover:bg-white/20'
+              }`}
               disabled={currentPage === totalPages}
             >
               Next

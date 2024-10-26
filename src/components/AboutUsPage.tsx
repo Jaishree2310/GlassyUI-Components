@@ -184,7 +184,7 @@ const AboutUsPage: React.FC = () => {
       style={{
         background: `url('/path/to/A_detailed_dark_blue_grid_background_with_square_b.png') no-repeat center center fixed`, // Set the background image
         backgroundSize: 'cover', // Ensure the background image covers the entire screen
-        minHeight: '100vh', // Set the minimum height of the page to the full viewport height
+        maxHeight: '10%', // Set the minimum height of the page to the full viewport height
         padding: '20px',
       }}
     >
