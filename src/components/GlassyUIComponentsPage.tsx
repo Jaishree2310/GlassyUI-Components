@@ -18,7 +18,9 @@ import {
   ShoppingCart,
   GalleryThumbnails,
   AlignStartVertical,
-} from 'lucide-react';
+  Calendar,
+} from 'lucide-react'; // Consolidated imports
+
 import Accordion from './Accordion';
 import axios from 'axios'; // Make sure you import axios
 
@@ -31,10 +33,10 @@ interface ComponentCardProps {
   status?: string; // Optional status prop
   children?: React.ReactNode; // Include the children prop
 }
+
 const getGlassyClasses = () => {
   return 'backdrop-filter backdrop-blur-md bg-white/10 border border-white/20 rounded-2xl shadow-lg transition-all duration-300';
 };
-
 
 const ComponentCard: React.FC<ComponentCardProps> = ({
   title,
@@ -76,7 +78,6 @@ const GlassyUIComponentsPage: React.FC = () => {
   const [searchFilter, setSearchFilter] = useState<string>('');
   const componentsPerPage = 9;
 
-
   const scrollToNextSection = () => {
     window.scrollBy({
       top: window.innerHeight,
@@ -84,25 +85,22 @@ const GlassyUIComponentsPage: React.FC = () => {
     });
   };
 
-
   const componentsData = [
     {
       title: 'Login',
-      description: 'User login component.',
+      description: 'User  login component.',
       icon: null,
       onClick: () => navigate('/login'),
     },
     {
       title: 'Sign Up',
-      description: 'User registration component.',
+      description: 'User  registration component.',
       icon: null,
       onClick: () => navigate('/signup'),
     },
-
     {
       title: 'Toast',
-      description:
-        'Glassmorphic Toast Component. Click the button below to try it out!',
+      description: 'Glassmorphic Toast Component. Click the button below to try it out!',
       icon: <MessageSquare size={24} />,
       onClick: () => navigate('/toast-page/'),
     },
@@ -126,36 +124,45 @@ const GlassyUIComponentsPage: React.FC = () => {
       onClick: () => navigate('/contact-details'),
     },
     {
-        title: 'E-Commerce Product Card',
+      title: 'E-Commerce Product Card',
       description: 'E-Commerce Product Card component with glassmorphic styling.',
       icon: <ShoppingCart size={24} />,
       onClick: () => navigate('/product-details'),
     },
     {
-      
- 
-       title: 'Statistic',
+      title: 'Statistic',
       description: 'Statistic component with glassmorphic styling.',
       icon: <AlignStartVertical size={24} />,
       onClick: () => navigate('/statistic-details'),
     },
     {
-       title: 'Gallery',
-       description: 'Gallery component with glassmorphic styling.',
+      title: 'Gallery',
+      description: 'Gallery component with glassmorphic styling.',
       icon: <GalleryThumbnails size={24} />,
       onClick: () => navigate('/gallery-details'),
-     },
+    },
     {
       title: 'Glassmorphism Effect Generator',
       description: 'Create stunning Glassmorphic effects with ease.',
       onClick: () => navigate('/generator'),
     },
     {
+      title: 'Calendar',
+      description: 'Calendar component with glassmorphic styling.',
+      icon: <Calendar size={24} />,
+      onClick: () => navigate('/calendar-details'),
+    },
+    {
+      title: 'Checkbox',
+      description: 'Checkbox component with glassmorphic styling.',
+      icon: <Layout size={24} />,
+      onClick: () => navigate('/checkbox'),
+    },
+    {
       title: 'Spinner',
       description: 'Design and customize CSS spinners for your projects.',
       icon: <HiOutlineWrenchScrewdriver size={24} />,
       onClick: () => navigate('/spinner'),
-
     },
   ];
 
@@ -194,38 +201,6 @@ const GlassyUIComponentsPage: React.FC = () => {
     return 'backdrop-filter backdrop-blur-md bg-white/10 border border-white/20 rounded-2xl shadow-lg transition-all duration-300';
   };
 
-  const ComponentCard: React.FC<ComponentCardProps> = ({
-    title,
-    description,
-    icon,
-    onClick,
-    status,
-    children,
-  }) => (
-    <div
-      className={`${getGlassyClasses()} p-6 flex flex-col h-full cursor-pointer group transition-all duration-300 hover:bg-white/20 hover:scale-105 hover:shadow-xl`}
-      onClick={onClick}
-    >
-      <div className='flex items-center mb-4'>
-        <div className='p-2 bg-white/20 rounded-lg mr-4'>{icon}</div>
-        <h3 className='text-xl font-bold'>{title}</h3>
-        {status && (
-          <span className='ml-2 px-2 py-1 bg-green-200 text-green-700 text-xs font-medium rounded'>
-            {status}
-          </span>
-        )}
-      </div>
-      <p className='text-sm opacity-80 mb-4 flex-grow'>{description}</p>
-      {children}
-      <div className='flex items-center text-sm font-medium text-pink-200 mt-4'>
-        <div className='flex justify-center items-center'>
-          <span>Learn more</span>
-          <ArrowUp className='ml-2 w-6 pt-1 group-hover:translate-x-1 transition-transform duration-300' />
-        </div>
-      </div>
-    </div>
-  );
-
   return (
     <div className='min-h-screen font-sans bg-gradient-to-br from-gray-800 via-gray-900 to-black text-white'>
       <BackToTopButton />
@@ -258,7 +233,7 @@ const GlassyUIComponentsPage: React.FC = () => {
           </p>
 
           <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8'>
-            {currentComponents.map((component, index) => (
+            {current Components.map((component, index) => (
               <ComponentCard
                 key={index}
                 title={component.title}
@@ -275,11 +250,11 @@ const GlassyUIComponentsPage: React.FC = () => {
                       404
                     </h1>
                     <p className='mb-4 text-3xl tracking-tight font-bold text-gray-900 md:text-4xl dark:text-white'>
-                      Something&apos;s missing.
+                      Something's missing.
                     </p>
                     <p className='mb-4 text-lg font-light text-gray-500 dark:text-gray-400'>
-                      Sorry, we can&apos;t find that component. You&apos;ll find
-                      lots to explore on the home page.
+                      Sorry, we can't find that component. You'll find lots to
+                      explore on the home page.
                     </p>
                     <button
                       className='mt-6 px-4 py-2 bg-blue-600 hover:bg-blue-500 text-white rounded-lg shadow-md transition-all duration-300'
@@ -296,12 +271,10 @@ const GlassyUIComponentsPage: React.FC = () => {
           <div className='flex justify-between items-center mt-8'>
             <button
               onClick={prevPage}
-
               className={`bg-pink-500 text-white px-4 py-2 mx-2 rounded-md rounded-lg ${currentPage === 1
                 ? 'opacity-50 cursor-not-allowed'
                 : 'hover:bg-white/20'
                 }`}
-
               disabled={currentPage === 1}
             >
               Previous
@@ -311,7 +284,7 @@ const GlassyUIComponentsPage: React.FC = () => {
             </span>
             <button
               onClick={nextPage}
-               className={`bg-pink-500 text-white px-4 py-2 mx-2 rounded-md rounded-lg ${currentPage === totalPages
+              className={`bg-pink-500 text-white px-4 py-2 mx-2 rounded-md rounded-lg ${currentPage === totalPages
                 ? 'opacity-50 cursor-not-allowed'
                 : 'hover:bg-white/20'
                 }`}
