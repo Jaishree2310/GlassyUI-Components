@@ -271,7 +271,7 @@ This project is licensed under the MIT License - see the [LICENSE](./LICENSE) fi
 If you enjoy using GlassyUI-Components and find it helpful, **please give it a star**! Your support encourages further development and improvement.
 
 
-## 🌐 Connect with Us
+## 🌐 Contact with Me
 
 <p align="center">
   <a href="mailto:jaishrees23102001@gmail.com">
@@ -294,6 +294,6 @@ If you enjoy using GlassyUI-Components and find it helpful, **please give it a s
 ---
 
 <p align="center">
-  Thank you for connecting with us! 💬
+  Thank you for connecting with me! 💬
 </p>
 
