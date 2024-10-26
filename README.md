@@ -4,6 +4,30 @@
 
 Welcome to **GlassyUI-Components**! This open-source library features stunning React components designed with a captivating glassmorphism effect, perfect for giving your web applications a modern and sleek design.
 
+
+## 📚 Table of Contents
+
+- [Project Overview](#project-overview)
+- [Features](#Features)
+- [Components](#components)
+- [Tech Stack](#tech-stack)
+- [Website Preview](#WebsitePreview)
+- [Prerequisites](#Prerequisites)
+- [Installation with docker](#Installationwithdocker)
+- [Installation without docker](#Installationwithoutdocker)
+- [Changelog](#Changelog)
+- [Usage](#Usage)
+- [Future Enhancements / Roadmap](#future-enhancements--roadmap)
+- [Contributing](#contributing)
+- [Contribution Rule](#ContributionRule)
+- [Code of Conduct](#code-of-conduct)
+- [Our Contributors](#our-contributors)
+
+## Project Overview
+
+This open-source library features stunning React components designed with a captivating glassmorphism effect, perfect for giving your web applications a modern and sleek design.
+
+
 <img src="https://raw.githubusercontent.com/alo7lika/GlassyUI-Components/refs/heads/main/Images/212284100-561aa473-3905-4a80-b561-0d28506553ee.gif" width="900">
 
 ### This project is now OFFICIALLY accepted for
@@ -19,7 +43,6 @@ Welcome to **GlassyUI-Components**! This open-source library features stunning R
 <br>
 
 <img src="https://raw.githubusercontent.com/alo7lika/GlassyUI-Components/refs/heads/main/Images/212284100-561aa473-3905-4a80-b561-0d28506553ee.gif" width="900">
-
 <table align="center">
     <thead align="center">
         <tr style="border: 2px;">
@@ -57,6 +80,14 @@ Welcome to **GlassyUI-Components**! This open-source library features stunning R
 - **Modals:** Elegant modals featuring the glassmorphism effect.
 - **Navigation Bar:** Modern navigation bars with a glassy theme.
 
+## 🛠️ Tech Stack
+
+- **React**: JavaScript library for building user interfaces.
+- **SCSS**: A CSS preprocessor for more manageable styles.
+- **Docker**: For containerization and easy deployment.
+- **Node.js**: JavaScript runtime for server-side development.
+
+  
 ## 🖥️ Website Preview
 
 ![Home Page](https://github.com/user-attachments/assets/f6f73936-ca0d-4232-a646-67189f5aa901)
@@ -190,6 +221,11 @@ git push origin my-feature-branch
 
 -If more than 1 week issue is not resolved then it will be assigned to someone else.
 
+### Code of conduct:
+- This README structure includes all the sections you wanted.
+- Adjust the contributors section as needed based on your actual contributors.
+- Feel free to add or modify any content to better fit your project’s specific needs!
+
 -Important Rule for Creating component to follow the order of component.
 
 1. Basic Usage
@@ -197,9 +233,9 @@ git push origin my-feature-branch
 3.Customizable component
 4. Theme (of your new component)
 5. Example
-6. Copy code 
+6. Copy code
 
--for eg: Button component,Progress Bar components 
+-for eg: Button component,Progress Bar components
 
 
 ## Our Contributors
@@ -207,10 +243,26 @@ git push origin my-feature-branch
 - We truly appreciate your incredible contributions to this project! Your dedication and hard work are vital to its continued growth and success. If you’ve found value in it, don’t forget to show your support by giving our repository a star! ⭐
 
 <div align="center">
-  <a href="https://github.com/Jaishree2310/GlassyUI-Components">
-    <img src="https://contrib.rocks/image?repo=Jaishree2310/GlassyUI-Components&&max=1000&&cachebust=1" />
-  </a>
+
+| Contributor                                                                                      | Contributor                                                                                      | Contributor                                                                                      | Contributor                                                                                      |
+|--------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------|
+| <img src="https://github.com/Jaishree2310.png" alt="Jaishree2310" width="80"/> <br> <p align="center">[Jaishree2310](https://github.com/Jaishree2310) 👩‍💻</p> | <img src="https://github.com/Sawan-Kushwah.png" alt="Sawan-Kushwah" width="80"/> <br> <p align="center">[Sawan-Kushwah](https://github.com/Sawan-Kushwah) 👨‍💻</p> | <img src="https://github.com/Gauravtb2253.png" alt="Gauravtb2253" width="80"/> <br> <p align="center">[Gauravtb2253](https://github.com/Gauravtb2253) 👨‍💻</p> | <img src="https://github.com/alo7lika.png" alt="Alolika" width="80"/> <br> <p align="center">[Alolika](https://github.com/alo7lika) 👩‍💻</p> |
+| <img src="https://github.com/hritika2409.png" alt="Hritika" width="80"/> <br> <p align="center">[Hritika](https://github.com/hritika2409) 👩‍💻</p> | <img src="https://github.com/AdityaInnovates.png" alt="Aditya Innovates" width="80"/> <br> <p align="center">[Aditya Innovates](https://github.com/AdityaInnovates) 👨‍💻</p> | <img src="https://github.com/neeru24.png" alt="Neeru" width="80"/> <br> <p align="center">[Neeru](https://github.com/neeru24) 👩‍💻</p> | <img src="https://github.com/haseebzaki-07.png" alt="Haseeb Zaki" width="80"/> <br> <p align="center">[Haseeb Zaki](https://github.com/haseebzaki-07) 👨‍💻</p> |
+| <img src="https://github.com/gurliv21.png" alt="Gurliv" width="80"/> <br> <p align="center">[Gurliv](https://github.com/gurliv21) 👩‍💻</p> | <img src="https://github.com/abhishekHegde2000.png" alt="Abhishek Hegde" width="80"/> <br> <p align="center">[Abhishek Hegde](https://github.com/abhishekHegde2000) 👨‍💻</p> | <img src="https://github.com/NazTM.png" alt="Naz" width="80"/> <br> <p align="center">[Naz](https://github.com/NazTM) 👩‍💻</p> | <img src="https://github.com/kodeCraze.png" alt="Kode Craze" width="80"/> <br> <p align="center">[Kode Craze](https://github.com/kodeCraze) 👨‍💻</p> |
+| <img src="https://github.com/masabinhok.png" alt="Masabin" width="80"/> <br> <p align="center">[Masabin](https://github.com/masabinhok) 👩‍💻</p> | <img src="https://github.com/Ameerjafar.png" alt="Ameer Jafar" width="80"/> <br> <p align="center">[Ameer Jafar](https://github.com/Ameerjafar) 👨‍💻</p> | <img src="https://github.com/devxMani.png" alt="Devx Mani" width="80"/> <br> <p align="center">[Devx Mani](https://github.com/devxMani) 👨‍💻</p> | <img src="https://github.com/ashish-um.png" alt="Ashish" width="80"/> <br> <p align="center">[Ashish](https://github.com/ashish-um) 👨‍💻</p> |
+| <img src="https://github.com/VAmanjain.png" alt="Va Manjain" width="80"/> <br> <p align="center">[Va Manjain](https://github.com/VAmanjain) 👩‍💻</p> | <img src="https://github.com/lakshmirajvagu.png" alt="Lakshmi Rajvagu" width="80"/> <br> <p align="center">[Lakshmi Rajvagu](https://github.com/lakshmirajvagu) 👩‍💻</p> | <img src="https://github.com/knighthinata.png" alt="Knight Hinata" width="80"/> <br> <p align="center">[Knight Hinata](https://github.com/knighthinata) 👨‍💻</p> | <img src="https://github.com/ADeshmukh80.png" alt="ADeshmukh" width="80"/> <br> <p align="center">[ADeshmukh](https://github.com/ADeshmukh80) 👨‍💻</p> |
+
 </div>
+
+🌟 **So many talented contributors!** 🎉 Want to meet them all? Click [here](https://github.com/Jaishree2310/GlassyUI-Components/graphs/contributors) to discover the amazing team! 👩‍💻👨‍💻
+
+
+
+---
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](./LICENSE) file for details.
 
 ---
 ## 💗 Stargazers
