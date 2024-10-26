@@ -43,6 +43,7 @@ import AccordionDetails from './components/AccordionDetails';
 import ContactUsDetailsPage from './components/ContactUsDetailsPage';
 import PaginationDetails from './components/PaginationDetails';
 import TestimonialDetails from './components/TestimonialDetails';
+import TermsAndConditions from './components/TermsAndConditions';
 import Footer from './components/Footer';
 
 
@@ -138,6 +139,7 @@ const App: React.FC = () => {
         <Route path='/testimonial-details' element={<TestimonialDetails />} />
 
 
+        <Route path='/terms' element={<TermsAndConditions />} />
         <Route path='/calendar-details' element={<CalendarDetails />} />
         <Route path='/checkbox' element={<Checkbox />} />
 
@@ -162,6 +164,7 @@ const App: React.FC = () => {
          <Route path='/checkbox' element={<Checkbox />} />
  
          <Route path='/spinner' element={<SpinnerDetailsPage />} />
+
 
 
          <Route path='*' element={<NotFoundPage />} />

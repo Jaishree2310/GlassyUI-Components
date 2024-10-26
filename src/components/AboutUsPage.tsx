@@ -1,3 +1,8 @@
+
+import styled from 'styled-components';
+import { FaGithub } from 'react-icons/fa';
+
+
 import React, { useEffect } from 'react';
 import BackToTopButton from './BackToTop';
 import { FaGithub } from 'react-icons/fa';

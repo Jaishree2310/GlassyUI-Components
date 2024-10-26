@@ -1,4 +1,5 @@
 'use client';
+import { HiOutlineChevronDoubleDown } from 'react-icons/hi';
 
 import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
