@@ -1,8 +1,5 @@
- upd-feature-branch
 import React, { useState, useEffect } from 'react';
 import PricingDetailPage from './components/PricingDetailPage';
-
-import React from 'react';
 
 import {
   BrowserRouter as Router,
@@ -11,9 +8,7 @@ import {
   useLocation,
 } from 'react-router-dom';
 
-
 import ScrollProgressBar from './components/ScrollProgress'; // Import your ScrollProgressBar component
-import PricingDetailPage from './components/PricingDetailPage';
 
 import GlassyUILandingPage from './components/GlassyUILandingPage';
 import GlassyUIComponentsPage from './components/GlassyUIComponentsPage';
@@ -44,18 +39,11 @@ import PaginationDetails from './components/PaginationDetails';
 import TestimonialDetails from './components/TestimonialDetails';
 import Footer from './components/Footer';
 import CalendarDetails from './components/CalendarDetails';
-import Checkbox from './components/Checkbox';
-import Statistic from './components/StatisticDetails';
-import GalleryDetailsPage from './components/GalleryDetailsPage';
-import Checkbox from './components/Checkbox';
-import SpinnerDetailsPage from './components/SpinnerDetailsPage';
 import ProductCardDetailsPage from './components/ProductCardDetailsPage';
 import Statistic from './components/StatisticDetails';
 import GalleryDetailsPage from './components/GalleryDetailsPage';
 import Checkbox from './components/Checkbox';
- import SpinnerDetailsPage from './components/SpinnerDetailsPage';
-
- upd-feature-branch
+import SpinnerDetailsPage from './components/SpinnerDetailsPage';
 const ThemeToggle: React.FC = () => {
   const [theme, setTheme] = useState(localStorage.getItem('theme') || 'light');
 
@@ -75,29 +63,22 @@ const ThemeToggle: React.FC = () => {
   return (
     <button
       onClick={toggleTheme}
-      className="p-2 bg-gray-200 dark:bg-gray-800 text-black dark:text-white rounded"
+      className='p-2 bg-gray-200 dark:bg-gray-800 text-black dark:text-white rounded'
     >
       {theme === 'light' ? 'Switch to Dark Mode' : 'Switch to Light Mode'}
     </button>
   );
 };
 
-
 const App: React.FC = () => {
   return (
     <Router>
       <Header />
       {/* Theme Toggle Button */}
-       className="theme-toggle-container p-4"
-        <ThemeToggle />
-      
-
- const App: React.FC = () => {
-  return (
-    <Router>
+      className="theme-toggle-container p-4"
+      <ThemeToggle />
       <Header />
       <ScrollProgressBar /> {/* Add the ScrollProgressBar component here */}
- main
       <Routes>
         <Route path='/' element={<GlassyUILandingPage />} />
         <Route path='/components' element={<GlassyUIComponentsPage />} />
@@ -133,29 +114,22 @@ const App: React.FC = () => {
         <Route path='/calendar-details' element={<CalendarDetails />} />
         <Route path='/checkbox' element={<Checkbox />} />
 
-          <Route path='/statistic-details' element={<Statistic />} />
-          <Route path='/gallery-details' element={<GalleryDetailsPage />} />
-
-
-  
-        <Route path='/checkbox' element={<Checkbox />} />
- 
-
-        <Route path='/spinner' element={<SpinnerDetailsPage />} />
-
-           <Route path='/product-details' element={<ProductCardDetailsPage />} />
-          <Route path='/gallery-details' element={<GalleryDetailsPage />} />
- 
- 
-           <Route path='/statistic-details' element={<Statistic />} />
-          <Route path='/gallery-details' element={<GalleryDetailsPage />} />
         <Route path='/statistic-details' element={<Statistic />} />
         <Route path='/gallery-details' element={<GalleryDetailsPage />} />
 
+        <Route path='/checkbox' element={<Checkbox />} />
 
-         <Route path='*' element={<NotFoundPage />} />
-      </Routes>
+        <Route path='/spinner' element={<SpinnerDetailsPage />} />
 
+        <Route path='/product-details' element={<ProductCardDetailsPage />} />
+        <Route path='/gallery-details' element={<GalleryDetailsPage />} />
+
+        <Route path='/statistic-details' element={<Statistic />} />
+        <Route path='/gallery-details' element={<GalleryDetailsPage />} />
+        <Route path='/statistic-details' element={<Statistic />} />
+        <Route path='/gallery-details' element={<GalleryDetailsPage />} />
+
+        <Route path='*' element={<NotFoundPage />} />
 
         <Route path='/spinner' element={<SpinnerDetailsPage />} />
 
@@ -165,9 +139,10 @@ const App: React.FC = () => {
     </Router>
   );
 };
-const ConditionalFooter: React.FC = () => {
+
+function ConditionalFooter() {
   const location = useLocation();
 
   return location.pathname === '/' ? <Footer /> : null;
-};
+}
 export default App;
