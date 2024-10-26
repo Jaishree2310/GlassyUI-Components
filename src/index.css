@@ -2,13 +2,112 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
+/*body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}*/
+
+/* General styles */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
+  transition: background 0.5s ease-in-out;
+}
+
+/* Enhanced Background */
+.enhanced-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 0;
+  background: radial-gradient(
+    circle at center,
+    #1b2735,
+    #12122a,
+    #2a2962,
+    #4b2f6e
+  );
+  opacity: 0.95;
+}
+
+/* Light Theme Background */
+body.light-theme .enhanced-bg {
+  background: radial-gradient(
+    circle at center,
+    #f2f6ff,
+    #dde7f0,
+    #bcd0e0,
+    #93b3cc
+  );
+}
+
+/* Floating Emojis */
+.coding-symbol {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 3rem;
+  border-radius: 50%;
+  opacity: 0.8;
+  animation: float 10s ease-in-out infinite;
+}
+
+/* Floating Animation */
+@keyframes float {
+  0% {
+    transform: translateY(0) rotate(0);
+  }
+  50% {
+    transform: translateY(-20px) rotate(10deg);
+  }
+  100% {
+    transform: translateY(0) rotate(0);
+  }
+}
+
+/* Theme Toggle Button */
+#theme-toggle {
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  background: #fff;
+  color: #333;
+  padding: 10px 20px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+/* Dark Theme Adjustments */
+body.light-theme .glassy-ui {
+  color: #333;
+  background: rgba(255, 255, 255, 0.6);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+}
+
+body.light-theme #theme-toggle {
+  background: #333;
+  color: #fff;
 }
 
 code {
@@ -31,7 +130,7 @@ code {
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background-color: rgb(95, 19, 166); 
+  background-color: rgb(95, 19, 166);
 }
 
 .glassmorphism {
