@@ -15,16 +15,15 @@ import {
   ThumbsUpIcon,
   Contact,
   Search,
-
-   Calendar,
-   AlignStartVertical,
-
-   ShoppingCart,
+  Calendar,
+  AlignStartVertical,
+  ShoppingCart,
     GalleryThumbnails,
   } from 'lucide-react';
 
 
 import Accordion from './Accordion';
+import { HiOutlineWrenchScrewdriver } from 'react-icons/hi2';
 
 // Define the ComponentCardProps interface
 
@@ -39,7 +38,6 @@ interface ComponentCardProps {
 const getGlassyClasses = () => {
   return 'backdrop-filter backdrop-blur-md bg-white/10 border border-white/20 rounded-2xl shadow-lg transition-all duration-300';
 };
-
 
 const ComponentCard: React.FC<ComponentCardProps> = ({
   title,
@@ -81,14 +79,12 @@ const GlassyUIComponentsPage: React.FC = () => {
   const [searchFilter, setSearchFilter] = useState<string>('');
   const componentsPerPage = 9;
 
-
   const scrollToNextSection = () => {
     window.scrollBy({
       top: window.innerHeight,
       behavior: 'smooth',
     });
   };
-
 
   const componentsData = [
     {
@@ -217,25 +213,24 @@ const GlassyUIComponentsPage: React.FC = () => {
       onClick: () => navigate('/contact-details'),
     },
     {
-        title: 'E-Commerce Product Card',
-      description: 'E-Commerce Product Card component with glassmorphic styling.',
+      title: 'E-Commerce Product Card',
+      description:
+        'E-Commerce Product Card component with glassmorphic styling.',
       icon: <ShoppingCart size={24} />,
       onClick: () => navigate('/product-details'),
     },
     {
-      
- 
-       title: 'Statistic',
+      title: 'Statistic',
       description: 'Statistic component with glassmorphic styling.',
       icon: <AlignStartVertical size={24} />,
       onClick: () => navigate('/statistic-details'),
     },
     {
-       title: 'Gallery',
-       description: 'Gallery component with glassmorphic styling.',
+      title: 'Gallery',
+      description: 'Gallery component with glassmorphic styling.',
       icon: <GalleryThumbnails size={24} />,
       onClick: () => navigate('/gallery-details'),
-     },
+    },
     {
       title: 'Glassmorphism Effect Generator',
       description: 'Create stunning Glassmorphic effects with ease.',
@@ -261,8 +256,6 @@ const GlassyUIComponentsPage: React.FC = () => {
       description: 'Design and customize CSS spinners for your projects.',
       icon: <HiOutlineWrenchScrewdriver size={24} />,
       onClick: () => navigate('/spinner'),
-
-
     },
   ];
 
@@ -336,25 +329,21 @@ const GlassyUIComponentsPage: React.FC = () => {
     <div className='min-h-screen font-sans bg-gradient-to-br from-gray-800 via-gray-900 to-black text-white'>
       <BackToTopButton />
       <div className='container mx-auto px-4 py-8 lg:py-12'>
-        <header className='flex justify-between items-center mb-16 px-6 py-4 rounded-lg pl-0'>
+        <header className='flex justify-between items-center mb-16 px-6 py-4 rounded-lg pl-0 mt-[0.2rem]'>
           <div
             className='text-3xl lg:text-4xl font-extrabold tracking-tight cursor-pointer hover:text-pink-300 transition-colors duration-300 text-white'
             onClick={() => navigate('/')}
           >
             GlassyUI
           </div>
-
-
-
-          <div className='flex items-center bg-gradient-to-r from-slate-800 via-slate-700 to-slate-900 text-white w-2/5 rounded-lg shadow-lg overflow-hidden'>
+          <div className='flex items-center mt-[0.5rem] /bg-gradient-to-r bg-slate-800 text-white w-2/5 rounded-lg shadow-lg overflow-hidden'>
             <input
-              className='w-full px-6 py-3 bg-transparent text-white outline-none focus:ring-2 focus:ring-gray-500 transition-all duration-300'
+              className='w-full px-6 py-3 bg-transparent text-white outline-none /focus:ring-2 /focus:ring-gray-500 transition-all duration-300'
               placeholder='Search Components...'
               onChange={e => setSearchFilter(e.target.value)}
             />
             <Search className='mx-4 cursor-pointer text-pink-300 hover:text-pink-400 transition-all duration-300' />
           </div>
-
         </header>
 
         <main>
@@ -406,11 +395,11 @@ const GlassyUIComponentsPage: React.FC = () => {
           <div className='flex justify-between items-center mt-8'>
             <button
               onClick={prevPage}
-              className={`px-4 py-2 mx-2 rounded-lg ${currentPage === 1
-                ? 'opacity-50 cursor-not-allowed'
-                : 'hover:bg-white/20'
-                }`}
-
+              className={`px-4 py-2 mx-2 rounded-lg ${
+                currentPage === 1
+                  ? 'opacity-50 cursor-not-allowed'
+                  : 'hover:bg-white/20'
+              }`}
               disabled={currentPage === 1}
             >
               Previous
@@ -420,11 +409,11 @@ const GlassyUIComponentsPage: React.FC = () => {
             </span>
             <button
               onClick={nextPage}
-              className={`px-4 py-2 mx-2 rounded-lg ${currentPage === totalPages
-                ? 'opacity-50 cursor-not-allowed'
-                : 'hover:bg-white/20'
-                }`}
-
+              className={`px-4 py-2 mx-2 rounded-lg ${
+                currentPage === totalPages
+                  ? 'opacity-50 cursor-not-allowed'
+                  : 'hover:bg-white/20'
+              }`}
               disabled={currentPage === totalPages}
             >
               Next
