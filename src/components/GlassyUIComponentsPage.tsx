@@ -21,6 +21,7 @@ import {
 } from 'lucide-react';
 
 import Accordion from './Accordion';
+import { HiOutlineWrenchScrewdriver } from 'react-icons/hi2';
 
 // Define the ComponentCardProps interface
 
@@ -240,6 +241,13 @@ const GlassyUIComponentsPage: React.FC = () => {
       icon: <HiOutlineWrenchScrewdriver size={24} />,
       onClick: () => navigate('/spinner'),
     },
+    {
+      title: 'Avatar',
+      description:
+        'A customizable avatar component with an optional name tooltip.',
+      icon: <HiOutlineWrenchScrewdriver size={24} />,
+      onClick: () => navigate('/avatar-details'),
+    },
   ];
 
   const [filteredData, setFilteredData] = useState(componentsData);
@@ -366,7 +374,7 @@ const GlassyUIComponentsPage: React.FC = () => {
                     </p>
                     <button
                       className='mt-6 px-4 py-2 bg-blue-600 hover:bg-blue-500 text-white rounded-lg shadow-md transition-all duration-300'
-                      onClick={() => navigate('/')}
+                      onClick={() => navigate('/components')}
                     >
                       Back to Homepage
                     </button>

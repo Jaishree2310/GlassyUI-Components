@@ -44,6 +44,7 @@ import GalleryDetailsPage from './components/GalleryDetailsPage';
 import Checkbox from './components/Checkbox';
 
 import SpinnerDetailsPage from './components/SpinnerDetailsPage';
+import AvatarDetialsPage from './components/AvatarDetails';
 
 const App: React.FC = () => {
   return (
@@ -90,6 +91,7 @@ const App: React.FC = () => {
         <Route path='/checkbox' element={<Checkbox />} />
 
         <Route path='/spinner' element={<SpinnerDetailsPage />} />
+        <Route path='/avatar-details' element={<AvatarDetialsPage />} />
 
         <Route path='*' element={<NotFoundPage />} />
       </Routes>
