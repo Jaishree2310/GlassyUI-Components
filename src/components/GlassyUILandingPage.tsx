@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Star, Code, Package, Zap } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import './GlassyUILandingPage.css'; // Create this CSS file in the same directory
+import './GlassyUILandingPage.css';
 import gsap from 'gsap';
 import Footer from './Footer';
 
@@ -40,13 +40,7 @@ const GlassyUILandingPage: React.FC = () => {
       />
 
       <div className='homeGSap relative z-10 w-full max-w-4xl'>
-
-        <header className='w-full flex justify-between items-center mb-19'>
-          
         <header className='w-full flex justify-between items-center mb-4'>
-          {' '}
-          {/* Adjusted mb-8 to mb-4 */}
-
           <div className='text-2xl font-bold text-white'>
             <span className='text-blue-400'>Glassy</span>UI
           </div>
@@ -63,7 +57,7 @@ const GlassyUILandingPage: React.FC = () => {
 
         <main
           className={`fade-in text-center p-12 rounded-xl backdrop-filter backdrop-blur-lg bg-white bg-opacity-10 shadow-lg border border-white border-opacity-20 relative transition-all duration-700 ease-in-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
-          style={{ marginTop: '20px' }} // Added marginTop for spacing
+          style={{ marginTop: '20px' }}
         >
           <h1 className='text-7xl font-bold mb-4 text-white'>
             <span className='animated-glossy-text'>Glassy UI</span>
@@ -110,9 +104,7 @@ const GlassyUILandingPage: React.FC = () => {
           </div>
         </main>
       </div>
-      <div>
-        <Footer />
-      </div>
+      <Footer />
     </div>
   );
 };

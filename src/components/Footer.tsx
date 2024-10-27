@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import GoogleTranslate from './GoogleTranslator';
 
-
 const Footer: React.FC = () => {
   return (
     <footer className='glass-footer'>
@@ -24,9 +23,12 @@ const Footer: React.FC = () => {
           <Link to='/about' className='footer-link'>
             About
           </Link>
+        </div>
+        <div className='translate-container'>
           <GoogleTranslate />
         </div>
       </div>
+
       <div className='footer-bottom'>
         <a
           href='https://github.com/Jaishree2310/GlassyUI-Components'
@@ -36,7 +38,7 @@ const Footer: React.FC = () => {
         >
           <i className='fa-brands fa-github'></i>
         </a>
-        <p>&copy; 2023 GlassyUI. All rights reserved.</p>
+        <p>&copy; 2024 GlassyUI. All rights reserved.</p>
       </div>
 
       <style jsx>{`
@@ -116,6 +118,10 @@ const Footer: React.FC = () => {
           transform: scale(1.1);
         }
 
+        .translate-container {
+          margin-top: 10px;
+        }
+
         @media (max-width: 768px) {
           .glass-footer {
             flex-direction: column;
@@ -128,31 +134,7 @@ const Footer: React.FC = () => {
           }
         }
       `}</style>
-        <div>
-          <p
-            style={{
-              fontSize: '14px',
-              color: '#fff',
-              position: 'relative',
-              right: '-300px',
-            }}
-          >
-            &copy; 2024 GlassyUI. All rights reserved.
-          </p>
-          <div
-            style={{
-              fontSize: '14px',
-              color: '#fff',
-              position: 'relative',
-              right: '-300px',
-              top: '10px',
-            }}
-          >
-            <GoogleTranslate />
-          </div>
-        </div>
-      </footer>
-    </>
+    </footer>
   );
 };
 
