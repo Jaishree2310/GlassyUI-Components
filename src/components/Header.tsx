@@ -1,31 +1,39 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import gsap from 'gsap';
+import { Sun, Moon } from 'react-feather';
 
-const Header: React.FC = () => {
+const Header: React.FC<{ darkMode: boolean; toggleDarkMode: () => void }> = ({
+  darkMode,
+  toggleDarkMode,
+}) => {
   useEffect(() => {
-    // GSAP animation for the navbar
     const tl = gsap.timeline();
     tl.fromTo(
-      '.navbar-item', // Targeting elements with this class
-      {
-        y: -100, // Initial position (from)
-        opacity: 0, // Initial opacity (from)
-      },
-      {
-        y: 0, // Final position (to)
-        opacity: 1, // Final opacity (to)
-        duration: 1,
-        ease: 'power2.inOut',
-        stagger: 0.5, // Stagger for smooth effect
-      },
+      '.navbar-item',
+      { y: -100, opacity: 0 },
+      { y: 0, opacity: 1, duration: 1, ease: 'power2.inOut', stagger: 0.5 },
     );
 
     return () => {
-      // Cleanup GSAP animations
-      tl.kill();
+      tl.kill(); // Cleanup GSAP animation
     };
   }, []);
+
+  // Conditional styles based on darkMode
+  const navStyle: React.CSSProperties = {
+    backgroundColor: darkMode ? '#1f2937' : '#efefef', // Darker color for dark mode
+    padding: '10px',
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  };
+
+  const linkStyle: React.CSSProperties = {
+    color: darkMode ? 'white' : 'black', // White text in dark mode, black otherwise
+    textDecoration: 'none',
+    transition: 'color 0.3s ease',
+  };
 
   return (
     <nav style={navStyle}>
@@ -34,8 +42,12 @@ const Header: React.FC = () => {
           <Link
             to='/'
             style={linkStyle}
-            onMouseEnter={e => (e.currentTarget.style.color = '#fde047')}
-            onMouseLeave={e => (e.currentTarget.style.color = 'white')}
+            onMouseEnter={e =>
+              (e.currentTarget.style.color = darkMode ? '#fde047' : '#1f2937')
+            }
+            onMouseLeave={e =>
+              (e.currentTarget.style.color = darkMode ? 'white' : 'black')
+            }
           >
             Home
           </Link>
@@ -44,8 +56,12 @@ const Header: React.FC = () => {
           <Link
             to='/donate'
             style={linkStyle}
-            onMouseEnter={e => (e.currentTarget.style.color = '#fde047')}
-            onMouseLeave={e => (e.currentTarget.style.color = 'white')}
+            onMouseEnter={e =>
+              (e.currentTarget.style.color = darkMode ? '#fde047' : '#1f2937')
+            }
+            onMouseLeave={e =>
+              (e.currentTarget.style.color = darkMode ? 'white' : 'black')
+            }
           >
             Donate
           </Link>
@@ -54,46 +70,49 @@ const Header: React.FC = () => {
           <Link
             to='/about'
             style={linkStyle}
-            onMouseEnter={e => (e.currentTarget.style.color = '#fde047')}
-            onMouseLeave={e => (e.currentTarget.style.color = 'white')}
+            onMouseEnter={e =>
+              (e.currentTarget.style.color = darkMode ? '#fde047' : '#1f2937')
+            }
+            onMouseLeave={e =>
+              (e.currentTarget.style.color = darkMode ? 'white' : 'black')
+            }
           >
             About Us
           </Link>
         </li>
       </ul>
+      {/* Dark Mode Toggle Button */}
+      <button
+        onClick={toggleDarkMode}
+        className={`transition-colors duration-300 focus:outline-none ${darkMode ? 'text-white hover:text-yellow-300' : 'text-gray-900 hover:text-yellow-500'}`}
+        style={darkModeToggleStyle}
+      >
+        {darkMode ? <Sun size={24} /> : <Moon size={24} />}
+      </button>
     </nav>
   );
 };
 
 // Inline styles for the nav bar
-const navStyle: React.CSSProperties = {
-  //backgroundColor: '#2b303c',
-  padding: '10px',
-  position: 'fixed', // Fix the navbar
-  top: '0', // Align it to the top of the page
-  width: '100%', // Ensure it spans the width of the page
-  zIndex: 1000, // Ensure it stays above other elements
-  backdropFilter: 'blur(10px)', // Apply the blur effect
-  WebkitBackdropFilter: 'blur(10px)', // For Safari compatibility
-  boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)', // Optional shadow for better contrast
-};
-
 const ulStyle: React.CSSProperties = {
   listStyleType: 'none',
   margin: 0,
   padding: 0,
   display: 'flex',
   justifyContent: 'space-around',
+  flex: 1, // To make space for the dark mode button
 };
 
 const liStyle: React.CSSProperties = {
   margin: '0 10px',
 };
 
-const linkStyle: React.CSSProperties = {
-  color: 'white',
-  textDecoration: 'none',
-  transition: 'color 0.3s ease',
+const darkModeToggleStyle: React.CSSProperties = {
+  cursor: 'pointer',
+  background: 'none',
+  border: 'none',
+  marginLeft: '20px',
+  marginRight: '20px',
 };
 
 export default Header;

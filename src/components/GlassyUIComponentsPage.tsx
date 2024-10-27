@@ -15,17 +15,16 @@ import {
   ThumbsUpIcon,
   Contact,
   Search,
-    ShoppingCart,
- 
+  ShoppingCart,
   GalleryThumbnails,
-    AlignStartVertical,
-   GalleryThumbnails,
-  } from 'lucide-react';
+  AlignStartVertical,
+  Wrench,
+} from 'lucide-react';
 
 import Accordion from './Accordion';
+import { date } from 'zod';
 
 // Define the ComponentCardProps interface
-
 
 interface ComponentCardProps {
   title: string;
@@ -34,11 +33,11 @@ interface ComponentCardProps {
   onClick: () => void;
   status?: string; // Optional status prop
   children?: React.ReactNode; // Include the children prop
+  darkMode: boolean; //darkMode prop
 }
-const getGlassyClasses = () => {
-  return 'backdrop-filter backdrop-blur-md bg-white/10 border border-white/20 rounded-2xl shadow-lg transition-all duration-300';
+const getGlassyClasses = (darkMode: boolean) => {
+  return `backdrop-filter backdrop-blur-md ${darkMode ? 'bg-white/10 border-white/20' : 'bg-black/10 border-black/20'} border rounded-2xl shadow-lg transition-all duration-300`;
 };
-
 
 const ComponentCard: React.FC<ComponentCardProps> = ({
   title,
@@ -47,14 +46,19 @@ const ComponentCard: React.FC<ComponentCardProps> = ({
   onClick,
   status,
   children,
+  darkMode,
 }) => {
   return (
     <div
-      className={`${getGlassyClasses()} p-6 flex flex-col h-full cursor-pointer group transition-all duration-300 hover:bg-white/20 hover:scale-105 hover:shadow-xl`}
+      className={`${getGlassyClasses(darkMode)} p-6 flex flex-col h-full cursor-pointer group transition-all duration-300 ${darkMode ? 'hover:bg-white/20' : 'hover:bg-black/20'} hover:scale-105 hover:shadow-xl`}
       onClick={onClick}
     >
       <div className='flex items-center mb-4'>
-        <div className='p-2 bg-white/20 rounded-lg mr-4'>{icon}</div>
+        <div
+          className={`p-2 ${darkMode ? 'bg-white/20' : 'bg-black/20'}rounded-lg mr-4`}
+        >
+          {icon}
+        </div>
         <h3 className='text-xl font-bold'>{title}</h3>
         {status && (
           <span className='ml-2 px-2 py-1 bg-green-200 text-green-700 text-xs font-medium rounded'>
@@ -64,7 +68,9 @@ const ComponentCard: React.FC<ComponentCardProps> = ({
       </div>
       <p className='text-sm opacity-80 mb-4 flex-grow'>{description}</p>
       {children}
-      <div className='flex items-center text-sm font-medium text-pink-200 mt-4'>
+      <div
+        className={`flex items-center text-sm font-medium ${darkMode ? 'text-pink-200' : 'text-pink-300'} mt-4`}
+      >
         <div className='flex justify-center items-center'>
           <span>Learn more</span>
           <ArrowUp className='ml-2 w-6 pt-1 group-hover:translate-x-1 transition-transform duration-300' />
@@ -74,13 +80,13 @@ const ComponentCard: React.FC<ComponentCardProps> = ({
   );
 };
 
-
-const GlassyUIComponentsPage: React.FC = () => {
+const GlassyUIComponentsPage: React.FC<{ darkMode: boolean }> = ({
+  darkMode,
+}) => {
   const navigate = useNavigate();
   const [currentPage, setCurrentPage] = useState(1);
   const [searchFilter, setSearchFilter] = useState<string>('');
   const componentsPerPage = 9;
-
 
   const scrollToNextSection = () => {
     window.scrollBy({
@@ -88,7 +94,6 @@ const GlassyUIComponentsPage: React.FC = () => {
       behavior: 'smooth',
     });
   };
-
 
   const componentsData = [
     {
@@ -217,25 +222,24 @@ const GlassyUIComponentsPage: React.FC = () => {
       onClick: () => navigate('/contact-details'),
     },
     {
-        title: 'E-Commerce Product Card',
-      description: 'E-Commerce Product Card component with glassmorphic styling.',
+      title: 'E-Commerce Product Card',
+      description:
+        'E-Commerce Product Card component with glassmorphic styling.',
       icon: <ShoppingCart size={24} />,
       onClick: () => navigate('/product-details'),
     },
     {
-      
- 
-       title: 'Statistic',
+      title: 'Statistic',
       description: 'Statistic component with glassmorphic styling.',
       icon: <AlignStartVertical size={24} />,
       onClick: () => navigate('/statistic-details'),
     },
     {
-       title: 'Gallery',
-       description: 'Gallery component with glassmorphic styling.',
+      title: 'Gallery',
+      description: 'Gallery component with glassmorphic styling.',
       icon: <GalleryThumbnails size={24} />,
       onClick: () => navigate('/gallery-details'),
-     },
+    },
     {
       title: 'Glassmorphism Effect Generator',
       description: 'Create stunning Glassmorphic effects with ease.',
@@ -245,19 +249,16 @@ const GlassyUIComponentsPage: React.FC = () => {
     {
       title: 'Spinner',
       description: 'Design and customize CSS spinners for your projects.',
-      icon: <HiOutlineWrenchScrewdriver size={24} />,
+      icon: <Wrench size={24} />,
       onClick: () => navigate('/spinner'),
-
     },
   ];
 
   const [filteredData, setFilteredData] = useState(componentsData);
 
   useEffect(() => {
-
     const data = componentsData.filter(component => {
       if (searchFilter) {
-
         return component.title
           .toLowerCase()
           .includes(searchFilter.trim().toLowerCase());
@@ -275,7 +276,6 @@ const GlassyUIComponentsPage: React.FC = () => {
     currentPage * componentsPerPage,
   );
 
-
   const nextPage = () => {
     if (currentPage < totalPages) setCurrentPage(currentPage + 1);
   };
@@ -284,8 +284,8 @@ const GlassyUIComponentsPage: React.FC = () => {
     if (currentPage > 1) setCurrentPage(currentPage - 1);
   };
 
-  const getGlassyClasses = () => {
-    return 'backdrop-filter backdrop-blur-md bg-white/10 border border-white/20 rounded-2xl shadow-lg transition-all duration-300';
+  const getGlassyClasses = (darkMode: boolean) => {
+    return `backdrop-filter backdrop-blur-md ${darkMode ? 'bg-white/10 border-white/20' : 'bg-black/10 border-black/20'} border rounded-2xl shadow-lg transition-all duration-300`;
   };
 
   const ComponentCard: React.FC<ComponentCardProps> = ({
@@ -295,60 +295,72 @@ const GlassyUIComponentsPage: React.FC = () => {
     onClick,
     status,
     children,
-  }) => (
-    <div
-      className={`${getGlassyClasses()} p-6 flex flex-col h-full cursor-pointer group transition-all duration-300 hover:bg-white/20 hover:scale-105 hover:shadow-xl`}
-      onClick={onClick}
-    >
-      <div className='flex items-center mb-4'>
-        <div className='p-2 bg-white/20 rounded-lg mr-4'>{icon}</div>
-        <h3 className='text-xl font-bold'>{title}</h3>
-        {status && (
-          <span className='ml-2 px-2 py-1 bg-green-200 text-green-700 text-xs font-medium rounded'>
-            {status}
-          </span>
-        )}
-      </div>
-      <p className='text-sm opacity-80 mb-4 flex-grow'>{description}</p>
-      {children}
-      <div className='flex items-center text-sm font-medium text-pink-200 mt-4'>
-        <div className='flex justify-center items-center'>
-          <span>Learn more</span>
-          <ArrowUp className='ml-2 w-6 pt-1 group-hover:translate-x-1 transition-transform duration-300' />
+    darkMode,
+  }) => {
+    return (
+      <div
+        className={`${getGlassyClasses(darkMode)} p-6 flex flex-col h-full cursor-pointer group transition-all duration-300 ${darkMode ? 'hover:bg-white/20' : 'hover:bg-black/20'} hover:scale-105 hover:shadow-xl`}
+        onClick={onClick}
+      >
+        <div className='flex items-center mb-4'>
+          <div
+            className={`p-2 ${darkMode ? 'bg-white/20' : 'bg-black/20'} rounded-lg mr-4`}
+          >
+            {icon}
+          </div>
+          <h3 className='text-xl font-bold'>{title}</h3>
+          {status && (
+            <span className='ml-2 px-2 py-1 bg-green-200 text-green-700 text-xs font-medium rounded'>
+              {status}
+            </span>
+          )}
+        </div>
+        <p className='text-sm opacity-80 mb-4 flex-grow'>{description}</p>
+        {children}
+        <div
+          className={`flex items-center text-sm font-medium ${darkMode ? 'text-pink-200' : 'text-pink-400'} mt-4`}
+        >
+          <div className='flex justify-center items-center'>
+            <span>Learn more</span>
+            <ArrowUp className='ml-2 w-6 pt-1 group-hover:translate-x-1 transition-transform duration-300' />
+          </div>
         </div>
       </div>
-    </div>
-  );
+    );
+  };
 
   return (
-    <div className='min-h-screen font-sans bg-gradient-to-br from-gray-800 via-gray-900 to-black text-white'>
+    <div
+      className={`min-h-screen font-sans bg-gradient-to-br ${darkMode ? 'from-gray-800 via-gray-900 to-black text-white' : 'from-white via-black/10 to-black/20 text-black'}`}
+    >
       <BackToTopButton />
       <div className='container mx-auto px-4 py-8 lg:py-12'>
         <header className='flex justify-between items-center mb-16 px-6 py-4 rounded-lg pl-0'>
           <div
-            className='text-3xl lg:text-4xl font-extrabold tracking-tight cursor-pointer hover:text-pink-300 transition-colors duration-300 text-white'
+            className={`text-3xl lg:text-4xl font-extrabold tracking-tight cursor-pointer transition-colors duration-300 ${darkMode ? 'text-white hover:text-pink-300' : 'text-black hover:text-pink-400'}`}
             onClick={() => navigate('/')}
           >
             GlassyUI
           </div>
 
-
-          <div className='flex items-center bg-gradient-to-r from-slate-800 via-slate-700 to-slate-900 text-white w-2/5 rounded-lg shadow-lg overflow-hidden'>
+          <div
+            className={`flex items-center bg-gradient-to-r ${darkMode ? 'from-slate-800 via-slate-700 to-slate-900 text-white' : 'from-white/80 via-black/10 to-white/90 text-black'} w-2/5 rounded-lg shadow-lg overflow-hidden`}
+          >
             <input
-              className='w-full px-6 py-3 bg-transparent text-white outline-none focus:ring-2 focus:ring-gray-500 transition-all duration-300'
+              className={`w-full px-6 py-3 bg-transparent outline-none focus:ring-2 ${darkMode ? 'focus:ring-gray-500 text-white' : 'focus:ring-neutral-400 text-black'} transition-all duration-300`}
               placeholder='Search Components...'
               onChange={e => setSearchFilter(e.target.value)}
             />
-            <Search className='mx-4 cursor-pointer text-pink-300 hover:text-pink-400 transition-all duration-300' />
+            <Search
+              className={`mx-4 cursor-pointer ${darkMode ? 'text-pink-300 hover:text-pink-400' : 'text-pink-400 hover:text-pink-500'} transition-all duration-300`}
+            />
           </div>
-
-
-  
-
         </header>
 
         <main>
-          <h1 className='text-4xl lg:text-6xl font-extrabold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-white to-pink-200'>
+          <h1
+            className={`text-4xl lg:text-6xl font-extrabold mb-6 bg-clip-text text-transparent bg-gradient-to-r ${darkMode ? 'from-white to-pink-200' : 'from-black to-pink-400'}`}
+          >
             Glassmorphic Components
           </h1>
           <p className='text-lg lg:text-xl mb-12 max-w-2xl leading-relaxed'>
@@ -365,19 +377,24 @@ const GlassyUIComponentsPage: React.FC = () => {
                 description={component.description}
                 icon={component.icon}
                 onClick={component.onClick}
+                darkMode={darkMode}
               />
             ))}
             {filteredData.length === 0 && (
-              <section className='bg-white dark:bg-gray-900'>
+              <section className={darkMode ? 'bg-gray-900' : 'bg-black/10'}>
                 <div className='py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6'>
                   <div className='mx-auto max-w-screen-sm text-center'>
                     <h1 className='mb-4 text-7xl tracking-tight font-extrabold lg:text-9xl text-blue-600 dark:text-primary-500'>
                       404
                     </h1>
-                    <p className='mb-4 text-3xl tracking-tight font-bold text-gray-900 md:text-4xl dark:text-white'>
+                    <p
+                      className={`mb-4 text-3xl tracking-tight font-bold md:text-4xl ${darkMode ? 'text-white' : 'text-gray-900'}`}
+                    >
                       Something&apos;s missing.
                     </p>
-                    <p className='mb-4 text-lg font-light text-gray-500 dark:text-gray-400'>
+                    <p
+                      className={`mb-4 text-lg font-light ${darkMode ? 'text-gray-400' : 'text-gray-600'}`}
+                    >
                       Sorry, we can&apos;t find that component. You&apos;ll find
                       lots to explore on the home page.{' '}
                     </p>
@@ -396,11 +413,11 @@ const GlassyUIComponentsPage: React.FC = () => {
           <div className='flex justify-between items-center mt-8'>
             <button
               onClick={prevPage}
-              className={`px-4 py-2 mx-2 rounded-lg ${currentPage === 1
-                ? 'opacity-50 cursor-not-allowed'
-                : 'hover:bg-white/20'
-                }`}
-
+              className={`px-4 py-2 mx-2 rounded-lg ${
+                currentPage === 1
+                  ? 'opacity-50 cursor-not-allowed'
+                  : `${darkMode ? 'hover:bg-white/20' : 'hover:bg-black/20'}`
+              }`}
               disabled={currentPage === 1}
             >
               Previous
@@ -410,12 +427,11 @@ const GlassyUIComponentsPage: React.FC = () => {
             </span>
             <button
               onClick={nextPage}
-               className={`px-4 py-2 mx-2 rounded-lg ${currentPage === totalPages
-                ? 'opacity-50 cursor-not-allowed'
-                : 'hover:bg-white/20'
-                }`}
- 
-
+              className={`px-4 py-2 mx-2 rounded-lg ${
+                currentPage === totalPages
+                  ? 'opacity-50 cursor-not-allowed'
+                  : `${darkMode ? 'hover:bg-white/20' : 'hover:bg-black/20'}`
+              }`}
               disabled={currentPage === totalPages}
             >
               Next

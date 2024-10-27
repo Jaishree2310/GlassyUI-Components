@@ -1,16 +1,13 @@
 import React from 'react';
-
+import { useState, useEffect } from 'react';
 import {
   BrowserRouter as Router,
   Route,
   Routes,
   useLocation,
 } from 'react-router-dom';
-
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import ScrollProgressBar from './components/ScrollProgress'; // Import your ScrollProgressBar component
 import PricingDetailPage from './components/PricingDetailPage';
-
 import GlassyUILandingPage from './components/GlassyUILandingPage';
 import GlassyUIComponentsPage from './components/GlassyUIComponentsPage';
 import ButtonDetailsPage from './components/ButtonDetailsPage';
@@ -39,72 +36,122 @@ import ContactUsDetailsPage from './components/ContactUsDetailsPage';
 import PaginationDetails from './components/PaginationDetails';
 import TestimonialDetails from './components/TestimonialDetails';
 import Footer from './components/Footer';
-    import ProductCardDetailsPage from './components/ProductCardDetailsPage';
-   import Statistic from './components/StatisticDetails';
-   import GalleryDetailsPage from './components/GalleryDetailsPage';
-  import Checkbox from './components/Checkbox';
- 
- import SpinnerDetailsPage from './components/SpinnerDetailsPage';
+import ProductCardDetailsPage from './components/ProductCardDetailsPage';
+import Statistic from './components/StatisticDetails';
+import GalleryDetailsPage from './components/GalleryDetailsPage';
+import Checkbox from './components/Checkbox';
+import SpinnerDetailsPage from './components/SpinnerDetailsPage';
 
- const App: React.FC = () => {
+const App: React.FC = () => {
+  const [darkMode, setDarkMode] = useState(true); // Initial state for dark mode
+
+  useEffect(() => {
+    // Check localStorage for the saved theme preference
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'dark') {
+      setDarkMode(true);
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  }, []);
+
+  // Toggle between dark and light modes
+  const toggleDarkMode = () => {
+    setDarkMode(prevMode => !prevMode);
+    if (!darkMode) {
+      document.documentElement.classList.add('dark');
+      localStorage.setItem('theme', 'dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+      localStorage.setItem('theme', 'light');
+    }
+  };
+
   return (
     <Router>
-      <Header />
-      <ScrollProgressBar /> {/* Add the ScrollProgressBar component here */}
+      <Header darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
+      <ScrollProgressBar darkMode={darkMode} />{' '}
+      {/* Add the ScrollProgressBar component here */}
       <Routes>
-        <Route path='/' element={<GlassyUILandingPage />} />
-        <Route path='/components' element={<GlassyUIComponentsPage />} />
-        <Route path='/toast-page' element={<ToastPage />} />
-        <Route path='/button-details' element={<ButtonDetailsPage />} />
-        <Route path='/card-details' element={<CardDetailsPage />} />
+        <Route path='/' element={<GlassyUILandingPage darkMode={darkMode} />} />
+        <Route
+          path='/components'
+          element={<GlassyUIComponentsPage darkMode={darkMode} />}
+        />
+        <Route path='/toast-page' element={<ToastPage darkMode={darkMode} />} />
+        <Route
+          path='/button-details'
+          element={<ButtonDetailsPage darkMode={darkMode} />}
+        />
+        <Route
+          path='/card-details'
+          element={<CardDetailsPage darkMode={darkMode} />}
+        />
         <Route
           path='/progress-bar-details'
-          element={<ProgressBarDetailPage />}
+          element={<ProgressBarDetailPage darkMode={darkMode} />}
         />
         <Route path='/pricing-details' element={<PricingDetailPage />} />
-        <Route path='/popup-details' element={<PopupDetailPage />} />
-        <Route path='/input-details' element={<InputDetailPage />} />
+        <Route
+          path='/popup-details'
+          element={<PopupDetailPage darkMode={darkMode} />}
+        />
+        <Route
+          path='/input-details'
+          element={<InputDetailPage darkMode={darkMode} />}
+        />
         <Route path='/textarea-details' element={<TextareaDetailPage />} />
         <Route path='/tooltip-details' element={<TooltipDetailsPage />} />
-        <Route path='/speed-dial-details' element={<SpeedDialDetailsPage />} />
-        <Route path='/modal-details' element={<ModalDetailsPage />} />
-        <Route path='/navigation-details' element={<NavigationDetailsPage />} />
+        <Route
+          path='/speed-dial-details'
+          element={<SpeedDialDetailsPage darkMode={darkMode} />}
+        />
+        <Route
+          path='/modal-details'
+          element={<ModalDetailsPage darkMode={darkMode} />}
+        />
+        <Route
+          path='/navigation-details'
+          element={<NavigationDetailsPage darkMode={darkMode} />}
+        />
         <Route path='/generator' element={<GlassMorphismGenrator />} />
-        <Route path='/slider-details' element={<SliderDetailsPage />} />
+        <Route
+          path='/slider-details'
+          element={<SliderDetailsPage darkMode={darkMode} />}
+        />
         <Route path='/back-to-top-details' element={<BackToTopDetailsPage />} />
         <Route path='/dropdown-details' element={<DropdowndetailsPage />} />
         <Route path='/authentication-card' element={<AuthenticationCard />} />
         <Route path='/accordion-details' element={<AccordionDetails />} />
-        <Route path='/contributors' element={<ContributorsPage />} />
-
-        <Route path='/donate' element={<DonationPage />} />
-        <Route path='/about' element={<AboutUsPage />} />
+        <Route
+          path='/contributors'
+          element={<ContributorsPage darkMode={darkMode} />}
+        />
+        <Route path='/donate' element={<DonationPage darkMode={darkMode} />} />
+        <Route path='/about' element={<AboutUsPage darkMode={darkMode} />} />
         <Route path='/contact-details' element={<ContactUsDetailsPage />} />
         <Route path='/pagination-details' element={<PaginationDetails />} />
         <Route path='/testimonial-details' element={<TestimonialDetails />} />
-           <Route path='/product-details' element={<ProductCardDetailsPage />} />
-          <Route path='/gallery-details' element={<GalleryDetailsPage />} />
- 
- 
-           <Route path='/statistic-details' element={<Statistic />} />
-          <Route path='/gallery-details' element={<GalleryDetailsPage />} />
+        <Route path='/product-details' element={<ProductCardDetailsPage />} />
+        <Route path='/gallery-details' element={<GalleryDetailsPage />} />
 
-   
-         <Route path='/checkbox' element={<Checkbox />} />
- 
-         <Route path='/spinner' element={<SpinnerDetailsPage />} />
+        <Route path='/statistic-details' element={<Statistic />} />
+        <Route path='/gallery-details' element={<GalleryDetailsPage />} />
 
-         <Route path='*' element={<NotFoundPage />} />
+        <Route path='/checkbox' element={<Checkbox />} />
+
+        <Route path='/spinner' element={<SpinnerDetailsPage />} />
+
+        <Route path='*' element={<NotFoundPage />} />
       </Routes>
-
-      <ConditionalFooter />
-
+      <ConditionalFooter darkMode={darkMode} />
     </Router>
   );
 };
-const ConditionalFooter: React.FC = () => {
+const ConditionalFooter: React.FC<{ darkMode: boolean }> = ({ darkMode }) => {
   const location = useLocation();
 
-  return location.pathname === '/' ? <Footer /> : null;
+  return location.pathname === '/' ? <Footer darkMode={darkMode} /> : null;
 };
 export default App;

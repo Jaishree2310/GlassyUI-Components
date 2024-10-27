@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { z } from 'zod';
 
-const DonationPage: React.FC = () => {
+const DonationPage: React.FC<{ darkMode: boolean }> = ({ darkMode }) => {
   const [isHovering, setIsHovering] = useState(false);
   const [formData, setFormData] = useState({
     amount: '',
@@ -24,11 +24,11 @@ const DonationPage: React.FC = () => {
   });
 
   useEffect(() => {
-    document.body.style.backgroundColor = '#3f434a';
+    document.body.style.backgroundColor = darkMode ? '#3f434a' : '#ffffff';
     return () => {
       document.body.style.backgroundColor = '';
     };
-  }, []);
+  }, [darkMode]);
 
   const containerStyle: React.CSSProperties = {
     maxWidth: '500px',
@@ -56,7 +56,7 @@ const DonationPage: React.FC = () => {
   const paragraphStyle: React.CSSProperties = {
     fontSize: '1.1rem',
     marginBottom: '30px',
-    color: '#e0e0e0',
+    color: darkMode ? '#e0e0e0' : '#202020',
   };
 
   const formStyle: React.CSSProperties = {
@@ -70,7 +70,7 @@ const DonationPage: React.FC = () => {
     textAlign: 'left',
     marginBottom: '10px',
     fontWeight: '600',
-    color: '#eeeeee',
+    color: darkMode ? '#eeeeee' : '#202020',
   };
 
   const inputStyle: React.CSSProperties = {
