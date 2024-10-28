@@ -123,7 +123,10 @@ const App: React.FC = () => {
           path='/navigation-details'
           element={<NavigationDetailsPage darkMode={darkMode} />}
         />
-        <Route path='/generator' element={<GlassMorphismGenrator />} />
+        <Route
+          path='/generator'
+          element={<GlassMorphismGenrator darkMode={darkMode} />}
+        />
         <Route
           path='/slider-details'
           element={<SliderDetailsPage darkMode={darkMode} />}
@@ -150,8 +153,14 @@ const App: React.FC = () => {
         />
         <Route path='/donate' element={<DonationPage darkMode={darkMode} />} />
         <Route path='/about' element={<AboutUsPage darkMode={darkMode} />} />
-        <Route path='/contact-details' element={<ContactUsDetailsPage />} />
-        <Route path='/pagination-details' element={<PaginationDetails />} />
+        <Route
+          path='/contact-details'
+          element={<ContactUsDetailsPage darkMode={darkMode} />}
+        />
+        <Route
+          path='/pagination-details'
+          element={<PaginationDetails darkMode={darkMode} />}
+        />
         <Route
           path='/testimonial-details'
           element={<TestimonialDetails darkMode={darkMode} />}
@@ -160,19 +169,28 @@ const App: React.FC = () => {
           path='/product-details'
           element={<ProductCardDetailsPage darkMode={darkMode} />}
         />
-        <Route path='/gallery-details' element={<GalleryDetailsPage />} />
+        <Route
+          path='/gallery-details'
+          element={<GalleryDetailsPage darkMode={darkMode} />}
+        />
 
         <Route
           path='/statistic-details'
           element={<Statistic darkMode={darkMode} />}
         />
-        <Route path='/gallery-details' element={<GalleryDetailsPage />} />
+        <Route
+          path='/gallery-details'
+          element={<GalleryDetailsPage darkMode={darkMode} />}
+        />
 
         <Route path='/checkbox' element={<Checkbox />} />
 
-        <Route path='/spinner' element={<SpinnerDetailsPage />} />
+        <Route
+          path='/spinner'
+          element={<SpinnerDetailsPage darkMode={darkMode} />}
+        />
 
-        <Route path='*' element={<NotFoundPage />} />
+        <Route path='*' element={<NotFoundPage darkMode={darkMode} />} />
       </Routes>
       <ConditionalFooter darkMode={darkMode} />
     </Router>

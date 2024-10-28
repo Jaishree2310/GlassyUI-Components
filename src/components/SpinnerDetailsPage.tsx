@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { ArrowLeft, Copy, Check } from 'lucide-react';
 import BackToTopButton from './BackToTop';
 
-const SpinnerDetailsPage: React.FC = () => {
+const SpinnerDetailsPage: React.FC<{ darkMode: boolean }> = ({ darkMode }) => {
   const navigate = useNavigate();
   const [copiedStates, setCopiedStates] = useState<{ [key: string]: boolean }>(
     {},
@@ -14,8 +14,7 @@ const SpinnerDetailsPage: React.FC = () => {
   const [customBorderWidth, setCustomBorderWidth] = useState('4');
 
   const getGlassyClasses = (opacity = 20) => {
-    return `backdrop-filter backdrop-blur-lg bg-white bg-opacity-${opacity} 
-  border border-white border-opacity-20 rounded-lg shadow-lg transition-all duration-300`;
+    return `backdrop-filter backdrop-blur-lg ${darkMode ? 'bg-white/30 border-white/20' : 'bg-black/10 border-black/20'} bg-opacity-${opacity} border border-opacity-20 rounded-lg shadow-lg transition-all duration-300`;
   };
 
   const copyToClipboard = (text: string, key: string) => {
@@ -28,19 +27,20 @@ const SpinnerDetailsPage: React.FC = () => {
     });
   };
 
-  const CopyButton: React.FC<{ text: string; codeKey: string }> = ({
-    text,
-    codeKey,
-  }) => (
+  const CopyButton: React.FC<{
+    text: string;
+    codeKey: string;
+    darkMode: boolean;
+  }> = ({ text, codeKey, darkMode }) => (
     <button
       onClick={() => copyToClipboard(text, codeKey)}
-      className={`absolute top-2 right-2 ${getGlassyClasses()} p-2 hover:bg-white/40 transition-all duration-300 z-10`}
+      className={`absolute top-2 right-2 ${getGlassyClasses()} p-2 ${darkMode ? 'text-white hover:bg-white/40' : 'text-black hover:bg-black/30'} transition-all duration-300`}
       title='Copy to clipboard'
     >
       {copiedStates[codeKey] ? (
-        <Check size={16} className='text-white' />
+        <Check size={16} className='text-green-600' />
       ) : (
-        <Copy size={16} className='text-white' />
+        <Copy size={16} className={darkMode ? 'text-gray-100' : 'text-black'} />
       )}
     </button>
   );
@@ -63,69 +63,98 @@ const SpinnerDetailsPage: React.FC = () => {
   className="w-full h-16 border-4 border-t-transparent border-white rounded-full animate-spin"
 />`;
 
+  const tableHeadingStyles = `text-left p-2 ${darkMode ? 'text-gray-100' : 'text-black'}`;
+  const tableDataStyles = `p-2 ${darkMode ? 'text-gray-200' : 'text-black/80'}`;
+
   return (
-    <div className='min-h-screen p-8 font-sans bg-gradient-to-r from-gray-800 via-gray-900 to-black text-white relative'>
+    <div
+      className={`min-h-screen p-8 font-sans bg-gradient-to-r ${darkMode ? 'from-gray-800 via-gray-900 to-black text-white' : 'from-white via-black/10 to-black/20 text-black'} relative`}
+    >
       <BackToTopButton />
       <div className='relative z-10'>
         <button
           onClick={() => navigate(-1)}
-          className={`mb-8 flex items-center ${getGlassyClasses(10)} px-4 py-2 hover:bg-white/40 transition-all duration-300 text-white`}
+          className={`mb-8 flex items-center ${getGlassyClasses(10)} px-4 py-2 ${darkMode ? 'hover:bg-white/40 text-white' : 'hover:bg-black/30 text-black'} transition-all duration-300`}
         >
           <ArrowLeft size={20} className='mr-2' />
           Back to Components
         </button>
 
-        <h1 className='text-6xl font-bold mb-8 text-white'>Spinner</h1>
-        <p className='text-xl mb-8 text-white'>
+        <h1
+          className={`text-6xl font-bold mb-8 ${darkMode ? 'text-white' : 'text-black'}`}
+        >
+          Spinner
+        </h1>
+        <p
+          className={`text-xl mb-8 ${darkMode ? 'text-gray-100' : 'text-black'}`}
+        >
           A customizable, glassmorphism styled spinner component.
         </p>
 
         {/* Basic Usage */}
         <div className={`${getGlassyClasses()} p-6 mb-14 relative`}>
-          <h2 className='text-3xl font-bold mb-6 text-white'>Basic Usage</h2>
+          <h2
+            className={`text-3xl font-bold mb-6 ${darkMode ? 'text-gray-100' : 'text-black'}`}
+          >
+            Basic Usage
+          </h2>
           <div className='relative'>
-            <pre className='bg-gray-800 text-white p-6 rounded-lg overflow-x-auto whitespace-pre-wrap max-sm:text-[0.55rem]'>
+            <pre
+              className={`${darkMode ? 'bg-gray-800 text-white' : 'bg-white text-black'} p-6 rounded-lg overflow-x-auto whitespace-pre-wrap max-sm:p-2 max-sm:text-[0.55rem]`}
+            >
               {basicUsageCode}
             </pre>
-            <CopyButton text={basicUsageCode} codeKey='basicUsage' />
+            <CopyButton
+              text={basicUsageCode}
+              codeKey='basicUsage'
+              darkMode={darkMode}
+            />
           </div>
         </div>
 
         {/* Props */}
         <div className={`${getGlassyClasses()} p-6 mb-14`}>
-          <h2 className='text-3xl font-bold mb-6 text-white'>Props</h2>
+          <h2
+            className={`text-3xl font-bold mb-6 ${darkMode ? 'text-gray-100' : 'text-black'}`}
+          >
+            Props
+          </h2>
           <div className='overflow-x-auto'>
             <table className='w-full'>
               <thead>
-                <tr className='bg-white bg-opacity-20'>
-                  <th className='text-left p-2 text-white'>Prop</th>
-                  <th className='text-left p-2 text-white'>Type</th>
-                  <th className='text-left p-2 text-white'>Default</th>
-                  <th className='text-left p-2 text-white'>Description</th>
+                <tr
+                  className={`${darkMode ? 'bg-white' : 'bg-black'} bg-opacity-20`}
+                >
+                  <th className={tableHeadingStyles}>Prop</th>
+                  <th className={tableHeadingStyles}>Type</th>
+                  <th className={tableHeadingStyles}>Default</th>
+                  <th className={tableHeadingStyles}>Description</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
-                  <td className='p-2 text-white'>color</td>
-                  <td className='p-2 text-white'>string</td>
-                  <td className='p-2 text-white'>-</td>
-                  <td className='p-2 text-white'>
+                  <td className={tableDataStyles}>color</td>
+                  <td className={tableDataStyles}>string</td>
+                  <td className={tableDataStyles}>-</td>
+                  <td className={tableDataStyles}>
                     The color of the spinner's border.
                   </td>
                 </tr>
-                <tr className='bg-white bg-opacity-10'>
-                  <td className='p-2 text-white'>size</td>
-                  <td className='p-2 text-white'>string</td>
-                  <td className='p-2 text-white'>40</td>
-                  <td className='p-2 text-white'>
+                <tr
+                  className={`${darkMode ? 'bg-white' : 'bg-black'} bg-opacity-10`}
+                >
+                  <td className={tableDataStyles}>size</td>
+                  <td className={tableDataStyles}>string</td>
+                  <td className={tableDataStyles}>40</td>
+                  <td className={tableDataStyles}>
                     The size (diameter) of the spinner in pixels.
                   </td>
                 </tr>
                 <tr>
-                  <td className='p-2 text-white'>borderWidth</td>
-                  <td className='p-2 text-white'>string</td>
-                  <td className='p-2 text-white'>4</td>
-                  <td className='p-2 text-white'>
+                  <td className={tableDataStyles}>borderWidth</td>
+                  <td className={tableDataStyles}>string</td>
+                  <td className={tableDataStyles}>4</td>
+                  <td className={tableDataStyles}>
                     The width of the spinner's border in pixels.
                   </td>
                 </tr>
@@ -136,8 +165,14 @@ const SpinnerDetailsPage: React.FC = () => {
 
         {/* Themed Spinner */}
         <div className={`${getGlassyClasses()} p-6 mb-14`}>
-          <h2 className='text-3xl font-bold mb-6 text-white'>Themed Spinner</h2>
-          <p className='mb-6 text-lg text-white'>
+          <h2
+            className={`text-3xl font-bold mb-6 ${darkMode ? 'text-gray-100' : 'text-black'}`}
+          >
+            Themed Spinner
+          </h2>
+          <p
+            className={`mb-6 text-lg ${darkMode ? 'text-white' : 'text-black'}`}
+          >
             Customize your spinner's appearance by selecting a color, size, and
             border width.
           </p>
@@ -190,7 +225,7 @@ const SpinnerDetailsPage: React.FC = () => {
 
           <div className='relative mt-8'>
             <div
-              className='mx-auto rounded-full animate-spin'
+              className='mx-auto rounded-full animate-spin mb-6'
               style={{
                 width: `${customSize}px`,
                 height: `${customSize}px`,
@@ -198,19 +233,29 @@ const SpinnerDetailsPage: React.FC = () => {
                 borderTopColor: 'transparent',
               }}
             ></div>
-            <pre className='bg-gray-800 text-white p-6 rounded-lg mt-4 overflow-x-auto whitespace-pre-wrap max-sm:text-[0.55rem]'>
+            <pre
+              className={`${darkMode ? 'bg-gray-800 text-white' : 'bg-white text-black'} p-6 rounded-lg overflow-x-auto whitespace-pre-wrap max-sm:p-2 max-sm:text-[0.55rem]`}
+            >
               {themedSpinnerCode}
             </pre>
-            <CopyButton text={themedSpinnerCode} codeKey='themedSpinner' />
+            <CopyButton
+              text={themedSpinnerCode}
+              codeKey='themedSpinner'
+              darkMode={darkMode}
+            />
           </div>
         </div>
 
         {/* Full Width Spinner */}
         <div className={`${getGlassyClasses()} p-6 mb-14`}>
-          <h2 className='text-3xl font-bold mb-6 text-white'>
+          <h2
+            className={`text-3xl font-bold mb-6 ${darkMode ? 'text-gray-100' : 'text-black'}`}
+          >
             Full Width Spinner
           </h2>
-          <p className='mb-6 text-lg text-white'>
+          <p
+            className={`mb-6 text-lg ${darkMode ? 'text-white' : 'text-black'}`}
+          >
             For layouts that need the spinner to cover the entire width of the
             container.
           </p>
@@ -218,12 +263,15 @@ const SpinnerDetailsPage: React.FC = () => {
           <div className='relative'>
             <div className='w-full h-16 border-4 border-t-transparent border-white rounded-full animate-spin'></div>
 
-            <pre className='bg-gray-800 text-white p-6 rounded-lg mt-4 overflow-x-auto whitespace-pre-wrap max-sm:text-[0.55rem]'>
+            <pre
+              className={`${darkMode ? 'bg-gray-800 text-white' : 'bg-white text-black'} p-6 rounded-lg overflow-x-auto whitespace-pre-wrap max-sm:p-2 max-sm:text-[0.55rem]`}
+            >
               {fullWidthSpinnerCode}
             </pre>
             <CopyButton
               text={fullWidthSpinnerCode}
               codeKey='fullWidthSpinner'
+              darkMode={darkMode}
             />
           </div>
         </div>
