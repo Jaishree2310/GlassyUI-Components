@@ -1,3 +1,7 @@
+ upd-feature-branch
+import React, { useState, useEffect } from 'react';
+import PricingDetailPage from './components/PricingDetailPage';
+
 import React from 'react';
 import { useState, useEffect } from 'react';
 import {
@@ -37,6 +41,8 @@ import PaginationDetails from './components/PaginationDetails';
 import TestimonialDetails from './components/TestimonialDetails';
 import Footer from './components/Footer';
 import ProductCardDetailsPage from './components/ProductCardDetailsPage';
+import CalendarDetails from './components/CalendarDetails';
+import Checkbox from './components/Checkbox';
 import Statistic from './components/StatisticDetails';
 import GalleryDetailsPage from './components/GalleryDetailsPage';
 import Checkbox from './components/Checkbox';
@@ -67,7 +73,6 @@ const App: React.FC = () => {
       localStorage.setItem('theme', 'light');
     }
   };
-
   return (
     <Router>
       <Header darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
@@ -173,7 +178,6 @@ const App: React.FC = () => {
           path='/gallery-details'
           element={<GalleryDetailsPage darkMode={darkMode} />}
         />
-
         <Route
           path='/statistic-details'
           element={<Statistic darkMode={darkMode} />}
@@ -182,8 +186,8 @@ const App: React.FC = () => {
           path='/gallery-details'
           element={<GalleryDetailsPage darkMode={darkMode} />}
         />
-
         <Route path='/checkbox' element={<Checkbox />} />
+
 
         <Route
           path='/spinner'
