@@ -1,9 +1,5 @@
- upd-feature-branch
+//upd-feature-branch
 import React, { useState, useEffect } from 'react';
-import PricingDetailPage from './components/PricingDetailPage';
-
-import React from 'react';
-
 import {
   BrowserRouter as Router,
   Route,
@@ -11,11 +7,9 @@ import {
   useLocation,
 } from 'react-router-dom';
 
- main
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+// main
 import ScrollProgressBar from './components/ScrollProgress'; // Import your ScrollProgressBar component
 import PricingDetailPage from './components/PricingDetailPage';
-
 import GlassyUILandingPage from './components/GlassyUILandingPage';
 import GlassyUIComponentsPage from './components/GlassyUIComponentsPage';
 import ButtonDetailsPage from './components/ButtonDetailsPage';
@@ -34,6 +28,7 @@ import SliderDetailsPage from './components/SliderDetailsPage';
 import ContributorsPage from './components/ContributorsPage';
 import DonationPage from './components/DonationPage';
 import AboutUsPage from './components/AboutUsPage';
+import SubscribePage from './components/SubscribePage';
 import Header from './components/Header';
 import BackToTopDetailsPage from './components/BackToTopDetailsPage';
 import DropdowndetailsPage from './components/DropdowndetailsPage';
@@ -44,24 +39,13 @@ import ContactUsDetailsPage from './components/ContactUsDetailsPage';
 import PaginationDetails from './components/PaginationDetails';
 import TestimonialDetails from './components/TestimonialDetails';
 import Footer from './components/Footer';
-
-
-
 import CalendarDetails from './components/CalendarDetails';
 import Checkbox from './components/Checkbox';
 import Statistic from './components/StatisticDetails';
 import GalleryDetailsPage from './components/GalleryDetailsPage';
-import Checkbox from './components/Checkbox';
 import SpinnerDetailsPage from './components/SpinnerDetailsPage';
-
 import ProductCardDetailsPage from './components/ProductCardDetailsPage';
-import Statistic from './components/StatisticDetails';
-import GalleryDetailsPage from './components/GalleryDetailsPage';
-import Checkbox from './components/Checkbox';
- 
- import SpinnerDetailsPage from './components/SpinnerDetailsPage';
-
- upd-feature-branch
+//upd-feature-branch
 const ThemeToggle: React.FC = () => {
   const [theme, setTheme] = useState(localStorage.getItem('theme') || 'light');
 
@@ -73,38 +57,27 @@ const ThemeToggle: React.FC = () => {
     }
     localStorage.setItem('theme', theme);
   }, [theme]);
-
   const toggleTheme = () => {
     setTheme(theme === 'light' ? 'dark' : 'light');
   };
-
   return (
     <button
       onClick={toggleTheme}
-      className="p-2 bg-gray-200 dark:bg-gray-800 text-black dark:text-white rounded"
+      className='p-2 bg-gray-200 dark:bg-gray-800 text-black dark:text-white rounded'
     >
       {theme === 'light' ? 'Switch to Dark Mode' : 'Switch to Light Mode'}
     </button>
   );
 };
-
-
 const App: React.FC = () => {
   return (
     <Router>
       <Header />
-      {/* Theme Toggle Button */}
-       className="theme-toggle-container p-4"
+      {/* Theme Toggle Container */}
+      <div className='theme-toggle-container p-4'>
         <ThemeToggle />
-      
-
- const App: React.FC = () => {
-
-  return (
-    <Router>
-      <Header />
-      <ScrollProgressBar /> {/* Add the ScrollProgressBar component here */}
- main
+      </div>
+      <ScrollProgressBar /> {/* Scroll Progress Bar */}
       <Routes>
         <Route path='/' element={<GlassyUILandingPage />} />
         <Route path='/components' element={<GlassyUIComponentsPage />} />
@@ -130,45 +103,21 @@ const App: React.FC = () => {
         <Route path='/authentication-card' element={<AuthenticationCard />} />
         <Route path='/accordion-details' element={<AccordionDetails />} />
         <Route path='/contributors' element={<ContributorsPage />} />
-
         <Route path='/donate' element={<DonationPage />} />
         <Route path='/about' element={<AboutUsPage />} />
         <Route path='/contact-details' element={<ContactUsDetailsPage />} />
         <Route path='/pagination-details' element={<PaginationDetails />} />
         <Route path='/testimonial-details' element={<TestimonialDetails />} />
-
-
+        <Route path='/subscribe' element={<SubscribePage />} />
         <Route path='/calendar-details' element={<CalendarDetails />} />
         <Route path='/checkbox' element={<Checkbox />} />
-
-          <Route path='/statistic-details' element={<Statistic />} />
-          <Route path='/gallery-details' element={<GalleryDetailsPage />} />
-
-
-  
-        <Route path='/checkbox' element={<Checkbox />} />
- 
-
+        <Route path='/statistic-details' element={<Statistic />} />
+        <Route path='/gallery-details' element={<GalleryDetailsPage />} />
         <Route path='/spinner' element={<SpinnerDetailsPage />} />
-
-           <Route path='/product-details' element={<ProductCardDetailsPage />} />
-          <Route path='/gallery-details' element={<GalleryDetailsPage />} />
- 
- 
-           <Route path='/statistic-details' element={<Statistic />} />
-          <Route path='/gallery-details' element={<GalleryDetailsPage />} />
-
-   
-         <Route path='/checkbox' element={<Checkbox />} />
- 
-         <Route path='/spinner' element={<SpinnerDetailsPage />} />
-
-
-         <Route path='*' element={<NotFoundPage />} />
+        <Route path='/product-details' element={<ProductCardDetailsPage />} />
+        <Route path='*' element={<NotFoundPage />} />
       </Routes>
-
       <ConditionalFooter />
-
     </Router>
   );
 };
