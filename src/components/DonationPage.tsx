@@ -1,4 +1,10 @@
 import React, { useState, useEffect } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
+  faRupeeSign,
+  faUser,
+  faEnvelope,
+} from '@fortawesome/free-solid-svg-icons';
 import { z } from 'zod';
 
 const DonationPage: React.FC = () => {
@@ -35,7 +41,7 @@ const DonationPage: React.FC = () => {
     margin: '70px auto',
     padding: '40px',
     background:
-      'linear-gradient(180deg, rgba(255, 255, 255, 0.01), rgba(255, 255, 255, 0.1)',
+      'linear-gradient(180deg, rgba(255, 255, 255, 0.01), rgba(255, 255, 255, 0.1))',
     borderRadius: '20px',
     border: '1px solid rgba(255, 255, 255, 0.2)',
     textAlign: 'center',
@@ -150,7 +156,7 @@ const DonationPage: React.FC = () => {
       </p>
       <form noValidate style={formStyle} onSubmit={handleSubmit}>
         <label htmlFor='amount' style={labelStyle}>
-          Donation Amount:
+          <FontAwesomeIcon icon={faRupeeSign} /> Donation Amount:
         </label>
         <input
           type='text'
@@ -168,7 +174,7 @@ const DonationPage: React.FC = () => {
         {errors.amount && <p style={errorStyle}>{errors.amount}</p>}
 
         <label htmlFor='name' style={labelStyle}>
-          Your Name:
+          <FontAwesomeIcon icon={faUser} /> Your Name:
         </label>
         <input
           type='text'
@@ -186,7 +192,7 @@ const DonationPage: React.FC = () => {
         {errors.name && <p style={errorStyle}>{errors.name}</p>}
 
         <label htmlFor='email' style={labelStyle}>
-          Your Email:
+          <FontAwesomeIcon icon={faEnvelope} /> Your Email:
         </label>
         <input
           type='email'
