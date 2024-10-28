@@ -71,6 +71,11 @@ const AccordionDetails: React.FC = () => {
         () => setCopiedStates(prev => ({ ...prev, [key]: false })),
         2000,
       );
+      setCopiedStates(prev => ({ ...prev, [key]: true }));
+      setTimeout(
+        () => setCopiedStates(prev => ({ ...prev, [key]: false })),
+        2000,
+      );
     });
   };
 

@@ -46,8 +46,9 @@ const DropdownMenuDetailsPage: React.FC = () => {
   );
   const [selectedOption, setSelectedOption] = useState<string>('Option 1');
 
-  const getGlassyClasses = () => {
-    return 'backdrop-filter backdrop-blur-xl bg-white/30 border border-white/20 rounded-xl shadow-lg transition-all duration-300 max-sm:px-0';
+  const getGlassyClasses = (opacity = 20) => {
+    return `backdrop-filter backdrop-blur-lg bg-white bg-opacity-${opacity} 
+  border border-white border-opacity-20 rounded-lg shadow-lg transition-all duration-300`;
   };
 
   const copyToClipboard = (text: string, key: string) => {
@@ -160,6 +161,41 @@ const DropdownMenuDetailsPage: React.FC = () => {
             <CopyButton text={dropdownExampleCode} codeKey='dropdownExample' />
           </div>
         </div>
+
+        {/* Props */}
+        <section
+          className={`${getGlassyClasses()} p-6 mb-14 text-white relative z-10`}
+        >
+          <h2 className='text-3xl font-bold mb-4 text-black'>Props</h2>
+          <div className='overflow-x-auto'>
+            <table className='w-full'>
+              <thead>
+                <tr className='bg-white bg-opacity-20'>
+                  <th className='text-left p-2 text-black'>Prop</th>
+                  <th className='text-left p-2 text-black'>Type</th>
+                  <th className='text-left p-2 text-black'>Default</th>
+                  <th className='text-left p-2 text-black'>Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td className='p-2 text-black'>options</td>
+                  <td className='p-2 text-black'>array</td>
+                  <td className='p-2 text-black'>[ ]</td>
+                  <td className='p-2 text-black'>Items in the dropdown</td>
+                </tr>
+                <tr className='bg-white bg-opacity-20'>
+                  <td className='p-2 text-black'>onSelect</td>
+                  <td className='p-2 text-black'>function</td>
+                  <td className='p-2 text-black'>-</td>
+                  <td className='p-2 text-black'>
+                    Task to do after selecting the option
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
       </div>
     </div>
   );

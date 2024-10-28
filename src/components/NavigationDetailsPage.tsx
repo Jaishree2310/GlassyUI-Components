@@ -2,8 +2,11 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ArrowLeft, Copy, Check, Menu, Home } from 'lucide-react';
 
-const getGlassyClasses = () => {
-  return 'backdrop-filter backdrop-blur-md bg-white/10 border border-white/20 rounded-xl shadow-lg transition-all duration-300';
+import BackToTopButton from './BackToTop';
+
+const getGlassyClasses = (opacity = 20) => {
+  return `backdrop-filter backdrop-blur-lg bg-white bg-opacity-${opacity} 
+border border-white border-opacity-20 rounded-lg shadow-lg transition-all duration-300`;
 };
 
 const NavigationDetailsPage: React.FC = () => {
@@ -94,10 +97,10 @@ const NavigationDetailsPage: React.FC = () => {
         Back to Components
       </button>
 
-      <h1 className='text-4xl font-bold mb-8 text-gray-900'>
+      <h1 className='text-6xl font-bold mb-8 text-black'>
         Navigation Component
       </h1>
-      <p className='text-xl mb-8 text-gray-800'>
+      <p className='text-xl mb-8 text-black'>
         A customizable, glassmorphism styled Navigation component.
       </p>
 
@@ -113,68 +116,64 @@ const NavigationDetailsPage: React.FC = () => {
       </section>
 
       {/* Props */}
-      <section className='mb-12'>
-        <h2 className='text-2xl font-bold mb-4 text-gray-800'>Props</h2>
-        <div className='bg-white bg-opacity-30 backdrop-filter backdrop-blur-md border border-white border-opacity-20 rounded-lg p-6'>
-          <div className='overflow-x-auto'>
-            <table className='w-full'>
-              <thead>
-                <tr className='border-b border-gray-800'>
-                  <th className='text-left p-2'> Prop</th>
-                  <th className='text-left p-2'>Type</th>
-                  <th className='text-left p-2'>Default</th>
-                  <th className='text-left p-2'>Description</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr className='border-b border-gray-800'>
-                  <td className='p-2'>className</td>
-                  <td className='p-2'>string</td>
-                  <td className='p-2'>''</td>
-                  <td className='p-2'>Additional CSS classes</td>
-                </tr>
-                <tr className='border-b border-gray-800'>
-                  <td className='p-2'>children</td>
-                  <td className='p-2'>ReactNode</td>
-                  <td className='p-2'>-</td>
-                  <td className='p-2'>Navigation links</td>
-                </tr>
-                <tr className='border-b border-gray-800'>
-                  <td className='p-2'>onClick</td>
-                  <td className='p-2'>function</td>
-                  <td className='p-2'>-</td>
-                  <td className='p-2'>
-                    Function to handle click events on navigation items
-                  </td>
-                </tr>
-                <tr className='border-b border-gray-800'>
-                  <td className='p-2'>menuOpen</td>
-                  <td className='p-2'>boolean</td>
-                  <td className='p-2'>false</td>
-                  <td className='p-2'>
-                    Whether the navigation menu is open or not shown when open
-                    in small screen devices
-                  </td>
-                </tr>
-                <tr className='border-b border-gray-800'>
-                  <td className='p-2'>selected</td>
-                  <td className='p-2'>string</td>
-                  <td className='p-2'>''</td>
-                  <td className='p-2'>
-                    The currently selected navigation item
-                  </td>
-                </tr>
-                <tr className='border-b border-gray-800'>
-                  <td className='p-2'>onSelect</td>
-                  <td className='p-2'>function</td>
-                  <td className='p-2'>-</td>
-                  <td className='p-2'>
-                    Function to handle selection of navigation items
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
+      <section className={`${getGlassyClasses()} p-6 mb-14`}>
+        <h2 className='text-3xl font-bold mb-6 text-black'>Props</h2>
+        <div className='overflow-x-auto'>
+          <table className='w-full'>
+            <thead>
+              <tr className='border-b border-gray-800'>
+                <th className='text-left p-2'> Prop</th>
+                <th className='text-left p-2'>Type</th>
+                <th className='text-left p-2'>Default</th>
+                <th className='text-left p-2'>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr className='border-b border-gray-800'>
+                <td className='p-2'>className</td>
+                <td className='p-2'>string</td>
+                <td className='p-2'>''</td>
+                <td className='p-2'>Additional CSS classes</td>
+              </tr>
+              <tr className='border-b border-gray-800'>
+                <td className='p-2'>children</td>
+                <td className='p-2'>ReactNode</td>
+                <td className='p-2'>-</td>
+                <td className='p-2'>Navigation links</td>
+              </tr>
+              <tr className='border-b border-gray-800'>
+                <td className='p-2'>onClick</td>
+                <td className='p-2'>function</td>
+                <td className='p-2'>-</td>
+                <td className='p-2'>
+                  Function to handle click events on navigation items
+                </td>
+              </tr>
+              <tr className='border-b border-gray-800'>
+                <td className='p-2'>menuOpen</td>
+                <td className='p-2'>boolean</td>
+                <td className='p-2'>false</td>
+                <td className='p-2'>
+                  Whether the navigation menu is open or not shown when open in
+                  small screen devices
+                </td>
+              </tr>
+              <tr className='border-b border-gray-800'>
+                <td className='p-2'>selected</td>
+                <td className='p-2'>string</td>
+                <td className='p-2'>''</td>
+                <td className='p-2'>The currently selected navigation item</td>
+              </tr>
+              <tr className='border-b border-gray-800'>
+                <td className='p-2'>onSelect</td>
+                <td className='p-2'>function</td>
+                <td className='p-2'>-</td>
+                <td className='p-2'>
+                  Function to handle selection of navigation items
+                </td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </section>
 

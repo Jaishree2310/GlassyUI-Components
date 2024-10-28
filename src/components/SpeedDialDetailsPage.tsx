@@ -162,13 +162,13 @@ const SpeedDialDetailsPage: React.FC = () => {
               />`;
 
   return (
-    <div className='min-h-screen p-8 font-sans bg-gradient-to-br from-pink-300 to-pink-300 text-gray-800 relative'>
+    <div className='min-h-screen flex flex-col gap-6 justify-center items-center px-6 bg-gradient-to-br from-pink-300 to-pink-300 text-black p-8'>
       <BackToTopButton />
       <div className='relative z-10'>
         {/* Back Button */}
         <button
           onClick={() => navigate(-1)}
-          className={`mb-8 flex items-center ${getGlassyClasses()} px-4 py-2 hover:bg-white/40 transition-all duration-300 text-black`}
+          className={`mb-8 flex items-center bg-yellow-200 border border-black rounded-xl shadow-lg max-sm:px-0 px-4 py-2 hover:bg-white/40 transition-all duration-300 text-black`}
         >
           <ArrowLeft size={20} className='mr-2' />
           Back to Components
@@ -185,7 +185,7 @@ const SpeedDialDetailsPage: React.FC = () => {
           <h2 className='text-3xl font-bold mb-6 text-black'>Basic Usage</h2>
           {/* Basic Usage Code Block */}
           <div className='relative mb-4'>
-            <pre className='bg-orange-100 text-black p-6 rounded-lg overflow-x-auto whitespace-pre-wrap max-sm:p-2 max-sm:text-[0.55rem]'>
+            <pre className='bg-emerald-100 text-black p-6 rounded-lg overflow-x-auto whitespace-pre-wrap max-sm:p-2 max-sm:text-[0.55rem]'>
               {basicUsage}
             </pre>
             <CopyButton text={basicUsage} codeKey='basicUsage' />
@@ -197,7 +197,7 @@ const SpeedDialDetailsPage: React.FC = () => {
           <div className='overflow-x-auto'>
             <table className='w-full'>
               <thead>
-                <tr className='border-b border-gray-800'>
+                <tr className='border-b border-black'>
                   <th className='text-left p-2 text-black'>Prop</th>
                   <th className='text-left p-2 text-black'>Type</th>
                   <th className='text-left p-2 text-black'>Default</th>
@@ -205,7 +205,7 @@ const SpeedDialDetailsPage: React.FC = () => {
                 </tr>
               </thead>
               <tbody>
-                <tr className='border-b border-gray-800'>
+                <tr className='border-b border-black'>
                   <td className='p-2 text-black'>direction</td>
                   <td className='p-2 text-black'>string</td>
                   <td className='p-2 text-black'>-</td>
@@ -214,7 +214,7 @@ const SpeedDialDetailsPage: React.FC = () => {
                     "left", or "right"
                   </td>
                 </tr>
-                <tr className='border-b border-gray-800'>
+                <tr className='border-b border-black'>
                   <td className='p-2 text-black'>actionButtons</td>
                   <td className='p-2 text-black'>array</td>
                   <td className='p-2 text-black'>-</td>
@@ -271,7 +271,7 @@ const SpeedDialDetailsPage: React.FC = () => {
                 },
               ]}
             ></SpeedDial>
-            <pre className='bg-orange-100 text-black p-6 rounded-lg overflow-x-auto whitespace-pre-wrap max-sm:p-2 max-sm:text-[0.55rem]'>
+            <pre className='bg-emerald-100 text-black p-6 rounded-lg overflow-x-auto whitespace-pre-wrap max-sm:p-2 max-sm:text-[0.55rem]'>
               {speedDialRight}
             </pre>
             <CopyButton text={speedDialRight} codeKey='speedDialRight' />
@@ -321,7 +321,7 @@ const SpeedDialDetailsPage: React.FC = () => {
                 },
               ]}
             ></SpeedDial>
-            <pre className='bg-orange-100 text-black p-6 rounded-lg overflow-x-auto whitespace-pre-wrap max-sm:p-2 max-sm:text-[0.55rem]'>
+            <pre className='bg-emerald-100 text-black p-6 rounded-lg overflow-x-auto whitespace-pre-wrap max-sm:p-2 max-sm:text-[0.55rem]'>
               {speedDialTop}
             </pre>
             <CopyButton text={speedDialTop} codeKey='speedDialRight' />

@@ -120,10 +120,10 @@ function Example() {
   );
 
   return (
-    <div className='min-h-screen p-8 font-sans bg-gradient-to-br from-pink-300 to-pink-300 text-black relative'>
+    <div className='min-h-screen p-8 font-sans bg-gradient-to-r from-pink-300 via-pink-300 to-pink-300 text-white relative'>
       <button
         onClick={() => navigate(-1)}
-        className={`mb-8 flex items-center bg-yellow-300 border border-black rounded-xl shadow-lg  max-sm:px-1 px-4 py-2 hover:bg-yellow-200 transition-all duration-300 text-black`}
+        className={`mb-8 flex items-center bg-amber-200 border border-black rounded-xl shadow-lg  max-sm:px-0 px-4 py-2 hover:bg-white/40 transition-all duration-300 text-black`}
       >
         <ArrowLeft size={20} className='mr-2' />
         Back to Components
@@ -137,12 +137,12 @@ function Example() {
         <h2 className='text-3xl font-bold mb-6 text-black'>Basic Usage</h2>
         <button
           onClick={() => setModal(true)}
-          className={`mb-8 flex items-center bg-lime-200 border border-black rounded-xl shadow-lg  max-sm:px-1 px-4 py-2 hover:bg-orange-100 transition-all duration-300 text-black`}
+          className={`mb-8 flex items-center bg-cyan-200 border border-black rounded-xl shadow-lg  max-sm:px-0 px-4 py-2 hover:bg-lime-100 transition-all duration-300 text-black`}
         >
           Open Modal
         </button>
         <div className='relative'>
-          <pre className='bg-teal-200 text-black p-6 rounded-lg overflow-x-auto whitespace-pre-wrap max-sm:text-[0.55rem]'>
+          <pre className='bg-lime-200 text-black p-6 rounded-lg overflow-x-auto whitespace-pre-wrap max-sm:text-[0.55rem]'>
             {basicUsageCode}
           </pre>
           <CopyButton text={basicUsageCode} codeKey='basicUsage' />
@@ -150,7 +150,7 @@ function Example() {
       </div>
 
       <div className={`${getGlassyClasses()} p-8 mb-8`}>
-        <h2 className='text-3xl font-bold mb-6 text-balck'>Props</h2>
+        <h2 className='text-3xl font-bold mb-6 text-black'>Props</h2>
         <table className='w-full'>
           <thead>
             <tr className='border-b border-black'>

@@ -13,8 +13,9 @@ const ButtonDetailsPage: React.FC = () => {
   const [customText, setCustomText] = useState('#ffffff');
   const [customBorder, setCustomBorder] = useState('#833AB4');
 
-  const getGlassyClasses = () => {
-    return 'backdrop-filter backdrop-blur-xl bg-white/30 border border-white/20 rounded-xl shadow-lg transition-all duration-300 max-sm:px-0';
+  const getGlassyClasses = (opacity = 20) => {
+    return `backdrop-filter backdrop-blur-lg bg-white bg-opacity-${opacity} 
+  border border-white border-opacity-20 rounded-lg shadow-lg transition-all duration-300`;
   };
 
   const copyToClipboard = (text: string, key: string) => {
@@ -94,7 +95,7 @@ function Example() {
       <div className='relative z-10'>
         <button
           onClick={() => navigate(-1)}
-          className={`mb-8 flex items-center ${getGlassyClasses()} px-4 py-2 hover:bg-white/40 transition-all duration-300 text-black`}
+          className={`mb-8 flex items-center bg-orange-200 border border-black rounded-xl shadow-lg  max-sm:px-0 px-4 py-2 hover:bg-orange-400 ransition-all duration-300 text-black`}
         >
           <ArrowLeft size={20} className='mr-2' />
           Back to Components
@@ -270,7 +271,7 @@ function Example() {
           </p>
           <button
             onClick={() => alert('Button clicked!')}
-            className={`${getGlassyClasses()} px-6 py-3 text-lg font-semibold rounded-lg hover:bg-white/40 transition-transform hover:scale-110 text-red-800`}
+            className={`bg-red-400 border border-black shadow-lg  duration-300 max-sm:px-0 px-6 py-3 text-lg font-semibold rounded-lg hover:bg-red-500 transition-transform hover:scale-110 text-black`}
           >
             Alert!
           </button>
@@ -290,7 +291,7 @@ function Example() {
             A button that spans the full width of its container.
           </p>
           <button
-            className={`w-full py-3 text-lg font-semibold rounded-lg ${getGlassyClasses()} hover:bg-white/40 transition-transform hover:scale-105 text-black`}
+            className={`w-full py-3 text-lg font-semibold rounded-lg bg-emerald-300 border border-black  shadow-lg  duration-300 max-sm:px-0 hover:bg-emerald-200 transition-transform hover:scale-105 text-black`}
           >
             Full Width Button
           </button>

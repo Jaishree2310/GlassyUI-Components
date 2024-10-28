@@ -272,19 +272,21 @@ function Example() {
             ))}
           </div>
           <div className='grid grid-cols-1 md:grid-cols-2 gap-8'>
-            <CustomCardPreview />
-            <div className='relative'>
-              <pre className='bg-emerald-200 text-black p-4 rounded-lg overflow-x-auto text-sm  max-sm:text-[0.55rem]'>
-                {updateCustomCode()}
-              </pre>
-              <CopyButton text={updateCustomCode()} codeKey='customStyling' />
+            <div className='grid grid-cols-1 md:grid-cols-2 gap-8'>
+              <CustomCardPreview />
+              <div className='relative'>
+                <pre className='bg-emerald-200 text-black p-4 rounded-lg overflow-x-auto text-sm max-h-[400px] whitespace-pre-wrap break-words max-sm:text-[0.55rem]'>
+                  {updateCustomCode()}
+                </pre>
+                <CopyButton text={updateCustomCode()} codeKey='customStyling' />
+              </div>
             </div>
           </div>
         </div>
       </section>
 
       {/* Credit Card Example */}
-      {/* Credit Card Example */}
+
       <section className='mb-12'>
         <h2 className='text-2xl font-bold mb-4 text-gray-800'>
           Credit Card Example
@@ -331,6 +333,7 @@ function Example() {
 );`}
                   </code>
                 </pre>
+
                 <CopyButton
                   text={`const GlassmorphicCreditCard: React.FC = () => (
   <div className="w-96 h-56 bg-gradient-to-br from-purple-400 to-blue-500 rounded-xl overflow-hidden relative p-8 text-white shadow-xl">

@@ -127,7 +127,7 @@ const InputDetailPage: React.FC = () => {
   };
 
   return (
-    <div className='min-h-screen p-8 font-sans bg-gradient-to-br from-pink-300 to-pink-300 text-gray-800 relative'>
+    <div className='min-h-screen p-8 font-sans bg-gradient-to-r from-pink-300 via-pink-300 to-pink-300 text-black relative'>
       <BackToTopButton />
       <nav className='mb-8 flex items-center justify-between relative z-10'>
         <button
@@ -150,17 +150,17 @@ const InputDetailPage: React.FC = () => {
         <div className={`${getGlassyClasses()} p-4 hover:shadow-xl mb-4`}>
           <Input
             placeholder='Enter text...'
-            className={`${getGlassyClasses(50)} text-black placeholder-green-800`}
+            className={`bg-green-100 border border-white/20 rounded-xl shadow-lg transition-all duration-300 max-sm:px-0 text-black placeholder-black`}
           />
         </div>
-        <pre className='bg-purple-200 text-black p-4 rounded-lg overflow-x-auto relative  max-sm:text-[0.55rem]'>
+        <pre className='bg-sky-100 text-black p-4 rounded-lg overflow-x-auto relative  max-sm:text-[0.55rem]'>
           {`import { Input } from './Input';
 
 function MyComponent() {
   return (
     <Input 
       placeholder="Enter text..." 
-      className="bg-white bg-opacity-50 backdrop-filter backdrop-blur-lg rounded-lg"
+      className="bg-purple-300 bg-opacity-50 backdrop-filter backdrop-blur-lg rounded-lg"
     />
   );
 }`}
@@ -187,8 +187,8 @@ function MyComponent() {
         <div className='overflow-x-auto'>
           <table className='w-full'>
             <thead>
-              <tr className='bg-blue-600 bg-opacity-20'>
-                <th className='text-left p-2 '>Prop</th>
+              <tr className='bg-white bg-opacity-20'>
+                <th className='text-left p-2'>Prop</th>
                 <th className='text-left p-2'>Type</th>
                 <th className='text-left p-2'>Default</th>
                 <th className='text-left p-2'>Description</th>
@@ -252,7 +252,7 @@ function MyComponent() {
             </div>
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
               <div className='space-y-2'>
-                <label className='block text-sm font-medium text-purple-900'>
+                <label className='block text-sm font-medium text-black'>
                   Background Color
                 </label>
                 <div className='flex items-center space-x-3'>
@@ -266,7 +266,7 @@ function MyComponent() {
                 </div>
               </div>
               <div className='space-y-2'>
-                <label className='block text-sm font-medium text-purple-900'>
+                <label className='block text-sm font-medium text-black'>
                   Text Color
                 </label>
                 <div className='flex items-center space-x-3'>
@@ -280,7 +280,7 @@ function MyComponent() {
                 </div>
               </div>
               <div className='space-y-2'>
-                <label className='block text-sm font-medium text-purple-900'>
+                <label className='block text-sm font-medium text-black'>
                   Border Color
                 </label>
                 <div className='flex items-center space-x-3'>
@@ -294,7 +294,7 @@ function MyComponent() {
                 </div>
               </div>
               <div className='space-y-2'>
-                <label className='block text-sm font-medium text-purple-900'>
+                <label className='block text-sm font-medium text-black'>
                   Opacity
                 </label>
                 <input
@@ -308,7 +308,7 @@ function MyComponent() {
                 <span className='text-sm'>{customOpacity}%</span>
               </div>
               <div className='space-y-2'>
-                <label className='block text-sm font-medium text-purple-900'>
+                <label className='block text-sm font-medium text-black'>
                   Border Width
                 </label>
                 <input
@@ -321,7 +321,7 @@ function MyComponent() {
                 <span className='text-sm'>{customBorderWidth}px</span>
               </div>
               <div className='space-y-2'>
-                <label className='block text-sm font-medium text-purple-900'>
+                <label className='block text-sm font-medium text-black'>
                   Border Radius
                 </label>
                 <input
@@ -337,7 +337,7 @@ function MyComponent() {
             <div className='mt-8'>
               <h4 className='text-xl font-semibold mb-4'>Generated Code</h4>
               <div className='relative'>
-                <pre className='bg-purple-200 text-black p-4 rounded-lg overflow-x-auto  max-sm:text-[0.55rem]'>
+                <pre className='bg-sky-100 text-black p-4 rounded-lg overflow-x-auto  max-sm:text-[0.55rem]'>
                   {customCode}
                 </pre>
                 <CopyButton text={customCode} codeKey='customStyling' />

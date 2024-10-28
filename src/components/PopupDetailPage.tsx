@@ -308,7 +308,7 @@ const CustomPopup: React.FC<{
         </div>
       </Popup>
 
-      <div className='mt-4 bg-sky-100 p-2 rounded relative'>
+      <div className='mt-4 bg-teal-200 p-2 rounded relative'>
         <pre className='text-sm overflow-x-auto text-black max-sm:text-[0.55rem]'>
           {`const Popup = ({ isOpen, onClose, children, bg, textColor, borderColor, opacity, blur }) => {
   if (!isOpen) return null;
@@ -389,11 +389,11 @@ const PopupDetailPage: React.FC = () => {
   };
 
   return (
-    <div className='min-h-screen p-8 font-sans bg-gradient-to-br from-pink-300 to-pink-300 text-gray-800 relative'>
+    <div className='min-h-screen p-8 font-sans bg-gradient-to-r from-[#ffc6c6] via-[#ffc6e5] to-[#e7c6ff] relative max-sm:px-2'>
       <BackToTopButton />
       <button
         onClick={() => navigate(-1)}
-        className={`mb-8 flex items-center  bg-yellow-300 bg-opacity-30 backdrop-filter backdrop-blur-md border border-black border-opacity-20 rounded-lg shadow-lg  px-4 py-2 hover:bg-opacity-40 transition-all duration-300 text-black `}
+        className={`mb-8 flex items-center bg-yellow-200 border border-black rounded-xl shadow-lg max-sm:px-0 px-4 py-2 hover:bg-yellow-300 transition-all duration-300 text-gray-800`}
       >
         <ArrowLeft size={20} className='mr-2' />
         Back to Components
@@ -411,7 +411,7 @@ const PopupDetailPage: React.FC = () => {
       {/* Basic Usage */}
       <div className={`${getGlassyClasses()} p-6 mb-8 relative`}>
         <h2 className='text-2xl font-bold mb-4 text-gray-800'>Basic Usage</h2>
-        <pre className='bg-sky-100 text-black p-4 rounded-lg overflow-x-auto max-sm:text-[0.55rem]'>
+        <pre className='bg-teal-200 text-black p-4 rounded-lg overflow-x-auto max-sm:text-[0.55rem]'>
           {`<div>
   <button onClick={openPopup}>Open Popup</button>
   <Popup
@@ -473,7 +473,7 @@ function App() {
         <div className='overflow-x-auto'>
           <table className='w-full'>
             <thead>
-              <tr className='bg-white bg-opacity-40'>
+              <tr className='border-b border-black'>
                 <th className='text-left p-2'>Prop</th>
                 <th className='text-left p-2'>Type</th>
                 <th className='text-left p-2'>Default</th>
@@ -481,43 +481,43 @@ function App() {
               </tr>
             </thead>
             <tbody>
-              <tr>
+              <tr className='border-b border-black'>
                 <td className='p-2'>isOpen</td>
                 <td className='p-2'>boolean</td>
                 <td className='p-2'>false</td>
                 <td className='p-2'>Controls whether the popup is visible</td>
               </tr>
-              <tr className='bg-white bg-opacity-40'>
+              <tr className='border-b border-black'>
                 <td className='p-2'>onClose</td>
                 <td className='p-2'>function</td>
                 <td className='p-2'>-</td>
                 <td className='p-2'>Function to call when closing the popup</td>
               </tr>
-              <tr>
+              <tr className='border-b border-black'>
                 <td className='p-2'>bg</td>
                 <td className='p-2'>string</td>
                 <td className='p-2'>'#ffffff'</td>
                 <td className='p-2'>Background color of the popup content</td>
               </tr>
-              <tr className='bg-white bg-opacity-40'>
+              <tr className='border-b border-black'>
                 <td className='p-2'>textColor</td>
                 <td className='p-2'>string</td>
                 <td className='p-2'>'#000000'</td>
                 <td className='p-2'>Text color of the popup content</td>
               </tr>
-              <tr>
+              <tr className='border-b border-black'>
                 <td className='p-2'>borderColor</td>
                 <td className='p-2'>string</td>
                 <td className='p-2'>'#000000'</td>
                 <td className='p-2'>Border color of the popup</td>
               </tr>
-              <tr className='bg-white bg-opacity-40'>
+              <tr className='border-b border-black'>
                 <td className='p-2'>opacity</td>
                 <td className='p-2'>number</td>
                 <td className='p-2'>0.5</td>
                 <td className='p-2'>Opacity of the popup background</td>
               </tr>
-              <tr>
+              <tr className='border-b border-black'>
                 <td className='p-2'>blur</td>
                 <td className='p-2'>number</td>
                 <td className='p-2'>5</td>

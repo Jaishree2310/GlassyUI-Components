@@ -50,8 +50,9 @@ const AuthenticationCardDetailsPage: React.FC = () => {
   );
   const [currentTheme, setCurrentTheme] = useState<string>('yellow');
   const [customColors, setCustomColors] = useState<ThemeColors>(themes.custom);
-  const getGlassyClasses = () => {
-    return 'backdrop-filter backdrop-blur-md bg-white bg-opacity-30 border border-white border-opacity-20 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300';
+  const getGlassyClasses = (opacity = 20) => {
+    return `backdrop-filter backdrop-blur-lg bg-white bg-opacity-${opacity} 
+  border border-white border-opacity-20 rounded-lg shadow-lg transition-all duration-300`;
   };
 
   const copyToClipboard = (text: string, key: string) => {
@@ -351,6 +352,9 @@ const AuthenticationCardDetailsPage: React.FC = () => {
       <h1 className='text-4xl font-bold mb-8 text-black'>
         Authentication Card Component
       </h1>
+      <p className='text-xl mb-8 text-black'>
+        A customizable, glassmorphism-styled Authentication component.
+      </p>
 
       {/* Props */}
       <section className='mb-12'>

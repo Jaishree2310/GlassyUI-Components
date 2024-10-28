@@ -104,15 +104,15 @@ const ProgressBarDetailPage: React.FC = () => {
       };
     }, []);
 
-    return <ProgressBar progress={progress} color='blue' theme={theme} />;
+    return <ProgressBar progress={progress} color='cyan' theme={theme} />;
   };
 
   return (
-    <div className='min-h-screen p-8 font-sans bg-gradient-to-br from-pink-300 to-pink-300 text-gray-800 relative'>
+    <div className='min-h-screen p-8 font-sans bg-gradient-to-r from-pink-300 via-pink-300 to-pink-300 text-black relative'>
       <BackToTopButton />
       <button
         onClick={() => navigate(-1)}
-        className={`mb-8 flex items-center bg-cyan-500 bg-opacity-30 border border-black border-opacity-20 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 px-4 py-2 hover:bg-opacity-40 transition-all duration-300  text-black font-bold`}
+        className={`mb-8 flex items-center bg-rose-400 border border-black rounded-xl shadow-lg max-sm:px-0 px-4 py-2 hover:bg-rose-500 transition-all duration-300  text-black`}
       >
         <ArrowLeft size={20} className='mr-2' />
         Back to Components
@@ -130,7 +130,7 @@ const ProgressBarDetailPage: React.FC = () => {
       {/* Basic Usage */}
       <div className={`${getGlassyClasses()} p-6 mb-8 relative`}>
         <h2 className='text-2xl font-bold mb-4  text-black'>Basic Usage</h2>
-        <pre className='bg-stone-400 text-black p-4 rounded-lg overflow-x-auto'>
+        <pre className='bg-slate-400 text-black p-4 rounded-lg overflow-x-auto'>
           {`import { ProgressBar } from 'glassy-ui';
 
 function App() {
@@ -167,7 +167,7 @@ function App() {
 
       {/* Props */}
       <div className={`${getGlassyClasses()} p-6 mb-8`}>
-        <h2 className='text-2xl font-bold mb-4  text-balck'>Props</h2>
+        <h2 className='text-2xl font-bold mb-4  text-black'>Props</h2>
         <div className='overflow-x-auto'>
           <table className='w-full'>
             <thead>
@@ -215,7 +215,7 @@ function App() {
         <h2 className='text-2xl font-bold mb-4  text-black'>
           Custom ProgressBar
         </h2>
-        <p className='mb-4 text-black'>
+        <p className='mb-4'>
           Customize your progress bar's appearance by selecting a preset theme
           or creating your own color scheme.
         </p>
@@ -257,7 +257,7 @@ function App() {
           />
         </div>
 
-        <pre className='bg-stone-400 text-black p-4 rounded-lg overflow-x-auto mt-4 relative max-sm:text-[0.55rem]'>
+        <pre className='bg-slate-400 text-black p-4 rounded-lg overflow-x-auto mt-4 relative max-sm:text-[0.55rem]'>
           {`<ProgressBar
   size="md"
   color="${customColor}"
@@ -285,7 +285,7 @@ function App() {
         {/* Different Sizes */}
         <div className='mb-8'>
           <h3 className='text-xl font-bold mb-4'>Different Sizes</h3>
-          <pre className='bg-stone-400 text-black p-4 rounded-lg overflow-x-auto mb-4 relative max-sm:text-[0.55rem]'>
+          <pre className='bg-slate-400 text-black p-4 rounded-lg overflow-x-auto mb-4 relative max-sm:text-[0.55rem]'>
             {`<ProgressBar size="sm" color="gray" progress={25} theme="${progressBarTheme}" />
 <ProgressBar size="md" color="blue" progress={50} theme="${progressBarTheme}" />
 <ProgressBar size="lg" color="green" progress={75} theme="${progressBarTheme}" />`}
@@ -333,7 +333,7 @@ function App() {
             You can animate the progress by updating the progress prop over
             time:
           </p>
-          <pre className='bg-stone-400 text-black p-4 rounded-lg overflow-x-auto mb-4 relative max-sm:text-[0.55rem]'>
+          <pre className='bg-slate-400 text-black p-4 rounded-lg overflow-x-auto mb-4 relative max-sm:text-[0.55rem]'>
             {`const AnimatedProgress = () => {
   const [progress, setProgress] = useState(0);
 
@@ -350,7 +350,7 @@ function App() {
     };
   }, []);
 
-  return <ProgressBar progress={progress} color="cyan-700" theme="${progressBarTheme}" />;
+  return <ProgressBar progress={progress} color="cyan" theme="${progressBarTheme}" />;
 };`}
             <CopyButton
               text={`import React, { useState, useEffect } from 'react';
@@ -372,7 +372,7 @@ const AnimatedProgress = () => {
     };
   }, []);
 
-  return <ProgressBar progress={progress} color="cyan-700" theme="${progressBarTheme}" />;
+  return <ProgressBar progress={progress} color="cyan" theme="${progressBarTheme}" />;
 };`}
               codeKey='animatedProgress'
             />

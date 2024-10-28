@@ -149,6 +149,7 @@ const SliderDetailsPage: React.FC = () => {
                 <td className='p-2'>100</td>
                 <td className='p-2'>Maximum value of the slider</td>
               </tr>
+
               <tr className='bg-white bg-opacity-10'>
                 <td className='p-2'>defaultValue</td>
                 <td className='p-2'>number</td>
@@ -193,6 +194,7 @@ const SliderDetailsPage: React.FC = () => {
                 className='w-8 h-8 cursor-pointer border-none bg-transparent'
               />
               <span className='text-sm p-2 font-semibold'>{customBgColor}</span>
+              <span className='text-sm p-2 font-semibold'>{customBgColor}</span>
             </div>
             <div className='mt-8'>
               <h4 className='text-xl font-semibold mb-4'>Generated Code</h4>
@@ -200,6 +202,7 @@ const SliderDetailsPage: React.FC = () => {
                 <pre className='bg-orange-200 text-black p-4 rounded-lg overflow-x-auto'>
                   {customCode}
                 </pre>
+                <CopyButton text={customCode} codeKey='customStyling' />
                 <CopyButton text={customCode} codeKey='customStyling' />
               </div>
             </div>

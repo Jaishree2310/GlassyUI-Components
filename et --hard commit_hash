@@ -1,0 +1,273 @@
+[33mcommit bc2ccfe1c4a7e3d96bb4948d81cc7a77fbd35cff[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m)[m
+Author: Rahul Berwal <tobiasrahul58@gmail.com>
+Date:   Wed Oct 23 09:54:30 2024 +0530
+
+    Better UI for Component Page
+
+[33mcommit 950969a5298ab9a65318b3fbb1951006e89565a2[m
+Merge: c5ec3e2 b883925
+Author: Jaishree Singh <jaishrees23102001@gmail.com>
+Date:   Mon Oct 14 12:37:48 2024 +0530
+
+    Merge pull request #132 from Jaishree2310/revert-57-cursor-animation
+    
+    Revert "added cursor-animation"
+
+[33mcommit b883925f8ead92f01fd25cec48da48366b3d69b6[m[33m ([m[1;31morigin/revert-57-cursor-animation[m[33m)[m
+Author: Jaishree Singh <jaishrees23102001@gmail.com>
+Date:   Mon Oct 14 12:28:36 2024 +0530
+
+    Revert "added cursor-animation"
+
+[33mcommit c5ec3e222e11fdde6b085100daba0367a449824d[m
+Merge: 5414da9 7f7db5d
+Author: Jaishree Singh <jaishrees23102001@gmail.com>
+Date:   Mon Oct 14 12:28:11 2024 +0530
+
+    Merge pull request #57 from AswaniBolisetti/cursor-animation
+    
+    added cursor-animation
+
+[33mcommit 7f7db5d338e226bb11069e7e700594ac47c1d5b8[m
+Merge: f244ee1 5414da9
+Author: Aswani Bolisetti <117751107+AswaniBolisetti@users.noreply.github.com>
+Date:   Mon Oct 14 12:23:48 2024 +0530
+
+    Merge branch 'main' into cursor-animation
+
+[33mcommit 5414da96fca2b9d3c71d580e0e6b59da9f9079ea[m
+Merge: b67849e 197f6e0
+Author: Jaishree Singh <jaishrees23102001@gmail.com>
+Date:   Mon Oct 14 12:09:27 2024 +0530
+
+    Merge pull request #99 from Sawan-Kushwah/feat/BackToTopButton
+    
+    Added back to top button
+
+[33mcommit b67849ec406dc9fd13f188328f3e4312a38ec5b1[m
+Merge: d2fd414 b46bccb
+Author: Jaishree Singh <jaishrees23102001@gmail.com>
+Date:   Mon Oct 14 12:09:10 2024 +0530
+
+    Merge pull request #122 from Ujjwal5705/main
+    
+    Added AboutUs Page
+
+[33mcommit d2fd41410f0df5b791912083d2a9eedbdf3cd25d[m
+Merge: a619ee9 c055abe
+Author: Jaishree Singh <jaishrees23102001@gmail.com>
+Date:   Mon Oct 14 12:07:26 2024 +0530
+
+    Merge pull request #124 from BaraniVA/accordion
+    
+    Added Accordion component issue #116
+
+[33mcommit a619ee9430e53ad3b8d099776db04a754ab31df2[m
+Merge: ec4f557 d3e5b52
+Author: Jaishree Singh <jaishrees23102001@gmail.com>
+Date:   Mon Oct 14 12:06:42 2024 +0530
+
+    Merge pull request #126 from ris-gzp/main
+    
+    update App.css
+
+[33mcommit ec4f557eaf71adf96eb660b008703b2e387b8500[m
+Merge: a725749 4b1250a
+Author: Jaishree Singh <jaishrees23102001@gmail.com>
+Date:   Mon Oct 14 12:06:04 2024 +0530
+
+    Merge pull request #129 from FSBM/main
+    
+    Fixing bottom spacing of Glossy text
+
+[33mcommit a725749e87f6c1243f61d5cdda1fda7afd41fe92[m
+Merge: 2ca277b 4999fcd
+Author: Jaishree Singh <jaishrees23102001@gmail.com>
+Date:   Mon Oct 14 12:05:27 2024 +0530
+
+    Merge pull request #96 from tarunkumar2005/main
+    
+    Added the Contributors page super amazing and professional.
+
+[33mcommit 4b1250a31c0d46956d757599fbf6fa92e550d0cb[m
+Author: SHyAm <shyamx444@gmail.com>
+Date:   Mon Oct 14 03:35:10 2024 +0530
+
+    Fixing bottom spacing of Glossy text
+
+[33mcommit d3e5b52d0276e7f4189d8194a41b24f5a1805a1b[m
+Author: Rishu Yadav <157748073+ris-gzp@users.noreply.github.com>
+Date:   Sun Oct 13 20:52:23 2024 +0530
+
+    update App.css
+    
+    update App.css
+
+[33mcommit c055abeb110e924823928c8f9de13d56df589080[m
+Merge: fefe109 2ca277b
+Author: barani <110531153+BaraniVA@users.noreply.github.com>
+Date:   Sun Oct 13 12:54:55 2024 +0530
+
+    Merge branch 'main' into accordion
+
+[33mcommit fefe10951dec26ec4e2a184b80127b5735cff3f0[m
+Author: BaraniVA <baranianandakumar2003@gmail.com>
+Date:   Sun Oct 13 12:28:15 2024 +0530
+
+    Added Accordion feature
+
+[33mcommit b46bccbcd16c19c914f1959cbfe432ccbc1e24d5[m
+Author: Ujjwal Sharma <sharmaujjwal5705@gmail.com>
+Date:   Sun Oct 13 11:36:44 2024 +0530
+
+    Added AboutUs Page
+
+[33mcommit 2ca277badadf3a98883c33b1da07ebc41a5684ca[m
+Merge: cfa63c9 cb87056
+Author: Jaishree Singh <jaishrees23102001@gmail.com>
+Date:   Sat Oct 12 22:43:43 2024 +0530
+
+    Merge pull request #113 from Mahateaa/main
+    
+    Create badge
+
+[33mcommit cfa63c91cae7fd9803f19997ba1c82b3182deb08[m
+Merge: 47e3c24 57b805c
+Author: Jaishree Singh <jaishrees23102001@gmail.com>
+Date:   Sat Oct 12 22:42:58 2024 +0530
+
+    Merge pull request #114 from Ameerjafar/docker
+    
+    added the docker
+
+[33mcommit 197f6e00b4d6eee9aba8d1e588d3ed7f28c2899e[m
+Merge: c69efcf 47e3c24
+Author: Sawan <sawankushwah457@gmail.com>
+Date:   Sat Oct 12 19:22:04 2024 +0530
+
+    Resolve all conflits
+
+[33mcommit 4999fcdee294bf8adc31a7b72b58d970afe798bb[m
+Merge: d19da0a 47e3c24
+Author: tarunkumar2005 <tarunkumar6258278@gmail.com>
+Date:   Sat Oct 12 19:21:41 2024 +0530
+
+    Merge branch 'main' of https://github.com/Jaishree2310/GlassyUI-Components
+
+[33mcommit 57b805c2860a40ce448d6b2a0077275d3737380a[m
+Author: Ameer jafar <ameerjafar123@gmail.com>
+Date:   Sat Oct 12 19:16:19 2024 +0530
+
+    changed the readme file
+
+[33mcommit f7ae8b191f4809dd0908faf17e492048bf8f1e04[m
+Author: Ameer jafar <ameerjafar123@gmail.com>
+Date:   Sat Oct 12 19:09:29 2024 +0530
+
+    added the docker
+
+[33mcommit cb870568cf7017bc5c3b94f832381f5c67c1f5c7[m
+Author: Mahathi <160406913+Mahateaa@users.noreply.github.com>
+Date:   Sat Oct 12 18:36:44 2024 +0530
+
+    updated code
+
+[33mcommit cf2627e8ded9a92d3efcfdd024f5d37eaff8e8be[m
+Author: Mahathi <160406913+Mahateaa@users.noreply.github.com>
+Date:   Sat Oct 12 18:22:23 2024 +0530
+
+    Create badge
+
+[33mcommit 47e3c24b516f3a58eb7ae82a012e4d5c751e62f1[m
+Merge: a595482 73f9037
+Author: Jaishree Singh <jaishrees23102001@gmail.com>
+Date:   Sat Oct 12 17:47:46 2024 +0530
+
+    Merge pull request #100 from Sawan-Kushwah/feat/DropdownPage
+    
+    added dropdown menu component
+
+[33mcommit a5954828ae6c9d3730f281a9f06fcba7a0051a44[m
+Merge: e4a06f5 cd90ba7
+Author: Jaishree Singh <jaishrees23102001@gmail.com>
+Date:   Sat Oct 12 17:47:30 2024 +0530
+
+    Merge pull request #101 from kartik9737/main
+    
+    updated button text colour
+
+[33mcommit e4a06f532198a63c7719855eecbb48a0bc3c11f5[m
+Merge: 1c3854c 1346408
+Author: Jaishree Singh <jaishrees23102001@gmail.com>
+Date:   Sat Oct 12 17:46:55 2024 +0530
+
+    Merge pull request #110 from Akshithsaai/bug/navbar
+    
+    Navigation Bug Fixed
+
+[33mcommit 1c3854ced0e0637fb24197a97ba8300fd7077bf1[m
+Merge: c51785a 1c10231
+Author: Jaishree Singh <jaishrees23102001@gmail.com>
+Date:   Sat Oct 12 17:46:18 2024 +0530
+
+    Merge pull request #112 from ashish-um/issue-#67-Toast_Component
+    
+    Fixes: #67: NEW TOAST COMPONENT
+
+[33mcommit c51785aca8bdba74778b8e5c9cb249201d3a2cb4[m
+Merge: 5971fdf 6d49333
+Author: Jaishree Singh <jaishrees23102001@gmail.com>
+Date:   Sat Oct 12 17:45:44 2024 +0530
+
+    Merge pull request #102 from kartik9737/patch-1
+    
+    Update package.json
+
+[33mcommit 1c1023123ab63bfccfc5cb1c5398ef3f5f4a08b0[m
+Author: ashish-um <ashishumrao632005@gmail.com>
+Date:   Sat Oct 12 16:44:44 2024 +0530
+
+    Fixes: #67: NEW TOAST COMPONENT
+
+[33mcommit 13464080914bea8720c676dc99f4dc02341de861[m
+Author: Akshith <ma862045@student.nitw.ac.in>
+Date:   Sat Oct 12 16:19:40 2024 +0530
+
+    Navigation Bug Fixed
+
+[33mcommit d19da0ac8945ffce450c34ea9b97a406b2b88687[m
+Merge: 146d54e 5971fdf
+Author: tarunkumar2005 <tarunkumar6258278@gmail.com>
+Date:   Sat Oct 12 16:11:19 2024 +0530
+
+    Resolved conflicts
+
+[33mcommit c69efcf4651e527c0e6a1da454d832c307dc5eb5[m
+Merge: ef36fc5 5971fdf
+Author: Sawan <sawankushwah457@gmail.com>
+Date:   Sat Oct 12 15:50:59 2024 +0530
+
+    Resolved conflits
+
+[33mcommit 73f90379b733160e9675b71f88ab3d9335d05464[m
+Merge: 1d0d150 5971fdf
+Author: Sawan <sawankushwah457@gmail.com>
+Date:   Sat Oct 12 15:46:53 2024 +0530
+
+    Resolved conflits
+
+[33mcommit 5971fdfe62f7a0d73621d3b954fe315cafe4442e[m
+Merge: 7484b6a 49bc665
+Author: Jaishree Singh <jaishrees23102001@gmail.com>
+Date:   Sat Oct 12 15:01:44 2024 +0530
+
+    Merge pull request #108 from devxMani/main
+    
+    Change the Hero section and added animations and transitions
+
+[33mcommit 7484b6a15ecae59e84c35420fe315a258b7a4361[m
+Merge: 0819c7b bd70326
+Author: Jaishree Singh <jaishrees23102001@gmail.com>
+Date:   Sat Oct 12 14:57:31 2024 +0530
+
+    Merge pull request #107 from rajatsinghal02/mai

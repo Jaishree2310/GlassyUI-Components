@@ -11,8 +11,10 @@ const TooltipDetailsPage: React.FC = () => {
   ); // State to manage copy button status
 
   // Function to get glassmorphism styled classes
-  const getGlassyClasses = () =>
-    'backdrop-filter backdrop-blur-md bg-white/10 border border-white/20 rounded-2xl shadow-lg transition-all duration-300 max-sm:px-0';
+  const getGlassyClasses = (opacity = 20) => {
+    return `backdrop-filter backdrop-blur-lg bg-white bg-opacity-${opacity} 
+  border border-white border-opacity-20 rounded-lg shadow-lg transition-all duration-300`;
+  };
 
   // Function to handle copying text to clipboard
   const copyToClipboard = (text: string, key: string) => {
@@ -82,13 +84,13 @@ function Example() {
 </Tooltip>`;
 
   return (
-    <div className='min-h-screen p-8 font-sans bg-gradient-to-br from-pink-300 to-pink-300 text-gray-800 relative'>
+    <div className='min-h-screen p-8 font-sans bg-gradient-to-r from-pink-300 via-pink-300 to-purple-300 text-white relative'>
       <BackToTopButton />
       <div className='relative z-10'>
         {/* Back navigation button */}
         <button
           onClick={() => navigate(-1)}
-          className={`mb-8 flex items-center border bg-zinc-300 border-black rounded-2xl shadow-lg max-sm:px-0 px-4 py-2 hover:bg-white/40 transition-all duration-300 text-black`}
+          className={`mb-8 flex items-center bg-orange-300 border border-black rounded-xl shadow-lg max-sm:px-0 px-4 py-2 hover:bg-orange-400 transition-all duration-300 text-black`}
         >
           <ArrowLeft size={20} className='mr-2' />
           Back to Components
@@ -104,7 +106,7 @@ function Example() {
         <div className={`${getGlassyClasses()} p-8 mb-8 relative`}>
           <h2 className='text-3xl font-bold mb-6 text-black'>Basic Usage</h2>
           <div className='relative'>
-            <pre className='bg-teal-100 text-black p-6 rounded-lg overflow-x-auto whitespace-pre-wrap max-sm:text-[0.55rem] max-sm:text-[0.55rem]'>
+            <pre className='bg-blue-200 text-black p-6 rounded-lg overflow-x-auto whitespace-pre-wrap max-sm:text-[0.55rem] max-sm:text-[0.55rem]'>
               {basicUsageCode}
             </pre>
             <CopyButton text={basicUsageCode} codeKey='basicUsage' />
@@ -117,7 +119,7 @@ function Example() {
           <div className='overflow-x-auto'>
             <table className='w-full'>
               <thead>
-                <tr className='border-b border-black'>
+                <tr className='bg-white bg-opacity-20'>
                   <th className='text-left p-2 text-black'>Prop</th>
                   <th className='text-left p-2 text-black'>Type</th>
                   <th className='text-left p-2 text-black'>Default</th>
@@ -125,7 +127,7 @@ function Example() {
                 </tr>
               </thead>
               <tbody>
-                <tr className='border-b border-black'>
+                <tr>
                   <td className='p-2 text-black'>text</td>
                   <td className='p-2 text-black'>string</td>
                   <td className='p-2 text-black'>-</td>
@@ -133,7 +135,7 @@ function Example() {
                     The text to display inside the tooltip
                   </td>
                 </tr>
-                <tr className='border-b border-black'>
+                <tr className='bg-white bg-opacity-20'>
                   <td className='p-2 text-black'>position</td>
                   <td className='p-2 text-black'>string</td>
                   <td className='p-2 text-black'>top</td>
@@ -157,28 +159,28 @@ function Example() {
           <div className='flex justify-around py-12'>
             <Tooltip text='Tooltip on top!' position='top'>
               <button
-                className={`border border-xl rounded-lg border-black bg-yellow-200 px-4 py-2`}
+                className={`bg-emerald-200 text-black border border-black rounded-xl shadow-lg transition-all duration-300 max-sm:px-0 px-4 py-2`}
               >
                 Top
               </button>
             </Tooltip>
             <Tooltip text='Tooltip on bottom!' position='bottom'>
               <button
-                className={`border border-xl rounded-lg border-black bg-cyan-200 px-4 py-2`}
+                className={`bg-cyan-200 border text-black border-black rounded-xl shadow-lg transition-all duration-300 max-sm:px-0 px-4 py-2`}
               >
                 Bottom
               </button>
             </Tooltip>
             <Tooltip text='Tooltip on left!' position='left'>
               <button
-                className={`border border-xl rounded-lg border-black bg-fuchsia-200 px-4 py-2`}
+                className={`bg-red-300 border text-black border-black rounded-xl shadow-lg transition-all duration-300 max-sm:px-0 px-4 py-2`}
               >
                 Left
               </button>
             </Tooltip>
             <Tooltip text='Tooltip on right!' position='right'>
               <button
-                className={`border border-xl rounded-lg border-black bg-slate-300 px-4 py-2`}
+                className={`bg-violet-300 border text-black border-black rounded-xl shadow-lg transition-all duration-300 max-sm:px-0 px-4 py-2`}
               >
                 Right
               </button>
@@ -186,7 +188,7 @@ function Example() {
           </div>
           {/* Code snippets for different tooltip positions */}
           <div className='relative mt-8'>
-            <pre className='bg-yellow-200 text-black p-6 rounded-lg overflow-x-auto whitespace-pre-wrap max-sm:text-[0.55rem]'>
+            <pre className='bg-emerald-200 text-black p-6 rounded-lg overflow-x-auto whitespace-pre-wrap max-sm:text-[0.55rem]'>
               {topTooltipCode}
             </pre>
             <CopyButton text={topTooltipCode} codeKey='topTooltip' />
@@ -198,13 +200,13 @@ function Example() {
             <CopyButton text={bottomTooltipCode} codeKey='bottomTooltip' />
           </div>
           <div className='relative mt-8'>
-            <pre className='bg-fuchsia-200 text-black p-6 rounded-lg overflow-x-auto whitespace-pre-wrap max-sm:text-[0.55rem]'>
+            <pre className='bg-red-300 text-black p-6 rounded-lg overflow-x-auto whitespace-pre-wrap max-sm:text-[0.55rem]'>
               {leftTooltipCode}
             </pre>
             <CopyButton text={leftTooltipCode} codeKey='leftTooltip' />
           </div>
           <div className='relative mt-8'>
-            <pre className='bg-slate-300 text-black p-6 rounded-lg overflow-x-auto whitespace-pre-wrap max-sm:text-[0.55rem]'>
+            <pre className='bg-violet-300 text-black p-6 rounded-lg overflow-x-auto whitespace-pre-wrap max-sm:text-[0.55rem]'>
               {rightTooltipCode}
             </pre>
             <CopyButton text={rightTooltipCode} codeKey='rightTooltip' />

@@ -51,7 +51,7 @@ const App: React.FC = () => {
         <Route path='/back-to-top-details' element={<BackToTopDetailsPage />} />
         <Route path='/dropdown-details' element={<DropdowndetailsPage />} />
         <Route path='/authentication-card' element={<AuthenticationCard />} />
-        <Route path="/accordion-details" element={<AccordionDetails />} />
+        <Route path='/accordion-details' element={<AccordionDetails />} />
 
         <Route path='/contributors' element={<ContributorsPage />} />
 
