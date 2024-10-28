@@ -11,11 +11,7 @@ import {
   useLocation,
 } from 'react-router-dom';
 
- main
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import ScrollProgressBar from './components/ScrollProgress'; // Import your ScrollProgressBar component
-import PricingDetailPage from './components/PricingDetailPage';
-
 import GlassyUILandingPage from './components/GlassyUILandingPage';
 import GlassyUIComponentsPage from './components/GlassyUIComponentsPage';
 import ButtonDetailsPage from './components/ButtonDetailsPage';
@@ -40,6 +36,12 @@ import DropdowndetailsPage from './components/DropdowndetailsPage';
 import AuthenticationCard from './components/AuthenticationCards';
 import ToastPage from './components/ToastPage';
 import AccordionDetails from './components/AccordionDetails';
+
+const App: React.FC = () => {
+  return (
+    <Router>
+      <Header />
+
 import ContactUsDetailsPage from './components/ContactUsDetailsPage';
 import PaginationDetails from './components/PaginationDetails';
 import TestimonialDetails from './components/TestimonialDetails';
@@ -104,7 +106,7 @@ const App: React.FC = () => {
     <Router>
       <Header />
       <ScrollProgressBar /> {/* Add the ScrollProgressBar component here */}
- main
+ 
       <Routes>
         <Route path='/' element={<GlassyUILandingPage />} />
         <Route path='/components' element={<GlassyUIComponentsPage />} />
@@ -115,7 +117,6 @@ const App: React.FC = () => {
           path='/progress-bar-details'
           element={<ProgressBarDetailPage />}
         />
-        <Route path='/pricing-details' element={<PricingDetailPage />} />
         <Route path='/popup-details' element={<PopupDetailPage />} />
         <Route path='/input-details' element={<InputDetailPage />} />
         <Route path='/textarea-details' element={<TextareaDetailPage />} />
@@ -129,9 +130,13 @@ const App: React.FC = () => {
         <Route path='/dropdown-details' element={<DropdowndetailsPage />} />
         <Route path='/authentication-card' element={<AuthenticationCard />} />
         <Route path='/accordion-details' element={<AccordionDetails />} />
+
         <Route path='/contributors' element={<ContributorsPage />} />
 
+        {/*the DonationPage route */}
+        <Route path='/' element={<GlassyUILandingPage />} />
         <Route path='/donate' element={<DonationPage />} />
+
         <Route path='/about' element={<AboutUsPage />} />
         <Route path='/contact-details' element={<ContactUsDetailsPage />} />
         <Route path='/pagination-details' element={<PaginationDetails />} />
@@ -158,23 +163,19 @@ const App: React.FC = () => {
            <Route path='/statistic-details' element={<Statistic />} />
           <Route path='/gallery-details' element={<GalleryDetailsPage />} />
 
-   
-         <Route path='/checkbox' element={<Checkbox />} />
- 
-         <Route path='/spinner' element={<SpinnerDetailsPage />} />
+
+        {/* the AboutUs Page route */}
+        <Route path='/about' element={<AboutUsPage />} />
+
+
+        <Route path='*' element={<NotFoundPage />} />
 
 
          <Route path='*' element={<NotFoundPage />} />
+
       </Routes>
-
-      <ConditionalFooter />
-
     </Router>
   );
 };
-const ConditionalFooter: React.FC = () => {
-  const location = useLocation();
 
-  return location.pathname === '/' ? <Footer /> : null;
-};
 export default App;

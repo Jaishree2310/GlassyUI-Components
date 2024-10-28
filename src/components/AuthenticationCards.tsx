@@ -77,7 +77,7 @@ const AuthenticationCardDetailsPage: React.FC = () => {
       {copiedStates[codeKey] ? (
         <Check size={16} className='text-green-600' />
       ) : (
-        <Copy size={16} className='text-gray-800' />
+        <Copy size={16} className='text-black' />
       )}
     </button>
   );
@@ -112,7 +112,7 @@ const AuthenticationCardDetailsPage: React.FC = () => {
       >
         <div
           style={getGlassmorphismStyle(colors)}
-          className='p-6 rounded-lg relative z-10'
+          className='p-6 rounded-lg relative z-10 bg-sky-200'
         >
           <h2 className='text-2xl font-bold mb-4'>Login</h2>
           <form>
@@ -339,74 +339,77 @@ const AuthenticationCardDetailsPage: React.FC = () => {
   );
 
   return (
-    <div className='min-h-screen p-8 font-sans bg-gradient-to-r from-gray-800 via-gray-900 to-black text-white relative'>
+    <div className='min-h-screen p-8 font-sans bg-gradient-to-br from-pink-300 to-pink-300 text-gray-800 relative'>
       <BackToTopButton />
       <button
         onClick={() => navigate(-1)}
-        className={`mb-8 flex items-center ${getGlassyClasses(10)} px-4 py-2 hover:bg-opacity-40 transition-all duration-300  text-gray-100`}
+        className={`mb-8 flex items-center bg-yellow-500 bg-opacity-30 border border-black border-opacity-20 rounded-lg shadow-lg hover:shadow-xl px-4 py-2 hover:bg-opacity-40 transition-all duration-300  text-black`}
       >
         <ArrowLeft size={20} className='mr-2' />
         Back to Components
       </button>
 
-      <h1 className='text-6xl font-bold mb-8 text-white'>
+      <h1 className='text-4xl font-bold mb-8 text-black'>
         Authentication Card Component
       </h1>
-      <p className='text-xl mb-8 text-gray-100'>
+      <p className='text-xl mb-8 text-black'>
         A customizable, glassmorphism-styled Authentication component.
       </p>
 
       {/* Props */}
-      <section className={`${getGlassyClasses()} p-6 mb-14 relative`}>
-        <h2 className='text-3xl font-bold mb-4 text-gray-100'>Props</h2>
-        <div className='overflow-x-auto'>
-          <table className='w-full'>
-            <thead>
-              <tr className='bg-white bg-opacity-20'>
-                <th className='text-left p-2'>Prop</th>
-                <th className='text-left p-2'>Type</th>
-                <th className='text-left p-2'>Default</th>
-                <th className='text-left p-2'>Description</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td className='p-2'>className</td>
-                <td className='p-2'>string</td>
-                <td className='p-2'>''</td>
-                <td className='p-2'>Additional CSS classes</td>
-              </tr>
-              <tr className='bg-white bg-opacity-10'>
-                <td className='p-2'>style</td>
-                <td className='p-2'>object</td>
-                <td className='p-2'>{'{}'}</td>
-                <td className='p-2'>Inline styles for the card</td>
-              </tr>
-              <tr>
-                <td className='p-2'>children</td>
-                <td className='p-2'>ReactNode</td>
-                <td className='p-2'>-</td>
-                <td className='p-2'>Card content</td>
-              </tr>
-            </tbody>
-          </table>
+      <section className='mb-12'>
+        <h2 className='text-2xl font-bold mb-4 text-gray-800'>Props</h2>
+        <div className='bg-sky-300 bg-opacity-30 backdrop-filter backdrop-blur-md border border-white border-opacity-20 rounded-lg p-6'>
+          <div className='overflow-x-auto'>
+            <table className='w-full'>
+              <thead>
+                <tr className='border-b border-gray-800'>
+                  <th className='text-left p-2'>Prop</th>
+                  <th className='text-left p-2'>Type</th>
+                  <th className='text-left p-2'>Default</th>
+                  <th className='text-left p-2'>Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr className='border-b border-gray-800'>
+                  <td className='p-2'>className</td>
+                  <td className='p-2'>string</td>
+                  <td className='p-2'>''</td>
+                  <td className='p-2'>Additional CSS classes</td>
+                </tr>
+                <tr className='border-b border-gray-800'>
+                  <td className='p-2'>style</td>
+                  <td className='p-2'>object</td>
+                  <td className='p-2'>{'{}'}</td>
+                  <td className='p-2'>Inline styles for the card</td>
+                </tr>
+                <tr className='border-b border-gray-800'>
+                  <td className='p-2'>children</td>
+                  <td className='p-2'>ReactNode</td>
+                  <td className='p-2'>-</td>
+                  <td className='p-2'>Card content</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
       </section>
 
-      <section className={`${getGlassyClasses()} p-6 mb-14 relative`}>
-        <h2 className='text-3xl font-bold mb-6 text-white'>
+      <section className='mb-12'>
+        <h2 className='text-2xl font-bold mb-4 text-black'>
           Login Card Example
         </h2>
-        <div className='flex flex-col lg:flex-row gap-8'>
-          {/* <div className="lg:w-1/3 flex justify-center items-center bg-gradient-to-br from-purple-400 to-blue-300 p-8 rounded-xl"> */}
-          <LoginCardExample />
-          {/* </div> */}
-          <div className='lg:w-2/3'>
-            <h3 className='text-xl font-semibold mb-4 text-white'>Code</h3>
-            <div className='relative'>
-              <pre className='bg-gray-800 text-white p-4 rounded-lg overflow-x-auto text-sm max-h-[400px] whitespace-pre-wrap break-words'>
-                <code>
-                  {` const LoginCardExample: React.FC = () => (
+        <div className='bg-white bg-opacity-30 backdrop-filter backdrop-blur-md border border-white border-opacity-20 rounded-lg p-6'>
+          <div className='flex flex-col lg:flex-row gap-8'>
+            {/* <div className="lg:w-1/3 flex justify-center items-center bg-gradient-to-br from-purple-400 to-blue-300 p-8 rounded-xl"> */}
+            <LoginCardExample />
+            {/* </div> */}
+            <div className='lg:w-2/3'>
+              <h3 className='text-xl font-semibold mb-4 text-black'>Code</h3>
+              <div className='relative'>
+                <pre className='bg-sky-200 text-black p-4 rounded-lg overflow-x-auto text-sm max-h-[400px] whitespace-pre-wrap break-words'>
+                  <code>
+                    {` const LoginCardExample: React.FC = () => (
     <div
       className="relative p-8 rounded-xl overflow-hidden"
       style={{
@@ -459,10 +462,10 @@ const AuthenticationCardDetailsPage: React.FC = () => {
       <div className="absolute inset-0 bg-white opacity-30 backdrop-filter backdrop-blur-sm z-0"></div>
     </div>
   );`}
-                </code>
-              </pre>
-              <CopyButton
-                text={`const LoginCardExample: React.FC = () => (
+                  </code>
+                </pre>
+                <CopyButton
+                  text={`const LoginCardExample: React.FC = () => (
     <div
       className="relative p-8 rounded-xl overflow-hidden"
       style={{
@@ -515,27 +518,29 @@ const AuthenticationCardDetailsPage: React.FC = () => {
       <div className="absolute inset-0 bg-white opacity-30 backdrop-filter backdrop-blur-sm z-0"></div>
     </div>
 );`}
-                codeKey='LoginCardExample'
-              />
+                  codeKey='LoginCardExample'
+                />
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      <section className={`${getGlassyClasses()} p-6 mb-14 relative`}>
-        <h2 className='text-2xl font-bold mb-6 text-white'>
+      <section className='mb-12'>
+        <h2 className='text-2xl font-bold mb-4 text-black'>
           Sign Up Card Example
         </h2>
-        <div className='flex flex-col lg:flex-row gap-8'>
-          {/* <div className="lg:w-1/3 flex justify-center items-center bg-gradient-to-br from-purple-400 to-blue-300 p-8 rounded-xl"> */}
-          <SignUpCardExample />
-          {/* </div> */}
-          <div className='lg:w-2/3'>
-            <h3 className='text-xl font-semibold mb-4 text-white'>Code</h3>
-            <div className='relative'>
-              <pre className='bg-gray-800 text-white p-4 rounded-lg overflow-x-auto text-sm max-h-[400px] whitespace-pre-wrap break-words'>
-                <code>
-                  {` const SignUpCardExample: React.FC = () => (
+        <div className='bg-white bg-opacity-30 backdrop-filter backdrop-blur-md border border-white border-opacity-20 rounded-lg p-6'>
+          <div className='flex flex-col lg:flex-row gap-8'>
+            {/* <div className="lg:w-1/3 flex justify-center items-center bg-gradient-to-br from-purple-400 to-blue-300 p-8 rounded-xl"> */}
+            <SignUpCardExample />
+            {/* </div> */}
+            <div className='lg:w-2/3'>
+              <h3 className='text-xl font-semibold mb-4 text-black'>Code</h3>
+              <div className='relative'>
+                <pre className='bg-sky-200 text-black p-4 rounded-lg overflow-x-auto text-sm max-h-[400px] whitespace-pre-wrap break-words'>
+                  <code>
+                    {` const SignUpCardExample: React.FC = () => (
     <div
       className="relative p-8 rounded-xl overflow-hidden"
       style={{
@@ -599,10 +604,10 @@ const AuthenticationCardDetailsPage: React.FC = () => {
       <div className="absolute inset-0 bg-white opacity-30 backdrop-filter backdrop-blur-sm z-0"></div>
     </div>
   );`}
-                </code>
-              </pre>
-              <CopyButton
-                text={`const SignUpCardExample: React.FC = () => (
+                  </code>
+                </pre>
+                <CopyButton
+                  text={`const SignUpCardExample: React.FC = () => (
     <div
       className="relative p-8 rounded-xl overflow-hidden"
       style={{
@@ -666,8 +671,9 @@ const AuthenticationCardDetailsPage: React.FC = () => {
       <div className="absolute inset-0 bg-white opacity-30 backdrop-filter backdrop-blur-sm z-0"></div>
     </div>
 );`}
-                codeKey='SignUpCardExample'
-              />
+                  codeKey='SignUpCardExample'
+                />
+              </div>
             </div>
           </div>
         </div>

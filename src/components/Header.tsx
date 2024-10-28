@@ -1,39 +1,14 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
-import gsap from 'gsap';
 
 const Header: React.FC = () => {
-  useEffect(() => {
-    // GSAP animation for the navbar
-    const tl = gsap.timeline();
-    tl.fromTo(
-      '.navbar-item', // Targeting elements with this class
-      {
-        y: -100, // Initial position (from)
-        opacity: 0, // Initial opacity (from)
-      },
-      {
-        y: 0, // Final position (to)
-        opacity: 1, // Final opacity (to)
-        duration: 1,
-        ease: 'power2.inOut',
-        stagger: 0.5, // Stagger for smooth effect
-      },
-    );
-
-    return () => {
-      // Cleanup GSAP animations
-      tl.kill();
-    };
-  }, []);
-
   return (
     <nav style={navStyle}>
       <h1 className='text-white text-[20px] font-bold'>
         <span className='text-blue-400'>Glass</span>UI
       </h1>
       <ul style={ulStyle}>
-        <li style={liStyle} className='navbar-item'>
+        <li style={liStyle}>
           <Link
             to='/'
             style={linkStyle}
@@ -43,7 +18,7 @@ const Header: React.FC = () => {
             Home
           </Link>
         </li>
-        <li style={liStyle} className='navbar-item'>
+        <li style={liStyle}>
           <Link
             to='/donate'
             style={linkStyle}
@@ -53,7 +28,7 @@ const Header: React.FC = () => {
             Donate
           </Link>
         </li>
-        <li style={liStyle} className='navbar-item'>
+        <li style={liStyle}>
           <Link
             to='/about'
             style={linkStyle}
@@ -88,8 +63,9 @@ const Header: React.FC = () => {
 
 // Inline styles for the nav bar
 const navStyle: React.CSSProperties = {
-  //backgroundColor: '#2b303c',
+  backgroundColor: '#2b303c',
   padding: '10px',
+
   position: 'fixed', // Fix the navbar
   top: '0', // Align it to the top of the page
   width: '100%', // Ensure it spans the width of the page
@@ -100,6 +76,7 @@ const navStyle: React.CSSProperties = {
   display: 'flex',
   justifyContent: 'space-around',
   alignItems: 'center',
+
 };
 
 const ulStyle: React.CSSProperties = {

@@ -67,7 +67,7 @@ const CardDetailsPage: React.FC = () => {
   }) => (
     <button
       onClick={() => copyToClipboard(text, codeKey)}
-      className='absolute top-2 right-2 p-1 bg-white bg-opacity-30 backdrop-filter backdrop-blur-md border border-white border-opacity-20 rounded-lg shadow-lg hover:bg-opacity-40 transition-all duration-300'
+      className='absolute top-2 right-2 p-1 bg-black bg-opacity-30 backdrop-filter backdrop-blur-md border border-white border-opacity-20 rounded-lg shadow-lg hover:bg-opacity-40 transition-all duration-300'
       title='Copy to clipboard'
     >
       {copiedStates[codeKey] ? (
@@ -140,11 +140,6 @@ const CardDetailsPage: React.FC = () => {
 </div>`;
   };
 
-  const getGlassyClasses = (opacity = 20) => {
-    return `backdrop-filter backdrop-blur-lg bg-white bg-opacity-${opacity} 
-  border border-white border-opacity-20 rounded-lg shadow-lg transition-all duration-300`;
-  };
-
   const CreditCardExample: React.FC = () => (
     <div className='w-96 h-56 bg-gradient-to-br from-purple-400 to-blue-500 rounded-xl overflow-hidden relative p-8 text-white shadow-xl'>
       <div className='absolute inset-0 bg-black bg-opacity-30 backdrop-filter backdrop-blur-sm'></div>
@@ -172,28 +167,24 @@ const CardDetailsPage: React.FC = () => {
   );
 
   return (
-    <div className='min-h-screen p-8 font-sans bg-gradient-to-r from-gray-800 via-gray-900 to-black text-white relative'>
+    <div className='min-h-screen p-8 font-sans bg-gradient-to-br from-pink-300 to-pink-300 text-gray-800 relative'>
       <BackToTopButton />
       <button
         onClick={() => navigate(-1)}
-        className={`mb-8 flex items-center ${getGlassyClasses(10)} px-4 py-2 hover:bg-opacity-20 text-white`}
+        className='mb-8 flex items-center px-4 py-2 bg-yellow-500 bg-opacity-30 backdrop-filter backdrop-blur-md border border-white border-opacity-20 rounded-lg shadow-lg hover:bg-opacity-40 transition-all duration-300 text-gray-800'
       >
         <ArrowLeft size={20} className='mr-2' />
         Back to Components
       </button>
 
-      <h1 className='text-6xl font-bold mb-8 text-white'>Card Component</h1>
-      <p className='text-xl mb-8 text-gray-100'>
-        A glassmorphism-styled Card component.
-      </p>
+      <h1 className='text-4xl font-bold mb-8 text-gray-900'>Card Component</h1>
 
       {/* Basic Usage */}
-      <section
-        className={`${getGlassyClasses()} p-6 mb-14 text-white relative z-10`}
-      >
-        <h2 className='text-3xl font-bold mb-4'>Basic Usage</h2>
-        <pre className='bg-gray-800 text-white p-6 rounded-lg overflow-x-auto relative max-sm:text-[0.55rem]'>
-          {`import { Card } from './components/Card';
+      <section className='mb-12'>
+        <h2 className='text-2xl font-bold mb-4 text-gray-800'>Basic Usage</h2>
+        <div className='bg-white bg-opacity-30 backdrop-filter backdrop-blur-md border border-white border-opacity-20 rounded-lg p-6 max-sm:px-1'>
+          <pre className='bg-green-300 text-black p-4 rounded-lg overflow-x-auto relative max-sm:text-[0.55rem]'>
+            {`import { Card } from './components/Card';
 
 function Example() {
   return (
@@ -203,9 +194,9 @@ function Example() {
     </Card>
   );
 }`}
-        </pre>
-        <CopyButton
-          text={`import { Card } from './components/Card';
+          </pre>
+          <CopyButton
+            text={`import { Card } from './components/Card';
 
 function Example() {
   return (
@@ -215,63 +206,60 @@ function Example() {
     </Card>
   );
 }`}
-          codeKey='basicUsage'
-        />
+            codeKey='basicUsage'
+          />
+        </div>
       </section>
 
       {/* Props */}
-      <section
-        className={`${getGlassyClasses()} p-6 mb-14 text-white relative z-10`}
-      >
-        <h2 className='text-3xl font-bold mb-4 text-gray-100'>Props</h2>
-        <div className='overflow-x-auto'>
-          <table className='w-full'>
-            <thead>
-              <tr className='bg-white bg-opacity-20'>
-                <th className='text-left p-2'>Prop</th>
-                <th className='text-left p-2'>Type</th>
-                <th className='text-left p-2'>Default</th>
-                <th className='text-left p-2'>Description</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td className='p-2'>className</td>
-                <td className='p-2'>string</td>
-                <td className='p-2'>''</td>
-                <td className='p-2'>Additional CSS classes</td>
-              </tr>
-              <tr className='bg-white bg-opacity-10'>
-                <td className='p-2'>style</td>
-                <td className='p-2'>object</td>
-                <td className='p-2'>{'{}'}</td>
-                <td className='p-2'>Inline styles for the card</td>
-              </tr>
-              <tr>
-                <td className='p-2'>children</td>
-                <td className='p-2'>ReactNode</td>
-                <td className='p-2'>-</td>
-                <td className='p-2'>Card content</td>
-              </tr>
-            </tbody>
-          </table>
+      <section className='mb-12'>
+        <h2 className='text-2xl font-bold mb-4 text-gray-800'>Props</h2>
+        <div className='bg-white bg-opacity-30 backdrop-filter backdrop-blur-md border border-black border-opacity-20 rounded-lg p-6 max-sm:px-1'>
+          <div className='overflow-x-auto'>
+            <table className='w-full'>
+              <thead>
+                <tr>
+                  <th className='text-left p-2'>Prop</th>
+                  <th className='text-left p-2'>Type</th>
+                  <th className='text-left p-2'>Default</th>
+                  <th className='text-left p-2'>Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td className='p-2'>className</td>
+                  <td className='p-2'>string</td>
+                  <td className='p-2'>''</td>
+                  <td className='p-2'>Additional CSS classes</td>
+                </tr>
+                <tr>
+                  <td className='p-2'>style</td>
+                  <td className='p-2'>object</td>
+                  <td className='p-2'>{'{}'}</td>
+                  <td className='p-2'>Inline styles for the card</td>
+                </tr>
+                <tr>
+                  <td className='p-2'>children</td>
+                  <td className='p-2'>ReactNode</td>
+                  <td className='p-2'>-</td>
+                  <td className='p-2'>Card content</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
       </section>
 
       {/* Custom Card Section */}
-      <section
-        className={`${getGlassyClasses()} p-6 mb-14 text-white relative z-10`}
-      >
-        <h2 className='text-3xl font-bold mb-4 text-gray-100'>Custom Card</h2>
-        <p className='text-xl mb-4 text-gray-100'>
+      <section className='mb-12'>
+        <h2 className='text-2xl font-bold mb-4 text-gray-800'>Custom Card</h2>
+        <p className='mb-4 text-black'>
           Customize your card's appearance by selecting a preset theme or
           creating your own color scheme.
         </p>
-        <div
-          className={`${getGlassyClasses(5)} p-6 mb-14 text-white relative z-10`}
-        >
-          <div className='mb-4 flex items-center'>
-            <span className='text-lg font-bold mr-2'>Theme:</span>
+        <div className='bg-white bg-opacity-30 backdrop-filter backdrop-blur-md border border-white border-opacity-20 rounded-lg p-6 max-sm:px-1'>
+          <div className='mb-4'>
+            <span className='text-sm font-bold mr-2'>Theme:</span>
             {Object.keys(themes).map(theme => (
               <button
                 key={theme}
@@ -284,34 +272,34 @@ function Example() {
             ))}
           </div>
           <div className='grid grid-cols-1 md:grid-cols-2 gap-8'>
-            <CustomCardPreview />
-            <div className='relative'>
-              <pre className='bg-gray-800 text-white p-4 rounded-lg overflow-x-auto text-sm  max-sm:text-[0.55rem]'>
-                {updateCustomCode()}
-              </pre>
-              <CopyButton text={updateCustomCode()} codeKey='customStyling' />
+            <div className='grid grid-cols-1 md:grid-cols-2 gap-8'>
+              <CustomCardPreview />
+              <div className='relative'>
+                <pre className='bg-emerald-200 text-black p-4 rounded-lg overflow-x-auto text-sm max-h-[400px] whitespace-pre-wrap break-words max-sm:text-[0.55rem]'>
+                  {updateCustomCode()}
+                </pre>
+                <CopyButton text={updateCustomCode()} codeKey='customStyling' />
+              </div>
             </div>
           </div>
         </div>
       </section>
 
       {/* Credit Card Example */}
-      {/* Credit Card Example */}
-      <section
-        className={`${getGlassyClasses()} p-6 mb-14 text-white relative z-10`}
-      >
-        <h2 className='text-3xl font-bold mb-4 text-gray-100'>
+
+      <section className='mb-12'>
+        <h2 className='text-2xl font-bold mb-4 text-gray-800'>
           Credit Card Example
         </h2>
-        <div className='bg-white bg-opacity-10 backdrop-filter backdrop-blur-md border border-white border-opacity-20 rounded-lg p-6 max-sm:px-1'>
+        <div className='bg-white bg-opacity-30 backdrop-filter backdrop-blur-md border border-white border-opacity-20 rounded-lg p-6 max-sm:px-1'>
           <div className='flex flex-col lg:flex-row gap-8'>
             <div className='lg:w-1/3 flex justify-center items-center bg-gradient-to-br from-purple-400 to-blue-300 p-8 rounded-xl'>
               <CreditCardExample />
             </div>
             <div className='lg:w-2/3'>
-              <h3 className='text-xl font-semibold mb-4 text-gray-100'>Code</h3>
+              <h3 className='text-xl font-semibold mb-4 text-gray-800'>Code</h3>
               <div className='relative'>
-                <pre className='bg-gray-800 text-white p-4 rounded-lg overflow-x-auto text-sm max-h-[400px] whitespace-pre-wrap break-words max-sm:text-[0.55rem]'>
+                <pre className='bg-lime-200 text-black p-4 rounded-lg overflow-x-auto text-sm max-h-[400px] whitespace-pre-wrap break-words max-sm:text-[0.55rem]'>
                   <code>
                     {`const GlassmorphicCreditCard: React.FC = () => (
   <div className="w-96 h-56 bg-gradient-to-br from-purple-100 
@@ -345,6 +333,7 @@ function Example() {
 );`}
                   </code>
                 </pre>
+
                 <CopyButton
                   text={`const GlassmorphicCreditCard: React.FC = () => (
   <div className="w-96 h-56 bg-gradient-to-br from-purple-400 to-blue-500 rounded-xl overflow-hidden relative p-8 text-white shadow-xl">

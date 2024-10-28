@@ -2,8 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { Star, Code, Package, Zap } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import './GlassyUILandingPage.css'; // Create this CSS file in the same directory
-import gsap from 'gsap';
-import Footer from './Footer';
 
 const GlassyUILandingPage: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -13,21 +11,8 @@ const GlassyUILandingPage: React.FC = () => {
     setIsVisible(true);
   }, []);
 
-  useEffect(() => {
-    const tl = gsap.timeline();
-    tl.fromTo(
-      '.homeGSap',
-      { scale: 0, opacity: 0 },
-      { scale: 1, opacity: 1, duration: 0.5, ease: 'sine.inOut' },
-    );
-
-    return () => {
-      tl.kill();
-    };
-  }, []);
-
   return (
-    <div className='min-h-screen flex flex-col items-center justify-center pt-10 font-mono relative overflow-hidden bg-gradient-to-br from-gray-800 via-gray-900 to-black'>
+    <div className='min-h-screen flex flex-col items-center justify-center p-4 font-mono relative overflow-hidden bg-gradient-to-br from-gray-800 via-gray-900 to-black'>
       <div
         className='absolute inset-0 w-full h-full opacity-20'
         style={{
@@ -39,14 +24,8 @@ const GlassyUILandingPage: React.FC = () => {
         }}
       />
 
-      <div className='homeGSap relative z-10 w-full max-w-4xl'>
-
-        <header className='w-full flex justify-between items-center mb-19'>
-          
-        <header className='w-full flex justify-between items-center mb-4'>
-          {' '}
-          {/* Adjusted mb-8 to mb-4 */}
-
+      <div className='relative z-10 w-full max-w-4xl'>
+        <header className='w-full flex justify-between items-center mb-8'>
           <div className='text-2xl font-bold text-white'>
             <span className='text-blue-400'>Glassy</span>UI
           </div>
@@ -63,7 +42,6 @@ const GlassyUILandingPage: React.FC = () => {
 
         <main
           className={`fade-in text-center p-12 rounded-xl backdrop-filter backdrop-blur-lg bg-white bg-opacity-10 shadow-lg border border-white border-opacity-20 relative transition-all duration-700 ease-in-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
-          style={{ marginTop: '20px' }} // Added marginTop for spacing
         >
           <h1 className='text-7xl font-bold mb-4 text-white'>
             <span className='animated-glossy-text'>Glassy UI</span>
@@ -89,7 +67,8 @@ const GlassyUILandingPage: React.FC = () => {
               description='Optimized for smooth interactions'
             />
           </div>
-          <div className='flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-6'>
+
+          <div className='flex justify-center space-x-6'>
             <Link to='/components'>
               <GlassmorphismButton>Explore Components</GlassmorphismButton>
             </Link>
@@ -109,9 +88,6 @@ const GlassyUILandingPage: React.FC = () => {
             </GlassmorphismButton>
           </div>
         </main>
-      </div>
-      <div>
-        <Footer />
       </div>
     </div>
   );

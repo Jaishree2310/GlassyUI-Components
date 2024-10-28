@@ -4,7 +4,6 @@
 
 Welcome to **GlassyUI-Components**! This open-source library features stunning React components designed with a captivating glassmorphism effect, perfect for giving your web applications a modern and sleek design.
 
-
 ## 📚 Table of Contents
 
 - [Project Overview](#project-overview)
@@ -26,7 +25,6 @@ Welcome to **GlassyUI-Components**! This open-source library features stunning R
 ## Project Overview
 
 This open-source library features stunning React components designed with a captivating glassmorphism effect, perfect for giving your web applications a modern and sleek design.
-
 
 <img src="https://raw.githubusercontent.com/alo7lika/GlassyUI-Components/refs/heads/main/Images/212284100-561aa473-3905-4a80-b561-0d28506553ee.gif" width="900">
 
@@ -87,7 +85,6 @@ This open-source library features stunning React components designed with a capt
 - **Docker**: For containerization and easy deployment.
 - **Node.js**: JavaScript runtime for server-side development.
 
-  
 ## 🖥️ Website Preview
 
 ![Home Page](https://github.com/user-attachments/assets/f6f73936-ca0d-4232-a646-67189f5aa901)
@@ -222,6 +219,7 @@ git push origin my-feature-branch
 -If more than 1 week issue is not resolved then it will be assigned to someone else.
 
 ### Code of conduct:
+
 - This README structure includes all the sections you wanted.
 - Adjust the contributors section as needed based on your actual contributors.
 - Feel free to add or modify any content to better fit your project’s specific needs!
@@ -230,13 +228,12 @@ git push origin my-feature-branch
 
 1. Basic Usage
 2. Props
-3.Customizable component
-4. Theme (of your new component)
-5. Example
-6. Copy code
+   3.Customizable component
+3. Theme (of your new component)
+4. Example
+5. Copy code
 
 -for eg: Button component,Progress Bar components
-
 
 ## Our Contributors
 

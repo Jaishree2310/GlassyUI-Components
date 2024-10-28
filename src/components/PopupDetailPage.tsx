@@ -176,7 +176,7 @@ const CustomPopup: React.FC<{
 
   return (
     <div className='p-4 rounded-lg'>
-      <h2 className='text-3xl font-bold mb-4'>Glassmorphism Popup</h2>
+      <h2 className='text-2xl font-bold mb-4'>Glassmorphism Popup</h2>
       <p className='mb-4'>
         Customize your popup's appearance and glassmorphism effect.
       </p>
@@ -308,8 +308,8 @@ const CustomPopup: React.FC<{
         </div>
       </Popup>
 
-      <div className='mt-4 bg-gray-800 p-2 rounded relative'>
-        <pre className='text-sm overflow-x-auto text-white max-sm:text-[0.55rem]'>
+      <div className='mt-4 bg-teal-200 p-2 rounded relative'>
+        <pre className='text-sm overflow-x-auto text-black max-sm:text-[0.55rem]'>
           {`const Popup = ({ isOpen, onClose, children, bg, textColor, borderColor, opacity, blur }) => {
   if (!isOpen) return null;
 
@@ -374,9 +374,8 @@ const PopupDetailPage: React.FC = () => {
     {},
   );
 
-  const getGlassyClasses = (opacity = 20) => {
-    return `backdrop-filter backdrop-blur-lg bg-white bg-opacity-${opacity} 
-  border border-white border-opacity-20 rounded-lg shadow-lg transition-all duration-300`;
+  const getGlassyClasses = () => {
+    return 'backdrop-filter backdrop-blur-md bg-white bg-opacity-30 border border-white border-opacity-20 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 max-sm:px-0';
   };
 
   const copyToClipboard = (text: string, key: string) => {
@@ -390,29 +389,29 @@ const PopupDetailPage: React.FC = () => {
   };
 
   return (
-    <div className='min-h-screen p-8 font-sans bg-gradient-to-r from-gray-800 via-gray-900 to-black text-white relative'>
+    <div className='min-h-screen p-8 font-sans bg-gradient-to-r from-[#ffc6c6] via-[#ffc6e5] to-[#e7c6ff] relative max-sm:px-2'>
       <BackToTopButton />
       <button
         onClick={() => navigate(-1)}
-        className={`mb-8 flex items-center ${getGlassyClasses(10)} px-4 py-2 hover:bg-white/40 transition-all duration-300 text-gray-100`}
+        className={`mb-8 flex items-center bg-yellow-200 border border-black rounded-xl shadow-lg max-sm:px-0 px-4 py-2 hover:bg-yellow-300 transition-all duration-300 text-gray-800`}
       >
         <ArrowLeft size={20} className='mr-2' />
         Back to Components
       </button>
 
-      <h1 className='text-6xl font-bold mb-8 text-gray-100'>
+      <h1 className='text-4xl font-bold mb-8 text-gray-900'>
         Glassmorphism Popup
       </h1>
 
-      <p className='text-xl mb-8 text-gray-100'>
+      <p className='mb-8 text-gray-800'>
         A customizable, glassmorphism-styled popup component for displaying
         modal content with adjustable blur and opacity effects.
       </p>
 
       {/* Basic Usage */}
-      <div className={`${getGlassyClasses()} p-6 mb-14 relative`}>
-        <h2 className='text-3xl font-bold mb-4 text-gray-100'>Basic Usage</h2>
-        <pre className='bg-gray-800 text-white p-4 rounded-lg overflow-x-auto max-sm:text-[0.55rem]'>
+      <div className={`${getGlassyClasses()} p-6 mb-8 relative`}>
+        <h2 className='text-2xl font-bold mb-4 text-gray-800'>Basic Usage</h2>
+        <pre className='bg-teal-200 text-black p-4 rounded-lg overflow-x-auto max-sm:text-[0.55rem]'>
           {`<div>
   <button onClick={openPopup}>Open Popup</button>
   <Popup
@@ -469,12 +468,12 @@ function App() {
       </div>
 
       {/* Props */}
-      <div className={`${getGlassyClasses()} p-6 mb-14`}>
-        <h2 className='text-3xl font-bold mb-4 text-gray-100'>Props</h2>
+      <div className={`${getGlassyClasses()} p-6 mb-8`}>
+        <h2 className='text-2xl font-bold mb-4 text-gray-800'>Props</h2>
         <div className='overflow-x-auto'>
           <table className='w-full'>
             <thead>
-              <tr className='bg-white bg-opacity-20'>
+              <tr className='border-b border-black'>
                 <th className='text-left p-2'>Prop</th>
                 <th className='text-left p-2'>Type</th>
                 <th className='text-left p-2'>Default</th>
@@ -482,43 +481,43 @@ function App() {
               </tr>
             </thead>
             <tbody>
-              <tr>
+              <tr className='border-b border-black'>
                 <td className='p-2'>isOpen</td>
                 <td className='p-2'>boolean</td>
                 <td className='p-2'>false</td>
                 <td className='p-2'>Controls whether the popup is visible</td>
               </tr>
-              <tr className='bg-white bg-opacity-10'>
+              <tr className='border-b border-black'>
                 <td className='p-2'>onClose</td>
                 <td className='p-2'>function</td>
                 <td className='p-2'>-</td>
                 <td className='p-2'>Function to call when closing the popup</td>
               </tr>
-              <tr>
+              <tr className='border-b border-black'>
                 <td className='p-2'>bg</td>
                 <td className='p-2'>string</td>
                 <td className='p-2'>'#ffffff'</td>
                 <td className='p-2'>Background color of the popup content</td>
               </tr>
-              <tr className='bg-white bg-opacity-10'>
+              <tr className='border-b border-black'>
                 <td className='p-2'>textColor</td>
                 <td className='p-2'>string</td>
                 <td className='p-2'>'#000000'</td>
                 <td className='p-2'>Text color of the popup content</td>
               </tr>
-              <tr>
+              <tr className='border-b border-black'>
                 <td className='p-2'>borderColor</td>
                 <td className='p-2'>string</td>
                 <td className='p-2'>'#000000'</td>
                 <td className='p-2'>Border color of the popup</td>
               </tr>
-              <tr className='bg-white bg-opacity-10'>
+              <tr className='border-b border-black'>
                 <td className='p-2'>opacity</td>
                 <td className='p-2'>number</td>
                 <td className='p-2'>0.5</td>
                 <td className='p-2'>Opacity of the popup background</td>
               </tr>
-              <tr>
+              <tr className='border-b border-black'>
                 <td className='p-2'>blur</td>
                 <td className='p-2'>number</td>
                 <td className='p-2'>5</td>
@@ -530,7 +529,7 @@ function App() {
       </div>
 
       {/* Custom Popup */}
-      <div className={`${getGlassyClasses()} p-6 mb-14`}>
+      <div className={`${getGlassyClasses()} p-6 mb-8`}>
         <CustomPopup
           getGlassyClasses={getGlassyClasses}
           copiedStates={copiedStates}

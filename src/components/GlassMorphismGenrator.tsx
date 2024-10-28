@@ -58,26 +58,25 @@ const GlassmorphismGenerator: React.FC = () => {
     const b = parseInt(hexColor.slice(5, 7), 16);
     setColorFunction(`rgba(${r}, ${g}, ${b}, ${opacity})`); // Keep opacity as is
   };
-  const getGlassyClasses = (opacity = 20) => {
-    return `backdrop-filter backdrop-blur-lg bg-white bg-opacity-${opacity} 
-  border border-white border-opacity-20 rounded-lg shadow-lg transition-all duration-300`;
+  const getGlassyClasses = () => {
+    return 'backdrop-filter backdrop-blur-md bg-white bg-opacity-30 border border-white border-opacity-20 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300';
   };
   return (
     <div className='min-h-screen flex flex-col gap-6 justify-center items-center px-6 bg-gradient-to-br from-gray-800 via-gray-900 to-black text-white p-8'>
       <div className='w-full mb-0 pb-0'>
         <button
           onClick={() => navigate(-1)}
-          className={`mb-8 flex items-center ${getGlassyClasses()} px-4 py-2 hover:bg-white/40 transition-all duration-300 text-gray-100`}
+          className={` flex items-center ${getGlassyClasses()} px-4 py-2 hover:bg-opacity-40 transition-all duration-300 text-gray-800`}
         >
           <ArrowLeft size={20} className='mr-2' />
           Back to Components
         </button>
       </div>
-      <h1 className='text-5xl font-bold text-white  '>
+      <h1 className='text-4xl font-bold text-white  '>
         Glassmorphism Generator{' '}
       </h1>
       <h2 className='text-xl font-bold text-white  '>
-        Create your own Glassmorphic effect with ease
+        create your own effect with eadge
       </h2>
       <div className='grid grid-cols-2 md:grid-cols-3 lg:grid-flow-col gap-4'>
         <div className='glassmorphism p-2 rounded-md'>
@@ -238,19 +237,17 @@ const GlassmorphismGenerator: React.FC = () => {
       </div>
       <div className='grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-[1200px]'>
         <div className='flex flex-col items-center justify-center'>
-          <div className='w-[90vw] h-[55vh] max-w-lg bg-gray-900 bg-opacity-80 p-4 rounded-lg shadow-xl flex items-center justify-center'>
-            <div
-              style={glassStyle}
-              className='w-[70vw] h-[40vh] max-w-sm text-center p-4 rounded-lg'
-            >
-              {/* Preview Content */}
-              <h2 className='text-xl font-bold text-white'>
-                Glassmorphism Effect Preview
-              </h2>
-              <p className='text-sm text-white'>
-                This is a preview of the glassmorphism effect.
-              </p>
-            </div>
+          <div
+            style={glassStyle}
+            className='w-[100vw] h-[50vh] max-w-md text-center'
+          >
+            {/* Preview Content */}
+            <h2 className='text-2xl font-bold text-white'>
+              Glassmorphism Effect Preview
+            </h2>
+            <p className='text-white'>
+              This is a preview of the glassmorphism effect.
+            </p>
           </div>
         </div>
 

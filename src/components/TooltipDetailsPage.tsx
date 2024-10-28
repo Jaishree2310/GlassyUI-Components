@@ -41,7 +41,7 @@ const TooltipDetailsPage: React.FC = () => {
       {copiedStates[codeKey] ? (
         <Check size={16} className='text-green-600' />
       ) : (
-        <Copy size={16} className='text-gray-100' />
+        <Copy size={16} className='text-black' />
       )}
     </button>
   );
@@ -84,29 +84,29 @@ function Example() {
 </Tooltip>`;
 
   return (
-    <div className='min-h-screen p-8 font-sans bg-gradient-to-r from-gray-800 via-gray-900 to-black text-white relative'>
+    <div className='min-h-screen p-8 font-sans bg-gradient-to-r from-pink-300 via-pink-300 to-purple-300 text-white relative'>
       <BackToTopButton />
       <div className='relative z-10'>
         {/* Back navigation button */}
         <button
           onClick={() => navigate(-1)}
-          className={`mb-8 flex items-center ${getGlassyClasses(10)} px-4 py-2 hover:bg-white/40 transition-all duration-300 text-gray-100`}
+          className={`mb-8 flex items-center bg-orange-300 border border-black rounded-xl shadow-lg max-sm:px-0 px-4 py-2 hover:bg-orange-400 transition-all duration-300 text-black`}
         >
           <ArrowLeft size={20} className='mr-2' />
           Back to Components
         </button>
 
         {/* Page title and description */}
-        <h1 className='text-6xl font-bold mb-8 text-white'>Tooltip</h1>
-        <p className='text-xl mb-8 text-gray-100'>
+        <h1 className='text-6xl font-bold mb-8 text-black'>Tooltip</h1>
+        <p className='text-xl mb-8 text-black'>
           A customizable, glassmorphism styled tooltip component.
         </p>
 
         {/* Basic usage section */}
         <div className={`${getGlassyClasses()} p-8 mb-8 relative`}>
-          <h2 className='text-3xl font-bold mb-6 text-gray-100'>Basic Usage</h2>
+          <h2 className='text-3xl font-bold mb-6 text-black'>Basic Usage</h2>
           <div className='relative'>
-            <pre className='bg-gray-800 text-white p-6 rounded-lg overflow-x-auto whitespace-pre-wrap max-sm:text-[0.55rem] max-sm:text-[0.55rem]'>
+            <pre className='bg-blue-200 text-black p-6 rounded-lg overflow-x-auto whitespace-pre-wrap max-sm:text-[0.55rem] max-sm:text-[0.55rem]'>
               {basicUsageCode}
             </pre>
             <CopyButton text={basicUsageCode} codeKey='basicUsage' />
@@ -115,31 +115,31 @@ function Example() {
 
         {/* Props table section */}
         <div className={`${getGlassyClasses()} p-8 mb-8`}>
-          <h2 className='text-3xl font-bold mb-6 text-gray-100'>Props</h2>
+          <h2 className='text-3xl font-bold mb-6 text-black'>Props</h2>
           <div className='overflow-x-auto'>
             <table className='w-full'>
               <thead>
                 <tr className='bg-white bg-opacity-20'>
-                  <th className='text-left p-2 text-gray-100'>Prop</th>
-                  <th className='text-left p-2 text-gray-100'>Type</th>
-                  <th className='text-left p-2 text-gray-100'>Default</th>
-                  <th className='text-left p-2 text-gray-100'>Description</th>
+                  <th className='text-left p-2 text-black'>Prop</th>
+                  <th className='text-left p-2 text-black'>Type</th>
+                  <th className='text-left p-2 text-black'>Default</th>
+                  <th className='text-left p-2 text-black'>Description</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
-                  <td className='p-2 text-gray-300'>text</td>
-                  <td className='p-2 text-gray-300'>string</td>
-                  <td className='p-2 text-gray-300'>-</td>
-                  <td className='p-2 text-gray-300'>
+                  <td className='p-2 text-black'>text</td>
+                  <td className='p-2 text-black'>string</td>
+                  <td className='p-2 text-black'>-</td>
+                  <td className='p-2 text-black'>
                     The text to display inside the tooltip
                   </td>
                 </tr>
-                <tr className='bg-white bg-opacity-10'>
-                  <td className='p-2 text-gray-300'>position</td>
-                  <td className='p-2 text-gray-300'>string</td>
-                  <td className='p-2 text-gray-300'>top</td>
-                  <td className='p-2 text-gray-300'>
+                <tr className='bg-white bg-opacity-20'>
+                  <td className='p-2 text-black'>position</td>
+                  <td className='p-2 text-black'>string</td>
+                  <td className='p-2 text-black'>top</td>
+                  <td className='p-2 text-black'>
                     The position of the tooltip (top, bottom, left, right)
                   </td>
                 </tr>
@@ -150,53 +150,63 @@ function Example() {
 
         {/* Tooltip positions section */}
         <div className={`${getGlassyClasses()} p-8 mb-8`}>
-          <h2 className='text-3xl font-bold mb-6 text-gray-100'>
+          <h2 className='text-3xl font-bold mb-6 text-black'>
             Tooltip Positions
           </h2>
-          <p className='mb-6 text-lg text-gray-300'>
+          <p className='mb-6 text-lg text-black'>
             Display tooltips in different positions around the element.
           </p>
           <div className='flex justify-around py-12'>
             <Tooltip text='Tooltip on top!' position='top'>
-              <button className={`${getGlassyClasses()} px-4 py-2`}>Top</button>
+              <button
+                className={`bg-emerald-200 text-black border border-black rounded-xl shadow-lg transition-all duration-300 max-sm:px-0 px-4 py-2`}
+              >
+                Top
+              </button>
             </Tooltip>
             <Tooltip text='Tooltip on bottom!' position='bottom'>
-              <button className={`${getGlassyClasses()} px-4 py-2`}>
+              <button
+                className={`bg-cyan-200 border text-black border-black rounded-xl shadow-lg transition-all duration-300 max-sm:px-0 px-4 py-2`}
+              >
                 Bottom
               </button>
             </Tooltip>
             <Tooltip text='Tooltip on left!' position='left'>
-              <button className={`${getGlassyClasses()} px-4 py-2`}>
+              <button
+                className={`bg-red-300 border text-black border-black rounded-xl shadow-lg transition-all duration-300 max-sm:px-0 px-4 py-2`}
+              >
                 Left
               </button>
             </Tooltip>
             <Tooltip text='Tooltip on right!' position='right'>
-              <button className={`${getGlassyClasses()} px-4 py-2`}>
+              <button
+                className={`bg-violet-300 border text-black border-black rounded-xl shadow-lg transition-all duration-300 max-sm:px-0 px-4 py-2`}
+              >
                 Right
               </button>
             </Tooltip>
           </div>
           {/* Code snippets for different tooltip positions */}
           <div className='relative mt-8'>
-            <pre className='bg-gray-800 text-white p-6 rounded-lg overflow-x-auto whitespace-pre-wrap max-sm:text-[0.55rem]'>
+            <pre className='bg-emerald-200 text-black p-6 rounded-lg overflow-x-auto whitespace-pre-wrap max-sm:text-[0.55rem]'>
               {topTooltipCode}
             </pre>
             <CopyButton text={topTooltipCode} codeKey='topTooltip' />
           </div>
           <div className='relative mt-8'>
-            <pre className='bg-gray-800 text-white p-6 rounded-lg overflow-x-auto whitespace-pre-wrap max-sm:text-[0.55rem]'>
+            <pre className='bg-cyan-200 text-black p-6 rounded-lg overflow-x-auto whitespace-pre-wrap max-sm:text-[0.55rem]'>
               {bottomTooltipCode}
             </pre>
             <CopyButton text={bottomTooltipCode} codeKey='bottomTooltip' />
           </div>
           <div className='relative mt-8'>
-            <pre className='bg-gray-800 text-white p-6 rounded-lg overflow-x-auto whitespace-pre-wrap max-sm:text-[0.55rem]'>
+            <pre className='bg-red-300 text-black p-6 rounded-lg overflow-x-auto whitespace-pre-wrap max-sm:text-[0.55rem]'>
               {leftTooltipCode}
             </pre>
             <CopyButton text={leftTooltipCode} codeKey='leftTooltip' />
           </div>
           <div className='relative mt-8'>
-            <pre className='bg-gray-800 text-white p-6 rounded-lg overflow-x-auto whitespace-pre-wrap max-sm:text-[0.55rem]'>
+            <pre className='bg-violet-300 text-black p-6 rounded-lg overflow-x-auto whitespace-pre-wrap max-sm:text-[0.55rem]'>
               {rightTooltipCode}
             </pre>
             <CopyButton text={rightTooltipCode} codeKey='rightTooltip' />
