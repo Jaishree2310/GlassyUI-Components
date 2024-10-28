@@ -21,7 +21,6 @@ import {
   Wrench,
   Calendar,
 } from 'lucide-react';
-
 import Accordion from './Accordion';
 import { date } from 'zod';
 
@@ -355,7 +354,6 @@ const GlassyUIComponentsPage: React.FC<{ darkMode: boolean }> = ({
           >
             GlassyUI
           </div>
-
           <div
             className={`flex items-center bg-gradient-to-r ${darkMode ? 'from-slate-800 via-slate-700 to-slate-900 text-white' : 'from-white/80 via-black/10 to-white/90 text-black'} w-2/5 rounded-lg shadow-lg overflow-hidden`}
           >
