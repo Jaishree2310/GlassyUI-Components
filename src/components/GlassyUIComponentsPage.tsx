@@ -19,6 +19,7 @@ import {
   GalleryThumbnails,
   AlignStartVertical,
   Wrench,
+  Calendar,
 } from 'lucide-react';
 
 import Accordion from './Accordion';
@@ -245,6 +246,18 @@ const GlassyUIComponentsPage: React.FC<{ darkMode: boolean }> = ({
       description: 'Create stunning Glassmorphic effects with ease.',
 
       onClick: () => navigate('/generator'),
+    },
+    {
+      title: 'Calendar',
+      description: 'Calendar component with glassmorphic styling.',
+      icon: <Calendar size={24} />,
+      onClick: () => navigate('/calendar-details'),
+    },
+    {
+      title: 'Checkbox',
+      description: 'Checkbox component with glassmorphic styling.',
+      icon: <Layout size={24} />,
+      onClick: () => navigate('/checkbox'),
     },
     {
       title: 'Spinner',

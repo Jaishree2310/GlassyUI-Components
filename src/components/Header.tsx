@@ -103,6 +103,7 @@ const Header: React.FC<{ darkMode: boolean; toggleDarkMode: () => void }> = ({
         >
           Signup
         </li>
+
         {/* Dark Mode Toggle Button */}
         <button
           onClick={toggleDarkMode}

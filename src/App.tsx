@@ -37,6 +37,7 @@ import PaginationDetails from './components/PaginationDetails';
 import TestimonialDetails from './components/TestimonialDetails';
 import Footer from './components/Footer';
 import ProductCardDetailsPage from './components/ProductCardDetailsPage';
+import CalendarDetails from './components/CalendarDetails';
 import Statistic from './components/StatisticDetails';
 import GalleryDetailsPage from './components/GalleryDetailsPage';
 import Checkbox from './components/Checkbox';
@@ -173,7 +174,6 @@ const App: React.FC = () => {
           path='/gallery-details'
           element={<GalleryDetailsPage darkMode={darkMode} />}
         />
-
         <Route
           path='/statistic-details'
           element={<Statistic darkMode={darkMode} />}
@@ -182,14 +182,12 @@ const App: React.FC = () => {
           path='/gallery-details'
           element={<GalleryDetailsPage darkMode={darkMode} />}
         />
-
+        <Route path='/calendar-details' element={<CalendarDetails />} />
         <Route path='/checkbox' element={<Checkbox />} />
-
         <Route
           path='/spinner'
           element={<SpinnerDetailsPage darkMode={darkMode} />}
         />
-
         <Route path='*' element={<NotFoundPage darkMode={darkMode} />} />
       </Routes>
       <ConditionalFooter darkMode={darkMode} />
