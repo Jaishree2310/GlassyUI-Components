@@ -71,8 +71,7 @@ const App: React.FC = () => {
   return (
     <Router>
       <Header darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
-      <ScrollProgressBar darkMode={darkMode} />{' '}
-      {/* Add the ScrollProgressBar component here */}
+      <ScrollProgressBar darkMode={darkMode} />
       <Routes>
         <Route path='/' element={<GlassyUILandingPage darkMode={darkMode} />} />
         <Route
@@ -92,7 +91,10 @@ const App: React.FC = () => {
           path='/progress-bar-details'
           element={<ProgressBarDetailPage darkMode={darkMode} />}
         />
-        <Route path='/pricing-details' element={<PricingDetailPage />} />
+        <Route
+          path='/pricing-details'
+          element={<PricingDetailPage darkMode={darkMode} />}
+        />
         <Route
           path='/popup-details'
           element={<PopupDetailPage darkMode={darkMode} />}
@@ -101,8 +103,14 @@ const App: React.FC = () => {
           path='/input-details'
           element={<InputDetailPage darkMode={darkMode} />}
         />
-        <Route path='/textarea-details' element={<TextareaDetailPage />} />
-        <Route path='/tooltip-details' element={<TooltipDetailsPage />} />
+        <Route
+          path='/textarea-details'
+          element={<TextareaDetailPage darkMode={darkMode} />}
+        />
+        <Route
+          path='/tooltip-details'
+          element={<TooltipDetailsPage darkMode={darkMode} />}
+        />
         <Route
           path='/speed-dial-details'
           element={<SpeedDialDetailsPage darkMode={darkMode} />}
@@ -120,10 +128,22 @@ const App: React.FC = () => {
           path='/slider-details'
           element={<SliderDetailsPage darkMode={darkMode} />}
         />
-        <Route path='/back-to-top-details' element={<BackToTopDetailsPage />} />
-        <Route path='/dropdown-details' element={<DropdowndetailsPage />} />
-        <Route path='/authentication-card' element={<AuthenticationCard />} />
-        <Route path='/accordion-details' element={<AccordionDetails />} />
+        <Route
+          path='/back-to-top-details'
+          element={<BackToTopDetailsPage darkMode={darkMode} />}
+        />
+        <Route
+          path='/dropdown-details'
+          element={<DropdowndetailsPage darkMode={darkMode} />}
+        />
+        <Route
+          path='/authentication-card'
+          element={<AuthenticationCard darkMode={darkMode} />}
+        />
+        <Route
+          path='/accordion-details'
+          element={<AccordionDetails darkMode={darkMode} />}
+        />
         <Route
           path='/contributors'
           element={<ContributorsPage darkMode={darkMode} />}
@@ -132,11 +152,20 @@ const App: React.FC = () => {
         <Route path='/about' element={<AboutUsPage darkMode={darkMode} />} />
         <Route path='/contact-details' element={<ContactUsDetailsPage />} />
         <Route path='/pagination-details' element={<PaginationDetails />} />
-        <Route path='/testimonial-details' element={<TestimonialDetails />} />
-        <Route path='/product-details' element={<ProductCardDetailsPage />} />
+        <Route
+          path='/testimonial-details'
+          element={<TestimonialDetails darkMode={darkMode} />}
+        />
+        <Route
+          path='/product-details'
+          element={<ProductCardDetailsPage darkMode={darkMode} />}
+        />
         <Route path='/gallery-details' element={<GalleryDetailsPage />} />
 
-        <Route path='/statistic-details' element={<Statistic />} />
+        <Route
+          path='/statistic-details'
+          element={<Statistic darkMode={darkMode} />}
+        />
         <Route path='/gallery-details' element={<GalleryDetailsPage />} />
 
         <Route path='/checkbox' element={<Checkbox />} />

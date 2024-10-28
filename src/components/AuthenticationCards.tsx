@@ -43,7 +43,9 @@ const themes: Record<string, ThemeColors> = {
   },
 };
 
-const AuthenticationCardDetailsPage: React.FC = () => {
+const AuthenticationCardDetailsPage: React.FC<{ darkMode: boolean }> = ({
+  darkMode,
+}) => {
   const navigate = useNavigate();
   const [copiedStates, setCopiedStates] = useState<{ [key: string]: boolean }>(
     {},
@@ -51,8 +53,7 @@ const AuthenticationCardDetailsPage: React.FC = () => {
   const [currentTheme, setCurrentTheme] = useState<string>('yellow');
   const [customColors, setCustomColors] = useState<ThemeColors>(themes.custom);
   const getGlassyClasses = (opacity = 20) => {
-    return `backdrop-filter backdrop-blur-lg bg-white bg-opacity-${opacity} 
-  border border-white border-opacity-20 rounded-lg shadow-lg transition-all duration-300`;
+    return `backdrop-filter backdrop-blur-lg ${darkMode ? 'bg-white/30 border-white/20' : 'bg-black/10 border-black/20'} bg-opacity-${opacity} border border-opacity-20 rounded-lg shadow-lg transition-all duration-300`;
   };
 
   const copyToClipboard = (text: string, key: string) => {
@@ -65,19 +66,20 @@ const AuthenticationCardDetailsPage: React.FC = () => {
     });
   };
 
-  const CopyButton: React.FC<{ text: string; codeKey: string }> = ({
-    text,
-    codeKey,
-  }) => (
+  const CopyButton: React.FC<{
+    text: string;
+    codeKey: string;
+    darkMode: boolean;
+  }> = ({ text, codeKey, darkMode }) => (
     <button
       onClick={() => copyToClipboard(text, codeKey)}
-      className='absolute top-2 right-2 p-1 bg-white bg-opacity-30 backdrop-filter backdrop-blur-md border border-white border-opacity-20 rounded-lg shadow-lg hover:bg-opacity-40 transition-all duration-300'
+      className={`absolute top-2 right-2 ${getGlassyClasses()} p-2 ${darkMode ? 'text-white hover:bg-white/40' : 'text-black hover:bg-black/30'} transition-all duration-300`}
       title='Copy to clipboard'
     >
       {copiedStates[codeKey] ? (
         <Check size={16} className='text-green-600' />
       ) : (
-        <Copy size={16} className='text-gray-800' />
+        <Copy size={16} className={darkMode ? 'text-gray-100' : 'text-black'} />
       )}
     </button>
   );
@@ -339,30 +341,42 @@ const AuthenticationCardDetailsPage: React.FC = () => {
   );
 
   return (
-    <div className='min-h-screen p-8 font-sans bg-gradient-to-r from-gray-800 via-gray-900 to-black text-white relative'>
+    <div
+      className={`min-h-screen p-8 font-sans bg-gradient-to-r ${darkMode ? 'from-gray-800 via-gray-900 to-black text-white' : 'from-white via-black/10 to-black/20 text-black'} relative`}
+    >
       <BackToTopButton />
       <button
         onClick={() => navigate(-1)}
-        className={`mb-8 flex items-center ${getGlassyClasses(10)} px-4 py-2 hover:bg-opacity-40 transition-all duration-300  text-gray-100`}
+        className={`mb-8 flex items-center ${getGlassyClasses(10)} px-4 py-2 ${darkMode ? 'hover:bg-white/40 text-white' : 'hover:bg-black/30 text-black'} transition-all duration-300`}
       >
         <ArrowLeft size={20} className='mr-2' />
         Back to Components
       </button>
 
-      <h1 className='text-6xl font-bold mb-8 text-white'>
+      <h1
+        className={`text-6xl font-bold mb-8 ${darkMode ? 'text-white' : 'text-black'}`}
+      >
         Authentication Card Component
       </h1>
-      <p className='text-xl mb-8 text-gray-100'>
+      <p
+        className={`text-xl mb-8 ${darkMode ? 'text-gray-100' : 'text-black'}`}
+      >
         A customizable, glassmorphism-styled Authentication component.
       </p>
 
       {/* Props */}
       <section className={`${getGlassyClasses()} p-6 mb-14 relative`}>
-        <h2 className='text-3xl font-bold mb-4 text-gray-100'>Props</h2>
+        <h2
+          className={`text-3xl font-bold mb-6 ${darkMode ? 'text-gray-100' : 'text-black'}`}
+        >
+          Props
+        </h2>
         <div className='overflow-x-auto'>
           <table className='w-full'>
             <thead>
-              <tr className='bg-white bg-opacity-20'>
+              <tr
+                className={`${darkMode ? 'bg-white' : 'bg-black'} bg-opacity-20`}
+              >
                 <th className='text-left p-2'>Prop</th>
                 <th className='text-left p-2'>Type</th>
                 <th className='text-left p-2'>Default</th>
@@ -376,7 +390,9 @@ const AuthenticationCardDetailsPage: React.FC = () => {
                 <td className='p-2'>''</td>
                 <td className='p-2'>Additional CSS classes</td>
               </tr>
-              <tr className='bg-white bg-opacity-10'>
+              <tr
+                className={`${darkMode ? 'bg-white' : 'bg-black'} bg-opacity-10`}
+              >
                 <td className='p-2'>style</td>
                 <td className='p-2'>object</td>
                 <td className='p-2'>{'{}'}</td>
@@ -394,7 +410,9 @@ const AuthenticationCardDetailsPage: React.FC = () => {
       </section>
 
       <section className={`${getGlassyClasses()} p-6 mb-14 relative`}>
-        <h2 className='text-3xl font-bold mb-6 text-white'>
+        <h2
+          className={`text-3xl font-bold mb-6 ${darkMode ? 'text-gray-100' : 'text-black'}`}
+        >
           Login Card Example
         </h2>
         <div className='flex flex-col lg:flex-row gap-8'>
@@ -402,9 +420,15 @@ const AuthenticationCardDetailsPage: React.FC = () => {
           <LoginCardExample />
           {/* </div> */}
           <div className='lg:w-2/3'>
-            <h3 className='text-xl font-semibold mb-4 text-white'>Code</h3>
+            <h3
+              className={`text-xl font-semibold mb-4 ${darkMode ? 'text-white' : 'text-black'}`}
+            >
+              Code
+            </h3>
             <div className='relative'>
-              <pre className='bg-gray-800 text-white p-4 rounded-lg overflow-x-auto text-sm max-h-[400px] whitespace-pre-wrap break-words'>
+              <pre
+                className={`${darkMode ? 'bg-gray-800 text-white' : 'bg-white text-black'} p-6 rounded-lg overflow-x-auto whitespace-pre-wrap max-sm:p-2 max-sm:text-[0.55rem] max-h-[400px] break-words`}
+              >
                 <code>
                   {` const LoginCardExample: React.FC = () => (
     <div
@@ -462,6 +486,7 @@ const AuthenticationCardDetailsPage: React.FC = () => {
                 </code>
               </pre>
               <CopyButton
+                darkMode={darkMode}
                 text={`const LoginCardExample: React.FC = () => (
     <div
       className="relative p-8 rounded-xl overflow-hidden"
@@ -523,7 +548,9 @@ const AuthenticationCardDetailsPage: React.FC = () => {
       </section>
 
       <section className={`${getGlassyClasses()} p-6 mb-14 relative`}>
-        <h2 className='text-2xl font-bold mb-6 text-white'>
+        <h2
+          className={`text-3xl font-bold mb-6 ${darkMode ? 'text-gray-100' : 'text-black'}`}
+        >
           Sign Up Card Example
         </h2>
         <div className='flex flex-col lg:flex-row gap-8'>
@@ -531,9 +558,15 @@ const AuthenticationCardDetailsPage: React.FC = () => {
           <SignUpCardExample />
           {/* </div> */}
           <div className='lg:w-2/3'>
-            <h3 className='text-xl font-semibold mb-4 text-white'>Code</h3>
+            <h3
+              className={`text-xl font-semibold mb-4 ${darkMode ? 'text-white' : 'text-black'}`}
+            >
+              Code
+            </h3>
             <div className='relative'>
-              <pre className='bg-gray-800 text-white p-4 rounded-lg overflow-x-auto text-sm max-h-[400px] whitespace-pre-wrap break-words'>
+              <pre
+                className={`${darkMode ? 'bg-gray-800 text-white' : 'bg-white text-black'} p-6 rounded-lg overflow-x-auto whitespace-pre-wrap max-sm:p-2 max-sm:text-[0.55rem] max-h-[400px] break-words`}
+              >
                 <code>
                   {` const SignUpCardExample: React.FC = () => (
     <div
@@ -602,6 +635,7 @@ const AuthenticationCardDetailsPage: React.FC = () => {
                 </code>
               </pre>
               <CopyButton
+                darkMode={darkMode}
                 text={`const SignUpCardExample: React.FC = () => (
     <div
       className="relative p-8 rounded-xl overflow-hidden"

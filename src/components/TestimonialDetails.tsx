@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ArrowLeft, Copy, Check } from 'lucide-react';
 
-const TestimonialDetails: React.FC = () => {
+const TestimonialDetails: React.FC<{ darkMode: boolean }> = ({ darkMode }) => {
   const navigate = useNavigate();
   const [copiedStates, setCopiedStates] = useState<{ [key: string]: boolean }>(
     {},
@@ -62,6 +62,9 @@ const TestimonialDetails: React.FC = () => {
     </div>
     `;
 
+  const tableHeadingStyles = `text-left p-2 ${darkMode ? 'text-gray-100' : 'text-black'}`;
+  const tableDataStyles = `p-2 ${darkMode ? 'text-gray-200' : 'text-black/80'}`;
+
   return (
     <div className='min-h-screen p-8 font-sans bg-gradient-to-r from-gray-800 via-gray-900 to-black text-white relative'>
       <div className='relative z-10'>
@@ -104,26 +107,26 @@ const TestimonialDetails: React.FC = () => {
               </thead>
               <tbody>
                 <tr>
-                  <td className='p-2 text-gray-200'>name</td>
-                  <td className='p-2 text-gray-200'>string</td>
-                  <td className='p-2 text-gray-200'>-</td>
-                  <td className='p-2 text-gray-200'>
+                  <td className={tableDataStyles}>name</td>
+                  <td className={tableDataStyles}>string</td>
+                  <td className={tableDataStyles}>-</td>
+                  <td className={tableDataStyles}>
                     Name of the person giving the testimonial
                   </td>
                 </tr>
                 <tr className='bg-white bg-opacity-10'>
-                  <td className='p-2 text-gray-200'>message</td>
-                  <td className='p-2 text-gray-200'>string</td>
-                  <td className='p-2 text-gray-200'>-</td>
-                  <td className='p-2 text-gray-200'>
+                  <td className={tableDataStyles}>message</td>
+                  <td className={tableDataStyles}>string</td>
+                  <td className={tableDataStyles}>-</td>
+                  <td className={tableDataStyles}>
                     The testimonial message from the user
                   </td>
                 </tr>
                 <tr>
-                  <td className='p-2 text-gray-200'>imageSrc</td>
-                  <td className='p-2 text-gray-200'>string</td>
-                  <td className='p-2 text-gray-200'>-</td>
-                  <td className='p-2 text-gray-200'>
+                  <td className={tableDataStyles}>imageSrc</td>
+                  <td className={tableDataStyles}>string</td>
+                  <td className={tableDataStyles}>-</td>
+                  <td className={tableDataStyles}>
                     URL of the testimonial image
                   </td>
                 </tr>
