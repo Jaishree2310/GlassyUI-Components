@@ -264,3 +264,31 @@ This project is licensed under the MIT License - see the [LICENSE](./LICENSE) fi
 ## ⭐ Give it a Star!
 
 If you enjoy using GlassyUI-Components and find it helpful, **please give it a star**! Your support encourages further development and improvement.
+
+
+## 🌐 Contact with Me
+
+<p align="center">
+  <a href="mailto:jaishrees23102001@gmail.com">
+    <img src="https://img.icons8.com/fluency/48/000000/email.png" alt="Email" width="40px"/>
+  </a>
+  <a href="https://linkedin.com/in/jaishree-singh-6332a51b9">
+    <img src="https://img.icons8.com/fluency/48/000000/linkedin.png" alt="LinkedIn" width="40px"/>
+  </a>
+  <a href="https://twitter.com/Jaishre23100">
+    <img src="https://img.icons8.com/fluency/48/000000/twitter.png" alt="Twitter" width="40px"/>
+  </a>
+  <a href="https://github.com/Jaishree2310">
+    <img src="https://img.icons8.com/fluency/48/000000/github.png" alt="GitHub" width="40px"/>
+  </a>
+  <a href="https://www.instagram.com/jaishree_2310/">
+    <img src="https://img.icons8.com/fluency/48/000000/instagram-new.png" alt="Instagram" width="40px"/>
+  </a>
+</p>
+
+---
+
+<p align="center">
+  Thank you for connecting with me! 💬
+</p>
+
