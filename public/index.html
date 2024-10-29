@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" style="margin-top: 230px;" >
+<html lang="en">
 
 <head>
     <meta charset="utf-8" />
@@ -29,16 +29,73 @@
     <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
     <script src="https://cdn.lordicon.com/lordicon.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-
+    
     <link
-  rel="stylesheet"
-  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
-  integrity="sha384-k6RqeWeci5ZR/Lv4MR0sA0FfDOM1hEq07e4sC1YwD8Z5xP5M6xw41oD3D8VZ76X"
-  crossorigin="anonymous"
-/>
-
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+        integrity="sha384-k6RqeWeci5ZR/Lv4MR0sA0FfDOM1hEq07e4sC1YwD8Z5xP5M6xw41oD3D8VZ76X"
+        crossorigin="anonymous"
+    />
+    
     <!-- Page Title -->
     <title>GlassyUI</title>
+    
+    <style>
+        html, body {
+    overflow: auto; /* Change 'hidden' to 'auto' or 'scroll' */
+}
+.some-overlay {
+    position: fixed; /* or absolute */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    /* Add a z-index if needed to place it above other content */
+}
+.scrollable-container {
+    height: 100vh; /* Or another fixed height */
+    overflow-y: auto; /* Enable vertical scrolling */
+}
+html, body {
+    height: 100%; /* Allow body to take full height */
+    margin: 0; /* Remove default margin */
+    overflow: auto; /* Enable scrolling */
+}
+
+.container {
+    min-height: 100vh; /* Minimum height to allow scrolling */
+    padding: 20px; /* Padding for the content */
+}
+
+        body {
+    min-height: 100vh; /* Ensure body takes at least full viewport height */
+    margin: 0; /* Remove default margin */
+}
+
+        /* Scrollbar Styling */
+        /* For Chrome, Safari, and Edge */
+        ::-webkit-scrollbar {
+            width: 12px; /* Width of the scrollbar */
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #2b303c; /* Background of the track */
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background-color: #ffffff; /* Color of the scrollbar handle */
+            border-radius: 6px; /* Rounded corners for the scrollbar handle */
+            border: 3px solid #ffffff; /* Padding around the handle */
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background-color: #ffd700; /* Color of the handle when hovered */
+        }
+
+        /* For Firefox */
+        scrollbar-width: thin; /* "auto" or "thin" */
+        scrollbar-color: #fde047 #2b303c; /* Handle and track color */
+    </style>
 </head>
 
 <body>
@@ -50,16 +107,17 @@
 
     <script>
         window.embeddedChatbotConfig = {
-        chatbotId: "IONKpU7WVX0ANZ-WHYTfj",
-        domain: "www.chatbase.co"
+            chatbotId: "IONKpU7WVX0ANZ-WHYTfj",
+            domain: "www.chatbase.co"
         }
-        </script>
-        <script
+    </script>
+    <script
         src="https://www.chatbase.co/embed.min.js"
         chatbotId="IONKpU7WVX0ANZ-WHYTfj"
         domain="www.chatbase.co"
         defer>
-        </script>
+    </script>
+    
     <!-- Fallback for No JavaScript -->
     <noscript>You need to enable JavaScript to run this app.</noscript>
 </body>
