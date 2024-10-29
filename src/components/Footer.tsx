@@ -1,12 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-  faXTwitter,
-  faFacebook,
-  faLinkedin,
-  faInstagram,
-} from '@fortawesome/free-brands-svg-icons';
 import GoogleTranslate from './GoogleTranslator';
 
 const Footer: React.FC = () => {
@@ -34,7 +27,6 @@ const Footer: React.FC = () => {
             <GoogleTranslate />
           </div>
         </div>
-
         <div className='footer-bottom'>
           <a
             href='https://github.com/Jaishree2310/GlassyUI-Components'
@@ -44,38 +36,7 @@ const Footer: React.FC = () => {
           >
             <i className='fa-brands fa-github'></i>
           </a>
-          <p>&copy; 2024 GlassyUI. All rights reserved.</p>
-        </div>
-
-        <div className='social-media'>
-          <a
-            href='https://twitter.com/yourusername'
-            target='_blank'
-            rel='noopener noreferrer'
-          >
-            <FontAwesomeIcon icon={faXTwitter} />
-          </a>
-          <a
-            href='https://facebook.com/yourusername'
-            target='_blank'
-            rel='noopener noreferrer'
-          >
-            <FontAwesomeIcon icon={faFacebook} />
-          </a>
-          <a
-            href='https://linkedin.com/in/yourusername'
-            target='_blank'
-            rel='noopener noreferrer'
-          >
-            <FontAwesomeIcon icon={faLinkedin} />
-          </a>
-          <a
-            href='https://instagram.com/yourusername'
-            target='_blank'
-            rel='noopener noreferrer'
-          >
-            <FontAwesomeIcon icon={faInstagram} />
-          </a>
+          <p>&copy; 2023 GlassyUI. All rights reserved.</p>
         </div>
 
         <style jsx>{`
@@ -155,22 +116,6 @@ const Footer: React.FC = () => {
             transform: scale(1.1);
           }
 
-          .social-media {
-            display: flex;
-            gap: 20px;
-            margin-top: 20px;
-          }
-
-          .social-media a {
-            color: #fff;
-            font-size: 24px;
-            transition: transform 0.3s;
-          }
-
-          .social-media a:hover {
-            transform: scale(1.1);
-          }
-
           @media (max-width: 768px) {
             .glass-footer {
               flex-direction: column;
@@ -183,8 +128,17 @@ const Footer: React.FC = () => {
             }
           }
         `}</style>
-
         <div>
+          <p
+            style={{
+              fontSize: '14px',
+              color: '#fff',
+              position: 'relative',
+              right: '-300px',
+            }}
+          >
+            &copy; 2024 GlassyUI. All rights reserved.
+          </p>
           <div
             style={{
               fontSize: '14px',
