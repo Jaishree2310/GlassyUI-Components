@@ -16,8 +16,8 @@ body {
   margin: 0;
   padding: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-  'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-  sans-serif;
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -26,7 +26,6 @@ body {
   overflow: hidden;
   transition: background 0.5s ease-in-out;
 }
-
 
 /* Enhanced Background */
 .enhanced-bg {
@@ -37,13 +36,25 @@ body {
   height: 100%;
   overflow: hidden;
   z-index: 0;
-  background: radial-gradient(circle at center, #1b2735, #12122a, #2a2962, #4b2f6e);
+  background: radial-gradient(
+    circle at center,
+    #1b2735,
+    #12122a,
+    #2a2962,
+    #4b2f6e
+  );
   opacity: 0.95;
 }
 
 /* Light Theme Background */
 body.light-theme .enhanced-bg {
-  background: radial-gradient(circle at center, #f2f6ff, #dde7f0, #bcd0e0, #93b3cc);
+  background: radial-gradient(
+    circle at center,
+    #f2f6ff,
+    #dde7f0,
+    #bcd0e0,
+    #93b3cc
+  );
 }
 
 /* Floating Emojis */
@@ -59,8 +70,6 @@ body.light-theme .enhanced-bg {
   opacity: 0.8;
   animation: float 10s ease-in-out infinite;
 }
-
-
 
 /* Floating Animation */
 @keyframes float {
@@ -101,7 +110,6 @@ body.light-theme #theme-toggle {
   color: #fff;
 }
 
-
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
@@ -122,7 +130,7 @@ code {
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background-color: rgb(95, 19, 166); 
+  background-color: rgb(95, 19, 166);
 }
 
 .glassmorphism {
