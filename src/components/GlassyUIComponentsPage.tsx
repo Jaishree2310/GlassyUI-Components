@@ -22,8 +22,11 @@ import {
   GalleryThumbnails,
 } from 'lucide-react';
 
-import { HiOutlineWrenchScrewdriver } from 'react-icons/hi2';
-import AOS from 'aos';
+ 
+import Accordion from './Accordion';
+import { HiOutlineArchiveBoxArrowDown } from 'react-icons/hi2';
+ 
+ import AOS from 'aos';
 import 'aos/dist/aos.css';
  
 // Define the ComponentCardProps interface
@@ -87,6 +90,7 @@ const GlassyUIComponentsPage: React.FC = () => {
     });
   };
 
+ 
   useEffect(() => {
     // Initialize AOS if it hasn't been initialized
     if (AOS.init) {
@@ -100,6 +104,7 @@ const GlassyUIComponentsPage: React.FC = () => {
     AOS.refresh();
   }, [currentPage]);
 
+ 
   const componentsData = [
     {
       title: 'Toast',
@@ -269,7 +274,7 @@ const GlassyUIComponentsPage: React.FC = () => {
     {
       title: 'Spinner',
       description: 'Design and customize CSS spinners for your projects.',
-      icon: <HiOutlineWrenchScrewdriver size={24} />,
+      icon: <HiOutlineArchiveBoxArrowDown size={24} />,
       onClick: () => navigate('/spinner'),
     },
   ];
@@ -355,11 +360,12 @@ const GlassyUIComponentsPage: React.FC = () => {
             GlassyUI
           </div>
 
+ 
           <div
             className='flex items-center bg-gradient-to-r from-slate-800 via-slate-700 to-slate-900 text-white w-2/5 rounded-lg shadow-lg overflow-hidden'
             data-aos='fade-left'
           >
-            <input
+             <input
               className='w-full px-6 py-3 bg-transparent text-white outline-none focus:ring-2 focus:ring-gray-500 transition-all duration-300'
               placeholder='Search Components...'
               onChange={e => setSearchFilter(e.target.value)}
