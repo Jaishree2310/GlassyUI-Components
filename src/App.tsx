@@ -93,6 +93,9 @@ const ConditionalFooter: React.FC = () => {
 
 const App: React.FC = () => {
   return (
+
+  const App: React.FC = () => {
+   return (
     <Router>
       <Header />
 
@@ -149,7 +152,7 @@ const App: React.FC = () => {
 
         <Route path='*' element={<NotFoundPage />} />
       </Routes>
-      <ConditionalFooter />
+       <ConditionalFooter />
     </Router>
   );
 };
