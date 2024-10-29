@@ -15,6 +15,7 @@ import {
   ThumbsUpIcon,
   Contact,
   Search,
+ 
   Calendar,
   AlignStartVertical,
   ShoppingCart,
@@ -24,7 +25,7 @@ import {
 import { HiOutlineWrenchScrewdriver } from 'react-icons/hi2';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
-
+ 
 // Define the ComponentCardProps interface
 
 interface ComponentCardProps {
@@ -226,23 +227,26 @@ const GlassyUIComponentsPage: React.FC = () => {
       onClick: () => navigate('/contact-details'),
     },
     {
-      title: 'E-Commerce Product Card',
-      description:
-        'E-Commerce Product Card component with glassmorphic styling.',
+  
+        title: 'E-Commerce Product Card',
+      description: 'E-Commerce Product Card component with glassmorphic styling.',
+ 
       icon: <ShoppingCart size={24} />,
       onClick: () => navigate('/product-details'),
     },
     {
+ 
       title: 'Statistic',
       description: 'Statistic component with glassmorphic styling.',
-      icon: <AlignStartVertical size={24} />,
+       icon: <AlignStartVertical size={24} />,
       onClick: () => navigate('/statistic-details'),
     },
     {
+ 
       title: 'Gallery',
       description: 'Gallery component with glassmorphic styling.',
       icon: <GalleryThumbnails size={24} />,
-      onClick: () => navigate('/gallery-details'),
+       onClick: () => navigate('/gallery-details'),
     },
     {
       title: 'Glassmorphism Effect Generator',
@@ -362,6 +366,7 @@ const GlassyUIComponentsPage: React.FC = () => {
             />
             <Search className='mx-4 cursor-pointer text-pink-300 hover:text-pink-400 transition-all duration-300' />
           </div>
+ 
         </header>
 
         <main>
@@ -441,12 +446,13 @@ const GlassyUIComponentsPage: React.FC = () => {
             </span>
             <button
               onClick={nextPage}
+ 
               className={`px-4 py-2 mx-2 rounded-lg ${
                 currentPage === totalPages
                   ? 'opacity-50 cursor-not-allowed'
                   : 'hover:bg-white/20'
               }`}
-              disabled={currentPage === totalPages}
+               disabled={currentPage === totalPages}
             >
               Next
             </button>

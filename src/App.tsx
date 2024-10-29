@@ -70,8 +70,9 @@ const ThemeToggle: React.FC = () => {
   );
 };
 
-const App: React.FC = () => {
-  return (
+  const App: React.FC = () => {
+   return (
+ 
     <Router>
       <Header />
       <ThemeToggle />
@@ -114,7 +115,7 @@ const App: React.FC = () => {
         <Route path='/gallery-details' element={<GalleryDetailsPage />} />
         <Route path='*' element={<NotFoundPage />} />
       </Routes>
-      <ConditionalFooter />
+       <ConditionalFooter />
     </Router>
   );
 };
