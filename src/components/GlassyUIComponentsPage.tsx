@@ -21,9 +21,13 @@ import {
   GalleryThumbnails,
 } from 'lucide-react';
 
+ 
 import Accordion from './Accordion';
 import { HiOutlineArchiveBoxArrowDown } from 'react-icons/hi2';
-
+ 
+ import AOS from 'aos';
+import 'aos/dist/aos.css';
+ 
 // Define the ComponentCardProps interface
 
 interface ComponentCardProps {
@@ -85,6 +89,21 @@ const GlassyUIComponentsPage: React.FC = () => {
     });
   };
 
+ 
+  useEffect(() => {
+    // Initialize AOS if it hasn't been initialized
+    if (AOS.init) {
+      AOS.init({
+        duration: 1000,
+        once: true,
+      });
+    }
+
+    // Refresh AOS on currentPage change
+    AOS.refresh();
+  }, [currentPage]);
+
+ 
   const componentsData = [
     {
       title: 'Toast',
@@ -301,6 +320,8 @@ const GlassyUIComponentsPage: React.FC = () => {
     <div
       className={`${getGlassyClasses()} p-6 flex flex-col h-full cursor-pointer group transition-all duration-300 hover:bg-white/20 hover:scale-105 hover:shadow-xl`}
       onClick={onClick}
+      data-aos='fade-up'
+      data-aos-duration='2000'
     >
       <div className='flex items-center mb-4'>
         <div className='p-2 bg-white/20 rounded-lg mr-4'>{icon}</div>
@@ -330,12 +351,17 @@ const GlassyUIComponentsPage: React.FC = () => {
           <div
             className='text-3xl lg:text-4xl font-extrabold tracking-tight cursor-pointer hover:text-pink-300 transition-colors duration-300 text-white'
             onClick={() => navigate('/')}
+            data-aos='fade-right'
           >
             GlassyUI
           </div>
 
-          <div className='flex items-center bg-gradient-to-r from-slate-800 via-slate-700 to-slate-900 text-white w-2/5 rounded-lg shadow-lg overflow-hidden'>
-            <input
+ 
+          <div
+            className='flex items-center bg-gradient-to-r from-slate-800 via-slate-700 to-slate-900 text-white w-2/5 rounded-lg shadow-lg overflow-hidden'
+            data-aos='fade-left'
+          >
+             <input
               className='w-full px-6 py-3 bg-transparent text-white outline-none focus:ring-2 focus:ring-gray-500 transition-all duration-300'
               placeholder='Search Components...'
               onChange={e => setSearchFilter(e.target.value)}
@@ -345,10 +371,20 @@ const GlassyUIComponentsPage: React.FC = () => {
         </header>
 
         <main>
-          <h1 className='text-4xl lg:text-6xl font-extrabold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-white to-pink-200'>
+          <h1
+            className='text-4xl lg:text-6xl font-extrabold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-white to-pink-200'
+            data-aos='fade-right'
+            data-aos-delay='400'
+            data-aos-duration='1300'
+          >
             Glassmorphic Components
           </h1>
-          <p className='text-lg lg:text-xl mb-12 max-w-2xl leading-relaxed'>
+          <p
+            className='text-lg lg:text-xl mb-12 max-w-2xl leading-relaxed'
+            data-aos='fade-right'
+            data-aos-delay='600'
+            data-aos-duration='1500'
+          >
             Elevate your UI with our collection of beautifully crafted,
             glassmorphic components. Perfect for creating modern, sleek
             interfaces with depth and style.
@@ -365,7 +401,11 @@ const GlassyUIComponentsPage: React.FC = () => {
               />
             ))}
             {filteredData.length === 0 && (
-              <section className='bg-white dark:bg-gray-900'>
+              <section
+                className='bg-white dark:bg-gray-900'
+                data-aos='fade-up'
+                data-aos-duration='2000'
+              >
                 <div className='py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6'>
                   <div className='mx-auto max-w-screen-sm text-center'>
                     <h1 className='mb-4 text-7xl tracking-tight font-extrabold lg:text-9xl text-blue-600 dark:text-primary-500'>
@@ -390,7 +430,7 @@ const GlassyUIComponentsPage: React.FC = () => {
             )}
           </div>
 
-          <div className='flex justify-between items-center mt-8'>
+          <div className='flex justify-center items-center mt-8'>
             <button
               onClick={prevPage}
               className={`px-4 py-2 mx-2 rounded-lg ${
