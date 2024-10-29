@@ -23,6 +23,7 @@
 │   ├── index.html
 │   ├── manifest.json
 │   └── robots.txt
+├── repo_structure.txt
 ├── src/
 │   ├── App.css
 │   ├── App.test.tsx
