@@ -1,4 +1,7 @@
 import React, { useState, useEffect } from 'react';
+import PricingDetailPage from './components/PricingDetailPage';
+
+
 import {
   BrowserRouter as Router,
   Route,
@@ -6,9 +9,13 @@ import {
   useLocation,
 } from 'react-router-dom';
 
+
 import ScrollProgressBar from './components/ScrollProgress';
 import Header from './components/Header';
 import Footer from './components/Footer';
+
+
+import ScrollProgressBar from './components/ScrollProgress'; // Import your ScrollProgressBar component
 
 import GlassyUILandingPage from './components/GlassyUILandingPage';
 import GlassyUIComponentsPage from './components/GlassyUIComponentsPage';
@@ -36,15 +43,19 @@ import AccordionDetails from './components/AccordionDetails';
 import ContactUsDetailsPage from './components/ContactUsDetailsPage';
 import PaginationDetails from './components/PaginationDetails';
 import TestimonialDetails from './components/TestimonialDetails';
+
+
+import Footer from './components/Footer';
+
 import CalendarDetails from './components/CalendarDetails';
 import Checkbox from './components/Checkbox';
 import Statistic from './components/StatisticDetails';
 import GalleryDetailsPage from './components/GalleryDetailsPage';
 import SpinnerDetailsPage from './components/SpinnerDetailsPage';
 import ProductCardDetailsPage from './components/ProductCardDetailsPage';
+
 import NotFoundPage from './components/NotFoundPage';
 
-// Theme Toggle Component
 const ThemeToggle: React.FC = () => {
   const [theme, setTheme] = useState(localStorage.getItem('theme') || 'light');
 
@@ -71,6 +82,7 @@ const ThemeToggle: React.FC = () => {
   );
 };
 
+
 // Conditional Footer Component
 const ConditionalFooter: React.FC = () => {
   const location = useLocation();
@@ -78,15 +90,20 @@ const ConditionalFooter: React.FC = () => {
 };
 
 // Main App Component
+
 const App: React.FC = () => {
   return (
     <Router>
       <Header />
+
       <div className='theme-toggle-container p-4'>
         <ThemeToggle />
       </div>
       <ScrollProgressBar />
 
+
+      <ThemeToggle />
+      <ScrollProgressBar /> {/* Add the ScrollProgressBar component here */}
       <Routes>
         <Route path='/' element={<GlassyUILandingPage />} />
         <Route path='/components' element={<GlassyUIComponentsPage />} />
@@ -118,17 +135,28 @@ const App: React.FC = () => {
         <Route path='/pagination-details' element={<PaginationDetails />} />
         <Route path='/testimonial-details' element={<TestimonialDetails />} />
         <Route path='/calendar-details' element={<CalendarDetails />} />
+        <Route path='/statistic-details' element={<Statistic />} />
         <Route path='/checkbox' element={<Checkbox />} />
+
         <Route path='/statistic-details' element={<Statistic />} />
         <Route path='/gallery-details' element={<GalleryDetailsPage />} />
         <Route path='/spinner' element={<SpinnerDetailsPage />} />
         <Route path='/product-details' element={<ProductCardDetailsPage />} />
+
+        <Route path='/spinner' element={<SpinnerDetailsPage />} />
+        <Route path='/product-details' element={<ProductCardDetailsPage />} />
+        <Route path='/gallery-details' element={<GalleryDetailsPage />} />
+
         <Route path='*' element={<NotFoundPage />} />
       </Routes>
-
       <ConditionalFooter />
     </Router>
   );
+};
+
+const ConditionalFooter: React.FC = () => {
+  const location = useLocation();
+  return location.pathname === '/' ? <Footer /> : null;
 };
 
 export default App;
