@@ -15,20 +15,18 @@ import {
   ThumbsUpIcon,
   Contact,
   Search,
- 
   Calendar,
   AlignStartVertical,
   ShoppingCart,
   GalleryThumbnails,
 } from 'lucide-react';
 
- 
 import Accordion from './Accordion';
 import { HiOutlineArchiveBoxArrowDown } from 'react-icons/hi2';
- 
- import AOS from 'aos';
+
+import AOS from 'aos';
 import 'aos/dist/aos.css';
- 
+
 // Define the ComponentCardProps interface
 
 interface ComponentCardProps {
@@ -90,7 +88,6 @@ const GlassyUIComponentsPage: React.FC = () => {
     });
   };
 
- 
   useEffect(() => {
     // Initialize AOS if it hasn't been initialized
     if (AOS.init) {
@@ -104,7 +101,6 @@ const GlassyUIComponentsPage: React.FC = () => {
     AOS.refresh();
   }, [currentPage]);
 
- 
   const componentsData = [
     {
       title: 'Toast',
@@ -232,26 +228,24 @@ const GlassyUIComponentsPage: React.FC = () => {
       onClick: () => navigate('/contact-details'),
     },
     {
-  
-        title: 'E-Commerce Product Card',
-      description: 'E-Commerce Product Card component with glassmorphic styling.',
- 
+      title: 'E-Commerce Product Card',
+      description:
+        'E-Commerce Product Card component with glassmorphic styling.',
+
       icon: <ShoppingCart size={24} />,
       onClick: () => navigate('/product-details'),
     },
     {
- 
       title: 'Statistic',
       description: 'Statistic component with glassmorphic styling.',
-       icon: <AlignStartVertical size={24} />,
+      icon: <AlignStartVertical size={24} />,
       onClick: () => navigate('/statistic-details'),
     },
     {
- 
       title: 'Gallery',
       description: 'Gallery component with glassmorphic styling.',
       icon: <GalleryThumbnails size={24} />,
-       onClick: () => navigate('/gallery-details'),
+      onClick: () => navigate('/gallery-details'),
     },
     {
       title: 'Glassmorphism Effect Generator',
@@ -360,19 +354,20 @@ const GlassyUIComponentsPage: React.FC = () => {
             GlassyUI
           </div>
 
- 
           <div
             className='flex items-center bg-gradient-to-r from-slate-800 via-slate-700 to-slate-900 text-white w-2/5 rounded-lg shadow-lg overflow-hidden'
             data-aos='fade-left'
           >
-             <input
+            <input
               className='w-full px-6 py-3 bg-transparent text-white outline-none focus:ring-2 focus:ring-gray-500 transition-all duration-300'
               placeholder='Search Components...'
               onChange={e => setSearchFilter(e.target.value)}
             />
-            <Search className='mx-4 cursor-pointer text-pink-300 hover:text-pink-400 transition-all duration-300' />
+            <i
+              className='fas fa-search'
+              style={{ color: 'white', fontSize: '24px' }}
+            ></i>
           </div>
- 
         </header>
 
         <main>
@@ -452,13 +447,12 @@ const GlassyUIComponentsPage: React.FC = () => {
             </span>
             <button
               onClick={nextPage}
- 
               className={`px-4 py-2 mx-2 rounded-lg ${
                 currentPage === totalPages
                   ? 'opacity-50 cursor-not-allowed'
                   : 'hover:bg-white/20'
               }`}
-               disabled={currentPage === totalPages}
+              disabled={currentPage === totalPages}
             >
               Next
             </button>

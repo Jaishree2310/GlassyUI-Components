@@ -79,7 +79,7 @@ const Header: React.FC = () => {
             {/* Ignoring TypeScript error */}
             {/* @ts-ignore */}
             <lord-icon
-              src='https://cdn.lordicon.com/fqbvgezn.json'
+              src='https://cdn.lordicon.com/kdduutaw.json'
               trigger='hover'
               colors='primary:#2b303c,secondary:#000000'
               style={{ width: '25px', height: '25px', marginRight: '5px' }}
