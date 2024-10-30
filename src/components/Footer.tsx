@@ -26,7 +26,6 @@ const Footer: React.FC = () => {
             </Link>
             <GoogleTranslate />
           </div>
- 
         </div>
         <div className='footer-bottom'>
           <a
@@ -39,7 +38,7 @@ const Footer: React.FC = () => {
           </a>
           <p>&copy; 2023 GlassyUI. All rights reserved.</p>
         </div>
- 
+
         <style jsx>{`
           .glass-footer {
             backdrop-filter: blur(10px) saturate(180%);
@@ -128,9 +127,8 @@ const Footer: React.FC = () => {
               gap: 10px;
             }
           }
- 
         `}</style>
-         <div>
+        <div>
           <p
             style={{
               fontSize: '14px',

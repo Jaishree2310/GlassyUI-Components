@@ -40,6 +40,14 @@ const Header: React.FC = () => {
             onMouseEnter={e => (e.currentTarget.style.color = '#fde047')}
             onMouseLeave={e => (e.currentTarget.style.color = 'white')}
           >
+            {/* Ignoring TypeScript error */}
+            {/* @ts-ignore */}
+            <lord-icon
+              src='https://cdn.lordicon.com/jeuxydnh.json'
+              trigger='hover'
+              colors='primary:#000000,secondary:#2b303c'
+              style={{ width: '25px', height: '25px', marginRight: '5px' }}
+            />
             Home
           </Link>
         </li>
@@ -50,6 +58,14 @@ const Header: React.FC = () => {
             onMouseEnter={e => (e.currentTarget.style.color = '#fde047')}
             onMouseLeave={e => (e.currentTarget.style.color = 'white')}
           >
+            {/* Ignoring TypeScript error */}
+            {/* @ts-ignore */}
+            <lord-icon
+              src='https://cdn.lordicon.com/fqbvgezn.json'
+              trigger='hover'
+              colors='primary:#2b303c,secondary:#000000'
+              style={{ width: '25px', height: '25px', marginRight: '5px' }}
+            />
             Donate
           </Link>
         </li>
@@ -60,6 +76,14 @@ const Header: React.FC = () => {
             onMouseEnter={e => (e.currentTarget.style.color = '#fde047')}
             onMouseLeave={e => (e.currentTarget.style.color = 'white')}
           >
+            {/* Ignoring TypeScript error */}
+            {/* @ts-ignore */}
+            <lord-icon
+              src='https://cdn.lordicon.com/kdduutaw.json'
+              trigger='hover'
+              colors='primary:#2b303c,secondary:#000000'
+              style={{ width: '25px', height: '25px', marginRight: '5px' }}
+            />
             About Us
           </Link>
         </li>
@@ -69,10 +93,15 @@ const Header: React.FC = () => {
           style={linkStyle}
           onMouseEnter={e => (e.currentTarget.style.color = '#fde047')}
           onMouseLeave={e => (e.currentTarget.style.color = 'white')}
-          className='cursor-pointer'
+          className='cursor-pointer flex items-center'
         >
+          <i
+            className='fas fa-sign-in-alt'
+            style={{ color: 'black', fontSize: '24px', marginRight: '5px' }}
+          ></i>
           Login
         </li>
+
         <li
           style={linkStyle}
           onMouseEnter={e => (e.currentTarget.style.color = '#fde047')}
