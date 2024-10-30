@@ -1,0 +1,83 @@
+├── CODE_OF_CONDUCT.md
+├── CONTRIBUTING.md
+├── Dockerfile
+├── Images/
+│   ├── 212284100-561aa473-3905-4a80-b561-0d28506553ee.gif
+│   ├── 329829127-e79eb6de-81b1-4ffb-b6ed-f018bb977e88.png
+│   ├── Image
+│   └── hacktober.png
+├── PROJECT_STRUCTURE.md
+├── README.md
+├── docker-compose.yml
+├── eslint.config.mjs
+├── git
+├── package-lock.json
+├── package.json
+├── postcss.config.js
+├── public/
+│   ├── favicon.ico
+│   ├── index.html
+│   ├── manifest.json
+│   └── robots.txt
+├── repo_structure.txt
+├── src/
+│   ├── App.css
+│   ├── App.test.tsx
+│   ├── App.tsx
+│   ├── components/
+│   │   ├── AboutUsPage.tsx
+│   │   ├── Accordion.tsx
+│   │   ├── AccordionDetails.tsx
+│   │   ├── AuthenticationCards.tsx
+│   │   ├── BackToTop.tsx
+│   │   ├── BackToTopDetailsPage.tsx
+│   │   ├── ButtonDetailsPage.tsx
+│   │   ├── CalendarDetails.tsx
+│   │   ├── CardDetailsPage.tsx
+│   │   ├── Checkbox.tsx
+│   │   ├── CheckboxDetails.tsx
+│   │   ├── ContactUsDetailsPage.tsx
+│   │   ├── ContributorsPage.tsx
+│   │   ├── DonationPage.tsx
+│   │   ├── DropdowndetailsPage.tsx
+│   │   ├── Footer.tsx
+│   │   ├── GalleryDetailsPage.tsx
+│   │   ├── GlassMorphismGenrator.tsx
+│   │   ├── GlassyUIComponentsPage.tsx
+│   │   ├── GlassyUILandingPage.css
+│   │   ├── GlassyUILandingPage.tsx
+│   │   ├── GoogleTranslator.jsx
+│   │   ├── Header.tsx
+│   │   ├── InputDetailPage.tsx
+│   │   ├── ModalDetailsPage.tsx
+│   │   ├── NavigationDetailsPage.tsx
+│   │   ├── NotFoundPage.tsx
+│   │   ├── PaginationDetails.tsx
+│   │   ├── PopupDetailPage.tsx
+│   │   ├── PricingDetailPage.tsx
+│   │   ├── ProductCardDetailsPage.tsx
+│   │   ├── ProgressBarDetailPage.tsx
+│   │   ├── ScrollProgress.tsx
+│   │   ├── SliderDetailsPage.tsx
+│   │   ├── SpeedDial.tsx
+│   │   ├── SpeedDialDetailsPage.tsx
+│   │   ├── SpinnerDetailsPage.tsx
+│   │   ├── StatisticDetails.tsx
+│   │   ├── TestimonialDetails.tsx
+│   │   ├── TextareaDetailPage.tsx
+│   │   ├── ThemeTogggle.tsx
+│   │   ├── Toast.tsx
+│   │   ├── ToastGenerator.tsx
+│   │   ├── ToastPage.tsx
+│   │   ├── Tooltip.tsx
+│   │   ├── TooltipDetailsPage.tsx
+│   │   └── badge.tsx
+│   ├── index.css
+│   ├── index.tsx
+│   ├── logo.svg
+│   ├── react-app-env.d.ts
+│   ├── reportWebVitals.ts
+│   ├── setupTests.ts
+│   └── styled-jsx.d.ts
+├── tailwind.config.js
+└── tsconfig.json

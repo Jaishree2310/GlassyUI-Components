@@ -29,6 +29,9 @@ const Header: React.FC = () => {
 
   return (
     <nav style={navStyle}>
+      <h1 className='text-white text-[20px] font-bold'>
+        <span className='text-blue-400'>Glass</span>UI
+      </h1>
       <ul style={ulStyle}>
         <li style={liStyle} className='navbar-item'>
           <Link
@@ -37,6 +40,14 @@ const Header: React.FC = () => {
             onMouseEnter={e => (e.currentTarget.style.color = '#fde047')}
             onMouseLeave={e => (e.currentTarget.style.color = 'white')}
           >
+            {/* Ignoring TypeScript error */}
+            {/* @ts-ignore */}
+            <lord-icon
+              src='https://cdn.lordicon.com/jeuxydnh.json'
+              trigger='hover'
+              colors='primary:#000000,secondary:#2b303c'
+              style={{ width: '25px', height: '25px', marginRight: '5px' }}
+            />
             Home
           </Link>
         </li>
@@ -47,6 +58,14 @@ const Header: React.FC = () => {
             onMouseEnter={e => (e.currentTarget.style.color = '#fde047')}
             onMouseLeave={e => (e.currentTarget.style.color = 'white')}
           >
+            {/* Ignoring TypeScript error */}
+            {/* @ts-ignore */}
+            <lord-icon
+              src='https://cdn.lordicon.com/fqbvgezn.json'
+              trigger='hover'
+              colors='primary:#2b303c,secondary:#000000'
+              style={{ width: '25px', height: '25px', marginRight: '5px' }}
+            />
             Donate
           </Link>
         </li>
@@ -57,8 +76,39 @@ const Header: React.FC = () => {
             onMouseEnter={e => (e.currentTarget.style.color = '#fde047')}
             onMouseLeave={e => (e.currentTarget.style.color = 'white')}
           >
+            {/* Ignoring TypeScript error */}
+            {/* @ts-ignore */}
+            <lord-icon
+              src='https://cdn.lordicon.com/kdduutaw.json'
+              trigger='hover'
+              colors='primary:#2b303c,secondary:#000000'
+              style={{ width: '25px', height: '25px', marginRight: '5px' }}
+            />
             About Us
           </Link>
+        </li>
+      </ul>
+      <ul className='text-white flex gap-12 justify-center items-center '>
+        <li
+          style={linkStyle}
+          onMouseEnter={e => (e.currentTarget.style.color = '#fde047')}
+          onMouseLeave={e => (e.currentTarget.style.color = 'white')}
+          className='cursor-pointer flex items-center'
+        >
+          <i
+            className='fas fa-sign-in-alt'
+            style={{ color: 'black', fontSize: '24px', marginRight: '5px' }}
+          ></i>
+          Login
+        </li>
+
+        <li
+          style={linkStyle}
+          onMouseEnter={e => (e.currentTarget.style.color = '#fde047')}
+          onMouseLeave={e => (e.currentTarget.style.color = 'white')}
+          className='cursor-pointer'
+        >
+          Signup
         </li>
       </ul>
     </nav>
@@ -76,6 +126,9 @@ const navStyle: React.CSSProperties = {
   backdropFilter: 'blur(10px)', // Apply the blur effect
   WebkitBackdropFilter: 'blur(10px)', // For Safari compatibility
   boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)', // Optional shadow for better contrast
+  display: 'flex',
+  justifyContent: 'space-around',
+  alignItems: 'center',
 };
 
 const ulStyle: React.CSSProperties = {
@@ -83,7 +136,9 @@ const ulStyle: React.CSSProperties = {
   margin: 0,
   padding: 0,
   display: 'flex',
-  justifyContent: 'space-around',
+  justifyContent: 'flex-end',
+  marginRight: '50px',
+  gap: '20px',
 };
 
 const liStyle: React.CSSProperties = {

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { z } from 'zod';
+import { useNavigate } from 'react-router-dom'; // Import useHistory for navigation
 
 const DonationPage: React.FC = () => {
   const [isHovering, setIsHovering] = useState(false);
@@ -13,6 +14,7 @@ const DonationPage: React.FC = () => {
     name: '',
     email: '',
   });
+  const [isSubmitted, setIsSubmitted] = useState(false); // New state variable
 
   const donationSchema = z.object({
     amount: z
@@ -32,12 +34,11 @@ const DonationPage: React.FC = () => {
 
   const containerStyle: React.CSSProperties = {
     maxWidth: '500px',
-    margin: '50px auto',
+    margin: '70px auto',
     padding: '40px',
-    background: 'rgba(255, 255, 255, 0.15)',
+    background:
+      'linear-gradient(180deg, rgba(255, 255, 255, 0.01), rgba(255, 255, 255, 0.1)',
     borderRadius: '20px',
-    boxShadow: '0 8px 32px rgba(0, 0, 0, 0.25)',
-    backdropFilter: 'blur(15px)',
     border: '1px solid rgba(255, 255, 255, 0.2)',
     textAlign: 'center',
     fontFamily: "'Poppins', sans-serif",
@@ -45,16 +46,16 @@ const DonationPage: React.FC = () => {
   };
 
   const headingStyle: React.CSSProperties = {
-    fontSize: '2rem',
+    fontSize: '2.5rem',
     fontWeight: 'bold',
     marginBottom: '20px',
-    background: 'linear-gradient(90deg, #ff8a00, #e52e71)',
+    background: 'linear-gradient(90deg, #00c6ff, #0072ff)',
     WebkitBackgroundClip: 'text',
     WebkitTextFillColor: 'transparent',
   };
 
   const paragraphStyle: React.CSSProperties = {
-    fontSize: '1.1rem',
+    fontSize: '1.2rem',
     marginBottom: '30px',
     color: '#e0e0e0',
   };
@@ -78,15 +79,16 @@ const DonationPage: React.FC = () => {
     padding: '14px',
     marginBottom: '20px',
     borderRadius: '12px',
-    border: '1px solid rgba(255, 255, 255, 0.2)',
-    background: 'rgba(255, 255, 255, 0.1)',
+    border: '1px solid rgba(255, 255, 255, 0.4)',
+    background: 'rgba(255, 255, 255, 0.2)',
     color: '#ffffff',
-    boxShadow: '0 4px 12px rgba(0, 0, 0, 0.15)',
+    boxShadow: '0 4px 15px rgba(0, 0, 0, 0.2)',
     transition: 'border-color 0.4s ease, transform 0.3s ease',
+    backdropFilter: 'blur(5px)',
   };
 
   const inputFocusStyle: React.CSSProperties = {
-    borderColor: '#e52e71',
+    borderColor: '#00c6ff',
     transform: 'scale(1.02)',
   };
 
@@ -94,24 +96,35 @@ const DonationPage: React.FC = () => {
     marginTop: '10px',
     padding: '14px 24px',
     background: isHovering
-      ? 'linear-gradient(90deg, #ff8a00, #e52e71)'
-      : 'linear-gradient(90deg, #e52e71, #ff8a00)',
+      ? 'linear-gradient(90deg, #00c6ff, #0072ff)'
+      : 'linear-gradient(90deg, #0072ff, #00c6ff)',
     color: '#ffffff',
     border: 'none',
     borderRadius: '25px',
-    fontSize: '1.1rem',
+    fontSize: '1.2rem',
     cursor: 'pointer',
     transition: 'background 0.4s ease, transform 0.3s ease',
-    boxShadow: '0 4px 15px rgba(229, 46, 113, 0.4)',
+    boxShadow: '0 4px 15px rgba(0, 198, 255, 0.4)',
   };
 
   const buttonHoverStyle: React.CSSProperties = {
-    transform: 'scale(1.08)',
+    transform: 'scale(1.05)',
   };
 
   const errorStyle: React.CSSProperties = {
     color: 'red',
     fontSize: '1.2rem',
+  };
+
+  const homeButtonStyle: React.CSSProperties = {
+    marginTop: '20px',
+    padding: '14px 24px',
+    background: 'linear-gradient(90deg, #00c6ff, #0072ff)',
+    color: '#ffffff',
+    border: 'none',
+    borderRadius: '25px',
+    fontSize: '1.2rem',
+    cursor: 'pointer',
   };
 
   const handleMouseEnter = () => {
@@ -132,6 +145,7 @@ const DonationPage: React.FC = () => {
     try {
       donationSchema.parse(formData);
       setErrors({ amount: '', name: '', email: '' });
+      setIsSubmitted(true); // Set the submitted state to true
       alert('Form submitted successfully!');
     } catch (err: any) {
       const formattedErrors: any = {};
@@ -142,9 +156,14 @@ const DonationPage: React.FC = () => {
     }
   };
 
+  const handleHomeRedirect = () => {
+    // Redirect to the homepage (you can use the react-router-dom's useHistory)
+    window.location.href = '/'; // Change this to your homepage URL or use a router
+  };
+
   return (
     <div style={containerStyle}>
-      <h1 style={headingStyle}>Liked our glassmorphic components!</h1>
+      <h1 style={headingStyle}>Support Us!</h1>
       <p style={paragraphStyle}>
         Your contributions help us continue our work.
       </p>
@@ -215,6 +234,12 @@ const DonationPage: React.FC = () => {
           Donate Now
         </button>
       </form>
+
+      {isSubmitted && ( // Conditionally render the Home button
+        <button onClick={handleHomeRedirect} style={homeButtonStyle}>
+          Go to Home
+        </button>
+      )}
     </div>
   );
 };
