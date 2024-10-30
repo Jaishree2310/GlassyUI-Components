@@ -29,9 +29,17 @@ const Header: React.FC = () => {
 
   return (
     <nav style={navStyle}>
-      <h1 className='text-white text-[20px] font-bold'>
-        <span className='text-blue-400'>Glass</span>UI
-      </h1>
+      <div className='flex items-center space-x-2'>
+        <img
+          src='../glassy logo.jpeg'
+          alt='Glass UI Logo'
+          className='h-8 w-8' // Adjust size as needed
+        />
+        <h1 className='text-white text-[20px] font-bold'>
+          <span className='text-blue-400'>Glass</span>UI
+        </h1>
+      </div>
+
       <ul style={ulStyle}>
         <li style={liStyle} className='navbar-item'>
           <Link
