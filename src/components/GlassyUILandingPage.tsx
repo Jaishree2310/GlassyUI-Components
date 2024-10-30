@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 import './GlassyUILandingPage.css'; // Create this CSS file in the same directory
 import gsap from 'gsap';
 import Footer from './Footer';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 const GlassyUILandingPage: React.FC<{ darkMode: boolean }> = ({ darkMode }) => {
   const [isVisible, setIsVisible] = useState(false);
@@ -24,6 +26,19 @@ const GlassyUILandingPage: React.FC<{ darkMode: boolean }> = ({ darkMode }) => {
     return () => {
       tl.kill();
     };
+  }, []);
+
+  useEffect(() => {
+    // Initialize AOS if it hasn't been initialized
+    if (AOS.init) {
+      AOS.init({
+        duration: 1000,
+        once: true,
+      });
+    }
+
+    // Refresh AOS on currentPage change
+    AOS.refresh();
   }, []);
 
   return (
@@ -70,6 +85,8 @@ const GlassyUILandingPage: React.FC<{ darkMode: boolean }> = ({ darkMode }) => {
         <main
           className={`fade-in text-center p-12 rounded-xl backdrop-filter backdrop-blur-lg bg-opacity-10 shadow-lg border ${darkMode ? 'border-white bg-white' : 'border-black bg-gray-100'} border-opacity-20 relative transition-all duration-700 ease-in-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
           style={{ marginTop: '20px' }} // Added marginTop for spacing
+          data-aos='flip-up'
+          data-aos-duration='2500'
         >
           <h1
             className={`text-7xl mb-4 font-bold ${darkMode ? 'text-white' : 'text-black'}`}

@@ -2,16 +2,20 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ArrowLeft, Copy, Check } from 'lucide-react';
 
+
 const ProductCardDetailsPage: React.FC<{ darkMode: boolean }> = ({
   darkMode,
 }) => {
+
   const navigate = useNavigate();
   const [copiedStates, setCopiedStates] = useState<{ [key: string]: boolean }>(
     {},
   );
 
   const getGlassyClasses = (opacity = 5) => {
+
     return `backdrop-filter backdrop-blur-lg ${darkMode ? 'bg-white/30 border-white/20' : 'bg-black/10 border-black/20'} bg-opacity-${opacity} border border-opacity-20 rounded-lg shadow-lg transition-all duration-300`;
+
   };
 
   const copyToClipboard = (text: string, key: string) => {
@@ -24,6 +28,7 @@ const ProductCardDetailsPage: React.FC<{ darkMode: boolean }> = ({
     });
   };
 
+
   const CopyButton: React.FC<{
     text: string;
     codeKey: string;
@@ -32,6 +37,7 @@ const ProductCardDetailsPage: React.FC<{ darkMode: boolean }> = ({
     <button
       onClick={() => copyToClipboard(text, codeKey)}
       className={`absolute top-2 right-2 ${getGlassyClasses()} p-2 ${darkMode ? 'text-white hover:bg-white/40' : 'text-black hover:bg-black/30'} transition-all duration-300`}
+
       title='Copy to clipboard'
     >
       {copiedStates[codeKey] ? (
@@ -121,6 +127,7 @@ const ProductCardDetailsPage: React.FC<{ darkMode: boolean }> = ({
 
   const productCardCode = `const getGlassyClasses = (opacity = 5) => { return \`backdrop-filter backdrop-blur-lg bg-white bg-opacity-$\{opacity} border border-white border-opacity-20 rounded-lg shadow-lg transition-all duration-300\`; };
 
+
      <section className={\`$\{getGlassyClasses()} p-6 mb-14 relative\`}>
             <div className="container px-5 py-16 mx-auto">
                 <div className="lg:w-full mx-auto flex flex-wrap">
@@ -180,6 +187,7 @@ const ProductCardDetailsPage: React.FC<{ darkMode: boolean }> = ({
         </section>
   `;
 
+
   const svgUsed = `const svgs = {
             star: (
                 <svg fill="currentColor" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-4 h-4 text-blue-400" viewBox="0 0 24 24">
@@ -224,10 +232,12 @@ const ProductCardDetailsPage: React.FC<{ darkMode: boolean }> = ({
         <button
           onClick={() => navigate(-1)}
           className={`mb-8 flex items-center ${getGlassyClasses(10)} px-4 py-2 ${darkMode ? 'hover:bg-white/40 text-white' : 'hover:bg-black/30 text-black'} transition-all duration-300`}
+
         >
           <ArrowLeft size={20} className='mr-2' />
           Back to Components
         </button>
+
 
         <h1
           className={`text-6xl font-bold mb-8 ${darkMode ? 'text-white' : 'text-black'}`}
@@ -237,10 +247,12 @@ const ProductCardDetailsPage: React.FC<{ darkMode: boolean }> = ({
         <p
           className={`text-xl mb-8 ${darkMode ? 'text-gray-100' : 'text-black'}`}
         >
+
           A simple product card to showcase an item for sale.
         </p>
 
         <div className={`${getGlassyClasses()} p-8 mb-8 relative`}>
+
           <h2
             className={`text-3xl font-bold mb-6 ${darkMode ? 'text-gray-100' : 'text-black'}`}
           >
@@ -257,10 +269,12 @@ const ProductCardDetailsPage: React.FC<{ darkMode: boolean }> = ({
               codeKey='productCard'
               darkMode={darkMode}
             />
+
           </div>
         </div>
 
         <div className={`${getGlassyClasses()} p-8 mb-8 relative`}>
+
           <h2
             className={`text-3xl font-bold mb-6 ${darkMode ? 'text-gray-100' : 'text-black'}`}
           >
@@ -273,10 +287,12 @@ const ProductCardDetailsPage: React.FC<{ darkMode: boolean }> = ({
               {svgUsed}
             </pre>
             <CopyButton text={svgUsed} codeKey='svgUsed' darkMode={darkMode} />
+
           </div>
         </div>
 
         <div className={`${getGlassyClasses()} p-8 mb-8`}>
+
           <h2
             className={`text-3xl font-bold mb-6 ${darkMode ? 'text-gray-100' : 'text-black'}`}
           >
@@ -296,14 +312,17 @@ const ProductCardDetailsPage: React.FC<{ darkMode: boolean }> = ({
               </thead>
               <tbody>
                 <tr>
+
                   <td className={tableDataStyles}>product</td>
                   <td className={tableDataStyles}>object</td>
                   <td className={tableDataStyles}>-</td>
                   <td className={tableDataStyles}>
+
                     An object containing product details such as name, original
                     price, discounted price, and discount percentage.
                   </td>
                 </tr>
+
                 <tr
                   className={`${darkMode ? 'bg-white' : 'bg-black'} bg-opacity-10`}
                 >
@@ -331,12 +350,14 @@ const ProductCardDetailsPage: React.FC<{ darkMode: boolean }> = ({
                   </td>
                 </tr>
                 <tr>
+
                   <td className={tableDataStyles}>
                     product.discountPercentage
                   </td>
                   <td className={tableDataStyles}>number</td>
                   <td className={tableDataStyles}>-</td>
                   <td className={tableDataStyles}>
+
                     The discount percentage applied to the product.
                   </td>
                 </tr>
@@ -346,6 +367,7 @@ const ProductCardDetailsPage: React.FC<{ darkMode: boolean }> = ({
         </div>
 
         <div className={`${getGlassyClasses()} p-8 mb-8`}>
+
           <h2
             className={`text-3xl font-bold mb-6 ${darkMode ? 'text-gray-100' : 'text-black'}`}
           >
@@ -354,6 +376,7 @@ const ProductCardDetailsPage: React.FC<{ darkMode: boolean }> = ({
           <p
             className={`mb-6 text-lg ${darkMode ? 'text-white' : 'text-black'}`}
           >
+
             Customize the card&apos;s style through the className prop or inline
             styles.
           </p>

@@ -3,6 +3,8 @@
 import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import BackToTopButton from './BackToTop';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 import { HiOutlineChevronDoubleDown } from 'react-icons/hi2';
 
@@ -38,6 +40,8 @@ const ContributorCard: React.FC<Contributor> = ({
         ? 'bg-black/30 border-white/10'
         : 'bg-neutral-100 border-black/10'
     }`}
+    data-aos='fade-up'
+    data-aos-duration='1700'
   >
     <div className='p-6 text-center'>
       <img
@@ -216,6 +220,19 @@ const Component: React.FC<{ darkMode: boolean }> = ({ darkMode }) => {
       behavior: 'smooth',
     });
   };
+
+  useEffect(() => {
+    // Initialize AOS if it hasn't been initialized
+    if (AOS.init) {
+      AOS.init({
+        duration: 1000,
+        once: true,
+      });
+    }
+
+    // Refresh AOS on currentPage change
+    AOS.refresh();
+  }, []);
 
   return (
     <div

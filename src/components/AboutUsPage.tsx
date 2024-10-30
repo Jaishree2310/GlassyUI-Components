@@ -16,6 +16,7 @@ const AboutUsContainer = styled.div<{ darkMode: boolean }>`
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
   position: relative;
 
+
   @media (max-width: 600px) {
     padding: 20px;
   }

@@ -21,9 +21,12 @@ import {
   Wrench,
   Calendar,
 } from 'lucide-react';
+import { date } from 'zod'; 
 import Accordion from './Accordion';
-import { date } from 'zod';
-
+import { HiOutlineArchiveBoxArrowDown } from 'react-icons/hi2';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+ 
 // Define the ComponentCardProps interface
 
 interface ComponentCardProps {
@@ -95,6 +98,21 @@ const GlassyUIComponentsPage: React.FC<{ darkMode: boolean }> = ({
     });
   };
 
+ 
+  useEffect(() => {
+    // Initialize AOS if it hasn't been initialized
+    if (AOS.init) {
+      AOS.init({
+        duration: 1000,
+        once: true,
+      });
+    }
+
+    // Refresh AOS on currentPage change
+    AOS.refresh();
+  }, [currentPage]);
+
+ 
   const componentsData = [
     {
       title: 'Toast',
@@ -222,16 +240,15 @@ const GlassyUIComponentsPage: React.FC<{ darkMode: boolean }> = ({
       onClick: () => navigate('/contact-details'),
     },
     {
-      title: 'E-Commerce Product Card',
-      description:
-        'E-Commerce Product Card component with glassmorphic styling.',
+        title: 'E-Commerce Product Card',
+      description: 'E-Commerce Product Card component with glassmorphic styling.',
       icon: <ShoppingCart size={24} />,
       onClick: () => navigate('/product-details'),
     },
     {
       title: 'Statistic',
       description: 'Statistic component with glassmorphic styling.',
-      icon: <AlignStartVertical size={24} />,
+       icon: <AlignStartVertical size={24} />,
       onClick: () => navigate('/statistic-details'),
     },
     {
@@ -336,6 +353,7 @@ const GlassyUIComponentsPage: React.FC<{ darkMode: boolean }> = ({
             <span>Learn more</span>
             <ArrowUp className='ml-2 w-6 pt-1 group-hover:translate-x-1 transition-transform duration-300' />
           </div>
+
         </div>
       </div>
     );
@@ -351,14 +369,17 @@ const GlassyUIComponentsPage: React.FC<{ darkMode: boolean }> = ({
           <div
             className={`text-3xl lg:text-4xl font-extrabold tracking-tight cursor-pointer transition-colors duration-300 ${darkMode ? 'text-white hover:text-pink-300' : 'text-black hover:text-pink-400'}`}
             onClick={() => navigate('/')}
+            data-aos='fade-right'
           >
             GlassyUI
           </div>
           <div
+            data-aos='fade-left'
             className={`flex items-center bg-gradient-to-r ${darkMode ? 'from-slate-800 via-slate-700 to-slate-900 text-white' : 'from-white/80 via-black/10 to-white/90 text-black'} w-2/5 rounded-lg shadow-lg overflow-hidden`}
           >
             <input
               className={`w-full px-6 py-3 bg-transparent outline-none focus:ring-2 ${darkMode ? 'focus:ring-gray-500 text-white' : 'focus:ring-neutral-400 text-black'} transition-all duration-300`}
+
               placeholder='Search Components...'
               onChange={e => setSearchFilter(e.target.value)}
             />
@@ -367,14 +388,21 @@ const GlassyUIComponentsPage: React.FC<{ darkMode: boolean }> = ({
             />
           </div>
         </header>
-
         <main>
           <h1
             className={`text-4xl lg:text-6xl font-extrabold mb-6 bg-clip-text text-transparent bg-gradient-to-r ${darkMode ? 'from-white to-pink-200' : 'from-black to-pink-400'}`}
+            data-aos='fade-right'
+            data-aos-delay='400'
+            data-aos-duration='1300'
           >
             Glassmorphic Components
           </h1>
-          <p className='text-lg lg:text-xl mb-12 max-w-2xl leading-relaxed'>
+          <p
+            className='text-lg lg:text-xl mb-12 max-w-2xl leading-relaxed'
+            data-aos='fade-right'
+            data-aos-delay='600'
+            data-aos-duration='1500'
+          >
             Elevate your UI with our collection of beautifully crafted,
             glassmorphic components. Perfect for creating modern, sleek
             interfaces with depth and style.
@@ -392,7 +420,10 @@ const GlassyUIComponentsPage: React.FC<{ darkMode: boolean }> = ({
               />
             ))}
             {filteredData.length === 0 && (
-              <section className={darkMode ? 'bg-gray-900' : 'bg-black/10'}>
+
+              <section className={darkMode ? 'bg-gray-900' : 'bg-black/10'}
+                       data-aos-duration='2000'
+              >
                 <div className='py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6'>
                   <div className='mx-auto max-w-screen-sm text-center'>
                     <h1 className='mb-4 text-7xl tracking-tight font-extrabold lg:text-9xl text-blue-600 dark:text-primary-500'>
@@ -421,7 +452,7 @@ const GlassyUIComponentsPage: React.FC<{ darkMode: boolean }> = ({
             )}
           </div>
 
-          <div className='flex justify-between items-center mt-8'>
+          <div className='flex justify-center items-center mt-8'>
             <button
               onClick={prevPage}
               className={`px-4 py-2 mx-2 rounded-lg ${

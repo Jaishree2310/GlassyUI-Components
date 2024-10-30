@@ -1,5 +1,4 @@
-import React from 'react';
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   BrowserRouter as Router,
   Route,
@@ -43,8 +42,13 @@ import Statistic from './components/StatisticDetails';
 import GalleryDetailsPage from './components/GalleryDetailsPage';
 import SpinnerDetailsPage from './components/SpinnerDetailsPage';
 
+
 const App: React.FC = () => {
   const [darkMode, setDarkMode] = useState(true); // Initial state for dark mode
+
+//const ThemeToggle: React.FC = () => {
+ // const [theme, setTheme] = useState(localStorage.getItem('theme') || 'light');
+
 
   useEffect(() => {
     // Check localStorage for the saved theme preference
@@ -68,6 +72,7 @@ const App: React.FC = () => {
       localStorage.setItem('theme', 'light');
     }
   };
+
   return (
     <Router>
       <Header darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
@@ -181,7 +186,9 @@ const App: React.FC = () => {
           path='/gallery-details'
           element={<GalleryDetailsPage darkMode={darkMode} />}
         />
+
         <Route path='/calendar-details' element={<CalendarDetails />} />
+    
         <Route path='/checkbox' element={<Checkbox />} />
         <Route
           path='/spinner'
@@ -190,12 +197,18 @@ const App: React.FC = () => {
         <Route path='*' element={<NotFoundPage darkMode={darkMode} />} />
       </Routes>
       <ConditionalFooter darkMode={darkMode} />
+      
+     
+       
+        
+      </Routes>
+       
+
     </Router>
   );
 };
 const ConditionalFooter: React.FC<{ darkMode: boolean }> = ({ darkMode }) => {
   const location = useLocation();
-
   return location.pathname === '/' ? <Footer darkMode={darkMode} /> : null;
 };
 export default App;
