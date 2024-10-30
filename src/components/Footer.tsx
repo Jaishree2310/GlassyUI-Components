@@ -38,7 +38,6 @@ const Footer: React.FC<{ darkMode: boolean }> = ({ darkMode }) => {
         </a>
         <p>&copy; 2023 GlassyUI. All rights reserved.</p>
       </div>
-
       <style jsx>{`
         .glass-footer {
           backdrop-filter: blur(10px) saturate(180%);

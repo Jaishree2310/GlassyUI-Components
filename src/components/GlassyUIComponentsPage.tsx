@@ -12,8 +12,7 @@ import {
   AlignLeft,
   ArrowUp,
   DollarSign,
-  ThumbsUpIcon,
-  Contact,
+  ThumbsUp,
   Search,
   ShoppingCart,
   GalleryThumbnails,
@@ -21,25 +20,25 @@ import {
   Wrench,
   Calendar,
 } from 'lucide-react';
+
 import { date } from 'zod'; 
 import Accordion from './Accordion';
 import { HiOutlineArchiveBoxArrowDown } from 'react-icons/hi2';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
- 
-// Define the ComponentCardProps interface
 
 interface ComponentCardProps {
   title: string;
   description: string;
   icon: React.ReactNode;
-  onClick: () => void;
+
   status?: string; // Optional status prop
   children?: React.ReactNode; // Include the children prop
   darkMode: boolean; //darkMode prop
 }
 const getGlassyClasses = (darkMode: boolean) => {
   return `backdrop-filter backdrop-blur-md ${darkMode ? 'bg-white/10 border-white/20' : 'bg-black/10 border-black/20'} border rounded-2xl shadow-lg transition-all duration-300`;
+
 };
 
 const ComponentCard: React.FC<ComponentCardProps> = ({
@@ -48,35 +47,45 @@ const ComponentCard: React.FC<ComponentCardProps> = ({
   icon,
   onClick,
   status,
+
   children,
   darkMode,
 }) => {
   return (
     <div
       className={`${getGlassyClasses(darkMode)} p-6 flex flex-col h-full cursor-pointer group transition-all duration-300 ${darkMode ? 'hover:bg-white/20' : 'hover:bg-black/20'} hover:scale-105 hover:shadow-xl`}
+
       onClick={onClick}
+      data-aos='fade-up'
+      data-aos-duration='2000'
     >
       <div className='flex items-center mb-4'>
+
         <div
           className={`p-2 ${darkMode ? 'bg-white/20' : 'bg-black/20'}rounded-lg mr-4`}
         >
           {icon}
         </div>
-        <h3 className='text-xl font-bold'>{title}</h3>
+
+        <h3 className='text-xl font-bold text-white group-hover:text-pink-300 transition-all duration-300'>
+          {title}
+        </h3>
         {status && (
           <span className='ml-2 px-2 py-1 bg-green-200 text-green-700 text-xs font-medium rounded'>
             {status}
           </span>
         )}
       </div>
+
       <p className='text-sm opacity-80 mb-4 flex-grow'>{description}</p>
       {children}
       <div
         className={`flex items-center text-sm font-medium ${darkMode ? 'text-pink-200' : 'text-pink-300'} mt-4`}
       >
+
         <div className='flex justify-center items-center'>
-          <span>Learn more</span>
-          <ArrowUp className='ml-2 w-6 pt-1 group-hover:translate-x-1 transition-transform duration-300' />
+          <span className='group-hover:underline'>Learn more</span>
+          <ArrowUp className='ml-2 w-6 pt-1 group-hover:translate-x-1 group-hover:text-pink-400 transition-transform duration-300' />
         </div>
       </div>
     </div>
@@ -91,33 +100,15 @@ const GlassyUIComponentsPage: React.FC<{ darkMode: boolean }> = ({
   const [searchFilter, setSearchFilter] = useState<string>('');
   const componentsPerPage = 9;
 
-  const scrollToNextSection = () => {
-    window.scrollBy({
-      top: window.innerHeight,
-      behavior: 'smooth',
-    });
-  };
-
- 
   useEffect(() => {
-    // Initialize AOS if it hasn't been initialized
-    if (AOS.init) {
-      AOS.init({
-        duration: 1000,
-        once: true,
-      });
-    }
-
-    // Refresh AOS on currentPage change
+    AOS.init({ duration: 1000, once: true });
     AOS.refresh();
   }, [currentPage]);
 
- 
   const componentsData = [
     {
       title: 'Toast',
-      description:
-        'Glassmorphic Toast Component. Click the button below to try it out!',
+      description: 'Glassmorphic Toast Component. Try it out!',
       icon: <MessageSquare size={24} />,
       onClick: () => navigate('/toast-page/'),
     },
@@ -128,116 +119,40 @@ const GlassyUIComponentsPage: React.FC<{ darkMode: boolean }> = ({
       onClick: () => navigate('/slider-details'),
     },
     {
-      title: 'Speed Dial',
-      description: 'Speed dial with glassmorphism effect.',
+      title: 'Alert Box',
+      description: 'Customizable alert boxes for notifications.',
       icon: <Info size={24} />,
-      onClick: () => navigate('/speed-dial-details'),
+      onClick: () => navigate('/alert-box'),
     },
     {
-      title: 'Buttons',
-      description: 'Sleek, customizable buttons with glassmorphic styling.',
+      title: 'Modal',
+      description: 'Beautiful glassmorphic modal popup windows.',
       icon: <Box size={24} />,
-      onClick: () => navigate('/button-details'),
+      onClick: () => navigate('/modal-window'),
     },
     {
-      title: 'Cards',
-      description: 'Versatile content containers with a frosted glass effect.',
-      icon: <Layout size={24} />,
-      onClick: () => navigate('/card-details'),
-    },
-    {
-      title: 'Inputs',
-      description: 'Elegant input fields with a glass-like appearance.',
+      title: 'Typography',
+      description: 'Stylish fonts and text effects.',
       icon: <Type size={24} />,
-      onClick: () => navigate('/input-details'),
+      onClick: () => navigate('/typography'),
     },
     {
-      title: 'Progress Bars',
-      description: 'Stylish progress indicators with a glass-like finish.',
-      icon: <Sliders size={24} />,
-      onClick: () => navigate('/progress-bar-details'),
+      title: 'Navigation Bar',
+      description: 'Glassmorphic navbar with smooth animations.',
+      icon: <Layout size={24} />,
+      onClick: () => navigate('/navbar'),
     },
     {
-      title: 'Modals',
-      description: 'Eye-catching dialog boxes with glassmorphism effects.',
-      icon: <MessageSquare size={24} />,
-      onClick: () => navigate('/modal-details'),
-    },
-    {
-      title: 'Navigation',
-      description: 'Sleek navigation components with a frosted glass look.',
-      icon: <ArrowRight size={24} />,
-      onClick: () => navigate('/navigation-details'),
-    },
-    {
-      title: 'Popups',
-      description:
-        'Attention-grabbing popup notifications with glassmorphic styling.',
-      icon: <MessageSquare size={24} />,
-      onClick: () => navigate('/popup-details'),
-    },
-    {
-      title: 'Textarea',
-      description: 'Multi-line input fields with elegant glassmorphic design.',
+      title: 'Dropdown',
+      description: 'Stylish dropdown menus for navigation.',
       icon: <AlignLeft size={24} />,
-      onClick: () => navigate('/textarea-details'),
+      onClick: () => navigate('/dropdown-menu'),
     },
     {
-      title: 'Tool Tip',
-      description:
-        'Tooltip component support different positions, and be responsive and accessible.',
-      icon: <Info size={24} />,
-      onClick: () => navigate('/tooltip-details'),
-    },
-    {
-      title: 'Back to Top',
-      description:
-        'A button that scrolls the page back to the top, improving user navigation.',
-      icon: <ArrowUp size={24} />,
-      onClick: () => navigate('/back-to-top-details'),
-    },
-    {
-      title: 'Pricing Plans',
-      description:
-        'Choose a pricing plan that suits your needs. Affordable and flexible.',
+      title: 'Pricing Card',
+      description: 'Eye-catching pricing cards for showcasing plans.',
       icon: <DollarSign size={24} />,
-      onClick: () => navigate('/pricing-details'),
-    },
-    {
-      title: 'Dropdown Menu',
-      description: 'Select an option from the dropdown menu.',
-      icon: <AlignLeft size={24} />,
-      onClick: () => navigate('/dropdown-details'),
-    },
-    {
-      title: 'Authentication Cards',
-      description: 'Versatile content containers with a frosted glass effect.',
-      icon: <Layout size={24} />,
-      onClick: () => navigate('/authentication-card'),
-    },
-    {
-      title: 'Accordion',
-      description: 'Accordion component with glassmorphic styling.',
-      icon: <Layout size={24} />,
-      onClick: () => navigate('/accordion-details'),
-    },
-    {
-      title: 'Pagination',
-      description: 'Pagination component with glassmorphic styling.',
-      icon: <Layout size={24} />,
-      onClick: () => navigate('/pagination-details'),
-    },
-    {
-      title: 'Testimonial',
-      description: 'Testimonial component with glassmorphic styling.',
-      icon: <ThumbsUpIcon size={24} />,
-      onClick: () => navigate('/testimonial-details'),
-    },
-    {
-      title: 'Contact Form',
-      description: 'Contact Form component with glassmorphic styling.',
-      icon: <Contact size={24} />,
-      onClick: () => navigate('/contact-details'),
+      onClick: () => navigate('/pricing-card'),
     },
     {
         title: 'E-Commerce Product Card',
@@ -263,17 +178,23 @@ const GlassyUIComponentsPage: React.FC<{ darkMode: boolean }> = ({
 
       onClick: () => navigate('/generator'),
     },
-    {
-      title: 'Calendar',
-      description: 'Calendar component with glassmorphic styling.',
-      icon: <Calendar size={24} />,
-      onClick: () => navigate('/calendar-details'),
+    { 
+      title: 'Like Button',
+      description: 'Interactive like button with animations.',
+      icon: <ThumbsUp size={24} />,
+      onClick: () => navigate('/like-button'),
     },
     {
-      title: 'Checkbox',
-      description: 'Checkbox component with glassmorphic styling.',
-      icon: <Layout size={24} />,
-      onClick: () => navigate('/checkbox'),
+      title: 'Calendar',
+      description: 'A sleek, responsive calendar component.',
+      icon: <Calendar size={24} />,
+      onClick: () => navigate('/calendar'),
+    },
+    {
+      title: 'Shopping Cart',
+      description: 'Functional shopping cart with glassmorphic styling.',
+      icon: <ShoppingCart size={24} />,
+      onClick: () => navigate('/shopping-cart'),
     },
     {
       title: 'Spinner',
@@ -281,21 +202,27 @@ const GlassyUIComponentsPage: React.FC<{ darkMode: boolean }> = ({
       icon: <Wrench size={24} />,
       onClick: () => navigate('/spinner'),
     },
+    {
+      title: 'Image Gallery',
+      description: 'Stylish glassmorphic gallery for images.',
+      icon: <GalleryThumbnails size={24} />,
+      onClick: () => navigate('/image-gallery'),
+    },
+    // Add more components here...
   ];
 
   const [filteredData, setFilteredData] = useState(componentsData);
 
   useEffect(() => {
     const data = componentsData.filter(component => {
-      if (searchFilter) {
-        return component.title
-          .toLowerCase()
-          .includes(searchFilter.trim().toLowerCase());
-      }
-      return true; // return all components if no filter is set
+      return searchFilter
+        ? component.title
+            .toLowerCase()
+            .includes(searchFilter.trim().toLowerCase())
+        : true;
     });
     setFilteredData(data);
-    setCurrentPage(1); // Reset to first page when searching
+    setCurrentPage(1);
   }, [searchFilter]);
 
   const totalPages = Math.ceil(filteredData.length / componentsPerPage);
@@ -394,19 +321,14 @@ const GlassyUIComponentsPage: React.FC<{ darkMode: boolean }> = ({
             data-aos='fade-right'
             data-aos-delay='400'
             data-aos-duration='1300'
-          >
-            Glassmorphic Components
+          >Glassmorphic Components
           </h1>
-          <p
-            className='text-lg lg:text-xl mb-12 max-w-2xl leading-relaxed'
-            data-aos='fade-right'
-            data-aos-delay='600'
-            data-aos-duration='1500'
-          >
+          <p className='text-lg lg:text-xl mb-12 max-w-2xl leading-relaxed'>
             Elevate your UI with our collection of beautifully crafted,
             glassmorphic components. Perfect for creating modern, sleek
             interfaces with depth and style.
           </p>
+          
 
           <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8'>
             {currentComponents.map((component, index) => (
@@ -480,11 +402,10 @@ const GlassyUIComponentsPage: React.FC<{ darkMode: boolean }> = ({
             </button>
           </div>
         </main>
+
       </div>
     </div>
   );
 };
 
 export default GlassyUIComponentsPage;
-
-// dropdown menu, accordian, contact us,
