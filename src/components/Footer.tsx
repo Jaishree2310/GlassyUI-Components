@@ -7,6 +7,16 @@ const Footer: React.FC = () => {
     <>
       <footer className='glass-footer'>
         <div className='footer-content'>
+          <div className='flex items-center space-x-2'>
+            <img
+              src='../glassy logo.jpeg'
+              alt='Glass UI Logo'
+              className='h-8 w-8' // Adjust size as needed
+            />
+            <h1 className='text-white text-[20px] font-bold'>
+              <span className='text-blue-400'>Glass</span>UI
+            </h1>
+          </div>
           <p className='footer-description'>
             Elevate your UI with beautifully crafted, glassmorphic components.
             Perfect for creating modern, sleek interfaces.
@@ -60,6 +70,11 @@ const Footer: React.FC = () => {
             flex-direction: column;
             align-items: center;
             gap: 20px;
+          }
+
+          .footer-logo {
+            height: 50px; /* Adjust size as needed */
+            margin-bottom: 10px;
           }
 
           .footer-description {
