@@ -1,8 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { z } from 'zod';
+
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+
+import { useNavigate } from 'react-router-dom'; // Import useHistory for navigation
+
 
 const DonationPage: React.FC = () => {
   const [isHovering, setIsHovering] = useState(false);
@@ -16,6 +20,7 @@ const DonationPage: React.FC = () => {
     name: '',
     email: '',
   });
+  const [isSubmitted, setIsSubmitted] = useState(false); // New state variable
 
   const donationSchema = z.object({
     amount: z
@@ -117,6 +122,17 @@ const DonationPage: React.FC = () => {
     fontSize: '1.2rem',
   };
 
+  const homeButtonStyle: React.CSSProperties = {
+    marginTop: '20px',
+    padding: '14px 24px',
+    background: 'linear-gradient(90deg, #00c6ff, #0072ff)',
+    color: '#ffffff',
+    border: 'none',
+    borderRadius: '25px',
+    fontSize: '1.2rem',
+    cursor: 'pointer',
+  };
+
   const handleMouseEnter = () => {
     setIsHovering(true);
   };
@@ -137,6 +153,7 @@ const DonationPage: React.FC = () => {
 
       setErrors({ amount: '', name: '', email: '' });
 
+
       const response = await axios.post(
         'http://localhost:5000/api/donate',
         formData,
@@ -145,6 +162,10 @@ const DonationPage: React.FC = () => {
       if (response.data.success) {
         toast.success('Donation successful! Thank you for your contribution.');
       }
+
+      setIsSubmitted(true); // Set the submitted state to true
+      alert('Form submitted successfully!');
+
     } catch (err: any) {
       if (err.errors) {
         const formattedErrors: any = {};
@@ -158,85 +179,93 @@ const DonationPage: React.FC = () => {
     }
   };
 
+  const handleHomeRedirect = () => {
+    // Redirect to the homepage (you can use the react-router-dom's useHistory)
+    window.location.href = '/'; // Change this to your homepage URL or use a router
+  };
+
   return (
 
-    <div>
+    <div style={containerStyle}>
       <ToastContainer />
-      <div style={containerStyle}>
-        <h1 style={headingStyle}>Liked our glassmorphic components!</h1>
-        <p style={paragraphStyle}>
-          Your contributions help us continue our work.
-        </p>
-        <form noValidate style={formStyle} onSubmit={handleSubmit}>
-          <label htmlFor='amount' style={labelStyle}>
-            Donation Amount:
-          </label>
-          <input
-            type='text'
-            id='amount'
-            name='amount'
-            placeholder='Enter amount in Rupees'
-            style={{
-              ...inputStyle,
-              ...(formData.amount ? inputFocusStyle : {}),
-            }}
-            value={formData.amount}
-            onChange={handleChange}
-            required
-          />
-          {errors.amount && <p style={errorStyle}>{errors.amount}</p>}
+      <h1 style={headingStyle}>Support Us!</h1>
+      <p style={paragraphStyle}>
+        Your contributions help us continue our work.
+      </p>
+      <form noValidate style={formStyle} onSubmit={handleSubmit}>
+        <label htmlFor='amount' style={labelStyle}>
+          Donation Amount:
+        </label>
+        <input
+          type='text'
+          id='amount'
+          name='amount'
+          placeholder='Enter amount in Rupees'
+          style={{
+            ...inputStyle,
+            ...(formData.amount ? inputFocusStyle : {}),
+          }}
+          value={formData.amount}
+          onChange={handleChange}
+          required
+        />
+        {errors.amount && <p style={errorStyle}>{errors.amount}</p>}
 
-          <label htmlFor='name' style={labelStyle}>
-            Your Name:
-          </label>
-          <input
-            type='text'
-            id='name'
-            name='name'
-            placeholder='Enter your name'
-            style={{
-              ...inputStyle,
-              ...(formData.name ? inputFocusStyle : {}),
-            }}
-            value={formData.name}
-            onChange={handleChange}
-            required
-          />
-          {errors.name && <p style={errorStyle}>{errors.name}</p>}
+        <label htmlFor='name' style={labelStyle}>
+          Your Name:
+        </label>
+        <input
+          type='text'
+          id='name'
+          name='name'
+          placeholder='Enter your name'
+          style={{
+            ...inputStyle,
+            ...(formData.name ? inputFocusStyle : {}),
+          }}
+          value={formData.name}
+          onChange={handleChange}
+          required
+        />
+        {errors.name && <p style={errorStyle}>{errors.name}</p>}
 
-          <label htmlFor='email' style={labelStyle}>
-            Your Email:
-          </label>
-          <input
-            type='email'
-            id='email'
-            name='email'
-            placeholder='Enter your email'
-            style={{
-              ...inputStyle,
-              ...(formData.email ? inputFocusStyle : {}),
-            }}
-            value={formData.email}
-            onChange={handleChange}
-            required
-          />
-          {errors.email && <p style={errorStyle}>{errors.email}</p>}
+        <label htmlFor='email' style={labelStyle}>
+          Your Email:
+        </label>
+        <input
+          type='email'
+          id='email'
+          name='email'
+          placeholder='Enter your email'
+          style={{
+            ...inputStyle,
+            ...(formData.email ? inputFocusStyle : {}),
+          }}
+          value={formData.email}
+          onChange={handleChange}
+          required
+        />
+        {errors.email && <p style={errorStyle}>{errors.email}</p>}
 
-          <button
-            type='submit'
-            style={{
-              ...buttonStyle,
-              ...(isHovering ? buttonHoverStyle : {}),
-            }}
-            onMouseEnter={handleMouseEnter}
-            onMouseLeave={handleMouseLeave}
-          >
-            Donate Now
-          </button>
-        </form>
-      </div>
+        <button
+          type='submit'
+          style={{
+            ...buttonStyle,
+            ...(isHovering ? buttonHoverStyle : {}),
+          }}
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
+        >
+          Donate Now
+        </button>
+      </form>
 
-  
+      {isSubmitted && ( // Conditionally render the Home button
+        <button onClick={handleHomeRedirect} style={homeButtonStyle}>
+          Go to Home
+        </button>
+      )}
+
     </div>
   );
 };
