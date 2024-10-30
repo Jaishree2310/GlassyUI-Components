@@ -54,6 +54,195 @@ const CopyButton: React.FC<{ text: string; codeKey: string }> = ({
   );
 };
 
+type IconKey = 'facebook' | 'twitter' | 'linkedin' | 'instagram';
+
+interface IconOption {
+  label: string;
+  value: IconKey;
+}
+
+interface SpeedDialProps {
+  direction?: 'right' | 'left' | 'up' | 'down';
+  selectedIcons: IconKey[];
+}
+
+const SpeedDialComponent: React.FC<SpeedDialProps> = ({
+  direction = 'right',
+  selectedIcons,
+}) => {
+  const allIcons: Record<
+    IconKey,
+    { icon: JSX.Element; label: string; action: () => void }
+  > = {
+    facebook: {
+      icon: <FaFacebookF size={20} />,
+      label: 'Facebook',
+      action: () => window.open('https://www.facebook.com', '_blank'),
+    },
+    twitter: {
+      icon: <FaXTwitter size={20} />,
+      label: 'Twitter',
+      action: () => window.open('https://www.twitter.com', '_blank'),
+    },
+    linkedin: {
+      icon: <FaLinkedinIn size={20} />,
+      label: 'LinkedIn',
+      action: () => window.open('https://www.linkedin.com', '_blank'),
+    },
+    instagram: {
+      icon: <FaInstagram size={20} />,
+      label: 'Instagram',
+      action: () => window.open('https://www.instagram.com', '_blank'),
+    },
+  };
+
+  // Generate action buttons in the desired format
+  const actionButtons = selectedIcons.map(iconKey => ({
+    icon: allIcons[iconKey].icon as React.ReactNode, // Ensure JSX.Element is cast to ReactNode
+    label: allIcons[iconKey].label,
+    key: iconKey as string, // Explicitly cast key to string
+    action: allIcons[iconKey].action, // Use action instead of onClick
+  }));
+
+  const customSpeed = `
+  const getGlassyClasses = () => 'backdrop-filter backdrop-blur-xl bg-white/30 border border-white/20 rounded-xl shadow-lg transition-all duration-300';
+
+  function Example () {
+  return 
+   <SpeedDial
+      direction="right"
+      actionButtons={[
+        {
+          icon: <FaFacebookF size={20} />,
+          label: "Facebook",
+          key: "facebook",
+          action: () => {
+            window.open("https://www.facebook.com", "_blank");
+          },
+        },
+        {
+        other icons objects of your wish...
+        }
+      ]}
+    />
+  
+  }
+  `;
+
+  return (
+    <>
+      <div>
+        <div className='flex w-full h-[300px] justify-center items-center'>
+          <SpeedDial
+            direction={direction}
+            actionButtons={actionButtons} // Pass the formatted actionButtons array
+          />
+        </div>
+
+        <div>
+          <div className={`${getGlassyClasses(20)} p-6 mb-14 relative`}>
+            <h2 className='text-3xl font-bold mb-4 text-gray-100'>
+              Customize Speed Dial
+            </h2>
+            {/* Basic Usage Code Block */}
+            <div className='relative mb-4'>
+              <pre className='bg-gray-800 text-white p-4 rounded-lg overflow-x-auto whitespace-pre-wrap max-sm:p-2 max-sm:text-[0.55rem]'>
+                {customSpeed}
+              </pre>
+              <CopyButton text={customSpeed} codeKey='customSpeed' />
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
+  );
+};
+
+const CustomizableSpeedDial: React.FC = () => {
+  const [direction, setDirection] = useState<'right' | 'left' | 'up' | 'down'>(
+    'right',
+  );
+  const [selectedIcons, setSelectedIcons] = useState<IconKey[]>([]);
+
+  // Options for icons
+  const iconOptions: IconOption[] = [
+    { label: 'Facebook', value: 'facebook' },
+    { label: 'Twitter', value: 'twitter' },
+    { label: 'LinkedIn', value: 'linkedin' },
+    { label: 'Instagram', value: 'instagram' },
+  ];
+
+  // Handle icon selection
+  const handleIconChange = (icon: IconKey) => {
+    if (selectedIcons.includes(icon)) {
+      setSelectedIcons(selectedIcons.filter(i => i !== icon));
+    } else {
+      setSelectedIcons([...selectedIcons, icon]);
+    }
+  };
+
+  return (
+    <div className={`${getGlassyClasses(20)} p-6 mb-14 relative`}>
+      <h2 className='text-3xl font-bold mb-6 text-white'>
+        Customize Your SpeedDial
+      </h2>
+
+      <div className='flex w-full justify-evenly'>
+        {/* Direction Selection */}
+
+        <div className={`${getGlassyClasses(10)} p-6 w-[30%]`}>
+          <label className='mb-2 font-semibold text-lg text-white'>
+            Choose Direction :
+          </label>
+          <div className='flex items-center space-x-4 justify-between pt-3'>
+            {['right', 'left', 'up', 'down'].map(dir => (
+              <label key={dir} className='flex items-center space-x-2'>
+                <input
+                  type='radio'
+                  name='direction'
+                  value={dir}
+                  checked={direction === dir}
+                  onChange={e =>
+                    setDirection(
+                      e.target.value as 'right' | 'left' | 'up' | 'down',
+                    )
+                  }
+                  className='form-radio h-5 w-5 text-blue-600'
+                />
+                <span className='capitalize text-gray-200'>{dir}</span>
+              </label>
+            ))}
+          </div>
+        </div>
+
+        {/* Icon Selection */}
+        <div className={`${getGlassyClasses(10)} p-6 w-[30%]`}>
+          <label className='block mb-2 font-semibold text-lg text-white'>
+            Select Icons:{' '}
+          </label>
+          <div className='flex justify-between'>
+            {iconOptions.map(icon => (
+              <div key={icon.value}>
+                <input
+                  type='checkbox'
+                  id={icon.value}
+                  value={icon.value}
+                  checked={selectedIcons.includes(icon.value)}
+                  onChange={() => handleIconChange(icon.value)}
+                />
+                <label htmlFor={icon.value}>{icon.label}</label>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+      {/* Render SpeedDial with selected values */}
+
+      <SpeedDialComponent direction={direction} selectedIcons={selectedIcons} />
+    </div>
+  );
+};
+
 // Main component displaying SpeedDial usage details
 const SpeedDialDetailsPage: React.FC = () => {
   const navigate = useNavigate();
@@ -64,27 +253,27 @@ const SpeedDialDetailsPage: React.FC = () => {
   function Example () {
   return 
    <SpeedDial
-                direction="right"
-                actionButtons={[
-                  {
-                    icon: <FaFacebookF size={20} />,
-                    label: "Facebook",
-                    key: "facebook",
-                    action: () => {
-                      window.open("https://www.facebook.com", "_blank");
-                    },
-                  },
-                  {
-                  other icons objects of your wish...
-                  }
-                ]}
-              />
+      direction="right"
+      actionButtons={[
+        {
+          icon: <FaFacebookF size={20} />,
+          label: "Facebook",
+          key: "facebook",
+          action: () => {
+            window.open("https://www.facebook.com", "_blank");
+          },
+        },
+        {
+        other icons objects of your wish...
+        }
+      ]}
+    />
   
   }
   `;
 
   const speedDialRight = `
-   <SpeedDial
+             <SpeedDial
                 direction="right"
                 actionButtons={[
                   {
@@ -125,7 +314,7 @@ const SpeedDialDetailsPage: React.FC = () => {
   `;
 
   const speedDialUp = `
-  <SpeedDial
+              <SpeedDial
                 direction="up"
                 actionButtons={[
                   {
@@ -212,8 +401,8 @@ const SpeedDialDetailsPage: React.FC = () => {
                   <td className='p-2 text-gray-200'>string</td>
                   <td className='p-2 text-gray-200'>-</td>
                   <td className='p-2 text-gray-200'>
-                    The direction of the speed dial. Can be "up", "down",
-                    "left", or "right"
+                    The direction of the speed dial. Can be up, down, left, or
+                    right
                   </td>
                 </tr>
                 <tr className='bg-white bg-opacity-10'>
@@ -229,6 +418,8 @@ const SpeedDialDetailsPage: React.FC = () => {
             </table>
           </div>
         </div>
+
+        <CustomizableSpeedDial />
 
         <div className={`${getGlassyClasses(20)} p-6 mb-14 relative`}>
           <h2 className='text-3xl font-bold mb-6 text-gray-100'>

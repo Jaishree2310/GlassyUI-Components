@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 import './GlassyUILandingPage.css'; // Create this CSS file in the same directory
 import gsap from 'gsap';
 import Footer from './Footer';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 const GlassyUILandingPage: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -26,6 +28,19 @@ const GlassyUILandingPage: React.FC = () => {
     };
   }, []);
 
+  useEffect(() => {
+    // Initialize AOS if it hasn't been initialized
+    if (AOS.init) {
+      AOS.init({
+        duration: 1000,
+        once: true,
+      });
+    }
+
+    // Refresh AOS on currentPage change
+    AOS.refresh();
+  }, []);
+
   return (
     <div className='min-h-screen flex flex-col items-center justify-center pt-10 font-mono relative overflow-hidden bg-gradient-to-br from-gray-800 via-gray-900 to-black'>
       <div
@@ -40,7 +55,10 @@ const GlassyUILandingPage: React.FC = () => {
       />
 
       <div className='homeGSap relative z-10 w-full max-w-4xl'>
-        <header className='w-full flex justify-between items-center mb-19'>
+
+ 
+        <header className='w-full flex justify-between items-center mb-4'>
+
           {' '}
           {/* Adjusted mb-8 to mb-4 */}
           <div className='text-2xl font-bold text-white'>
@@ -58,8 +76,10 @@ const GlassyUILandingPage: React.FC = () => {
         </header>
 
         <main
-          className={`fade-in text-center p-12 rounded-xl backdrop-filter backdrop-blur-lg bg-white bg-opacity-10 shadow-lg border border-white border-opacity-20 relative transition-all duration-700 ease-in-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
+          className={` text-center p-12 rounded-xl backdrop-filter backdrop-blur-lg bg-white bg-opacity-10 shadow-lg border border-white border-opacity-20 relative`}
           style={{ marginTop: '20px' }} // Added marginTop for spacing
+          data-aos='flip-up'
+          data-aos-duration='2500'
         >
           <h1 className='text-7xl font-bold mb-4 text-white'>
             <span className='animated-glossy-text'>Glassy UI</span>
