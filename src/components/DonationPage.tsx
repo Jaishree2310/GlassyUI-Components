@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { z } from 'zod';
+import { useNavigate } from 'react-router-dom'; // Import useHistory for navigation
 
 const DonationPage: React.FC = () => {
   const [isHovering, setIsHovering] = useState(false);
@@ -13,6 +14,7 @@ const DonationPage: React.FC = () => {
     name: '',
     email: '',
   });
+  const [isSubmitted, setIsSubmitted] = useState(false); // New state variable
 
   const donationSchema = z.object({
     amount: z
@@ -114,6 +116,17 @@ const DonationPage: React.FC = () => {
     fontSize: '1.2rem',
   };
 
+  const homeButtonStyle: React.CSSProperties = {
+    marginTop: '20px',
+    padding: '14px 24px',
+    background: 'linear-gradient(90deg, #00c6ff, #0072ff)',
+    color: '#ffffff',
+    border: 'none',
+    borderRadius: '25px',
+    fontSize: '1.2rem',
+    cursor: 'pointer',
+  };
+
   const handleMouseEnter = () => {
     setIsHovering(true);
   };
@@ -132,6 +145,7 @@ const DonationPage: React.FC = () => {
     try {
       donationSchema.parse(formData);
       setErrors({ amount: '', name: '', email: '' });
+      setIsSubmitted(true); // Set the submitted state to true
       alert('Form submitted successfully!');
     } catch (err: any) {
       const formattedErrors: any = {};
@@ -140,6 +154,11 @@ const DonationPage: React.FC = () => {
       });
       setErrors(formattedErrors);
     }
+  };
+
+  const handleHomeRedirect = () => {
+    // Redirect to the homepage (you can use the react-router-dom's useHistory)
+    window.location.href = '/'; // Change this to your homepage URL or use a router
   };
 
   return (
@@ -215,6 +234,12 @@ const DonationPage: React.FC = () => {
           Donate Now
         </button>
       </form>
+
+      {isSubmitted && ( // Conditionally render the Home button
+        <button onClick={handleHomeRedirect} style={homeButtonStyle}>
+          Go to Home
+        </button>
+      )}
     </div>
   );
 };

@@ -3,6 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^6.6.0",
+    "@fortawesome/free-brands-svg-icons": "^6.6.0",
+    "@fortawesome/react-fontawesome": "^0.2.2",
     "@tailwindcss/aspect-ratio": "^0.4.2",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
@@ -18,6 +21,7 @@
     "my-typescript-app": "file:",
     "pixel-retroui": "^1.0.61",
     "react": "^18.3.1",
+    "react-calendar": "^5.1.0",
     "react-components": "^0.5.1",
     "react-dom": "^18.3.1",
     "react-feather": "^2.0.10",

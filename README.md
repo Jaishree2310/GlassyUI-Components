@@ -4,7 +4,12 @@
 
 Welcome to **GlassyUI-Components**! This open-source library features stunning React components designed with a captivating glassmorphism effect, perfect for giving your web applications a modern and sleek design.
 
-## 📚 Table of Contents
+ 
+## Project Structure ✨
+
+Check the project structure here [Project Structure](PROJECT_STRUCTURE.md)
+
+ ## 📚 Table of Contents
 
 - [Project Overview](#project-overview)
 - [Features](#Features)
