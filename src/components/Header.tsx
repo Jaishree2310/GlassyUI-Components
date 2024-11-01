@@ -95,6 +95,16 @@ const Header: React.FC = () => {
             About Us
           </Link>
         </li>
+        <li style={liStyle} className='navbar-item'>
+          <Link
+            to='/survey'
+            style={linkStyle}
+            onMouseEnter={e => (e.currentTarget.style.color = '#fde047')}
+            onMouseLeave={e => (e.currentTarget.style.color = 'white')}
+          >
+            Survey
+          </Link>
+        </li>
       </ul>
       <ul className='text-white flex gap-12 justify-center items-center '>
         <li
