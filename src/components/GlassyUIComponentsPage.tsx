@@ -19,9 +19,19 @@ import {
   GalleryThumbnails,
 } from 'lucide-react';
 
+
+
+import { HiOutlineWrenchScrewdriver } from 'react-icons/hi2';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+
+
+// Define the ComponentCardProps interface
+
 import Accordion from './Accordion';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+
 
 interface ComponentCardProps {
   title: string;
@@ -82,6 +92,16 @@ const GlassyUIComponentsPage: React.FC = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [searchFilter, setSearchFilter] = useState<string>('');
   const componentsPerPage = 9;
+
+
+  const scrollToNextSection = () => {
+    window.scrollBy({
+      top: window.innerHeight,
+      behavior: 'smooth',
+    });
+  };
+
+
 
   useEffect(() => {
     AOS.init({ duration: 1000, once: true });
@@ -156,10 +176,28 @@ const GlassyUIComponentsPage: React.FC = () => {
       onClick: () => navigate('/shopping-cart'),
     },
     {
+
+      title: 'Spinner',
+      description: 'Design and customize CSS spinners for your projects.',
+      icon: <HiOutlineWrenchScrewdriver size={24} />,
+      onClick: () => navigate('/spinner'),
+
+
+    },
+    {
+      title: 'Avatar',
+      description:
+        'A customizable avatar component with an optional name tooltip.',
+      icon: <HiOutlineWrenchScrewdriver size={24} />,
+      onClick: () => navigate('/avatar-details'),
+
+
+
       title: 'Image Gallery',
       description: 'Stylish glassmorphic gallery for images.',
       icon: <GalleryThumbnails size={24} />,
       onClick: () => navigate('/image-gallery'),
+
     },
     // Add more components here...
   ];
@@ -206,10 +244,12 @@ const GlassyUIComponentsPage: React.FC = () => {
             GlassyUI
           </div>
 
+
           <div
             className='flex items-center bg-gradient-to-r from-slate-800 via-slate-700 to-slate-900 text-white w-2/5 rounded-lg shadow-lg overflow-hidden'
             data-aos='fade-left'
           >
+
             <input
               className='w-full px-6 py-2 text-white bg-transparent outline-none'
               placeholder='Search components...'
@@ -239,9 +279,87 @@ const GlassyUIComponentsPage: React.FC = () => {
             onClick={nextPage}
             disabled={currentPage === totalPages}
           >
+
+            Elevate your UI with our collection of beautifully crafted,
+            glassmorphic components. Perfect for creating modern, sleek
+            interfaces with depth and style.
+          </p>
+
+          <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8'>
+            {currentComponents.map((component, index) => (
+              <ComponentCard
+                key={index}
+                title={component.title}
+                description={component.description}
+                icon={component.icon}
+                onClick={component.onClick}
+              />
+            ))}
+            {filteredData.length === 0 && (
+              <section
+                className='bg-white dark:bg-gray-900'
+                data-aos='fade-up'
+                data-aos-duration='2000'
+              >
+                <div className='py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6'>
+                  <div className='mx-auto max-w-screen-sm text-center'>
+                    <h1 className='mb-4 text-7xl tracking-tight font-extrabold lg:text-9xl text-blue-600 dark:text-primary-500'>
+                      404
+                    </h1>
+                    <p className='mb-4 text-3xl tracking-tight font-bold text-gray-900 md:text-4xl dark:text-white'>
+                      Something&apos;s missing.
+                    </p>
+                    <p className='mb-4 text-lg font-light text-gray-500 dark:text-gray-400'>
+                      Sorry, we can&apos;t find that component. You&apos;ll find
+                      lots to explore on the home page.{' '}
+                    </p>
+                    <button
+                      className='mt-6 px-4 py-2 bg-blue-600 hover:bg-blue-500 text-white rounded-lg shadow-md transition-all duration-300'
+                      onClick={() => navigate('/components')}
+                    >
+                      Back to Homepage
+                    </button>
+                  </div>
+                </div>
+              </section>
+            )}
+          </div>
+
+          <div className='flex justify-center items-center mt-8'>
+            <button
+              onClick={prevPage}
+              className={`px-4 py-2 mx-2 rounded-lg ${
+                currentPage === 1
+                  ? 'opacity-50 cursor-not-allowed'
+                  : 'hover:bg-white/20'
+              }`}
+              disabled={currentPage === 1}
+            >
+              Previous
+            </button>
+            <span className='text-lg'>
+              Page {currentPage} of {totalPages}
+            </span>
+            <button
+              onClick={nextPage}
+
+              className={`px-4 py-2 mx-2 rounded-lg ${
+                currentPage === totalPages
+                  ? 'opacity-50 cursor-not-allowed'
+                  : 'hover:bg-white/20'
+              }`}
+
+              disabled={currentPage === totalPages}
+            >
+              Next
+            </button>
+          </div>
+        </main>
+
             Next
           </button>
         </div>
+
       </div>
     </div>
   );

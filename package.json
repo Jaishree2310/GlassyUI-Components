@@ -13,11 +13,18 @@
     "@types/jest": "^27.5.2",
     "@types/node": "^16.18.102",
     "@types/react": "^18.3.3",
-    "@types/react-dom": "^18.3.0",
+
+    "@types/react-toastify": "^4.1.0",
+    "axios": "^1.7.7",
+    "dotenv": "^16.4.5",
+    "express": "^4.21.1",
+
     "aos": "^3.0.0-beta.6",
+
     "framer-motion": "^11.11.9",
     "gsap": "^3.12.5",
     "lucide-react": "^0.408.0",
+    "mongoose": "^8.7.2",
     "my-typescript-app": "file:",
     "pixel-retroui": "^1.0.61",
     "react": "^18.3.1",
@@ -28,6 +35,7 @@
     "react-icons": "^5.3.0",
     "react-router-dom": "^6.27.0",
     "react-scripts": "5.0.1",
+    "react-toastify": "^10.0.6",
     "styled-components": "^6.1.13",
     "typescript": "^4.9.5",
     "web-vitals": "^2.1.4",

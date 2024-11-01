@@ -6,11 +6,61 @@ import {
   useLocation,
 } from 'react-router-dom';
 
-// Import components that don't need to be lazy-loaded
+
+
+
+
+import ScrollProgressBar from './components/ScrollProgress'; // Import your ScrollProgressBar component
+import GlassyUILandingPage from './components/GlassyUILandingPage';
+import GlassyUIComponentsPage from './components/GlassyUIComponentsPage';
+import ButtonDetailsPage from './components/ButtonDetailsPage';
+import CardDetailsPage from './components/CardDetailsPage';
+import ProgressBarDetailPage from './components/ProgressBarDetailPage';
+import PopupDetailPage from './components/PopupDetailPage';
+import InputDetailPage from './components/InputDetailPage';
+import TextareaDetailPage from './components/TextareaDetailPage';
+import NotFoundPage from './components/NotFoundPage';
+import TooltipDetailsPage from './components/TooltipDetailsPage';
+import SpeedDialDetailsPage from './components/SpeedDialDetailsPage';
+import ModalDetailsPage from './components/ModalDetailsPage';
+import NavigationDetailsPage from './components/NavigationDetailsPage';
+import GlassMorphismGenrator from './components/GlassMorphismGenrator';
+import SliderDetailsPage from './components/SliderDetailsPage';
+import ContributorsPage from './components/ContributorsPage';
+import DonationPage from './components/DonationPage';
+import AboutUsPage from './components/AboutUsPage';
+
 import Header from './components/Header';
 import Footer from './components/Footer';
+
+
+import CalendarDetails from './components/CalendarDetails';
+import Checkbox from './components/Checkbox';
+import Statistic from './components/StatisticDetails';
+import GalleryDetailsPage from './components/GalleryDetailsPage';
+import SpinnerDetailsPage from './components/SpinnerDetailsPage';
+
+
+
+import ProductCardDetailsPage from './components/ProductCardDetailsPage';
+import Statistic from './components/StatisticDetails';
+import GalleryDetailsPage from './components/GalleryDetailsPage';
+import Checkbox from './components/Checkbox';
+
+
+import SpinnerDetailsPage from './components/SpinnerDetailsPage';
+import AvatarDetialsPage from './components/AvatarDetails';
+
+const App: React.FC = () => {
+
+ 
+
+const ThemeToggle: React.FC = () => {
+  const [theme, setTheme] = useState(localStorage.getItem('theme') || 'light');
+
 import ScrollProgressBar from './components/ScrollProgress';
 import ThemeToggle from './components/ThemeTogggle';
+
 
 // Lazy-loaded components
 const GlassyUILandingPage = lazy(
@@ -89,6 +139,7 @@ const App: React.FC = () => {
   return (
     <Router>
       <Header />
+
       <div className='theme-toggle-container p-4'>
         <ThemeToggle />
       </div>
@@ -151,6 +202,7 @@ const App: React.FC = () => {
           <Route path='*' element={<NotFoundPage />} />
         </Routes>
       </Suspense>
+
       <ConditionalFooter />
     </Router>
   );
