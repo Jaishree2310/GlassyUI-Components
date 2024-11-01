@@ -1,8 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { z } from 'zod';
+
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+
+import { useNavigate } from 'react-router-dom'; // Import useHistory for navigation
+
 
 const DonationPage: React.FC = () => {
   const [isHovering, setIsHovering] = useState(false);
@@ -16,6 +20,7 @@ const DonationPage: React.FC = () => {
     name: '',
     email: '',
   });
+  const [isSubmitted, setIsSubmitted] = useState(false); // New state variable
 
   const donationSchema = z.object({
     amount: z
@@ -117,6 +122,17 @@ const DonationPage: React.FC = () => {
     fontSize: '1.2rem',
   };
 
+  const homeButtonStyle: React.CSSProperties = {
+    marginTop: '20px',
+    padding: '14px 24px',
+    background: 'linear-gradient(90deg, #00c6ff, #0072ff)',
+    color: '#ffffff',
+    border: 'none',
+    borderRadius: '25px',
+    fontSize: '1.2rem',
+    cursor: 'pointer',
+  };
+
   const handleMouseEnter = () => {
     setIsHovering(true);
   };
@@ -137,6 +153,7 @@ const DonationPage: React.FC = () => {
 
       setErrors({ amount: '', name: '', email: '' });
 
+
       const response = await axios.post(
         'http://localhost:5000/api/donate',
         formData,
@@ -145,6 +162,10 @@ const DonationPage: React.FC = () => {
       if (response.data.success) {
         toast.success('Donation successful! Thank you for your contribution.');
       }
+
+      setIsSubmitted(true); // Set the submitted state to true
+      alert('Form submitted successfully!');
+
     } catch (err: any) {
       if (err.errors) {
         const formattedErrors: any = {};
@@ -158,7 +179,13 @@ const DonationPage: React.FC = () => {
     }
   };
 
+  const handleHomeRedirect = () => {
+    // Redirect to the homepage (you can use the react-router-dom's useHistory)
+    window.location.href = '/'; // Change this to your homepage URL or use a router
+  };
+
   return (
+
     <div>
       <ToastContainer />
       <div style={containerStyle}>
@@ -234,6 +261,7 @@ const DonationPage: React.FC = () => {
           </button>
         </form>
       </div>
+
 
     </div>
   );
