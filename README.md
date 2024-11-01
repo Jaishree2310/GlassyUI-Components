@@ -293,6 +293,19 @@ main
 This project is licensed under the MIT License - see the [LICENSE](./LICENSE) file for details.
 
 ---
+## 💗 Stargazers
+
+<div align='left'>
+
+[![Stargazers repo roster for @Jaishree2310/GlassyUI-Components](https://reporoster.com/stars/Jaishree2310/GlassyUI-Components)](https://github.com/Jaishree2310/GlassyUI-Components/stargazers)
+
+</div>
+
+## 💗 Forkers
+
+[![Forkers repo roster for @Jaishree2310/GlassyUI-Components](https://reporoster.com/forks/Jaishree2310/GlassyUI-Components)](https://github.com/Jaishree2310/GlassyUI-Components/network/members)
+
+![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
 ## ⭐ Give it a Star!
 
