@@ -69,6 +69,7 @@
 │   │   ├── StatisticDetails.tsx
 │   │   ├── TestimonialDetails.tsx
 │   │   ├── TextareaDetailPage.tsx
+│   │   ├── ThemeTogggle.tsx
 │   │   ├── Toast.tsx
 │   │   ├── ToastGenerator.tsx
 │   │   ├── ToastPage.tsx
