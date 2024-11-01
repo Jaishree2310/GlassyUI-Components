@@ -1,58 +1,47 @@
-name: 🐛 Bug
-description: Report an issue to help improve the project.
-title: "[BUG] <description>"
-labels: ["bug"]
+name: '🐞 Bug Report'
+description: 'Create a detailed report to help us improve'
+title: 'BUG:'
+labels: ['Bug']
 body:
   - type: checkboxes
-    id: duplicates
     attributes:
-      label: Has this bug been raised before?
-      description: Increase the chances of your issue being accepted by making sure it has not been raised before.
+      label: 'Preliminary Check'
+      description: 'Please confirm the following before reporting a bug.'
       options:
-        - label: I have checked "open" AND "closed" issues and this is not a duplicate
+        - label: 'I have searched the existing issues'
+          required: true
+        - label: 'This issue is reproducible'
           required: true
   - type: textarea
-    id: description
     attributes:
-      label: Description
-      description: A clear description of the bug you have found. Please include relevant information and resources (for example the steps to reproduce the bug)
+      label: 'Bug Summary'
+      description: 'Provide a concise summary of the bug, including what you expected to happen and what actually happened.'
     validations:
       required: true
   - type: textarea
-    id: steps
     attributes:
-      label: Steps to Reproduce
-      description: To help us recreate the bug, provide a numbered list of the exact steps taken to trigger the buggy behavior.
-      value: |
-        Include any relevant details like:
-
-        - What page you were on...
-        - What you were trying to do...
-        - What went wrong...
+      label: 'Steps to Reproduce'
+      description: 'List the steps to reproduce the bug. Include specific details so that we can easily replicate the issue.'
     validations:
       required: true
   - type: textarea
-    id: screenshots
     attributes:
-      label: Screenshots
-      description: Please add screenshots if applicable
+      label: 'Expected Behavior'
+      description: 'What did you expect to happen instead?'
     validations:
       required: false
-  - type: dropdown
-    id: assignee
+  - type: textarea
     attributes:
-      label: Do you want to work on this issue?
-      multiple: false
+      label: 'Screenshots/Logs'
+      description: 'If applicable, add screenshots or logs that can help us understand the issue better.'
+    validations:
+      required: false
+  - type: checkboxes
+    attributes:
+      label: 'Additional Information'
       options:
-        - "No"
-        - "Yes"
-      default: 0
-    validations:
-      required: false
-  - type: textarea
-    id: extrainfo
-    attributes:
-      label: If "yes" to above, please explain how you would technically implement this
-      description: For example reference any existing code
-    validations:
-      required: false
+        - label: "I agree to follow this project's Code of Conduct"
+          required: true
+        - label: "I'm a GSSOC'24 contributor"
+        - label: 'I want to work on this issue'
+        - label: 'I can provide more details if needed'
