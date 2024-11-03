@@ -29,7 +29,8 @@ const ExampleComponent = () => {
       <div className='mb-8'>
         <h3 className='text-2xl font-semibold mb-4'>Basic Example</h3>
         <p className='mb-4 text-gray-100'>
-          This example demonstrates the basic usage of the modal with a heading, paragraph, and a simple call-to-action button.
+          This example demonstrates the basic usage of the modal with a heading,
+          paragraph, and a simple call-to-action button.
         </p>
         <button
           onClick={() => setBasicModal(true)}
@@ -52,7 +53,8 @@ const ExampleComponent = () => {
       <div className='mb-8'>
         <h3 className='text-2xl font-semibold mb-4'>Modal with Image</h3>
         <p className='mb-4 text-gray-100'>
-          This example shows how you can include an image in the modal by providing the <code>imageUrl</code> prop.
+          This example shows how you can include an image in the modal by
+          providing the <code>imageUrl</code> prop.
         </p>
         <button
           onClick={() => setImageModal(true)}
@@ -75,7 +77,8 @@ const ExampleComponent = () => {
       <div className='mb-8'>
         <h3 className='text-2xl font-semibold mb-4'>Modal with Custom CTA</h3>
         <p className='mb-4 text-gray-100'>
-          You can customize the text and background color of the CTA button using the <code>CTA</code> prop.
+          You can customize the text and background color of the CTA button
+          using the <code>CTA</code> prop.
         </p>
         <button
           onClick={() => setCustomCTAModal(true)}
@@ -96,9 +99,12 @@ const ExampleComponent = () => {
 
       {/* Modal with Custom Background Color */}
       <div className='mb-8'>
-        <h3 className='text-2xl font-semibold mb-4'>Modal with Custom Background Color</h3>
+        <h3 className='text-2xl font-semibold mb-4'>
+          Modal with Custom Background Color
+        </h3>
         <p className='mb-4 text-gray-100'>
-          This example showcases how to change the modal background color using the <code>bgColor</code> prop.
+          This example showcases how to change the modal background color using
+          the <code>bgColor</code> prop.
         </p>
         <button
           onClick={() => setBgColorModal(true)}
@@ -119,8 +125,6 @@ const ExampleComponent = () => {
     </div>
   );
 };
-
-
 
 interface CustomModalProps {
   heading: string;
@@ -202,18 +206,15 @@ const CustomModal: React.FC<CustomModalProps> = ({
       </div>
     </div>  
   
-  `
+  `;
 
   return (
     <>
-      <div
-        className={`${getGlassyClasses()} p-6 mb-14`}
-        onClick={unmount}
-      >
+      <div className={`${getGlassyClasses()} p-6 mb-14`} onClick={unmount}>
         <div
           className='relative p-6 rounded-lg shadow-lg'
           style={{ backgroundColor: bgColor, maxWidth: '500px', width: '100%' }}
-          onClick={(e) => e.stopPropagation()} // Prevent closing on modal click
+          onClick={e => e.stopPropagation()} // Prevent closing on modal click
         >
           <h2 className='text-2xl font-bold mb-4'>{heading}</h2>
           {imageUrl && (
@@ -248,7 +249,6 @@ const CustomModal: React.FC<CustomModalProps> = ({
   );
 };
 
-
 const CustomExample: React.FC = () => {
   const [modalConfig, setModalConfig] = useState<{
     heading: string;
@@ -279,27 +279,29 @@ const CustomExample: React.FC = () => {
 
   return (
     <div className={`${getGlassyClasses()} p-6 mb-14`}>
-      <h2 className='text-3xl font-bold mb-6 text-gray-100'>Customizable Modal Form</h2>
+      <h2 className='text-3xl font-bold mb-6 text-gray-100'>
+        Customizable Modal Form
+      </h2>
 
       <div className=' p-6 rounded-lg'>
         <input
           type='text'
           placeholder='Modal Heading'
           value={heading}
-          onChange={(e) => setHeading(e.target.value)}
+          onChange={e => setHeading(e.target.value)}
           className='border border-gray-600 bg-gray-700 text-gray-100 p-2 w-full mb-4 rounded focus:outline-none focus:ring-2 focus:ring-blue-500'
         />
         <textarea
           placeholder='Modal Paragraph'
           value={paragraph}
-          onChange={(e) => setParagraph(e.target.value)}
+          onChange={e => setParagraph(e.target.value)}
           className='border border-gray-600 bg-gray-700 text-gray-100 p-2 w-full mb-4 rounded focus:outline-none focus:ring-2 focus:ring-blue-500'
         />
         <input
           type='text'
           placeholder='CTA Button Text'
           value={ctaText}
-          onChange={(e) => setCtaText(e.target.value)}
+          onChange={e => setCtaText(e.target.value)}
           className='border border-gray-600 bg-gray-700 text-gray-100 p-2 w-full mb-4 rounded focus:outline-none focus:ring-2 focus:ring-blue-500'
         />
         <div className='flex items-center mb-4'>
@@ -307,7 +309,7 @@ const CustomExample: React.FC = () => {
           <input
             type='color'
             value={ctaColor}
-            onChange={(e) => setCtaColor(e.target.value)}
+            onChange={e => setCtaColor(e.target.value)}
             className='border border-gray-600 p-2 rounded'
           />
         </div>
@@ -317,7 +319,7 @@ const CustomExample: React.FC = () => {
           <input
             type='color'
             value={bgColor}
-            onChange={(e) => setBgColor(e.target.value)}
+            onChange={e => setBgColor(e.target.value)}
             className='border border-gray-600 p-2 rounded'
           />
         </div>
@@ -325,7 +327,7 @@ const CustomExample: React.FC = () => {
           type='text'
           placeholder='Image URL (optional)'
           value={imageUrl}
-          onChange={(e) => setImageUrl(e.target.value)}
+          onChange={e => setImageUrl(e.target.value)}
           className='border border-gray-600 bg-gray-700 text-gray-100 p-2 w-full mb-4 rounded focus:outline-none focus:ring-2 focus:ring-blue-500'
         />
         <button
@@ -337,9 +339,7 @@ const CustomExample: React.FC = () => {
       </div>
 
       {/* Render the modal if modalConfig is not null */}
-      {modalConfig && (
-        <CustomModal {...modalConfig} unmount={closeModal} />
-      )}
+      {modalConfig && <CustomModal {...modalConfig} unmount={closeModal} />}
     </div>
   );
 };
@@ -438,7 +438,6 @@ const ModalDetail: React.FC<{ darkMode: boolean }> = ({ darkMode }) => {
           );
 
 `;
- 
 
   const copyToClipboard = (text: string, key: string) => {
     navigator.clipboard.writeText(text).then(() => {

@@ -1,6 +1,7 @@
 ## Project Structure ✨
 
 <!-- START_STRUCTURE -->
+
 ```
 ├── CODE_OF_CONDUCT.md
 ├── CONTRIBUTING.md
@@ -69,6 +70,7 @@
 │   │   ├── StatisticDetails.tsx
 │   │   ├── TestimonialDetails.tsx
 │   │   ├── TextareaDetailPage.tsx
+│   │   ├── ThemeTogggle.tsx
 │   │   ├── Toast.tsx
 │   │   ├── ToastGenerator.tsx
 │   │   ├── ToastPage.tsx
@@ -85,4 +87,5 @@
 ├── tailwind.config.js
 └── tsconfig.json
 ```
+
 <!-- END_STRUCTURE -->

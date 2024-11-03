@@ -36,13 +36,19 @@ const Header: React.FC<{ darkMode: boolean; toggleDarkMode: () => void }> = ({
   };
 
   return (
-    <nav style={navStyle} className='flex justify-center items-center'>
-      <h1
-        className={`${darkMode ? 'text-white' : 'text-black'} text-[20px] font-bold`}
-      >
-        <span className='text-blue-400'>Glassy</span>UI
-      </h1>
-      <ul className='text-white flex gap-12 justify-center items-center '>
+    <nav style={navStyle}>
+      <div className='flex items-center space-x-2'>
+        <img
+          src='../glassy logo.jpeg'
+          alt='Glass UI Logo'
+          className='h-8 w-8' // Adjust size as needed
+        />
+        <h1 className=className={`${darkMode ? 'text-white' : 'text-black'} text-[20px] font-bold`}>
+          <span className='text-blue-400'>Glass</span>UI
+        </h1>
+      </div>
+
+      <ul style={ulStyle}>
         <li style={liStyle} className='navbar-item'>
           <Link
             to='/'
@@ -107,6 +113,16 @@ const Header: React.FC<{ darkMode: boolean; toggleDarkMode: () => void }> = ({
               style={{ width: '25px', height: '25px', marginRight: '5px' }}
             />
             About Us
+          </Link>
+        </li>
+        <li style={liStyle} className='navbar-item'>
+          <Link
+            to='/survey'
+            style={linkStyle}
+            onMouseEnter={e => (e.currentTarget.style.color = '#fde047')}
+            onMouseLeave={e => (e.currentTarget.style.color = 'white')}
+          >
+            Survey
           </Link>
         </li>
       </ul>

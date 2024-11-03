@@ -244,9 +244,11 @@ const StatisticDetails: React.FC<{ darkMode: boolean }> = ({ darkMode }) => {
         </div>
 
         <div className={`${getGlassyClasses()} p-6 mb-14 relative`}>
+
           <h2
             className={`text-3xl font-bold mb-6 ${darkMode ? 'text-gray-100' : 'text-black'}`}
           >
+
             Example Props Array
           </h2>
           <div className='relative'>
