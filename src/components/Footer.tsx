@@ -2,7 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import GoogleTranslate from './GoogleTranslator';
 
-const Footer: React.FC = () => {
+
+const Footer: React.FC<{ darkMode: boolean }> = ({ darkMode }) => {
   return (
     <>
       <footer className='glass-footer'>
@@ -90,6 +91,33 @@ const Footer: React.FC = () => {
         <div className='footer-bottom'>
           <p>&copy; 2023 GlassyUI. All rights reserved.</p>
         </div>
+      </div>
+      <div className='footer-bottom'>
+        <a
+          href='https://github.com/Jaishree2310/GlassyUI-Components'
+          target='_blank'
+          rel='noopener noreferrer'
+          className='github-link'
+        >
+          <i className='fa-brands fa-github'></i>
+        </a>
+        <p>&copy; 2023 GlassyUI. All rights reserved.</p>
+      </div>
+      <style jsx>{`
+        .glass-footer {
+          backdrop-filter: blur(10px) saturate(180%);
+          -webkit-backdrop-filter: blur(10px) saturate(180%);
+          background-color: rgba(43, 48, 60, 0.7);
+          width: 100vw;
+          padding: 40px 20px;
+          border-radius: 15px;
+          text-align: center;
+          margin-top: 0px;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: space-between;
+        }
 
         <style jsx>{`
           .glass-footer {
@@ -114,6 +142,7 @@ const Footer: React.FC = () => {
             align-items: center;
             gap: 20px;
           }
+
 
           .footer-logo {
             height: 50px; /* Adjust size as needed */

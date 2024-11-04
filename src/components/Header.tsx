@@ -1,31 +1,39 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import gsap from 'gsap';
+import { Sun, Moon } from 'react-feather';
 
-const Header: React.FC = () => {
+const Header: React.FC<{ darkMode: boolean; toggleDarkMode: () => void }> = ({
+  darkMode,
+  toggleDarkMode,
+}) => {
   useEffect(() => {
-    // GSAP animation for the navbar
     const tl = gsap.timeline();
     tl.fromTo(
-      '.navbar-item', // Targeting elements with this class
-      {
-        y: -100, // Initial position (from)
-        opacity: 0, // Initial opacity (from)
-      },
-      {
-        y: 0, // Final position (to)
-        opacity: 1, // Final opacity (to)
-        duration: 1,
-        ease: 'power2.inOut',
-        stagger: 0.5, // Stagger for smooth effect
-      },
+      '.navbar-item',
+      { y: -100, opacity: 0 },
+      { y: 0, opacity: 1, duration: 1, ease: 'power2.inOut', stagger: 0.5 },
     );
 
     return () => {
-      // Cleanup GSAP animations
-      tl.kill();
+      tl.kill(); // Cleanup GSAP animation
     };
   }, []);
+
+  // Conditional styles based on darkMode
+  const navStyle: React.CSSProperties = {
+    backgroundColor: darkMode ? '#1f2937' : '#efefef', // Darker color for dark mode
+    padding: '10px',
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  };
+
+  const linkStyle: React.CSSProperties = {
+    color: darkMode ? 'white' : 'black', // White text in dark mode, black otherwise
+    textDecoration: 'none',
+    transition: 'color 0.3s ease',
+  };
 
   return (
     <nav style={navStyle}>
@@ -35,7 +43,7 @@ const Header: React.FC = () => {
           alt='Glass UI Logo'
           className='h-8 w-8' // Adjust size as needed
         />
-        <h1 className='text-white text-[20px] font-bold'>
+        <h1 className=className={`${darkMode ? 'text-white' : 'text-black'} text-[20px] font-bold`}>
           <span className='text-blue-400'>Glass</span>UI
         </h1>
       </div>
@@ -45,8 +53,12 @@ const Header: React.FC = () => {
           <Link
             to='/'
             style={linkStyle}
-            onMouseEnter={e => (e.currentTarget.style.color = '#fde047')}
-            onMouseLeave={e => (e.currentTarget.style.color = 'white')}
+            onMouseEnter={e =>
+              (e.currentTarget.style.color = darkMode ? '#fde047' : '#1f2937')
+            }
+            onMouseLeave={e =>
+              (e.currentTarget.style.color = darkMode ? 'white' : 'black')
+            }
           >
             {/* Ignoring TypeScript error */}
             {/* @ts-ignore */}
@@ -63,8 +75,12 @@ const Header: React.FC = () => {
           <Link
             to='/donate'
             style={linkStyle}
-            onMouseEnter={e => (e.currentTarget.style.color = '#fde047')}
-            onMouseLeave={e => (e.currentTarget.style.color = 'white')}
+            onMouseEnter={e =>
+              (e.currentTarget.style.color = darkMode ? '#fde047' : '#1f2937')
+            }
+            onMouseLeave={e =>
+              (e.currentTarget.style.color = darkMode ? 'white' : 'black')
+            }
           >
             {/* Ignoring TypeScript error */}
             {/* @ts-ignore */}
@@ -81,8 +97,12 @@ const Header: React.FC = () => {
           <Link
             to='/about'
             style={linkStyle}
-            onMouseEnter={e => (e.currentTarget.style.color = '#fde047')}
-            onMouseLeave={e => (e.currentTarget.style.color = 'white')}
+            onMouseEnter={e =>
+              (e.currentTarget.style.color = darkMode ? '#fde047' : '#1f2937')
+            }
+            onMouseLeave={e =>
+              (e.currentTarget.style.color = darkMode ? 'white' : 'black')
+            }
           >
             {/* Ignoring TypeScript error */}
             {/* @ts-ignore */}
@@ -128,6 +148,14 @@ const Header: React.FC = () => {
         >
           Signup
         </li>
+        {/* Dark Mode Toggle Button */}
+        <button
+          onClick={toggleDarkMode}
+          className={`transition-colors duration-300 focus:outline-none ${darkMode ? 'text-white hover:text-yellow-300' : 'text-gray-900 hover:text-yellow-500'}`}
+          style={darkModeToggleStyle}
+        >
+          {darkMode ? <Sun size={24} /> : <Moon size={24} />}
+        </button>
       </ul>
     </nav>
   );
@@ -163,10 +191,12 @@ const liStyle: React.CSSProperties = {
   margin: '0 10px',
 };
 
-const linkStyle: React.CSSProperties = {
-  color: 'white',
-  textDecoration: 'none',
-  transition: 'color 0.3s ease',
+const darkModeToggleStyle: React.CSSProperties = {
+  cursor: 'pointer',
+  background: 'none',
+  border: 'none',
+  marginLeft: '0px',
+  marginRight: '10px',
 };
 
 export default Header;

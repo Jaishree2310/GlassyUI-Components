@@ -48,7 +48,9 @@ const ProgressBar: React.FC<ProgressBarProps> = ({
   );
 };
 
-const ProgressBarDetailPage: React.FC = () => {
+const ProgressBarDetailPage: React.FC<{ darkMode: boolean }> = ({
+  darkMode,
+}) => {
   const navigate = useNavigate();
   const [customProgress, setCustomProgress] = useState(57);
   const [customColor, setCustomColor] = useState('#fcfc00');
@@ -57,9 +59,8 @@ const ProgressBarDetailPage: React.FC = () => {
     {},
   );
 
-  const getGlassyClasses = (opacity = 20) => {
-    return `backdrop-filter backdrop-blur-lg bg-white bg-opacity-${opacity} 
-  border border-white border-opacity-20 rounded-lg shadow-lg transition-all duration-300`;
+  const getGlassyClasses = (darkMode: boolean, opacity = 20) => {
+    return `backdrop-filter backdrop-blur-lg ${darkMode ? 'bg-white/30 border-white/20' : 'bg-black/10 border-black/20'} bg-opacity-${opacity} border border-opacity-20 rounded-lg shadow-lg transition-all duration-300`;
   };
 
   const copyToClipboard = (text: string, key: string) => {
@@ -72,19 +73,20 @@ const ProgressBarDetailPage: React.FC = () => {
     });
   };
 
-  const CopyButton: React.FC<{ text: string; codeKey: string }> = ({
-    text,
-    codeKey,
-  }) => (
+  const CopyButton: React.FC<{
+    text: string;
+    codeKey: string;
+    darkMode: boolean;
+  }> = ({ text, codeKey, darkMode }) => (
     <button
       onClick={() => copyToClipboard(text, codeKey)}
-      className={`absolute top-2 right-2 ${getGlassyClasses()} p-2 hover:bg-opacity-40 transition-all duration-300`}
+      className={`absolute top-2 right-2 ${getGlassyClasses(darkMode)} p-2 ${darkMode ? 'text-white hover:bg-white/40' : 'text-black hover:bg-black/30'} transition-all duration-300`}
       title='Copy to clipboard'
     >
       {copiedStates[codeKey] ? (
         <Check size={16} className='text-green-600' />
       ) : (
-        <Copy size={16} className=' text-gray-100' />
+        <Copy size={16} className={darkMode ? 'text-gray-100' : 'text-black'} />
       )}
     </button>
   );
@@ -109,29 +111,41 @@ const ProgressBarDetailPage: React.FC = () => {
   };
 
   return (
-    <div className='min-h-screen p-8 font-sans bg-gradient-to-r from-gray-800 via-gray-900 to-black text-white relative'>
+    <div
+      className={`min-h-screen p-8 font-sans bg-gradient-to-r ${darkMode ? 'from-gray-800 via-gray-900 to-black text-white' : 'from-white via-black/10 to-black/20 text-black'} relative`}
+    >
       <BackToTopButton />
       <button
         onClick={() => navigate(-1)}
-        className={`mb-8 flex items-center ${getGlassyClasses(10)} px-4 py-2 hover:bg-opacity-40 transition-all duration-300  text-gray-100`}
+        className={`mb-8 flex items-center ${getGlassyClasses(darkMode, 10)} px-4 py-2 ${darkMode ? 'hover:bg-white/40 text-white' : 'hover:bg-black/30 text-black'}transition-all duration-300`}
       >
         <ArrowLeft size={20} className='mr-2' />
         Back to Components
       </button>
 
-      <h1 className='text-6xl font-bold mb-8 text-white'>
+      <h1
+        className={`text-6xl font-bold mb-8 ${darkMode ? 'text-white' : 'text-black'}`}
+      >
         ProgressBar Component
       </h1>
 
-      <p className='text-xl mb-8  text-gray-100'>
+      <p
+        className={`text-xl mb-8 ${darkMode ? 'text-gray-100' : 'text-black'}`}
+      >
         A customizable, mesh frosted glass styled progress bar component with a
         glassmorphism effect.
       </p>
 
       {/* Basic Usage */}
-      <div className={`${getGlassyClasses()} p-6 mb-14 relative`}>
-        <h2 className='text-2xl font-bold mb-4  text-gray-100'>Basic Usage</h2>
-        <pre className='bg-gray-800 text-white p-4 rounded-lg overflow-x-auto'>
+      <div className={`${getGlassyClasses(darkMode)} p-6 mb-14 relative`}>
+        <h2
+          className={`text-2xl font-bold mb-4 ${darkMode ? 'text-gray-100' : 'text-black'}`}
+        >
+          Basic Usage
+        </h2>
+        <pre
+          className={`${darkMode ? 'bg-gray-800 text-white' : 'bg-white text-black'} p-4 rounded-lg overflow-x-auto`}
+        >
           {`import { ProgressBar } from 'glassy-ui';
 
 function App() {
@@ -146,6 +160,7 @@ function App() {
 }`}
         </pre>
         <CopyButton
+          darkMode={darkMode}
           text={`import { ProgressBar } from 'glassy-ui';
 
 function App() {
@@ -167,12 +182,18 @@ function App() {
       </div>
 
       {/* Props */}
-      <div className={`${getGlassyClasses()} p-6 mb-14`}>
-        <h2 className='text-3xl font-bold mb-4  text-gray-100'>Props</h2>
+      <div className={`${getGlassyClasses(darkMode)} p-6 mb-14`}>
+        <h2
+          className={`text-3xl font-bold mb-4 ${darkMode ? 'text-gray-100' : 'text-black'}`}
+        >
+          Props
+        </h2>
         <div className='overflow-x-auto'>
           <table className='w-full'>
             <thead>
-              <tr className='bg-white bg-opacity-20'>
+              <tr
+                className={`${darkMode ? 'bg-white' : 'bg-black'} bg-opacity-20`}
+              >
                 <th className='text-left p-2'>Prop</th>
                 <th className='text-left p-2'>Type</th>
                 <th className='text-left p-2'>Default</th>
@@ -186,7 +207,9 @@ function App() {
                 <td className='p-2'>'md'</td>
                 <td className='p-2'>Size of the progress bar</td>
               </tr>
-              <tr className='bg-white bg-opacity-10'>
+              <tr
+                className={`${darkMode ? 'bg-white' : 'bg-black'} bg-opacity-10`}
+              >
                 <td className='p-2'>color</td>
                 <td className='p-2'>string</td>
                 <td className='p-2'>'pink'</td>
@@ -198,7 +221,9 @@ function App() {
                 <td className='p-2'>0</td>
                 <td className='p-2'>Progress value (0-100)</td>
               </tr>
-              <tr className='bg-white bg-opacity-10'>
+              <tr
+                className={`${darkMode ? 'bg-white' : 'bg-black'} bg-opacity-10`}
+              >
                 <td className='p-2'>theme</td>
                 <td className='p-2'>
                   'pink' | 'brown' | 'white' | 'black' | 'pop'
@@ -212,8 +237,10 @@ function App() {
       </div>
 
       {/* Custom ProgressBar */}
-      <div className={`${getGlassyClasses()} p-6 mb-14`}>
-        <h2 className='text-3xl font-bold mb-4  text-gray-100'>
+      <div className={`${getGlassyClasses(darkMode)} p-6 mb-14`}>
+        <h2
+          className={`text-3xl font-bold mb-4 ${darkMode ? 'text-gray-100' : 'text-black'}`}
+        >
           Custom ProgressBar
         </h2>
         <p className='text-xl mb-4'>
@@ -258,7 +285,9 @@ function App() {
           />
         </div>
 
-        <pre className='bg-gray-800 text-white p-4 rounded-lg overflow-x-auto mt-4 relative max-sm:text-[0.55rem]'>
+        <pre
+          className={`${darkMode ? 'bg-gray-800 text-white' : 'bg-white text-black'} p-4 rounded-lg overflow-x-auto  max-sm:text-[0.55rem]`}
+        >
           {`<ProgressBar
   size="md"
   color="${customColor}"
@@ -267,6 +296,7 @@ function App() {
 />`}
         </pre>
         <CopyButton
+          darkMode={darkMode}
           text={`<ProgressBar
   size="md"
   color="${customColor}"
@@ -278,19 +308,24 @@ function App() {
       </div>
 
       {/* Examples */}
-      <div className={`${getGlassyClasses()} p-6 mt-14`}>
-        <h2 className='text-3xl font-bold mb-4  text-gray-100'>
+      <div className={`${getGlassyClasses(darkMode)} p-6 mt-14`}>
+        <h2
+          className={`text-3xl font-bold mb-4 ${darkMode ? 'text-gray-100' : 'text-black'}`}
+        >
           Examples for mesh morphism
         </h2>
 
         {/* Different Sizes */}
         <div className='mb-8'>
           <h3 className='text-xl mb-4'>Different Sizes</h3>
-          <pre className='bg-gray-800 text-white p-4 rounded-lg overflow-x-auto mb-4 relative max-sm:text-[0.55rem]'>
+          <pre
+            className={`${darkMode ? 'bg-gray-800 text-white' : 'bg-white text-black'} p-4 rounded-lg overflow-x-auto  max-sm:text-[0.55rem]`}
+          >
             {`<ProgressBar size="sm" color="gray" progress={25} theme="${progressBarTheme}" />
 <ProgressBar size="md" color="blue" progress={50} theme="${progressBarTheme}" />
 <ProgressBar size="lg" color="green" progress={75} theme="${progressBarTheme}" />`}
             <CopyButton
+              darkMode={darkMode}
               text={`<ProgressBar size="sm" color="gray" progress={25} theme="${progressBarTheme}" />
 <ProgressBar size="md" color="blue" progress={50} theme="${progressBarTheme}" />
 <ProgressBar size="lg" color="green" progress={75} theme="${progressBarTheme}" />`}
@@ -325,8 +360,10 @@ function App() {
       </div>
 
       {/* Animated Progress */}
-      <div className={`${getGlassyClasses()} p-6 mt-14`}>
-        <h2 className='text-3xl font-bold mb-4  text-gray-100'>
+      <div className={`${getGlassyClasses(darkMode)} p-6 mt-14`}>
+        <h2
+          className={`text-3xl font-bold mb-4 ${darkMode ? 'text-gray-100' : 'text-black'}`}
+        >
           Other Examples
         </h2>
 
@@ -336,7 +373,9 @@ function App() {
             You can animate the progress by updating the progress prop over
             time:
           </p>
-          <pre className='bg-gray-800 text-white p-4 rounded-lg overflow-x-auto mb-4 relative max-sm:text-[0.55rem]'>
+          <pre
+            className={`${darkMode ? 'bg-gray-800 text-white' : 'bg-white text-black'} p-4 rounded-lg overflow-x-auto  max-sm:text-[0.55rem]`}
+          >
             {`const AnimatedProgress = () => {
   const [progress, setProgress] = useState(0);
 
@@ -356,6 +395,7 @@ function App() {
   return <ProgressBar progress={progress} color="cyan" theme="${progressBarTheme}" />;
 };`}
             <CopyButton
+              darkMode={darkMode}
               text={`import React, { useState, useEffect } from 'react';
 import { ProgressBar } from 'pixel-retroui';
 
