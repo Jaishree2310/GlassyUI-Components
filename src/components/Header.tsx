@@ -27,6 +27,13 @@ const Header: React.FC<{ darkMode: boolean; toggleDarkMode: () => void }> = ({
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
+    position: 'fixed', // Fix the navbar
+    top: 0, // Align it to the top of the page
+    width: '100%', // Ensure it spans the width of the page
+    zIndex: 1000, // Ensure it stays above other elements
+    backdropFilter: 'blur(10px)', // Apply the blur effect
+    WebkitBackdropFilter: 'blur(10px)', // For Safari compatibility
+    boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)', // Optional shadow for better contrast
   };
 
   const linkStyle: React.CSSProperties = {
@@ -43,7 +50,9 @@ const Header: React.FC<{ darkMode: boolean; toggleDarkMode: () => void }> = ({
           alt='Glass UI Logo'
           className='h-8 w-8' // Adjust size as needed
         />
-        <h1 className=className={`${darkMode ? 'text-white' : 'text-black'} text-[20px] font-bold`}>
+        <h1
+          className={`${darkMode ? 'text-white' : 'text-black'} text-[20px] font-bold`}
+        >
           <span className='text-blue-400'>Glass</span>UI
         </h1>
       </div>
