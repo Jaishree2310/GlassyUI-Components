@@ -1,3 +1,5 @@
+/*Changing the App UI from dark to light pink*/
+
  upd-feature-branch
 import React, { useState, useEffect } from 'react';
 import PricingDetailPage from './components/PricingDetailPage';
