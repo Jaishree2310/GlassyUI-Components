@@ -74,7 +74,7 @@ const App: React.FC = () => {
   return (
     <Router>
       <Header />
-      <ThemeToggle />
+      {/* <ThemeToggle /> */}
       <ScrollProgressBar /> {/* Add the ScrollProgressBar component here */}
       <Routes>
         <Route path='/' element={<GlassyUILandingPage />} />
