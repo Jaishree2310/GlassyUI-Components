@@ -141,146 +141,49 @@ const App: React.FC = () => {
   };
   return (
     <Router>
-      <Header toggleDarkMode={toggleDarkMode} darkMode={darkMode} />
-      <div className='theme-toggle-container p-4'>
-        <ThemeToggle />
-      </div>
-      <ScrollProgressBar darkMode={darkMode} />
-      <Suspense fallback={<div>Loading...</div>}>
-        <Routes>
-          <Route
-            path='/'
-            element={<GlassyUILandingPage darkMode={darkMode} />}
-          />
-          <Route
-            path='/components'
-            element={<GlassyUIComponentsPage darkMode={darkMode} />}
-          />
-          <Route
-            path='/toast-page'
-            element={<ToastPage darkMode={darkMode} />}
-          />
-          <Route
-            path='/button-details'
-            element={<ButtonDetailsPage darkMode={darkMode} />}
-          />
-          <Route
-            path='/card-details'
-            element={<CardDetailsPage darkMode={darkMode} />}
-          />
-          <Route
-            path='/progress-bar-details'
-            element={<ProgressBarDetailPage darkMode={darkMode} />}
-          />
-          <Route
-            path='/pricing-details'
-            element={<PricingDetailPage darkMode={darkMode} />}
-          />
-          <Route
-            path='/popup-details'
-            element={<PopupDetailPage darkMode={darkMode} />}
-          />
-          <Route
-            path='/input-details'
-            element={<InputDetailPage darkMode={darkMode} />}
-          />
-          <Route
-            path='/textarea-details'
-            element={<TextareaDetailPage darkMode={darkMode} />}
-          />
-          <Route
-            path='/tooltip-details'
-            element={<TooltipDetailsPage darkMode={darkMode} />}
-          />
-          <Route
-            path='/speed-dial-details'
-            element={<SpeedDialDetailsPage darkMode={darkMode} />}
-          />
-          <Route
-            path='/modal-details'
-            element={<ModalDetailsPage darkMode={darkMode} />}
-          />
-          <Route
-            path='/navigation-details'
-            element={<NavigationDetailsPage darkMode={darkMode} />}
-          />
-          <Route
-            path='/generator'
-            element={<GlassMorphismGenrator darkMode={darkMode} />}
-          />
-          <Route
-            path='/slider-details'
-            element={<SliderDetailsPage darkMode={darkMode} />}
-          />
-          <Route
-            path='/back-to-top-details'
-            element={<BackToTopDetailsPage darkMode={darkMode} />}
-          />
-          <Route
-            path='/dropdown-details'
-            element={<DropdowndetailsPage darkMode={darkMode} />}
-          />
-          <Route
-            path='/authentication-card'
-            element={<AuthenticationCard darkMode={darkMode} />}
-          />
-          <Route
-            path='/accordion-details'
-            element={<AccordionDetails darkMode={darkMode} />}
-          />
-          <Route
-            path='/contributors'
-            element={<ContributorsPage darkMode={darkMode} />}
-          />
-          <Route
-            path='/donate'
-            element={<DonationPage darkMode={darkMode} />}
-          />
-          <Route path='/about' element={<AboutUsPage darkMode={darkMode} />} />
-          <Route
-            path='/contact-details'
-            element={<ContactUsDetailsPage darkMode={darkMode} />}
-          />
-          <Route
-            path='/pagination-details'
-            element={<PaginationDetails darkMode={darkMode} />}
-          />
-          <Route
-            path='/testimonial-details'
-            element={<TestimonialDetails darkMode={darkMode} />}
-          />
-          <Route path='/calendar-details' element={<CalendarDetails />} />
-          <Route
-            path='/checkbox'
-            element={
-              <Checkbox
-                checked={false}
-                onChange={() => {}}
-                label='Sample Checkbox'
-              />
-            }
-          />
-          <Route
-            path='/statistic-details'
-            element={<Statistic darkMode={darkMode} />}
-          />
-          <Route
-            path='/gallery-details'
-            element={<GalleryDetailsPage darkMode={darkMode} />}
-          />
-          <Route
-            path='/spinner'
-            element={<SpinnerDetailsPage darkMode={darkMode} />}
-          />
-          <Route
-            path='/product-details'
-            element={<ProductCardDetailsPage darkMode={darkMode} />}
-          />
-          <Route path='*' element={<NotFoundPage darkMode={darkMode} />} />
-          <Route path='/survey' element={<SurveyForm />} />
-        </Routes>
-      </Suspense>
-      <ConditionalFooter darkMode={darkMode} />
+       <Header />
+      {/* <ThemeToggle /> */}
+      <ScrollProgressBar /> {/* Add the ScrollProgressBar component here */}
+      <Routes>
+        <Route path='/' element={<GlassyUILandingPage />} />
+        <Route path='/components' element={<GlassyUIComponentsPage />} />
+        <Route path='/toast-page' element={<ToastPage />} />
+        <Route path='/button-details' element={<ButtonDetailsPage />} />
+        <Route path='/card-details' element={<CardDetailsPage />} />
+        <Route
+          path='/progress-bar-details'
+          element={<ProgressBarDetailPage />}
+        />
+        <Route path='/pricing-details' element={<PricingDetailPage />} />
+        <Route path='/popup-details' element={<PopupDetailPage />} />
+        <Route path='/input-details' element={<InputDetailPage />} />
+        <Route path='/textarea-details' element={<TextareaDetailPage />} />
+        <Route path='/tooltip-details' element={<TooltipDetailsPage />} />
+        <Route path='/speed-dial-details' element={<SpeedDialDetailsPage />} />
+        <Route path='/modal-details' element={<ModalDetailsPage />} />
+        <Route path='/navigation-details' element={<NavigationDetailsPage />} />
+        <Route path='/generator' element={<GlassMorphismGenrator />} />
+        <Route path='/slider-details' element={<SliderDetailsPage />} />
+        <Route path='/back-to-top-details' element={<BackToTopDetailsPage />} />
+        <Route path='/dropdown-details' element={<DropdowndetailsPage />} />
+        <Route path='/authentication-card' element={<AuthenticationCard />} />
+        <Route path='/accordion-details' element={<AccordionDetails />} />
+        <Route path='/contributors' element={<ContributorsPage />} />
+        <Route path='/donate' element={<DonationPage />} />
+        <Route path='/about' element={<AboutUsPage />} />
+        <Route path='/contact-details' element={<ContactUsDetailsPage />} />
+        <Route path='/pagination-details' element={<PaginationDetails />} />
+        <Route path='/testimonial-details' element={<TestimonialDetails />} />
+        <Route path='/calendar-details' element={<CalendarDetails />} />
+        <Route path='/statistic-details' element={<Statistic />} />
+        <Route path='/checkbox' element={<Checkbox />} />
+        <Route path='/spinner' element={<SpinnerDetailsPage />} />
+        <Route path='/product-details' element={<ProductCardDetailsPage />} />
+        <Route path='/gallery-details' element={<GalleryDetailsPage />} />
+        <Route path='*' element={<NotFoundPage />} />
+      </Routes>
+      <ConditionalFooter />
+ 
     </Router>
   );
 };

@@ -2,108 +2,39 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    
-    <!-- SEO Meta Tags -->
-    <meta name="title" content="GlassyUI - Glassmorphism UI Components for React" />
-    <meta name="description" content="GlassyUI offers modern, glassmorphism-themed React UI components, including buttons, modals, input fields, and more. Build sleek and stylish web applications with GlassyUI." />
-    <meta name="keywords" content="GlassyUI, React components, glassmorphism, UI design, frontend library, buttons, input fields, modals, progress bars, open-source, web development, SCSS, customizable" />
-    <meta name="author" content="GlassyUI Team" />
-    
-    <!-- Open Graph Meta Tags (for social media sharing) -->
-    <meta property="og:title" content="GlassyUI - Glassmorphism UI Components for React" />
-    <meta property="og:description" content="Discover GlassyUI, an open-source library of stunning glassmorphism-themed UI components built with React." />
-    <meta property="og:image" content="%PUBLIC_URL%/og-image.png" />
-    <meta property="og:url" content="https://glassyui.com" />
-    <meta property="og:type" content="website" />
-    
-    <!-- Twitter Meta Tags -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="GlassyUI - Glassmorphism UI Components for React" />
-    <meta name="twitter:description" content="Check out GlassyUI, featuring beautiful React components designed with the glassmorphism effect." />
-    <meta name="twitter:image" content="%PUBLIC_URL%/twitter-image.png" />
-    
-    <!-- Manifest and Icons -->
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
-    <script src="https://cdn.lordicon.com/lordicon.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    
-    <link
-        rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
-        integrity="sha384-k6RqeWeci5ZR/Lv4MR0sA0FfDOM1hEq07e4sC1YwD8Z5xP5M6xw41oD3D8VZ76X"
-        crossorigin="anonymous"
-    />
-    
-    <!-- Page Title -->
-    <title>GlassyUI</title>
-    
-    <style>
-        html, body {
-    overflow: auto; /* Change 'hidden' to 'auto' or 'scroll' */
-}
-.some-overlay {
-    position: fixed; /* or absolute */
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    /* Add a z-index if needed to place it above other content */
-}
-.scrollable-container {
-    height: 100vh; /* Or another fixed height */
-    overflow-y: auto; /* Enable vertical scrolling */
-}
-html, body {
-    height: 100%; /* Allow body to take full height */
-    margin: 0; /* Remove default margin */
-    overflow: auto; /* Enable scrolling */
-}
+   <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#000000" />
 
-.container {
-    min-height: 100vh; /* Minimum height to allow scrolling */
-    padding: 20px; /* Padding for the content */
-}
+  <!-- SEO Meta Tags -->
+  <meta name="title" content="GlassyUI - Glassmorphism UI Components for React" />
+  <meta name="description"
+    content="GlassyUI offers modern, glassmorphism-themed React UI components, including buttons, modals, input fields, and more. Build sleek and stylish web applications with GlassyUI." />
+  <meta name="keywords"
+    content="GlassyUI, React components, glassmorphism, UI design, frontend library, buttons, input fields, modals, progress bars, open-source, web development, SCSS, customizable" />
+  <meta name="author" content="GlassyUI Team" />
 
-        body {
-    min-height: 100vh; /* Ensure body takes at least full viewport height */
-    margin: 0; /* Remove default margin */
-}
+  <!-- Open Graph Meta Tags (for social media sharing) -->
+  <meta property="og:title" content="GlassyUI - Glassmorphism UI Components for React" />
+  <meta property="og:description"
+    content="Discover GlassyUI, an open-source library of stunning glassmorphism-themed UI components built with React." />
+  <meta property="og:image" content="%PUBLIC_URL%/og-image.png" />
+  <meta property="og:url" content="https://glassyui.com" />
+  <meta property="og:type" content="website" />
 
-        /* Scrollbar Styling */
-        /* For Chrome, Safari, and Edge */
-        ::-webkit-scrollbar {
-            width: 12px; /* Width of the scrollbar */
-        }
+  <!-- Twitter Meta Tags -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="GlassyUI - Glassmorphism UI Components for React" />
+  <meta name="twitter:description"
+    content="Check out GlassyUI, featuring beautiful React components designed with the glassmorphism effect." />
+  <meta name="twitter:image" content="%PUBLIC_URL%/twitter-image.png" />
 
-        ::-webkit-scrollbar-track {
-            background: #2b303c; /* Background of the track */
-        }
+  <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+  <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+  <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
 
-        ::-webkit-scrollbar-thumb {
-            background-color: #ffffff; /* Color of the scrollbar handle */
-            border-radius: 6px; /* Rounded corners for the scrollbar handle */
-            border: 3px solid #ffffff; /* Padding around the handle */
-        }
-
-        ::-webkit-scrollbar-thumb:hover {
-            background-color: #ffd700; /* Color of the handle when hovered */
-        }
-        .circle {
-  height: 24px;
-  width: 24px;
-  border-radius: 24px;
-  background-color: black;
-  position: fixed; 
-  top: 0;
-  left: 0;
-  pointer-events: none;
-  z-index: 99999999; /* so that it stays on top of all other elements */
-}
-      
-    </style>
+  <title>GlassyUI</title>
+ 
 </head>
 
 <body>
@@ -130,85 +61,13 @@ html, body {
     <!-- Optional Theme Toggle Button -->
     <button id="theme-toggle">Toggle Theme</button>
 
-    <!-- Root div for React app -->
-    <div id="root"></div>
-
-    <script>
-        window.embeddedChatbotConfig = {
-            chatbotId: "IONKpU7WVX0ANZ-WHYTfj",
-            domain: "www.chatbase.co"
-        }
-    </script>
-    <script
-        src="https://www.chatbase.co/embed.min.js"
-        chatbotId="IONKpU7WVX0ANZ-WHYTfj"
-        domain="www.chatbase.co"
-        defer>
-    </script>
-    <script>
-        const coords = { x: 0, y: 0 };
-const circles = document.querySelectorAll(".circle");
-
-const colors = [
-  "#E6F7FF",
-  "#B3E0FF",
-  "#99CCFF",
-  "#66B2FF",
-  "#3399FF",
-  "#007FFF",
-  "#0066CC",
-  "#0059B3",
-  "#004C99",
-  "#003F7F",
-  "#003366",
-  "#00264D",
-  "#001F33",
-  "#001a4d",
-  "#001a99",
-];
-
-
-
-circles.forEach(function (circle, index) {
-  circle.x = 0;
-  circle.y = 0;
-  circle.style.backgroundColor = colors[index % colors.length];
-});
-
-window.addEventListener("mousemove", function(e){
-  coords.x = e.clientX;
-  coords.y = e.clientY;
-  
-});
-
-function animateCircles() {
-  
-  let x = coords.x;
-  let y = coords.y;
-  
-  circles.forEach(function (circle, index) {
-    circle.style.left = x - 12 + "px";
-    circle.style.top = y - 12 + "px";
-    
-    circle.style.scale = (circles.length - index) / circles.length;
-    
-    circle.x = x;
-    circle.y = y;
-
-    const nextCircle = circles[index + 1] || circles[0];
-    x += (nextCircle.x - x) * 0.3;
-    y += (nextCircle.y - y) * 0.3;
-  });
  
-  requestAnimationFrame(animateCircles);
-}
+  <!-- Root element for React to render into -->
+  <div id="root"></div>
 
-animateCircles();
-
-    </script>
-    
-    <!-- Fallback for No JavaScript -->
-    <noscript>You need to enable JavaScript to run this app.</noscript>
+  <!-- External scripts -->
+  <script src="https://files.bpcontent.cloud/2024/10/16/00/20241016003058-U9QDG9UF.js"></script>
+ 
 </body>
 
 </html>
