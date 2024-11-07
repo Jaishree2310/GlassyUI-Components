@@ -15,14 +15,18 @@ type ModalProps = {
   onCtaClick?: (props: any) => void;
 };
 
-const ExampleComponent = () => {
+interface ExampleComponentProps {
+  darkMode: boolean;
+}
+
+const ExampleComponent: React.FC<ExampleComponentProps> = ({ darkMode }) => {
   const [basicModal, setBasicModal] = useState(false);
   const [imageModal, setImageModal] = useState(false);
   const [customCTAModal, setCustomCTAModal] = useState(false);
   const [bgColorModal, setBgColorModal] = useState(false);
 
   return (
-    <div className={`${getGlassyClasses()} p-6 mb-14`}>
+    <div className={`${getGlassyClasses(darkMode, 7)} p-6 mb-14`}>
       <h2 className='text-3xl font-bold mb-6 text-gray-100'>Examples</h2>
 
       {/* Basic Example */}
@@ -34,7 +38,7 @@ const ExampleComponent = () => {
         </p>
         <button
           onClick={() => setBasicModal(true)}
-          className={`mb-4 ${getGlassyClasses()} px-4 py-2 hover:bg-white/40 transition-all duration-300 text-gray-100`}
+          className={`mb-4 ${getGlassyClasses(darkMode, 7)} px-4 py-2 hover:bg-white/40 transition-all duration-300 text-gray-100`}
         >
           Open Basic Modal
         </button>
@@ -58,7 +62,7 @@ const ExampleComponent = () => {
         </p>
         <button
           onClick={() => setImageModal(true)}
-          className={`mb-4 ${getGlassyClasses()} px-4 py-2 hover:bg-white/40 transition-all duration-300 text-gray-100`}
+          className={`mb-4 ${getGlassyClasses(darkMode, 7)} px-4 py-2 hover:bg-white/40 transition-all duration-300 text-gray-100`}
         >
           Open Modal with Image
         </button>
@@ -82,7 +86,7 @@ const ExampleComponent = () => {
         </p>
         <button
           onClick={() => setCustomCTAModal(true)}
-          className={`mb-4 ${getGlassyClasses()} px-4 py-2 hover:bg-white/40 transition-all duration-300 text-gray-100`}
+          className={`mb-4 ${getGlassyClasses(darkMode, 7)} px-4 py-2 hover:bg-white/40 transition-all duration-300 text-gray-100`}
         >
           Open Modal with Custom CTA
         </button>
@@ -108,7 +112,7 @@ const ExampleComponent = () => {
         </p>
         <button
           onClick={() => setBgColorModal(true)}
-          className={`mb-4 ${getGlassyClasses()} px-4 py-2 hover:bg-white/40 transition-all duration-300 text-gray-100`}
+          className={`mb-4 ${getGlassyClasses(darkMode, 7)} px-4 py-2 hover:bg-white/40 transition-all duration-300 text-gray-100`}
         >
           Open Modal with Custom Background Color
         </button>
@@ -135,6 +139,7 @@ interface CustomModalProps {
   };
   imageUrl?: string;
   bgColor?: string; // Make this optional
+  darkMode: boolean;
   unmount: () => void;
 }
 
@@ -144,6 +149,7 @@ const CustomModal: React.FC<CustomModalProps> = ({
   CTA,
   imageUrl,
   bgColor = 'white',
+  darkMode,
   unmount,
 }) => {
   const [copiedText, setCopiedText] = useState<string | null>(null);
@@ -160,7 +166,7 @@ const CustomModal: React.FC<CustomModalProps> = ({
   }) => (
     <button
       onClick={() => copyToClipboard(text, codeKey)}
-      className={`absolute top-2 right-2 ${getGlassyClasses()} p-2 hover:bg-white/40 transition-all duration-300 z-10`}
+      className={`absolute top-2 right-2 ${getGlassyClasses(darkMode, 10)} p-2 hover:bg-white/40 transition-all duration-300 z-10`}
       title='Copy to clipboard'
     >
       {copiedText ? (
@@ -175,7 +181,7 @@ const CustomModal: React.FC<CustomModalProps> = ({
   const getGlassyClasses = (opacity = 20) => { return \`backdrop-filter backdrop-blur-lg bg-white bg-opacity-$\{opacity} border border-white border-opacity-20 rounded-lg shadow-lg transition-all duration-300\`; };
 
     <div
-       className={\`${getGlassyClasses()} p-6 mb-14\`}
+       className={\`${getGlassyClasses(darkMode, 10)} p-6 mb-14\`}
       onClick=${unmount}
     >
       <div
@@ -210,7 +216,10 @@ const CustomModal: React.FC<CustomModalProps> = ({
 
   return (
     <>
-      <div className={`${getGlassyClasses()} p-6 mb-14`} onClick={unmount}>
+      <div
+        className={`${getGlassyClasses(darkMode, 10)} p-6 mb-14`}
+        onClick={unmount}
+      >
         <div
           className='relative p-6 rounded-lg shadow-lg'
           style={{ backgroundColor: bgColor, maxWidth: '500px', width: '100%' }}
@@ -249,13 +258,19 @@ const CustomModal: React.FC<CustomModalProps> = ({
   );
 };
 
-const CustomExample: React.FC = () => {
+interface CustomExampleProps {
+  darkMode: boolean; // Define the darkMode prop as a boolean
+  // Add any other props if needed
+}
+
+const CustomExample: React.FC<CustomExampleProps> = ({ darkMode }) => {
   const [modalConfig, setModalConfig] = useState<{
     heading: string;
     paragraph: string;
     CTA: { text: string; color: string };
     imageUrl?: string;
     bgColor?: string;
+    darkMode: boolean;
   } | null>(null);
 
   const [heading, setHeading] = useState('');
@@ -274,11 +289,12 @@ const CustomExample: React.FC = () => {
       CTA: { text: ctaText, color: ctaColor },
       imageUrl,
       bgColor,
+      darkMode,
     });
   };
 
   return (
-    <div className={`${getGlassyClasses()} p-6 mb-14`}>
+    <div className={`${getGlassyClasses(darkMode, 10)} p-6 mb-14`}>
       <h2 className='text-3xl font-bold mb-6 text-gray-100'>
         Customizable Modal Form
       </h2>
@@ -606,7 +622,7 @@ const ModalDetail: React.FC<{ darkMode: boolean }> = ({ darkMode }) => {
       )}  */}
 
       <div className={`${getGlassyClasses(darkMode)} p-6 mb-16`}>
-        <Example />
+        <ExampleComponent darkMode />
       </div>
 
       <div>
@@ -614,8 +630,8 @@ const ModalDetail: React.FC<{ darkMode: boolean }> = ({ darkMode }) => {
         <div className='h-14'></div>
         <div className='h-14'></div>
       </div>
-       <CustomExample />
-      <ExampleComponent />
+      <CustomExample darkMode />
+      <ExampleComponent darkMode />
     </div>
   );
 };

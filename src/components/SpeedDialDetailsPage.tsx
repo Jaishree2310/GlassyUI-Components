@@ -66,11 +66,13 @@ interface IconOption {
 interface SpeedDialProps {
   direction?: 'right' | 'left' | 'up' | 'down';
   selectedIcons: IconKey[];
+  darkMode: boolean;
 }
 
 const SpeedDialComponent: React.FC<SpeedDialProps> = ({
   direction = 'right',
   selectedIcons,
+  darkMode,
 }) => {
   const allIcons: Record<
     IconKey,
@@ -142,7 +144,9 @@ const SpeedDialComponent: React.FC<SpeedDialProps> = ({
         </div>
 
         <div>
-          <div className={`${getGlassyClasses(20)} p-6 mb-14 relative`}>
+          <div
+            className={`${getGlassyClasses(darkMode, 20)} p-6 mb-14 relative`}
+          >
             <h2 className='text-3xl font-bold mb-4 text-gray-100'>
               Customize Speed Dial
             </h2>
@@ -151,7 +155,7 @@ const SpeedDialComponent: React.FC<SpeedDialProps> = ({
               <pre className='bg-gray-800 text-white p-4 rounded-lg overflow-x-auto whitespace-pre-wrap max-sm:p-2 max-sm:text-[0.55rem]'>
                 {customSpeed}
               </pre>
-              <CopyButton text={customSpeed} codeKey='customSpeed' />
+              <CopyButton text={customSpeed} codeKey='customSpeed' darkMode />
             </div>
           </div>
         </div>
@@ -159,8 +163,13 @@ const SpeedDialComponent: React.FC<SpeedDialProps> = ({
     </>
   );
 };
+interface CustomizableSpeedDialProps {
+  darkMode: boolean;
+}
 
-const CustomizableSpeedDial: React.FC = () => {
+const CustomizableSpeedDial: React.FC<CustomizableSpeedDialProps> = ({
+  darkMode,
+}) => {
   const [direction, setDirection] = useState<'right' | 'left' | 'up' | 'down'>(
     'right',
   );
@@ -184,7 +193,7 @@ const CustomizableSpeedDial: React.FC = () => {
   };
 
   return (
-    <div className={`${getGlassyClasses(20)} p-6 mb-14 relative`}>
+    <div className={`${getGlassyClasses(darkMode, 20)} p-6 mb-14 relative`}>
       <h2 className='text-3xl font-bold mb-6 text-white'>
         Customize Your SpeedDial
       </h2>
@@ -192,7 +201,7 @@ const CustomizableSpeedDial: React.FC = () => {
       <div className='flex w-full justify-evenly'>
         {/* Direction Selection */}
 
-        <div className={`${getGlassyClasses(10)} p-6 w-[30%]`}>
+        <div className={`${getGlassyClasses(darkMode, 10)} p-6 w-[30%]`}>
           <label className='mb-2 font-semibold text-lg text-white'>
             Choose Direction :
           </label>
@@ -218,7 +227,7 @@ const CustomizableSpeedDial: React.FC = () => {
         </div>
 
         {/* Icon Selection */}
-        <div className={`${getGlassyClasses(10)} p-6 w-[30%]`}>
+        <div className={`${getGlassyClasses(darkMode, 10)} p-6 w-[30%]`}>
           <label className='block mb-2 font-semibold text-lg text-white'>
             Select Icons:{' '}
           </label>
@@ -240,7 +249,11 @@ const CustomizableSpeedDial: React.FC = () => {
       </div>
       {/* Render SpeedDial with selected values */}
 
-      <SpeedDialComponent direction={direction} selectedIcons={selectedIcons} />
+      <SpeedDialComponent
+        direction={direction}
+        selectedIcons={selectedIcons}
+        darkMode
+      />
     </div>
   );
 };
@@ -456,8 +469,7 @@ const SpeedDialDetailsPage: React.FC<{ darkMode: boolean }> = ({
           <h2
             className={`text-3xl font-bold mb-6 ${darkMode ? 'text-gray-100' : 'text-black'}`}
           >
-
-        <CustomizableSpeedDial />
+            <CustomizableSpeedDial darkMode />
             Speed Dial: Right
           </h2>
           {/* Basic Usage Code Block */}
