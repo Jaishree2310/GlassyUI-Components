@@ -4,6 +4,10 @@
 
 Welcome to **GlassyUI-Components**! This open-source library features stunning React components designed with a captivating glassmorphism effect, perfect for giving your web applications a modern and sleek design.
 
+## Project Structure ✨
+
+Check the project structure here [Project Structure](PROJECT_STRUCTURE.md)
+
 ## 📚 Table of Contents
 
 - [Project Overview](#project-overview)
@@ -253,14 +257,81 @@ git push origin my-feature-branch
 
 🌟 **So many talented contributors!** 🎉 Want to meet them all? Click [here](https://github.com/Jaishree2310/GlassyUI-Components/graphs/contributors) to discover the amazing team! 👩‍💻👨‍💻
 
+patch-1
+
+
+<!--line-->
+<img src="https://www.animatedimages.org/data/media/562/animated-line-image-0184.gif" width="1920" />
+
+
+## Stargazers ❤️
+
+<div align='left'>
+
+[![Stargazers repo roster for @Jaishree2310/GlassyUI-Components](https://reporoster.com/stars/dark/Jaishree2310/GlassyUI-Components)](https://github.com/Jaishree2310/GlassyUI-Components/stargazers)
+
+
+</div>
+
+## Forkers ❤️
+
+[![Forkers repo roster for @Jaishree2310/GlassyUI-Components](https://reporoster.com/forks/dark/Jaishree2310/GlassyUI-Components)](https://github.com/Jaishree2310/GlassyUI-Components/network/members)
+
+
+<!--line-->
+<img src="https://www.animatedimages.org/data/media/562/animated-line-image-0184.gif" width="1920" />
+
+
+
+
 ---
+main
 
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](./LICENSE) file for details.
 
 ---
+## 💗 Stargazers
+
+<div align='left'>
+
+[![Stargazers repo roster for @Jaishree2310/GlassyUI-Components](https://reporoster.com/stars/Jaishree2310/GlassyUI-Components)](https://github.com/Jaishree2310/GlassyUI-Components/stargazers)
+
+</div>
+
+## 💗 Forkers
+
+[![Forkers repo roster for @Jaishree2310/GlassyUI-Components](https://reporoster.com/forks/Jaishree2310/GlassyUI-Components)](https://github.com/Jaishree2310/GlassyUI-Components/network/members)
+
+![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
 ## ⭐ Give it a Star!
 
 If you enjoy using GlassyUI-Components and find it helpful, **please give it a star**! Your support encourages further development and improvement.
+
+## 🌐 Contact with Me
+
+<p align="center">
+  <a href="mailto:jaishrees23102001@gmail.com">
+    <img src="https://img.icons8.com/fluency/48/000000/email.png" alt="Email" width="40px"/>
+  </a>
+  <a href="https://linkedin.com/in/jaishree-singh-6332a51b9">
+    <img src="https://img.icons8.com/fluency/48/000000/linkedin.png" alt="LinkedIn" width="40px"/>
+  </a>
+  <a href="https://twitter.com/Jaishre23100">
+    <img src="https://img.icons8.com/fluency/48/000000/twitter.png" alt="Twitter" width="40px"/>
+  </a>
+  <a href="https://github.com/Jaishree2310">
+    <img src="https://img.icons8.com/fluency/48/000000/github.png" alt="GitHub" width="40px"/>
+  </a>
+  <a href="https://www.instagram.com/jaishree_2310/">
+    <img src="https://img.icons8.com/fluency/48/000000/instagram-new.png" alt="Instagram" width="40px"/>
+  </a>
+</p>
+
+---
+
+<p align="center">
+  Thank you for connecting with me! 💬
+</p>

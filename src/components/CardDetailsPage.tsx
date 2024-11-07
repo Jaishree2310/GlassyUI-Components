@@ -43,7 +43,7 @@ const themes: Record<string, ThemeColors> = {
   },
 };
 
-const CardDetailsPage: React.FC = () => {
+const CardDetailsPage: React.FC<{ darkMode: boolean }> = ({ darkMode }) => {
   const navigate = useNavigate();
   const [copiedStates, setCopiedStates] = useState<{ [key: string]: boolean }>(
     {},
@@ -67,13 +67,13 @@ const CardDetailsPage: React.FC = () => {
   }) => (
     <button
       onClick={() => copyToClipboard(text, codeKey)}
-      className='absolute top-2 right-2 p-1 bg-white bg-opacity-30 backdrop-filter backdrop-blur-md border border-white border-opacity-20 rounded-lg shadow-lg hover:bg-opacity-40 transition-all duration-300'
+      className={`absolute top-2 right-2 p-1 ${darkMode ? 'border-white hover:bg-white/40' : 'border-black hover:bg-black/30'} backdrop-filter backdrop-blur-md border transition-all duration-300  border-opacity-20 rounded-lg shadow-lg`}
       title='Copy to clipboard'
     >
       {copiedStates[codeKey] ? (
         <Check size={16} className='text-green-600' />
       ) : (
-        <Copy size={16} className='text-gray-800' />
+        <Copy size={16} className={darkMode ? 'text-gray-100' : 'text-black'} />
       )}
     </button>
   );
@@ -140,9 +140,8 @@ const CardDetailsPage: React.FC = () => {
 </div>`;
   };
 
-  const getGlassyClasses = (opacity = 20) => {
-    return `backdrop-filter backdrop-blur-lg bg-white bg-opacity-${opacity} 
-  border border-white border-opacity-20 rounded-lg shadow-lg transition-all duration-300`;
+  const getGlassyClasses = (darkMode: boolean, opacity = 20) => {
+    return `backdrop-filter backdrop-blur-lg ${darkMode ? 'bg-white/30 border-white/20' : 'bg-black/10 border-black/20'} bg-opacity-${opacity} border border-opacity-20 rounded-lg shadow-lg transition-all duration-300`;
   };
 
   const CreditCardExample: React.FC = () => (
@@ -171,28 +170,41 @@ const CardDetailsPage: React.FC = () => {
     </div>
   );
 
+  const tableHeadingStyles = `text-left p-2 ${darkMode ? 'text-gray-100' : 'text-black'}`;
+  const tableDataStyles = `p-2 ${darkMode ? 'text-gray-200' : 'text-black/80'}`;
+
   return (
-    <div className='min-h-screen p-8 font-sans bg-gradient-to-r from-gray-800 via-gray-900 to-black text-white relative'>
+    <div
+      className={`min-h-screen p-8 font-sans bg-gradient-to-r ${darkMode ? 'from-gray-800 via-gray-900 to-black text-white' : 'from-white via-black/10 to-black/20 text-black'} relative`}
+    >
       <BackToTopButton />
       <button
         onClick={() => navigate(-1)}
-        className={`mb-8 flex items-center ${getGlassyClasses(10)} px-4 py-2 hover:bg-opacity-20 text-white`}
+        className={`mb-8 flex items-center ${getGlassyClasses(darkMode, 10)} px-4 py-2 ${darkMode ? 'hover:bg-white/40 text-white' : 'hover:bg-black/30 text-black'}`}
       >
         <ArrowLeft size={20} className='mr-2' />
         Back to Components
       </button>
 
-      <h1 className='text-6xl font-bold mb-8 text-white'>Card Component</h1>
-      <p className='text-xl mb-8 text-gray-100'>
+      <h1
+        className={`text-6xl font-bold mb-8 ${darkMode ? 'text-white' : 'text-black'}`}
+      >
+        Card Component
+      </h1>
+      <p
+        className={`text-xl mb-8 ${darkMode ? 'text-gray-100' : 'text-black'}`}
+      >
         A glassmorphism-styled Card component.
       </p>
 
       {/* Basic Usage */}
       <section
-        className={`${getGlassyClasses()} p-6 mb-14 text-white relative z-10`}
+        className={`${getGlassyClasses(darkMode)} p-6 mb-14 ${darkMode ? 'text-white' : 'text-black'} relative z-10`}
       >
         <h2 className='text-3xl font-bold mb-4'>Basic Usage</h2>
-        <pre className='bg-gray-800 text-white p-6 rounded-lg overflow-x-auto relative max-sm:text-[0.55rem]'>
+        <pre
+          className={`${darkMode ? 'bg-gray-800 text-white' : 'bg-white text-black'} p-6 rounded-lg overflow-x-auto whitespace-pre-wrap max-sm:p-2 max-sm:text-[0.55rem]`}
+        >
           {`import { Card } from './components/Card';
 
 function Example() {
@@ -221,37 +233,45 @@ function Example() {
 
       {/* Props */}
       <section
-        className={`${getGlassyClasses()} p-6 mb-14 text-white relative z-10`}
+        className={`${getGlassyClasses(darkMode)} p-6 mb-14 ${darkMode ? 'text-white' : 'text-black'} relative z-10`}
       >
-        <h2 className='text-3xl font-bold mb-4 text-gray-100'>Props</h2>
+        <h2
+          className={`text-3xl font-bold mb-4 ${darkMode ? 'text-gray-100' : 'text-black'}`}
+        >
+          Props
+        </h2>
         <div className='overflow-x-auto'>
           <table className='w-full'>
             <thead>
-              <tr className='bg-white bg-opacity-20'>
-                <th className='text-left p-2'>Prop</th>
-                <th className='text-left p-2'>Type</th>
-                <th className='text-left p-2'>Default</th>
-                <th className='text-left p-2'>Description</th>
+              <tr
+                className={`${darkMode ? 'bg-white' : 'bg-black'} bg-opacity-20`}
+              >
+                <th className={tableHeadingStyles}>Prop</th>
+                <th className={tableHeadingStyles}>Type</th>
+                <th className={tableHeadingStyles}>Default</th>
+                <th className={tableHeadingStyles}>Description</th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <td className='p-2'>className</td>
-                <td className='p-2'>string</td>
-                <td className='p-2'>''</td>
-                <td className='p-2'>Additional CSS classes</td>
+                <td className={tableDataStyles}>className</td>
+                <td className={tableDataStyles}>string</td>
+                <td className={tableDataStyles}>''</td>
+                <td className={tableDataStyles}>Additional CSS classes</td>
               </tr>
-              <tr className='bg-white bg-opacity-10'>
-                <td className='p-2'>style</td>
-                <td className='p-2'>object</td>
-                <td className='p-2'>{'{}'}</td>
-                <td className='p-2'>Inline styles for the card</td>
+              <tr
+                className={`${darkMode ? 'bg-white' : 'bg-black'} bg-opacity-10`}
+              >
+                <td className={tableDataStyles}>style</td>
+                <td className={tableDataStyles}>object</td>
+                <td className={tableDataStyles}>{'{}'}</td>
+                <td className={tableDataStyles}>Inline styles for the card</td>
               </tr>
               <tr>
-                <td className='p-2'>children</td>
-                <td className='p-2'>ReactNode</td>
-                <td className='p-2'>-</td>
-                <td className='p-2'>Card content</td>
+                <td className={tableDataStyles}>children</td>
+                <td className={tableDataStyles}>ReactNode</td>
+                <td className={tableDataStyles}>-</td>
+                <td className={tableDataStyles}>Card content</td>
               </tr>
             </tbody>
           </table>
@@ -260,15 +280,21 @@ function Example() {
 
       {/* Custom Card Section */}
       <section
-        className={`${getGlassyClasses()} p-6 mb-14 text-white relative z-10`}
+        className={`${getGlassyClasses(darkMode)} p-6 mb-14 ${darkMode ? 'text-white' : 'text-black'} relative z-10`}
       >
-        <h2 className='text-3xl font-bold mb-4 text-gray-100'>Custom Card</h2>
-        <p className='text-xl mb-4 text-gray-100'>
+        <h2
+          className={`text-3xl font-bold mb-4 ${darkMode ? 'text-gray-100' : 'text-black'}`}
+        >
+          Custom Card
+        </h2>
+        <p
+          className={`text-xl mb-4 ${darkMode ? 'text-gray-100' : 'text-black'}`}
+        >
           Customize your card's appearance by selecting a preset theme or
           creating your own color scheme.
         </p>
         <div
-          className={`${getGlassyClasses(5)} p-6 mb-14 text-white relative z-10`}
+          className={`${getGlassyClasses(darkMode, 5)} p-6 mb-14 ${darkMode ? 'text-white' : 'text-black'} relative z-10`}
         >
           <div className='mb-4 flex items-center'>
             <span className='text-lg font-bold mr-2'>Theme:</span>
@@ -286,7 +312,9 @@ function Example() {
           <div className='grid grid-cols-1 md:grid-cols-2 gap-8'>
             <CustomCardPreview />
             <div className='relative'>
-              <pre className='bg-gray-800 text-white p-4 rounded-lg overflow-x-auto text-sm  max-sm:text-[0.55rem]'>
+              <pre
+                className={`${darkMode ? 'bg-gray-800 text-white' : 'bg-white/90 text-black'} p-6 rounded-lg overflow-x-auto whitespace-pre-wrap relative`}
+              >
                 {updateCustomCode()}
               </pre>
               <CopyButton text={updateCustomCode()} codeKey='customStyling' />
@@ -298,20 +326,30 @@ function Example() {
       {/* Credit Card Example */}
       {/* Credit Card Example */}
       <section
-        className={`${getGlassyClasses()} p-6 mb-14 text-white relative z-10`}
+        className={`${getGlassyClasses(darkMode)} p-6 mb-14 ${darkMode ? 'text-white' : 'text-black'} relative z-10`}
       >
-        <h2 className='text-3xl font-bold mb-4 text-gray-100'>
+        <h2
+          className={`text-3xl font-bold mb-4 ${darkMode ? 'text-gray-100' : 'text-black'}`}
+        >
           Credit Card Example
         </h2>
-        <div className='bg-white bg-opacity-10 backdrop-filter backdrop-blur-md border border-white border-opacity-20 rounded-lg p-6 max-sm:px-1'>
+        <div
+          className={`${darkMode ? 'bg-white border-white' : 'bg-black/10 border-black'} bg-opacity-10 backdrop-filter backdrop-blur-md border border-opacity-20 rounded-lg p-6 max-sm:px-1`}
+        >
           <div className='flex flex-col lg:flex-row gap-8'>
             <div className='lg:w-1/3 flex justify-center items-center bg-gradient-to-br from-purple-400 to-blue-300 p-8 rounded-xl'>
               <CreditCardExample />
             </div>
             <div className='lg:w-2/3'>
-              <h3 className='text-xl font-semibold mb-4 text-gray-100'>Code</h3>
+              <h3
+                className={`text-xl font-semibold mb-4 ${darkMode ? 'text-gray-100' : 'text-black'}`}
+              >
+                Code
+              </h3>
               <div className='relative'>
-                <pre className='bg-gray-800 text-white p-4 rounded-lg overflow-x-auto text-sm max-h-[400px] whitespace-pre-wrap break-words max-sm:text-[0.55rem]'>
+                <pre
+                  className={`${darkMode ? 'bg-gray-800 text-white' : 'bg-white/90 text-black'} p-6 rounded-lg overflow-x-auto whitespace-pre-wrap relative`}
+                >
                   <code>
                     {`const GlassmorphicCreditCard: React.FC = () => (
   <div className="w-96 h-56 bg-gradient-to-br from-purple-100 

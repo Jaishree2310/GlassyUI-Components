@@ -1,4 +1,4 @@
-// import React, { useState } from 'react';
+ // import React, { useState } from 'react';
 
 // import CheckboxDetails from './CheckboxDetails';
 
@@ -26,5 +26,6 @@ import React from 'react';
 const Checkbox = () => {
   return <div>Checkbox</div>;
 };
+ 
 
 export default Checkbox;

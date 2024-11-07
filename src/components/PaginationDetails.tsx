@@ -3,15 +3,14 @@ import { useNavigate } from 'react-router-dom';
 import { ArrowLeft, Copy, Check } from 'lucide-react';
 import BackToTopButton from './BackToTop';
 
-const PaginationDetails: React.FC = () => {
+const PaginationDetails: React.FC<{ darkMode: boolean }> = ({ darkMode }) => {
   const navigate = useNavigate();
   const [copiedStates, setCopiedStates] = useState<{ [key: string]: boolean }>(
     {},
   );
 
   const getGlassyClasses = (opacity = 20) => {
-    return `backdrop-filter backdrop-blur-lg bg-white bg-opacity-${opacity} 
-  border border-white border-opacity-20 rounded-lg shadow-lg transition-all duration-300`;
+    return `backdrop-filter backdrop-blur-lg ${darkMode ? 'bg-white/30 border-white/20' : 'bg-black/10 border-black/20'} bg-opacity-${opacity} border border-opacity-20 rounded-lg shadow-lg transition-all duration-300`;
   };
 
   const copyToClipboard = (text: string, key: string) => {
@@ -24,19 +23,20 @@ const PaginationDetails: React.FC = () => {
     });
   };
 
-  const CopyButton: React.FC<{ text: string; codeKey: string }> = ({
-    text,
-    codeKey,
-  }) => (
+  const CopyButton: React.FC<{
+    text: string;
+    codeKey: string;
+    darkMode: boolean;
+  }> = ({ text, codeKey, darkMode }) => (
     <button
       onClick={() => copyToClipboard(text, codeKey)}
-      className={`absolute top-2 right-2 ${getGlassyClasses()} p-2 hover:bg-white/40 transition-all duration-300 z-10`}
+      className={`absolute top-2 right-2 ${getGlassyClasses()} p-2 ${darkMode ? 'text-white hover:bg-white/40' : 'text-black hover:bg-black/30'} transition-all duration-300 z-10`}
       title='Copy to clipboard'
     >
       {copiedStates[codeKey] ? (
-        <Check size={16} className='text-white' />
+        <Check size={16} className='text-green-600' />
       ) : (
-        <Copy size={16} className='text-white' />
+        <Copy size={16} className={darkMode ? 'text-gray-100' : 'text-black'} />
       )}
     </button>
   );
@@ -167,90 +167,131 @@ const PaginationDetails: React.FC = () => {
     return visiblePages;
   };
 
+  const tableHeadingStyles = `text-left p-2 ${darkMode ? 'text-gray-100' : 'text-black'}`;
+  const tableDataStyles = `p-2 ${darkMode ? 'text-gray-200' : 'text-black/80'}`;
+
   return (
-    <div className='min-h-screen p-8 font-sans bg-gradient-to-r from-gray-800 via-gray-900 to-black text-white relative'>
+    <div
+      className={`min-h-screen p-8 font-sans bg-gradient-to-r ${darkMode ? 'from-gray-800 via-gray-900 to-black text-white' : 'from-white via-black/10 to-black/20 text-black'} relative`}
+    >
       <BackToTopButton />
       <div className='relative z-10'>
         <button
           onClick={() => navigate(-1)}
-          className={`mb-8 flex items-center ${getGlassyClasses(10)} px-4 py-2 hover:bg-white/40 transition-all duration-300 text-white`}
+          className={`mb-8 flex items-center ${getGlassyClasses(10)} px-4 py-2 ${darkMode ? 'hover:bg-white/40 text-white' : 'hover:bg-black/30 text-black'} transition-all duration-300`}
         >
           <ArrowLeft size={20} className='mr-2' />
           Back to Components
         </button>
 
-        <h1 className='text-6xl font-bold mb-8 text-white'>Pagination</h1>
-        <p className='text-xl mb-8 text-white'>
+        <h1
+          className={`text-6xl font-bold mb-8 ${darkMode ? 'text-white' : 'text-black'}`}
+        >
+          Pagination
+        </h1>
+        <p
+          className={`text-xl mb-8 ${darkMode ? 'text-gray-100' : 'text-black'}`}
+        >
           A responsive, glassmorphism styled pagination component.
         </p>
 
         {/* logical part Section */}
         <div className={`${getGlassyClasses()} p-6 mb-14 relative`}>
-          <h2 className='text-3xl font-bold mb-6 text-white'>
+          <h2
+            className={`text-3xl font-bold mb-6 ${darkMode ? 'text-gray-100' : 'text-black'}`}
+          >
             Pagination logic
           </h2>
           <div className='relative'>
-            <pre className='bg-gray-800 text-white p-6 rounded-lg overflow-x-auto whitespace-pre-wrap max-sm:text-[0.55rem]'>
+            <pre
+              className={`${darkMode ? 'bg-gray-800 text-white' : 'bg-white text-black'} p-6 rounded-lg overflow-x-auto whitespace-pre-wrap max-sm:p-2 max-sm:text-[0.55rem]`}
+            >
               {paginationLogicCode}
             </pre>
-            <CopyButton text={paginationLogicCode} codeKey='paginationLogin' />
+            <CopyButton
+              text={paginationLogicCode}
+              codeKey='paginationLogin'
+              darkMode={darkMode}
+            />
           </div>
         </div>
 
         {/* Basic Usage Section */}
         <div className={`${getGlassyClasses()} p-6 mb-14 relative`}>
-          <h2 className='text-3xl font-bold mb-6 text-white'>Basic Usage</h2>
+          <h2
+            className={`text-3xl font-bold mb-6 ${darkMode ? 'text-gray-100' : 'text-black'}`}
+          >
+            Basic Usage
+          </h2>
           <div className='relative'>
-            <pre className='bg-gray-800 text-white p-6 rounded-lg overflow-x-auto whitespace-pre-wrap max-sm:text-[0.55rem]'>
+            <pre
+              className={`${darkMode ? 'bg-gray-800 text-white' : 'bg-white text-black'} p-6 rounded-lg overflow-x-auto whitespace-pre-wrap max-sm:p-2 max-sm:text-[0.55rem]`}
+            >
               {basicPaginationCode}
             </pre>
-            <CopyButton text={basicPaginationCode} codeKey='basicPagination' />
+            <CopyButton
+              text={basicPaginationCode}
+              codeKey='basicPagination'
+              darkMode={darkMode}
+            />
           </div>
         </div>
 
         {/* Props Table */}
         <div className={`${getGlassyClasses()} p-6 mb-14`}>
-          <h2 className='text-3xl font-bold mb-6 text-white'>Props</h2>
+          <h2
+            className={`text-3xl font-bold mb-6 ${darkMode ? 'text-gray-100' : 'text-black'}`}
+          >
+            Props
+          </h2>
           <div className='overflow-x-auto'>
             <table className='w-full'>
               <thead>
-                <tr className='bg-white bg-opacity-20'>
-                  <th className='text-left p-2 text-white'>Prop</th>
-                  <th className='text-left p-2 text-white'>Type</th>
-                  <th className='text-left p-2 text-white'>Default</th>
-                  <th className='text-left p-2 text-white'>Description</th>
+                <tr
+                  className={`${darkMode ? 'bg-white' : 'bg-black'} bg-opacity-20`}
+                >
+                  <th className={tableHeadingStyles}>Prop</th>
+                  <th className={tableHeadingStyles}>Type</th>
+                  <th className={tableHeadingStyles}>Default</th>
+                  <th className={tableHeadingStyles}>Description</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
-                  <td className='p-2 text-white'>total</td>
-                  <td className='p-2 text-white'>number</td>
-                  <td className='p-2 text-white'>-</td>
-                  <td className='p-2 text-white'>Total number of items</td>
+                  <td className={tableDataStyles}>total</td>
+                  <td className={tableDataStyles}>number</td>
+                  <td className={tableDataStyles}>-</td>
+                  <td className={tableDataStyles}>Total number of items</td>
                 </tr>
-                <tr className='bg-white bg-opacity-10'>
-                  <td className='p-2 text-white'>currentPage</td>
-                  <td className='p-2 text-white'>number</td>
-                  <td className='p-2 text-white'>1</td>
-                  <td className='p-2 text-white'>The current active page</td>
-                </tr>
-                <tr>
-                  <td className='p-2 text-white'>pageSize</td>
-                  <td className='p-2 text-white'>number</td>
-                  <td className='p-2 text-white'>10</td>
-                  <td className='p-2 text-white'>Number of items per page</td>
-                </tr>
-                <tr className='bg-white bg-opacity-10'>
-                  <td className='p-2 text-white'>onPageChange</td>
-                  <td className='p-2 text-white'>function</td>
-                  <td className='p-2 text-white'>-</td>
-                  <td className='p-2 text-white'>Callback when page changes</td>
+                <tr
+                  className={`${darkMode ? 'bg-white' : 'bg-black'} bg-opacity-10`}
+                >
+                  <td className={tableDataStyles}>currentPage</td>
+                  <td className={tableDataStyles}>number</td>
+                  <td className={tableDataStyles}>1</td>
+                  <td className={tableDataStyles}>The current active page</td>
                 </tr>
                 <tr>
-                  <td className='p-2 text-white'>maxVisiblePages</td>
-                  <td className='p-2 text-white'>Number</td>
-                  <td className='p-2 text-white'>5</td>
-                  <td className='p-2 text-white'>Number of page to show</td>
+                  <td className={tableDataStyles}>pageSize</td>
+                  <td className={tableDataStyles}>number</td>
+                  <td className={tableDataStyles}>10</td>
+                  <td className={tableDataStyles}>Number of items per page</td>
+                </tr>
+                <tr
+                  className={`${darkMode ? 'bg-white' : 'bg-black'} bg-opacity-10`}
+                >
+                  <td className={tableDataStyles}>onPageChange</td>
+                  <td className={tableDataStyles}>function</td>
+                  <td className={tableDataStyles}>-</td>
+                  <td className={tableDataStyles}>
+                    Callback when page changes
+                  </td>
+                </tr>
+                <tr>
+                  <td className={tableDataStyles}>maxVisiblePages</td>
+                  <td className={tableDataStyles}>Number</td>
+                  <td className={tableDataStyles}>5</td>
+                  <td className={tableDataStyles}>Number of page to show</td>
                 </tr>
               </tbody>
             </table>

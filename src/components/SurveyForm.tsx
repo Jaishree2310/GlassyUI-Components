@@ -1,43 +1,41 @@
 import React, { useState, useEffect } from 'react';
 import { z } from 'zod';
-import { useNavigate } from 'react-router-dom'; // Import useHistory for navigation
 
-const DonationPage: React.FC<{ darkMode: boolean }> = ({ darkMode }) => {
+const SurveyForm: React.FC = () => {
   const [isHovering, setIsHovering] = useState(false);
   const [formData, setFormData] = useState({
-    amount: '',
     name: '',
     email: '',
+    feedback: '',
+    rating: '',
   });
   const [errors, setErrors] = useState({
-    amount: '',
     name: '',
     email: '',
+    feedback: '',
+    rating: '',
   });
-  const [isSubmitted, setIsSubmitted] = useState(false); // New state variable
 
-  const donationSchema = z.object({
-    amount: z
-      .string()
-      .regex(/^\d+$/, { message: 'Amount must be a number' })
-      .min(1, { message: 'Amount is required' }),
+  const surveySchema = z.object({
     name: z.string().min(1, { message: 'Name is required' }),
     email: z.string().email({ message: 'Invalid email format' }),
+    feedback: z.string().min(1, { message: 'Feedback is required' }),
+    rating: z.string().min(1, { message: 'Rating is required' }),
   });
 
   useEffect(() => {
-    document.body.style.backgroundColor = darkMode ? '#3f434a' : '#ffffff';
+    document.body.style.backgroundColor = '#3f434a';
     return () => {
       document.body.style.backgroundColor = '';
     };
-  }, [darkMode]);
+  }, []);
 
   const containerStyle: React.CSSProperties = {
     maxWidth: '500px',
     margin: '70px auto',
     padding: '40px',
     background:
-      'linear-gradient(180deg, rgba(255, 255, 255, 0.01), rgba(255, 255, 255, 0.1)',
+      'linear-gradient(180deg, rgba(255, 255, 255, 0.01), rgba(255, 255, 255, 0.1))',
     borderRadius: '20px',
     border: '1px solid rgba(255, 255, 255, 0.2)',
     textAlign: 'center',
@@ -57,7 +55,7 @@ const DonationPage: React.FC<{ darkMode: boolean }> = ({ darkMode }) => {
   const paragraphStyle: React.CSSProperties = {
     fontSize: '1.2rem',
     marginBottom: '30px',
-    color: darkMode ? '#e0e0e0' : '#202020',
+    color: '#e0e0e0',
   };
 
   const formStyle: React.CSSProperties = {
@@ -71,7 +69,7 @@ const DonationPage: React.FC<{ darkMode: boolean }> = ({ darkMode }) => {
     textAlign: 'left',
     marginBottom: '10px',
     fontWeight: '600',
-    color: darkMode ? '#eeeeee' : '#202020',
+    color: '#eeeeee',
   };
 
   const inputStyle: React.CSSProperties = {
@@ -116,17 +114,6 @@ const DonationPage: React.FC<{ darkMode: boolean }> = ({ darkMode }) => {
     fontSize: '1.2rem',
   };
 
-  const homeButtonStyle: React.CSSProperties = {
-    marginTop: '20px',
-    padding: '14px 24px',
-    background: 'linear-gradient(90deg, #00c6ff, #0072ff)',
-    color: '#ffffff',
-    border: 'none',
-    borderRadius: '25px',
-    fontSize: '1.2rem',
-    cursor: 'pointer',
-  };
-
   const handleMouseEnter = () => {
     setIsHovering(true);
   };
@@ -135,7 +122,9 @@ const DonationPage: React.FC<{ darkMode: boolean }> = ({ darkMode }) => {
     setIsHovering(false);
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
   };
@@ -143,10 +132,9 @@ const DonationPage: React.FC<{ darkMode: boolean }> = ({ darkMode }) => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      donationSchema.parse(formData);
-      setErrors({ amount: '', name: '', email: '' });
-      setIsSubmitted(true); // Set the submitted state to true
-      alert('Form submitted successfully!');
+      surveySchema.parse(formData);
+      setErrors({ name: '', email: '', feedback: '', rating: '' });
+      alert('Survey submitted successfully!');
     } catch (err: any) {
       const formattedErrors: any = {};
       err.errors.forEach((error: any) => {
@@ -156,36 +144,13 @@ const DonationPage: React.FC<{ darkMode: boolean }> = ({ darkMode }) => {
     }
   };
 
-  const handleHomeRedirect = () => {
-    // Redirect to the homepage (you can use the react-router-dom's useHistory)
-    window.location.href = '/'; // Change this to your homepage URL or use a router
-  };
-
   return (
     <div style={containerStyle}>
-      <h1 style={headingStyle}>Support Us!</h1>
+      <h1 style={headingStyle}>Survey Form</h1>
       <p style={paragraphStyle}>
-        Your contributions help us continue our work.
+        We would love to hear your feedback to improve our services.
       </p>
       <form noValidate style={formStyle} onSubmit={handleSubmit}>
-        <label htmlFor='amount' style={labelStyle}>
-          Donation Amount:
-        </label>
-        <input
-          type='text'
-          id='amount'
-          name='amount'
-          placeholder='Enter amount in Rupees'
-          style={{
-            ...inputStyle,
-            ...(formData.amount ? inputFocusStyle : {}),
-          }}
-          value={formData.amount}
-          onChange={handleChange}
-          required
-        />
-        {errors.amount && <p style={errorStyle}>{errors.amount}</p>}
-
         <label htmlFor='name' style={labelStyle}>
           Your Name:
         </label>
@@ -222,6 +187,43 @@ const DonationPage: React.FC<{ darkMode: boolean }> = ({ darkMode }) => {
         />
         {errors.email && <p style={errorStyle}>{errors.email}</p>}
 
+        <label htmlFor='feedback' style={labelStyle}>
+          Feedback:
+        </label>
+        <textarea
+          id='feedback'
+          name='feedback'
+          placeholder='Share your feedback'
+          rows={4}
+          style={{
+            ...inputStyle,
+            ...(formData.feedback ? inputFocusStyle : {}),
+            resize: 'none',
+          }}
+          value={formData.feedback}
+          onChange={handleChange}
+          required
+        />
+        {errors.feedback && <p style={errorStyle}>{errors.feedback}</p>}
+
+        <label htmlFor='rating' style={labelStyle}>
+          Rating (1 to 5):
+        </label>
+        <input
+          type='text'
+          id='rating'
+          name='rating'
+          placeholder='Rate us'
+          style={{
+            ...inputStyle,
+            ...(formData.rating ? inputFocusStyle : {}),
+          }}
+          value={formData.rating}
+          onChange={handleChange}
+          required
+        />
+        {errors.rating && <p style={errorStyle}>{errors.rating}</p>}
+
         <button
           type='submit'
           style={{
@@ -231,17 +233,11 @@ const DonationPage: React.FC<{ darkMode: boolean }> = ({ darkMode }) => {
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
         >
-          Donate Now
+          Submit Feedback
         </button>
       </form>
-
-      {isSubmitted && ( // Conditionally render the Home button
-        <button onClick={handleHomeRedirect} style={homeButtonStyle}>
-          Go to Home
-        </button>
-      )}
     </div>
   );
 };
 
-export default DonationPage;
+export default SurveyForm;

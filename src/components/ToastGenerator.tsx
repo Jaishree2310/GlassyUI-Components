@@ -10,9 +10,10 @@ interface GeneratorProps {
       }[]
     >
   >;
+  darkMode: boolean;
 }
 
-const ToastGenerator: React.FC<GeneratorProps> = ({ toaster }) => {
+const ToastGenerator: React.FC<GeneratorProps> = ({ toaster, darkMode }) => {
   const addItem = () => {
     const toastData = [
       {
@@ -92,7 +93,7 @@ const ToastGenerator: React.FC<GeneratorProps> = ({ toaster }) => {
   return (
     <>
       <button
-        className={`${getGlassyClasses()} px-4 py-2 hover:bg-white/20`}
+        className={`${getGlassyClasses()} px-4 py-2 ${darkMode ? 'hover:bg-white/40 ' : 'hover:bg-black/30'}`}
         onClick={addItem}
       >
         Show Toast

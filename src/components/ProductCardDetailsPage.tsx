@@ -2,15 +2,20 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ArrowLeft, Copy, Check } from 'lucide-react';
 
-const ProductCardDetailsPage: React.FC = () => {
+
+const ProductCardDetailsPage: React.FC<{ darkMode: boolean }> = ({
+  darkMode,
+}) => {
+
   const navigate = useNavigate();
   const [copiedStates, setCopiedStates] = useState<{ [key: string]: boolean }>(
     {},
   );
 
   const getGlassyClasses = (opacity = 5) => {
-    return `backdrop-filter backdrop-blur-lg bg-white bg-opacity-${opacity} 
-      border border-white border-opacity-20 rounded-lg shadow-lg transition-all duration-300`;
+
+    return `backdrop-filter backdrop-blur-lg ${darkMode ? 'bg-white/30 border-white/20' : 'bg-black/10 border-black/20'} bg-opacity-${opacity} border border-opacity-20 rounded-lg shadow-lg transition-all duration-300`;
+
   };
 
   const copyToClipboard = (text: string, key: string) => {
@@ -23,19 +28,22 @@ const ProductCardDetailsPage: React.FC = () => {
     });
   };
 
-  const CopyButton: React.FC<{ text: string; codeKey: string }> = ({
-    text,
-    codeKey,
-  }) => (
+
+  const CopyButton: React.FC<{
+    text: string;
+    codeKey: string;
+    darkMode: boolean;
+  }> = ({ text, codeKey, darkMode }) => (
     <button
       onClick={() => copyToClipboard(text, codeKey)}
-      className={`absolute top-2 right-2 ${getGlassyClasses()} p-2 hover:bg-white/40 transition-all duration-300 z-10`}
+      className={`absolute top-2 right-2 ${getGlassyClasses()} p-2 ${darkMode ? 'text-white hover:bg-white/40' : 'text-black hover:bg-black/30'} transition-all duration-300`}
+
       title='Copy to clipboard'
     >
       {copiedStates[codeKey] ? (
         <Check size={16} className='text-green-600' />
       ) : (
-        <Copy size={16} className='text-white' />
+        <Copy size={16} className={darkMode ? 'text-gray-100' : 'text-black'} />
       )}
     </button>
   );
@@ -117,8 +125,8 @@ const ProductCardDetailsPage: React.FC = () => {
     ),
   };
 
-  const productCardCode = `
-          const getGlassyClasses = (opacity = 5) => { return \`backdrop-filter backdrop-blur-lg bg-white bg-opacity-$\{opacity} border border-white border-opacity-20 rounded-lg shadow-lg transition-all duration-300\`; };
+  const productCardCode = `const getGlassyClasses = (opacity = 5) => { return \`backdrop-filter backdrop-blur-lg bg-white bg-opacity-$\{opacity} border border-white border-opacity-20 rounded-lg shadow-lg transition-all duration-300\`; };
+
 
      <section className={\`$\{getGlassyClasses()} p-6 mb-14 relative\`}>
             <div className="container px-5 py-16 mx-auto">
@@ -179,8 +187,8 @@ const ProductCardDetailsPage: React.FC = () => {
         </section>
   `;
 
-  const svgUsed = `
-    const svgs = {
+
+  const svgUsed = `const svgs = {
             star: (
                 <svg fill="currentColor" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-4 h-4 text-blue-400" viewBox="0 0 24 24">
                     <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
@@ -213,97 +221,143 @@ const ProductCardDetailsPage: React.FC = () => {
             )
         };`;
 
+  const tableHeadingStyles = `text-left p-2 ${darkMode ? 'text-gray-100' : 'text-black'}`;
+  const tableDataStyles = `p-2 ${darkMode ? 'text-gray-200' : 'text-black/80'}`;
+
   return (
-    <div className='min-h-screen p-8 font-sans bg-gradient-to-r from-gray-800 via-gray-900 to-black text-white relative'>
+    <div
+      className={`min-h-screen p-8 font-sans bg-gradient-to-r ${darkMode ? 'from-gray-800 via-gray-900 to-black text-white' : 'from-white via-black/10 to-black/20 text-black'} relative`}
+    >
       <div className='relative z-10'>
         <button
           onClick={() => navigate(-1)}
-          className={`mb-8 flex items-center ${getGlassyClasses(10)} px-4 py-2 hover:bg-white/40 transition-all duration-300 text-gray-300`}
+          className={`mb-8 flex items-center ${getGlassyClasses(10)} px-4 py-2 ${darkMode ? 'hover:bg-white/40 text-white' : 'hover:bg-black/30 text-black'} transition-all duration-300`}
+
         >
           <ArrowLeft size={20} className='mr-2' />
           Back to Components
         </button>
 
-        <h1 className='text-6xl font-bold mb-8 text-white'>Product Card</h1>
-        <p className='text-xl mb-8 text-white'>
+
+        <h1
+          className={`text-6xl font-bold mb-8 ${darkMode ? 'text-white' : 'text-black'}`}
+        >
+          Product Card
+        </h1>
+        <p
+          className={`text-xl mb-8 ${darkMode ? 'text-gray-100' : 'text-black'}`}
+        >
+
           A simple product card to showcase an item for sale.
         </p>
 
         <div className={`${getGlassyClasses()} p-8 mb-8 relative`}>
-          <h2 className='text-3xl font-bold mb-6 text-white'>Basic Usage</h2>
+
+          <h2
+            className={`text-3xl font-bold mb-6 ${darkMode ? 'text-gray-100' : 'text-black'}`}
+          >
+            Basic Usage
+          </h2>
           <div className='relative'>
-            <pre className='bg-gray-800 text-white p-6 rounded-lg overflow-x-auto whitespace-pre-wrap max-sm:text-[0.55rem]'>
+            <pre
+              className={`${darkMode ? 'bg-gray-800 text-white' : 'bg-white text-black'} p-6 rounded-lg overflow-x-auto whitespace-pre-wrap max-sm:p-2 max-sm:text-[0.55rem]`}
+            >
               {productCardCode}
             </pre>
-            <CopyButton text={productCardCode} codeKey='productCard' />
+            <CopyButton
+              text={productCardCode}
+              codeKey='productCard'
+              darkMode={darkMode}
+            />
+
           </div>
         </div>
 
         <div className={`${getGlassyClasses()} p-8 mb-8 relative`}>
-          <h2 className='text-3xl font-bold mb-6 text-white'>
+
+          <h2
+            className={`text-3xl font-bold mb-6 ${darkMode ? 'text-gray-100' : 'text-black'}`}
+          >
             SVG&apos;s Used
           </h2>
           <div className='relative'>
-            <pre className='bg-gray-800 text-white p-6 rounded-lg overflow-x-auto whitespace-pre-wrap max-sm:text-[0.55rem]'>
+            <pre
+              className={`${darkMode ? 'bg-gray-800 text-white' : 'bg-white text-black'} p-6 rounded-lg overflow-x-auto whitespace-pre-wrap max-sm:p-2 max-sm:text-[0.55rem]`}
+            >
               {svgUsed}
             </pre>
-            <CopyButton text={svgUsed} codeKey='svgUsed' />
+            <CopyButton text={svgUsed} codeKey='svgUsed' darkMode={darkMode} />
+
           </div>
         </div>
 
         <div className={`${getGlassyClasses()} p-8 mb-8`}>
-          <h2 className='text-3xl font-bold mb-6 text-white'>Props</h2>
+
+          <h2
+            className={`text-3xl font-bold mb-6 ${darkMode ? 'text-gray-100' : 'text-black'}`}
+          >
+            Props
+          </h2>
           <div className='overflow-x-auto'>
             <table className='w-full'>
               <thead>
-                <tr className='bg-white bg-opacity-20'>
-                  <th className='text-left p-2 text-gray-300'>Prop</th>
-                  <th className='text-left p-2 text-gray-300'>Type</th>
-                  <th className='text-left p-2 text-gray-300'>Default</th>
-                  <th className='text-left p-2 text-gray-300'>Description</th>
+                <tr
+                  className={`${darkMode ? 'bg-white' : 'bg-black'} bg-opacity-20`}
+                >
+                  <th className={tableHeadingStyles}>Prop</th>
+                  <th className={tableHeadingStyles}>Type</th>
+                  <th className={tableHeadingStyles}>Default</th>
+                  <th className={tableHeadingStyles}>Description</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
-                  <td className='p-2 text-gray-200'>product</td>
-                  <td className='p-2 text-gray-200'>object</td>
-                  <td className='p-2 text-gray-200'>-</td>
-                  <td className='p-2 text-gray-200'>
+
+                  <td className={tableDataStyles}>product</td>
+                  <td className={tableDataStyles}>object</td>
+                  <td className={tableDataStyles}>-</td>
+                  <td className={tableDataStyles}>
+
                     An object containing product details such as name, original
                     price, discounted price, and discount percentage.
                   </td>
                 </tr>
-                <tr>
-                  <td className='p-2 text-gray-200'>product.name</td>
-                  <td className='p-2 text-gray-200'>string</td>
-                  <td className='p-2 text-gray-200'>-</td>
-                  <td className='p-2 text-gray-200'>
-                    The name of the product.
-                  </td>
+
+                <tr
+                  className={`${darkMode ? 'bg-white' : 'bg-black'} bg-opacity-10`}
+                >
+                  <td className={tableDataStyles}>product.name</td>
+                  <td className={tableDataStyles}>string</td>
+                  <td className={tableDataStyles}>-</td>
+                  <td className={tableDataStyles}>The name of the product.</td>
                 </tr>
                 <tr>
-                  <td className='p-2 text-gray-200'>product.originalPrice</td>
-                  <td className='p-2 text-gray-200'>number</td>
-                  <td className='p-2 text-gray-200'>-</td>
-                  <td className='p-2 text-gray-200'>
+                  <td className={tableDataStyles}>product.originalPrice</td>
+                  <td className={tableDataStyles}>number</td>
+                  <td className={tableDataStyles}>-</td>
+                  <td className={tableDataStyles}>
                     The original price of the product before discount.
                   </td>
                 </tr>
-                <tr>
-                  <td className='p-2 text-gray-200'>product.discountedPrice</td>
-                  <td className='p-2 text-gray-200'>number</td>
-                  <td className='p-2 text-gray-200'>-</td>
-                  <td className='p-2 text-gray-200'>
+                <tr
+                  className={`${darkMode ? 'bg-white' : 'bg-black'} bg-opacity-10`}
+                >
+                  <td className={tableDataStyles}>product.discountedPrice</td>
+                  <td className={tableDataStyles}>number</td>
+                  <td className={tableDataStyles}>-</td>
+                  <td className={tableDataStyles}>
                     The price after applying the discount.
                   </td>
                 </tr>
                 <tr>
-                  <td className='p-2 text-gray-200'>
+
+                  <td className={tableDataStyles}>
                     product.discountPercentage
                   </td>
-                  <td className='p-2 text-gray-200'>number</td>
-                  <td className='p-2 text-gray-200'>-</td>
-                  <td className='p-2 text-gray-200'>
+                  <td className={tableDataStyles}>number</td>
+                  <td className={tableDataStyles}>-</td>
+                  <td className={tableDataStyles}>
+
                     The discount percentage applied to the product.
                   </td>
                 </tr>
@@ -313,10 +367,16 @@ const ProductCardDetailsPage: React.FC = () => {
         </div>
 
         <div className={`${getGlassyClasses()} p-8 mb-8`}>
-          <h2 className='text-3xl font-bold mb-6 text-white'>
+
+          <h2
+            className={`text-3xl font-bold mb-6 ${darkMode ? 'text-gray-100' : 'text-black'}`}
+          >
             Product Card Example
           </h2>
-          <p className='mb-6 text-lg text-white'>
+          <p
+            className={`mb-6 text-lg ${darkMode ? 'text-white' : 'text-black'}`}
+          >
+
             Customize the card&apos;s style through the className prop or inline
             styles.
           </p>
