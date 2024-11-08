@@ -11,7 +11,8 @@ import {
 import Header from './components/Header';
 import Footer from './components/Footer';
 import ScrollProgressBar from './components/ScrollProgress';
-import SurveyForm from './components/SurveyForm';
+// import SurveyForm from './components/SurveyForm'; 
+
 
 // Lazy-loaded components
 const GlassyUILandingPage = lazy(
@@ -142,8 +143,9 @@ const App: React.FC = () => {
   return (
     <Router>
        <Header />
-      {/* <ThemeToggle /> */}
-      <ScrollProgressBar /> {/* Add the ScrollProgressBar component here */}
+      <ThemeToggle />
+      <ScrollProgressBar /> {/* Anpm dd the ScrollProgressBar component here */}
+      <Suspense fallback={<div>Loading...</div>}>
       <Routes>
         <Route path='/' element={<GlassyUILandingPage />} />
         <Route path='/components' element={<GlassyUIComponentsPage />} />
@@ -182,7 +184,8 @@ const App: React.FC = () => {
         <Route path='/gallery-details' element={<GalleryDetailsPage />} />
         <Route path='*' element={<NotFoundPage />} />
       </Routes>
-      <ConditionalFooter />
+      </Suspense>
+      <ConditionalFooter darkMode={darkMode} />
  
     </Router>
   );
