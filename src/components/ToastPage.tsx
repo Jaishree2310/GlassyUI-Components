@@ -8,8 +8,8 @@ import Toast from './Toast';
 import Footer from './Footer';
 
 // Utility function for reusable glassy class styles
-const getGlassyClasses = (darkMode: boolean): string =>
-  `backdrop-filter backdrop-blur-xl ${darkMode ? 'bg-white/30 border-white/20' : 'bg-black/10 border-black/20'} border rounded-xl shadow-lg transition-all duration-300 max-sm:px-0`;
+const getGlassyClasses = (): string =>
+  'backdrop-filter backdrop-blur-xl bg-white/30 border border-white/20 rounded-xl shadow-lg transition-all duration-300 max-sm:px-0';
 
 // Function to copy text to clipboard and handle feedback
 const copyToClipboard = (
@@ -28,30 +28,29 @@ const copyToClipboard = (
   });
 };
 
-const CopyButton: React.FC<{
-  text: string;
-  codeKey: string;
-  darkMode: boolean;
-}> = ({ text, codeKey, darkMode }) => {
+const CopyButton: React.FC<{ text: string; codeKey: string }> = ({
+  text,
+  codeKey,
+}) => {
   const [copiedStates, setCopiedStates] = useState<{ [key: string]: boolean }>(
     {},
   );
   return (
     <button
       onClick={() => copyToClipboard(text, codeKey, setCopiedStates)}
-      className={`absolute top-2 right-2 ${getGlassyClasses(darkMode)} p-2 ${darkMode ? 'hover:bg-white/40' : 'hover:bg-black/30'} transition-all duration-300 z-10`}
+      className={`absolute top-2 right-2 ${getGlassyClasses()} p-2 hover:bg-white/40 transition-all duration-300 z-10`}
       aria-label='Copy to clipboard'
     >
       {copiedStates[codeKey] ? (
         <Check size={16} className='text-green-600' />
       ) : (
-        <Copy size={16} className={darkMode ? 'text-gray-100' : 'text-black'} />
+        <Copy size={16} className='text-gray-100' />
       )}
     </button>
   );
 };
 
-const ToastPage: React.FC<{ darkMode: boolean }> = ({ darkMode }) => {
+const ToastPage: React.FC = () => {
   const navigate = useNavigate();
   const [toasts, setToasts] = useState<
     { title: string; message: string; id: number }[]
@@ -199,13 +198,8 @@ const Toast: React.FC<ToastProps> = ({ id, title, message, autoDismiss = 9000, t
 }
 `;
 
-  const tableHeadingStyles = `text-left p-2 ${darkMode ? 'text-gray-100' : 'text-black'}`;
-  const tableDataStyles = `p-2 ${darkMode ? 'text-gray-200' : 'text-black/80'}`;
-
   return (
-    <div
-      className={`min-h-screen p-8 font-sans bg-gradient-to-r ${darkMode ? 'from-gray-800 via-gray-900 to-black text-white' : 'from-white via-black/10 to-black/20 text-black'} relative`}
-    >
+    <div className='min-h-screen p-8 font-sans bg-gradient-to-r from-gray-800 via-gray-900 to-black text-white relative'>
       <div
         className={`fixed w-screen h-screen flex flex-col gap-4 justify-end items-end z-[51] pointer-events-none bottom-0 right-0 p-4`}
       >
@@ -226,154 +220,110 @@ const Toast: React.FC<ToastProps> = ({ id, title, message, autoDismiss = 9000, t
         {/* Back Button */}
         <button
           onClick={() => navigate(-1)}
-          className={`mb-8 flex items-center ${getGlassyClasses(darkMode)} px-4 py-2 ${darkMode ? 'hover:bg-white/40 text-gray-100' : 'hover:bg-black/30 text-black'} transition-all duration-300`}
+          className={`mb-8 flex items-center ${getGlassyClasses()} px-4 py-2 hover:bg-white/40 transition-all duration-300 text-gray-100`}
         >
           <ArrowLeft size={20} className='mr-2' />
           Back to Components
         </button>
 
         {/* Page Title and Description */}
-        <h1
-          className={`text-6xl font-bold mb-8 ${darkMode ? 'text-white' : 'text-black'}`}
-        >
+        <h1 className='text-6xl font-bold mb-8 text-white'>
           Glassmorphic Toast
         </h1>
-        <p
-          className={`text-xl mb-8 ${darkMode ? 'text-gray-100' : 'text-black'}`}
-        >
+        <p className='text-xl mb-8 text-gray-100'>
           A glassmorphism-styled Toast component.
         </p>
 
         {/* Speed Dial Demo and Code Section */}
-        <div className={`${getGlassyClasses(darkMode)} p-8 mb-8 relative`}>
-          <ToastGenerator toaster={setToasts} darkMode={darkMode} />
-          <h2
-            className={`text-3xl font-bold mt-6 mb-6 ${darkMode ? 'text-gray-100' : 'text-black'}`}
-          >
+        <div className={`${getGlassyClasses()} p-8 mb-8 relative`}>
+          <ToastGenerator toaster={setToasts} />
+          <h2 className='text-3xl font-bold mt-6 mb-6 text-gray-100'>
             Main App
           </h2>
           {/* Basic Usage Code Block */}
           <div className='relative mb-4'>
-            <pre
-              className={`${darkMode ? 'bg-gray-800 text-white' : 'bg-white text-black'} p-6 rounded-lg overflow-x-auto whitespace-pre-wrap max-sm:p-2 max-sm:text-[0.55rem]`}
-            >
+            <pre className='bg-gray-800 text-white p-6 rounded-lg overflow-x-auto whitespace-pre-wrap max-sm:p-2 max-sm:text-[0.55rem]'>
               {basicUsage}
             </pre>
-            <CopyButton
-              text={basicUsage}
-              codeKey='basicUsage'
-              darkMode={darkMode}
-            />
+            <CopyButton text={basicUsage} codeKey='basicUsage' />
           </div>
-          <h2
-            className={`text-3xl font-bold mb-6 ${darkMode ? 'text-gray-100' : 'text-black'}`}
-          >
+          <h2 className='text-3xl font-bold mb-6 text-gray-100'>
             Toast Generator Component
           </h2>
           <div className='relative mb-4'>
-            <pre
-              className={`${darkMode ? 'bg-gray-800 text-white' : 'bg-white text-black'} p-6 rounded-lg overflow-x-auto whitespace-pre-wrap max-sm:p-2 max-sm:text-[0.55rem]`}
-            >
+            <pre className='bg-gray-800 text-white p-6 rounded-lg overflow-x-auto whitespace-pre-wrap max-sm:p-2 max-sm:text-[0.55rem]'>
               {generatorCode}
             </pre>
-            <CopyButton
-              text={generatorCode}
-              codeKey='basicUsage'
-              darkMode={darkMode}
-            />
+            <CopyButton text={generatorCode} codeKey='basicUsage' />
           </div>
-          <h2
-            className={`text-3xl font-bold mb-6 ${darkMode ? 'text-gray-100' : 'text-black'}`}
-          >
+          <h2 className='text-3xl font-bold mb-6 text-gray-100'>
             Toast Component
           </h2>
           <div className='relative mb-4'>
-            <pre
-              className={`${darkMode ? 'bg-gray-800 text-white' : 'bg-white text-black'} p-6 rounded-lg overflow-x-auto whitespace-pre-wrap max-sm:p-2 max-sm:text-[0.55rem]`}
-            >
+            <pre className='bg-gray-800 text-white p-6 rounded-lg overflow-x-auto whitespace-pre-wrap max-sm:p-2 max-sm:text-[0.55rem]'>
               {toastCode}
             </pre>
-            <CopyButton
-              text={toastCode}
-              codeKey='basicUsage'
-              darkMode={darkMode}
-            />
+            <CopyButton text={toastCode} codeKey='basicUsage' />
           </div>
-          <h2
-            className={`text-3xl font-bold mb-6 ${darkMode ? 'text-gray-100' : 'text-black'}`}
-          >
+          <h2 className='text-3xl font-bold mb-6 text-gray-100'>
             Aniamtion CSS
           </h2>
           <div className='relative mb-4'>
-            <pre
-              className={`${darkMode ? 'bg-gray-800 text-white' : 'bg-white text-black'} p-6 rounded-lg overflow-x-auto whitespace-pre-wrap max-sm:p-2 max-sm:text-[0.55rem]`}
-            >
+            <pre className='bg-gray-800 text-white p-6 rounded-lg overflow-x-auto whitespace-pre-wrap max-sm:p-2 max-sm:text-[0.55rem]'>
               {animationCSS}
             </pre>
-            <CopyButton
-              text={animationCSS}
-              codeKey='basicUsage'
-              darkMode={darkMode}
-            />
+            <CopyButton text={animationCSS} codeKey='basicUsage' />
           </div>
         </div>
 
-        <div className={`${getGlassyClasses(darkMode)} p-8 mb-8`}>
-          <h2
-            className={`text-3xl font-bold mb-6 ${darkMode ? 'text-gray-100' : 'text-black'}`}
-          >
-            Props
-          </h2>
+        <div className={`${getGlassyClasses()} p-8 mb-8`}>
+          <h2 className='text-3xl font-bold mb-6 text-gray-100'>Props</h2>
           <div className='overflow-x-auto'>
             <table className='w-full'>
               <thead>
-                <tr
-                  className={`${darkMode ? 'bg-white' : 'bg-black'} bg-opacity-20`}
-                >
-                  <th className={tableHeadingStyles}>Prop</th>
-                  <th className={tableHeadingStyles}>Type</th>
-                  <th className={tableHeadingStyles}>Default</th>
-                  <th className={tableHeadingStyles}>Description</th>
+                <tr className='bg-white bg-opacity-20'>
+                  <th className='text-left p-2 text-gray-100'>Prop</th>
+                  <th className='text-left p-2 text-gray-100'>Type</th>
+                  <th className='text-left p-2 text-gray-100'>Default</th>
+                  <th className='text-left p-2 text-gray-100'>Description</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
-                  <td className={tableDataStyles}>title</td>
-                  <td className={tableDataStyles}>string</td>
-                  <td className={tableDataStyles}>-</td>
-                  <td className={tableDataStyles}>The title of the toast</td>
+                  <td className='p-2 text-gray-200'>title</td>
+                  <td className='p-2 text-gray-200'>string</td>
+                  <td className='p-2 text-gray-200'>-</td>
+                  <td className='p-2 text-gray-200'>The title of the toast</td>
                 </tr>
-                <tr
-                  className={`${darkMode ? 'bg-white' : 'bg-black'} bg-opacity-10`}
-                >
-                  <td className={tableDataStyles}>message</td>
-                  <td className={tableDataStyles}>string</td>
-                  <td className={tableDataStyles}>-</td>
-                  <td className={tableDataStyles}>the message of the toast</td>
+                <tr className='bg-white bg-opacity-10'>
+                  <td className='p-2 text-gray-200'>message</td>
+                  <td className='p-2 text-gray-200'>string</td>
+                  <td className='p-2 text-gray-200'>-</td>
+                  <td className='p-2 text-gray-200'>
+                    the message of the toast
+                  </td>
                 </tr>
                 <tr>
-                  <td className={tableDataStyles}>autoDismiss</td>
-                  <td className={tableDataStyles}>number</td>
-                  <td className={tableDataStyles}>9000</td>
-                  <td className={tableDataStyles}>
+                  <td className='p-2 text-gray-200'>autoDismiss</td>
+                  <td className='p-2 text-gray-200'>number</td>
+                  <td className='p-2 text-gray-200'>9000</td>
+                  <td className='p-2 text-gray-200'>
                     the time in milliseconds after which the toast gets removed
                   </td>
                 </tr>
-                <tr
-                  className={`${darkMode ? 'bg-white' : 'bg-black'} bg-opacity-10`}
-                >
-                  <td className={tableDataStyles}>id</td>
-                  <td className={tableDataStyles}>number</td>
-                  <td className={tableDataStyles}>Date.now()</td>
-                  <td className={tableDataStyles}>
+                <tr className='bg-white bg-opacity-10'>
+                  <td className='p-2 text-gray-200'>id</td>
+                  <td className='p-2 text-gray-200'>number</td>
+                  <td className='p-2 text-gray-200'>Date.now()</td>
+                  <td className='p-2 text-gray-200'>
                     the id of each toast component
                   </td>
                 </tr>
                 <tr>
-                  <td className={tableDataStyles}>toaster</td>
-                  <td className={tableDataStyles}>React.SetStateAction</td>
-                  <td className={tableDataStyles}>-</td>
-                  <td className={tableDataStyles}>
+                  <td className='p-2 text-gray-200'>toaster</td>
+                  <td className='p-2 text-gray-200'>React.SetStateAction</td>
+                  <td className='p-2 text-gray-200'>-</td>
+                  <td className='p-2 text-gray-200'>
                     The main toast state setter
                   </td>
                 </tr>
@@ -383,7 +333,7 @@ const Toast: React.FC<ToastProps> = ({ id, title, message, autoDismiss = 9000, t
         </div>
       </div>
 
-      {/* <Footer /> */}
+      <Footer />
       <style jsx>{`
         .glass-footer {
           width: 100%;

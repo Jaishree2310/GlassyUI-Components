@@ -2,14 +2,15 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ArrowLeft, Copy, Check } from 'lucide-react';
 
-const GalleryDetailsPage: React.FC<{ darkMode: boolean }> = ({ darkMode }) => {
+const GalleryDetailsPage: React.FC = () => {
   const navigate = useNavigate();
   const [copiedStates, setCopiedStates] = useState<{ [key: string]: boolean }>(
     {},
   );
 
   const getGlassyClasses = (opacity = 20) => {
-    return `backdrop-filter backdrop-blur-lg ${darkMode ? 'bg-white/30 border-white/20' : 'bg-black/10 border-black/20'} bg-opacity-${opacity} border border-opacity-20 rounded-lg shadow-lg transition-all duration-300`;
+    return `backdrop-filter backdrop-blur-lg bg-white bg-opacity-${opacity} 
+      border border-white border-opacity-20 rounded-lg shadow-lg transition-all duration-300`;
   };
 
   const copyToClipboard = (text: string, key: string) => {
@@ -22,20 +23,19 @@ const GalleryDetailsPage: React.FC<{ darkMode: boolean }> = ({ darkMode }) => {
     });
   };
 
-  const CopyButton: React.FC<{
-    text: string;
-    codeKey: string;
-    darkMode: boolean;
-  }> = ({ text, codeKey, darkMode }) => (
+  const CopyButton: React.FC<{ text: string; codeKey: string }> = ({
+    text,
+    codeKey,
+  }) => (
     <button
       onClick={() => copyToClipboard(text, codeKey)}
-      className={`absolute top-2 right-2 ${getGlassyClasses()} p-2 ${darkMode ? 'text-white hover:bg-white/40' : 'text-black hover:bg-black/30'} transition-all duration-300`}
+      className={`absolute top-2 right-2 ${getGlassyClasses()} p-2 hover:bg-white/40 transition-all duration-300 z-10`}
       title='Copy to clipboard'
     >
       {copiedStates[codeKey] ? (
         <Check size={16} className='text-green-600' />
       ) : (
-        <Copy size={16} className={darkMode ? 'text-gray-100' : 'text-black'} />
+        <Copy size={16} className='text-white' />
       )}
     </button>
   );
@@ -145,135 +145,102 @@ const GalleryDetailsPage: React.FC<{ darkMode: boolean }> = ({ darkMode }) => {
             </section>
   `;
 
-  const tableHeadingStyles = `text-left p-2 ${darkMode ? 'text-gray-100' : 'text-black'}`;
-  const tableDataStyles = `p-2 ${darkMode ? 'text-gray-200' : 'text-black/80'}`;
-
   return (
-    <div
-      className={`min-h-screen p-8 font-sans bg-gradient-to-r ${darkMode ? 'from-gray-800 via-gray-900 to-black text-white' : 'from-white via-black/10 to-black/20 text-black'} relative`}
-    >
+    <div className='min-h-screen p-8 font-sans bg-gradient-to-r from-gray-800 via-gray-900 to-black text-white relative'>
       <div className='relative z-10'>
         <button
           onClick={() => navigate(-1)}
-          className={`mb-8 flex items-center ${getGlassyClasses(10)} px-4 py-2 ${darkMode ? 'hover:bg-white/40 text-white' : 'hover:bg-black/30 text-black'} transition-all duration-300`}
+          className={`mb-8 flex items-center ${getGlassyClasses(10)} px-4 py-2 hover:bg-white/40 transition-all duration-300 text-gray-300`}
         >
           <ArrowLeft size={20} className='mr-2' />
           Back to Components
         </button>
 
-        <h1
-          className={`text-6xl font-bold mb-8 ${darkMode ? 'text-white' : 'text-black'}`}
-        >
-          Gallery
-        </h1>
-        <p
-          className={`text-xl mb-8 ${darkMode ? 'text-gray-100' : 'text-black'}`}
-        >
+        <h1 className='text-6xl font-bold mb-8 text-white'>Gallery</h1>
+        <p className='text-xl mb-8 text-white'>
           A simple gallery to display images in a grid layout.
         </p>
 
         <div className={`${getGlassyClasses()} p-8 mb-8 relative`}>
-          <h2
-            className={`text-3xl font-bold mb-6 ${darkMode ? 'text-gray-100' : 'text-black'}`}
-          >
-            Basic Usage
-          </h2>
+          <h2 className='text-3xl font-bold mb-6 text-white'>Basic Usage</h2>
           <div className='relative'>
-            <pre
-              className={`${darkMode ? 'bg-gray-800 text-white' : 'bg-white text-black'} p-6 rounded-lg overflow-x-auto whitespace-pre-wrap max-sm:p-2 max-sm:text-[0.55rem]`}
-            >
+            <pre className='bg-gray-800 text-white p-6 rounded-lg overflow-x-auto whitespace-pre-wrap max-sm:text-[0.55rem]'>
               {galleryCode}
             </pre>
-            <CopyButton
-              text={galleryCode}
-              codeKey='gallery'
-              darkMode={darkMode}
-            />
+            <CopyButton text={galleryCode} codeKey='gallery' />
           </div>
         </div>
 
         <div className={`${getGlassyClasses()} p-8 mb-8`}>
-          <h2
-            className={`text-3xl font-bold mb-6 ${darkMode ? 'text-gray-100' : 'text-black'}`}
-          >
-            Props
-          </h2>
+          <h2 className='text-3xl font-bold mb-6 text-white'>Props</h2>
           <div className='overflow-x-auto'>
             <table className='w-full'>
               <thead>
-                <tr
-                  className={`${darkMode ? 'bg-white' : 'bg-black'} bg-opacity-20`}
-                >
-                  <th className={tableHeadingStyles}>Prop</th>
-                  <th className={tableHeadingStyles}>Type</th>
-                  <th className={tableHeadingStyles}>Default</th>
-                  <th className={tableHeadingStyles}>Description</th>
+                <tr className='bg-white bg-opacity-20'>
+                  <th className='text-left p-2 text-gray-300'>Prop</th>
+                  <th className='text-left p-2 text-gray-300'>Type</th>
+                  <th className='text-left p-2 text-gray-300'>Default</th>
+                  <th className='text-left p-2 text-gray-300'>Description</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
-                  <td className={tableDataStyles}>images</td>
-                  <td className={tableDataStyles}>array</td>
-                  <td className={tableDataStyles}>[]</td>
-                  <td className={tableDataStyles}>
+                  <td className='p-2 text-gray-200'>images</td>
+                  <td className='p-2 text-gray-200'>array</td>
+                  <td className='p-2 text-gray-200'>[]</td>
+                  <td className='p-2 text-gray-200'>
                     Array of image objects with `src` and `alt` properties
                   </td>
                 </tr>
-                <tr
-                  className={`${darkMode ? 'bg-white' : 'bg-black'} bg-opacity-10`}
-                >
-                  <td className={tableDataStyles}>className</td>
-                  <td className={tableDataStyles}>string</td>
-                  <td className={tableDataStyles}>-</td>
-                  <td className={tableDataStyles}>
+                <tr className='bg-white bg-opacity-10'>
+                  <td className='p-2 text-gray-200'>className</td>
+                  <td className='p-2 text-gray-200'>string</td>
+                  <td className='p-2 text-gray-200'>-</td>
+                  <td className='p-2 text-gray-200'>
                     Custom classes to style the gallery or images
                   </td>
                 </tr>
                 <tr>
-                  <td className={tableDataStyles}>layout</td>
-                  <td className={tableDataStyles}>string</td>
-                  <td className={tableDataStyles}>two-column</td>
-                  <td className={tableDataStyles}>
+                  <td className='p-2 text-gray-200'>layout</td>
+                  <td className='p-2 text-gray-200'>string</td>
+                  <td className='p-2 text-gray-200'>two-column</td>
+                  <td className='p-2 text-gray-200'>
                     Defines the layout of the gallery. Options could include
                     two-column, three-column, or grid.
                   </td>
                 </tr>
-                <tr
-                  className={`${darkMode ? 'bg-white' : 'bg-black'} bg-opacity-10`}
-                >
-                  <td className={tableDataStyles}>hoverEffect</td>
-                  <td className={tableDataStyles}>boolean</td>
-                  <td className={tableDataStyles}>true</td>
-                  <td className={tableDataStyles}>
+                <tr className='bg-white bg-opacity-10'>
+                  <td className='p-2 text-gray-200'>hoverEffect</td>
+                  <td className='p-2 text-gray-200'>boolean</td>
+                  <td className='p-2 text-gray-200'>true</td>
+                  <td className='p-2 text-gray-200'>
                     Enables or disables hover effects on images (e.g., scaling,
                     shadow).
                   </td>
                 </tr>
                 <tr>
-                  <td className={tableDataStyles}>spacing</td>
-                  <td className={tableDataStyles}>string</td>
-                  <td className={tableDataStyles}>normal</td>
-                  <td className={tableDataStyles}>
+                  <td className='p-2 text-gray-200'>spacing</td>
+                  <td className='p-2 text-gray-200'>string</td>
+                  <td className='p-2 text-gray-200'>normal</td>
+                  <td className='p-2 text-gray-200'>
                     Controls spacing between images. Options could include
                     small, normal, large.
                   </td>
                 </tr>
-                <tr
-                  className={`${darkMode ? 'bg-white' : 'bg-black'} bg-opacity-10`}
-                >
-                  <td className={tableDataStyles}>borderRadius</td>
-                  <td className={tableDataStyles}>string</td>
-                  <td className={tableDataStyles}>15px</td>
-                  <td className={tableDataStyles}>
+                <tr className='bg-white bg-opacity-10'>
+                  <td className='p-2 text-gray-200'>borderRadius</td>
+                  <td className='p-2 text-gray-200'>string</td>
+                  <td className='p-2 text-gray-200'>15px</td>
+                  <td className='p-2 text-gray-200'>
                     Specifies the border radius for the images (e.g., 10px,
                     20px, 50%).
                   </td>
                 </tr>
                 <tr>
-                  <td className={tableDataStyles}>containerClasses</td>
-                  <td className={tableDataStyles}>string</td>
-                  <td className={tableDataStyles}>-</td>
-                  <td className={tableDataStyles}>
+                  <td className='p-2 text-gray-200'>containerClasses</td>
+                  <td className='p-2 text-gray-200'>string</td>
+                  <td className='p-2 text-gray-200'>-</td>
+                  <td className='p-2 text-gray-200'>
                     Custom classes to apply to the gallery container.
                   </td>
                 </tr>
@@ -283,15 +250,11 @@ const GalleryDetailsPage: React.FC<{ darkMode: boolean }> = ({ darkMode }) => {
         </div>
 
         <div className={`${getGlassyClasses()} p-8 mb-8`}>
-          <h2
-            className={`text-3xl font-bold mb-6 ${darkMode ? 'text-gray-100' : 'text-black'}`}
-          >
+          <h2 className='text-3xl font-bold mb-6 text-white'>
             Gallery Example
           </h2>
 
-          <p
-            className={`mb-6 text-lg ${darkMode ? 'text-white' : 'text-black'}`}
-          >
+          <p className='mb-6 text-lg text-white'>
             Customize the gallery layout or image styles using custom CSS or
             Tailwind classes.
           </p>

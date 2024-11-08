@@ -1,7 +1,7 @@
 // src/components/ScrollProgressBar.tsx
 import React, { useEffect, useState } from 'react';
 
-const ScrollProgressBar: React.FC<{ darkMode: boolean }> = ({ darkMode }) => {
+const ScrollProgressBar: React.FC = () => {
   const [scrollWidth, setScrollWidth] = useState(0);
 
   const handleScroll = () => {
@@ -26,7 +26,7 @@ const ScrollProgressBar: React.FC<{ darkMode: boolean }> = ({ darkMode }) => {
         left: 0,
         height: '5px',
         width: `${scrollWidth}%`,
-        backgroundColor: darkMode ? 'white' : 'gray', // Change this color as needed
+        backgroundColor: 'white', // Change this color as needed
         transition: 'width 0.2s ease-in-out',
         zIndex: 9999, // High z-index to appear on top of all other elements
       }}

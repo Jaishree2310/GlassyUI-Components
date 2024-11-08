@@ -2,7 +2,6 @@ import React, { useState, ReactNode } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ArrowLeft, Copy, Check, X, Wifi, CreditCard } from 'lucide-react';
 import BackToTopButton from './BackToTop';
-import { date } from 'zod';
 
 interface ButtonProps {
   onClick: () => void;
@@ -32,25 +31,13 @@ const CopyButton: React.FC<{
   copiedStates: { [key: string]: boolean };
   copyToClipboard: (text: string, key: string) => void;
   getGlassyClasses: () => string;
-  darkMode: boolean;
-}> = ({
-  text,
-  codeKey,
-  copiedStates,
-  copyToClipboard,
-  getGlassyClasses,
-  darkMode,
-}) => (
+}> = ({ text, codeKey, copiedStates, copyToClipboard, getGlassyClasses }) => (
   <button
     onClick={() => copyToClipboard(text, codeKey)}
-    className={`absolute top-2 right-2 ${getGlassyClasses()} p-2 ${darkMode ? 'text-white hover:bg-white/40' : 'text-black hover:bg-black/30'} transition-all duration-300 z-10`}
+    className={`absolute top-4 right-4 ${getGlassyClasses()} p-2 hover:bg-opacity-20 transition-all duration-300`}
     title='Copy to clipboard'
   >
-    {copiedStates[codeKey] ? (
-      <Check size={20} />
-    ) : (
-      <Copy size={20} className={darkMode ? 'text-gray-100' : 'text-black'} />
-    )}
+    {copiedStates[codeKey] ? <Check size={20} /> : <Copy size={20} />}
   </button>
 );
 
@@ -116,8 +103,7 @@ const CustomPopup: React.FC<{
   getGlassyClasses: () => string;
   copiedStates: { [key: string]: boolean };
   copyToClipboard: (text: string, key: string) => void;
-  darkMode: boolean;
-}> = ({ getGlassyClasses, copiedStates, copyToClipboard, darkMode }) => {
+}> = ({ getGlassyClasses, copiedStates, copyToClipboard }) => {
   const [theme, setTheme] = useState<
     'blue' | 'brown' | 'white' | 'black' | 'custom'
   >('blue');
@@ -322,10 +308,8 @@ const CustomPopup: React.FC<{
         </div>
       </Popup>
 
-      <div className='mt-4 p-2 rounded relative'>
-        <pre
-          className={`${darkMode ? 'bg-gray-800 text-white' : 'bg-white text-black'} p-6 rounded-lg overflow-x-auto whitespace-pre-wrap max-sm:p-2 max-sm:text-[0.55rem]`}
-        >
+      <div className='mt-4 bg-gray-800 p-2 rounded relative'>
+        <pre className='text-sm overflow-x-auto text-white max-sm:text-[0.55rem]'>
           {`const Popup = ({ isOpen, onClose, children, bg, textColor, borderColor, opacity, blur }) => {
   if (!isOpen) return null;
 
@@ -378,21 +362,21 @@ const CustomPopup: React.FC<{
           copiedStates={copiedStates}
           copyToClipboard={copyToClipboard}
           getGlassyClasses={getGlassyClasses}
-          darkMode={darkMode}
         />
       </div>
     </div>
   );
 };
 
-const PopupDetailPage: React.FC<{ darkMode: boolean }> = ({ darkMode }) => {
+const PopupDetailPage: React.FC = () => {
   const navigate = useNavigate();
   const [copiedStates, setCopiedStates] = useState<{ [key: string]: boolean }>(
     {},
   );
 
   const getGlassyClasses = (opacity = 20) => {
-    return `backdrop-filter backdrop-blur-lg ${darkMode ? 'bg-white/30 border-white/20' : 'bg-black/10 border-black/20'} bg-opacity-${opacity} border border-opacity-20 rounded-lg shadow-lg transition-all duration-300`;
+    return `backdrop-filter backdrop-blur-lg bg-white bg-opacity-${opacity} 
+  border border-white border-opacity-20 rounded-lg shadow-lg transition-all duration-300`;
   };
 
   const copyToClipboard = (text: string, key: string) => {
@@ -405,45 +389,30 @@ const PopupDetailPage: React.FC<{ darkMode: boolean }> = ({ darkMode }) => {
     });
   };
 
-  const tableHeadingStyles = `text-left p-2 ${darkMode ? 'text-gray-100' : 'text-black'}`;
-  const tableDataStyles = `p-2 ${darkMode ? 'text-gray-200' : 'text-black/80'}`;
-
   return (
-    <div
-      className={`min-h-screen p-8 font-sans bg-gradient-to-r ${darkMode ? 'from-gray-800 via-gray-900 to-black text-white' : 'from-white via-black/10 to-black/20 text-black'} relative`}
-    >
+    <div className='min-h-screen p-8 font-sans bg-gradient-to-r from-gray-800 via-gray-900 to-black text-white relative'>
       <BackToTopButton />
       <button
         onClick={() => navigate(-1)}
-        className={`mb-8 flex items-center ${getGlassyClasses(10)} px-4 py-2 ${darkMode ? 'hover:bg-white/40 text-white' : 'hover:bg-black/30 text-black'} transition-all duration-300`}
+        className={`mb-8 flex items-center ${getGlassyClasses(10)} px-4 py-2 hover:bg-white/40 transition-all duration-300 text-gray-100`}
       >
         <ArrowLeft size={20} className='mr-2' />
         Back to Components
       </button>
 
-      <h1
-        className={`text-6xl font-bold mb-8 ${darkMode ? 'text-white' : 'text-black'}`}
-      >
+      <h1 className='text-6xl font-bold mb-8 text-gray-100'>
         Glassmorphism Popup
       </h1>
 
-      <p
-        className={`text-xl mb-8 ${darkMode ? 'text-gray-100' : 'text-black'}`}
-      >
+      <p className='text-xl mb-8 text-gray-100'>
         A customizable, glassmorphism-styled popup component for displaying
         modal content with adjustable blur and opacity effects.
       </p>
 
       {/* Basic Usage */}
       <div className={`${getGlassyClasses()} p-6 mb-14 relative`}>
-        <h2
-          className={`text-3xl font-bold mb-6 ${darkMode ? 'text-gray-100' : 'text-black'}`}
-        >
-          Basic Usage
-        </h2>
-        <pre
-          className={`${darkMode ? 'bg-gray-800 text-white' : 'bg-white text-black'} p-6 rounded-lg overflow-x-auto whitespace-pre-wrap max-sm:p-2 max-sm:text-[0.55rem]`}
-        >
+        <h2 className='text-3xl font-bold mb-4 text-gray-100'>Basic Usage</h2>
+        <pre className='bg-gray-800 text-white p-4 rounded-lg overflow-x-auto max-sm:text-[0.55rem]'>
           {`<div>
   <button onClick={openPopup}>Open Popup</button>
   <Popup
@@ -462,7 +431,6 @@ const PopupDetailPage: React.FC<{ darkMode: boolean }> = ({ darkMode }) => {
 </div>`}
         </pre>
         <CopyButton
-          darkMode={darkMode}
           text={`import React, { useState } from 'react';
 import { Popup } from './components';
 
@@ -502,83 +470,59 @@ function App() {
 
       {/* Props */}
       <div className={`${getGlassyClasses()} p-6 mb-14`}>
-        <h2
-          className={`text-3xl font-bold mb-6 ${darkMode ? 'text-gray-100' : 'text-black'}`}
-        >
-          Props
-        </h2>
+        <h2 className='text-3xl font-bold mb-4 text-gray-100'>Props</h2>
         <div className='overflow-x-auto'>
           <table className='w-full'>
             <thead>
-              <tr
-                className={`${darkMode ? 'bg-white' : 'bg-black'} bg-opacity-20`}
-              >
-                <th className={tableHeadingStyles}>Prop</th>
-                <th className={tableHeadingStyles}>Type</th>
-                <th className={tableHeadingStyles}>Default</th>
-                <th className={tableHeadingStyles}>Description</th>
+              <tr className='bg-white bg-opacity-20'>
+                <th className='text-left p-2'>Prop</th>
+                <th className='text-left p-2'>Type</th>
+                <th className='text-left p-2'>Default</th>
+                <th className='text-left p-2'>Description</th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <td className={tableDataStyles}>isOpen</td>
-                <td className={tableDataStyles}>boolean</td>
-                <td className={tableDataStyles}>false</td>
-                <td className={tableDataStyles}>
-                  Controls whether the popup is visible
-                </td>
+                <td className='p-2'>isOpen</td>
+                <td className='p-2'>boolean</td>
+                <td className='p-2'>false</td>
+                <td className='p-2'>Controls whether the popup is visible</td>
               </tr>
-              <tr
-                className={`${darkMode ? 'bg-white' : 'bg-black'} bg-opacity-10`}
-              >
-                <td className={tableDataStyles}>onClose</td>
-                <td className={tableDataStyles}>function</td>
-                <td className={tableDataStyles}>-</td>
-                <td className={tableDataStyles}>
-                  Function to call when closing the popup
-                </td>
+              <tr className='bg-white bg-opacity-10'>
+                <td className='p-2'>onClose</td>
+                <td className='p-2'>function</td>
+                <td className='p-2'>-</td>
+                <td className='p-2'>Function to call when closing the popup</td>
               </tr>
               <tr>
-                <td className={tableDataStyles}>bg</td>
-                <td className={tableDataStyles}>string</td>
-                <td className={tableDataStyles}>'#ffffff'</td>
-                <td className={tableDataStyles}>
-                  Background color of the popup content
-                </td>
+                <td className='p-2'>bg</td>
+                <td className='p-2'>string</td>
+                <td className='p-2'>'#ffffff'</td>
+                <td className='p-2'>Background color of the popup content</td>
               </tr>
-              <tr
-                className={`${darkMode ? 'bg-white' : 'bg-black'} bg-opacity-10`}
-              >
-                <td className={tableDataStyles}>textColor</td>
-                <td className={tableDataStyles}>string</td>
-                <td className={tableDataStyles}>'#000000'</td>
-                <td className={tableDataStyles}>
-                  Text color of the popup content
-                </td>
+              <tr className='bg-white bg-opacity-10'>
+                <td className='p-2'>textColor</td>
+                <td className='p-2'>string</td>
+                <td className='p-2'>'#000000'</td>
+                <td className='p-2'>Text color of the popup content</td>
               </tr>
               <tr>
-                <td className={tableDataStyles}>borderColor</td>
-                <td className={tableDataStyles}>string</td>
-                <td className={tableDataStyles}>'#000000'</td>
-                <td className={tableDataStyles}>Border color of the popup</td>
+                <td className='p-2'>borderColor</td>
+                <td className='p-2'>string</td>
+                <td className='p-2'>'#000000'</td>
+                <td className='p-2'>Border color of the popup</td>
               </tr>
-              <tr
-                className={`${darkMode ? 'bg-white' : 'bg-black'} bg-opacity-10`}
-              >
-                <td className={tableDataStyles}>opacity</td>
-                <td className={tableDataStyles}>number</td>
-                <td className={tableDataStyles}>0.5</td>
-                <td className={tableDataStyles}>
-                  Opacity of the popup background
-                </td>
+              <tr className='bg-white bg-opacity-10'>
+                <td className='p-2'>opacity</td>
+                <td className='p-2'>number</td>
+                <td className='p-2'>0.5</td>
+                <td className='p-2'>Opacity of the popup background</td>
               </tr>
               <tr>
-                <td className={tableDataStyles}>blur</td>
-                <td className={tableDataStyles}>number</td>
-                <td className={tableDataStyles}>5</td>
-                <td className={tableDataStyles}>
-                  Blur effect strength in pixels
-                </td>
+                <td className='p-2'>blur</td>
+                <td className='p-2'>number</td>
+                <td className='p-2'>5</td>
+                <td className='p-2'>Blur effect strength in pixels</td>
               </tr>
             </tbody>
           </table>
@@ -591,7 +535,6 @@ function App() {
           getGlassyClasses={getGlassyClasses}
           copiedStates={copiedStates}
           copyToClipboard={copyToClipboard}
-          darkMode={darkMode}
         />
       </div>
     </div>

@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { ArrowLeft, Copy, Check } from 'lucide-react';
 import BackToTopButton from './BackToTop';
 
-const SliderDetailsPage: React.FC<{ darkMode: boolean }> = ({ darkMode }) => {
+const SliderDetailsPage: React.FC = () => {
   const navigate = useNavigate();
   const [copiedStates, setCopiedStates] = useState<{ [key: string]: boolean }>(
     {},
@@ -21,7 +21,7 @@ const SliderDetailsPage: React.FC<{ darkMode: boolean }> = ({ darkMode }) => {
   max="100"
   value={${sliderValue}}
   onChange={handleSliderChange}
-  class="${get_GlassyClasses(customOpacity)} 
+  class="${getGlassyClasses(customOpacity)} 
   w-full h-2 rounded-lg appearance-none cursor-pointer"
   style={{
     background: \`linear-gradient(90deg, '${customBgColor}' \${sliderValue}%, '#cccccc' \${sliderValue}%)\`,
@@ -29,14 +29,9 @@ const SliderDetailsPage: React.FC<{ darkMode: boolean }> = ({ darkMode }) => {
     setCustomCode(code);
   }, [sliderValue, customBgColor, customOpacity]);
 
-  const get_GlassyClasses = (opacity = 20) => {
-    return `backdrop-filter backdrop-blur-lg bg-opacity-${opacity} 
-  border border-opacity-20 rounded-lg shadow-lg transition-all duration-300`;
-  };
-
-  const getGlassyClasses = (darkMode?: boolean, opacity = 20) => {
-    return `backdrop-filter backdrop-blur-lg ${darkMode ? 'bg-white/30 border-white/20' : 'bg-black/10 border-black/20'} bg-opacity-${opacity} 
-  border border-opacity-20 rounded-lg shadow-lg transition-all duration-300`;
+  const getGlassyClasses = (opacity = 10) => {
+    return `backdrop-filter backdrop-blur-lg bg-white bg-opacity-${opacity} 
+  border border-white border-opacity-20 rounded-lg shadow-lg transition-all duration-300`;
   };
 
   const handleSliderChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -53,21 +48,16 @@ const SliderDetailsPage: React.FC<{ darkMode: boolean }> = ({ darkMode }) => {
     });
   };
 
-  const CopyButton: React.FC<{
-    text: string;
-    codeKey: string;
-    darkMode: boolean;
-  }> = ({ text, codeKey, darkMode }) => (
+  const CopyButton: React.FC<{ text: string; codeKey: string }> = ({
+    text,
+    codeKey,
+  }) => (
     <button
       onClick={() => copyToClipboard(text, codeKey)}
-      className={`absolute top-4 right-4 ${getGlassyClasses(darkMode)} p-2  ${darkMode ? 'hover:bg-white/40 text-white' : 'hover:bg-black/30 text-black'}`}
+      className={`absolute top-4 right-4 ${getGlassyClasses()} p-2 hover:bg-opacity-20 text-white`}
       title='Copy to clipboard'
     >
-      {copiedStates[codeKey] ? (
-        <Check size={20} />
-      ) : (
-        <Copy size={20} className={darkMode ? 'text-gray-100' : 'text-black'} />
-      )}
+      {copiedStates[codeKey] ? <Check size={20} /> : <Copy size={20} />}
     </button>
   );
 
@@ -75,124 +65,98 @@ const SliderDetailsPage: React.FC<{ darkMode: boolean }> = ({ darkMode }) => {
     navigate('/components');
   };
 
-  const tableHeadingStyles = `text-left p-2 ${darkMode ? 'text-gray-100' : 'text-black'}`;
-  const tableDataStyles = `p-2 ${darkMode ? 'text-gray-200' : 'text-black/80'}`;
-
   return (
-    <div
-      className={`min-h-screen p-8 font-sans bg-gradient-to-r ${darkMode ? 'from-gray-800 via-gray-900 to-black text-white' : 'from-white via-black/10 to-black/20 text-black'} relative`}
-    >
+    <div className='min-h-screen p-8 font-sans bg-gradient-to-r from-gray-800 via-gray-900 to-black text-white relative'>
       <BackToTopButton />
       <nav className='mb-8 flex items-center justify-between relative z-10'>
         <button
           onClick={handleBackToComponents}
-          className={`flex items-center ${getGlassyClasses(darkMode, 10)} px-4 py-2 ${darkMode ? 'hover:bg-white/40 text-white' : 'hover:bg-black/30 text-black'} transition-all duration-300`}
+          className={`flex items-center ${getGlassyClasses()} px-4 py-2 hover:bg-opacity-20 text-white`}
         >
           <ArrowLeft size={20} className='mr-2' />
           Back to Components
         </button>
       </nav>
 
-      <h1
-        className={`text-6xl font-bold mb-8 ${darkMode ? 'text-white' : 'text-black'} relative z-10`}
-      >
+      <h1 className='text-6xl font-bold mb-8 text-white relative z-10'>
         Glassmorphic Slider Component
       </h1>
-      <p
-        className={`text-xl mb-8 ${darkMode ? 'text-gray-100' : 'text-black'}`}
-      >
+      <p className='text-xl mb-8 text-gray-100'>
         A glassmorphism-styled Slider component.
       </p>
 
       <section
-        className={`${getGlassyClasses(darkMode, 20)} p-6 mb-14 text-white relative z-10`}
+        className={`${getGlassyClasses(20)} p-6 mb-14 text-white relative z-10`}
       >
-        <h2
-          className={`text-3xl font-bold mb-4 ${darkMode ? 'text-gray-100' : 'text-black'}`}
-        >
-          Basic Usage
-        </h2>
-        <div className={`${getGlassyClasses(false)} p-4 hover:shadow-xl mb-4`}>
+        <h2 className='text-3xl font-bold mb-4'>Basic Usage</h2>
+        <div className={`${getGlassyClasses()} p-4 hover:shadow-xl mb-4`}>
           <input
             type='range'
             min='0'
             max='100'
             value={sliderValue}
             onChange={handleSliderChange}
-            className={`${get_GlassyClasses(50)} w-full h-2 rounded-lg appearance-none cursor-pointer`}
+            className={`${getGlassyClasses(50)} w-full h-2 rounded-lg appearance-none cursor-pointer`}
             style={{
               background: `linear-gradient(90deg, rgba(255, 255, 255, 0.3) ${sliderValue}%, rgba(255, 255, 255, 0.1) ${sliderValue}%)`,
             }}
           />
         </div>
-        <pre
-          className={`${darkMode ? 'bg-gray-800 text-white' : 'bg-white text-black'} p-6 rounded-lg overflow-x-auto whitespace-pre-wrap relative`}
-        >
+        <pre className='bg-gray-800 text-white p-6 rounded-lg overflow-x-auto relative'>
           {`<input 
   type="range" 
   min="0" 
   max="100" 
   value={${sliderValue}} 
-  class="${getGlassyClasses(darkMode, 50)}" 
+  class="${getGlassyClasses(50)}" 
   style={{ backgroundColor: '${customBgColor}' }} />`}
           <CopyButton
-            text={`<input type="range" min="0" max="100" value={${sliderValue}} class="${getGlassyClasses(darkMode, 50)}" style={{ backgroundColor: '${customBgColor}' }} />`}
+            text={`<input type="range" min="0" max="100" value={${sliderValue}} class="${getGlassyClasses(50)}" style={{ backgroundColor: '${customBgColor}' }} />`}
             codeKey='basicUsage'
-            darkMode={darkMode}
           />
         </pre>
       </section>
 
       <section
-        className={`${getGlassyClasses(darkMode, 20)} p-6 mb-14 text-white relative z-10`}
+        className={`${getGlassyClasses(20)} p-6 mb-14 text-white relative z-10`}
       >
-        <h2
-          className={`text-3xl font-bold mb-4 ${darkMode ? 'text-gray-100' : 'text-black'}`}
-        >
-          Props
-        </h2>
+        <h2 className='text-3xl font-bold mb-4'>Props</h2>
         <div className='overflow-x-auto'>
           <table className='w-full'>
             <thead>
-              <tr
-                className={`${darkMode ? 'bg-white' : 'bg-black'} bg-opacity-20`}
-              >
-                <th className={tableHeadingStyles}>Prop</th>
-                <th className={tableHeadingStyles}>Type</th>
-                <th className={tableHeadingStyles}>Default</th>
-                <th className={tableHeadingStyles}>Description</th>
+              <tr className='bg-white bg-opacity-20'>
+                <th className='text-left p-2'>Prop</th>
+                <th className='text-left p-2'>Type</th>
+                <th className='text-left p-2'>Default</th>
+                <th className='text-left p-2'>Description</th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <td className={tableDataStyles}>className</td>
-                <td className={tableDataStyles}>string</td>
-                <td className={tableDataStyles}>''</td>
-                <td className={tableDataStyles}>
+                <td className='p-2'>className</td>
+                <td className='p-2'>string</td>
+                <td className='p-2'>''</td>
+                <td className='p-2'>
                   Additional CSS classes to apply to the slider
                 </td>
               </tr>
-              <tr
-                className={`${darkMode ? 'bg-white' : 'bg-black'} bg-opacity-10`}
-              >
-                <td className={tableDataStyles}>min</td>
-                <td className={tableDataStyles}>number</td>
-                <td className={tableDataStyles}>0</td>
-                <td className={tableDataStyles}>Minimum value of the slider</td>
+              <tr className='bg-white bg-opacity-10'>
+                <td className='p-2'>min</td>
+                <td className='p-2'>number</td>
+                <td className='p-2'>0</td>
+                <td className='p-2'>Minimum value of the slider</td>
               </tr>
               <tr>
-                <td className={tableDataStyles}>max</td>
-                <td className={tableDataStyles}>number</td>
-                <td className={tableDataStyles}>100</td>
-                <td className={tableDataStyles}>Maximum value of the slider</td>
+                <td className='p-2'>max</td>
+                <td className='p-2'>number</td>
+                <td className='p-2'>100</td>
+                <td className='p-2'>Maximum value of the slider</td>
               </tr>
-              <tr
-                className={`${darkMode ? 'bg-white' : 'bg-black'} bg-opacity-10`}
-              >
-                <td className={tableDataStyles}>defaultValue</td>
-                <td className={tableDataStyles}>number</td>
-                <td className={tableDataStyles}>50</td>
-                <td className={tableDataStyles}>Default value of the slider</td>
+              <tr className='bg-white bg-opacity-10'>
+                <td className='p-2'>defaultValue</td>
+                <td className='p-2'>number</td>
+                <td className='p-2'>50</td>
+                <td className='p-2'>Default value of the slider</td>
               </tr>
             </tbody>
           </table>
@@ -200,21 +164,13 @@ const SliderDetailsPage: React.FC<{ darkMode: boolean }> = ({ darkMode }) => {
       </section>
 
       <section
-        className={`${getGlassyClasses(darkMode, 20)} p-6 mb-8 text-white relative z-10`}
+        className={`${getGlassyClasses(20)} p-6 mb-8 text-white relative z-10`}
       >
-        <h2
-          className={`text-3xl font-bold mb-4 ${darkMode ? 'text-gray-100' : 'text-black'}`}
-        >
-          Custom Styling
-        </h2>
+        <h2 className='text-3xl font-bold mb-4'>Custom Styling</h2>
         <div className='mb-12'>
-          <h3
-            className={`text-xl font-semibold mb-6 ${darkMode ? 'text-gray-100' : 'text-black'}`}
-          >
-            Slider Customization
-          </h3>
+          <h3 className='text-xl font-semibold mb-6'>Slider Customization</h3>
           <div
-            className={`${getGlassyClasses(darkMode)} p-8 hover:shadow-xl rounded-xl`}
+            className={`${getGlassyClasses()} p-8 hover:shadow-xl rounded-xl`}
           >
             <div className='mb-8'>
               <input
@@ -223,16 +179,14 @@ const SliderDetailsPage: React.FC<{ darkMode: boolean }> = ({ darkMode }) => {
                 max='100'
                 value={sliderValue}
                 onChange={handleSliderChange}
-                className={`${getGlassyClasses(darkMode)} w-full h-2 rounded-lg appearance-none cursor-pointer`}
+                className={`${getGlassyClasses()} w-full h-2 rounded-lg appearance-none cursor-pointer`}
                 style={{
                   background: `linear-gradient(90deg, ${customBgColor} ${sliderValue}%, #cccccc ${sliderValue}%)`,
                 }}
               />
             </div>
             <div className='space-y-2'>
-              <label
-                className={`block text-sm font-medium ${darkMode ? 'text-white' : 'text-black'}`}
-              >
+              <label className='block text-sm font-medium text-white'>
                 Background Color
               </label>
               <input
@@ -244,22 +198,12 @@ const SliderDetailsPage: React.FC<{ darkMode: boolean }> = ({ darkMode }) => {
               <span className='text-sm p-2 font-semibold'>{customBgColor}</span>
             </div>
             <div className='mt-8'>
-              <h4
-                className={`text-xl font-semibold mb-4 ${darkMode ? 'text-gray-100' : 'text-black'}`}
-              >
-                Generated Code
-              </h4>
+              <h4 className='text-xl font-semibold mb-4'>Generated Code</h4>
               <div className='relative'>
-                <pre
-                  className={`${darkMode ? 'bg-gray-800 text-white' : 'bg-white text-black'} p-4 rounded-lg overflow-x-auto`}
-                >
+                <pre className='bg-gray-800 text-white p-4 rounded-lg overflow-x-auto'>
                   {customCode}
                 </pre>
-                <CopyButton
-                  text={customCode}
-                  codeKey='customStyling'
-                  darkMode={darkMode}
-                />
+                <CopyButton text={customCode} codeKey='customStyling' />
               </div>
             </div>
           </div>
