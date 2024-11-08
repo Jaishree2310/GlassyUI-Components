@@ -39,9 +39,7 @@ const DropdownMenu: React.FC<DropdownMenuProps> = ({ options, onSelect }) => {
   );
 };
 
-const DropdownMenuDetailsPage: React.FC<{ darkMode: boolean }> = ({
-  darkMode,
-}) => {
+const DropdownMenuDetailsPage: React.FC = () => {
   const navigate = useNavigate();
   const [copiedStates, setCopiedStates] = useState<{ [key: string]: boolean }>(
     {},
@@ -49,7 +47,8 @@ const DropdownMenuDetailsPage: React.FC<{ darkMode: boolean }> = ({
   const [selectedOption, setSelectedOption] = useState<string>('Option 1');
 
   const getGlassyClasses = (opacity = 20) => {
-    return `backdrop-filter backdrop-blur-lg ${darkMode ? 'bg-white/30 border-white/20' : 'bg-black/10 border-black/20'} bg-opacity-${opacity} border border-opacity-20 rounded-lg shadow-lg transition-all duration-300`;
+    return `backdrop-filter backdrop-blur-lg bg-white bg-opacity-${opacity} 
+  border border-white border-opacity-20 rounded-lg shadow-lg transition-all duration-300`;
   };
 
   const copyToClipboard = (text: string, key: string) => {
@@ -62,20 +61,19 @@ const DropdownMenuDetailsPage: React.FC<{ darkMode: boolean }> = ({
     });
   };
 
-  const CopyButton: React.FC<{
-    text: string;
-    codeKey: string;
-    darkMode: boolean;
-  }> = ({ text, codeKey, darkMode }) => (
+  const CopyButton: React.FC<{ text: string; codeKey: string }> = ({
+    text,
+    codeKey,
+  }) => (
     <button
       onClick={() => copyToClipboard(text, codeKey)}
-      className={`absolute top-2 right-2 ${getGlassyClasses()} p-2 ${darkMode ? 'text-white hover:bg-white/40' : 'text-black hover:bg-black/30'} transition-all duration-300`}
+      className={`absolute top-2 right-2 ${getGlassyClasses()} p-2 hover:bg-white/40 transition-all duration-300 z-10`}
       title='Copy to clipboard'
     >
       {copiedStates[codeKey] ? (
         <Check size={16} className='text-green-600' />
       ) : (
-        <Copy size={16} className={darkMode ? 'text-gray-100' : 'text-black'} />
+        <Copy size={16} className='text-white' />
       )}
     </button>
   );
@@ -115,63 +113,38 @@ const DropdownMenuDetailsPage: React.FC<{ darkMode: boolean }> = ({
   onSelect={(option) => console.log('Selected:', option)}
 />`;
 
-  const tableHeadingStyles = `text-left p-2 ${darkMode ? 'text-gray-100' : 'text-black'}`;
-  const tableDataStyles = `p-2 ${darkMode ? 'text-gray-200' : 'text-black/80'}`;
-
   return (
-    <div
-      className={`min-h-screen p-8 font-sans bg-gradient-to-r ${darkMode ? 'from-gray-800 via-gray-900 to-black text-white' : 'from-white via-black/10 to-black/20 text-black'} relative`}
-    >
+    <div className='min-h-screen p-8 font-sans bg-gradient-to-r from-gray-800 via-gray-900 to-black text-white relative'>
       <BackToTopButton />
       <div className='relative z-10'>
         <button
           onClick={() => navigate(-1)}
-          className={`mb-8 flex items-center ${getGlassyClasses(10)} px-4 py-2 ${darkMode ? 'hover:bg-white/40 text-white' : 'hover:bg-black/30 text-black'} transition-all duration-300`}
+          className={`mb-8 flex items-center ${getGlassyClasses(10)} px-4 py-2 hover:bg-white/40 transition-all duration-300 text-gray-100`}
         >
           <ArrowLeft size={20} className='mr-2' />
           Back to Components
         </button>
 
-        <h1
-          className={`text-6xl font-bold mb-8 ${darkMode ? 'text-white' : 'text-black'}`}
-        >
-          Dropdown Menu
-        </h1>
-        <p
-          className={`text-xl mb-8 ${darkMode ? 'text-gray-100' : 'text-black'}`}
-        >
+        <h1 className='text-6xl font-bold mb-8 text-white'>Dropdown Menu</h1>
+        <p className='text-xl mb-8 text-white'>
           A customizable dropdown menu component.
         </p>
 
         <div className={`${getGlassyClasses()} p-8 mb-8 relative`}>
-          <h2
-            className={`text-3xl font-bold mb-6 ${darkMode ? 'text-gray-100' : 'text-black'}`}
-          >
-            Basic Usage
-          </h2>
+          <h2 className='text-3xl font-bold mb-6 text-white'>Basic Usage</h2>
           <div className='relative'>
-            <pre
-              className={`${darkMode ? 'bg-gray-800 text-white' : 'bg-white text-black'} p-6 rounded-lg overflow-x-auto whitespace-pre-wrap max-sm:p-2 max-sm:text-[0.55rem]`}
-            >
+            <pre className='bg-gray-800 text-white p-6 rounded-lg overflow-x-auto whitespace-pre-wrap max-sm:text-[0.55rem]'>
               {basicUsageCode}
             </pre>
-            <CopyButton
-              text={basicUsageCode}
-              codeKey='basicUsage'
-              darkMode={darkMode}
-            />
+            <CopyButton text={basicUsageCode} codeKey='basicUsage' />
           </div>
         </div>
 
         <div className={`${getGlassyClasses()} p-8 mb-8`}>
-          <h2
-            className={`text-3xl font-bold mb-6 ${darkMode ? 'text-gray-100' : 'text-black'}`}
-          >
+          <h2 className='text-3xl font-bold mb-6 text-white'>
             Example Dropdown Menu
           </h2>
-          <p
-            className={`mb-6 text-lg ${darkMode ? 'text-white' : 'text-black'}`}
-          >
+          <p className='mb-6 text-lg text-white'>
             An example implementation of a dropdown menu.
           </p>
           <DropdownMenu
@@ -180,16 +153,10 @@ const DropdownMenuDetailsPage: React.FC<{ darkMode: boolean }> = ({
           />
           <p className='mt-4'>Selected: {selectedOption}</p>
           <div className='relative mt-8'>
-            <pre
-              className={`${darkMode ? 'bg-gray-800 text-white' : 'bg-white text-black'} p-6 rounded-lg overflow-x-auto whitespace-pre-wrap max-sm:p-2 max-sm:text-[0.55rem]`}
-            >
+            <pre className='bg-gray-800 text-white p-6 rounded-lg overflow-x-auto whitespace-pre-wrap max-sm:text-[0.55rem]'>
               {dropdownExampleCode}
             </pre>
-            <CopyButton
-              text={dropdownExampleCode}
-              codeKey='dropdownExample'
-              darkMode={darkMode}
-            />
+            <CopyButton text={dropdownExampleCode} codeKey='dropdownExample' />
           </div>
         </div>
 
@@ -197,37 +164,29 @@ const DropdownMenuDetailsPage: React.FC<{ darkMode: boolean }> = ({
         <section
           className={`${getGlassyClasses()} p-6 mb-14 text-white relative z-10`}
         >
-          <h2
-            className={`text-3xl font-bold mb-6 ${darkMode ? 'text-gray-100' : 'text-black'}`}
-          >
-            Props
-          </h2>
+          <h2 className='text-3xl font-bold mb-4 text-gray-100'>Props</h2>
           <div className='overflow-x-auto'>
             <table className='w-full'>
               <thead>
-                <tr
-                  className={`${darkMode ? 'bg-white' : 'bg-black'} bg-opacity-20`}
-                >
-                  <th className={tableHeadingStyles}>Prop</th>
-                  <th className={tableHeadingStyles}>Type</th>
-                  <th className={tableHeadingStyles}>Default</th>
-                  <th className={tableHeadingStyles}>Description</th>
+                <tr className='bg-white bg-opacity-20'>
+                  <th className='text-left p-2 text-gray-100'>Prop</th>
+                  <th className='text-left p-2 text-gray-100'>Type</th>
+                  <th className='text-left p-2 text-gray-100'>Default</th>
+                  <th className='text-left p-2 text-gray-100'>Description</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
-                  <td className={tableDataStyles}>options</td>
-                  <td className={tableDataStyles}>array</td>
-                  <td className={tableDataStyles}>[ ]</td>
-                  <td className={tableDataStyles}>Items in the dropdown</td>
+                  <td className='p-2 text-gray-200'>options</td>
+                  <td className='p-2 text-gray-200'>array</td>
+                  <td className='p-2 text-gray-200'>[ ]</td>
+                  <td className='p-2 text-gray-200'>Items in the dropdown</td>
                 </tr>
-                <tr
-                  className={`${darkMode ? 'bg-white' : 'bg-black'} bg-opacity-10`}
-                >
-                  <td className={tableDataStyles}>onSelect</td>
-                  <td className={tableDataStyles}>function</td>
-                  <td className={tableDataStyles}>-</td>
-                  <td className={tableDataStyles}>
+                <tr className='bg-white bg-opacity-10'>
+                  <td className='p-2 text-gray-200'>onSelect</td>
+                  <td className='p-2 text-gray-200'>function</td>
+                  <td className='p-2 text-gray-200'>-</td>
+                  <td className='p-2 text-gray-200'>
                     Task to do after selecting the option
                   </td>
                 </tr>

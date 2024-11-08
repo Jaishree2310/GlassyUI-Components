@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import BackToTopButton from './BackToTop';
 import { useNavigate } from 'react-router-dom';
 import {
+  ArrowRight,
   Info,
   Box,
   Type,
@@ -11,48 +12,98 @@ import {
   AlignLeft,
   ArrowUp,
   DollarSign,
-  ThumbsUp,
+  ThumbsUpIcon,
+  Contact,
   Search,
+  Calendar,
+  AlignStartVertical,
   ShoppingCart,
   GalleryThumbnails,
-  AlignStartVertical,
-  Wrench,
-  Calendar,
 } from 'lucide-react';
 
+import { HiOutlineWrenchScrewdriver } from 'react-icons/hi2';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+
+// Define the ComponentCardProps interface
 
 interface ComponentCardProps {
   title: string;
   description: string;
   icon: React.ReactNode;
   onClick: () => void;
-  status?: string;
-  children?: React.ReactNode;
-  darkMode: boolean;
+  status?: string; // Optional status prop
+  children?: React.ReactNode; // Include the children prop
 }
-const getGlassyClasses = (darkMode: boolean) => {
-  return `backdrop-filter backdrop-blur-md ${darkMode ? 'bg-white/10 border-white/20' : 'bg-black/10 border-black/20'} border rounded-2xl shadow-lg transition-all duration-300`;
+const getGlassyClasses = () => {
+  return 'backdrop-filter backdrop-blur-md bg-white/10 border border-white/20 rounded-2xl shadow-lg transition-all duration-300';
 };
 
-const GlassyUIComponentsPage: React.FC<{ darkMode: boolean }> = ({
-  darkMode,
+const ComponentCard: React.FC<ComponentCardProps> = ({
+  title,
+  description,
+  icon,
+  onClick,
+  status,
+  children,
 }) => {
+  return (
+    <div
+      className={`${getGlassyClasses()} p-6 flex flex-col h-full cursor-pointer group transition-all duration-300 hover:bg-white/20 hover:scale-105 hover:shadow-xl`}
+      onClick={onClick}
+    >
+      <div className='flex items-center mb-4'>
+        <div className='p-2 bg-white/20 rounded-lg mr-4'>{icon}</div>
+        <h3 className='text-xl font-bold'>{title}</h3>
+        {status && (
+          <span className='ml-2 px-2 py-1 bg-green-200 text-green-700 text-xs font-medium rounded'>
+            {status}
+          </span>
+        )}
+      </div>
+      <p className='text-sm opacity-80 mb-4 flex-grow'>{description}</p>
+      {children}
+      <div className='flex items-center text-sm font-medium text-pink-200 mt-4'>
+        <div className='flex justify-center items-center'>
+          <span>Learn more</span>
+          <ArrowUp className='ml-2 w-6 pt-1 group-hover:translate-x-1 transition-transform duration-300' />
+        </div>
+      </div>
+    </div>
+  );
+};
+
+const GlassyUIComponentsPage: React.FC = () => {
   const navigate = useNavigate();
   const [currentPage, setCurrentPage] = useState(1);
   const [searchFilter, setSearchFilter] = useState<string>('');
   const componentsPerPage = 9;
 
+  const scrollToNextSection = () => {
+    window.scrollBy({
+      top: window.innerHeight,
+      behavior: 'smooth',
+    });
+  };
+
   useEffect(() => {
-    AOS.init({ duration: 1000, once: true });
+    // Initialize AOS if it hasn't been initialized
+    if (AOS.init) {
+      AOS.init({
+        duration: 1000,
+        once: true,
+      });
+    }
+
+    // Refresh AOS on currentPage change
     AOS.refresh();
   }, [currentPage]);
 
   const componentsData = [
     {
       title: 'Toast',
-      description: 'Glassmorphic Toast Component. Try it out!',
+      description:
+        'Glassmorphic Toast Component. Click the button below to try it out!',
       icon: <MessageSquare size={24} />,
       onClick: () => navigate('/toast-page/'),
     },
@@ -63,40 +114,116 @@ const GlassyUIComponentsPage: React.FC<{ darkMode: boolean }> = ({
       onClick: () => navigate('/slider-details'),
     },
     {
-      title: 'Alert Box',
-      description: 'Customizable alert boxes for notifications.',
+      title: 'Speed Dial',
+      description: 'Speed dial with glassmorphism effect.',
       icon: <Info size={24} />,
-      onClick: () => navigate('/alert-box'),
+      onClick: () => navigate('/speed-dial-details'),
     },
     {
-      title: 'Modal',
-      description: 'Beautiful glassmorphic modal popup windows.',
+      title: 'Buttons',
+      description: 'Sleek, customizable buttons with glassmorphic styling.',
       icon: <Box size={24} />,
-      onClick: () => navigate('/modal-window'),
+      onClick: () => navigate('/button-details'),
     },
     {
-      title: 'Typography',
-      description: 'Stylish fonts and text effects.',
-      icon: <Type size={24} />,
-      onClick: () => navigate('/typography'),
-    },
-    {
-      title: 'Navigation Bar',
-      description: 'Glassmorphic navbar with smooth animations.',
+      title: 'Cards',
+      description: 'Versatile content containers with a frosted glass effect.',
       icon: <Layout size={24} />,
-      onClick: () => navigate('/navbar'),
+      onClick: () => navigate('/card-details'),
     },
     {
-      title: 'Dropdown',
-      description: 'Stylish dropdown menus for navigation.',
+      title: 'Inputs',
+      description: 'Elegant input fields with a glass-like appearance.',
+      icon: <Type size={24} />,
+      onClick: () => navigate('/input-details'),
+    },
+    {
+      title: 'Progress Bars',
+      description: 'Stylish progress indicators with a glass-like finish.',
+      icon: <Sliders size={24} />,
+      onClick: () => navigate('/progress-bar-details'),
+    },
+    {
+      title: 'Modals',
+      description: 'Eye-catching dialog boxes with glassmorphism effects.',
+      icon: <MessageSquare size={24} />,
+      onClick: () => navigate('/modal-details'),
+    },
+    {
+      title: 'Navigation',
+      description: 'Sleek navigation components with a frosted glass look.',
+      icon: <ArrowRight size={24} />,
+      onClick: () => navigate('/navigation-details'),
+    },
+    {
+      title: 'Popups',
+      description:
+        'Attention-grabbing popup notifications with glassmorphic styling.',
+      icon: <MessageSquare size={24} />,
+      onClick: () => navigate('/popup-details'),
+    },
+    {
+      title: 'Textarea',
+      description: 'Multi-line input fields with elegant glassmorphic design.',
       icon: <AlignLeft size={24} />,
-      onClick: () => navigate('/dropdown-menu'),
+      onClick: () => navigate('/textarea-details'),
     },
     {
-      title: 'Pricing Card',
-      description: 'Eye-catching pricing cards for showcasing plans.',
+      title: 'Tool Tip',
+      description:
+        'Tooltip component support different positions, and be responsive and accessible.',
+      icon: <Info size={24} />,
+      onClick: () => navigate('/tooltip-details'),
+    },
+    {
+      title: 'Back to Top',
+      description:
+        'A button that scrolls the page back to the top, improving user navigation.',
+      icon: <ArrowUp size={24} />,
+      onClick: () => navigate('/back-to-top-details'),
+    },
+    {
+      title: 'Pricing Plans',
+      description:
+        'Choose a pricing plan that suits your needs. Affordable and flexible.',
       icon: <DollarSign size={24} />,
-      onClick: () => navigate('/pricing-card'),
+      onClick: () => navigate('/pricing-details'),
+    },
+    {
+      title: 'Dropdown Menu',
+      description: 'Select an option from the dropdown menu.',
+      icon: <AlignLeft size={24} />,
+      onClick: () => navigate('/dropdown-details'),
+    },
+    {
+      title: 'Authentication Cards',
+      description: 'Versatile content containers with a frosted glass effect.',
+      icon: <Layout size={24} />,
+      onClick: () => navigate('/authentication-card'),
+    },
+    {
+      title: 'Accordion',
+      description: 'Accordion component with glassmorphic styling.',
+      icon: <Layout size={24} />,
+      onClick: () => navigate('/accordion-details'),
+    },
+    {
+      title: 'Pagination',
+      description: 'Pagination component with glassmorphic styling.',
+      icon: <Layout size={24} />,
+      onClick: () => navigate('/pagination-details'),
+    },
+    {
+      title: 'Testimonial',
+      description: 'Testimonial component with glassmorphic styling.',
+      icon: <ThumbsUpIcon size={24} />,
+      onClick: () => navigate('/testimonial-details'),
+    },
+    {
+      title: 'Contact Form',
+      description: 'Contact Form component with glassmorphic styling.',
+      icon: <Contact size={24} />,
+      onClick: () => navigate('/contact-details'),
     },
     {
       title: 'E-Commerce Product Card',
@@ -124,50 +251,38 @@ const GlassyUIComponentsPage: React.FC<{ darkMode: boolean }> = ({
       onClick: () => navigate('/generator'),
     },
     {
-      title: 'Like Button',
-      description: 'Interactive like button with animations.',
-      icon: <ThumbsUp size={24} />,
-      onClick: () => navigate('/like-button'),
-    },
-    {
       title: 'Calendar',
-      description: 'A sleek, responsive calendar component.',
+      description: 'Calendar component with glassmorphic styling.',
       icon: <Calendar size={24} />,
-      onClick: () => navigate('/calendar'),
+      onClick: () => navigate('/calendar-details'),
     },
     {
-      title: 'Shopping Cart',
-      description: 'Functional shopping cart with glassmorphic styling.',
-      icon: <ShoppingCart size={24} />,
-      onClick: () => navigate('/shopping-cart'),
+      title: 'Checkbox',
+      description: 'Checkbox component with glassmorphic styling.',
+      icon: <Layout size={24} />,
+      onClick: () => navigate('/checkbox'),
     },
     {
       title: 'Spinner',
       description: 'Design and customize CSS spinners for your projects.',
-      icon: <Wrench size={24} />,
+      icon: <HiOutlineWrenchScrewdriver size={24} />,
       onClick: () => navigate('/spinner'),
     },
-    {
-      title: 'Image Gallery',
-      description: 'Stylish glassmorphic gallery for images.',
-      icon: <GalleryThumbnails size={24} />,
-      onClick: () => navigate('/image-gallery'),
-    },
-    // Add more components here...
   ];
 
   const [filteredData, setFilteredData] = useState(componentsData);
 
   useEffect(() => {
     const data = componentsData.filter(component => {
-      return searchFilter
-        ? component.title
-            .toLowerCase()
-            .includes(searchFilter.trim().toLowerCase())
-        : true;
+      if (searchFilter) {
+        return component.title
+          .toLowerCase()
+          .includes(searchFilter.trim().toLowerCase());
+      }
+      return true; // return all components if no filter is set
     });
     setFilteredData(data);
-    setCurrentPage(1);
+    setCurrentPage(1); // Reset to first page when searching
   }, [searchFilter]);
 
   const totalPages = Math.ceil(filteredData.length / componentsPerPage);
@@ -185,8 +300,8 @@ const GlassyUIComponentsPage: React.FC<{ darkMode: boolean }> = ({
     if (currentPage > 1) setCurrentPage(currentPage - 1);
   };
 
-  const getGlassyClasses = (darkMode: boolean) => {
-    return `backdrop-filter backdrop-blur-md ${darkMode ? 'bg-white/10 border-white/20' : 'bg-black/10 border-black/20'} border rounded-2xl shadow-lg transition-all duration-300`;
+  const getGlassyClasses = () => {
+    return 'backdrop-filter backdrop-blur-md bg-white/10 border border-white/20 rounded-2xl shadow-lg transition-all duration-300';
   };
 
   const ComponentCard: React.FC<ComponentCardProps> = ({
@@ -196,78 +311,74 @@ const GlassyUIComponentsPage: React.FC<{ darkMode: boolean }> = ({
     onClick,
     status,
     children,
-    darkMode,
-  }) => {
-    return (
-      <div
-        className={`${getGlassyClasses(darkMode)} p-6 flex flex-col h-full cursor-pointer group transition-all duration-300 ${darkMode ? 'hover:bg-white/20' : 'hover:bg-black/20'} hover:scale-105 hover:shadow-xl`}
-        onClick={onClick}
-      >
-        <div className='flex items-center mb-4'>
-          <div
-            className={`p-2 ${darkMode ? 'bg-white/20' : 'bg-black/20'} rounded-lg mr-4`}
-          >
-            {icon}
-          </div>
-          <h3 className='text-xl font-bold'>{title}</h3>
-          {status && (
-            <span className='ml-2 px-2 py-1 bg-green-200 text-green-700 text-xs font-medium rounded'>
-              {status}
-            </span>
-          )}
-        </div>
-        <p className='text-sm opacity-80 mb-4 flex-grow'>{description}</p>
-        {children}
-        <div
-          className={`flex items-center text-sm font-medium ${darkMode ? 'text-pink-200' : 'text-pink-400'} mt-4`}
-        >
-          <div className='flex justify-center items-center'>
-            <span>Learn more</span>
-            <ArrowUp className='ml-2 w-6 pt-1 group-hover:translate-x-1 transition-transform duration-300' />
-          </div>
+  }) => (
+    <div
+      className={`${getGlassyClasses()} p-6 flex flex-col h-full cursor-pointer group transition-all duration-300 hover:bg-white/20 hover:scale-105 hover:shadow-xl`}
+      onClick={onClick}
+      data-aos='fade-up'
+      data-aos-duration='2000'
+    >
+      <div className='flex items-center mb-4'>
+        <div className='p-2 bg-white/20 rounded-lg mr-4'>{icon}</div>
+        <h3 className='text-xl font-bold'>{title}</h3>
+        {status && (
+          <span className='ml-2 px-2 py-1 bg-green-200 text-green-700 text-xs font-medium rounded'>
+            {status}
+          </span>
+        )}
+      </div>
+      <p className='text-sm opacity-80 mb-4 flex-grow'>{description}</p>
+      {children}
+      <div className='flex items-center text-sm font-medium text-pink-200 mt-4'>
+        <div className='flex justify-center items-center'>
+          <span>Learn more</span>
+          <ArrowUp className='ml-2 w-6 pt-1 group-hover:translate-x-1 transition-transform duration-300' />
         </div>
       </div>
-    );
-  };
+    </div>
+  );
 
   return (
-    <div
-      className={`min-h-screen font-sans bg-gradient-to-br ${darkMode ? 'from-gray-800 via-gray-900 to-black text-white' : 'from-white via-black/10 to-black/20 text-black'}`}
-    >
+    <div className='min-h-screen font-sans bg-gradient-to-br from-gray-800 via-gray-900 to-black text-white'>
       <BackToTopButton />
       <div className='container mx-auto px-4 py-8 lg:py-12'>
         <header className='flex justify-between items-center mb-16 px-6 py-4 rounded-lg pl-0'>
           <div
-            className={`text-3xl lg:text-4xl font-extrabold tracking-tight cursor-pointer transition-colors duration-300 ${darkMode ? 'text-white hover:text-pink-300' : 'text-black hover:text-pink-400'}`}
+            className='text-3xl lg:text-4xl font-extrabold tracking-tight cursor-pointer hover:text-pink-300 transition-colors duration-300 text-white'
             onClick={() => navigate('/')}
             data-aos='fade-right'
           >
             GlassyUI
           </div>
+
           <div
+            className='flex items-center bg-gradient-to-r from-slate-800 via-slate-700 to-slate-900 text-white w-2/5 rounded-lg shadow-lg overflow-hidden'
             data-aos='fade-left'
-            className={`flex items-center bg-gradient-to-r ${darkMode ? 'from-slate-800 via-slate-700 to-slate-900 text-white' : 'from-white/80 via-black/10 to-white/90 text-black'} w-2/5 rounded-lg shadow-lg overflow-hidden`}
           >
             <input
-              className={`w-full px-6 py-3 bg-transparent outline-none focus:ring-2 ${darkMode ? 'focus:ring-gray-500 text-white' : 'focus:ring-neutral-400 text-black'} transition-all duration-300`}
+              className='w-full px-6 py-3 bg-transparent text-white outline-none focus:ring-2 focus:ring-gray-500 transition-all duration-300'
               placeholder='Search Components...'
               onChange={e => setSearchFilter(e.target.value)}
             />
-            <Search
-              className={`mx-4 cursor-pointer ${darkMode ? 'text-pink-300 hover:text-pink-400' : 'text-pink-400 hover:text-pink-500'} transition-all duration-300`}
-            />
+            <Search className='mx-4 cursor-pointer text-pink-300 hover:text-pink-400 transition-all duration-300' />
           </div>
         </header>
+
         <main>
           <h1
-            className={`text-4xl lg:text-6xl font-extrabold mb-6 bg-clip-text text-transparent bg-gradient-to-r ${darkMode ? 'from-white to-pink-200' : 'from-black to-pink-400'}`}
+            className='text-4xl lg:text-6xl font-extrabold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-white to-pink-200'
             data-aos='fade-right'
             data-aos-delay='400'
             data-aos-duration='1300'
           >
             Glassmorphic Components
           </h1>
-          <p className='text-lg lg:text-xl mb-12 max-w-2xl leading-relaxed'>
+          <p
+            className='text-lg lg:text-xl mb-12 max-w-2xl leading-relaxed'
+            data-aos='fade-right'
+            data-aos-delay='600'
+            data-aos-duration='1500'
+          >
             Elevate your UI with our collection of beautifully crafted,
             glassmorphic components. Perfect for creating modern, sleek
             interfaces with depth and style.
@@ -281,12 +392,12 @@ const GlassyUIComponentsPage: React.FC<{ darkMode: boolean }> = ({
                 description={component.description}
                 icon={component.icon}
                 onClick={component.onClick}
-                darkMode={darkMode}
               />
             ))}
             {filteredData.length === 0 && (
               <section
-                className={darkMode ? 'bg-gray-900' : 'bg-black/10'}
+                className='bg-white dark:bg-gray-900'
+                data-aos='fade-up'
                 data-aos-duration='2000'
               >
                 <div className='py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6'>
@@ -294,14 +405,10 @@ const GlassyUIComponentsPage: React.FC<{ darkMode: boolean }> = ({
                     <h1 className='mb-4 text-7xl tracking-tight font-extrabold lg:text-9xl text-blue-600 dark:text-primary-500'>
                       404
                     </h1>
-                    <p
-                      className={`mb-4 text-3xl tracking-tight font-bold md:text-4xl ${darkMode ? 'text-white' : 'text-gray-900'}`}
-                    >
+                    <p className='mb-4 text-3xl tracking-tight font-bold text-gray-900 md:text-4xl dark:text-white'>
                       Something&apos;s missing.
                     </p>
-                    <p
-                      className={`mb-4 text-lg font-light ${darkMode ? 'text-gray-400' : 'text-gray-600'}`}
-                    >
+                    <p className='mb-4 text-lg font-light text-gray-500 dark:text-gray-400'>
                       Sorry, we can&apos;t find that component. You&apos;ll find
                       lots to explore on the home page.{' '}
                     </p>
@@ -323,7 +430,7 @@ const GlassyUIComponentsPage: React.FC<{ darkMode: boolean }> = ({
               className={`px-4 py-2 mx-2 rounded-lg ${
                 currentPage === 1
                   ? 'opacity-50 cursor-not-allowed'
-                  : `${darkMode ? 'hover:bg-white/20' : 'hover:bg-black/20'}`
+                  : 'hover:bg-white/20'
               }`}
               disabled={currentPage === 1}
             >
@@ -337,7 +444,7 @@ const GlassyUIComponentsPage: React.FC<{ darkMode: boolean }> = ({
               className={`px-4 py-2 mx-2 rounded-lg ${
                 currentPage === totalPages
                   ? 'opacity-50 cursor-not-allowed'
-                  : `${darkMode ? 'hover:bg-white/20' : 'hover:bg-black/20'}`
+                  : 'hover:bg-white/20'
               }`}
               disabled={currentPage === totalPages}
             >
@@ -351,3 +458,5 @@ const GlassyUIComponentsPage: React.FC<{ darkMode: boolean }> = ({
 };
 
 export default GlassyUIComponentsPage;
+
+// dropdown menu, accordian, contact us,
