@@ -1,8 +1,35 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import GoogleTranslate from './GoogleTranslator';
-
+import { FormEvent } from 'react';
 const Footer: React.FC = () => {
+  const [name, setName] = useState<string>('');
+  const [email, setEmail] = useState<string>('');
+
+  const handleSubmit = async (e: FormEvent) => {
+    e.preventDefault();
+    console.log(name + ' ' + email);
+    // try {
+    //   const response = await fetch("http://localhost:5000/api/newsletter/subscribe", {
+    //     method: "POST",
+    //     headers: {
+    //       "Content-Type": "application/json",
+    //     },
+    //     body: JSON.stringify({ name, email }),
+    //   });
+
+    //   if (response.ok) {
+    //     alert("Subscription successful!");
+    //     setName("");
+    //     setEmail("");
+    //   } else {
+    //     alert("Failed to subscribe.");
+    //   }
+    // } catch (error) {
+    //   alert("An error occurred. Please try again.");
+    // }
+  };
+
   return (
     <>
       <footer className='glass-footer'>
@@ -23,6 +50,9 @@ const Footer: React.FC = () => {
             </Link>
             <Link to='/about' className='footer-link'>
               About
+            </Link>
+            <Link to='/termsOfUse' className='footer-link'>
+              Terms Of Use
             </Link>
             <GoogleTranslate />
           </div>
