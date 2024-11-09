@@ -7,6 +7,7 @@ import AOS from 'aos';
 import 'aos/dist/aos.css';
 
 import { HiOutlineChevronDoubleDown } from 'react-icons/hi2';
+import Footer from './Footer';
 
 interface Contributor {
   id: number;
@@ -225,6 +226,12 @@ export default function Component() {
           >
             Shaping the future of GlasslyUI-Components, one commit at a time
           </motion.p>
+          {/* Add margin to space the button from the paragraph */}
+          <div className='mt-6'>
+            <button className='px-4 py-2 bg-white text-black rounded-full shadow-md transition-all duration-300 text-[12px] font-bold mt-5'>
+              Become a Contributor
+            </button>
+          </div>
         </div>
       </section>
 
@@ -360,13 +367,15 @@ export default function Component() {
             />
             <button
               type='submit'
-              className='px-8 py-3 bg-primary text-white font-bold rounded-full shadow-lg hover:bg-primary/80 transition duration-300 ease-in-out'
+              className='px-8 py-3 bg-primary text-white font-bold rounded-full shadow-lg hover:bg-primary/80 transition duration-300 ease-in-out bg-blue-600'
             >
               Get Started
             </button>
           </form>
         </div>
       </section>
+      {/* Footer section */}
+      <Footer />
     </div>
   );
 }

@@ -68,7 +68,7 @@ const SliderDetailsPage: React.FC = () => {
   return (
     <div className='min-h-screen p-8 font-sans bg-gradient-to-r from-gray-800 via-gray-900 to-black text-white relative'>
       <BackToTopButton />
-      <nav className='mb-8 flex items-center justify-between relative z-10'>
+      <nav className='mb-8 flex items-center justify-between relative z-10 mt-8'>
         <button
           onClick={handleBackToComponents}
           className={`flex items-center ${getGlassyClasses()} px-4 py-2 hover:bg-opacity-20 text-white`}
