@@ -1,8 +1,35 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import GoogleTranslate from './GoogleTranslator';
-
+import { FormEvent } from 'react';
 const Footer: React.FC = () => {
+  const [name, setName] = useState<string>('');
+  const [email, setEmail] = useState<string>('');
+
+  const handleSubmit = async (e: FormEvent) => {
+    e.preventDefault();
+    console.log(name + ' ' + email);
+    // try {
+    //   const response = await fetch("http://localhost:5000/api/newsletter/subscribe", {
+    //     method: "POST",
+    //     headers: {
+    //       "Content-Type": "application/json",
+    //     },
+    //     body: JSON.stringify({ name, email }),
+    //   });
+
+    //   if (response.ok) {
+    //     alert("Subscription successful!");
+    //     setName("");
+    //     setEmail("");
+    //   } else {
+    //     alert("Failed to subscribe.");
+    //   }
+    // } catch (error) {
+    //   alert("An error occurred. Please try again.");
+    // }
+  };
+
   return (
     <>
       <footer className='glass-footer'>
@@ -24,6 +51,9 @@ const Footer: React.FC = () => {
             <Link to='/about' className='footer-link'>
               About
             </Link>
+            <Link to='/termsOfUse' className='footer-link'>
+              Terms Of Use
+            </Link>
             <GoogleTranslate />
           </div>
         </div>
@@ -35,12 +65,10 @@ const Footer: React.FC = () => {
           .glass-footer {
             backdrop-filter: blur(10px) saturate(180%);
             -webkit-backdrop-filter: blur(10px) saturate(180%);
-            background-color: rgba(43, 48, 60, 0.7);
+            background-color: rgb(12, 17, 29);
             width: 100vw;
             padding: 40px 20px;
-            border-radius: 15px;
             text-align: center;
-            margin-top: 50px;
             display: flex;
             flex-direction: column;
             align-items: center;

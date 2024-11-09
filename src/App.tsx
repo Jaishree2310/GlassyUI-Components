@@ -43,7 +43,10 @@ import Statistic from './components/StatisticDetails';
 import GalleryDetailsPage from './components/GalleryDetailsPage';
 import SpinnerDetailsPage from './components/SpinnerDetailsPage';
 import ProductCardDetailsPage from './components/ProductCardDetailsPage';
-
+  import ContactUs from './components/ContactUs';
+  import AiChatbot from './components/AIChatbot';
+  import { TermsOfUse } from './components/TermsOfUse';
+ 
 const ThemeToggle: React.FC = () => {
   const [theme, setTheme] = useState(localStorage.getItem('theme') || 'light');
 
@@ -74,6 +77,7 @@ const App: React.FC = () => {
   return (
     <Router>
       <Header />
+      <AiChatbot />
       {/* <ThemeToggle /> */}
       <ScrollProgressBar /> {/* Add the ScrollProgressBar component here */}
       <Routes>
@@ -112,14 +116,18 @@ const App: React.FC = () => {
         <Route path='/spinner' element={<SpinnerDetailsPage />} />
         <Route path='/product-details' element={<ProductCardDetailsPage />} />
         <Route path='/gallery-details' element={<GalleryDetailsPage />} />
-        <Route path='*' element={<NotFoundPage />} />
+         <Route path='/contact' element={<ContactUs />} />
+         <Route path='/termsOfUse' element={<TermsOfUse />} />
+         <Route path='*' element={<NotFoundPage />} />
       </Routes>
       {/* <ConditionalFooter /> */}
     </Router>
   );
 };
-// const ConditionalFooter: React.FC = () => {
-//   const location = useLocation();
-//   return location.pathname === '/' ? <Footer /> : null;
-// };
+
+const ConditionalFooter: React.FC = () => {
+  const location = useLocation();
+  return location.pathname === '/' ? null : <Footer />;
+};
+
 export default App;
