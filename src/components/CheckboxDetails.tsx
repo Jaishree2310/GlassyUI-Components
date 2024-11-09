@@ -10,30 +10,21 @@ const Checkbox = ({
   label,
 }: {
   checked: boolean;
-  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void; // accept event parameter
+  onChange: () => void;
   label: string;
 }) => (
   <label className='inline-flex items-center'>
     <input
       type='checkbox'
       checked={checked}
-      onChange={onChange} // pass event to onChange
+      onChange={onChange}
       className='form-checkbox h-5 w-5 text-blue-600 rounded'
     />
     <span className='ml-2 text-white'>{label}</span>
   </label>
 );
-interface CheckboxDetailsProps {
-  checked: boolean;
-  onChange: (checked: boolean) => void; // Correctly typed event handler
-  label: string;
-  size?: string; // Optional props can be handled this way
-  borderColor?: string;
-  backgroundColor?: string;
-  checkColor?: string;
-}
 
-const CheckboxDetailsPage: React.FC<CheckboxDetailsProps> = () => {
+const CheckboxDetailsPage: React.FC = () => {
   const navigate = useNavigate();
   const [copiedStates, setCopiedStates] = useState<{ [key: string]: boolean }>(
     {},
@@ -174,7 +165,7 @@ const CheckboxDetailsPage: React.FC<CheckboxDetailsProps> = () => {
           <div className='relative mt-8'>
             <Checkbox
               checked={isChecked}
-              onChange={e => setIsChecked(e.target.checked)} // update checked state from event
+              onChange={() => setIsChecked(!isChecked)}
               label='Custom Styled Checkbox'
             />
             <pre className='bg-gray-800 text-white p-6 rounded-lg mt-4 overflow-x-auto whitespace-pre-wrap max-sm:text-[0.55rem]'>

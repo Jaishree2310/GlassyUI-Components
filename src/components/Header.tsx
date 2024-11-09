@@ -1,49 +1,34 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import gsap from 'gsap';
-import { Sun, Moon } from 'react-feather';
 
-const Header: React.FC<{ darkMode: boolean; toggleDarkMode: () => void }> = ({
-  darkMode,
-  toggleDarkMode,
-}) => {
+const Header: React.FC = () => {
   useEffect(() => {
+    // GSAP animation for the navbar
     const tl = gsap.timeline();
     tl.fromTo(
-      '.navbar-item',
-      { y: -100, opacity: 0 },
-      { y: 0, opacity: 1, duration: 1, ease: 'power2.inOut', stagger: 0.5 },
+      '.navbar-item', // Targeting elements with this class
+      {
+        y: -100, // Initial position (from)
+        opacity: 0, // Initial opacity (from)
+      },
+      {
+        y: 0, // Final position (to)
+        opacity: 1, // Final opacity (to)
+        duration: 1,
+        ease: 'power2.inOut',
+        stagger: 0.5, // Stagger for smooth effect
+      },
     );
 
     return () => {
-      tl.kill(); // Cleanup GSAP animation
+      // Cleanup GSAP animations
+      tl.kill();
     };
   }, []);
 
-  // Conditional styles based on darkMode
-  const navStyle: React.CSSProperties = {
-    backgroundColor: darkMode ? '#1f2937' : '#efefef', // Darker color for dark mode
-    padding: '10px',
-    display: 'flex',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    position: 'fixed', // Fix the navbar
-    top: 0, // Align it to the top of the page
-    width: '100%', // Ensure it spans the width of the page
-    zIndex: 1000, // Ensure it stays above other elements
-    backdropFilter: 'blur(10px)', // Apply the blur effect
-    WebkitBackdropFilter: 'blur(10px)', // For Safari compatibility
-    boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)', // Optional shadow for better contrast
-  };
-
-  const linkStyle: React.CSSProperties = {
-    color: darkMode ? 'white' : 'black', // White text in dark mode, black otherwise
-    textDecoration: 'none',
-    transition: 'color 0.3s ease',
-  };
-
   return (
-    <nav style={navStyle}>
+    <nav style={navStyle}> 
       <div className='flex items-center space-x-2'>
       <Link to='/'> {/* This will redirect to the home page */}
         <img
@@ -59,28 +44,15 @@ const Header: React.FC<{ darkMode: boolean; toggleDarkMode: () => void }> = ({
           <span className='text-blue-400'>Glass</span>UI
         </h1>
         </Link>
-      </div>
-
+      </div> 
       <ul style={ulStyle}>
         <li style={liStyle} className='navbar-item'>
           <Link
             to='/'
             style={linkStyle}
-            onMouseEnter={e =>
-              (e.currentTarget.style.color = darkMode ? '#fde047' : '#1f2937')
-            }
-            onMouseLeave={e =>
-              (e.currentTarget.style.color = darkMode ? 'white' : 'black')
-            }
+            onMouseEnter={e => (e.currentTarget.style.color = '#fde047')}
+            onMouseLeave={e => (e.currentTarget.style.color = 'white')}
           >
-            {/* Ignoring TypeScript error */}
-            {/* @ts-ignore */}
-            <lord-icon
-              src='https://cdn.lordicon.com/jeuxydnh.json'
-              trigger='hover'
-              colors='primary:#000000,secondary:#2b303c'
-              style={{ width: '25px', height: '25px', marginRight: '5px' }}
-            />
             Home
           </Link>
         </li>
@@ -88,21 +60,9 @@ const Header: React.FC<{ darkMode: boolean; toggleDarkMode: () => void }> = ({
           <Link
             to='/donate'
             style={linkStyle}
-            onMouseEnter={e =>
-              (e.currentTarget.style.color = darkMode ? '#fde047' : '#1f2937')
-            }
-            onMouseLeave={e =>
-              (e.currentTarget.style.color = darkMode ? 'white' : 'black')
-            }
+            onMouseEnter={e => (e.currentTarget.style.color = '#fde047')}
+            onMouseLeave={e => (e.currentTarget.style.color = 'white')}
           >
-            {/* Ignoring TypeScript error */}
-            {/* @ts-ignore */}
-            <lord-icon
-              src='https://cdn.lordicon.com/fqbvgezn.json'
-              trigger='hover'
-              colors='primary:#2b303c,secondary:#000000'
-              style={{ width: '25px', height: '25px', marginRight: '5px' }}
-            />
             Donate
           </Link>
         </li>
@@ -110,32 +70,10 @@ const Header: React.FC<{ darkMode: boolean; toggleDarkMode: () => void }> = ({
           <Link
             to='/about'
             style={linkStyle}
-            onMouseEnter={e =>
-              (e.currentTarget.style.color = darkMode ? '#fde047' : '#1f2937')
-            }
-            onMouseLeave={e =>
-              (e.currentTarget.style.color = darkMode ? 'white' : 'black')
-            }
-          >
-            {/* Ignoring TypeScript error */}
-            {/* @ts-ignore */}
-            <lord-icon
-              src='https://cdn.lordicon.com/kdduutaw.json'
-              trigger='hover'
-              colors='primary:#2b303c,secondary:#000000'
-              style={{ width: '25px', height: '25px', marginRight: '5px' }}
-            />
-            About Us
-          </Link>
-        </li>
-        <li style={liStyle} className='navbar-item'>
-          <Link
-            to='/survey'
-            style={linkStyle}
             onMouseEnter={e => (e.currentTarget.style.color = '#fde047')}
             onMouseLeave={e => (e.currentTarget.style.color = 'white')}
           >
-            Survey
+            About Us
           </Link>
         </li>
       </ul>
@@ -144,15 +82,10 @@ const Header: React.FC<{ darkMode: boolean; toggleDarkMode: () => void }> = ({
           style={linkStyle}
           onMouseEnter={e => (e.currentTarget.style.color = '#fde047')}
           onMouseLeave={e => (e.currentTarget.style.color = 'white')}
-          className='cursor-pointer flex items-center'
+          className='cursor-pointer'
         >
-          <i
-            className='fas fa-sign-in-alt'
-            style={{ color: 'black', fontSize: '24px', marginRight: '5px' }}
-          ></i>
           Login
         </li>
-
         <li
           style={linkStyle}
           onMouseEnter={e => (e.currentTarget.style.color = '#fde047')}
@@ -161,14 +94,6 @@ const Header: React.FC<{ darkMode: boolean; toggleDarkMode: () => void }> = ({
         >
           Signup
         </li>
-        {/* Dark Mode Toggle Button */}
-        <button
-          onClick={toggleDarkMode}
-          className={`transition-colors duration-300 focus:outline-none ${darkMode ? 'text-white hover:text-yellow-300' : 'text-gray-900 hover:text-yellow-500'}`}
-          style={darkModeToggleStyle}
-        >
-          {darkMode ? <Sun size={24} /> : <Moon size={24} />}
-        </button>
       </ul>
     </nav>
   );
@@ -204,12 +129,10 @@ const liStyle: React.CSSProperties = {
   margin: '0 10px',
 };
 
-const darkModeToggleStyle: React.CSSProperties = {
-  cursor: 'pointer',
-  background: 'none',
-  border: 'none',
-  marginLeft: '0px',
-  marginRight: '10px',
+const linkStyle: React.CSSProperties = {
+  color: 'white',
+  textDecoration: 'none',
+  transition: 'color 0.3s ease',
 };
 
 export default Header;

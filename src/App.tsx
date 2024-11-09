@@ -1,4 +1,6 @@
-import React, { Suspense, lazy, useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
+import PricingDetailPage from './components/PricingDetailPage';
+
 import {
   BrowserRouter as Router,
   Route,
@@ -6,10 +8,35 @@ import {
   useLocation,
 } from 'react-router-dom';
 
-// Import components that don't need to be lazy-loaded
-
+import ScrollProgressBar from './components/ScrollProgress'; // Import your ScrollProgressBar component
+import GlassyUILandingPage from './components/GlassyUILandingPage';
+import GlassyUIComponentsPage from './components/GlassyUIComponentsPage';
+import ButtonDetailsPage from './components/ButtonDetailsPage';
+import CardDetailsPage from './components/CardDetailsPage';
+import ProgressBarDetailPage from './components/ProgressBarDetailPage';
+import PopupDetailPage from './components/PopupDetailPage';
+import InputDetailPage from './components/InputDetailPage';
+import TextareaDetailPage from './components/TextareaDetailPage';
+import NotFoundPage from './components/NotFoundPage';
+import TooltipDetailsPage from './components/TooltipDetailsPage';
+import SpeedDialDetailsPage from './components/SpeedDialDetailsPage';
+import ModalDetailsPage from './components/ModalDetailsPage';
+import NavigationDetailsPage from './components/NavigationDetailsPage';
+import GlassMorphismGenrator from './components/GlassMorphismGenrator';
+import SliderDetailsPage from './components/SliderDetailsPage';
+import ContributorsPage from './components/ContributorsPage';
+import DonationPage from './components/DonationPage';
+import AboutUsPage from './components/AboutUsPage';
 import Header from './components/Header';
-import Footer from './components/Footer';
+import BackToTopDetailsPage from './components/BackToTopDetailsPage';
+import DropdowndetailsPage from './components/DropdowndetailsPage';
+import AuthenticationCard from './components/AuthenticationCards';
+import ToastPage from './components/ToastPage';
+import AccordionDetails from './components/AccordionDetails';
+import ContactUsDetailsPage from './components/ContactUsDetailsPage';
+import PaginationDetails from './components/PaginationDetails';
+import TestimonialDetails from './components/TestimonialDetails';
+import Footer from './components/Footer'; 
 import ScrollProgressBar from './components/ScrollProgress';
 // import SurveyForm from './components/SurveyForm'; 
 
@@ -80,8 +107,14 @@ const ProductCardDetailsPage = lazy(
   () => import('./components/ProductCardDetailsPage'),
 );
 const NotFoundPage = lazy(() => import('./components/NotFoundPage'));
+import CalendarDetails from './components/CalendarDetails';
+import Checkbox from './components/Checkbox';
+import Statistic from './components/StatisticDetails';
+import GalleryDetailsPage from './components/GalleryDetailsPage';
+import SpinnerDetailsPage from './components/SpinnerDetailsPage';
+import ProductCardDetailsPage from './components/ProductCardDetailsPage';
 
-// Theme toggle component
+
 const ThemeToggle: React.FC = () => {
   const [theme, setTheme] = useState(localStorage.getItem('theme') || 'light');
 
@@ -108,44 +141,13 @@ const ThemeToggle: React.FC = () => {
   );
 };
 
-const ConditionalFooter: React.FC<{ darkMode: boolean }> = ({ darkMode }) => {
-  const location = useLocation();
-  return location.pathname === '/' ? <Footer darkMode={darkMode} /> : null;
-};
 const App: React.FC = () => {
-  const [darkMode, setDarkMode] = useState(true); // Initial state for dark mode
-
-  //const ThemeToggle: React.FC = () => {
-  // const [theme, setTheme] = useState(localStorage.getItem('theme') || 'light');
-
-  useEffect(() => {
-    // Check localStorage for the saved theme preference
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme === 'dark') {
-      setDarkMode(true);
-      document.documentElement.classList.add('dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-    }
-  }, []);
-
-  // Toggle between dark and light modes
-  const toggleDarkMode = () => {
-    setDarkMode(prevMode => !prevMode);
-    if (!darkMode) {
-      document.documentElement.classList.add('dark');
-      localStorage.setItem('theme', 'dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-      localStorage.setItem('theme', 'light');
-    }
-  };
   return (
-    <Router>
+    <Router> 
        <Header />
       <ThemeToggle />
       <ScrollProgressBar /> {/* Anpm dd the ScrollProgressBar component here */}
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense fallback={<div>Loading...</div>}> 
       <Routes>
         <Route path='/' element={<GlassyUILandingPage />} />
         <Route path='/components' element={<GlassyUIComponentsPage />} />
@@ -183,12 +185,15 @@ const App: React.FC = () => {
         <Route path='/product-details' element={<ProductCardDetailsPage />} />
         <Route path='/gallery-details' element={<GalleryDetailsPage />} />
         <Route path='*' element={<NotFoundPage />} />
-      </Routes>
+      </Routes> 
       </Suspense>
       <ConditionalFooter darkMode={darkMode} />
  
     </Router>
   );
 };
-
+const ConditionalFooter: React.FC = () => {
+  const location = useLocation();
+  return location.pathname === '/' ? <Footer /> : null;
+};
 export default App;

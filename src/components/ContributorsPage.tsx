@@ -15,7 +15,6 @@ interface Contributor {
   html_url: string;
   contributions: number;
   type: string;
-  darkMode: boolean;
 }
 
 interface RepoStats {
@@ -30,16 +29,11 @@ const ContributorCard: React.FC<Contributor> = ({
   html_url,
   contributions,
   type,
-  darkMode,
 }) => (
   <motion.div
     whileHover={{ y: -5 }}
     transition={{ type: 'spring', stiffness: 300 }}
-    className={`backdrop-blur-md rounded-lg overflow-hidden border ${
-      darkMode
-        ? 'bg-black/30 border-white/10'
-        : 'bg-neutral-100 border-black/10'
-    }`}
+    className='bg-black/30 backdrop-blur-md rounded-lg overflow-hidden border border-white/10'
     data-aos='fade-up'
     data-aos-duration='1700'
   >
@@ -47,34 +41,22 @@ const ContributorCard: React.FC<Contributor> = ({
       <img
         src={avatar_url}
         alt={login}
-        className={`w-24 h-24 rounded-full mx-auto mb-4 border-4 ${darkMode ? 'border-primary' : 'border-black/60'}`}
+        className='w-24 h-24 rounded-full mx-auto mb-4 border-4 border-primary'
       />
-      <h3
-        className={`font-bold text-xl ${darkMode ? 'text-white' : 'text-black'}`}
-      >
-        {login}
-      </h3>
-      <p className={`text-sm ${darkMode ? 'text-primary' : 'text-black'} mb-2`}>
-        {type}
-      </p>
-      <div
-        className={`mt-4 ${darkMode ? 'bg-white/10' : 'bg-black/10'} rounded-full py-2 px-4 inline-block`}
-      >
-        <span
-          className={`font-semibold ${darkMode ? 'text-primary' : 'text-black'}`}
-        >
+      <h3 className='font-bold text-xl text-white'>{login}</h3>
+      <p className='text-sm text-primary mb-2'>{type}</p>
+      <div className='mt-4 bg-white/10 rounded-full py-2 px-4 inline-block'>
+        <span className='font-semibold text-primary'>
           {contributions} contributions
         </span>
       </div>
     </div>
-    <div
-      className={`${darkMode ? 'bg-white/5' : 'bg-black/5'} py-3 px-6 flex justify-between items-center`}
-    >
+    <div className='bg-white/5 py-3 px-6 flex justify-between items-center'>
       <a
         href={html_url}
         target='_blank'
         rel='noopener noreferrer'
-        className={`${darkMode ? 'text-primary hover:text-primary/80' : 'text-black/80 hover:text-black'} transition-colors flex items-center`}
+        className='text-primary hover:text-primary/80 transition-colors flex items-center'
       >
         <svg
           xmlns='http://www.w3.org/2000/svg'
@@ -97,7 +79,7 @@ const ContributorCard: React.FC<Contributor> = ({
         strokeWidth='2'
         strokeLinecap='round'
         strokeLinejoin='round'
-        className={darkMode ? 'text-white/50' : 'text-black/70'}
+        className='text-white/50'
       >
         <path d='M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22'></path>
       </svg>
@@ -109,38 +91,24 @@ interface StatCardProps {
   label: string;
   value: number;
   icon: React.ReactNode;
-  darkMode: boolean;
 }
 
-const StatCard: React.FC<StatCardProps> = ({
-  label,
-  value,
-  icon,
-  darkMode,
-}) => (
+const StatCard: React.FC<StatCardProps> = ({ label, value, icon }) => (
   <motion.div
     initial={{ opacity: 0, y: 20 }}
     animate={{ opacity: 1, y: 0 }}
     transition={{ duration: 0.5 }}
-    className={`${darkMode ? 'bg-black/30 border-white/10' : 'bg-black/5 border-black/20'} backdrop-blur-md rounded-lg p-6 flex items-center border`}
+    className='bg-black/30 backdrop-blur-md rounded-lg p-6 flex items-center border border-white/10'
   >
-    <div
-      className={`rounded-full ${darkMode ? 'bg-white/10' : 'bg-black/10'} p-3 mr-4`}
-    >
-      {icon}
-    </div>
+    <div className='rounded-full bg-white/10 p-3 mr-4'>{icon}</div>
     <div>
-      <h3
-        className={`text-3xl font-bold ${darkMode ? 'text-white' : 'text-black'}`}
-      >
-        {value}
-      </h3>
-      <p className={darkMode ? 'text-white/70' : 'text-black/70'}>{label}</p>
+      <h3 className='text-3xl font-bold text-white'>{value}</h3>
+      <p className='text-white/70'>{label}</p>
     </div>
   </motion.div>
 );
 
-const Component: React.FC<{ darkMode: boolean }> = ({ darkMode }) => {
+export default function Component() {
   const [contributors, setContributors] = useState<Contributor[]>([]);
   const [repoStats, setRepoStats] = useState<RepoStats>({
     stars: 0,
@@ -235,20 +203,14 @@ const Component: React.FC<{ darkMode: boolean }> = ({ darkMode }) => {
   }, []);
 
   return (
-    <div
-      className={`min-h-screen bg-gradient-to-br ${darkMode ? 'from-gray-900 to-black text-white' : 'from-white to-black/10 text-black'}`}
-    >
+    <div className='min-h-screen bg-gradient-to-br from-gray-900 to-black text-white'>
       <BackToTopButton />
       {/* Hero Section */}
-      <section
-        className={`relative h-[70vh] flex items-center justify-center text-center bg-gradient-to-br ${darkMode ? 'from-gray-900 via-black to-gray-800' : 'from-white via-black/20 to to-black/10'}`}
-      >
-        <div
-          className={`absolute inset-0 ${darkMode ? 'bg-black/50' : 'bg-white/40'} backdrop-blur-sm`}
-        />
+      <section className='relative h-[70vh] flex items-center justify-center text-center bg-gradient-to-br from-gray-900 via-black to-gray-800'>
+        <div className='absolute inset-0 bg-black/50 backdrop-blur-sm' />
         <div className='relative z-10 space-y-6 max-w-4xl mx-auto px-4'>
           <motion.h1
-            className={`text-5xl font-bold sm:text-6xl md:text-7xl ${darkMode ? 'text-white' : 'text-black'}`}
+            className='text-5xl font-bold sm:text-6xl md:text-7xl text-white'
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
@@ -256,40 +218,29 @@ const Component: React.FC<{ darkMode: boolean }> = ({ darkMode }) => {
             Our Amazing Contributors
           </motion.h1>
           <motion.p
-            className={`text-xl sm:text-2xl ${darkMode ? 'text-white/80' : 'text-black'}`}
+            className='text-xl sm:text-2xl text-white/80'
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
             Shaping the future of GlasslyUI-Components, one commit at a time
-            <button
-              type='submit'
-              className='px-10 py-4 my-10 font-bold text-white rounded-full shadow-lg transition duration-300 ease-in-out bg-gradient-to-r from-blue-500 to-purple-600 border-2 border-transparent hover:border-white/30 hover:bg-opacity-80'
-            >
-              Become a contributor
-            </button>
           </motion.p>
         </div>
       </section>
 
-      <section
-        className={`py-16 px-4 sm:px-6 lg:px-8 ${darkMode ? 'bg-black/30' : 'bg-white'} backdrop-blur-md`}
-      >
+      <section className='py-16 px-4 sm:px-6 lg:px-8 bg-black/30 backdrop-blur-md'>
         <div className='max-w-7xl mx-auto'>
-          <h2
-            className={`text-3xl font-bold text-center mb-12 ${darkMode ? 'text-white' : 'text-black'}`}
-          >
+          <h2 className='text-3xl font-bold text-center mb-12 text-white'>
             Project Statistics
           </h2>
           <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8'>
             <StatCard
               label='Contributors'
               value={contributors.length}
-              darkMode={darkMode}
               icon={
                 <svg
                   xmlns='http://www.w3.org/2000/svg'
-                  className={`h-8 w-8 ${darkMode ? 'text-primary' : 'text-black'}`}
+                  className='h-8 w-8 text-primary'
                   viewBox='0 0 20 20'
                   fill='currentColor'
                 >
@@ -303,11 +254,10 @@ const Component: React.FC<{ darkMode: boolean }> = ({ darkMode }) => {
                 (sum, contributor) => sum + contributor.contributions,
                 0,
               )}
-              darkMode={darkMode}
               icon={
                 <svg
                   xmlns='http://www.w3.org/2000/svg'
-                  className={`h-8 w-8 ${darkMode ? 'text-primary' : 'text-black'}`}
+                  className='h-8 w-8 text-primary'
                   viewBox='0 0 20 20'
                   fill='currentColor'
                 >
@@ -322,11 +272,10 @@ const Component: React.FC<{ darkMode: boolean }> = ({ darkMode }) => {
             <StatCard
               label='GitHub Stars'
               value={repoStats.stars}
-              darkMode={darkMode}
               icon={
                 <svg
                   xmlns='http://www.w3.org/2000/svg'
-                  className={`h-8 w-8 ${darkMode ? 'text-primary' : 'text-black'}`}
+                  className='h-8 w-8 text-primary'
                   viewBox='0 0 20 20'
                   fill='currentColor'
                 >
@@ -337,11 +286,10 @@ const Component: React.FC<{ darkMode: boolean }> = ({ darkMode }) => {
             <StatCard
               label='Forks'
               value={repoStats.forks}
-              darkMode={darkMode}
               icon={
                 <svg
                   xmlns='http://www.w3.org/2000/svg'
-                  className={`h-8 w-8 ${darkMode ? 'text-primary' : 'text-black'}`}
+                  className='h-8 w-8 text-primary'
                   viewBox='0 0 20 20'
                   fill='currentColor'
                 >
@@ -357,22 +305,14 @@ const Component: React.FC<{ darkMode: boolean }> = ({ darkMode }) => {
         </div>
       </section>
 
-      <section
-        className={`py-16 px-4 sm:px-6 lg:px-8 backdrop-blur-sm ${darkMode ? 'bg-black/20' : 'bg-white'}`}
-      >
+      <section className='py-16 px-4 sm:px-6 lg:px-8 bg-black/20 backdrop-blur-sm'>
         <div className='max-w-7xl mx-auto'>
-          <h2
-            className={`text-4xl font-bold text-center mb-12 ${darkMode ? 'text-white' : 'text-black'}`}
-          >
+          <h2 className='text-4xl font-bold text-center mb-12 text-white'>
             Meet Our Contributors
           </h2>
-          <div className='grid grid-cols-1 md:grid-cols-4 sm:grid-cols-2 gap-8'>
+          <div className='grid grid-cols-1 md:grid-cols-3 gap-8'>
             {currentContributors.map(contributor => (
-              <ContributorCard
-                key={contributor.id}
-                {...contributor}
-                darkMode={darkMode}
-              />
+              <ContributorCard key={contributor.id} {...contributor} />
             ))}
           </div>
 
@@ -380,14 +320,14 @@ const Component: React.FC<{ darkMode: boolean }> = ({ darkMode }) => {
             <button
               onClick={() => paginate(currentPage - 1)}
               disabled={currentPage === 1}
-              className={`px-4 py-2 ${darkMode ? 'bg-primary text-white' : 'bg-white text-black'} rounded disabled:opacity-50`}
+              className='px-4 py-2 bg-primary text-white rounded disabled:opacity-50'
             >
               Previous
             </button>
             <button
               onClick={() => paginate(currentPage + 1)}
               disabled={currentPage === totalPages}
-              className={`px-4 py-2 ${darkMode ? 'bg-primary text-white' : 'bg-white text-black'} rounded disabled:opacity-50`}
+              className='px-4 py-2 bg-primary text-white rounded disabled:opacity-50'
             >
               Next
             </button>
@@ -397,7 +337,7 @@ const Component: React.FC<{ darkMode: boolean }> = ({ darkMode }) => {
 
       <section
         id='contribute'
-        className='py-16 px-4 sm:px-6 lg:px-8 bg-black/40 backdrop-blur-md'
+        className='py-16 px-4 sm:px-6 lg:px-8 bg-black/40  backdrop-blur-md'
       >
         <div className='max-w-4xl mx-auto text-center'>
           <h2 className='text-4xl font-bold mb-6 text-white'>
@@ -429,5 +369,4 @@ const Component: React.FC<{ darkMode: boolean }> = ({ darkMode }) => {
       </section>
     </div>
   );
-};
-export default Component;
+}
