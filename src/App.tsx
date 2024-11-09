@@ -122,6 +122,6 @@ const App: React.FC = () => {
 };
 const ConditionalFooter: React.FC = () => {
   const location = useLocation();
-  return location.pathname === '/' ? <Footer /> : null;
+  return location.pathname === '/' ? null : <Footer />;
 };
 export default App;
