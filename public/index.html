@@ -2,48 +2,152 @@
 <html lang="en">
 
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="theme-color" content="#000000" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <!-- SEO Meta Tags -->
-  <meta name="title" content="GlassyUI - Glassmorphism UI Components for React" />
-  <meta name="description"
-    content="GlassyUI offers modern, glassmorphism-themed React UI components, including buttons, modals, input fields, and more. Build sleek and stylish web applications with GlassyUI." />
-  <meta name="keywords"
-    content="GlassyUI, React components, glassmorphism, UI design, frontend library, buttons, input fields, modals, progress bars, open-source, web development, SCSS, customizable" />
-  <meta name="author" content="GlassyUI Team" />
+    <!-- SEO Meta Tags -->
+    <meta name="title" content="GlassyUI - Glassmorphism UI Components for React" />
+    <meta name="description" content="GlassyUI offers modern, glassmorphism-themed React UI components, including buttons, modals, input fields, and more. Build sleek and stylish web applications with GlassyUI." />
+    <meta name="keywords" content="GlassyUI, React components, glassmorphism, UI design, frontend library, buttons, input fields, modals, progress bars, open-source, web development, SCSS, customizable" />
+    <meta name="author" content="GlassyUI Team" />
 
-  <!-- Open Graph Meta Tags (for social media sharing) -->
-  <meta property="og:title" content="GlassyUI - Glassmorphism UI Components for React" />
-  <meta property="og:description"
-    content="Discover GlassyUI, an open-source library of stunning glassmorphism-themed UI components built with React." />
-  <meta property="og:image" content="%PUBLIC_URL%/og-image.png" />
-  <meta property="og:url" content="https://glassyui.com" />
-  <meta property="og:type" content="website" />
+    <!-- Open Graph Meta Tags (for social media sharing) -->
+    <meta property="og:title" content="GlassyUI - Glassmorphism UI Components for React" />
+    <meta property="og:description" content="Discover GlassyUI, an open-source library of stunning glassmorphism-themed UI components built with React." />
+    <meta property="og:image" content="%PUBLIC_URL%/og-image.png" />
+    <meta property="og:url" content="https://glassyui.com" />
+    <meta property="og:type" content="website" />
 
-  <!-- Twitter Meta Tags -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="GlassyUI - Glassmorphism UI Components for React" />
-  <meta name="twitter:description"
-    content="Check out GlassyUI, featuring beautiful React components designed with the glassmorphism effect." />
-  <meta name="twitter:image" content="%PUBLIC_URL%/twitter-image.png" />
+    <!-- Twitter Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="GlassyUI - Glassmorphism UI Components for React" />
+    <meta name="twitter:description" content="Check out GlassyUI, featuring beautiful React components designed with the glassmorphism effect." />
+    <meta name="twitter:image" content="%PUBLIC_URL%/twitter-image.png" />
 
-  <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
-  <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
-  <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <!-- Manifest and Icons -->
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <script src="https://cdn.lordicon.com/lordicon.js"></script>
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+        integrity="sha384-k6RqeWeci5ZR/Lv4MR0sA0FfDOM1hEq07e4sC1YwD8Z5xP5M6xw41oD3D8VZ76X"
+        crossorigin="anonymous"
+    />
 
-  <title>GlassyUI</title>
+    <!-- Page Title -->
+    <title>GlassyUI</title>
+
+    <style>
+        /* Styles for scrollable containers and elements */
+        html, body {
+            height: 100%; 
+            margin: 0; 
+            overflow: auto;
+        }
+
+        .container {
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        /* Scrollbar Styling */
+        ::-webkit-scrollbar {
+            width: 12px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #2b303c;
+        }
+        ::-webkit-scrollbar-thumb {
+            background-color: #ffffff;
+            border-radius: 6px;
+            border: 3px solid #ffffff;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background-color: #ffd700;
+        }
+
+        .circle {
+            height: 24px;
+            width: 24px;
+            border-radius: 24px;
+            background-color: black;
+            position: fixed;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            z-index: 99999999;
+        }
+    </style>
 </head>
 
 <body>
+    <!-- Circles generated by JavaScript -->
+    <div id="circles-container"></div>
 
+    <!-- Optional Theme Toggle Button -->
+    <button id="theme-toggle">Toggle Theme</button>
 
-  <!-- Root element for React to render into -->
-  <div id="root"></div>
+    <!-- Root div for React app -->
+    <div id="root"></div>
 
-  <!-- External scripts -->
-  <script src="https://files.bpcontent.cloud/2024/10/16/00/20241016003058-U9QDG9UF.js"></script>
+    <script>
+        window.embeddedChatbotConfig = {
+            chatbotId: "IONKpU7WVX0ANZ-WHYTfj",
+            domain: "www.chatbase.co"
+        };
+    </script>
+    <script src="https://www.chatbase.co/embed.min.js" chatbotId="IONKpU7WVX0ANZ-WHYTfj" domain="www.chatbase.co" defer></script>
+    
+    <script>
+        const coords = { x: 0, y: 0 };
+        const colors = [
+            "#E6F7FF", "#B3E0FF", "#99CCFF", "#66B2FF", "#3399FF",
+            "#007FFF", "#0066CC", "#0059B3", "#004C99", "#003F7F",
+            "#003366", "#00264D", "#001F33", "#001a4d", "#001a99"
+        ];
+
+        // Generate circle divs dynamically
+        const circlesContainer = document.getElementById("circles-container");
+        colors.forEach((color, index) => {
+            const circle = document.createElement("div");
+            circle.classList.add("circle");
+            circle.style.backgroundColor = color;
+            circlesContainer.appendChild(circle);
+        });
+
+        const circles = document.querySelectorAll(".circle");
+
+        window.addEventListener("mousemove", (e) => {
+            coords.x = e.clientX;
+            coords.y = e.clientY;
+        });
+
+        function animateCircles() {
+            let x = coords.x;
+            let y = coords.y;
+
+            circles.forEach((circle, index) => {
+                circle.style.left = x - 12 + "px";
+                circle.style.top = y - 12 + "px";
+                circle.style.transform = `scale(${(circles.length - index) / circles.length})`;
+
+                const nextCircle = circles[index + 1] || circles[0];
+                x += (nextCircle.x - x) * 0.3;
+                y += (nextCircle.y - y) * 0.3;
+
+                circle.x = x;
+                circle.y = y;
+            });
+
+            requestAnimationFrame(animateCircles);
+        }
+
+        animateCircles();
+    </script>
+
+    <!-- Fallback for No JavaScript -->
+    <noscript>You need to enable JavaScript to run this app.</noscript>
 </body>
 
 </html>
