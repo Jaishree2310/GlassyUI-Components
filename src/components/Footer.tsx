@@ -51,6 +51,9 @@ const Footer: React.FC = () => {
             <Link to='/about' className='footer-link'>
               About
             </Link>
+            <Link to='/termsOfUse' className='footer-link'>
+              Terms Of Use
+            </Link>
             <GoogleTranslate />
           </div>
         </div>
