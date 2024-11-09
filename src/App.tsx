@@ -114,12 +114,12 @@ const App: React.FC = () => {
         <Route path='/gallery-details' element={<GalleryDetailsPage />} />
         <Route path='*' element={<NotFoundPage />} />
       </Routes>
-      <ConditionalFooter />
+      {/* <ConditionalFooter /> */}
     </Router>
   );
 };
-const ConditionalFooter: React.FC = () => {
-  const location = useLocation();
-  return location.pathname === '/' ? <Footer /> : null;
-};
+// const ConditionalFooter: React.FC = () => {
+//   const location = useLocation();
+//   return location.pathname === '/' ? <Footer /> : null;
+// };
 export default App;

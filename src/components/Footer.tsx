@@ -27,16 +27,8 @@ const Footer: React.FC = () => {
             <GoogleTranslate />
           </div>
         </div>
-        <div className='footer-bottom'>
-          <a
-            href='https://github.com/Jaishree2310/GlassyUI-Components'
-            target='_blank'
-            rel='noopener noreferrer'
-            className='github-link'
-          >
-            <i className='fa-brands fa-github'></i>
-          </a>
-          <p>&copy; 2023 GlassyUI. All rights reserved.</p>
+        <div className='text-[white] font-[bold] text-[16px] mt-[20]'>
+          <p>&copy; 2024 GlassyUI. All rights reserved.</p>
         </div>
 
         <style jsx>{`
@@ -80,6 +72,7 @@ const Footer: React.FC = () => {
             position: relative;
             padding: 5px 10px;
             transition: all 0.3s ease;
+            margin-bottom: 50px;
           }
 
           .footer-link::after {
@@ -95,15 +88,6 @@ const Footer: React.FC = () => {
 
           .footer-link:hover::after {
             width: 100%;
-          }
-
-          .footer-bottom {
-            display: flex;
-            gap: 10px;
-            align-items: center;
-            justify-content: center;
-            margin-top: 20px;
-            color: #fff;
           }
 
           .github-link {
@@ -128,29 +112,6 @@ const Footer: React.FC = () => {
             }
           }
         `}</style>
-        <div>
-          <p
-            style={{
-              fontSize: '14px',
-              color: '#fff',
-              position: 'relative',
-              right: '-300px',
-            }}
-          >
-            &copy; 2024 GlassyUI. All rights reserved.
-          </p>
-          <div
-            style={{
-              fontSize: '14px',
-              color: '#fff',
-              position: 'relative',
-              right: '-300px',
-              top: '10px',
-            }}
-          >
-            <GoogleTranslate />
-          </div>
-        </div>
       </footer>
     </>
   );

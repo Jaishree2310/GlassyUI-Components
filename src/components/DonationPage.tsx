@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { z } from 'zod';
+import Footer from './Footer';
 
 const DonationPage: React.FC = () => {
   const [isHovering, setIsHovering] = useState(false);
@@ -31,16 +32,17 @@ const DonationPage: React.FC = () => {
   }, []);
 
   const containerStyle: React.CSSProperties = {
-    maxWidth: '500px',
+    maxWidth: '100%',
     margin: '70px auto',
     padding: '40px',
     background:
-      'linear-gradient(180deg, rgba(255, 255, 255, 0.01), rgba(255, 255, 255, 0.1)',
+      'linear-gradient(180deg, rgba(255, 255, 255, 0.01), rgba(255, 255, 255, 0.1))',
     borderRadius: '20px',
     border: '1px solid rgba(255, 255, 255, 0.2)',
     textAlign: 'center',
     fontFamily: "'Poppins', sans-serif",
     color: '#ffffff',
+    flexGrow: 1, // Allow the container to grow and push footer down
   };
 
   const headingStyle: React.CSSProperties = {
@@ -143,78 +145,89 @@ const DonationPage: React.FC = () => {
   };
 
   return (
-    <div style={containerStyle}>
-      <h1 style={headingStyle}>Support Us!</h1>
-      <p style={paragraphStyle}>
-        Your contributions help us continue our work.
-      </p>
-      <form noValidate style={formStyle} onSubmit={handleSubmit}>
-        <label htmlFor='amount' style={labelStyle}>
-          Donation Amount:
-        </label>
-        <input
-          type='text'
-          id='amount'
-          name='amount'
-          placeholder='Enter amount in Rupees'
-          style={{
-            ...inputStyle,
-            ...(formData.amount ? inputFocusStyle : {}),
-          }}
-          value={formData.amount}
-          onChange={handleChange}
-          required
-        />
-        {errors.amount && <p style={errorStyle}>{errors.amount}</p>}
+    <div
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+        minHeight: '100vh',
+        overflowX: 'hidden',
+      }}
+    >
+      <div style={containerStyle}>
+        <h1 style={headingStyle}>Support Us!</h1>
+        <p style={paragraphStyle}>
+          Your contributions help us continue our work.
+        </p>
+        <form noValidate style={formStyle} onSubmit={handleSubmit}>
+          <label htmlFor='amount' style={labelStyle}>
+            Donation Amount:
+          </label>
+          <input
+            type='text'
+            id='amount'
+            name='amount'
+            placeholder='Enter amount in Rupees'
+            style={{
+              ...inputStyle,
+              ...(formData.amount ? inputFocusStyle : {}),
+            }}
+            value={formData.amount}
+            onChange={handleChange}
+            required
+          />
+          {errors.amount && <p style={errorStyle}>{errors.amount}</p>}
 
-        <label htmlFor='name' style={labelStyle}>
-          Your Name:
-        </label>
-        <input
-          type='text'
-          id='name'
-          name='name'
-          placeholder='Enter your name'
-          style={{
-            ...inputStyle,
-            ...(formData.name ? inputFocusStyle : {}),
-          }}
-          value={formData.name}
-          onChange={handleChange}
-          required
-        />
-        {errors.name && <p style={errorStyle}>{errors.name}</p>}
+          <label htmlFor='name' style={labelStyle}>
+            Your Name:
+          </label>
+          <input
+            type='text'
+            id='name'
+            name='name'
+            placeholder='Enter your name'
+            style={{
+              ...inputStyle,
+              ...(formData.name ? inputFocusStyle : {}),
+            }}
+            value={formData.name}
+            onChange={handleChange}
+            required
+          />
+          {errors.name && <p style={errorStyle}>{errors.name}</p>}
 
-        <label htmlFor='email' style={labelStyle}>
-          Your Email:
-        </label>
-        <input
-          type='email'
-          id='email'
-          name='email'
-          placeholder='Enter your email'
-          style={{
-            ...inputStyle,
-            ...(formData.email ? inputFocusStyle : {}),
-          }}
-          value={formData.email}
-          onChange={handleChange}
-          required
-        />
-        {errors.email && <p style={errorStyle}>{errors.email}</p>}
+          <label htmlFor='email' style={labelStyle}>
+            Your Email:
+          </label>
+          <input
+            type='email'
+            id='email'
+            name='email'
+            placeholder='Enter your email'
+            style={{
+              ...inputStyle,
+              ...(formData.email ? inputFocusStyle : {}),
+            }}
+            value={formData.email}
+            onChange={handleChange}
+            required
+          />
+          {errors.email && <p style={errorStyle}>{errors.email}</p>}
 
-        <button
-          type='submit'
-          style={{
-            ...buttonStyle,
-            ...(isHovering ? buttonHoverStyle : {}),
-          }}
-          onMouseEnter={handleMouseEnter}
-          onMouseLeave={handleMouseLeave}
-        >
-          Donate Now
-        </button>
-      </form>
+          <button
+            type='submit'
+            style={{
+              ...buttonStyle,
+              ...(isHovering ? buttonHoverStyle : {}),
+            }}
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
+          >
+            Donate Now
+          </button>
+        </form>
+      </div>
+      {/* footer section */}
+      <Footer />
     </div>
   );
 };

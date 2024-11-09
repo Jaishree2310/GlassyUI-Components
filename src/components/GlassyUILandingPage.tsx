@@ -55,7 +55,7 @@ const GlassyUILandingPage: React.FC = () => {
       />
 
       <div className='homeGSap relative z-10 w-full max-w-4xl'>
-        <header className='w-full flex justify-between items-center mb-4'>
+        <header className='w-full flex justify-between items-center mb-4 mt-20'>
           {' '}
           {/* Adjusted mb-8 to mb-4 */}
           <div className='text-2xl font-bold text-white'>
@@ -124,6 +124,7 @@ const GlassyUILandingPage: React.FC = () => {
         </main>
       </div>
       <div>
+        {/* Footer section */}
         <Footer />
       </div>
     </div>

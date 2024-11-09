@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import BackToTopButton from './BackToTop';
 import { useNavigate } from 'react-router-dom';
+import Footer from './Footer';
 import {
   ArrowRight,
   Info,
@@ -344,7 +345,7 @@ const GlassyUIComponentsPage: React.FC = () => {
       <div className='container mx-auto px-4 py-8 lg:py-12'>
         <header className='flex justify-between items-center mb-16 px-6 py-4 rounded-lg pl-0'>
           <div
-            className='text-3xl lg:text-4xl font-extrabold tracking-tight cursor-pointer hover:text-pink-300 transition-colors duration-300 text-white'
+            className='text-3xl lg:text-4xl font-extrabold tracking-tight cursor-pointer hover:text-pink-300 transition-colors duration-300 text-white ml-5'
             onClick={() => navigate('/')}
             data-aos='fade-right'
           >
@@ -366,7 +367,7 @@ const GlassyUIComponentsPage: React.FC = () => {
 
         <main>
           <h1
-            className='text-4xl lg:text-6xl font-extrabold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-white to-pink-200'
+            className='text-4xl lg:text-6xl font-extrabold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-white to-pink-200 ml-5'
             data-aos='fade-right'
             data-aos-delay='400'
             data-aos-duration='1300'
@@ -374,7 +375,7 @@ const GlassyUIComponentsPage: React.FC = () => {
             Glassmorphic Components
           </h1>
           <p
-            className='text-lg lg:text-xl mb-12 max-w-2xl leading-relaxed'
+            className='text-lg lg:text-xl mb-12 max-w-2xl leading-relaxed ml-5'
             data-aos='fade-right'
             data-aos-delay='600'
             data-aos-duration='1500'
@@ -384,7 +385,7 @@ const GlassyUIComponentsPage: React.FC = () => {
             interfaces with depth and style.
           </p>
 
-          <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8'>
+          <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 p-5'>
             {currentComponents.map((component, index) => (
               <ComponentCard
                 key={index}
@@ -453,10 +454,10 @@ const GlassyUIComponentsPage: React.FC = () => {
           </div>
         </main>
       </div>
+      {/* footer section */}
+      <Footer />
     </div>
   );
 };
 
 export default GlassyUIComponentsPage;
-
-// dropdown menu, accordian, contact us,

@@ -29,9 +29,9 @@ const Header: React.FC = () => {
 
   return (
     <nav style={navStyle}>
-      <h1 className='text-white text-[20px] font-bold'>
+      {/* <h1 className='text-white text-[20px] font-bold'>
         <span className='text-blue-400'>Glass</span>UI
-      </h1>
+      </h1> */}
       <ul style={ulStyle}>
         <li style={liStyle} className='navbar-item'>
           <Link
@@ -66,7 +66,7 @@ const Header: React.FC = () => {
       </ul>
       <ul className='text-white flex gap-12 justify-center items-center '>
         <li
-          style={linkStyle}
+          style={{ ...linkStyle, marginRight: '130px' }} // added margin
           onMouseEnter={e => (e.currentTarget.style.color = '#fde047')}
           onMouseLeave={e => (e.currentTarget.style.color = 'white')}
           className='cursor-pointer'
@@ -109,11 +109,11 @@ const ulStyle: React.CSSProperties = {
   display: 'flex',
   justifyContent: 'flex-end',
   marginRight: '50px',
-  gap: '20px',
+  gap: '200px', //adding more gap
 };
 
 const liStyle: React.CSSProperties = {
-  margin: '0 10px',
+  margin: '0',
 };
 
 const linkStyle: React.CSSProperties = {

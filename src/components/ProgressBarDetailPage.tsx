@@ -111,6 +111,7 @@ const ProgressBarDetailPage: React.FC = () => {
   return (
     <div className='min-h-screen p-8 font-sans bg-gradient-to-r from-gray-800 via-gray-900 to-black text-white relative'>
       <BackToTopButton />
+
       <button
         onClick={() => navigate(-1)}
         className={`mb-8 flex items-center ${getGlassyClasses(10)} px-4 py-2 hover:bg-opacity-40 transition-all duration-300  text-gray-100`}
