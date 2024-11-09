@@ -43,6 +43,7 @@ import Statistic from './components/StatisticDetails';
 import GalleryDetailsPage from './components/GalleryDetailsPage';
 import SpinnerDetailsPage from './components/SpinnerDetailsPage';
 import ProductCardDetailsPage from './components/ProductCardDetailsPage';
+import { TermsOfUse } from './components/TermsOfUse';
 
 const ThemeToggle: React.FC = () => {
   const [theme, setTheme] = useState(localStorage.getItem('theme') || 'light');
@@ -112,6 +113,7 @@ const App: React.FC = () => {
         <Route path='/spinner' element={<SpinnerDetailsPage />} />
         <Route path='/product-details' element={<ProductCardDetailsPage />} />
         <Route path='/gallery-details' element={<GalleryDetailsPage />} />
+        <Route path='/termsOfUse' element={<TermsOfUse />} />
         <Route path='*' element={<NotFoundPage />} />
       </Routes>
       <ConditionalFooter />
