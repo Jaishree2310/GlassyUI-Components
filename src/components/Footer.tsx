@@ -36,7 +36,7 @@ const Footer: React.FC = () => {
           >
             <i className='fa-brands fa-github'></i>
           </a>
-          <p>&copy; 2023 GlassyUI. All rights reserved.</p>
+          <p>&copy; 2024 GlassyUI. All rights reserved.</p>
         </div>
 
         <style jsx>{`
@@ -137,7 +137,7 @@ const Footer: React.FC = () => {
               right: '-300px',
             }}
           >
-            &copy; 2024 GlassyUI. All rights reserved.
+            {/* &copy; 2024 GlassyUI. All rights reserved. */}
           </p>
           <div
             style={{
