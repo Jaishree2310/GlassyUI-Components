@@ -54,7 +54,7 @@ const GlassyUILandingPage: React.FC = () => {
         }}
       />
 
-      <div className='homeGSap relative z-10 w-full max-w-4xl'>
+      <div className='mt-14 homeGSap relative z-10 w-full max-w-4xl'>
         <header className='w-full flex justify-between items-center mb-4'>
           {' '}
           {/* Adjusted mb-8 to mb-4 */}
@@ -73,8 +73,8 @@ const GlassyUILandingPage: React.FC = () => {
         </header>
 
         <main
-          className={` text-center p-12 rounded-xl backdrop-filter backdrop-blur-lg bg-white bg-opacity-10 shadow-lg border border-white border-opacity-20 relative`}
-          style={{ marginTop: '20px' }} // Added marginTop for spacing
+          className={` text-center p-20 rounded-xl backdrop-filter backdrop-blur-lg bg-white bg-opacity-10 shadow-lg border border-white border-opacity-20 relative`}
+          style={{ marginTop: '18px' }} // Added marginTop for spacing
           data-aos='flip-up'
           data-aos-duration='2500'
         >
