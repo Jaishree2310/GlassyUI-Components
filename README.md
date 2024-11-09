@@ -4,12 +4,11 @@
 
 Welcome to **GlassyUI-Components**! This open-source library features stunning React components designed with a captivating glassmorphism effect, perfect for giving your web applications a modern and sleek design.
 
- 
 ## Project Structure ✨
 
 Check the project structure here [Project Structure](PROJECT_STRUCTURE.md)
 
- ## 📚 Table of Contents
+## 📚 Table of Contents
 
 - [Project Overview](#project-overview)
 - [Features](#Features)
@@ -258,7 +257,35 @@ git push origin my-feature-branch
 
 🌟 **So many talented contributors!** 🎉 Want to meet them all? Click [here](https://github.com/Jaishree2310/GlassyUI-Components/graphs/contributors) to discover the amazing team! 👩‍💻👨‍💻
 
+patch-1
+
+
+<!--line-->
+<img src="https://www.animatedimages.org/data/media/562/animated-line-image-0184.gif" width="1920" />
+
+
+## Stargazers ❤️
+
+<div align='left'>
+
+[![Stargazers repo roster for @Jaishree2310/GlassyUI-Components](https://reporoster.com/stars/dark/Jaishree2310/GlassyUI-Components)](https://github.com/Jaishree2310/GlassyUI-Components/stargazers)
+
+
+</div>
+
+## Forkers ❤️
+
+[![Forkers repo roster for @Jaishree2310/GlassyUI-Components](https://reporoster.com/forks/dark/Jaishree2310/GlassyUI-Components)](https://github.com/Jaishree2310/GlassyUI-Components/network/members)
+
+
+<!--line-->
+<img src="https://www.animatedimages.org/data/media/562/animated-line-image-0184.gif" width="1920" />
+
+
+
+
 ---
+main
 
 ## License
 
@@ -282,7 +309,6 @@ This project is licensed under the MIT License - see the [LICENSE](./LICENSE) fi
 ## ⭐ Give it a Star!
 
 If you enjoy using GlassyUI-Components and find it helpful, **please give it a star**! Your support encourages further development and improvement.
-
 
 ## 🌐 Contact with Me
 
@@ -309,4 +335,3 @@ If you enjoy using GlassyUI-Components and find it helpful, **please give it a s
 <p align="center">
   Thank you for connecting with me! 💬
 </p>
-

@@ -6,7 +6,7 @@ import { FaGithub } from 'react-icons/fa';
 import styled from 'styled-components';
 
 const AboutUsContainer = styled.div`
-  max-width: 700px; // Maximum width of the container
+  max-width: 900px; // Maximum width of the container
   margin: 0 auto; // Center the container horizontally
   padding: 40px 20px; // Padding around the container
   background: black; // Black background for the container

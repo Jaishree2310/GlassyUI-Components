@@ -2,13 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-@media only screen and (max-width: 768px) {
-  * {
-    width: 100vw;
-    box-sizing: border-box;
-  }
-}
-
 /*body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -25,12 +18,6 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  height: 100vh;
-  overflow: hidden;
   transition: background 0.5s ease-in-out;
 }
 
@@ -83,9 +70,11 @@ body.light-theme .enhanced-bg {
   0% {
     transform: translateY(0) rotate(0);
   }
+
   50% {
     transform: translateY(-20px) rotate(10deg);
   }
+
   100% {
     transform: translateY(0) rotate(0);
   }
@@ -121,6 +110,7 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
 ::-webkit-scrollbar {
   width: 8px;
 }
@@ -147,6 +137,7 @@ code {
   border: 1px solid rgba(255, 255, 255, 0.18);
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
 }
+
 /* Fade In Effect */
 @keyframes fade {
   from {
@@ -168,30 +159,36 @@ code {
   opacity: 1;
   transform: translateX(0);
 }
+
 .hide-toast {
   animation: toast-end cubic-bezier(0.18, 0.89, 0.32, 1.28) 600ms forwards;
 }
+
 @keyframes toast-start {
   from {
     opacity: 0;
     transform: translateX(100px);
     max-height: 0;
   }
+
   to {
     opacity: 1;
     transform: translateX(0);
     max-height: 350px;
   }
 }
+
 @keyframes toast-end {
   50% {
     opacity: 0;
     transform: translateX(100px);
   }
+
   51% {
     opacity: 0;
     transform: translateX(100px);
   }
+
   100% {
     opacity: 0;
     transform: translateX(100px);
@@ -204,6 +201,7 @@ code {
   0% {
     transform: translateX(-100%) translateY(-100%) rotate(45deg);
   }
+
   100% {
     transform: translateX(100%) translateY(100%) rotate(45deg);
   }
@@ -251,6 +249,7 @@ code {
   100% {
     transform: translateY(0);
   }
+
   50% {
     transform: translateY(-20px);
   }
@@ -261,6 +260,7 @@ code {
   100% {
     transform: translateY(0);
   }
+
   50% {
     transform: translateY(-10px);
   }

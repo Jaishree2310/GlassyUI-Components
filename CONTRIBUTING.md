@@ -17,6 +17,7 @@ Please read and adhere to our [Code of Conduct](https://github.com/Jaishree2310/
 <br>
 
 ## Table of Contents
+
 1. [Code of Conduct](#code-of-conduct-)
 2. [Need Help With Basics](#need-help-with-the-basics-)
 3. [Project Structure](#project-structure-)
@@ -45,40 +46,40 @@ If you're new to Git and GitHub, no worries! Here are some useful resources:
 ```bash
 GLASSYUI-COMPONENTS/
 ├── .github/                  # GitHub-related configurations such as workflows, issue templates, etc
-│   
+│
 ├── .husky/                   # Some pre-committed files
-│   
+│
 ├── Images/                   # Contains images related to the project
-│   
+│
 ├── public/                   # Some core components of the project
-│     
+│
 ├── src/                      # All the typescripts and react related files
-│   
-├── .dockerignore            
-│   
-├── .eslintignore                    
-│   
-├── .gitignore                
-│   
-├── .prettierignore         
-│   
-├── .prettierrc                
-│   
+│
+├── .dockerignore
+│
+├── .eslintignore
+│
+├── .gitignore
+│
+├── .prettierignore
+│
+├── .prettierrc
+│
 ├── CODE_OF_CONDUCT.md        # Some rules for contributors
 ├──
 ├── CONTRIBUTING.md           # Instructions for the contributors
 ├──
-├── docker-compose.yml          
-├──                                
+├── docker-compose.yml
+├──
 ├── Dockerfile
-├──           
+├──
 ├── eslint.config.mjs
 ├──
 ├── git
 ├──
-├── package-lock.json              
+├── package-lock.json
 ├──
-├── package.json                   
+├── package.json
 ├──
 ├── postcss.config.js
 ├──
@@ -105,17 +106,17 @@ When creating a new issue, please provide the following information:
 ## First Pull Request ✨
 
 1. **Star this repository**
-    Click on the top right corner marked as **Stars** at last.
+   Click on the top right corner marked as **Stars** at last.
 
 2. **Fork this repository**
-    Click on the top right corner marked as **Fork** at second last.
+   Click on the top right corner marked as **Fork** at second last.
 
 3. **Clone the forked repository**
 
 ```bash
 git clone https://github.com/<your-github-username>/GlassyUI-Components.git
 ```
-  
+
 4. **Navigate to the project directory**
 
 ```bash
@@ -153,36 +154,43 @@ git push -u origin <your_branch_name>
 ## Alternatively, contribute using GitHub Desktop 🖥️
 
 1. **Open GitHub Desktop:**
-  Launch GitHub Desktop and log in to your GitHub account if you haven't already.
+   Launch GitHub Desktop and log in to your GitHub account if you haven't already.
 
 2. **Clone the Repository:**
+
 - If you haven't cloned the project repository yet, you can do so by clicking on the "File" menu and selecting "Clone Repository."
 - Choose the project repository from the list of repositories on GitHub and clone it to your local machine.
 
 3. **Switch to the Correct Branch:**
+
 - Ensure you are on the branch that you want to submit a pull request for.
 - If you need to switch branches, you can do so by clicking on the "Current Branch" dropdown menu and selecting the desired branch.
 
 4. **Make Changes:**
+
 - Make your changes to the code or files in the repository using your preferred code editor.
 
 5. **Commit Changes:**
+
 - In GitHub Desktop, you'll see a list of the files you've changed. Check the box next to each file you want to include in the commit.
 - Enter a summary and description for your changes in the "Summary" and "Description" fields, respectively. Click the "Commit to <branch-name>" button to commit your changes to the local branch.
 
 6. **Push Changes to GitHub:**
+
 - After committing your changes, click the "Push origin" button in the top right corner of GitHub Desktop to push your changes to your forked repository on GitHub.
 
 7. **Create a Pull Request:**
+
 - Go to the GitHub website and navigate to your fork of the project repository.
 - You should see a button to "Compare & pull request" between your fork and the original repository. Click on it.
 
 8. **Review and Submit:**
+
 - On the pull request page, review your changes and add any additional information, such as a title and description, that you want to include with your pull request.
 - Once you're satisfied, click the "Create pull request" button to submit your pull request.
 
 9. **Wait for Review:**
-Your pull request will now be available for review by the project maintainers. They may provide feedback or ask for changes before merging your pull request into the main branch of the project repository.
+   Your pull request will now be available for review by the project maintainers. They may provide feedback or ask for changes before merging your pull request into the main branch of the project repository.
 
 ## Submitting a Pull Request 💾
 
@@ -212,48 +220,53 @@ We welcome suggestions for new features and enhancements. Please open an issue t
 
 1. **Fork the Repository:** Click the "Fork" button at the top right of the repository page.
 
-2. **Clone Your Fork:** 
+2. **Clone Your Fork:**
 
-    ```bash
-    git clone https://github.com/your-username/GlassyUI-Components.git
-    ```
+   ```bash
+   git clone https://github.com/your-username/GlassyUI-Components.git
+   ```
 
-    ```bash
-    cd GlassyUI-Components
-    ```
+   ```bash
+   cd GlassyUI-Components
+   ```
 
-3. **Install Dependencies:** 
+3. **Install Dependencies:**
 
-    ```bash
-    npm install
-    ```
+   ```bash
+   npm install
+   ```
+
 4. **Start the Development Server:**
 
-    ```bash
-    npm start
-    ```
+   ```bash
+   npm start
+   ```
 
 <br>
 
 # Style Guides ✍️
 
 ## Git Commit Messages
+
 - Use the present tense ("Add feature" not "Added feature").
 - Use the imperative mood ("Move cursor to..." not "Moves cursor to...").
 - Limit the first line to 72 characters or less.
 - Reference issues and pull requests liberally.
 
 ## JavaScript Style Guide
+
 - Follow the [Airbnb JavaScript Style Guide](https://github.com/airbnb/javascript).
 - Use ES6 syntax where applicable.
 - Ensure your code passes all linting and formatting checks.
 
 ## CSS/SCSS Style Guide
+
 - Use SCSS for styling.
 - Follow the [BEM methodology](http://getbem.com/) for class naming.
 - Keep styles modular and reusable.
 
 ## React Components
+
 - Use functional components with hooks where possible.
 - Ensure components are modular and reusable.
 - Write unit tests for all components using a testing library such as Jest.
