@@ -43,12 +43,10 @@ const Footer: React.FC = () => {
           .glass-footer {
             backdrop-filter: blur(10px) saturate(180%);
             -webkit-backdrop-filter: blur(10px) saturate(180%);
-            background-color: rgba(43, 48, 60, 0.7);
+            background-color: rgb(12, 17, 29);
             width: 100vw;
             padding: 40px 20px;
-            border-radius: 15px;
             text-align: center;
-            margin-top: 50px;
             display: flex;
             flex-direction: column;
             align-items: center;
