@@ -43,8 +43,9 @@ import Statistic from './components/StatisticDetails';
 import GalleryDetailsPage from './components/GalleryDetailsPage';
 import SpinnerDetailsPage from './components/SpinnerDetailsPage';
 import ProductCardDetailsPage from './components/ProductCardDetailsPage';
-import { TermsOfUse } from './components/TermsOfUse';
-
+ import AiChatbot from './components/AIChatbot';
+ import { TermsOfUse } from './components/TermsOfUse';
+ 
 const ThemeToggle: React.FC = () => {
   const [theme, setTheme] = useState(localStorage.getItem('theme') || 'light');
 
@@ -75,6 +76,7 @@ const App: React.FC = () => {
   return (
     <Router>
       <Header />
+      <AiChatbot />
       {/* <ThemeToggle /> */}
       <ScrollProgressBar /> {/* Add the ScrollProgressBar component here */}
       <Routes>
