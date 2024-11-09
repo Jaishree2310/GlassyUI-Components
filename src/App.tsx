@@ -36,17 +36,88 @@ import AccordionDetails from './components/AccordionDetails';
 import ContactUsDetailsPage from './components/ContactUsDetailsPage';
 import PaginationDetails from './components/PaginationDetails';
 import TestimonialDetails from './components/TestimonialDetails';
-import Footer from './components/Footer';
+import Footer from './components/Footer'; 
+import ScrollProgressBar from './components/ScrollProgress';
+// import SurveyForm from './components/SurveyForm'; 
+
+
+// Lazy-loaded components
+const GlassyUILandingPage = lazy(
+  () => import('./components/GlassyUILandingPage'),
+);
+const PricingDetailPage = lazy(() => import('./components/PricingDetailPage'));
+const GlassyUIComponentsPage = lazy(
+  () => import('./components/GlassyUIComponentsPage'),
+);
+const ButtonDetailsPage = lazy(() => import('./components/ButtonDetailsPage'));
+const CardDetailsPage = lazy(() => import('./components/CardDetailsPage'));
+const ProgressBarDetailPage = lazy(
+  () => import('./components/ProgressBarDetailPage'),
+);
+const PopupDetailPage = lazy(() => import('./components/PopupDetailPage'));
+const InputDetailPage = lazy(() => import('./components/InputDetailPage'));
+const TextareaDetailPage = lazy(
+  () => import('./components/TextareaDetailPage'),
+);
+const TooltipDetailsPage = lazy(
+  () => import('./components/TooltipDetailsPage'),
+);
+const SpeedDialDetailsPage = lazy(
+  () => import('./components/SpeedDialDetailsPage'),
+);
+const ModalDetailsPage = lazy(() => import('./components/ModalDetailsPage'));
+const NavigationDetailsPage = lazy(
+  () => import('./components/NavigationDetailsPage'),
+);
+const GlassMorphismGenrator = lazy(
+  () => import('./components/GlassMorphismGenrator'),
+);
+const SliderDetailsPage = lazy(() => import('./components/SliderDetailsPage'));
+const BackToTopDetailsPage = lazy(
+  () => import('./components/BackToTopDetailsPage'),
+);
+const DropdowndetailsPage = lazy(
+  () => import('./components/DropdowndetailsPage'),
+);
+const AuthenticationCard = lazy(
+  () => import('./components/AuthenticationCards'),
+);
+const ToastPage = lazy(() => import('./components/ToastPage'));
+const AccordionDetails = lazy(() => import('./components/AccordionDetails'));
+const ContributorsPage = lazy(() => import('./components/ContributorsPage'));
+const DonationPage = lazy(() => import('./components/DonationPage'));
+const AboutUsPage = lazy(() => import('./components/AboutUsPage'));
+const ContactUsDetailsPage = lazy(
+  () => import('./components/ContactUsDetailsPage'),
+);
+const PaginationDetails = lazy(() => import('./components/PaginationDetails'));
+const TestimonialDetails = lazy(
+  () => import('./components/TestimonialDetails'),
+);
+const CalendarDetails = lazy(() => import('./components/CalendarDetails'));
+const Checkbox = lazy(() => import('./components/Checkbox'));
+const Statistic = lazy(() => import('./components/StatisticDetails'));
+const GalleryDetailsPage = lazy(
+  () => import('./components/GalleryDetailsPage'),
+);
+const SpinnerDetailsPage = lazy(
+  () => import('./components/SpinnerDetailsPage'),
+);
+const ProductCardDetailsPage = lazy(
+  () => import('./components/ProductCardDetailsPage'),
+);
+const NotFoundPage = lazy(() => import('./components/NotFoundPage'));
 import CalendarDetails from './components/CalendarDetails';
 import Checkbox from './components/Checkbox';
 import Statistic from './components/StatisticDetails';
 import GalleryDetailsPage from './components/GalleryDetailsPage';
 import SpinnerDetailsPage from './components/SpinnerDetailsPage';
 import ProductCardDetailsPage from './components/ProductCardDetailsPage';
+ 
   import ContactUs from './components/ContactUs';
   import AiChatbot from './components/AIChatbot';
   import { TermsOfUse } from './components/TermsOfUse';
- 
+  
 const ThemeToggle: React.FC = () => {
   const [theme, setTheme] = useState(localStorage.getItem('theme') || 'light');
 
@@ -74,12 +145,16 @@ const ThemeToggle: React.FC = () => {
 };
 
 const App: React.FC = () => {
-  return (
-    <Router>
-      <Header />
+  return ( 
+    <Router> 
+       <Header />
+      <ThemeToggle />
+      <ScrollProgressBar /> {/* Anpm dd the ScrollProgressBar component here */}
+      <Suspense fallback={<div>Loading...</div>}> 
+ 
       <AiChatbot />
       {/* <ThemeToggle /> */}
-      <ScrollProgressBar /> {/* Add the ScrollProgressBar component here */}
+ 
       <Routes>
         <Route path='/' element={<GlassyUILandingPage />} />
         <Route path='/components' element={<GlassyUIComponentsPage />} />
@@ -116,11 +191,15 @@ const App: React.FC = () => {
         <Route path='/spinner' element={<SpinnerDetailsPage />} />
         <Route path='/product-details' element={<ProductCardDetailsPage />} />
         <Route path='/gallery-details' element={<GalleryDetailsPage />} />
+ 
+        <Route path='*' element={<NotFoundPage />} />
+      </Routes> 
+      </Suspense>
+      <ConditionalFooter darkMode={darkMode} />
+  
          <Route path='/contact' element={<ContactUs />} />
          <Route path='/termsOfUse' element={<TermsOfUse />} />
-         <Route path='*' element={<NotFoundPage />} />
-      </Routes>
-      <ConditionalFooter />
+  
     </Router>
   );
 };
