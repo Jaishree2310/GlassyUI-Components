@@ -332,14 +332,13 @@ const Toast: React.FC<ToastProps> = ({ id, title, message, autoDismiss = 9000, t
           </div>
         </div>
       </div>
-     
+
       <Footer />
       <style jsx>{`
-          .glass-footer {
-            width: 100%;
-          }
+        .glass-footer {
+          width: 100%;
+        }
       `}</style>
-
     </div>
   );
 };

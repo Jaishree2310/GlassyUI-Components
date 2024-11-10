@@ -224,12 +224,6 @@ export default function Component() {
             transition={{ duration: 0.8, delay: 0.2 }}
           >
             Shaping the future of GlasslyUI-Components, one commit at a time
-            <button
-              type='submit'
-              className='px-10 py-4 my-10 font-bold text-white rounded-full shadow-lg transition duration-300 ease-in-out bg-gradient-to-r from-blue-500 to-purple-600 border-2 border-transparent hover:border-white/30 hover:bg-opacity-80'
-            >
-              Become a contributor
-            </button>
           </motion.p>
         </div>
       </section>

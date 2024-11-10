@@ -56,7 +56,6 @@ const GlassyUILandingPage: React.FC = () => {
 
       <div className='homeGSap relative z-10 w-full max-w-4xl'>
 
- 
         <header className='w-full flex justify-between items-center mb-4'>
 
           {' '}

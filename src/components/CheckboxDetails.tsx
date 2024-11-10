@@ -188,7 +188,7 @@ const CheckboxDetailsPage: React.FC = () => {
           </p>
           <Checkbox
             checked={false}
-            onChange={() => { }}
+            onChange={() => {}}
             label='Disabled Checkbox'
           />
         </div>
