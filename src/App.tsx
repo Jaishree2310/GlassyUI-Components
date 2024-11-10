@@ -43,10 +43,12 @@ import Statistic from './components/StatisticDetails';
 import GalleryDetailsPage from './components/GalleryDetailsPage';
 import SpinnerDetailsPage from './components/SpinnerDetailsPage';
 import ProductCardDetailsPage from './components/ProductCardDetailsPage';
-  import ContactUs from './components/ContactUs';
-  import AiChatbot from './components/AIChatbot';
-  import { TermsOfUse } from './components/TermsOfUse';
- 
+import ContactUs from './components/ContactUs';
+import AiChatbot from './components/AIChatbot';
+import { TermsOfUse } from './components/TermsOfUse';
+import Register from './login/SignUp';
+import SignIn from './login/SignIn';
+
 const ThemeToggle: React.FC = () => {
   const [theme, setTheme] = useState(localStorage.getItem('theme') || 'light');
 
@@ -116,9 +118,11 @@ const App: React.FC = () => {
         <Route path='/spinner' element={<SpinnerDetailsPage />} />
         <Route path='/product-details' element={<ProductCardDetailsPage />} />
         <Route path='/gallery-details' element={<GalleryDetailsPage />} />
-         <Route path='/contact' element={<ContactUs />} />
-         <Route path='/termsOfUse' element={<TermsOfUse />} />
-         <Route path='*' element={<NotFoundPage />} />
+        <Route path='/contact' element={<ContactUs />} />
+        <Route path='/termsOfUse' element={<TermsOfUse />} />
+        <Route path='/signup' element={<Register />} />
+        <Route path='/signin' element={<SignIn />} />
+        <Route path='*' element={<NotFoundPage />} />
       </Routes>
       <ConditionalFooter />
     </Router>

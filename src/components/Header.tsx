@@ -1,31 +1,33 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import gsap from 'gsap';
+import { useAuth } from '../login/contexts/authContext/index';
+import UserAccount from '../login/UserAccount';
 
 const Header: React.FC = () => {
   useEffect(() => {
-    // GSAP animation for the navbar
     const tl = gsap.timeline();
     tl.fromTo(
-      '.navbar-item', // Targeting elements with this class
+      '.navbar-item',
       {
-        y: -100, // Initial position (from)
-        opacity: 0, // Initial opacity (from)
+        y: -100,
+        opacity: 0,
       },
       {
-        y: 0, // Final position (to)
-        opacity: 1, // Final opacity (to)
+        y: 0,
+        opacity: 1,
         duration: 1,
         ease: 'power2.inOut',
-        stagger: 0.5, // Stagger for smooth effect
+        stagger: 0.5,
       },
     );
 
     return () => {
-      // Cleanup GSAP animations
       tl.kill();
     };
   }, []);
+
+  const { currentUser, userLoggedIn } = useAuth();
 
   return (
     <nav style={navStyle}>
@@ -74,39 +76,58 @@ const Header: React.FC = () => {
           </Link>
         </li>
       </ul>
-      <ul className='text-white flex gap-12 justify-center items-center '>
-        <li
-          style={linkStyle}
-          onMouseEnter={e => (e.currentTarget.style.color = '#fde047')}
-          onMouseLeave={e => (e.currentTarget.style.color = 'white')}
-          className='cursor-pointer'
-        >
-          Login
-        </li>
-        <li
-          style={linkStyle}
-          onMouseEnter={e => (e.currentTarget.style.color = '#fde047')}
-          onMouseLeave={e => (e.currentTarget.style.color = 'white')}
-          className='cursor-pointer'
-        >
-          Signup
-        </li>
-      </ul>
+      {userLoggedIn && currentUser ? (
+        <UserAccount
+          email={currentUser.email ?? ''}
+          username={currentUser.displayName ?? ''}
+        />
+      ) : (
+        <ul className='text-white flex gap-12 justify-center items-center'>
+          <li
+            style={linkStyle}
+            onMouseEnter={e => (e.currentTarget.style.color = '#fde047')}
+            onMouseLeave={e => (e.currentTarget.style.color = 'white')}
+            className='cursor-pointer'
+          >
+            <Link
+              to='/signin'
+              style={linkStyle}
+              onMouseEnter={e => (e.currentTarget.style.color = '#fde047')}
+              onMouseLeave={e => (e.currentTarget.style.color = 'white')}
+            >
+              Sign in
+            </Link>
+          </li>
+          <li
+            style={linkStyle}
+            onMouseEnter={e => (e.currentTarget.style.color = '#fde047')}
+            onMouseLeave={e => (e.currentTarget.style.color = 'white')}
+            className='cursor-pointer'
+          >
+            <Link
+              to='/signup'
+              style={linkStyle}
+              onMouseEnter={e => (e.currentTarget.style.color = '#fde047')}
+              onMouseLeave={e => (e.currentTarget.style.color = 'white')}
+            >
+              Sign Up
+            </Link>
+          </li>
+        </ul>
+      )}
     </nav>
   );
 };
 
-// Inline styles for the nav bar
 const navStyle: React.CSSProperties = {
-  //backgroundColor: '#2b303c',
   padding: '10px',
-  position: 'fixed', // Fix the navbar
-  top: '0', // Align it to the top of the page
-  width: '100%', // Ensure it spans the width of the page
-  zIndex: 1000, // Ensure it stays above other elements
-  backdropFilter: 'blur(10px)', // Apply the blur effect
-  WebkitBackdropFilter: 'blur(10px)', // For Safari compatibility
-  boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)', // Optional shadow for better contrast
+  position: 'fixed',
+  top: '0',
+  width: '100%',
+  zIndex: 1000,
+  backdropFilter: 'blur(10px)',
+  WebkitBackdropFilter: 'blur(10px)',
+  boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
   display: 'flex',
   justifyContent: 'space-around',
   alignItems: 'center',
