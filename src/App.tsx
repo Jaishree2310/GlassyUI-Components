@@ -8,6 +8,7 @@ import {
   useLocation,
 } from 'react-router-dom';
 
+
 import ScrollProgressBar from './components/ScrollProgress'; // Import your ScrollProgressBar component
 import GlassyUILandingPage from './components/GlassyUILandingPage';
 import GlassyUIComponentsPage from './components/GlassyUIComponentsPage';
@@ -27,6 +28,7 @@ import SliderDetailsPage from './components/SliderDetailsPage';
 import ContributorsPage from './components/ContributorsPage';
 import DonationPage from './components/DonationPage';
 import AboutUsPage from './components/AboutUsPage';
+
 import Header from './components/Header';
 import BackToTopDetailsPage from './components/BackToTopDetailsPage';
 import DropdowndetailsPage from './components/DropdowndetailsPage';
@@ -37,11 +39,13 @@ import ContactUsDetailsPage from './components/ContactUsDetailsPage';
 import PaginationDetails from './components/PaginationDetails';
 import TestimonialDetails from './components/TestimonialDetails';
 import Footer from './components/Footer';
+
 import CalendarDetails from './components/CalendarDetails';
 import Checkbox from './components/Checkbox';
 import Statistic from './components/StatisticDetails';
 import GalleryDetailsPage from './components/GalleryDetailsPage';
 import SpinnerDetailsPage from './components/SpinnerDetailsPage';
+
 import ProductCardDetailsPage from './components/ProductCardDetailsPage';
   import ContactUs from './components/ContactUs';
   import AiChatbot from './components/AIChatbot';
@@ -49,6 +53,7 @@ import ProductCardDetailsPage from './components/ProductCardDetailsPage';
  
 const ThemeToggle: React.FC = () => {
   const [theme, setTheme] = useState(localStorage.getItem('theme') || 'light');
+
 
   useEffect(() => {
     if (theme === 'dark') {
@@ -73,10 +78,12 @@ const ThemeToggle: React.FC = () => {
   );
 };
 
+
 const App: React.FC = () => {
   return (
     <Router>
       <Header />
+
       <AiChatbot />
       {/* <ThemeToggle /> */}
       <ScrollProgressBar /> {/* Add the ScrollProgressBar component here */}
@@ -120,6 +127,7 @@ const App: React.FC = () => {
          <Route path='/termsOfUse' element={<TermsOfUse />} />
          <Route path='*' element={<NotFoundPage />} />
       </Routes>
+
       <ConditionalFooter />
     </Router>
   );

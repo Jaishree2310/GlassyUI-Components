@@ -21,7 +21,9 @@ import {
   GalleryThumbnails,
 } from 'lucide-react';
 
+
 import { HiOutlineWrenchScrewdriver } from 'react-icons/hi2';
+
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 
@@ -79,12 +81,14 @@ const GlassyUIComponentsPage: React.FC = () => {
   const [searchFilter, setSearchFilter] = useState<string>('');
   const componentsPerPage = 9;
 
+
   const scrollToNextSection = () => {
     window.scrollBy({
       top: window.innerHeight,
       behavior: 'smooth',
     });
   };
+
 
   useEffect(() => {
     // Initialize AOS if it hasn't been initialized
@@ -98,6 +102,7 @@ const GlassyUIComponentsPage: React.FC = () => {
     // Refresh AOS on currentPage change
     AOS.refresh();
   }, [currentPage]);
+
 
   const componentsData = [
     {
@@ -190,10 +195,48 @@ const GlassyUIComponentsPage: React.FC = () => {
       onClick: () => navigate('/pricing-details'),
     },
     {
+
+
+  
+        title: 'E-Commerce Product Card',
+      description: 'E-Commerce Product Card component with glassmorphic styling.',
+
+      icon: <ShoppingCart size={24} />,
+      onClick: () => navigate('/product-details'),
+    },
+    {
+
+      title: 'Statistic',
+      description: 'Statistic component with glassmorphic styling.',
+       icon: <AlignStartVertical size={24} />,
+      onClick: () => navigate('/statistic-details'),
+    },
+    {
+
+ 
+      title: 'Gallery',
+      description: 'Gallery component with glassmorphic styling.',
+      icon: <GalleryThumbnails size={24} />,
+       onClick: () => navigate('/gallery-details'),
+
+    },
+    {
+      title: 'Glassmorphism Effect Generator',
+      description: 'Create stunning Glassmorphic effects with ease.',
+
+      onClick: () => navigate('/generator'),
+
+      title: 'Like Button',
+      description: 'Interactive like button with animations.',
+      icon: <ThumbsUp size={24} />,
+      onClick: () => navigate('/like-button'),
+
+
       title: 'Dropdown Menu',
       description: 'Select an option from the dropdown menu.',
       icon: <AlignLeft size={24} />,
       onClick: () => navigate('/dropdown-details'),
+
     },
     {
       title: 'Authentication Cards',
@@ -355,9 +398,17 @@ const GlassyUIComponentsPage: React.FC = () => {
             className='flex items-center bg-gradient-to-r from-slate-800 via-slate-700 to-slate-900 text-white w-2/5 rounded-lg shadow-lg overflow-hidden'
             data-aos='fade-left'
           >
-            <input
+
+             <input
+
               className='w-full px-6 py-3 bg-transparent text-white outline-none focus:ring-2 focus:ring-gray-500 transition-all duration-300'
               placeholder='Search Components...'
+
+            <input
+
+              className='w-full px-6 py-3 bg-transparent text-white outline-none focus:ring-2 focus:ring-gray-500 transition-all duration-300'
+              placeholder='Search Components...'
+
               onChange={e => setSearchFilter(e.target.value)}
             />
             <Search className='mx-4 cursor-pointer text-pink-300 hover:text-pink-400 transition-all duration-300' />
@@ -379,6 +430,7 @@ const GlassyUIComponentsPage: React.FC = () => {
             data-aos-delay='600'
             data-aos-duration='1500'
           >
+
             Elevate your UI with our collection of beautifully crafted,
             glassmorphic components. Perfect for creating modern, sleek
             interfaces with depth and style.
@@ -441,17 +493,21 @@ const GlassyUIComponentsPage: React.FC = () => {
             </span>
             <button
               onClick={nextPage}
+
               className={`px-4 py-2 mx-2 rounded-lg ${
                 currentPage === totalPages
                   ? 'opacity-50 cursor-not-allowed'
                   : 'hover:bg-white/20'
               }`}
-              disabled={currentPage === totalPages}
+
+               disabled={currentPage === totalPages}
+
             >
               Next
             </button>
           </div>
         </main>
+
       </div>
     </div>
   );

@@ -155,7 +155,8 @@ const Footer: React.FC = () => {
               gap: 10px;
             }
           }
-        `}</style>
+
+        }</style>
         <div>
           <p
             style={{
@@ -178,9 +179,10 @@ const Footer: React.FC = () => {
           >
             <GoogleTranslate />
           </div>
+
         </div>
-      </footer>
-    </>
+      </div>
+    </footer>
   );
 };
 
