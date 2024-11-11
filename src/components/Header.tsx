@@ -75,6 +75,16 @@ const Header: React.FC = () => {
             Contact Us
           </Link>
         </li>
+        <li style={liStyle} className='navbar-item'>
+          <Link
+            to='/stories'
+            style={linkStyle}
+            onMouseEnter={e => (e.currentTarget.style.color = '#fde047')}
+            onMouseLeave={e => (e.currentTarget.style.color = 'white')}
+          >
+            Stories
+          </Link>
+        </li>
       </ul>
       {userLoggedIn && currentUser ? (
         <UserAccount

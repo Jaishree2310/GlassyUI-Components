@@ -46,6 +46,8 @@ import ProductCardDetailsPage from './components/ProductCardDetailsPage';
 import ContactUs from './components/ContactUs';
 import AiChatbot from './components/AIChatbot';
 import { TermsOfUse } from './components/TermsOfUse';
+
+import Stories from './components/Stories';
 import Register from './login/SignUp';
 import SignIn from './login/SignIn';
 
@@ -120,8 +122,12 @@ const App: React.FC = () => {
         <Route path='/gallery-details' element={<GalleryDetailsPage />} />
         <Route path='/contact' element={<ContactUs />} />
         <Route path='/termsOfUse' element={<TermsOfUse />} />
+
+        <Route path='/stories' element={<Stories />} />
+
         <Route path='/signup' element={<Register />} />
         <Route path='/signin' element={<SignIn />} />
+
         <Route path='*' element={<NotFoundPage />} />
       </Routes>
       <ConditionalFooter />
