@@ -60,45 +60,68 @@ const Footer: React.FC = () => {
             <GoogleTranslate />
           </div>
         </div>
-        <div className='footer-bottom flex flex-col'>
-          {/* Newsletter Section */}
-          <div className='p-6 w-full flex flex-col items-center justify-center'>
-            <form
-              onSubmit={handleSubmit}
-              className='w-full flex flex-col items-center md:flex-row'
-            >
-              <input
-                type='text'
-                placeholder='Your Name'
-                value={name}
-                onChange={e => setName(e.target.value)}
-                className='mb-4 md:mb-0 md:mr-2 px-4 py-2 w-full md:w-1/2 text-black rounded-md border border-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-500'
-              />
-              <input
-                type='email'
-                placeholder='Your Email'
-                value={email}
-                onChange={e => setEmail(e.target.value)}
-                className='mb-4 md:mb-0 md:mr-2 px-4 py-2 w-full md:w-1/2 text-black rounded-md border border-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-500'
-              />
-              <button
-                type='submit'
-                className='px-6 py-2 text-white bg-black rounded-md hover:bg-gray-800 transition-colors duration-200'
-              >
-                Subscribe
-              </button>
-            </form>
+        <footer
+          style={{
+            textAlign: 'center',
+            padding: '20px',
+            backgroundColor: '#111',
+            color: '#fff',
+            height: '100%',
+            width: '100%',
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            justifyContent: 'center',
+            marginTop: '10px',
+          }}
+        >
+          <hr style={{ border: '1px solid #444', marginBottom: '20px' }} />
+          <div className='footer-top flex flex-col items-center justify-center gap-2'>
+            <h1 className='text-2xl font-bold'>Subscribe to our newsletter</h1>
+            <p className='text-sm text-center'>
+              Get the latest updates, news, and resources about GlassyUI.
+            </p>
           </div>
-          <a
-            href='https://github.com/Jaishree2310/GlassyUI-Components'
-            target='_blank'
-            rel='noopener noreferrer'
-            className='github-link'
-          >
-            <i className='fa-brands fa-github'></i>
-          </a>
-          <p>&copy; 2023 GlassyUI. All rights reserved.</p>
-        </div>
+          <div className='footer-bottom flex flex-col'>
+            {/* Newsletter Section */}
+            <div className='p-6 w-full flex flex-col items-center justify-center'>
+              <form
+                onSubmit={handleSubmit}
+                className='w-full flex flex-col items-center md:flex-row'
+              >
+                <input
+                  type='text'
+                  placeholder='Your Name'
+                  value={name}
+                  onChange={e => setName(e.target.value)}
+                  className='mb-4 md:mb-0 md:mr-2 px-4 py-2 w-full md:w-1/2 text-black rounded-md border border-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-500'
+                />
+                <input
+                  type='email'
+                  placeholder='Your Email'
+                  value={email}
+                  onChange={e => setEmail(e.target.value)}
+                  className='mb-4 md:mb-0 md:mr-2 px-4 py-2 w-full md:w-1/2 text-black rounded-md border border-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-500'
+                />
+                <button
+                  type='submit'
+                  className='px-6 py-2 text-white bg-black rounded-md hover:bg-gray-800 transition-colors duration-200'
+                >
+                  Subscribe
+                </button>
+              </form>
+            </div>
+            <a
+              href='https://github.com/Jaishree2310/GlassyUI-Components'
+              target='_blank'
+              rel='noopener noreferrer'
+              className='github-link'
+            >
+              <i className='fa-brands fa-github'></i>
+            </a>
+            <p>&copy; 2023 GlassyUI. All rights reserved.</p>
+          </div>
+        </footer>
 
         <style jsx>{`
           .glass-footer {
