@@ -99,14 +99,14 @@ const Header: React.FC = () => {
             onMouseLeave={e => (e.currentTarget.style.color = 'white')}
             className='cursor-pointer'
           >
-            <Link
+            {/* <Link
               to='/signin'
               style={linkStyle}
               onMouseEnter={e => (e.currentTarget.style.color = '#fde047')}
               onMouseLeave={e => (e.currentTarget.style.color = 'white')}
             >
               Sign in
-            </Link>
+            </Link> */}
           </li>
           <li
             style={linkStyle}
@@ -114,14 +114,14 @@ const Header: React.FC = () => {
             onMouseLeave={e => (e.currentTarget.style.color = 'white')}
             className='cursor-pointer'
           >
-            <Link
+            {/* <Link
               to='/signup'
               style={linkStyle}
               onMouseEnter={e => (e.currentTarget.style.color = '#fde047')}
               onMouseLeave={e => (e.currentTarget.style.color = 'white')}
             >
               Sign Up
-            </Link>
+            </Link> */}
           </li>
         </ul>
       )}

@@ -48,8 +48,8 @@ import AiChatbot from './components/AIChatbot';
 import { TermsOfUse } from './components/TermsOfUse';
 
 import Stories from './components/Stories';
-import Register from './login/SignUp';
-import SignIn from './login/SignIn';
+// import Register from './login/SignUp';
+// import SignIn from './login/SignIn';
 
 const ThemeToggle: React.FC = () => {
   const [theme, setTheme] = useState(localStorage.getItem('theme') || 'light');
@@ -125,8 +125,8 @@ const App: React.FC = () => {
 
         <Route path='/stories' element={<Stories />} />
 
-        <Route path='/signup' element={<Register />} />
-        <Route path='/signin' element={<SignIn />} />
+        {/* <Route path='/signup' element={<Register />} /> */}
+        {/* <Route path='/signin' element={<SignIn />} /> */}
 
         <Route path='*' element={<NotFoundPage />} />
       </Routes>
