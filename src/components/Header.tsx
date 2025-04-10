@@ -52,7 +52,7 @@ const Header: React.FC = () => {
             onMouseEnter={e => (e.currentTarget.style.color = '#fde047')}
             onMouseLeave={e => (e.currentTarget.style.color = 'white')}
           >
-            Donate
+            Sponsor
           </Link>
         </li>
         <li style={liStyle} className='navbar-item'>
