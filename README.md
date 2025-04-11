@@ -94,7 +94,6 @@ This open-source library features stunning React components designed with a capt
 
 ![Home Page](https://github.com/user-attachments/assets/f6f73936-ca0d-4232-a646-67189f5aa901)
 ![Components](https://github.com/user-attachments/assets/472a38eb-73dc-459a-95ce-e5b3684cb74d)
-![Button](https://github.com/user-attachments/assets/3fa878f6-735c-4a21-8cfc-edb74ba1052a)
 
 ## 🚀 Getting Started
 
