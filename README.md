@@ -18,12 +18,9 @@ Check the project structure here [Project Structure](PROJECT_STRUCTURE.md)
 - [Prerequisites](#Prerequisites)
 - [Installation with docker](#Installationwithdocker)
 - [Installation without docker](#Installationwithoutdocker)
-- [Changelog](#Changelog)
 - [Usage](#Usage)
 - [Future Enhancements / Roadmap](#future-enhancements--roadmap)
 - [Contributing](#contributing)
-- [Contribution Rule](#ContributionRule)
-- [Code of Conduct](#code-of-conduct)
 - [Our Contributors](#our-contributors)
 
 ## Project Overview
@@ -141,25 +138,6 @@ npm start
 
 ---
 
-## 📜 Changelog
-
-All notable changes to this project will be documented in this file.
-
-### [Unreleased]
-
-- **Added**: A new button component with hover effects.
-- **Changed**: Updated SCSS styles for improved responsiveness.
-- **Fixed**: Resolved an issue with the modal not closing properly on mobile devices.
-
-### [1.0.0] - 2024-10-15
-
-- **Added**: Initial release of GlassyUI-Components.
-  - Features glassmorphism-themed buttons, progress bars, input fields, text areas, modals, and navigation bars.
-- **Improved**: Documentation and examples for each component.
-- **Fixed**: Minor bugs in the button component.
-
----
-
 ## 📝 Usage
 
 Import the desired component into your React project and use it as follows:
@@ -216,18 +194,6 @@ git push origin my-feature-branch
 
 6. **Open a Pull Request**: Submit your changes for review.
 
-## Contribution Rule
-
--Please ask for issue assignment before raising any PR.
-
--If more than 1 week issue is not resolved then it will be assigned to someone else.
-
-### Code of conduct:
-
-- This README structure includes all the sections you wanted.
-- Adjust the contributors section as needed based on your actual contributors.
-- Feel free to add or modify any content to better fit your project’s specific needs!
-
 -Important Rule for Creating component to follow the order of component.
 
 1. Basic Usage
@@ -257,54 +223,8 @@ git push origin my-feature-branch
 
 🌟 **So many talented contributors!** 🎉 Want to meet them all? Click [here](https://github.com/Jaishree2310/GlassyUI-Components/graphs/contributors) to discover the amazing team! 👩‍💻👨‍💻
 
-patch-1
-
-
 <!--line-->
 <img src="https://www.animatedimages.org/data/media/562/animated-line-image-0184.gif" width="1920" />
-
-
-## Stargazers ❤️
-
-<div align='left'>
-
-[![Stargazers repo roster for @Jaishree2310/GlassyUI-Components](https://reporoster.com/stars/dark/Jaishree2310/GlassyUI-Components)](https://github.com/Jaishree2310/GlassyUI-Components/stargazers)
-
-
-</div>
-
-## Forkers ❤️
-
-[![Forkers repo roster for @Jaishree2310/GlassyUI-Components](https://reporoster.com/forks/dark/Jaishree2310/GlassyUI-Components)](https://github.com/Jaishree2310/GlassyUI-Components/network/members)
-
-
-<!--line-->
-<img src="https://www.animatedimages.org/data/media/562/animated-line-image-0184.gif" width="1920" />
-
-
-
-
----
-main
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](./LICENSE) file for details.
-
----
-## 💗 Stargazers
-
-<div align='left'>
-
-[![Stargazers repo roster for @Jaishree2310/GlassyUI-Components](https://reporoster.com/stars/Jaishree2310/GlassyUI-Components)](https://github.com/Jaishree2310/GlassyUI-Components/stargazers)
-
-</div>
-
-## 💗 Forkers
-
-[![Forkers repo roster for @Jaishree2310/GlassyUI-Components](https://reporoster.com/forks/Jaishree2310/GlassyUI-Components)](https://github.com/Jaishree2310/GlassyUI-Components/network/members)
-
-![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
 ## ⭐ Give it a Star!
 
