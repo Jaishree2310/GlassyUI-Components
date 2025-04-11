@@ -84,6 +84,7 @@ This open-source library features stunning React components designed with a capt
 
 ## 🛠️ Tech Stack
 
+- **Typescript**: which ensures type safety and better maintainability.
 - **React**: JavaScript library for building user interfaces.
 - **SCSS**: A CSS preprocessor for more manageable styles.
 - **Docker**: For containerization and easy deployment.
