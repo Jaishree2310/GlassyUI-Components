@@ -46,6 +46,7 @@ import ProductCardDetailsPage from './components/ProductCardDetailsPage';
 import ContactUs from './components/ContactUs';
 import AiChatbot from './components/AIChatbot';
 import { TermsOfUse } from './components/TermsOfUse';
+import ScrollToTop from './components/ScrollToTop';
 
 import Stories from './components/Stories';
 // import Register from './login/SignUp';
@@ -80,6 +81,7 @@ const ThemeToggle: React.FC = () => {
 const App: React.FC = () => {
   return (
     <Router>
+      <ScrollToTop />
       <Header />
       <AiChatbot />
       {/* <ThemeToggle /> */}
