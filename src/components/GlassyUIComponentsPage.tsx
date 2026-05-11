@@ -341,7 +341,7 @@ const GlassyUIComponentsPage: React.FC = () => {
   return (
     <div className='min-h-screen font-sans bg-gradient-to-br from-gray-800 via-gray-900 to-black text-white'>
       <BackToTopButton />
-      <div className='container mx-auto px-4 py-8 lg:py-12'>
+      <div className='container mx-auto px-4 pt-24 pb-8 lg:pt-28 lg:pb-12'>
         <header className='flex justify-between items-center mb-16 px-6 py-4 rounded-lg pl-0'>
           <div
             className='text-3xl lg:text-4xl font-extrabold tracking-tight cursor-pointer hover:text-pink-300 transition-colors duration-300 text-white'

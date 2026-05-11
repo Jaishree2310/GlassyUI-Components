@@ -84,6 +84,18 @@ const App: React.FC = () => {
       <AiChatbot />
       {/* <ThemeToggle /> */}
       <ScrollProgressBar /> {/* Add the ScrollProgressBar component here */}
+      <MainContent />
+      <ConditionalFooter />
+    </Router>
+  );
+};
+
+const MainContent: React.FC = () => {
+  const location = useLocation();
+  const isHomePage = location.pathname === '/';
+
+  return (
+    <div className={isHomePage ? '' : 'main-content-area'}>
       <Routes>
         <Route path='/' element={<GlassyUILandingPage />} />
         <Route path='/components' element={<GlassyUIComponentsPage />} />
@@ -130,8 +142,7 @@ const App: React.FC = () => {
 
         <Route path='*' element={<NotFoundPage />} />
       </Routes>
-      <ConditionalFooter />
-    </Router>
+    </div>
   );
 };
 const ConditionalFooter: React.FC = () => {
