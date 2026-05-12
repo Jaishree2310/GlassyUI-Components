@@ -273,3 +273,13 @@ code {
 .animate-float-slow {
   animation: float-slow 8s ease-in-out infinite;
 }
+
+.main-content-area > div:first-child {
+  padding-top: 80px;
+}
+
+@media (min-width: 1024px) {
+  .main-content-area > div:first-child {
+    padding-top: 96px;
+  }
+}
