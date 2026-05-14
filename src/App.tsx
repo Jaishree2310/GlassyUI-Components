@@ -79,59 +79,81 @@ const ThemeToggle: React.FC = () => {
 
 const App: React.FC = () => {
   return (
-    <Router>
-      <Header />
-      <AiChatbot />
-      {/* <ThemeToggle /> */}
-      <ScrollProgressBar /> {/* Add the ScrollProgressBar component here */}
-      <Routes>
-        <Route path='/' element={<GlassyUILandingPage />} />
-        <Route path='/components' element={<GlassyUIComponentsPage />} />
-        <Route path='/toast-page' element={<ToastPage />} />
-        <Route path='/button-details' element={<ButtonDetailsPage />} />
-        <Route path='/card-details' element={<CardDetailsPage />} />
-        <Route
-          path='/progress-bar-details'
-          element={<ProgressBarDetailPage />}
-        />
-        <Route path='/pricing-details' element={<PricingDetailPage />} />
-        <Route path='/popup-details' element={<PopupDetailPage />} />
-        <Route path='/input-details' element={<InputDetailPage />} />
-        <Route path='/textarea-details' element={<TextareaDetailPage />} />
-        <Route path='/tooltip-details' element={<TooltipDetailsPage />} />
-        <Route path='/speed-dial-details' element={<SpeedDialDetailsPage />} />
-        <Route path='/modal-details' element={<ModalDetailsPage />} />
-        <Route path='/navigation-details' element={<NavigationDetailsPage />} />
-        <Route path='/generator' element={<GlassMorphismGenrator />} />
-        <Route path='/slider-details' element={<SliderDetailsPage />} />
-        <Route path='/back-to-top-details' element={<BackToTopDetailsPage />} />
-        <Route path='/dropdown-details' element={<DropdowndetailsPage />} />
-        <Route path='/authentication-card' element={<AuthenticationCard />} />
-        <Route path='/accordion-details' element={<AccordionDetails />} />
-        <Route path='/contributors' element={<ContributorsPage />} />
-        <Route path='/donate' element={<DonationPage />} />
-        <Route path='/about' element={<AboutUsPage />} />
-        <Route path='/contact-details' element={<ContactUsDetailsPage />} />
-        <Route path='/pagination-details' element={<PaginationDetails />} />
-        <Route path='/testimonial-details' element={<TestimonialDetails />} />
-        <Route path='/calendar-details' element={<CalendarDetails />} />
-        <Route path='/statistic-details' element={<Statistic />} />
-        <Route path='/checkbox' element={<Checkbox />} />
-        <Route path='/spinner' element={<SpinnerDetailsPage />} />
-        <Route path='/product-details' element={<ProductCardDetailsPage />} />
-        <Route path='/gallery-details' element={<GalleryDetailsPage />} />
-        <Route path='/contact' element={<ContactUs />} />
-        <Route path='/termsOfUse' element={<TermsOfUse />} />
+    <>
+      <div className='pt-12'>
+        <Router>
+          <Header />
+          <AiChatbot />
+          {/* <ThemeToggle /> */}
+          <ScrollProgressBar /> {/* Add the ScrollProgressBar component here */}
+          <Routes>
+            <Route path='/' element={<GlassyUILandingPage />} />
+            <Route path='/components' element={<GlassyUIComponentsPage />} />
+            <Route path='/toast-page' element={<ToastPage />} />
+            <Route path='/button-details' element={<ButtonDetailsPage />} />
+            <Route path='/card-details' element={<CardDetailsPage />} />
+            <Route
+              path='/progress-bar-details'
+              element={<ProgressBarDetailPage />}
+            />
+            <Route path='/pricing-details' element={<PricingDetailPage />} />
+            <Route path='/popup-details' element={<PopupDetailPage />} />
+            <Route path='/input-details' element={<InputDetailPage />} />
+            <Route path='/textarea-details' element={<TextareaDetailPage />} />
+            <Route path='/tooltip-details' element={<TooltipDetailsPage />} />
+            <Route
+              path='/speed-dial-details'
+              element={<SpeedDialDetailsPage />}
+            />
+            <Route path='/modal-details' element={<ModalDetailsPage />} />
+            <Route
+              path='/navigation-details'
+              element={<NavigationDetailsPage />}
+            />
+            <Route path='/generator' element={<GlassMorphismGenrator />} />
+            <Route path='/slider-details' element={<SliderDetailsPage />} />
+            <Route
+              path='/back-to-top-details'
+              element={<BackToTopDetailsPage />}
+            />
+            <Route path='/dropdown-details' element={<DropdowndetailsPage />} />
+            <Route
+              path='/authentication-card'
+              element={<AuthenticationCard />}
+            />
+            <Route path='/accordion-details' element={<AccordionDetails />} />
+            <Route path='/contributors' element={<ContributorsPage />} />
+            <Route path='/donate' element={<DonationPage />} />
+            <Route path='/about' element={<AboutUsPage />} />
+            <Route path='/contact-details' element={<ContactUsDetailsPage />} />
+            <Route path='/pagination-details' element={<PaginationDetails />} />
+            <Route
+              path='/testimonial-details'
+              element={<TestimonialDetails />}
+            />
+            <Route path='/calendar-details' element={<CalendarDetails />} />
+            <Route path='/statistic-details' element={<Statistic />} />
+            <Route path='/checkbox' element={<Checkbox />} />
+            <Route path='/spinner' element={<SpinnerDetailsPage />} />
+            <Route
+              path='/product-details'
+              element={<ProductCardDetailsPage />}
+            />
+            <Route path='/gallery-details' element={<GalleryDetailsPage />} />
+            <Route path='/contact' element={<ContactUs />} />
+            <Route path='/termsOfUse' element={<TermsOfUse />} />
 
-        <Route path='/stories' element={<Stories />} />
+            <Route path='/stories' element={<Stories />} />
 
-        {/* <Route path='/signup' element={<Register />} /> */}
-        {/* <Route path='/signin' element={<SignIn />} /> */}
+            {/* <Route path='/signup' element={<Register />} /> */}
+            {/* <Route path='/signin' element={<SignIn />} /> */}
 
-        <Route path='*' element={<NotFoundPage />} />
-      </Routes>
-      <ConditionalFooter />
-    </Router>
+            <Route path='*' element={<NotFoundPage />} />
+          </Routes>
+          <ConditionalFooter />
+        </Router>
+      </div>
+    </>
   );
 };
 const ConditionalFooter: React.FC = () => {
