@@ -74,7 +74,7 @@ const GlassyUILandingPage: React.FC = () => {
 
         <main
           className={` text-center p-12 rounded-xl backdrop-filter backdrop-blur-lg bg-white bg-opacity-10 shadow-lg border border-white border-opacity-20 relative`}
-          style={{ marginTop: '20px' }} // Added marginTop for spacing
+          style={{ marginTop: '20px', marginBottom: '40px' }} // Added marginTop for spacing
           data-aos='flip-up'
           data-aos-duration='2500'
         >
