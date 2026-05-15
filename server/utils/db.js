@@ -4,11 +4,15 @@ dotenv.config();
 
 const connectDB = async () => {
   try {
-    await mongoose.connect(process.env.MONGO_URI);
-    console.log('MongoDB Connected');
+    if (process.env.MONGO_URI) {
+      await mongoose.connect(process.env.MONGO_URI);
+      console.log('✅ MongoDB Connected');
+    } else {
+      console.log('⚠️ MongoDB URI not configured - database features disabled');
+    }
   } catch (error) {
-    console.error('Database connection error:', error);
-    process.exit(1);
+    console.error('⚠️ Database connection error:', error.message);
+    console.log('⚠️ Chat service will work without database storage');
   }
 };
 

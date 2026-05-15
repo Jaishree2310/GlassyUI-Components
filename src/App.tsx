@@ -44,7 +44,8 @@ import GalleryDetailsPage from './components/GalleryDetailsPage';
 import SpinnerDetailsPage from './components/SpinnerDetailsPage';
 import ProductCardDetailsPage from './components/ProductCardDetailsPage';
 import ContactUs from './components/ContactUs';
-import AiChatbot from './components/AIChatbot';
+import AIChatbot from './components/AIChatbot.jsx';
+import ChatWidget from './components/ChatWidget';
 import { TermsOfUse } from './components/TermsOfUse';
 
 import Stories from './components/Stories';
@@ -81,7 +82,13 @@ const App: React.FC = () => {
   return (
     <Router>
       <Header />
-      <AiChatbot />
+      <ChatWidget
+        apiEndpoint='http://localhost:5000/api/chat'
+        title='💬 GlassyUI Chat'
+        subtitle='Ask me anything!'
+        placeholder='Type your message...'
+      />
+      {/* <AIChatbot /> - Replaced with ChatWidget above */}
       {/* <ThemeToggle /> */}
       <ScrollProgressBar /> {/* Add the ScrollProgressBar component here */}
       <Routes>
