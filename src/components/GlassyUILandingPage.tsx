@@ -55,17 +55,17 @@ const GlassyUILandingPage: React.FC = () => {
       />
 
       <div className='homeGSap relative z-10 w-full max-w-4xl'>
-        <header className='w-full flex justify-between items-center mb-4'>
+        <header className='w-full flex justify-between items-center mb-4 px-6'>
           {' '}
           {/* Adjusted mb-8 to mb-4 */}
-          <div className='text-2xl font-bold text-white'>
+          {/* <div className='text-2xl font-bold text-white mt-8'>
             <span className='text-blue-400'>Glassy</span>UI
-          </div>
+          </div> */}
           <a
             href={githubRepoUrl}
             target='_blank'
             rel='noopener noreferrer'
-            className='flex items-center space-x-2 text-sm text-white hover:text-yellow-300 transition-colors duration-300'
+            className='flex items-center space-x-2 text-sm text-white hover:text-yellow-300 transition-colors duration-300 mt-8'
           >
             <Star size={18} />
             <span>Star the repo</span>
@@ -74,7 +74,7 @@ const GlassyUILandingPage: React.FC = () => {
 
         <main
           className={` text-center p-12 rounded-xl backdrop-filter backdrop-blur-lg bg-white bg-opacity-10 shadow-lg border border-white border-opacity-20 relative`}
-          style={{ marginTop: '20px' }} // Added marginTop for spacing
+          style={{ marginTop: '100px' }} // Added marginTop for spacing
           data-aos='flip-up'
           data-aos-duration='2500'
         >

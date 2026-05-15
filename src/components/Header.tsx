@@ -129,17 +129,31 @@ const Header: React.FC = () => {
   );
 };
 
+//
 const navStyle: React.CSSProperties = {
-  padding: '10px',
+  padding: '12px 24px',
   position: 'fixed',
-  top: '0',
-  width: '100%',
+  top: '15px',
+  left: '50%',
+  transform: 'translateX(-50%)',
+  width: '85%',
+  maxWidth: '1200px',
+
+  background: 'rgba(255, 255, 255, 0.08)',
+  border: '1px solid rgba(255,255,255,0.18)',
+  borderRadius: '18px',
+
   zIndex: 1000,
-  backdropFilter: 'blur(10px)',
-  WebkitBackdropFilter: 'blur(10px)',
-  boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
+
+  backdropFilter: 'blur(14px)',
+  WebkitBackdropFilter: 'blur(14px)',
+
+  boxShadow: '0 8px 32px rgba(0, 0, 0, 0.37)',
+
   display: 'flex',
-  justifyContent: 'space-around',
+  justifyContent: 'space-between',
+  paddingLeft: '30px',
+  paddingRight: '30px',
   alignItems: 'center',
 };
 
@@ -149,8 +163,8 @@ const ulStyle: React.CSSProperties = {
   padding: 0,
   display: 'flex',
   justifyContent: 'flex-end',
-  marginRight: '50px',
-  gap: '20px',
+  marginRight: '20px',
+  gap: '35px',
 };
 
 const liStyle: React.CSSProperties = {
