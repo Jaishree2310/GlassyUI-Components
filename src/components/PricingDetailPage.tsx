@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { ArrowLeft, Copy, Check } from 'lucide-react';
 import BackToTopButton from './BackToTop';
 import ReactDOMServer from 'react-dom/server';
+import ColorPicker from './ColorPicker';
 
 const PricingDetailPage: React.FC = () => {
   const navigate = useNavigate();
@@ -386,17 +387,16 @@ const PricingDetailPage: React.FC = () => {
                 Title Color
               </label>
               <div className='flex items-center'>
-                <input
-                  type='color'
-                  value={customComponentData?.titleColor}
-                  onChange={e =>
+                <ColorPicker
+                  value={customComponentData?.titleColor || '#ffffff'}
+                  onChange={hex =>
                     setcustomComponentData(el => ({
                       ...el,
-                      titleColor: e.target.value,
+                      titleColor: hex,
                     }))
                   }
-                  className='w-8 h-8 rounded-full border-2 border-white shadow-lg mr-4'
                 />
+
                 <input
                   type='text'
                   value={customComponentData?.titleColor}
@@ -434,16 +434,14 @@ const PricingDetailPage: React.FC = () => {
                 Tag Text Color
               </label>
               <div className='flex items-center'>
-                <input
-                  type='color'
-                  value={customComponentData?.tagTextColor}
-                  onChange={e =>
+                <ColorPicker
+                  value={customComponentData?.tagTextColor || '#ffffff'}
+                  onChange={hex =>
                     setcustomComponentData(el => ({
                       ...el,
-                      tagTextColor: e.target.value,
+                      titleColor: hex,
                     }))
                   }
-                  className='w-8 h-8 rounded-full border-2 border-white shadow-lg mr-4'
                 />
                 <input
                   type='text'
@@ -482,16 +480,14 @@ const PricingDetailPage: React.FC = () => {
                 Tag Background Color
               </label>
               <div className='flex items-center'>
-                <input
-                  type='color'
-                  value={customComponentData?.tagColor}
-                  onChange={e =>
+                <ColorPicker
+                  value={customComponentData?.tagColor || '#ffffff'}
+                  onChange={hex =>
                     setcustomComponentData(el => ({
                       ...el,
-                      tagColor: e.target.value,
+                      titleColor: hex,
                     }))
                   }
-                  className='w-8 h-8 rounded-full border-2 border-white shadow-lg mr-4'
                 />
                 <input
                   type='text'
@@ -530,16 +526,14 @@ const PricingDetailPage: React.FC = () => {
                 Text color of title and main elements
               </label>
               <div className='flex items-center'>
-                <input
-                  type='color'
-                  value={customComponentData?.fullBodyTextColor}
-                  onChange={e =>
+                <ColorPicker
+                  value={customComponentData?.fullBodyTextColor || '#ffffff'}
+                  onChange={hex =>
                     setcustomComponentData(el => ({
                       ...el,
-                      fullBodyTextColor: e.target.value,
+                      titleColor: hex,
                     }))
                   }
-                  className='w-8 h-8 rounded-full border-2 border-white shadow-lg mr-4'
                 />
                 <input
                   type='text'
@@ -578,16 +572,16 @@ const PricingDetailPage: React.FC = () => {
                 Background color of button
               </label>
               <div className='flex items-center'>
-                <input
-                  type='color'
-                  value={customComponentData?.buttonBackgroundColor}
-                  onChange={e =>
+                <ColorPicker
+                  value={
+                    customComponentData?.buttonBackgroundColor || '#ffffff'
+                  }
+                  onChange={hex =>
                     setcustomComponentData(el => ({
                       ...el,
-                      buttonBackgroundColor: e.target.value,
+                      titleColor: hex,
                     }))
                   }
-                  className='w-8 h-8 rounded-full border-2 border-white shadow-lg mr-4'
                 />
                 <input
                   type='text'
@@ -626,16 +620,17 @@ const PricingDetailPage: React.FC = () => {
                 2nd background color(gradient) of button
               </label>
               <div className='flex items-center'>
-                <input
-                  type='color'
-                  value={customComponentData?.buttonBackgroundSecondColor}
-                  onChange={e =>
+                <ColorPicker
+                  value={
+                    customComponentData?.buttonBackgroundSecondColor ||
+                    '#ffffff'
+                  }
+                  onChange={hex =>
                     setcustomComponentData(el => ({
                       ...el,
-                      buttonBackgroundSecondColor: e.target.value,
+                      buttonBackgroundSecondColor: hex,
                     }))
                   }
-                  className='w-8 h-8 rounded-full border-2 border-white shadow-lg mr-4'
                 />
                 <input
                   type='text'

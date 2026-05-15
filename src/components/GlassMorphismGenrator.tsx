@@ -3,6 +3,7 @@ import '../index.css';
 import { FaClipboard, FaClipboardCheck } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
+import ColorPicker from './ColorPicker';
 
 const GlassmorphismGenerator: React.FC = () => {
   const navigate = useNavigate();
@@ -123,19 +124,13 @@ const GlassmorphismGenerator: React.FC = () => {
           >
             Background Color
           </label>
-          <input
-            type='color'
-            id='colorPicker'
-            value={`#${(
-              (1 << 24) +
-              (parseInt(bgColor.slice(5, 8)) << 16) +
-              (parseInt(bgColor.slice(10, 13)) << 8) +
-              parseInt(bgColor.slice(15, 18))
-            )
-              .toString(16)
-              .slice(1)}`}
-            onChange={e => handleColorChange(e, setBgColor)}
-            className='w-8 h-8 rounded-sm border border-white mb-2'
+          <ColorPicker
+            value={`#${((1 << 24) + (parseInt(bgColor.slice(5, 8)) << 16) + (parseInt(bgColor.slice(10, 13)) << 8) + parseInt(bgColor.slice(15, 18))).toString(16).slice(1)}`}
+            onChange={hex =>
+              setBgColor(
+                `rgb(${parseInt(hex.slice(1, 3), 16)}, ${parseInt(hex.slice(3, 5), 16)}, ${parseInt(hex.slice(5, 7), 16)})`,
+              )
+            }
           />
         </div>
         <div className='glassmorphism p-2 rounded-md'>
@@ -220,19 +215,15 @@ const GlassmorphismGenerator: React.FC = () => {
             Shadow Color
           </label>
 
-          <input
-            type='color'
-            id='colorPicker'
-            value={`#${(
-              (1 << 24) +
-              (parseInt(bgColor.slice(5, 8)) << 16) +
-              (parseInt(bgColor.slice(10, 13)) << 8) +
-              parseInt(bgColor.slice(15, 18))
-            )
-              .toString(16)
-              .slice(1)}`}
-            onChange={e => handleColorChange(e, setShadowColor)}
-            className='w-8 h-8 rounded-sm border border-white mb-2'
+          <ColorPicker
+            value={
+              '#${((1 << 24) + (parseInt(bgColor.slice(5, 8)) << 16) + (parseInt(bgColor.slice(10, 13)) << 8) + parseInt(bgColor.slice(15, 18))).toString(16).slice(1)}'
+            }
+            onChange={hex =>
+              setShadowColor(
+                `rgb(${parseInt(hex.slice(1, 3), 16)}, ${parseInt(hex.slice(3, 5), 16)}, ${parseInt(hex.slice(5, 7), 16)})`,
+              )
+            }
           />
         </div>
       </div>

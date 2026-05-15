@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ArrowLeft, Copy, Check } from 'lucide-react';
 import BackToTopButton from './BackToTop';
+import ColorPicker from './ColorPicker';
 
 type Theme = 'pink' | 'brown' | 'white' | 'black' | 'pop';
 
@@ -231,6 +232,11 @@ function App() {
             value={customColor}
             onChange={e => setCustomColor(e.target.value)}
             className='rounded-md cursor-pointer'
+          />
+          <ColorPicker
+            value={customColor}
+            onChange={setCustomColor}
+            label='Background Color'
           />
         </div>
 

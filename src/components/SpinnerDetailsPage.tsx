@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ArrowLeft, Copy, Check } from 'lucide-react';
 import BackToTopButton from './BackToTop';
+import ColorPicker from './ColorPicker';
 
 const SpinnerDetailsPage: React.FC = () => {
   const navigate = useNavigate();
@@ -148,12 +149,7 @@ const SpinnerDetailsPage: React.FC = () => {
                 Color
               </label>
               <div className='flex items-center'>
-                <input
-                  type='color'
-                  value={customColor}
-                  onChange={e => setCustomColor(e.target.value)}
-                  className='w-8 h-8 rounded-full border-2 border-white shadow-lg mr-4'
-                />
+                <ColorPicker value={customColor} onChange={setCustomColor} />
                 <input
                   type='text'
                   value={customColor}

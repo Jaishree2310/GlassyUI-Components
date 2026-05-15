@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ArrowLeft, Copy, Check } from 'lucide-react';
 import BackToTopButton from './BackToTop';
+import ColorPicker from './ColorPicker';
 
 const ButtonDetailsPage: React.FC = () => {
   const navigate = useNavigate();
@@ -191,11 +192,10 @@ function Example() {
                   Background Color
                 </label>
                 <div className='flex items-center'>
-                  <input
-                    type='color'
+                  <ColorPicker
                     value={customBg}
-                    onChange={e => setCustomBg(e.target.value)}
-                    className='w-8 h-8 rounded-full border-2 border-white shadow-lg mr-4'
+                    onChange={setCustomBg}
+                    label='Background Color'
                   />
                   <input
                     type='text'
@@ -210,11 +210,10 @@ function Example() {
                   Text Color
                 </label>
                 <div className='flex items-center'>
-                  <input
-                    type='color'
-                    value={customText}
-                    onChange={e => setCustomText(e.target.value)}
-                    className='w-8 h-8 rounded-full border-2 border-white shadow-lg mr-4'
+                  <ColorPicker
+                    value={customBg}
+                    onChange={setCustomBg}
+                    label='Background Color'
                   />
                   <input
                     type='text'
@@ -229,11 +228,10 @@ function Example() {
                   Border Color
                 </label>
                 <div className='flex items-center'>
-                  <input
-                    type='color'
-                    value={customBorder}
-                    onChange={e => setCustomBorder(e.target.value)}
-                    className='w-8 h-8 rounded-full border-2 border-white shadow-lg mr-4'
+                  <ColorPicker
+                    value={customBg}
+                    onChange={setCustomBg}
+                    label='Background Color'
                   />
                   <input
                     type='text'

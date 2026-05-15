@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ArrowLeft, Copy, Check, Search } from 'lucide-react';
 import BackToTopButton from './BackToTop';
+import ColorPicker from './ColorPicker';
 
 interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   icon?: React.ReactNode;
@@ -259,11 +260,10 @@ function MyComponent() {
                   Background Color
                 </label>
                 <div className='flex items-center space-x-3'>
-                  <input
-                    type='color'
+                  <ColorPicker
                     value={customBgColor}
-                    onChange={e => setCustomBgColor(e.target.value)}
-                    className='w-8 h-8 cursor-pointer border-none'
+                    onChange={setCustomBgColor}
+                    label='Background Color'
                   />
                   <span className='text-sm'>{customBgColor}</span>
                 </div>
@@ -273,11 +273,10 @@ function MyComponent() {
                   Text Color
                 </label>
                 <div className='flex items-center space-x-3'>
-                  <input
-                    type='color'
-                    value={customTextColor}
-                    onChange={e => setCustomTextColor(e.target.value)}
-                    className='w-8 h-8 cursor-pointer border-none'
+                  <ColorPicker
+                    value={customBgColor}
+                    onChange={setCustomBgColor}
+                    label='Background Color'
                   />
                   <span className='text-sm'>{customTextColor}</span>
                 </div>
@@ -287,11 +286,10 @@ function MyComponent() {
                   Border Color
                 </label>
                 <div className='flex items-center space-x-3'>
-                  <input
-                    type='color'
-                    value={customBorderColor}
-                    onChange={e => setCustomBorderColor(e.target.value)}
-                    className='w-8 h-8 cursor-pointer border-none'
+                  <ColorPicker
+                    value={customBgColor}
+                    onChange={setCustomBgColor}
+                    label='Background Color'
                   />
                   <span className='text-sm'>{customBorderColor}</span>
                 </div>

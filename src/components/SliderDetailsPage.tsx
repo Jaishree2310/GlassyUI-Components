@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ArrowLeft, Copy, Check } from 'lucide-react';
 import BackToTopButton from './BackToTop';
+import ColorPicker from './ColorPicker';
 
 const SliderDetailsPage: React.FC = () => {
   const navigate = useNavigate();
@@ -186,16 +187,21 @@ const SliderDetailsPage: React.FC = () => {
               />
             </div>
             <div className='space-y-2'>
-              <label className='block text-sm font-medium text-white'>
+              {/* <label className='block text-sm font-medium text-white'>
                 Background Color
-              </label>
-              <input
+              </label> */}
+              {/* <input
                 type='color'
                 value={customBgColor}
                 onChange={e => setCustomBgColor(e.target.value)}
                 className='w-8 h-8 cursor-pointer border-none bg-transparent'
+              /> */}
+              <ColorPicker
+                value={customBgColor}
+                onChange={setCustomBgColor}
+                label='Background Color'
               />
-              <span className='text-sm p-2 font-semibold'>{customBgColor}</span>
+              {/* <span className='text-sm p-2 font-semibold'>{customBgColor}</span> */}
             </div>
             <div className='mt-8'>
               <h4 className='text-xl font-semibold mb-4'>Generated Code</h4>
