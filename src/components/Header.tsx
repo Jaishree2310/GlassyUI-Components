@@ -128,9 +128,8 @@ const Header: React.FC = () => {
     </nav>
   );
 };
-
 const navStyle: React.CSSProperties = {
-  padding: '10px',
+  padding: '10px 15px',
   position: 'fixed',
   top: '0',
   width: '100%',
@@ -139,28 +138,31 @@ const navStyle: React.CSSProperties = {
   WebkitBackdropFilter: 'blur(10px)',
   boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
   display: 'flex',
-  justifyContent: 'space-around',
+  justifyContent: 'space-between',
   alignItems: 'center',
+  flexWrap: 'wrap',
+  boxSizing: 'border-box',
 };
-
 const ulStyle: React.CSSProperties = {
   listStyleType: 'none',
   margin: 0,
   padding: 0,
   display: 'flex',
-  justifyContent: 'flex-end',
-  marginRight: '50px',
-  gap: '20px',
+  justifyContent: 'center',
+  alignItems: 'center',
+  flexWrap: 'wrap',
+  gap: '10px',
 };
 
 const liStyle: React.CSSProperties = {
-  margin: '0 10px',
+  margin: '5px',
 };
 
 const linkStyle: React.CSSProperties = {
   color: 'white',
   textDecoration: 'none',
   transition: 'color 0.3s ease',
+  fontSize: '14px',
 };
 
 export default Header;
