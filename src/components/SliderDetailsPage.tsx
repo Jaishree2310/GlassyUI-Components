@@ -187,21 +187,37 @@ const SliderDetailsPage: React.FC = () => {
               />
             </div>
             <div className='space-y-2'>
-              {/* <label className='block text-sm font-medium text-white'>
+              <label className='block text-sm font-medium text-white'>
                 Background Color
-              </label> */}
+              </label>
               {/* <input
                 type='color'
                 value={customBgColor}
                 onChange={e => setCustomBgColor(e.target.value)}
                 className='w-8 h-8 cursor-pointer border-none bg-transparent'
               /> */}
-              <ColorPicker
-                value={customBgColor}
-                onChange={setCustomBgColor}
-                label='Background Color'
-              />
-              {/* <span className='text-sm p-2 font-semibold'>{customBgColor}</span> */}
+              <div className='flex space-x-2'>
+                <ColorPicker
+                  value={customBgColor}
+                  onChange={setCustomBgColor}
+                />
+                <div className='flex items-center border-b border-white/30 focus-within:border-white transition-colors'>
+                  <span className='text-white/50 font-mono text-sm pl-1'>
+                    #
+                  </span>
+                  <input
+                    type='text'
+                    value={customBgColor.replace('#', '')}
+                    onChange={e => {
+                      const val = e.target.value.replace(/[^0-9a-fA-F]/g, '');
+                      setCustomBgColor(`#${val.slice(0, 6)}`);
+                    }}
+                    className='bg-transparent w-20 py-1 px-1 text-white font-mono uppercase outline-none text-sm tracking-widest'
+                    placeholder='FFFFFF'
+                    maxLength={6}
+                  />
+                </div>
+              </div>
             </div>
             <div className='mt-8'>
               <h4 className='text-xl font-semibold mb-4'>Generated Code</h4>

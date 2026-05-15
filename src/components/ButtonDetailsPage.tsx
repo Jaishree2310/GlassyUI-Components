@@ -192,17 +192,23 @@ function Example() {
                   Background Color
                 </label>
                 <div className='flex items-center'>
-                  <ColorPicker
-                    value={customBg}
-                    onChange={setCustomBg}
-                    label='Background Color'
-                  />
-                  <input
-                    type='text'
-                    value={customBg}
-                    onChange={e => setCustomBg(e.target.value)}
-                    className='bg-transparent border-b border-gray-400 w-full py-1 px-2 text-white'
-                  />
+                  <ColorPicker value={customBg} onChange={setCustomBg} />
+                  <div className='flex items-center border-b border-white/30 focus-within:border-white transition-colors'>
+                    <span className='text-white/50 font-mono text-sm pl-1'>
+                      #
+                    </span>
+                    <input
+                      type='text'
+                      value={customBg.replace('#', '')}
+                      onChange={e => {
+                        const val = e.target.value.replace(/[^0-9a-fA-F]/g, '');
+                        setCustomBg(`#${val.slice(0, 6)}`);
+                      }}
+                      className='bg-transparent w-20 py-1 px-1 text-white font-mono uppercase outline-none text-sm tracking-widest'
+                      placeholder='FFFFFF'
+                      maxLength={6}
+                    />
+                  </div>
                 </div>
               </div>
               <div className={`${getGlassyClasses(10)} p-6`}>
@@ -210,17 +216,23 @@ function Example() {
                   Text Color
                 </label>
                 <div className='flex items-center'>
-                  <ColorPicker
-                    value={customBg}
-                    onChange={setCustomBg}
-                    label='Background Color'
-                  />
-                  <input
-                    type='text'
-                    value={customText}
-                    onChange={e => setCustomText(e.target.value)}
-                    className='bg-transparent border-b border-gray-400 w-full py-1 px-2 text-white'
-                  />
+                  <ColorPicker value={customText} onChange={setCustomText} />
+                  <div className='flex items-center border-b border-white/30 focus-within:border-white transition-colors'>
+                    <span className='text-white/50 font-mono text-sm pl-1'>
+                      #
+                    </span>
+                    <input
+                      type='text'
+                      value={customText.replace('#', '')}
+                      onChange={e => {
+                        const val = e.target.value.replace(/[^0-9a-fA-F]/g, '');
+                        setCustomText(`#${val.slice(0, 6)}`);
+                      }}
+                      className='bg-transparent w-20 py-1 px-1 text-white font-mono uppercase outline-none text-sm tracking-widest'
+                      placeholder='FFFFFF'
+                      maxLength={6}
+                    />
+                  </div>
                 </div>
               </div>
               <div className={`${getGlassyClasses(10)} p-6`}>
@@ -229,16 +241,25 @@ function Example() {
                 </label>
                 <div className='flex items-center'>
                   <ColorPicker
-                    value={customBg}
-                    onChange={setCustomBg}
-                    label='Background Color'
-                  />
-                  <input
-                    type='text'
                     value={customBorder}
-                    onChange={e => setCustomBorder(e.target.value)}
-                    className='bg-transparent border-b border-gray-400 w-full py-1 px-2 text-white'
+                    onChange={setCustomBorder}
                   />
+                  <div className='flex items-center border-b border-white/30 focus-within:border-white transition-colors'>
+                    <span className='text-white/50 font-mono text-sm pl-1'>
+                      #
+                    </span>
+                    <input
+                      type='text'
+                      value={customBorder.replace('#', '')}
+                      onChange={e => {
+                        const val = e.target.value.replace(/[^0-9a-fA-F]/g, '');
+                        setCustomBorder(`#${val.slice(0, 6)}`);
+                      }}
+                      className='bg-transparent w-20 py-1 px-1 text-white font-mono uppercase outline-none text-sm tracking-widest'
+                      placeholder='FFFFFF'
+                      maxLength={6}
+                    />
+                  </div>
                 </div>
               </div>
             </div>

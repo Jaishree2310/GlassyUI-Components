@@ -397,17 +397,31 @@ const PricingDetailPage: React.FC = () => {
                   }
                 />
 
-                <input
-                  type='text'
-                  value={customComponentData?.titleColor}
-                  onChange={e =>
-                    setcustomComponentData(el => ({
-                      ...el,
-                      titleColor: e.target.value,
-                    }))
-                  }
-                  className='bg-transparent border-b border-gray-400 w-full py-1 px-2 text-white'
-                />
+                <div className='flex items-center border-b border-white/30 focus-within:border-white transition-colors'>
+                  <span className='text-white/50 font-mono text-sm pl-1'>
+                    #
+                  </span>
+                  <input
+                    type='text'
+                    value={(
+                      customComponentData?.titleColor || '#ffffff'
+                    ).replace('#', '')}
+                    onChange={e => {
+                      const val = e.target.value
+                        .replace(/[^0-9a-fA-F]/g, '')
+                        .slice(0, 6);
+
+                      setcustomComponentData(prev => ({
+                        ...prev,
+                        titleColor: `#${val}`,
+                      }));
+                    }}
+                    className='bg-transparent w-20 py-1 px-1 text-white font-mono uppercase outline-none text-sm tracking-widest'
+                    placeholder='FFFFFF'
+                    maxLength={6}
+                    spellCheck={false}
+                  />
+                </div>
               </div>
               <div
                 onClick={() => {
@@ -439,21 +453,35 @@ const PricingDetailPage: React.FC = () => {
                   onChange={hex =>
                     setcustomComponentData(el => ({
                       ...el,
-                      titleColor: hex,
+                      tagTextColor: hex,
                     }))
                   }
                 />
-                <input
-                  type='text'
-                  value={customComponentData?.tagTextColor}
-                  onChange={e =>
-                    setcustomComponentData(el => ({
-                      ...el,
-                      tagTextColor: e.target.value,
-                    }))
-                  }
-                  className='bg-transparent border-b border-gray-400 w-full py-1 px-2 text-white'
-                />
+                <div className='flex items-center border-b border-white/30 focus-within:border-white transition-colors'>
+                  <span className='text-white/50 font-mono text-sm pl-1'>
+                    #
+                  </span>
+                  <input
+                    type='text'
+                    value={(
+                      customComponentData?.tagTextColor || '#ffffff'
+                    ).replace('#', '')}
+                    onChange={e => {
+                      const val = e.target.value
+                        .replace(/[^0-9a-fA-F]/g, '')
+                        .slice(0, 6);
+
+                      setcustomComponentData(prev => ({
+                        ...prev,
+                        tagTextColor: `#${val}`,
+                      }));
+                    }}
+                    className='bg-transparent w-20 py-1 px-1 text-white font-mono uppercase outline-none text-sm tracking-widest'
+                    placeholder='FFFFFF'
+                    maxLength={6}
+                    spellCheck={false}
+                  />
+                </div>
               </div>
               <div
                 onClick={() => {
@@ -485,21 +513,36 @@ const PricingDetailPage: React.FC = () => {
                   onChange={hex =>
                     setcustomComponentData(el => ({
                       ...el,
-                      titleColor: hex,
+                      tagColor: hex,
                     }))
                   }
                 />
-                <input
-                  type='text'
-                  value={customComponentData?.tagColor}
-                  onChange={e =>
-                    setcustomComponentData(el => ({
-                      ...el,
-                      tagColor: e.target.value,
-                    }))
-                  }
-                  className='bg-transparent border-b border-gray-400 w-full py-1 px-2 text-white'
-                />
+                <div className='flex items-center border-b border-white/30 focus-within:border-white transition-colors'>
+                  <span className='text-white/50 font-mono text-sm pl-1'>
+                    #
+                  </span>
+                  <input
+                    type='text'
+                    value={(customComponentData?.tagColor || '#ffffff').replace(
+                      '#',
+                      '',
+                    )}
+                    onChange={e => {
+                      const val = e.target.value
+                        .replace(/[^0-9a-fA-F]/g, '')
+                        .slice(0, 6);
+
+                      setcustomComponentData(prev => ({
+                        ...prev,
+                        tagColor: `#${val}`,
+                      }));
+                    }}
+                    className='bg-transparent w-20 py-1 px-1 text-white font-mono uppercase outline-none text-sm tracking-widest'
+                    placeholder='FFFFFF'
+                    maxLength={6}
+                    spellCheck={false}
+                  />
+                </div>
               </div>
               <div
                 onClick={() => {
@@ -531,21 +574,35 @@ const PricingDetailPage: React.FC = () => {
                   onChange={hex =>
                     setcustomComponentData(el => ({
                       ...el,
-                      titleColor: hex,
+                      fullBodyTextColor: hex,
                     }))
                   }
                 />
-                <input
-                  type='text'
-                  value={customComponentData?.fullBodyTextColor}
-                  onChange={e =>
-                    setcustomComponentData(el => ({
-                      ...el,
-                      fullBodyTextColor: e.target.value,
-                    }))
-                  }
-                  className='bg-transparent border-b border-gray-400 w-full py-1 px-2 text-white'
-                />
+                <div className='flex items-center border-b border-white/30 focus-within:border-white transition-colors'>
+                  <span className='text-white/50 font-mono text-sm pl-1'>
+                    #
+                  </span>
+                  <input
+                    type='text'
+                    value={(
+                      customComponentData?.fullBodyTextColor || '#ffffff'
+                    ).replace('#', '')}
+                    onChange={e => {
+                      const val = e.target.value
+                        .replace(/[^0-9a-fA-F]/g, '')
+                        .slice(0, 6);
+
+                      setcustomComponentData(prev => ({
+                        ...prev,
+                        fullBodyTextColor: `#${val}`,
+                      }));
+                    }}
+                    className='bg-transparent w-20 py-1 px-1 text-white font-mono uppercase outline-none text-sm tracking-widest'
+                    placeholder='FFFFFF'
+                    maxLength={6}
+                    spellCheck={false}
+                  />
+                </div>
               </div>
               <div
                 onClick={() => {
@@ -579,21 +636,35 @@ const PricingDetailPage: React.FC = () => {
                   onChange={hex =>
                     setcustomComponentData(el => ({
                       ...el,
-                      titleColor: hex,
+                      buttonBackgroundColor: hex,
                     }))
                   }
                 />
-                <input
-                  type='text'
-                  value={customComponentData?.buttonBackgroundColor}
-                  onChange={e =>
-                    setcustomComponentData(el => ({
-                      ...el,
-                      buttonBackgroundColor: e.target.value,
-                    }))
-                  }
-                  className='bg-transparent border-b border-gray-400 w-full py-1 px-2 text-white'
-                />
+                <div className='flex items-center border-b border-white/30 focus-within:border-white transition-colors'>
+                  <span className='text-white/50 font-mono text-sm pl-1'>
+                    #
+                  </span>
+                  <input
+                    type='text'
+                    value={(
+                      customComponentData?.buttonBackgroundColor || '#ffffff'
+                    ).replace('#', '')}
+                    onChange={e => {
+                      const val = e.target.value
+                        .replace(/[^0-9a-fA-F]/g, '')
+                        .slice(0, 6);
+
+                      setcustomComponentData(prev => ({
+                        ...prev,
+                        buttonBackgroundColor: `#${val}`,
+                      }));
+                    }}
+                    className='bg-transparent w-20 py-1 px-1 text-white font-mono uppercase outline-none text-sm tracking-widest'
+                    placeholder='FFFFFF'
+                    maxLength={6}
+                    spellCheck={false}
+                  />
+                </div>
               </div>
               <div
                 onClick={() => {
@@ -632,17 +703,32 @@ const PricingDetailPage: React.FC = () => {
                     }))
                   }
                 />
-                <input
-                  type='text'
-                  value={customComponentData?.buttonBackgroundSecondColor}
-                  onChange={e =>
-                    setcustomComponentData(el => ({
-                      ...el,
-                      buttonBackgroundSecondColor: e.target.value,
-                    }))
-                  }
-                  className='bg-transparent border-b border-gray-400 w-full py-1 px-2 text-white'
-                />
+                <div className='flex items-center border-b border-white/30 focus-within:border-white transition-colors'>
+                  <span className='text-white/50 font-mono text-sm pl-1'>
+                    #
+                  </span>
+                  <input
+                    type='text'
+                    value={(
+                      customComponentData?.buttonBackgroundSecondColor ||
+                      '#ffffff'
+                    ).replace('#', '')}
+                    onChange={e => {
+                      const val = e.target.value
+                        .replace(/[^0-9a-fA-F]/g, '')
+                        .slice(0, 6);
+
+                      setcustomComponentData(prev => ({
+                        ...prev,
+                        buttonBackgroundSecondColor: `#${val}`,
+                      }));
+                    }}
+                    className='bg-transparent w-20 py-1 px-1 text-white font-mono uppercase outline-none text-sm tracking-widest'
+                    placeholder='FFFFFF'
+                    maxLength={6}
+                    spellCheck={false}
+                  />
+                </div>
               </div>
               <div
                 onClick={() => {

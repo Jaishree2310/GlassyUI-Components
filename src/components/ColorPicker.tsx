@@ -1,4 +1,5 @@
 import React, { useRef, useEffect, useState, useCallback } from 'react';
+import { createPortal } from 'react-dom';
 import { Pipette } from 'lucide-react';
 
 interface ColorPickerProps {
@@ -10,6 +11,7 @@ interface ColorPickerProps {
 const getGlassyClasses = (opacity = 10) =>
   `backdrop-filter backdrop-blur-lg bg-white bg-opacity-${opacity} border border-white border-opacity-20 rounded-lg shadow-lg transition-all duration-300`;
 
+// ... (hexToHsv, hsvToRgb, rgbToHex functions remain unchanged)
 function hexToHsv(hex: string): [number, number, number] {
   const r = parseInt(hex.slice(1, 3), 16) / 255;
   const g = parseInt(hex.slice(3, 5), 16) / 255;
@@ -74,25 +76,31 @@ const ColorPicker: React.FC<ColorPickerProps> = ({
   const [hexInput, setHexInput] = useState(initialHex.slice(1).toUpperCase());
   const dragging = useRef(false);
   const panelRef = useRef<HTMLDivElement>(null);
+  const triggerRef = useRef<HTMLButtonElement>(null);
+  const [panelPos, setPanelPos] = useState({ top: 0, left: 0 });
 
-  // Sync from external value changes
-  useEffect(() => {
-    if (!open) {
-      const clean = value.startsWith('#') ? value : '#' + value;
-      if (/^#[0-9a-fA-F]{6}$/.test(clean)) {
-        const [h, s, v] = hexToHsv(clean);
-        setHue(h);
-        setSat(s);
-        setVal(v);
-        setHexInput(clean.slice(1).toUpperCase());
-        const canvas = canvasRef.current;
-        if (canvas) {
-          setCursorX(s * (canvas.width - 1));
-          setCursorY((1 - v) * (canvas.height - 1));
-        }
-      }
+  const updatePosition = useCallback(() => {
+    if (triggerRef.current) {
+      const rect = triggerRef.current.getBoundingClientRect();
+      setPanelPos({
+        top: rect.bottom + window.scrollY + 8,
+        left: rect.left + window.scrollX,
+      });
     }
-  }, [value, open]);
+  }, []);
+
+  // Recalculate position on scroll or resize
+  useEffect(() => {
+    if (open) {
+      updatePosition();
+      window.addEventListener('scroll', updatePosition, true);
+      window.addEventListener('resize', updatePosition);
+    }
+    return () => {
+      window.removeEventListener('scroll', updatePosition, true);
+      window.removeEventListener('resize', updatePosition);
+    };
+  }, [open, updatePosition]);
 
   const drawCanvas = useCallback(() => {
     const canvas = canvasRef.current;
@@ -116,19 +124,10 @@ const ColorPicker: React.FC<ColorPickerProps> = ({
     ctx.strokeStyle = 'rgba(255,255,255,0.9)';
     ctx.lineWidth = 2;
     ctx.stroke();
-    ctx.beginPath();
-    ctx.arc(cursorX, cursorY, 9, 0, 2 * Math.PI);
-    ctx.strokeStyle = 'rgba(0,0,0,0.3)';
-    ctx.lineWidth = 1;
-    ctx.stroke();
   }, [hue, cursorX, cursorY]);
 
   useEffect(() => {
-    drawCanvas();
-  }, [drawCanvas]);
-
-  useEffect(() => {
-    if (open) requestAnimationFrame(() => drawCanvas());
+    if (open) drawCanvas();
   }, [open, drawCanvas]);
 
   const pickColor = useCallback(
@@ -152,8 +151,8 @@ const ColorPicker: React.FC<ColorPickerProps> = ({
       const v = 1 - cy / (canvas.height - 1);
       setSat(s);
       setVal(v);
-      const [r, g, b] = hsvToRgb(hue, s, v);
-      const hex = rgbToHex(r, g, b);
+      const [r_val, g_val, b_val] = hsvToRgb(hue, s, v);
+      const hex = rgbToHex(r_val, g_val, b_val);
       setHexInput(hex.slice(1));
       onChange(hex);
     },
@@ -163,8 +162,8 @@ const ColorPicker: React.FC<ColorPickerProps> = ({
   const handleHueChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const h = Number(e.target.value);
     setHue(h);
-    const [r, g, b] = hsvToRgb(h, sat, val);
-    const hex = rgbToHex(r, g, b);
+    const [r_v, g_v, b_v] = hsvToRgb(h, sat, val);
+    const hex = rgbToHex(r_v, g_v, b_v);
     setHexInput(hex.slice(1));
     onChange(hex);
   };
@@ -174,25 +173,26 @@ const ColorPicker: React.FC<ColorPickerProps> = ({
     setHexInput(v.toUpperCase());
     if (v.length === 6) {
       const full = '#' + v;
-      const [h, s, val2] = hexToHsv(full);
+      const [h, s, v2] = hexToHsv(full);
       setHue(h);
       setSat(s);
-      setVal(val2);
-      const canvas = canvasRef.current;
-      if (canvas) {
-        setCursorX(s * (canvas.width - 1));
-        setCursorY((1 - val2) * (canvas.height - 1));
-      }
+      setVal(v2);
+      setCursorX(s * (CANVAS_W - 1));
+      setCursorY((1 - v2) * (CANVAS_H - 1));
       onChange(full.toUpperCase());
     }
   };
 
-  // Close on outside click
+  // Close on outside click, but IGNORE clicks on the trigger button
   useEffect(() => {
     if (!open) return;
     const handler = (e: MouseEvent) => {
-      if (panelRef.current && !panelRef.current.contains(e.target as Node))
+      const isTriggerClick = triggerRef.current?.contains(e.target as Node);
+      const isPanelClick = panelRef.current?.contains(e.target as Node);
+
+      if (!isTriggerClick && !isPanelClick) {
         setOpen(false);
+      }
     };
     document.addEventListener('mousedown', handler);
     return () => document.removeEventListener('mousedown', handler);
@@ -216,133 +216,123 @@ const ColorPicker: React.FC<ColorPickerProps> = ({
   };
 
   const [r, g, b] = hsvToRgb(hue, sat, val);
-  const currentHex = '#' + hexInput;
 
   return (
-    <div className='relative' ref={panelRef}>
+    <div className='relative inline-block'>
       {label && (
         <label className='block text-sm font-medium text-white mb-2'>
           {label}
         </label>
       )}
 
-      {/* Trigger */}
       <button
-        onClick={() => setOpen(o => !o)}
-        className={`${getGlassyClasses(20)} p-1 hover:bg-opacity-30 transition-all duration-200`}
-        title='Choose color'
+        ref={triggerRef}
+        onClick={() => setOpen(!open)}
+        className={`flex items-center gap-3 ${getGlassyClasses(20)} px-2 py-2 hover:bg-opacity-30 active:scale-95 transition-transform`}
       >
-        <div
-          className='w-6 h-6 rounded-md border border-white border-opacity-30 flex-shrink-0'
+        <span
+          className='w-6 h-6 rounded-md border border-white border-opacity-30 inline-block flex-shrink-0'
           style={{ background: value }}
         />
       </button>
 
-      {/* Picker panel */}
-      {open && (
-        <div
-          className={`absolute z-10 mt-2 p-4 ${getGlassyClasses(30)} w-64 flex flex-col gap-3 shadow-2xl`}
-          style={{ minWidth: 240 }}
-        >
-          {/* Gradient canvas */}
-          <canvas
-            ref={canvasRef}
-            width={232}
-            height={160}
-            className='w-full rounded-lg cursor-crosshair'
-            style={{ display: 'block' }}
-            onMouseDown={e => {
-              dragging.current = true;
-              pickColor(e.clientX, e.clientY);
+      {open &&
+        createPortal(
+          <div
+            ref={panelRef}
+            className={`absolute z-[9999] p-4 ${getGlassyClasses(30)} w-64 flex flex-col gap-3 shadow-2xl`}
+            style={{
+              top: panelPos.top,
+              left: panelPos.left,
+              minWidth: 240,
+              position: 'absolute', // Changed to absolute within body for better scroll sync
             }}
-            onMouseMove={e => {
-              if (dragging.current) pickColor(e.clientX, e.clientY);
-            }}
-            onMouseUp={() => {
-              dragging.current = false;
-            }}
-            onMouseLeave={() => {
-              dragging.current = false;
-            }}
-            onTouchStart={e => {
-              dragging.current = true;
-              pickColor(e.touches[0].clientX, e.touches[0].clientY);
-            }}
-            onTouchMove={e => {
-              if (dragging.current)
-                pickColor(e.touches[0].clientX, e.touches[0].clientY);
-            }}
-            onTouchEnd={() => {
-              dragging.current = false;
-            }}
-          />
-
-          {/* Hue slider + swatch + eyedropper */}
-          <div className='flex items-center gap-3'>
-            <span
-              className='w-8 h-8 rounded-full border-2 border-white border-opacity-40 flex-shrink-0'
-              style={{ background: `#${hexInput || 'ffffff'}` }}
-            />
-            <input
-              type='range'
-              min={0}
-              max={360}
-              value={hue}
-              onChange={handleHueChange}
-              className='flex-1 h-2 rounded-full cursor-pointer appearance-none border-none'
-              style={{
-                background:
-                  'linear-gradient(to right, hsl(0,100%,50%), hsl(30,100%,50%), hsl(60,100%,50%), hsl(90,100%,50%), hsl(120,100%,50%), hsl(150,100%,50%), hsl(180,100%,50%), hsl(210,100%,50%), hsl(240,100%,50%), hsl(270,100%,50%), hsl(300,100%,50%), hsl(330,100%,50%), hsl(360,100%,50%))',
+          >
+            <canvas
+              ref={canvasRef}
+              width={CANVAS_W}
+              height={CANVAS_H}
+              className='w-full rounded-lg cursor-crosshair'
+              onMouseDown={e => {
+                dragging.current = true;
+                pickColor(e.clientX, e.clientY);
+              }}
+              onMouseMove={e => {
+                if (dragging.current) pickColor(e.clientX, e.clientY);
+              }}
+              onMouseUp={() => {
+                dragging.current = false;
+              }}
+              onMouseLeave={() => {
+                dragging.current = false;
               }}
             />
-            {'EyeDropper' in window && (
-              <button
-                onClick={handleEyeDropper}
-                title='Pick color from screen'
-                className={`${getGlassyClasses(20)} p-1.5 hover:bg-opacity-30 text-white flex-shrink-0`}
-              >
-                <Pipette size={16} />
-              </button>
-            )}
-          </div>
 
-          {/* RGB readout */}
-          <div className='grid grid-cols-3 gap-2 text-center'>
-            {[
-              ['R', r],
-              ['G', g],
-              ['B', b],
-            ].map(([ch, val]) => (
-              <div
-                key={ch as string}
-                className={`${getGlassyClasses(10)} py-1`}
-              >
-                <div className='text-xs text-white text-opacity-60 font-medium'>
-                  {ch}
+            <div className='flex items-center gap-3'>
+              <span
+                className='w-8 h-8 rounded-full border-2 border-white border-opacity-40 flex-shrink-0'
+                style={{ background: `#${hexInput || 'ffffff'}` }}
+              />
+              <input
+                type='range'
+                min={0}
+                max={360}
+                value={hue}
+                onChange={handleHueChange}
+                className='flex-1 h-2 rounded-full cursor-pointer appearance-none border-none hue-slider'
+                style={{
+                  background:
+                    'linear-gradient(to right, #ff0000, #ffff00, #00ff00, #00ffff, #0000ff, #ff00ff, #ff0000)',
+                }}
+              />
+              {'EyeDropper' in window && (
+                <button
+                  onClick={handleEyeDropper}
+                  className={`${getGlassyClasses(20)} p-1.5 hover:bg-opacity-30 text-white flex-shrink-0`}
+                >
+                  <Pipette size={16} />
+                </button>
+              )}
+            </div>
+
+            <div className='grid grid-cols-3 gap-2 text-center'>
+              {[
+                ['R', r],
+                ['G', g],
+                ['B', b],
+              ].map(([ch, v_rgb]) => (
+                <div
+                  key={ch as string}
+                  className={`${getGlassyClasses(10)} py-1`}
+                >
+                  <div className='text-xs text-white text-opacity-60 font-medium'>
+                    {ch}
+                  </div>
+                  <div className='text-sm font-semibold text-white'>
+                    {v_rgb}
+                  </div>
                 </div>
-                <div className='text-sm font-semibold text-white'>{val}</div>
-              </div>
-            ))}
-          </div>
+              ))}
+            </div>
 
-          {/* Hex input */}
-          <div
-            className={`flex items-center gap-2 ${getGlassyClasses(10)} px-3 py-2`}
-          >
-            <span className='text-white text-opacity-50 text-sm font-mono'>
-              #
-            </span>
-            <input
-              type='text'
-              value={hexInput}
-              onChange={handleHexInput}
-              maxLength={6}
-              className='bg-transparent text-white text-sm font-mono flex-1 outline-none uppercase tracking-widest'
-              spellCheck={false}
-            />
-          </div>
-        </div>
-      )}
+            <div
+              className={`flex items-center gap-2 ${getGlassyClasses(10)} px-3 py-2`}
+            >
+              <span className='text-white text-opacity-50 text-sm font-mono'>
+                #
+              </span>
+              <input
+                type='text'
+                value={hexInput}
+                onChange={handleHexInput}
+                maxLength={6}
+                className='bg-transparent text-white text-sm font-mono flex-1 outline-none uppercase tracking-widest'
+                spellCheck={false}
+              />
+            </div>
+          </div>,
+          document.body,
+        )}
     </div>
   );
 };

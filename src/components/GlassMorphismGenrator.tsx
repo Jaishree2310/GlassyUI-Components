@@ -9,11 +9,11 @@ const GlassmorphismGenerator: React.FC = () => {
   const navigate = useNavigate();
   const [opacity, setOpacity] = useState<number>(0.5);
   const [blur, setBlur] = useState<number>(10);
-  const [bgColor, setBgColor] = useState<string>('rgba(255, 255, 255, 0.25)');
+  const [bgColor, setBgColor] = useState<string>('#ffffff');
   const [shadowBlur, setShadowBlur] = useState<number>(10);
   const [shadowOffsetX, setShadowOffsetX] = useState<number>(0);
   const [shadowOffsetY, setShadowOffsetY] = useState<number>(4);
-  const [shadowColor, setShadowColor] = useState<string>('rgba(0, 0, 0, 0.5)');
+  const [shadowColor, setShadowColor] = useState<string>('#000000');
   const [borderRadius, setBorderRadius] = useState<number>(15);
   const [activeTab, setActiveTab] = useState<'custom' | 'tailwind'>('custom');
   const [copied, setCopied] = useState<boolean>(false);
@@ -80,7 +80,7 @@ const GlassmorphismGenerator: React.FC = () => {
       <h2 className='text-xl font-bold text-white  '>
         Create your own Glassmorphic effect with ease
       </h2>
-      <div className='grid grid-cols-2 md:grid-cols-3 lg:grid-flow-col gap-4'>
+      <div className='w-[80%] flex flex-wrap justify-center gap-4 mb-8'>
         <div className='glassmorphism p-2 rounded-md'>
           <label
             htmlFor='opacity'
@@ -117,21 +117,32 @@ const GlassmorphismGenerator: React.FC = () => {
             className='w-full'
           />
         </div>
-        <div className='glassmorphism p-2 rounded-md flex gap-2 items-start h-auto  '>
+        <div className='glassmorphism p-2 rounded-md   '>
           <label
             htmlFor='bgColor'
             className='block text-sm font-medium text-white mb-1'
           >
             Background Color
           </label>
-          <ColorPicker
-            value={`#${((1 << 24) + (parseInt(bgColor.slice(5, 8)) << 16) + (parseInt(bgColor.slice(10, 13)) << 8) + parseInt(bgColor.slice(15, 18))).toString(16).slice(1)}`}
-            onChange={hex =>
-              setBgColor(
-                `rgb(${parseInt(hex.slice(1, 3), 16)}, ${parseInt(hex.slice(3, 5), 16)}, ${parseInt(hex.slice(5, 7), 16)})`,
-              )
-            }
-          />
+
+          <div className='flex items-center space-x-3'>
+            <ColorPicker value={bgColor} onChange={hex => setBgColor(hex)} />
+
+            <div className='flex items-center border-b border-white/30 focus-within:border-white transition-colors'>
+              <span className='text-white/50 font-mono text-sm pl-1'>#</span>
+              <input
+                type='text'
+                value={bgColor.replace('#', '')}
+                onChange={e => {
+                  const val = e.target.value.replace(/[^0-9a-fA-F]/g, '');
+                  setBgColor(`#${val.slice(0, 6)}`);
+                }}
+                className='bg-transparent w-20 py-1 px-1 text-white font-mono uppercase outline-none text-sm tracking-widest'
+                placeholder='FFFFFF'
+                maxLength={6}
+              />
+            </div>
+          </div>
         </div>
         <div className='glassmorphism p-2 rounded-md'>
           <label
@@ -206,25 +217,35 @@ const GlassmorphismGenerator: React.FC = () => {
           />
         </div>
 
-        {/* Shadow Color Picker */}
-        <div className='glassmorphism p-2 rounded-md flex gap-2 items-start h-auto  '>
+        <div className='glassmorphism p-2 rounded-md   '>
           <label
-            htmlFor='shadowColor'
+            htmlFor='bgColor'
             className='block text-sm font-medium text-white mb-1'
           >
             Shadow Color
           </label>
 
-          <ColorPicker
-            value={
-              '#${((1 << 24) + (parseInt(bgColor.slice(5, 8)) << 16) + (parseInt(bgColor.slice(10, 13)) << 8) + parseInt(bgColor.slice(15, 18))).toString(16).slice(1)}'
-            }
-            onChange={hex =>
-              setShadowColor(
-                `rgb(${parseInt(hex.slice(1, 3), 16)}, ${parseInt(hex.slice(3, 5), 16)}, ${parseInt(hex.slice(5, 7), 16)})`,
-              )
-            }
-          />
+          <div className='flex items-center space-x-3'>
+            <ColorPicker
+              value={shadowColor}
+              onChange={hex => setShadowColor(hex)}
+            />
+
+            <div className='flex items-center border-b border-white/30 focus-within:border-white transition-colors'>
+              <span className='text-white/50 font-mono text-sm pl-1'>#</span>
+              <input
+                type='text'
+                value={bgColor.replace('#', '')}
+                onChange={e => {
+                  const val = e.target.value.replace(/[^0-9a-fA-F]/g, '');
+                  setBgColor(`#${val.slice(0, 6)}`);
+                }}
+                className='bg-transparent w-20 py-1 px-1 text-white font-mono uppercase outline-none text-sm tracking-widest'
+                placeholder='FFFFFF'
+                maxLength={6}
+              />
+            </div>
+          </div>
         </div>
       </div>
       <div className='grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-[1200px]'>
