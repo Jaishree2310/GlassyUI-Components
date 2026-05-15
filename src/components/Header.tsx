@@ -155,7 +155,6 @@ const ulStyle: React.CSSProperties = {
 };
 
 const liStyle: React.CSSProperties = {
-  // margin: '0 10px',
   margin: '5px',
 };
 
