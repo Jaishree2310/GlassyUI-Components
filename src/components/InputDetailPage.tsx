@@ -132,14 +132,14 @@ const InputDetailPage: React.FC = () => {
       <nav className='mb-8 flex items-center justify-between relative z-10'>
         <button
           onClick={handleBackToComponents}
-          className={`flex items-center ${getGlassyClasses()} px-4 py-2 hover:bg-opacity-20 text-white`}
+          className={`flex items-center ${getGlassyClasses()} px-4 py-4 mt-8 hover:bg-opacity-20 text-white`}
         >
           <ArrowLeft size={20} className='mr-2' />
           Back to Components
         </button>
       </nav>
 
-      <h1 className='text-6xl font-bold mb-8 text-white relative z-10'>
+      <h1 className='text-5xl font-bold mb-8 text-white relative z-10'>
         Glassmorphic Input Component
       </h1>
       <p className='text-xl mb-8 text-gray-100'>
@@ -147,9 +147,9 @@ const InputDetailPage: React.FC = () => {
       </p>
 
       <section
-        className={`${getGlassyClasses(20)} p-6 mb-8 text-white relative z-10`}
+        className={`${getGlassyClasses(20)} p-5 mb-8 text-white relative z-10`}
       >
-        <h2 className='text-3xl font-bold mb-4'>Basic Usage</h2>
+        <h2 className='text-2xl font-bold mb-4'>Basic Usage</h2>
         <div className={`${getGlassyClasses()} p-4 hover:shadow-xl mb-4`}>
           <Input
             placeholder='Enter text...'

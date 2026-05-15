@@ -413,7 +413,7 @@ const GlassyUIComponentsPage: React.FC = () => {
                       lots to explore on the home page.{' '}
                     </p>
                     <button
-                      className='mt-6 px-4 py-2 bg-blue-600 hover:bg-blue-500 text-white rounded-lg shadow-md transition-all duration-300'
+                      className='mt-6 px-4 py-4 mt-8 bg-blue-600 hover:bg-blue-500 text-white rounded-lg shadow-md transition-all duration-300'
                       onClick={() => navigate('/')}
                     >
                       Back to Homepage

@@ -163,13 +163,13 @@ const TextareaDetailPage: React.FC = () => {
       <div className='relative z-10'>
         <button
           onClick={() => navigate(-1)}
-          className={`mb-8 flex items-center ${getGlassyClasses(10)} px-4 py-2 hover:bg-white/40 transition-all duration-300 text-gray-100`}
+          className={`mb-8 flex items-center ${getGlassyClasses(10)} px-4 py-4 mt-8  hover:bg-white/40 transition-all duration-300 text-gray-100`}
         >
           <ArrowLeft size={20} className='mr-2' />
           Back to Components
         </button>
 
-        <h1 className='text-6xl font-bold mb-8 text-white'>
+        <h1 className='text-5xl font-bold mb-8 text-white'>
           TextArea Component
         </h1>
         <p className='text-xl mb-8 text-gray-100'>
@@ -203,8 +203,8 @@ const TextareaDetailPage: React.FC = () => {
         </div>
 
         {/* Props */}
-        <div className={`${getGlassyClasses()} p-6 mb-14`}>
-          <h2 className='text-3xl text-gray-100 font-bold mb-4'>Props</h2>
+        <div className={`${getGlassyClasses()} p-5 mb-14`}>
+          <h2 className='text-2xl text-gray-100 font-bold mb-4'>Props</h2>
           <div className='overflow-x-auto text-gray-200'>
             <table className='w-full'>
               <thead>
@@ -250,15 +250,15 @@ const TextareaDetailPage: React.FC = () => {
         </div>
 
         {/* Custom TextArea */}
-        <div className={`${getGlassyClasses()} p-6 text-gray-200 mb-14`}>
+        <div className={`${getGlassyClasses()} p-5 text-gray-200 mb-14`}>
           <CustomTextArea />
         </div>
 
         {/* Additional Examples */}
-        <div className={`${getGlassyClasses()} p-6 mt-14`}>
-          <h2 className='text-3xl text-white font-bold'>Additional Examples</h2>
+        <div className={`${getGlassyClasses()} p-5 mt-14`}>
+          <h2 className='text-2xl text-white font-bold'>Additional Examples</h2>
 
-          <h3 className='text-xl text-gray-600 font-semibold mb-2'>
+          <h3 className='text-lg text-gray-600 font-semibold mb-2'>
             With Custom Styling
           </h3>
           <div className={`${getGlassyClasses(10)} p-4 mb-6`}>

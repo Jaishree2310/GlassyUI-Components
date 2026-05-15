@@ -113,13 +113,13 @@ const ProgressBarDetailPage: React.FC = () => {
       <BackToTopButton />
       <button
         onClick={() => navigate(-1)}
-        className={`mb-8 flex items-center ${getGlassyClasses(10)} px-4 py-2 hover:bg-opacity-40 transition-all duration-300  text-gray-100`}
+        className={`mb-8 flex items-center ${getGlassyClasses(10)} px-4 py-4 mt-8 hover:bg-opacity-40 transition-all duration-300  text-gray-100`}
       >
         <ArrowLeft size={20} className='mr-2' />
         Back to Components
       </button>
 
-      <h1 className='text-6xl font-bold mb-8 text-white'>
+      <h1 className='text-5xl font-bold mb-8 text-white'>
         ProgressBar Component
       </h1>
 
@@ -129,7 +129,7 @@ const ProgressBarDetailPage: React.FC = () => {
       </p>
 
       {/* Basic Usage */}
-      <div className={`${getGlassyClasses()} p-6 mb-14 relative`}>
+      <div className={`${getGlassyClasses()} p-5 mb-14 relative`}>
         <h2 className='text-2xl font-bold mb-4  text-gray-100'>Basic Usage</h2>
         <pre className='bg-gray-800 text-white p-4 rounded-lg overflow-x-auto'>
           {`import { ProgressBar } from 'glassy-ui';
@@ -167,8 +167,8 @@ function App() {
       </div>
 
       {/* Props */}
-      <div className={`${getGlassyClasses()} p-6 mb-14`}>
-        <h2 className='text-3xl font-bold mb-4  text-gray-100'>Props</h2>
+      <div className={`${getGlassyClasses()} p-5 mb-14`}>
+        <h2 className='text-2xl font-bold mb-4  text-gray-100'>Props</h2>
         <div className='overflow-x-auto'>
           <table className='w-full'>
             <thead>
@@ -213,7 +213,7 @@ function App() {
 
       {/* Custom ProgressBar */}
       <div className={`${getGlassyClasses()} p-6 mb-14`}>
-        <h2 className='text-3xl font-bold mb-4  text-gray-100'>
+        <h2 className='text-2xl font-bold mb-4  text-gray-100'>
           Custom ProgressBar
         </h2>
         <p className='text-xl mb-4'>
@@ -278,8 +278,8 @@ function App() {
       </div>
 
       {/* Examples */}
-      <div className={`${getGlassyClasses()} p-6 mt-14`}>
-        <h2 className='text-3xl font-bold mb-4  text-gray-100'>
+      <div className={`${getGlassyClasses()} p-5 mt-14`}>
+        <h2 className='text-2xl font-bold mb-4  text-gray-100'>
           Examples for mesh morphism
         </h2>
 
@@ -325,8 +325,8 @@ function App() {
       </div>
 
       {/* Animated Progress */}
-      <div className={`${getGlassyClasses()} p-6 mt-14`}>
-        <h2 className='text-3xl font-bold mb-4  text-gray-100'>
+      <div className={`${getGlassyClasses()} p-5 mt-14`}>
+        <h2 className='text-2xl font-bold mb-4  text-gray-100'>
           Other Examples
         </h2>
 

@@ -394,13 +394,13 @@ const PopupDetailPage: React.FC = () => {
       <BackToTopButton />
       <button
         onClick={() => navigate(-1)}
-        className={`mb-8 flex items-center ${getGlassyClasses(10)} px-4 py-2 hover:bg-white/40 transition-all duration-300 text-gray-100`}
+        className={`mb-8 flex items-center ${getGlassyClasses(10)} px-4 py-4 mt-8  hover:bg-white/40 transition-all duration-300 text-gray-100`}
       >
         <ArrowLeft size={20} className='mr-2' />
         Back to Components
       </button>
 
-      <h1 className='text-6xl font-bold mb-8 text-gray-100'>
+      <h1 className='text-5xl font-bold mb-8 text-gray-100'>
         Glassmorphism Popup
       </h1>
 
@@ -410,8 +410,8 @@ const PopupDetailPage: React.FC = () => {
       </p>
 
       {/* Basic Usage */}
-      <div className={`${getGlassyClasses()} p-6 mb-14 relative`}>
-        <h2 className='text-3xl font-bold mb-4 text-gray-100'>Basic Usage</h2>
+      <div className={`${getGlassyClasses()} p-5 mb-14 relative`}>
+        <h2 className='text-2xl font-bold mb-4 text-gray-100'>Basic Usage</h2>
         <pre className='bg-gray-800 text-white p-4 rounded-lg overflow-x-auto max-sm:text-[0.55rem]'>
           {`<div>
   <button onClick={openPopup}>Open Popup</button>
@@ -469,8 +469,8 @@ function App() {
       </div>
 
       {/* Props */}
-      <div className={`${getGlassyClasses()} p-6 mb-14`}>
-        <h2 className='text-3xl font-bold mb-4 text-gray-100'>Props</h2>
+      <div className={`${getGlassyClasses()} p-5 mb-14`}>
+        <h2 className='text-2xl font-bold mb-4 text-gray-100'>Props</h2>
         <div className='overflow-x-auto'>
           <table className='w-full'>
             <thead>
@@ -530,7 +530,7 @@ function App() {
       </div>
 
       {/* Custom Popup */}
-      <div className={`${getGlassyClasses()} p-6 mb-14`}>
+      <div className={`${getGlassyClasses()} p-5 mb-14`}>
         <CustomPopup
           getGlassyClasses={getGlassyClasses}
           copiedStates={copiedStates}

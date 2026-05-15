@@ -8,8 +8,8 @@
 //   return (
 //     <div>
 //       <CheckboxDetails
-//         checked={isChecked}
-//         onChange={checked => setIsChecked(checked)}
+//         isChecked={isChecked}
+//         onChange={(checked: boolean) => setIsChecked(checked)}
 //         label='I agree to the terms'
 //         size='medium'
 //         borderColor='#4A90E2'

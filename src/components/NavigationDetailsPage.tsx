@@ -93,13 +93,13 @@ const NavigationDetailsPage: React.FC = () => {
       <div className='relative z-10'>
         <button
           onClick={handleBackToComponents}
-          className={`mb-8 flex items-center ${getGlassyClasses()} px-4 py-2 hover:bg-white/40 transition-all duration-300 text-gray-100`}
+          className={`mb-8 flex items-center ${getGlassyClasses()} px-4 py-4 mt-8 hover:bg-white/40 transition-all duration-300 text-gray-100`}
         >
           <ArrowLeft size={20} className='mr-2' />
           Back to Components
         </button>
 
-        <h1 className='text-6xl font-bold mb-8 text-white'>
+        <h1 className='text-5xl font-bold mb-8 text-white'>
           Navigation Component
         </h1>
         <p className='text-xl mb-8 text-gray-100'>
@@ -107,8 +107,8 @@ const NavigationDetailsPage: React.FC = () => {
         </p>
 
         {/* Basic Usage */}
-        <section className={`${getGlassyClasses()} p-6 mb-14`}>
-          <h2 className='text-3xl font-bold mb-6 text-gray-100'>Basic Usage</h2>
+        <section className={`${getGlassyClasses()} p-5 mb-14`}>
+          <h2 className='text-2xl font-bold mb-6 text-gray-100'>Basic Usage</h2>
           <pre className='bg-gray-800 text-white p-4 rounded-lg overflow-x-auto relative'>
             {navigationCode}
           </pre>
@@ -116,8 +116,8 @@ const NavigationDetailsPage: React.FC = () => {
         </section>
 
         {/* Props */}
-        <section className={`${getGlassyClasses()} p-6 mb-14`}>
-          <h2 className='text-3xl font-bold mb-6 text-gray-100'>Props</h2>
+        <section className={`${getGlassyClasses()} p-5 mb-14`}>
+          <h2 className='text-2xl font-bold mb-6 text-gray-100'>Props</h2>
           <div className='overflow-x-auto'>
             <table className='w-full'>
               <thead>
@@ -180,11 +180,11 @@ const NavigationDetailsPage: React.FC = () => {
         </section>
 
         {/* Navigation Example */}
-        <section className={`${getGlassyClasses()} p-6 mb-14`}>
-          <h2 className='text-3xl font-bold mb-6 text-gray-100'>
+        <section className={`${getGlassyClasses()} p-5 mb-14`}>
+          <h2 className='text-2xl font-bold mb-6 text-gray-100'>
             Navigation Example
           </h2>
-          <div className={`${getGlassyClasses(10)} p-6 mb-6`}>
+          <div className={`${getGlassyClasses(10)} p-5 mb-6`}>
             <nav
               className={`${getGlassyClasses()} flex justify-around flex-col md:flex-row mt-4 py-2`}
             >

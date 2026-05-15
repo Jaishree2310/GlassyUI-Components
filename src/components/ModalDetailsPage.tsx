@@ -125,18 +125,18 @@ const Modal: React.FC<ModalProps> = (props) => {
     <div className='min-h-screen p-8 font-sans bg-gradient-to-r from-gray-800 via-gray-900 to-black text-white relative'>
       <button
         onClick={() => navigate(-1)}
-        className={`mb-8 flex items-center ${getGlassyClasses(10)} px-4 py-2 hover:bg-white/40 transition-all duration-300 text-gray-100`}
+        className={`mb-8 flex items-center ${getGlassyClasses(10)} px-4 py-4 mt-8  hover:bg-white/40 transition-all duration-300 text-gray-100`}
       >
         <ArrowLeft size={20} className='mr-2' />
         Back to Components
       </button>
-      <h1 className='text-6xl font-bold mb-8 text-white'>Glassy Modal</h1>
+      <h1 className='text-5xl font-bold mb-8 text-white'>Glassy Modal</h1>
       <p className='text-xl mb-8 text-gray-100'>
         A customizable, glassmorphism styled Modal component.
       </p>
 
-      <div className={`${getGlassyClasses()} p-6 mb-14 relative`}>
-        <h2 className='text-3xl font-bold mb-6 text-gray-100'>Basic Usage</h2>
+      <div className={`${getGlassyClasses()} p-5 mb-14 relative`}>
+        <h2 className='text-2xl font-bold mb-6 text-gray-100'>Basic Usage</h2>
         <button
           onClick={() => setModal(true)}
           className={`mb-8 flex items-center ${getGlassyClasses()} px-4 py-2 hover:bg-white/40 transition-all duration-300 text-gray-100`}
@@ -151,8 +151,8 @@ const Modal: React.FC<ModalProps> = (props) => {
         </div>
       </div>
 
-      <div className={`${getGlassyClasses()} p-6 mb-14`}>
-        <h2 className='text-3xl font-bold mb-6 text-gray-100'>Props</h2>
+      <div className={`${getGlassyClasses()} p-5 mb-14`}>
+        <h2 className='text-2xl font-bold mb-6 text-gray-100'>Props</h2>
         <table className='w-full'>
           <thead>
             <tr className='bg-white bg-opacity-20'>
@@ -230,7 +230,7 @@ const Modal: React.FC<ModalProps> = (props) => {
         />
       )}  */}
 
-      <div className={`${getGlassyClasses()} p-6 mb-16`}>
+      <div className={`${getGlassyClasses()} p-5 mb-16`}>
         <Example />
       </div>
 

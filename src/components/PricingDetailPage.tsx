@@ -217,35 +217,35 @@ const PricingDetailPage: React.FC = () => {
       <div className='relative z-10'>
         <button
           onClick={() => navigate(-1)}
-          className={`mb-8 flex items-center ${getGlassyClasses(10)} px-4 py-2 hover:bg-white/40 transition-all duration-300 text-gray-300`}
+          className={`mb-8 flex items-center ${getGlassyClasses(10)} px-4 py-4 mt-8  hover:bg-white/40 transition-all duration-300 text-gray-300`}
         >
           <ArrowLeft size={20} className='mr-2' />
           Back to Components
         </button>
 
-        <h1 className='text-6xl font-bold mb-8 text-white'>Pricing Plan</h1>
+        <h1 className='text-5xl font-bold mb-8 text-white'>Pricing Plan</h1>
         <p className='text-xl mb-8 text-white'>
           A customizable, glassmorphism styled Pricing Plan component.
         </p>
 
-        <div className={`${getGlassyClasses()} p-8 mb-8 relative`}>
-          <h2 className='text-3xl font-bold mb-6 text-white'>Basic Plan</h2>
+        <div className={`${getGlassyClasses()} p-5 mb-8 relative`}>
+          <h2 className='text-2xl font-bold mb-6 text-white'>Basic Plan</h2>
           <div className='relative'>
-            <pre className='bg-gray-800 text-white p-6 rounded-lg overflow-x-auto whitespace-pre-wrap max-sm:text-[0.55rem]'>
+            <pre className='bg-gray-800 text-white p-4 rounded-lg overflow-x-auto whitespace-pre-wrap max-sm:text-[0.55rem]'>
               {basicUsageCode}
             </pre>
             <CopyButton text={basicUsageCode} codeKey='basicUsage' />
           </div>
-          <h2 className='text-3xl font-bold my-6 text-white'>Standard Plan</h2>
+          <h2 className='text-2xl font-bold my-6 text-white'>Standard Plan</h2>
           <div className='relative'>
-            <pre className='bg-gray-800 text-white p-6 rounded-lg overflow-x-auto whitespace-pre-wrap max-sm:text-[0.55rem]'>
+            <pre className='bg-gray-800 text-white p-4  rounded-lg overflow-x-auto whitespace-pre-wrap max-sm:text-[0.55rem]'>
               {StandardUsageCode}
             </pre>
             <CopyButton text={StandardUsageCode} codeKey='StandardUsage' />
           </div>
-          <h2 className='text-3xl font-bold my-6 text-white'>Premium Plan</h2>
+          <h2 className='text-2xl font-bold my-6 text-white'>Premium Plan</h2>
           <div className='relative'>
-            <pre className='bg-gray-800 text-white p-6 rounded-lg overflow-x-auto whitespace-pre-wrap max-sm:text-[0.55rem]'>
+            <pre className='bg-gray-800 text-white p-4 rounded-lg overflow-x-auto whitespace-pre-wrap max-sm:text-[0.55rem]'>
               {PremiumUsageCode}
             </pre>
             <CopyButton text={PremiumUsageCode} codeKey='PremiumUsage' />
@@ -253,8 +253,8 @@ const PricingDetailPage: React.FC = () => {
         </div>
 
         {/* Add more sections similar to your ButtonDetailsPage here */}
-        <div className={`${getGlassyClasses()} p-8 mb-8 `}>
-          <h2 className='text-3xl font-bold mb-6 text-white'>Props</h2>
+        <div className={`${getGlassyClasses()} p-5 mb-8 `}>
+          <h2 className='text-2xl font-bold mb-6 text-white'>Props</h2>
           <div className='overflow-x-auto'>
             <table className='w-full'>
               <thead>
@@ -378,10 +378,10 @@ const PricingDetailPage: React.FC = () => {
             </table>
           </div>
         </div>
-        <div className={`${getGlassyClasses()} p-8 mb-8 relative`}>
-          <h2 className='text-3xl font-bold mb-6 text-white'>Custom theme</h2>
+        <div className={`${getGlassyClasses()} p-5 mb-8 relative`}>
+          <h2 className='text-2xl font-bold mb-6 text-white'>Custom theme</h2>
           <div className='grid grid-cols-1 md:grid-cols-3 gap-6'>
-            <div className={`${getGlassyClasses(10)} p-6 relative`}>
+            <div className={`${getGlassyClasses(10)} p-4 relative`}>
               <label className='block mb-2 font-semibold text-lg text-white'>
                 Title Color
               </label>
@@ -429,7 +429,7 @@ const PricingDetailPage: React.FC = () => {
                 </svg>
               </div>
             </div>
-            <div className={`${getGlassyClasses(10)} p-6 relative`}>
+            <div className={`${getGlassyClasses(10)} p-4 relative`}>
               <label className='block mb-2 font-semibold text-lg text-white'>
                 Tag Text Color
               </label>
@@ -477,7 +477,7 @@ const PricingDetailPage: React.FC = () => {
                 </svg>
               </div>
             </div>
-            <div className={`${getGlassyClasses(10)} p-6 relative`}>
+            <div className={`${getGlassyClasses(10)} p-4 relative`}>
               <label className='block mb-2 font-semibold text-lg text-white'>
                 Tag Background Color
               </label>
@@ -525,7 +525,7 @@ const PricingDetailPage: React.FC = () => {
                 </svg>
               </div>
             </div>
-            <div className={`${getGlassyClasses(10)} p-6 relative`}>
+            <div className={`${getGlassyClasses(10)} p-4 relative`}>
               <label className='block mb-2 font-semibold text-lg text-white'>
                 Text color of title and main elements
               </label>
@@ -573,7 +573,7 @@ const PricingDetailPage: React.FC = () => {
                 </svg>
               </div>
             </div>
-            <div className={`${getGlassyClasses(10)} p-6 relative`}>
+            <div className={`${getGlassyClasses(10)} p-4 relative`}>
               <label className='block mb-2 font-semibold text-lg text-white'>
                 Background color of button
               </label>
@@ -621,7 +621,7 @@ const PricingDetailPage: React.FC = () => {
                 </svg>
               </div>
             </div>
-            <div className={`${getGlassyClasses(10)} p-6 relative`}>
+            <div className={`${getGlassyClasses(10)} p-4 relative`}>
               <label className='block mb-2 font-semibold text-lg text-white'>
                 2nd background color(gradient) of button
               </label>
@@ -673,7 +673,7 @@ const PricingDetailPage: React.FC = () => {
 
           <div className='relative flex justify-between'>
             <div>
-              <h2 className='text-3xl font-bold my-6 text-white'>Output</h2>
+              <h2 className='text-2xl font-bold my-6 text-white'>Output</h2>
               <PricingPage
                 title='Starter Pack'
                 desciption='Perfect for individuals and small teams.'
@@ -689,9 +689,9 @@ const PricingDetailPage: React.FC = () => {
               />
             </div>
             <div className='w-[73%]'>
-              <h2 className='text-3xl font-bold my-6 text-white'>Code</h2>
+              <h2 className='text-2xl font-bold my-6 text-white'>Code</h2>
               <div className='relative'>
-                <pre className='bg-gray-800 text-white p-6 rounded-lg overflow-x-auto whitespace-pre-wrap max-sm:text-[0.55rem]'>
+                <pre className='bg-gray-800 text-white p-4 rounded-lg overflow-x-auto whitespace-pre-wrap max-sm:text-[0.55rem]'>
                   {`  <PricingPage
     title='Starter Pack'
     titleColor='${customComponentData.titleColor}'
@@ -736,8 +736,8 @@ const PricingDetailPage: React.FC = () => {
             </div>
           </div>
         </div>
-        <div className={`${getGlassyClasses()} p-8 mb-8 relative`}>
-          <h2 className='text-3xl font-bold mb-6 text-white'>Example Plans</h2>
+        <div className={`${getGlassyClasses()} p-5 mb-8 relative`}>
+          <h2 className='text-2xl font-bold mb-6 text-white'>Example Plans</h2>
           <div className='relative flex justify-between'>
             <PricingPage
               title='Starter Pack'

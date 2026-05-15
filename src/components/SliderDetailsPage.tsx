@@ -71,14 +71,14 @@ const SliderDetailsPage: React.FC = () => {
       <nav className='mb-8 flex items-center justify-between relative z-10'>
         <button
           onClick={handleBackToComponents}
-          className={`flex items-center ${getGlassyClasses()} px-4 py-2 hover:bg-opacity-20 text-white`}
+          className={`flex items-center ${getGlassyClasses()} px-4 py-4 mt-8 hover:bg-opacity-20 text-white`}
         >
           <ArrowLeft size={20} className='mr-2' />
           Back to Components
         </button>
       </nav>
 
-      <h1 className='text-6xl font-bold mb-8 text-white relative z-10'>
+      <h1 className='text-5xl font-bold mb-6 text-white relative z-10'>
         Glassmorphic Slider Component
       </h1>
       <p className='text-xl mb-8 text-gray-100'>
@@ -86,7 +86,7 @@ const SliderDetailsPage: React.FC = () => {
       </p>
 
       <section
-        className={`${getGlassyClasses(20)} p-6 mb-14 text-white relative z-10`}
+        className={`${getGlassyClasses(20)} p-5 mb-14 text-white relative z-10`}
       >
         <h2 className='text-3xl font-bold mb-4'>Basic Usage</h2>
         <div className={`${getGlassyClasses()} p-4 hover:shadow-xl mb-4`}>
@@ -102,7 +102,7 @@ const SliderDetailsPage: React.FC = () => {
             }}
           />
         </div>
-        <pre className='bg-gray-800 text-white p-6 rounded-lg overflow-x-auto relative'>
+        <pre className='bg-gray-800 text-white p-5 rounded-lg overflow-x-auto relative'>
           {`<input 
   type="range" 
   min="0" 

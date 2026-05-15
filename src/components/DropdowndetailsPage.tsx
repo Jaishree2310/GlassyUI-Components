@@ -119,29 +119,29 @@ const DropdownMenuDetailsPage: React.FC = () => {
       <div className='relative z-10'>
         <button
           onClick={() => navigate(-1)}
-          className={`mb-8 flex items-center ${getGlassyClasses(10)} px-4 py-2 hover:bg-white/40 transition-all duration-300 text-gray-100`}
+          className={`mb-8 flex items-center ${getGlassyClasses(10)} px-4 py-4 mt-8 hover:bg-white/40 transition-all duration-300 text-gray-100`}
         >
           <ArrowLeft size={20} className='mr-2' />
           Back to Components
         </button>
 
-        <h1 className='text-6xl font-bold mb-8 text-white'>Dropdown Menu</h1>
+        <h1 className='text-5xl font-bold mb-8 text-white'>Dropdown Menu</h1>
         <p className='text-xl mb-8 text-white'>
           A customizable dropdown menu component.
         </p>
 
-        <div className={`${getGlassyClasses()} p-8 mb-8 relative`}>
-          <h2 className='text-3xl font-bold mb-6 text-white'>Basic Usage</h2>
+        <div className={`${getGlassyClasses()} p-5 mb-8 relative`}>
+          <h2 className='text-2xl font-bold mb-6 text-white'>Basic Usage</h2>
           <div className='relative'>
-            <pre className='bg-gray-800 text-white p-6 rounded-lg overflow-x-auto whitespace-pre-wrap max-sm:text-[0.55rem]'>
+            <pre className='bg-gray-800 text-white p-4 rounded-lg overflow-x-auto whitespace-pre-wrap max-sm:text-[0.55rem]'>
               {basicUsageCode}
             </pre>
             <CopyButton text={basicUsageCode} codeKey='basicUsage' />
           </div>
         </div>
 
-        <div className={`${getGlassyClasses()} p-8 mb-8`}>
-          <h2 className='text-3xl font-bold mb-6 text-white'>
+        <div className={`${getGlassyClasses()} p-5  mb-8`}>
+          <h2 className='text-2xl font-bold mb-6 text-white'>
             Example Dropdown Menu
           </h2>
           <p className='mb-6 text-lg text-white'>
@@ -164,7 +164,7 @@ const DropdownMenuDetailsPage: React.FC = () => {
         <section
           className={`${getGlassyClasses()} p-6 mb-14 text-white relative z-10`}
         >
-          <h2 className='text-3xl font-bold mb-4 text-gray-100'>Props</h2>
+          <h2 className='text-2xl font-bold mb-4 text-gray-100'>Props</h2>
           <div className='overflow-x-auto'>
             <table className='w-full'>
               <thead>

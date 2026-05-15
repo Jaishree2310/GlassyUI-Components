@@ -90,23 +90,23 @@ function Example() {
         {/* Back navigation button */}
         <button
           onClick={() => navigate(-1)}
-          className={`mb-8 flex items-center ${getGlassyClasses(10)} px-4 py-2 hover:bg-white/40 transition-all duration-300 text-gray-100`}
+          className={`mb-8 flex items-center ${getGlassyClasses(10)} px-4 py-4 mt-8 hover:bg-white/40 transition-all duration-300 text-gray-100`}
         >
           <ArrowLeft size={20} className='mr-2' />
           Back to Components
         </button>
 
         {/* Page title and description */}
-        <h1 className='text-6xl font-bold mb-8 text-white'>Tooltip</h1>
+        <h1 className='text-5xl font-bold mb-8 text-white'>Tooltip</h1>
         <p className='text-xl mb-8 text-gray-100'>
           A customizable, glassmorphism styled tooltip component.
         </p>
 
         {/* Basic usage section */}
-        <div className={`${getGlassyClasses()} p-8 mb-8 relative`}>
-          <h2 className='text-3xl font-bold mb-6 text-gray-100'>Basic Usage</h2>
+        <div className={`${getGlassyClasses()} p-5 mb-8 relative`}>
+          <h2 className='text-2xl font-bold mb-6 text-gray-100'>Basic Usage</h2>
           <div className='relative'>
-            <pre className='bg-gray-800 text-white p-6 rounded-lg overflow-x-auto whitespace-pre-wrap max-sm:text-[0.55rem] max-sm:text-[0.55rem]'>
+            <pre className='bg-gray-800 text-white p-4 rounded-lg overflow-x-auto whitespace-pre-wrap max-sm:text-[0.55rem] max-sm:text-[0.55rem]'>
               {basicUsageCode}
             </pre>
             <CopyButton text={basicUsageCode} codeKey='basicUsage' />
@@ -114,8 +114,8 @@ function Example() {
         </div>
 
         {/* Props table section */}
-        <div className={`${getGlassyClasses()} p-8 mb-8`}>
-          <h2 className='text-3xl font-bold mb-6 text-gray-100'>Props</h2>
+        <div className={`${getGlassyClasses()} p-5 mb-8`}>
+          <h2 className='text-2xl font-bold mb-6 text-gray-100'>Props</h2>
           <div className='overflow-x-auto'>
             <table className='w-full'>
               <thead>
@@ -149,8 +149,8 @@ function Example() {
         </div>
 
         {/* Tooltip positions section */}
-        <div className={`${getGlassyClasses()} p-8 mb-8`}>
-          <h2 className='text-3xl font-bold mb-6 text-gray-100'>
+        <div className={`${getGlassyClasses()} p-5 mb-8`}>
+          <h2 className='text-2xl font-bold mb-6 text-gray-100'>
             Tooltip Positions
           </h2>
           <p className='mb-6 text-lg text-gray-300'>

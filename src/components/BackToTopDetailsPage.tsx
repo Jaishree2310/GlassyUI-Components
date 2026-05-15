@@ -67,23 +67,23 @@ const BackToTopDetailsPage: React.FC = () => {
       <div className='relative z-10'>
         <button
           onClick={() => navigate(-1)}
-          className={`mb-8 flex items-center ${getGlassyClasses(10)} px-4 py-2 hover:bg-white/40 transition-all duration-300 text-gray-300`}
+          className={`mb-8 flex items-center ${getGlassyClasses(10)} px-4 py-4 mt-8  hover:bg-white/40 transition-all duration-300 text-gray-300`}
         >
           <ArrowLeft size={20} className='mr-2' />
           Back to Components
         </button>
 
-        <h1 className='text-6xl font-bold mb-8 text-white'>
+        <h1 className='text-5xl font-bold mb-8 text-white'>
           Back to Top Button
         </h1>
         <p className='text-xl mb-8 text-white'>
           A simple button to scroll back to the top of the page.
         </p>
 
-        <div className={`${getGlassyClasses()} p-8 mb-8 relative`}>
-          <h2 className='text-3xl font-bold mb-6 text-white'>Basic Usage</h2>
+        <div className={`${getGlassyClasses()} p-5 mb-8 relative`}>
+          <h2 className='text-2xl font-bold mb-6 text-white'>Basic Usage</h2>
           <div className='relative'>
-            <pre className='bg-gray-800 text-white p-6 rounded-lg overflow-x-auto whitespace-pre-wrap max-sm:text-[0.55rem]'>
+            <pre className='bg-gray-800 text-white p-4 rounded-lg overflow-x-auto whitespace-pre-wrap max-sm:text-[0.55rem]'>
               {backToTopCode}
             </pre>
             <CopyButton text={backToTopCode} codeKey='backToTop' />

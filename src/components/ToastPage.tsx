@@ -220,14 +220,14 @@ const Toast: React.FC<ToastProps> = ({ id, title, message, autoDismiss = 9000, t
         {/* Back Button */}
         <button
           onClick={() => navigate(-1)}
-          className={`mb-8 flex items-center ${getGlassyClasses()} px-4 py-2 hover:bg-white/40 transition-all duration-300 text-gray-100`}
+          className={`mb-8 flex items-center ${getGlassyClasses()} px-4 py-4 mt-8 hover:bg-white/40 transition-all duration-300 text-gray-100`}
         >
           <ArrowLeft size={20} className='mr-2' />
           Back to Components
         </button>
 
         {/* Page Title and Description */}
-        <h1 className='text-6xl font-bold mb-8 text-white'>
+        <h1 className='text-5xl font-bold mb-8 text-white'>
           Glassmorphic Toast
         </h1>
         <p className='text-xl mb-8 text-gray-100'>
@@ -242,7 +242,7 @@ const Toast: React.FC<ToastProps> = ({ id, title, message, autoDismiss = 9000, t
           </h2>
           {/* Basic Usage Code Block */}
           <div className='relative mb-4'>
-            <pre className='bg-gray-800 text-white p-6 rounded-lg overflow-x-auto whitespace-pre-wrap max-sm:p-2 max-sm:text-[0.55rem]'>
+            <pre className='bg-gray-800 text-white p-5 rounded-lg overflow-x-auto whitespace-pre-wrap max-sm:p-2 max-sm:text-[0.55rem]'>
               {basicUsage}
             </pre>
             <CopyButton text={basicUsage} codeKey='basicUsage' />
@@ -251,7 +251,7 @@ const Toast: React.FC<ToastProps> = ({ id, title, message, autoDismiss = 9000, t
             Toast Generator Component
           </h2>
           <div className='relative mb-4'>
-            <pre className='bg-gray-800 text-white p-6 rounded-lg overflow-x-auto whitespace-pre-wrap max-sm:p-2 max-sm:text-[0.55rem]'>
+            <pre className='bg-gray-800 text-white p-5 rounded-lg overflow-x-auto whitespace-pre-wrap max-sm:p-2 max-sm:text-[0.55rem]'>
               {generatorCode}
             </pre>
             <CopyButton text={generatorCode} codeKey='basicUsage' />
@@ -260,16 +260,16 @@ const Toast: React.FC<ToastProps> = ({ id, title, message, autoDismiss = 9000, t
             Toast Component
           </h2>
           <div className='relative mb-4'>
-            <pre className='bg-gray-800 text-white p-6 rounded-lg overflow-x-auto whitespace-pre-wrap max-sm:p-2 max-sm:text-[0.55rem]'>
+            <pre className='bg-gray-800 text-white p-5 rounded-lg overflow-x-auto whitespace-pre-wrap max-sm:p-2 max-sm:text-[0.55rem]'>
               {toastCode}
             </pre>
             <CopyButton text={toastCode} codeKey='basicUsage' />
           </div>
           <h2 className='text-3xl font-bold mb-6 text-gray-100'>
-            Aniamtion CSS
+            Animation CSS
           </h2>
           <div className='relative mb-4'>
-            <pre className='bg-gray-800 text-white p-6 rounded-lg overflow-x-auto whitespace-pre-wrap max-sm:p-2 max-sm:text-[0.55rem]'>
+            <pre className='bg-gray-800 text-white p-5 rounded-lg overflow-x-auto whitespace-pre-wrap max-sm:p-2 max-sm:text-[0.55rem]'>
               {animationCSS}
             </pre>
             <CopyButton text={animationCSS} codeKey='basicUsage' />

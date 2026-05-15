@@ -8,7 +8,7 @@ import styled from 'styled-components';
 const AboutUsContainer = styled.div`
   max-width: 900px; // Maximum width of the container
   margin: 0 auto; // Center the container horizontally
-  padding: 40px 20px; // Padding around the container
+  padding: 50px 30px; // Padding around the container
   background: black; // Black background for the container
   border-radius: 15px; // Rounded corners
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2); // Shadow for depth
@@ -19,6 +19,7 @@ const AboutUsContainer = styled.div`
   }
 
   // Background gradient for added visual appeal
+
   &:before {
     content: ''; // Empty content for pseudo-element
     position: absolute; // Position it absolutely within the container
@@ -45,7 +46,7 @@ const AboutUsContainer = styled.div`
 const AboutUsHeader = styled.div`
   text-align: center; // Center align the text
   margin-bottom: 30px; // Space below the header
-
+  margin-top: 20px; // Space above the header
   h1 {
     font-size: 3em; // Larger font size for the main heading
     background: linear-gradient(
@@ -56,6 +57,7 @@ const AboutUsHeader = styled.div`
       #ff9ff3,
       #54a0ff
     );
+
     background-size: 300% 300%;
     animation: glossy-animation 10s ease infinite;
     -webkit-background-clip: text;

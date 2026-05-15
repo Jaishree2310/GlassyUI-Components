@@ -176,13 +176,13 @@ const CardDetailsPage: React.FC = () => {
       <BackToTopButton />
       <button
         onClick={() => navigate(-1)}
-        className={`mb-8 flex items-center ${getGlassyClasses(10)} px-4 py-2 hover:bg-opacity-20 text-white`}
+        className={`mb-8 flex items-center ${getGlassyClasses(10)} px-4 py-4 mt-8 hover:bg-opacity-20 text-white`}
       >
         <ArrowLeft size={20} className='mr-2' />
         Back to Components
       </button>
 
-      <h1 className='text-6xl font-bold mb-8 text-white'>Card Component</h1>
+      <h1 className='text-5xl font-bold mb-8 text-white'>Card Component</h1>
       <p className='text-xl mb-8 text-gray-100'>
         A glassmorphism-styled Card component.
       </p>
@@ -191,7 +191,7 @@ const CardDetailsPage: React.FC = () => {
       <section
         className={`${getGlassyClasses()} p-6 mb-14 text-white relative z-10`}
       >
-        <h2 className='text-3xl font-bold mb-4'>Basic Usage</h2>
+        <h2 className='text-2xl font-bold mb-4'>Basic Usage</h2>
         <pre className='bg-gray-800 text-white p-6 rounded-lg overflow-x-auto relative max-sm:text-[0.55rem]'>
           {`import { Card } from './components/Card';
 
@@ -221,9 +221,9 @@ function Example() {
 
       {/* Props */}
       <section
-        className={`${getGlassyClasses()} p-6 mb-14 text-white relative z-10`}
+        className={`${getGlassyClasses()} p-5 mb-14 text-white relative z-10`}
       >
-        <h2 className='text-3xl font-bold mb-4 text-gray-100'>Props</h2>
+        <h2 className='text-2xl font-bold mb-4 text-gray-100'>Props</h2>
         <div className='overflow-x-auto'>
           <table className='w-full'>
             <thead>
@@ -262,7 +262,7 @@ function Example() {
       <section
         className={`${getGlassyClasses()} p-6 mb-14 text-white relative z-10`}
       >
-        <h2 className='text-3xl font-bold mb-4 text-gray-100'>Custom Card</h2>
+        <h2 className='text-2xl font-bold mb-4 text-gray-100'>Custom Card</h2>
         <p className='text-xl mb-4 text-gray-100'>
           Customize your card's appearance by selecting a preset theme or
           creating your own color scheme.
@@ -300,7 +300,7 @@ function Example() {
       <section
         className={`${getGlassyClasses()} p-6 mb-14 text-white relative z-10`}
       >
-        <h2 className='text-3xl font-bold mb-4 text-gray-100'>
+        <h2 className='text-2xl font-bold mb-4 text-gray-100'>
           Credit Card Example
         </h2>
         <div className='bg-white bg-opacity-10 backdrop-filter backdrop-blur-md border border-white border-opacity-20 rounded-lg p-6 max-sm:px-1'>

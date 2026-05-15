@@ -170,20 +170,20 @@ const SpeedDialDetailsPage: React.FC = () => {
         {/* Back Button */}
         <button
           onClick={() => navigate(-1)}
-          className={`mb-8 flex items-center ${getGlassyClasses()} px-4 py-2 hover:bg-white/40 transition-all duration-300 text-gray-100`}
+          className={`mb-8 flex items-center ${getGlassyClasses()} px-4 py-4 mt-8 hover:bg-white/40 transition-all duration-300 text-gray-100`}
         >
           <ArrowLeft size={20} className='mr-2' />
           Back to Components
         </button>
 
         {/* Page Title and Description */}
-        <h1 className='text-6xl font-bold mb-8 text-white'>Speed Dial</h1>
+        <h1 className='text-5xl font-bold mb-8 text-white'>Speed Dial</h1>
         <p className='text-xl mb-8 text-gray-100'>
           A customizable, glassmorphism-styled Speed Dial component.
         </p>
 
         {/* Speed Dial Demo and Code Section */}
-        <div className={`${getGlassyClasses(20)} p-6 mb-14 relative`}>
+        <div className={`${getGlassyClasses(20)} p-5 mb-14 relative`}>
           <h2 className='text-3xl font-bold mb-4 text-gray-100'>Basic Usage</h2>
           {/* Basic Usage Code Block */}
           <div className='relative mb-4'>
@@ -230,7 +230,7 @@ const SpeedDialDetailsPage: React.FC = () => {
           </div>
         </div>
 
-        <div className={`${getGlassyClasses(20)} p-6 mb-14 relative`}>
+        <div className={`${getGlassyClasses(20)} p-5 mb-14 relative`}>
           <h2 className='text-3xl font-bold mb-6 text-gray-100'>
             Speed Dial: Right
           </h2>
@@ -273,14 +273,14 @@ const SpeedDialDetailsPage: React.FC = () => {
                 },
               ]}
             ></SpeedDial>
-            <pre className='bg-gray-800 text-white p-6 rounded-lg overflow-x-auto whitespace-pre-wrap max-sm:p-2 max-sm:text-[0.55rem]'>
+            <pre className='bg-gray-800 text-white p-5 rounded-lg overflow-x-auto whitespace-pre-wrap max-sm:p-2 max-sm:text-[0.55rem]'>
               {speedDialRight}
             </pre>
             <CopyButton text={speedDialRight} codeKey='speedDialRight' />
           </div>
         </div>
 
-        <div className={`${getGlassyClasses(20)} p-6 mb-8 relative`}>
+        <div className={`${getGlassyClasses(20)} p-5 mb-8 relative`}>
           <h2 className='text-3xl font-bold mb-6 text-gray-100'>
             Speed Dial: Up
           </h2>

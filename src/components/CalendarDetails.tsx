@@ -77,14 +77,14 @@ const CalendarDetail: React.FC = () => {
       <nav className='mb-8 flex items-center justify-between relative z-10'>
         <button
           onClick={handleBackToComponents}
-          className={`flex items-center p-2 bg-white bg-opacity-20 rounded-lg shadow-lg hover:bg-opacity-30`}
+          className={`flex items-center  p-4 mt-8  bg-white bg-opacity-20 rounded-lg shadow-lg hover:bg-opacity-30`}
         >
           <ArrowLeft size={20} className='mr-2' />
           Back to Components
         </button>
       </nav>
 
-      <h1 className='text-6xl font-bold mb-8 text-white relative z-10'>
+      <h1 className='text-5xl font-bold mb-8 text-white relative z-10'>
         Calendar Component
       </h1>
       <p className='text-xl mb-8 text-gray-100 '>
@@ -92,9 +92,9 @@ const CalendarDetail: React.FC = () => {
       </p>
       {/* Props Section */}
       <section
-        className={`p-6 mb-14 bg-white bg-opacity-20 rounded-lg shadow-lg relative`}
+        className={`p-5 mb-8 bg-white bg-opacity-20 rounded-lg shadow-lg relative`}
       >
-        <h2 className='text-3xl font-bold mb-4 text-gray-100'>Props</h2>
+        <h2 className='text-2xl font-bold mb-4 text-gray-100'>Props</h2>
         <div className='overflow-x-auto'>
           <table className='w-full'>
             <thead>
@@ -137,8 +137,8 @@ const CalendarDetail: React.FC = () => {
         </div>
       </section>
 
-      <section className={`${getGlassyClasses()} p-6 mb-14 relative`}>
-        <h2 className='text-3xl font-bold mb-6 text-white'>
+      <section className={`${getGlassyClasses()} p-5 mb-8 relative`}>
+        <h2 className='text-2xl font-bold mb-6 text-white'>
           Calendar Component Example
         </h2>
         <div className='flex flex-col lg:flex-row gap-8'>

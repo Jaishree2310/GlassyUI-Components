@@ -343,13 +343,13 @@ const AuthenticationCardDetailsPage: React.FC = () => {
       <BackToTopButton />
       <button
         onClick={() => navigate(-1)}
-        className={`mb-8 flex items-center ${getGlassyClasses(10)} px-4 py-2 hover:bg-opacity-40 transition-all duration-300  text-gray-100`}
+        className={`mb-8 flex items-center ${getGlassyClasses(10)} px-4 py-4 mt-8 hover:bg-opacity-40 transition-all duration-300  text-gray-100`}
       >
         <ArrowLeft size={20} className='mr-2' />
         Back to Components
       </button>
 
-      <h1 className='text-6xl font-bold mb-8 text-white'>
+      <h1 className='text-5xl font-bold mb-8 text-white'>
         Authentication Card Component
       </h1>
       <p className='text-xl mb-8 text-gray-100'>
@@ -357,8 +357,8 @@ const AuthenticationCardDetailsPage: React.FC = () => {
       </p>
 
       {/* Props */}
-      <section className={`${getGlassyClasses()} p-6 mb-14 relative`}>
-        <h2 className='text-3xl font-bold mb-4 text-gray-100'>Props</h2>
+      <section className={`${getGlassyClasses()} p-5 mb-14 relative`}>
+        <h2 className='text-2xl font-bold mb-4 text-gray-100'>Props</h2>
         <div className='overflow-x-auto'>
           <table className='w-full'>
             <thead>
@@ -393,8 +393,8 @@ const AuthenticationCardDetailsPage: React.FC = () => {
         </div>
       </section>
 
-      <section className={`${getGlassyClasses()} p-6 mb-14 relative`}>
-        <h2 className='text-3xl font-bold mb-6 text-white'>
+      <section className={`${getGlassyClasses()} p-5 mb-14 relative`}>
+        <h2 className='text-2xl font-bold mb-6 text-white'>
           Login Card Example
         </h2>
         <div className='flex flex-col lg:flex-row gap-8'>
@@ -522,7 +522,7 @@ const AuthenticationCardDetailsPage: React.FC = () => {
         </div>
       </section>
 
-      <section className={`${getGlassyClasses()} p-6 mb-14 relative`}>
+      <section className={`${getGlassyClasses()} p-5 mb-14 relative`}>
         <h2 className='text-2xl font-bold mb-6 text-white'>
           Sign Up Card Example
         </h2>

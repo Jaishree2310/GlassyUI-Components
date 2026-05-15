@@ -95,13 +95,13 @@ function Example() {
       <div className='relative z-10'>
         <button
           onClick={() => navigate(-1)}
-          className={`mb-8 flex items-center ${getGlassyClasses(10)} px-4 py-2 hover:bg-white/40 transition-all duration-300 text-white`}
+          className={`mb-8 flex items-center ${getGlassyClasses(10)} px-4 py-4 mt-8 hover:bg-white/40 transition-all duration-300 text-white`}
         >
           <ArrowLeft size={20} className='mr-2' />
           Back to Components
         </button>
 
-        <h1 className='text-6xl font-bold mb-8 text-white'>Button</h1>
+        <h1 className='text-5xl font-bold mb-8 text-white'>Button</h1>
         <p className='text-xl mb-8 text-white'>
           A customizable, glassmorphism styled button component.
         </p>

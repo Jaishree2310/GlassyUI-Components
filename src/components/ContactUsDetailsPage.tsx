@@ -261,56 +261,56 @@ const ContactUsDetailsPage: React.FC = () => {
       <div className='relative z-10'>
         <button
           onClick={() => navigate(-1)}
-          className={`mb-8 flex items-center ${getGlassyClasses(10)} px-4 py-2 hover:bg-white/40 transition-all duration-300 text-white`}
+          className={`mb-8 flex items-center ${getGlassyClasses(10)} px-4 py-4 mt-8 hover:bg-white/40 transition-all duration-300 text-white`}
         >
           <ArrowLeft size={20} className='mr-2' />
           Back to Home
         </button>
 
-        <h1 className='text-6xl font-bold mb-8 text-white'>Contact Us</h1>
+        <h1 className='text-5xl font-bold mb-8 text-white'>Contact Us</h1>
         <p className='text-xl mb-8 text-white'>
           Get in touch with us through the following channels, or leave us a
           message using the contact form.
         </p>
 
-        <div className={`${getGlassyClasses()} p-6 mb-14 relative`}>
-          <h2 className='text-3xl font-bold mb-6 text-white'>
+        <div className={`${getGlassyClasses()} p-5 mb-14 relative`}>
+          <h2 className='text-2xl font-bold mb-6 text-white'>
             Contact Information
           </h2>
           <div className='relative'>
-            <pre className='bg-gray-800 text-white p-6 rounded-lg overflow-x-auto whitespace-pre-wrap  max-sm:text-[0.55rem]'>
+            <pre className='bg-gray-800 text-white p-4 rounded-lg overflow-x-auto whitespace-pre-wrap  max-sm:text-[0.55rem]'>
               {contactInfoCode}
             </pre>
             <CopyButton text={contactInfoCode} codeKey='contactInfo' />
           </div>
         </div>
 
-        <div className={`${getGlassyClasses()} p-6 mb-14 relative`}>
-          <h2 className='text-3xl font-bold mb-6 text-white'>
+        <div className={`${getGlassyClasses()} p-5 mb-14 relative`}>
+          <h2 className='text-2xl font-bold mb-6 text-white'>
             Contact Form Logic Part
           </h2>
           <div className='relative'>
-            <pre className='bg-gray-800 text-white p-6 rounded-lg overflow-x-auto whitespace-pre-wrap  max-sm:text-[0.55rem]'>
+            <pre className='bg-gray-800 text-white p-4 rounded-lg overflow-x-auto whitespace-pre-wrap  max-sm:text-[0.55rem]'>
               {contactLogicCode}
             </pre>
             <CopyButton text={contactLogicCode} codeKey='contactLogic' />
           </div>
         </div>
 
-        <div className={`${getGlassyClasses()} p-6 mb-14 relative`}>
-          <h2 className='text-3xl font-bold mb-6 text-white'>
+        <div className={`${getGlassyClasses()} p-5 mb-14 relative`}>
+          <h2 className='text-2xl font-bold mb-6 text-white'>
             Contact Form UI Part
           </h2>
           <div className='relative'>
-            <pre className='bg-gray-800 text-white p-6 rounded-lg overflow-x-auto whitespace-pre-wrap  max-sm:text-[0.55rem]'>
+            <pre className='bg-gray-800 text-white p-4 rounded-lg overflow-x-auto whitespace-pre-wrap  max-sm:text-[0.55rem]'>
               {contactUICode}
             </pre>
             <CopyButton text={contactUICode} codeKey='contactUI' />
           </div>
         </div>
 
-        <div className={`${getGlassyClasses()} p-6 mb-14 relative`}>
-          <h2 className='text-3xl font-bold mb-6 text-white'>
+        <div className={`${getGlassyClasses()} p-5 mb-14 relative`}>
+          <h2 className='text-2xl font-bold mb-6 text-white'>
             Contact Form Example
           </h2>
           <div className=' min-h-screen flex flex-col lg:flex-row items-center bg-gradient-to-r from-gray-800 via-gray-900 to-black p-10 justify-between'>
@@ -469,9 +469,9 @@ const ContactUsDetailsPage: React.FC = () => {
 
         {/* Props */}
         <section
-          className={`${getGlassyClasses()} p-6 mb-14 text-white relative z-10`}
+          className={`${getGlassyClasses()} p-5 mb-14 text-white relative z-10`}
         >
-          <h2 className='text-3xl font-bold mb-4 text-gray-100'>Props</h2>
+          <h2 className='text-2xl font-bold mb-4 text-gray-100'>Props</h2>
           <div className='overflow-x-auto'>
             <table className='w-full'>
               <thead>

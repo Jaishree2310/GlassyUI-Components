@@ -38,7 +38,7 @@ import PaginationDetails from './components/PaginationDetails';
 import TestimonialDetails from './components/TestimonialDetails';
 import Footer from './components/Footer';
 import CalendarDetails from './components/CalendarDetails';
-import Checkbox from './components/Checkbox';
+import Checkbox from './components/CheckboxDetails';
 import Statistic from './components/StatisticDetails';
 import GalleryDetailsPage from './components/GalleryDetailsPage';
 import SpinnerDetailsPage from './components/SpinnerDetailsPage';

@@ -69,22 +69,22 @@ const SpinnerDetailsPage: React.FC = () => {
       <div className='relative z-10'>
         <button
           onClick={() => navigate(-1)}
-          className={`mb-8 flex items-center ${getGlassyClasses(10)} px-4 py-2 hover:bg-white/40 transition-all duration-300 text-white`}
+          className={`mb-8 flex items-center ${getGlassyClasses(10)} px-4 py-4 mt-8 hover:bg-white/40 transition-all duration-300 text-white`}
         >
           <ArrowLeft size={20} className='mr-2' />
           Back to Components
         </button>
 
-        <h1 className='text-6xl font-bold mb-8 text-white'>Spinner</h1>
+        <h1 className='text-5xl font-bold mb-8 text-white'>Spinner</h1>
         <p className='text-xl mb-8 text-white'>
           A customizable, glassmorphism styled spinner component.
         </p>
 
         {/* Basic Usage */}
-        <div className={`${getGlassyClasses()} p-6 mb-14 relative`}>
-          <h2 className='text-3xl font-bold mb-6 text-white'>Basic Usage</h2>
+        <div className={`${getGlassyClasses()} p-5 mb-8 relative`}>
+          <h2 className='text-2xl font-bold mb-6 text-white'>Basic Usage</h2>
           <div className='relative'>
-            <pre className='bg-gray-800 text-white p-6 rounded-lg overflow-x-auto whitespace-pre-wrap max-sm:text-[0.55rem]'>
+            <pre className='bg-gray-800 text-white p-4 rounded-lg overflow-x-auto whitespace-pre-wrap max-sm:text-[0.55rem]'>
               {basicUsageCode}
             </pre>
             <CopyButton text={basicUsageCode} codeKey='basicUsage' />
@@ -92,8 +92,8 @@ const SpinnerDetailsPage: React.FC = () => {
         </div>
 
         {/* Props */}
-        <div className={`${getGlassyClasses()} p-6 mb-14`}>
-          <h2 className='text-3xl font-bold mb-6 text-white'>Props</h2>
+        <div className={`${getGlassyClasses()} p-5 mb-8`}>
+          <h2 className='text-2xl font-bold mb-6 text-white'>Props</h2>
           <div className='overflow-x-auto'>
             <table className='w-full'>
               <thead>
@@ -135,15 +135,15 @@ const SpinnerDetailsPage: React.FC = () => {
         </div>
 
         {/* Themed Spinner */}
-        <div className={`${getGlassyClasses()} p-6 mb-14`}>
-          <h2 className='text-3xl font-bold mb-6 text-white'>Themed Spinner</h2>
+        <div className={`${getGlassyClasses()} p-5 mb-8`}>
+          <h2 className='text-2xl font-bold mb-6 text-white'>Themed Spinner</h2>
           <p className='mb-6 text-lg text-white'>
             Customize your spinner's appearance by selecting a color, size, and
             border width.
           </p>
 
           <div className='grid grid-cols-1 md:grid-cols-3 gap-6'>
-            <div className={`${getGlassyClasses(10)} p-6`}>
+            <div className={`${getGlassyClasses(10)} p-5`}>
               <label className='block mb-2 font-semibold text-lg text-white'>
                 Color
               </label>
@@ -163,7 +163,7 @@ const SpinnerDetailsPage: React.FC = () => {
               </div>
             </div>
 
-            <div className={`${getGlassyClasses(10)} p-6`}>
+            <div className={`${getGlassyClasses(10)} p-5`}>
               <label className='block mb-2 font-semibold text-lg text-white'>
                 Size (px)
               </label>
@@ -175,7 +175,7 @@ const SpinnerDetailsPage: React.FC = () => {
               />
             </div>
 
-            <div className={`${getGlassyClasses(10)} p-6`}>
+            <div className={`${getGlassyClasses(10)} p-5`}>
               <label className='block mb-2 font-semibold text-lg text-white'>
                 Border Width (px)
               </label>
@@ -206,8 +206,8 @@ const SpinnerDetailsPage: React.FC = () => {
         </div>
 
         {/* Full Width Spinner */}
-        <div className={`${getGlassyClasses()} p-6 mb-14`}>
-          <h2 className='text-3xl font-bold mb-6 text-white'>
+        <div className={`${getGlassyClasses()} p-5 mb-8`}>
+          <h2 className='text-2xl font-bold mb-6 text-white'>
             Full Width Spinner
           </h2>
           <p className='mb-6 text-lg text-white'>
