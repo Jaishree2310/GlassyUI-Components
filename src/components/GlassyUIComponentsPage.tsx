@@ -22,6 +22,7 @@ import {
 } from 'lucide-react';
 
 import { HiOutlineWrenchScrewdriver } from 'react-icons/hi2';
+import { HiOutlineSquares2X2 } from 'react-icons/hi2';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 
@@ -267,6 +268,13 @@ const GlassyUIComponentsPage: React.FC = () => {
       description: 'Design and customize CSS spinners for your projects.',
       icon: <HiOutlineWrenchScrewdriver size={24} />,
       onClick: () => navigate('/spinner'),
+    },
+    {
+      title: 'Skeleton Loader',
+      description:
+        'Reusable glassmorphism-inspired skeleton loaders for elegant loading states.',
+      icon: <HiOutlineSquares2X2 size={24} />,
+      onClick: () => navigate('/skeleton-loader'),
     },
   ];
 
