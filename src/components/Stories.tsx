@@ -1,181 +1,314 @@
 import React, { useState, useEffect } from 'react';
+import { Share2, MessageSquare, Calendar, Tag, Send } from 'lucide-react';
 
 interface Post {
+  id: string;
   title: string;
   content: string;
   category: string;
   date: string;
 }
 
-const Stories = () => {
+const DEFAULT_POSTS: Post[] = [
+  {
+    id: '1',
+    title: 'My First Glassy Project',
+    content:
+      'Implementing glassmorphism was never this easy. The components are truly stunning!',
+    category: 'GlassyUI Introduction',
+    date: new Date().toISOString(),
+  },
+  {
+    id: '2',
+    title: 'Customizing the Theme',
+    content:
+      'I managed to create a unique brand identity by slightly tweaking the glassy gradients.',
+    category: 'Customizing GlassyUI Components',
+    date: new Date(Date.now() - 86400000).toISOString(),
+  },
+];
+
+const Stories: React.FC = () => {
   const [posts, setPosts] = useState<Post[]>([]);
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
   const [category, setCategory] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    // Fetch posts from the backend API
-    const fetchPosts = async () => {
+    const loadPosts = async () => {
+      // 1. Try to fetch from backend (optional)
       try {
         const response = await fetch(
           'http://localhost:5000/api/stories/getposts',
         );
         if (response.ok) {
           const data = await response.json();
-          setPosts(data);
-        } else {
-          console.error('Failed to fetch posts');
+          if (data && data.length > 0) {
+            setPosts(data);
+            return;
+          }
         }
       } catch (error) {
-        console.error('Error fetching posts:', error);
+        console.warn('Backend not available, falling back to local storage.');
+      }
+
+      // 2. Fallback to localStorage
+      const localPosts = localStorage.getItem('glassyui_stories');
+      if (localPosts) {
+        setPosts(JSON.parse(localPosts));
+      } else {
+        setPosts(DEFAULT_POSTS);
       }
     };
 
-    fetchPosts();
+    loadPosts();
   }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    if (title && content && category) {
-      const newPost = {
-        title,
-        content,
-        category,
-        date: new Date().toISOString(),
-      };
+    if (!title || !content || !category) {
+      alert('Please fill in all fields');
+      return;
+    }
 
-      try {
-        const response = await fetch(
-          'http://localhost:5000/api/stories/saveposts',
-          {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(newPost),
-          },
-        );
+    setIsLoading(true);
 
-        if (response.ok) {
-          const savedPost = await response.json();
-          setPosts([savedPost, ...posts]); // Add the new post to state
-        } else {
-          console.error('Failed to save the post');
-        }
-      } catch (error) {
-        console.error('Error saving the post:', error);
-      }
+    const newPost: Post = {
+      id: Math.random().toString(36).substring(2, 9),
+      title,
+      content,
+      category,
+      date: new Date().toISOString(),
+    };
 
-      // Clear form fields
+    // 1. Update UI and Local Storage immediately (Optimistic Update)
+    const updatedPosts = [newPost, ...posts];
+    setPosts(updatedPosts);
+    localStorage.setItem('glassyui_stories', JSON.stringify(updatedPosts));
+
+    // 2. Try to sync with backend
+    try {
+      await fetch('http://localhost:5000/api/stories/saveposts', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(newPost),
+      });
+    } catch (error) {
+      console.warn('Failed to sync with backend, saved locally.');
+    } finally {
+      setIsLoading(false);
       setTitle('');
       setContent('');
       setCategory('');
     }
   };
 
+  const [expandedPosts, setExpandedPosts] = useState<Set<string>>(new Set());
+
+  const toggleExpand = (id: string) => {
+    const newExpanded = new Set(expandedPosts);
+    if (newExpanded.has(id)) {
+      newExpanded.delete(id);
+    } else {
+      newExpanded.add(id);
+    }
+    setExpandedPosts(newExpanded);
+  };
+
+  const handleShare = async (post: Post) => {
+    const shareData = {
+      title: `GlassyUI Story: ${post.title}`,
+      text: post.content,
+      url: window.location.href,
+    };
+
+    try {
+      if (navigator.share) {
+        await navigator.share(shareData);
+      } else {
+        // Fallback: Copy to clipboard
+        await navigator.clipboard.writeText(
+          `${shareData.title}\n\n${shareData.text}\n\nRead more at: ${shareData.url}`,
+        );
+        alert('Story details copied to clipboard!');
+      }
+    } catch (err) {
+      console.error('Error sharing:', err);
+    }
+  };
+
   return (
-    <>
-      <h1 className='text-3xl font-bold text-center mb-5 text-gray-100 mt-20'>
-        Real Stories, Real Advice: Share Your Experience
-      </h1>
+    <div className='min-h-screen pt-24 pb-12 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-gray-900 via-gray-800 to-black'>
+      <div className='max-w-7xl mx-auto'>
+        <header className='text-center mb-16'>
+          <h1 className='text-4xl md:text-5xl font-extrabold text-white mb-4 drop-shadow-md'>
+            Real Stories, <span className='text-blue-400'>Real Advice</span>
+          </h1>
+          <p className='text-lg text-gray-400 max-w-2xl mx-auto'>
+            Share your experience with GlassyUI and inspire others in the
+            community.
+          </p>
+        </header>
 
-      <div className='flex flex-col lg:flex-row items-start gap-8 px-6 lg:px-20 mb-14'>
-        {/* Left side - Posts */}
-        <div className='flex-1 space-y-6'>
-          {posts.length === 0 ? (
-            <p className='text-gray-400 text-center'>
-              No posts yet. Share your experience!
-            </p>
-          ) : (
-            posts.map((post, index) => (
-              <div
-                key={index}
-                className='bg-gray-800 text-white shadow-lg rounded-xl p-8 border border-gray-700 hover:shadow-xl transition-all duration-300 ease-in-out'
-              >
-                <h3 className='text-2xl font-bold text-gray-100 mb-2'>
-                  {post.title}
-                </h3>
-                <p className='text-sm text-indigo-400 font-medium mb-6'>
-                  {post.category}
+        <div className='flex flex-col lg:flex-row gap-12'>
+          {/* Stories Feed */}
+          <div className='flex-1 space-y-8'>
+            {posts.length === 0 ? (
+              <div className='text-center py-20 rounded-2xl border-2 border-dashed border-gray-700'>
+                <MessageSquare className='mx-auto h-12 w-12 text-gray-600 mb-4' />
+                <p className='text-gray-500 text-xl font-medium'>
+                  No stories shared yet.
                 </p>
-                <p className='text-gray-300 leading-relaxed mb-4'>
-                  {post.content}
+                <p className='text-gray-600'>
+                  Be the first to share your journey!
                 </p>
-                <div className='flex items-center justify-between'>
-                  <p className='text-xs text-gray-500'>
-                    {new Date(post.date).toLocaleDateString()}
-                  </p>
-                  <button className='text-indigo-500 text-sm font-medium border border-indigo-100 rounded-full px-4 py-1 hover:bg-indigo-700 transition-colors'>
-                    Read More
-                  </button>
-                </div>
               </div>
-            ))
-          )}
-        </div>
+            ) : (
+              posts.map(post => {
+                const isExpanded = expandedPosts.has(post.id);
+                const shouldTruncate = post.content.length > 150;
+                const displayedContent =
+                  isExpanded || !shouldTruncate
+                    ? post.content
+                    : `${post.content.substring(0, 150)}...`;
 
-        {/* Right side - Form */}
-        <div className='w-full lg:w-1/3 bg-gray-800 p-6 rounded-lg shadow-md'>
-          <form className='space-y-4'>
-            <input
-              type='text'
-              placeholder='Title of your story'
-              value={title}
-              onChange={e => setTitle(e.target.value)}
-              className='w-full p-3 rounded-md border border-gray-600 bg-gray-700 text-white focus:outline-none focus:border-blue-500'
-            />
-            <textarea
-              placeholder='Write about your story...'
-              value={content}
-              onChange={e => setContent(e.target.value)}
-              className='w-full p-3 h-32 rounded-md border border-gray-600 bg-gray-700 text-white focus:outline-none focus:border-blue-500'
-            ></textarea>
-            <select
-              value={category}
-              onChange={e => setCategory(e.target.value)}
-              className='block w-full px-4 py-2 bg-gray-700 text-white border border-gray-600 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500'
-            >
-              <option value='' disabled>
-                Select Category
-              </option>
+                return (
+                  <div
+                    key={post.id}
+                    className='group relative backdrop-filter backdrop-blur-lg bg-white bg-opacity-5 border border-white border-opacity-10 rounded-2xl p-8 transition-all duration-300 hover:bg-opacity-10 hover:shadow-2xl hover:-translate-y-1'
+                  >
+                    <div className='flex justify-between items-start mb-4'>
+                      <span className='px-3 py-1 text-xs font-semibold tracking-wider text-blue-400 uppercase bg-blue-400 bg-opacity-10 rounded-full border border-blue-400 border-opacity-20 flex items-center gap-2'>
+                        <Tag size={12} /> {post.category}
+                      </span>
+                      <span className='text-sm text-gray-500 flex items-center gap-1'>
+                        <Calendar size={14} />{' '}
+                        {new Date(post.date).toLocaleDateString()}
+                      </span>
+                    </div>
+                    <h3 className='text-2xl font-bold text-white mb-3 group-hover:text-blue-300 transition-colors'>
+                      {post.title}
+                    </h3>
+                    <p className='text-gray-300 leading-relaxed mb-6'>
+                      {displayedContent}
+                    </p>
+                    <div className='pt-6 border-t border-white border-opacity-10 flex items-center justify-between'>
+                      {shouldTruncate && (
+                        <button
+                          onClick={() => toggleExpand(post.id)}
+                          className='text-blue-400 hover:text-blue-300 font-medium text-sm transition-colors flex items-center gap-2'
+                        >
+                          {isExpanded ? 'Read less' : 'Read more...'}
+                        </button>
+                      )}
+                      {!shouldTruncate && <div />}
+                      <button
+                        onClick={() => handleShare(post)}
+                        className='text-gray-500 hover:text-white transition-colors p-2 hover:bg-white hover:bg-opacity-10 rounded-full'
+                        title='Share story'
+                      >
+                        <Share2 size={18} />
+                      </button>
+                    </div>
+                  </div>
+                );
+              })
+            )}
+          </div>
 
-              <optgroup label='GlassyUI-Components'>
-                <option value='GlassyUI Introduction'>
-                  GlassyUI Introduction
-                </option>
-                <option value='Customizing GlassyUI Components'>
-                  Customizing GlassyUI Components
-                </option>
-                <option value='Advanced GlassyUI Techniques'>
-                  Advanced GlassyUI Techniques
-                </option>
-                <option value='GlassyUI Best Practices'>
-                  GlassyUI Best Practices
-                </option>
-                <option value='Contributing to GlassyUI'>
-                  Contributing to GlassyUI
-                </option>
-                <option value='React and GlassyUI Integration'>
-                  React and GlassyUI Integration
-                </option>
-                <option value='GlassyUI in Real Projects'>
-                  GlassyUI in Real Projects
-                </option>
-                <option value='GlassyUI Updates'>GlassyUI Updates</option>
-              </optgroup>
-            </select>
+          {/* Share Form */}
+          <div className='w-full lg:w-96 shrink-0'>
+            <div className='sticky top-28 backdrop-filter backdrop-blur-xl bg-white bg-opacity-10 border border-white border-opacity-20 rounded-2xl p-8 shadow-xl'>
+              <h2 className='text-2xl font-bold text-white mb-6 flex items-center gap-2'>
+                <Share2 className='text-blue-400' /> Share Yours
+              </h2>
+              <form onSubmit={handleSubmit} className='space-y-5'>
+                <div>
+                  <label className='block text-sm font-medium text-gray-300 mb-1.5'>
+                    Title
+                  </label>
+                  <input
+                    type='text'
+                    placeholder='Capture the essence...'
+                    value={title}
+                    onChange={e => setTitle(e.target.value)}
+                    className='w-full px-4 py-3 bg-white bg-opacity-5 border border-white border-opacity-10 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:bg-opacity-10 transition-all'
+                  />
+                </div>
 
-            <button
-              onClick={handleSubmit}
-              className='w-full bg-blue-500 hover:bg-blue-600 hover:text-white text-white font-semibold py-2 rounded-md focus:outline-none'
-            >
-              Post Experience
-            </button>
-          </form>
+                <div>
+                  <label className='block text-sm font-medium text-gray-300 mb-1.5'>
+                    Category
+                  </label>
+                  <select
+                    value={category}
+                    onChange={e => setCategory(e.target.value)}
+                    className='w-full px-4 py-3 bg-white bg-opacity-5 border border-white border-opacity-10 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:bg-opacity-10 transition-all appearance-none'
+                  >
+                    <option value='' disabled className='bg-gray-900'>
+                      Select Category
+                    </option>
+                    <option
+                      value='GlassyUI Introduction'
+                      className='bg-gray-900'
+                    >
+                      GlassyUI Introduction
+                    </option>
+                    <option
+                      value='Customizing Components'
+                      className='bg-gray-900'
+                    >
+                      Customizing Components
+                    </option>
+                    <option value='Advanced Techniques' className='bg-gray-900'>
+                      Advanced Techniques
+                    </option>
+                    <option value='Best Practices' className='bg-gray-900'>
+                      Best Practices
+                    </option>
+                    <option value='Contributing' className='bg-gray-900'>
+                      Contributing
+                    </option>
+                  </select>
+                </div>
+
+                <div>
+                  <label className='block text-sm font-medium text-gray-300 mb-1.5'>
+                    Your Journey
+                  </label>
+                  <textarea
+                    placeholder='Write about your experience...'
+                    value={content}
+                    onChange={e => setContent(e.target.value)}
+                    className='w-full px-4 py-3 h-40 bg-white bg-opacity-5 border border-white border-opacity-10 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:bg-opacity-10 transition-all resize-none'
+                  ></textarea>
+                </div>
+
+                <button
+                  type='submit'
+                  disabled={isLoading}
+                  className={`w-full py-4 rounded-xl font-bold text-white transition-all transform active:scale-95 flex items-center justify-center gap-2 ${
+                    isLoading
+                      ? 'bg-gray-600 cursor-not-allowed opacity-50'
+                      : 'bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 hover:shadow-lg hover:shadow-blue-500/20'
+                  }`}
+                >
+                  {isLoading ? (
+                    'Posting...'
+                  ) : (
+                    <>
+                      <Send size={18} /> Post Experience
+                    </>
+                  )}
+                </button>
+              </form>
+            </div>
+          </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
