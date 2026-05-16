@@ -8,7 +8,7 @@ import {
   useLocation,
 } from 'react-router-dom';
 
-import ScrollProgressBar from './components/ScrollProgress'; // Import your ScrollProgressBar component
+import ScrollProgressBar from './components/ScrollProgress';
 import GlassyUILandingPage from './components/GlassyUILandingPage';
 import GlassyUIComponentsPage from './components/GlassyUIComponentsPage';
 import ButtonDetailsPage from './components/ButtonDetailsPage';
@@ -46,10 +46,9 @@ import ProductCardDetailsPage from './components/ProductCardDetailsPage';
 import ContactUs from './components/ContactUs';
 import AiChatbot from './components/AIChatbot';
 import { TermsOfUse } from './components/TermsOfUse';
+import TabsDetailsPage from './components/TabsDetails'; // ── NEW ──
 
 import Stories from './components/Stories';
-// import Register from './login/SignUp';
-// import SignIn from './login/SignIn';
 
 const ThemeToggle: React.FC = () => {
   const [theme, setTheme] = useState(localStorage.getItem('theme') || 'light');
@@ -83,7 +82,7 @@ const App: React.FC = () => {
       <Header />
       <AiChatbot />
       {/* <ThemeToggle /> */}
-      <ScrollProgressBar /> {/* Add the ScrollProgressBar component here */}
+      <ScrollProgressBar />
       <Routes>
         <Route path='/' element={<GlassyUILandingPage />} />
         <Route path='/components' element={<GlassyUIComponentsPage />} />
@@ -122,20 +121,19 @@ const App: React.FC = () => {
         <Route path='/gallery-details' element={<GalleryDetailsPage />} />
         <Route path='/contact' element={<ContactUs />} />
         <Route path='/termsOfUse' element={<TermsOfUse />} />
-
         <Route path='/stories' element={<Stories />} />
-
-        {/* <Route path='/signup' element={<Register />} /> */}
-        {/* <Route path='/signin' element={<SignIn />} /> */}
-
+        <Route path='/tabs-details' element={<TabsDetailsPage />} />{' '}
+        {/* ── NEW ── */}
         <Route path='*' element={<NotFoundPage />} />
       </Routes>
       <ConditionalFooter />
     </Router>
   );
 };
+
 const ConditionalFooter: React.FC = () => {
   const location = useLocation();
   return location.pathname === '/' ? null : <Footer />;
 };
+
 export default App;
