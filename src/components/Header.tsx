@@ -131,7 +131,7 @@ const Header: React.FC = () => {
 
 const navStyle: React.CSSProperties = {
   padding: '10px',
-  position: 'fixed',
+  position: 'sticky',
   top: '0',
   width: '100%',
   zIndex: 1000,
