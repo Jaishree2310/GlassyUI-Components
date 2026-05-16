@@ -35,6 +35,7 @@ interface ComponentCardProps {
   status?: string; // Optional status prop
   children?: React.ReactNode; // Include the children prop
 }
+
 const getGlassyClasses = () => {
   return 'backdrop-filter backdrop-blur-md bg-white/10 border border-white/20 rounded-2xl shadow-lg transition-all duration-300';
 };
