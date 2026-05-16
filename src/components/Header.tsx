@@ -31,9 +31,11 @@ const Header: React.FC = () => {
 
   return (
     <nav style={navStyle}>
-      <h1 className='text-white text-[20px] font-bold'>
-        <span className='text-blue-400'>Glass</span>UI
-      </h1>
+      <Link to='/' aria-label='GlassyUI home' style={logoLinkStyle}>
+        <h1 className='text-white text-[20px] font-bold'>
+          <span className='text-blue-400'>Glass</span>UI
+        </h1>
+      </Link>
       <ul style={ulStyle}>
         <li style={liStyle} className='navbar-item'>
           <Link
@@ -161,6 +163,11 @@ const linkStyle: React.CSSProperties = {
   color: 'white',
   textDecoration: 'none',
   transition: 'color 0.3s ease',
+};
+
+const logoLinkStyle: React.CSSProperties = {
+  color: 'inherit',
+  textDecoration: 'none',
 };
 
 export default Header;
