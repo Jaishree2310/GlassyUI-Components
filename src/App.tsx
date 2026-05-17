@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import PricingDetailPage from './components/PricingDetailPage';
 
 import {
@@ -38,7 +38,7 @@ import PaginationDetails from './components/PaginationDetails';
 import TestimonialDetails from './components/TestimonialDetails';
 import Footer from './components/Footer';
 import CalendarDetails from './components/CalendarDetails';
-import Checkbox from './components/Checkbox';
+import CheckboxDetailsPage from './components/CheckboxDetails';
 import Statistic from './components/StatisticDetails';
 import GalleryDetailsPage from './components/GalleryDetailsPage';
 import SpinnerDetailsPage from './components/SpinnerDetailsPage';
@@ -51,6 +51,7 @@ import Stories from './components/Stories';
 // import Register from './login/SignUp';
 // import SignIn from './login/SignIn';
 
+/*
 const ThemeToggle: React.FC = () => {
   const [theme, setTheme] = useState(localStorage.getItem('theme') || 'light');
 
@@ -76,6 +77,7 @@ const ThemeToggle: React.FC = () => {
     </button>
   );
 };
+*/
 
 const App: React.FC = () => {
   return (
@@ -116,7 +118,7 @@ const App: React.FC = () => {
         <Route path='/testimonial-details' element={<TestimonialDetails />} />
         <Route path='/calendar-details' element={<CalendarDetails />} />
         <Route path='/statistic-details' element={<Statistic />} />
-        <Route path='/checkbox' element={<Checkbox />} />
+        <Route path='/checkbox' element={<CheckboxDetailsPage />} />
         <Route path='/spinner' element={<SpinnerDetailsPage />} />
         <Route path='/product-details' element={<ProductCardDetailsPage />} />
         <Route path='/gallery-details' element={<GalleryDetailsPage />} />
