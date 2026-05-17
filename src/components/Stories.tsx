@@ -1,10 +1,19 @@
 import React, { useState, useEffect } from 'react';
+import { apiUrl } from '../config/api';
 
 interface Post {
   title: string;
   content: string;
   category: string;
   date: string;
+}
+
+interface PostsResponse {
+  posts: Post[];
+  page: number;
+  limit: number;
+  total: number;
+  totalPages: number;
 }
 
 const Stories = () => {
@@ -14,15 +23,14 @@ const Stories = () => {
   const [category, setCategory] = useState('');
 
   useEffect(() => {
-    // Fetch posts from the backend API
     const fetchPosts = async () => {
       try {
         const response = await fetch(
-          'http://localhost:5000/api/stories/getposts',
+          apiUrl('/api/stories/getposts?limit=20&page=1'),
         );
         if (response.ok) {
-          const data = await response.json();
-          setPosts(data);
+          const data: PostsResponse = await response.json();
+          setPosts(data.posts ?? []);
         } else {
           console.error('Failed to fetch posts');
         }
@@ -45,21 +53,24 @@ const Stories = () => {
         date: new Date().toISOString(),
       };
 
+      const headers: Record<string, string> = {
+        'Content-Type': 'application/json',
+      };
+      const storiesKey = process.env.REACT_APP_STORIES_API_KEY;
+      if (storiesKey) {
+        headers['x-stories-api-key'] = storiesKey;
+      }
+
       try {
-        const response = await fetch(
-          'http://localhost:5000/api/stories/saveposts',
-          {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(newPost),
-          },
-        );
+        const response = await fetch(apiUrl('/api/stories/saveposts'), {
+          method: 'POST',
+          headers,
+          body: JSON.stringify(newPost),
+        });
 
         if (response.ok) {
           const savedPost = await response.json();
-          setPosts([savedPost, ...posts]); // Add the new post to state
+          setPosts([savedPost, ...posts]);
         } else {
           console.error('Failed to save the post');
         }
@@ -67,7 +78,6 @@ const Stories = () => {
         console.error('Error saving the post:', error);
       }
 
-      // Clear form fields
       setTitle('');
       setContent('');
       setCategory('');
@@ -81,7 +91,6 @@ const Stories = () => {
       </h1>
 
       <div className='flex flex-col lg:flex-row items-start gap-8 px-6 lg:px-20 mb-14'>
-        {/* Left side - Posts */}
         <div className='flex-1 space-y-6'>
           {posts.length === 0 ? (
             <p className='text-gray-400 text-center'>
@@ -90,7 +99,7 @@ const Stories = () => {
           ) : (
             posts.map((post, index) => (
               <div
-                key={index}
+                key={`${post.title}-${post.date}-${index}`}
                 className='bg-gray-800 text-white shadow-lg rounded-xl p-8 border border-gray-700 hover:shadow-xl transition-all duration-300 ease-in-out'
               >
                 <h3 className='text-2xl font-bold text-gray-100 mb-2'>
@@ -106,7 +115,10 @@ const Stories = () => {
                   <p className='text-xs text-gray-500'>
                     {new Date(post.date).toLocaleDateString()}
                   </p>
-                  <button className='text-indigo-500 text-sm font-medium border border-indigo-100 rounded-full px-4 py-1 hover:bg-indigo-700 transition-colors'>
+                  <button
+                    type='button'
+                    className='text-indigo-500 text-sm font-medium border border-indigo-100 rounded-full px-4 py-1 hover:bg-indigo-700 transition-colors'
+                  >
                     Read More
                   </button>
                 </div>
@@ -115,9 +127,8 @@ const Stories = () => {
           )}
         </div>
 
-        {/* Right side - Form */}
         <div className='w-full lg:w-1/3 bg-gray-800 p-6 rounded-lg shadow-md'>
-          <form className='space-y-4'>
+          <form className='space-y-4' onSubmit={handleSubmit}>
             <input
               type='text'
               placeholder='Title of your story'
@@ -167,7 +178,7 @@ const Stories = () => {
             </select>
 
             <button
-              onClick={handleSubmit}
+              type='submit'
               className='w-full bg-blue-500 hover:bg-blue-600 hover:text-white text-white font-semibold py-2 rounded-md focus:outline-none'
             >
               Post Experience

@@ -1,8 +1,10 @@
 import express from 'express';
-const router = express.Router();
 import { getContact, saveContact } from '../controllers/contactController.js';
+import { writeLimiter } from '../middleware/rateLimit.js';
 
-router.post('/saveContact', saveContact);
+const router = express.Router();
+
+router.post('/saveContact', writeLimiter, saveContact);
 router.get('/saveContact', getContact);
 
 export default router;

@@ -1,5 +1,6 @@
 import React, { ChangeEvent, FormEvent } from 'react';
 import { useState } from 'react';
+import { apiUrl } from '../config/api';
 
 const ContactUs = () => {
   interface FormData {
@@ -26,16 +27,13 @@ const ContactUs = () => {
     e.preventDefault();
 
     try {
-      const response = await fetch(
-        'http://localhost:5000/api/contact/saveContact',
-        {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(formData),
+      const response = await fetch(apiUrl('/api/contact/saveContact'), {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
         },
-      );
+        body: JSON.stringify(formData),
+      });
 
       if (!response.ok) {
         throw new Error('Something went wrong!');
@@ -51,7 +49,6 @@ const ContactUs = () => {
 
   return (
     <div className=' min-h-screen flex flex-col lg:flex-row items-center bg-gradient-to-r from-gray-800 via-gray-900 to-black p-10 justify-between'>
-      {/* Left-side Information with glassmorphism effect */}
       <div className='lg:w-[45%] w-full h-[640px] flex justify-center items-center p-10 bg-opacity-40 bg-gray-900 backdrop-blur-xl rounded-3xl shadow-2xl border border-opacity-30 border-gray-300'>
         <div className='text-center text-white space-y-6'>
           <h1 className='text-5xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500'>
@@ -74,7 +71,7 @@ const ContactUs = () => {
             </li>
           </ul>
           <div className='mt-6 text-left max-w-[80%] mx-auto'>
-            <h3 className='text-2xl font-bold text-purple-300'>✨ Features</h3>
+            <h3 className='text-2xl font-bold text-purple-300'>Features</h3>
             <ul className='list-disc list-inside text-gray-400 mt-3 space-y-1'>
               <li>Glassmorphism-themed React components</li>
               <li>Customizable styles with SCSS</li>
@@ -85,7 +82,6 @@ const ContactUs = () => {
         </div>
       </div>
 
-      {/* Form Section */}
       <div className='lg:w-[45%] w-full p-10 bg-opacity-50 bg-gray-900 backdrop-blur-xl rounded-3xl shadow-2xl border border-opacity-20 border-gray-200'>
         <h2 className='text-4xl font-extrabold mb-8 text-white tracking-wide text-center'>
           Contact Us
@@ -93,11 +89,10 @@ const ContactUs = () => {
 
         <form onSubmit={handleSubmit} className='space-y-6'>
           <div className='flex flex-col lg:flex-row gap-6'>
-            {/* Full Name Input */}
             <div className='w-full'>
               <label
                 className='block text-gray-400 text-sm font-semibold mb-2'
-                htmlFor='name'
+                htmlFor='fullName'
               >
                 FULL NAME <span className='text-red-500'>*</span>
               </label>
@@ -112,11 +107,10 @@ const ContactUs = () => {
                 required
               />
             </div>
-            {/* Phone Number Input */}
             <div className='w-full'>
               <label
                 className='block text-gray-400 text-sm font-semibold mb-2'
-                htmlFor='phone'
+                htmlFor='phoneNumber'
               >
                 PHONE NUMBER <span className='text-red-500'>*</span>
               </label>
@@ -134,7 +128,6 @@ const ContactUs = () => {
           </div>
 
           <div className='w-full'>
-            {/* Email Input */}
             <label
               className='block text-gray-400 text-sm font-semibold mb-2'
               htmlFor='email'
@@ -153,7 +146,6 @@ const ContactUs = () => {
             />
           </div>
 
-          {/* Message Input */}
           <div>
             <label
               className='block text-gray-400 text-sm font-semibold mb-2'
@@ -169,31 +161,15 @@ const ContactUs = () => {
               value={formData.message}
               onChange={handleChange}
               required
-            ></textarea>
+            />
           </div>
 
-          {/* reCAPTCHA & Submit Button */}
-          <div className='flex flex-col space-y-6'>
-            <div>
-              <div className='flex items-center space-x-2'>
-                <input
-                  type='checkbox'
-                  id='recaptcha'
-                  className='w-5 h-5 accent-blue-600'
-                />
-                <label htmlFor='recaptcha' className='text-sm text-gray-400'>
-                  I&apos;m not a robot
-                </label>
-              </div>
-            </div>
-
-            <button
-              type='submit'
-              className='bg-blue-600 text-white py-3 px-8 rounded-lg font-bold hover:bg-blue-700 transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none'
-            >
-              Send Your Message
-            </button>
-          </div>
+          <button
+            type='submit'
+            className='bg-blue-600 text-white py-3 px-8 rounded-lg font-bold hover:bg-blue-700 transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none'
+          >
+            Send Your Message
+          </button>
         </form>
       </div>
     </div>
