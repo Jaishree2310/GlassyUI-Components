@@ -13,7 +13,6 @@ export const useCheckboxGroup = () => {
 
 export const CheckboxGroup = ({
   value = [],
-  defaultValue,
   onChange,
   children,
   size = 'md',

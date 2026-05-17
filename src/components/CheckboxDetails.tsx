@@ -12,7 +12,6 @@ const CheckboxDetailsPage: React.FC = () => {
 
   // States for examples
   const [basicChecked, setBasicChecked] = useState(false);
-  const [customChecked, setCustomChecked] = useState(true);
   const [groupValues, setGroupValues] = useState<string[]>([
     'react',
     'typescript',
@@ -252,7 +251,7 @@ function GroupExample() {
             Indeterminate State
           </h2>
           <p className='mb-6 text-lg text-white opacity-80'>
-            Useful for "select all" behaviors where only some children are
+            Useful for {'"select all"'} behaviors where only some children are
             checked.
           </p>
           <div className='mb-8 p-6 bg-black/20 rounded-lg flex flex-col gap-2 max-w-sm mx-auto'>
@@ -375,9 +374,11 @@ function GroupExample() {
                     size
                   </td>
                   <td className='p-4 text-white/80 font-mono text-sm'>
-                    'sm' | 'md' | 'lg'
+                    {"'sm' | 'md' | 'lg'"}
                   </td>
-                  <td className='p-4 text-white/50 font-mono text-sm'>'md'</td>
+                  <td className='p-4 text-white/50 font-mono text-sm'>
+                    {"'md'"}
+                  </td>
                   <td className='p-4 text-white/90'>
                     The size of the checkbox component
                   </td>
@@ -387,10 +388,10 @@ function GroupExample() {
                     color
                   </td>
                   <td className='p-4 text-white/80 font-mono text-sm'>
-                    'primary' | 'success' | 'warning' | 'danger' | 'info'
+                    {"'primary' | 'success' | 'warning' | 'danger' | 'info'"}
                   </td>
                   <td className='p-4 text-white/50 font-mono text-sm'>
-                    'primary'
+                    {"'primary'"}
                   </td>
                   <td className='p-4 text-white/90'>
                     The color theme applied when active
