@@ -9,19 +9,22 @@ export async function saveNewsletter(req, res) {
       return res.status(400).json({ message: 'All fields are required.' });
     }
 
-    // Create new contact document
     const newNewsLetter = new NewsLetter({ name, email });
-    sendMailToSubscriber(newNewsLetter);
     await newNewsLetter.save();
-    res
-      .status(201)
-      .json({ message: 'Contact form submitted successfully!', newNewsLetter });
+    await sendMailToSubscriber(newNewsLetter);
+
+    res.status(201).json({ message: 'Subscription successful!' });
   } catch (error) {
-    console.error('Error saving contact form:', error);
-    res.status(500).json({ message: 'Failed to submit contact form.', error });
+    if (error?.code === 11000) {
+      return res
+        .status(409)
+        .json({ message: 'This email is already subscribed.' });
+    }
+    console.error('Error saving newsletter subscription:', error);
+    res.status(500).json({ message: 'Failed to subscribe.' });
   }
 }
 
-export async function getNewsletter(req, res) {
-  res.send('hello newsletter');
+export async function getNewsletter(_req, res) {
+  res.status(200).json({ message: 'Newsletter API is running.' });
 }

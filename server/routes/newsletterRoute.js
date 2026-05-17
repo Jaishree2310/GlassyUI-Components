@@ -1,11 +1,13 @@
 import express from 'express';
-const router = express.Router();
 import {
   getNewsletter,
   saveNewsletter,
 } from '../controllers/newsletterController.js';
+import { writeLimiter } from '../middleware/rateLimit.js';
 
-router.post('/subscribe', saveNewsletter);
+const router = express.Router();
+
+router.post('/subscribe', writeLimiter, saveNewsletter);
 router.get('/getNewsletter', getNewsletter);
 
 export default router;

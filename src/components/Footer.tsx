@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import GoogleTranslate from './GoogleTranslator';
 import { FormEvent } from 'react';
+import { apiUrl } from '../config/api';
 const Footer: React.FC = () => {
   const [name, setName] = useState<string>('');
   const [email, setEmail] = useState<string>('');
@@ -10,16 +11,13 @@ const Footer: React.FC = () => {
     e.preventDefault();
 
     try {
-      const response = await fetch(
-        'http://localhost:5000/api/newsletter/subscribe',
-        {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({ name, email }),
+      const response = await fetch(apiUrl('/api/newsletter/subscribe'), {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
         },
-      );
+        body: JSON.stringify({ name, email }),
+      });
 
       if (response.ok) {
         alert('Subscription successful!');

@@ -7,8 +7,12 @@ const ScrollProgressBar: React.FC = () => {
   const handleScroll = () => {
     const totalHeight =
       document.documentElement.scrollHeight - window.innerHeight;
+    if (totalHeight <= 0) {
+      setScrollWidth(0);
+      return;
+    }
     const scrolled = (window.scrollY / totalHeight) * 100;
-    setScrollWidth(scrolled);
+    setScrollWidth(Math.min(100, Math.max(0, scrolled)));
   };
 
   useEffect(() => {

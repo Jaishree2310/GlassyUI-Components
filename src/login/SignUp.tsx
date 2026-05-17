@@ -14,6 +14,10 @@ const Register = () => {
 
   const onSubmit = async (e: FormEvent) => {
     e.preventDefault();
+    if (password !== confirmPassword) {
+      setErrorMessage('Passwords do not match.');
+      return;
+    }
     if (!isRegistering) {
       setIsRegistering(true);
       try {
@@ -27,7 +31,7 @@ const Register = () => {
   };
 
   if (userLoggedIn) {
-    return <Navigate to='/sign-in' replace />;
+    return <Navigate to='/signin' replace />;
   }
 
   return (

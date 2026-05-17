@@ -1,8 +1,10 @@
 import nodemailer from 'nodemailer';
 import dotenv from 'dotenv';
+import { escapeHtml } from './utils/escapeHtml.js';
+
 dotenv.config();
 
-const sendMailToSubscriber = userdata => {
+const sendMailToSubscriber = async userdata => {
   const transporter = nodemailer.createTransport({
     service: 'gmail',
     host: 'smtp.gmail.com',
@@ -14,46 +16,31 @@ const sendMailToSubscriber = userdata => {
     },
   });
 
-  async function main() {
-    await transporter.sendMail({
-      from: {
-        name: 'GlassyUI-Components',
-        address: process.env.EMAIL_ID,
-      },
-      to: userdata.email,
-      subject: 'Welcome to GlassyUI-Components! 🎉',
-      text: 'Thank you for subscribing to GlassyUI-Components!',
-      html: `
+  const safeName = escapeHtml(userdata.name);
+
+  await transporter.sendMail({
+    from: {
+      name: 'GlassyUI-Components',
+      address: process.env.EMAIL_ID,
+    },
+    to: userdata.email,
+    subject: 'Welcome to GlassyUI-Components!',
+    text: `Thank you for subscribing, ${userdata.name}!`,
+    html: `
                 <div style="background-color: #e0f7fa; color: #333; padding: 20px; font-family: Arial, sans-serif;">
-                    <div style="max-width: 600px; margin: 0 auto; background: rgba(255, 255, 255, 0.8); padding: 20px; border-radius: 15px; box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); backdrop-filter: blur(10px);">
-                        <h2 style="text-align: center; color: #00acc1;">Welcome to GlassyUI-Components, ${userdata.name}!</h2>
+                    <div style="max-width: 600px; margin: 0 auto; background: rgba(255, 255, 255, 0.8); padding: 20px; border-radius: 15px;">
+                        <h2 style="text-align: center; color: #00acc1;">Welcome to GlassyUI-Components, ${safeName}!</h2>
                         <p style="font-size: 16px; line-height: 1.6; color: #555;">
-                            Hi ${userdata.name},
+                            Thank you for subscribing. We are glad to have you in the community.
                         </p>
                         <p style="font-size: 16px; line-height: 1.6; color: #555;">
-                            We’re thrilled to have you join us at GlassyUI-Components, an open-source library that brings you beautiful glassmorphism-themed React components. Our library is perfect for creating sleek, modern web applications, and we can’t wait for you to explore and enjoy it!
-                        </p>
-                        <h3 style="color: #00acc1; margin-top: 20px;">✨ Features</h3>
-                        <ul style="font-size: 16px; line-height: 1.6; color: #555;">
-                            <li>Glassmorphism-themed React components</li>
-                            <li>Customizable styles with SCSS</li>
-                            <li>Beginner-friendly and easy to contribute</li>
-                            <li>Modular and reusable components</li>
-                        </ul>
-                        <p style="font-size: 16px; line-height: 1.6; color: #555;">
-                            Stay tuned for the latest updates and don’t hesitate to contribute to make GlassyUI-Components even better!
-                        </p>
-                        <p style="font-size: 16px; line-height: 1.6; color: #555;">
-                            Best Regards, <br/>
+                            Best Regards,<br/>
                             The GlassyUI-Components Team
                         </p>
                     </div>
                 </div>
             `,
-    });
-  }
-
-  main().catch(console.error);
+  });
 };
 
 export { sendMailToSubscriber };
