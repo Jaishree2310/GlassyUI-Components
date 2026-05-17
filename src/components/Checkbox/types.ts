@@ -29,8 +29,6 @@ export interface CheckboxProps
 export interface CheckboxGroupProps {
   /** Array of currently selected values */
   value?: string[];
-  /** Default selected values for uncontrolled usage */
-  defaultValue?: string[];
   /** Callback fired when a checkbox in the group is changed */
   onChange?: (value: string[]) => void;
   /** The children checkboxes */
