@@ -81,12 +81,12 @@ export const GroupedCheckbox = React.forwardRef<
   return (
     <Checkbox
       ref={ref}
+      {...props}
       size={props.size || size}
       color={props.color || color}
       disabled={props.disabled || disabled}
       checked={isChecked}
       onChange={onChange}
-      {...props}
     />
   );
 });
