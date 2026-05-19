@@ -3,7 +3,6 @@ import { Star, Code, Package, Zap } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import './GlassyUILandingPage.css'; // Create this CSS file in the same directory
 import gsap from 'gsap';
-import Footer from './Footer';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 
@@ -120,9 +119,6 @@ const GlassyUILandingPage: React.FC = () => {
             </GlassmorphismButton>
           </div>
         </main>
-      </div>
-      <div>
-        <Footer />
       </div>
     </div>
   );
