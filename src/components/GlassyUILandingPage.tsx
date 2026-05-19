@@ -3,7 +3,6 @@ import { Star, Code, Package, Zap } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import './GlassyUILandingPage.css'; // Create this CSS file in the same directory
 import gsap from 'gsap';
-import Footer from './Footer';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 
@@ -58,9 +57,12 @@ const GlassyUILandingPage: React.FC = () => {
         <header className='w-full flex justify-between items-center mb-4'>
           {' '}
           {/* Adjusted mb-8 to mb-4 */}
-          <div className='text-2xl font-bold text-white'>
-            <span className='text-blue-400'>Glassy</span>UI
-          </div>
+          <h1 className='text-white text-[20px] font-bold'>
+            <Link to='/' className='text-primary text-blue-400'>
+              Glass
+            </Link>
+            <span>UI</span>
+          </h1>
           <a
             href={githubRepoUrl}
             target='_blank'
@@ -122,9 +124,6 @@ const GlassyUILandingPage: React.FC = () => {
             </GlassmorphismButton>
           </div>
         </main>
-      </div>
-      <div>
-        <Footer />
       </div>
     </div>
   );
