@@ -135,6 +135,7 @@ const navStyle: React.CSSProperties = {
   top: '0',
   width: '100%',
   zIndex: 1000,
+  backgroundColor: 'rgba(17, 24, 39, 0.75)', // ← ADD THIS LINE
   backdropFilter: 'blur(10px)',
   WebkitBackdropFilter: 'blur(10px)',
   boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
