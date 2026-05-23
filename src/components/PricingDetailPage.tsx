@@ -10,6 +10,8 @@ const PricingDetailPage: React.FC = () => {
   const [copiedStates, setCopiedStates] = useState<{ [key: string]: boolean }>(
     {},
   );
+  type BillingCycle = 'monthly' | 'yearly';
+  const [billingCycle, setBillingCycle] = useState<BillingCycle>('monthly');
 
   const getGlassyClasses = (opacity = 20) => {
     return `backdrop-filter backdrop-blur-lg bg-white bg-opacity-${opacity} 
@@ -51,6 +53,75 @@ const PricingDetailPage: React.FC = () => {
     buttonBackgroundColor: '#9333ea',
     buttonBackgroundSecondColor: '#4f46e5',
   });
+
+  const pricingPlans = useMemo(
+    () => [
+      {
+        name: 'Starter',
+        description: 'Launch fast with core product essentials.',
+        monthly: 12,
+        yearly: 120,
+        badge: 'Starter',
+        accent: 'from-cyan-400 via-blue-500 to-indigo-500',
+        glow: 'hover:shadow-[0_0_25px_rgba(34,211,238,0.55)]',
+        featured: false,
+        features: ['Unlimited drafts', 'Email support', '5 team members'],
+      },
+      {
+        name: 'Pro',
+        description: 'For growing teams that need more control.',
+        monthly: 29,
+        yearly: 290,
+        badge: 'Most popular',
+        accent: 'from-fuchsia-400 via-purple-500 to-indigo-500',
+        glow: 'hover:shadow-[0_0_28px_rgba(217,70,239,0.6)]',
+        featured: true,
+        features: ['Advanced analytics', 'Priority support', '25 team members'],
+      },
+      {
+        name: 'Scale',
+        description: 'Enterprise-ready coverage with premium add-ons.',
+        monthly: 59,
+        yearly: 590,
+        badge: 'Best value',
+        accent: 'from-amber-400 via-orange-500 to-rose-500',
+        glow: 'hover:shadow-[0_0_28px_rgba(251,146,60,0.6)]',
+        featured: false,
+        features: ['Custom workflows', 'Dedicated success', 'Unlimited seats'],
+      },
+    ],
+    [],
+  );
+
+  const pricingToggleCode = `const [billingCycle, setBillingCycle] = useState<'monthly' | 'yearly'>('monthly');
+
+const plans = [
+  { name: 'Starter', monthly: 12, yearly: 120, features: ['Unlimited drafts', 'Email support'] },
+  { name: 'Pro', monthly: 29, yearly: 290, features: ['Advanced analytics', 'Priority support'] },
+  { name: 'Scale', monthly: 59, yearly: 590, features: ['Custom workflows', 'Dedicated success'] },
+];
+
+<div className="flex items-center gap-3">
+  <span className={billingCycle === 'monthly' ? 'text-white' : 'text-gray-400'}>Monthly</span>
+  <button
+    role="switch"
+    aria-checked={billingCycle === 'yearly'}
+    onClick={() => setBillingCycle(billingCycle === 'monthly' ? 'yearly' : 'monthly')}
+    className="relative h-7 w-14 rounded-full bg-white/10 border border-white/20"
+  >
+    <span
+      className={\`absolute top-1 left-1 h-5 w-5 rounded-full bg-white/80 transition-transform \${billingCycle === 'yearly' ? 'translate-x-7' : 'translate-x-0'}\`}
+    />
+  </button>
+  <span className={billingCycle === 'yearly' ? 'text-white' : 'text-gray-400'}>Yearly</span>
+</div>
+
+{plans.map(plan => (
+  <div key={plan.name}>
+    <span>{plan.name}</span>
+    <span>\${billingCycle === 'yearly' ? plan.yearly : plan.monthly}</span>
+  </div>
+))}`;
 
   interface PricingDetailsProps {
     title?: string;
@@ -228,6 +299,122 @@ const PricingDetailPage: React.FC = () => {
         <p className='text-xl mb-8 text-white'>
           A customizable, glassmorphism styled Pricing Plan component.
         </p>
+
+        <div
+          className={`${getGlassyClasses()} p-8 mb-8 relative overflow-hidden`}
+        >
+          <h2 className='text-3xl font-bold mb-4 text-white'>
+            Pricing Section with Toggle
+          </h2>
+          <p className='text-gray-200 mb-8 max-w-2xl'>
+            A production-ready pricing section with a glassmorphic toggle
+            switch, responsive cards, and glowing CTA hover states.
+          </p>
+          <div className='relative rounded-3xl border border-white/10 bg-white/5 p-8 overflow-hidden'>
+            <div className='absolute -top-20 -left-12 h-60 w-60 rounded-full bg-cyan-400/20 blur-3xl' />
+            <div className='absolute -bottom-24 -right-10 h-64 w-64 rounded-full bg-fuchsia-500/20 blur-3xl' />
+            <div className='relative z-10'>
+              <div className='flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between'>
+                <div>
+                  <h3 className='text-2xl font-semibold text-white'>
+                    Scale with confidence
+                  </h3>
+                  <p className='text-sm text-gray-300'>
+                    Toggle annual billing to unlock two months free.
+                  </p>
+                </div>
+                <div className='flex flex-wrap items-center gap-3'>
+                  <span
+                    className={`text-sm font-medium ${billingCycle === 'monthly' ? 'text-white' : 'text-gray-400'}`}
+                  >
+                    Monthly
+                  </span>
+                  <button
+                    type='button'
+                    role='switch'
+                    aria-checked={billingCycle === 'yearly'}
+                    aria-label='Toggle yearly billing'
+                    onClick={() =>
+                      setBillingCycle(prev =>
+                        prev === 'monthly' ? 'yearly' : 'monthly',
+                      )
+                    }
+                    className='relative h-8 w-16 rounded-full border border-white/20 bg-white/10 backdrop-blur-sm transition-colors duration-300 hover:bg-white/20'
+                  >
+                    <span
+                      className={`absolute top-1 left-1 h-6 w-6 rounded-full bg-white/80 shadow-lg transition-transform duration-300 ${billingCycle === 'yearly' ? 'translate-x-8' : 'translate-x-0'}`}
+                    />
+                  </button>
+                  <span
+                    className={`text-sm font-medium ${billingCycle === 'yearly' ? 'text-white' : 'text-gray-400'}`}
+                  >
+                    Yearly
+                  </span>
+                  <span className='rounded-full bg-white/10 px-2 py-1 text-xs text-cyan-200'>
+                    2 months free
+                  </span>
+                </div>
+              </div>
+              <div className='mt-10 grid grid-cols-1 gap-6 lg:grid-cols-3'>
+                {pricingPlans.map(plan => (
+                  <div
+                    key={plan.name}
+                    className={`relative rounded-2xl border border-white/15 bg-white/10 p-6 backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 hover:bg-white/15 ${plan.featured ? 'ring-1 ring-white/40' : ''}`}
+                  >
+                    <span className='inline-flex items-center rounded-full bg-white/15 px-3 py-1 text-xs uppercase tracking-wide text-white'>
+                      {plan.badge}
+                    </span>
+                    <h4 className='mt-4 text-2xl font-semibold text-white'>
+                      {plan.name}
+                    </h4>
+                    <p className='mt-2 text-sm text-gray-200'>
+                      {plan.description}
+                    </p>
+                    <div className='mt-6 flex items-baseline gap-2'>
+                      <span className='text-4xl font-bold text-white'>
+                        $
+                        {billingCycle === 'yearly'
+                          ? plan.yearly.toLocaleString('en-US')
+                          : plan.monthly.toLocaleString('en-US')}
+                      </span>
+                      <span className='text-sm text-gray-300'>
+                        {billingCycle === 'yearly' ? '/yr' : '/mo'}
+                      </span>
+                    </div>
+                    <p className='mt-1 text-xs text-gray-400'>
+                      {billingCycle === 'yearly'
+                        ? 'Billed annually'
+                        : 'Billed monthly'}
+                    </p>
+                    <ul className='mt-6 space-y-3 text-sm text-gray-200'>
+                      {plan.features.map(feature => (
+                        <li
+                          key={`${plan.name}-${feature}`}
+                          className='flex items-center gap-2'
+                        >
+                          <span className='h-2 w-2 rounded-full bg-white/60' />
+                          <span>{feature}</span>
+                        </li>
+                      ))}
+                    </ul>
+                    <button
+                      type='button'
+                      className={`mt-8 w-full rounded-full bg-gradient-to-r ${plan.accent} px-4 py-3 text-sm font-semibold text-white transition-all duration-300 hover:-translate-y-0.5 ${plan.glow}`}
+                    >
+                      Choose Plan
+                    </button>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+          <div className='relative mt-8'>
+            <pre className='bg-gray-800 text-white p-6 rounded-lg overflow-x-auto whitespace-pre-wrap max-sm:text-[0.55rem]'>
+              {pricingToggleCode}
+            </pre>
+            <CopyButton text={pricingToggleCode} codeKey='pricingToggle' />
+          </div>
+        </div>
 
         <div className={`${getGlassyClasses()} p-8 mb-8 relative`}>
           <h2 className='text-3xl font-bold mb-6 text-white'>Basic Plan</h2>
