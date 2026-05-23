@@ -1,0 +1,302 @@
+/* ===================================================
+   GLASSYUI — HEADER STYLES
+=================================================== */
+
+/* ── HEADER SHELL ──────────────────────────────── */
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  padding: 18px 0;
+  transition:
+    background 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+    border-color 0.35s ease,
+    padding 0.35s ease,
+    box-shadow 0.35s ease;
+  border-bottom: 1px solid transparent;
+}
+
+.site-header--scrolled {
+  background: rgba(3, 1, 15, 0.82);
+  backdrop-filter: blur(22px);
+  -webkit-backdrop-filter: blur(22px);
+  border-bottom-color: rgba(255, 255, 255, 0.055);
+  padding: 12px 0;
+  box-shadow: 0 4px 40px rgba(0, 0, 0, 0.35);
+}
+
+/* ── INNER LAYOUT ──────────────────────────────── */
+.header-inner {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 80px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+}
+
+/* ── LOGO ──────────────────────────────────────── */
+.header-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  flex-shrink: 0;
+}
+
+.logo-mark {
+  width: 34px;
+  height: 34px;
+  background: linear-gradient(135deg, #7c3aed, #0891b2);
+  border-radius: 9px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 17px;
+  color: white;
+  box-shadow: 0 0 18px rgba(124, 58, 237, 0.45);
+  transition:
+    box-shadow 0.25s ease,
+    transform 0.25s ease;
+}
+
+.header-logo:hover .logo-mark {
+  box-shadow: 0 0 28px rgba(124, 58, 237, 0.65);
+  transform: scale(1.05) rotate(-3deg);
+}
+
+.logo-wordmark {
+  font-size: 17px;
+  font-weight: 700;
+  color: #f8fafc;
+  letter-spacing: -0.3px;
+}
+
+.logo-accent {
+  color: #a78bfa;
+}
+
+/* ── DESKTOP NAV ───────────────────────────────── */
+.header-nav {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  flex: 1;
+  justify-content: center;
+}
+
+.nav-item {
+  position: relative;
+  padding: 7px 14px;
+  font-size: 13.5px;
+  font-weight: 500;
+  color: #94a3b8;
+  text-decoration: none;
+  border-radius: 8px;
+  transition:
+    color 0.2s ease,
+    background 0.2s ease;
+  white-space: nowrap;
+}
+
+.nav-item:hover {
+  color: #f8fafc;
+  background: rgba(255, 255, 255, 0.055);
+}
+
+.nav-item--active {
+  color: #f8fafc;
+  background: rgba(124, 58, 237, 0.1);
+}
+
+.nav-item--active:hover {
+  background: rgba(124, 58, 237, 0.15);
+}
+
+.nav-indicator {
+  position: absolute;
+  bottom: 5px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #7c3aed;
+  box-shadow: 0 0 7px #7c3aed;
+}
+
+/* ── RIGHT ACTIONS ─────────────────────────────── */
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+/* GitHub pill button */
+.github-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 7px 14px;
+  background: rgba(255, 255, 255, 0.055);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 9px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #e2e8f0;
+  text-decoration: none;
+  transition: all 0.22s ease;
+}
+
+.github-pill:hover {
+  background: rgba(255, 255, 255, 0.09);
+  border-color: rgba(255, 255, 255, 0.18);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+}
+
+.github-star-badge {
+  font-size: 10.5px;
+  padding: 2px 9px;
+  background: rgba(251, 191, 36, 0.1);
+  border: 1px solid rgba(251, 191, 36, 0.25);
+  border-radius: 100px;
+  color: #fbbf24;
+  font-weight: 600;
+}
+
+/* ── HAMBURGER ─────────────────────────────────── */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  width: 38px;
+  height: 38px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 9px;
+  cursor: pointer;
+  padding: 0;
+  transition: background 0.2s ease;
+}
+
+.hamburger:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.hamburger span {
+  display: block;
+  width: 18px;
+  height: 2px;
+  background: #94a3b8;
+  border-radius: 2px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-origin: center;
+}
+
+.hamburger--open span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+.hamburger--open span:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0);
+}
+.hamburger--open span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* ── MOBILE DRAWER ─────────────────────────────── */
+.mobile-drawer {
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  background: rgba(3, 1, 15, 0.95);
+  backdrop-filter: blur(22px);
+  -webkit-backdrop-filter: blur(22px);
+  border-top: 1px solid rgba(255, 255, 255, 0.055);
+}
+
+.mobile-drawer--open {
+  max-height: 500px;
+}
+
+.mobile-nav {
+  display: flex;
+  flex-direction: column;
+  padding: 16px 24px 8px;
+  gap: 2px;
+}
+
+.mobile-nav-item {
+  padding: 12px 14px;
+  font-size: 15px;
+  font-weight: 500;
+  color: #94a3b8;
+  text-decoration: none;
+  border-radius: 10px;
+  transition:
+    color 0.2s ease,
+    background 0.2s ease;
+}
+
+.mobile-nav-item:hover {
+  color: #f8fafc;
+  background: rgba(255, 255, 255, 0.055);
+}
+
+.mobile-nav-item--active {
+  color: #a78bfa;
+  background: rgba(124, 58, 237, 0.1);
+}
+
+.mobile-github-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 8px 24px 24px;
+  padding: 12px 18px;
+  background: rgba(255, 255, 255, 0.055);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #e2e8f0;
+  text-decoration: none;
+  transition: background 0.2s ease;
+}
+
+.mobile-github-btn:hover {
+  background: rgba(255, 255, 255, 0.09);
+}
+
+/* ── RESPONSIVE ────────────────────────────────── */
+@media (max-width: 1100px) {
+  .header-inner {
+    padding: 0 40px;
+  }
+  .header-nav {
+    display: none;
+  }
+  .hamburger {
+    display: flex;
+  }
+}
+
+@media (max-width: 640px) {
+  .header-inner {
+    padding: 0 20px;
+  }
+  .github-pill span:not(.github-star-badge) {
+    display: none;
+  }
+  .github-pill {
+    padding: 7px 10px;
+  }
+}
