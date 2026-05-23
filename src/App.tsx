@@ -132,12 +132,9 @@ const App: React.FC = () => {
 
         <Route path='*' element={<NotFoundPage />} />
       </Routes>
-      <ConditionalFooter />
+      <Footer />
     </Router>
   );
 };
-const ConditionalFooter: React.FC = () => {
-  const location = useLocation();
-  return location.pathname === '/' ? null : <Footer />;
-};
+
 export default App;
