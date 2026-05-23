@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import BackToTopButton from './BackToTop';
+import { PenLine, BookOpen, Tag, Send } from 'lucide-react';
 
 interface Post {
   title: string;
@@ -7,11 +9,13 @@ interface Post {
   date: string;
 }
 
-const Stories = () => {
+const Stories: React.FC = () => {
   const [posts, setPosts] = useState<Post[]>([]);
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
   const [category, setCategory] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitMessage, setSubmitMessage] = useState('');
 
   useEffect(() => {
     const fetchPosts = async () => {
@@ -22,159 +26,182 @@ const Stories = () => {
         if (response.ok) {
           const data = await response.json();
           setPosts(data);
-        } else {
-          console.error('Failed to fetch posts');
         }
       } catch (error) {
         console.error('Error fetching posts:', error);
       }
     };
-
     fetchPosts();
   }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (!title || !content || !category) return;
 
-    if (title && content && category) {
-      const newPost = {
-        title,
-        content,
-        category,
-        date: new Date().toISOString(),
-      };
+    setIsSubmitting(true);
+    const newPost: Post = {
+      title,
+      content,
+      category,
+      date: new Date().toISOString(),
+    };
 
-      try {
-        const response = await fetch(
-          'http://localhost:5000/api/stories/saveposts',
-          {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(newPost),
-          },
-        );
+    try {
+      const response = await fetch(
+        'http://localhost:5000/api/stories/saveposts',
+        {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(newPost),
+        },
+      );
 
-        if (response.ok) {
-          const savedPost = await response.json();
-          setPosts([savedPost, ...posts]);
-        } else {
-          console.error('Failed to save the post');
-        }
-      } catch (error) {
-        console.error('Error saving the post:', error);
+      if (response.ok) {
+        const savedPost = await response.json();
+        setPosts([savedPost, ...posts]);
+        setTitle('');
+        setContent('');
+        setCategory('');
+        setSubmitMessage('Your story has been shared!');
+        setTimeout(() => setSubmitMessage(''), 3000);
+      } else {
+        console.error('Failed to save the post');
       }
-
-      setTitle('');
-      setContent('');
-      setCategory('');
+    } catch (error) {
+      console.error('Error saving the post:', error);
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
   return (
-    <div className='min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900'>
-      <h1 className='text-3xl font-bold text-center mb-5 text-gray-100 mt-20'>
-        Real Stories, Real Advice: Share Your Experience
-      </h1>
-      {posts.length === 0 && (
-        <p className='text-gray-400 text-center mb-6'>
-          No posts yet. Share your experience!
-        </p>
-      )}
+    <div className='stories-root'>
+      <div className='stories-orb-1' />
+      <div className='stories-orb-2' />
+      <BackToTopButton />
 
-      <div className='flex flex-col lg:flex-row items-start justify-center gap-8 px-6 lg:px-20 mb-14'>
-        {/* Left side - Posts */}
-        <div
-          className={`space-y-6 ${posts.length === 0 ? 'hidden' : 'flex-1'}`}
-        >
+      {/* Page Header */}
+      <div className='stories-hero'>
+        <span className='section-label'>Community</span>
+        <h1 className='stories-title'>Real Stories, Real Advice</h1>
+        <p className='stories-subtitle'>
+          Share your experience with GlassyUI and inspire the community. Every
+          story matters.
+        </p>
+      </div>
+
+      {/* Main Content */}
+      <div className='stories-layout'>
+        {/* Left — Posts Feed */}
+        <div className='stories-feed'>
           {posts.length === 0 ? (
-            <p className='text-gray-400 text-center'>
-              No posts yet. Share your experience!
-            </p>
+            <div className='stories-empty'>
+              <BookOpen size={48} className='stories-empty-icon' />
+              <p className='stories-empty-title'>No stories yet.</p>
+              <p className='stories-empty-desc'>
+                Be the first to share your experience!
+              </p>
+            </div>
           ) : (
             posts.map((post, index) => (
-              <div
-                key={index}
-                className='bg-gray-800 text-white shadow-lg rounded-xl p-8 border border-gray-700 hover:shadow-xl transition-all duration-300 ease-in-out'
-              >
-                <h3 className='text-2xl font-bold text-gray-100 mb-2'>
-                  {post.title}
-                </h3>
-                <p className='text-sm text-indigo-400 font-medium mb-6'>
-                  {post.category}
-                </p>
-                <p className='text-gray-300 leading-relaxed mb-4'>
-                  {post.content}
-                </p>
-                <div className='flex items-center justify-between'>
-                  <p className='text-xs text-gray-500'>
+              <div key={index} className='stories-post-card'>
+                <div className='stories-post-header'>
+                  <h3 className='stories-post-title'>{post.title}</h3>
+                  <span className='stories-post-date'>
                     {new Date(post.date).toLocaleDateString()}
-                  </p>
-                  <button className='text-indigo-500 text-sm font-medium border border-indigo-100 rounded-full px-4 py-1 hover:bg-indigo-700 transition-colors'>
-                    Read More
-                  </button>
+                  </span>
                 </div>
+                <div className='stories-post-category'>
+                  <Tag size={13} />
+                  <span>{post.category}</span>
+                </div>
+                <p className='stories-post-content'>{post.content}</p>
               </div>
             ))
           )}
         </div>
 
-        {/* Right side - Form */}
-        <div className='w-full lg:w-2/5 bg-gray-800 p-6 rounded-lg shadow-md'>
-          <form className='space-y-4'>
-            <input
-              type='text'
-              placeholder='Title of your story'
-              value={title}
-              onChange={e => setTitle(e.target.value)}
-              className='w-full p-3 rounded-md border border-gray-600 bg-gray-700 text-white focus:outline-none focus:border-blue-500'
-            />
-            <textarea
-              placeholder='Write about your story...'
-              value={content}
-              onChange={e => setContent(e.target.value)}
-              className='w-full p-3 h-32 rounded-md border border-gray-600 bg-gray-700 text-white focus:outline-none focus:border-blue-500'
-            ></textarea>
-            <select
-              value={category}
-              onChange={e => setCategory(e.target.value)}
-              className='block w-full px-4 py-2 bg-gray-700 text-white border border-gray-600 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500'
-            >
-              <option value='' disabled>
-                Select Category
-              </option>
-              <optgroup label='GlassyUI-Components'>
-                <option value='GlassyUI Introduction'>
-                  GlassyUI Introduction
+        {/* Right — Submit Form */}
+        <div className='stories-form-card'>
+          <div className='stories-form-header'>
+            <PenLine size={22} className='stories-form-icon' />
+            <h2 className='stories-form-title'>Share Your Story</h2>
+          </div>
+
+          <form onSubmit={handleSubmit} className='stories-form'>
+            <div className='stories-field'>
+              <label className='stories-label'>Story Title</label>
+              <input
+                type='text'
+                placeholder='Give your story a title...'
+                value={title}
+                onChange={e => setTitle(e.target.value)}
+                required
+                className='stories-input'
+              />
+            </div>
+
+            <div className='stories-field'>
+              <label className='stories-label'>Your Story</label>
+              <textarea
+                placeholder='Write about your experience with GlassyUI...'
+                value={content}
+                onChange={e => setContent(e.target.value)}
+                required
+                rows={5}
+                className='stories-textarea'
+              />
+            </div>
+
+            <div className='stories-field'>
+              <label className='stories-label'>Category</label>
+              <select
+                value={category}
+                onChange={e => setCategory(e.target.value)}
+                required
+                className='stories-select'
+              >
+                <option value='' disabled>
+                  Select a category
                 </option>
-                <option value='Customizing GlassyUI Components'>
-                  Customizing GlassyUI Components
-                </option>
-                <option value='Advanced GlassyUI Techniques'>
-                  Advanced GlassyUI Techniques
-                </option>
-                <option value='GlassyUI Best Practices'>
-                  GlassyUI Best Practices
-                </option>
-                <option value='Contributing to GlassyUI'>
-                  Contributing to GlassyUI
-                </option>
-                <option value='React and GlassyUI Integration'>
-                  React and GlassyUI Integration
-                </option>
-                <option value='GlassyUI in Real Projects'>
-                  GlassyUI in Real Projects
-                </option>
-                <option value='GlassyUI Updates'>GlassyUI Updates</option>
-              </optgroup>
-            </select>
+                <optgroup label='GlassyUI-Components'>
+                  <option value='GlassyUI Introduction'>
+                    GlassyUI Introduction
+                  </option>
+                  <option value='Customizing GlassyUI Components'>
+                    Customizing GlassyUI Components
+                  </option>
+                  <option value='Advanced GlassyUI Techniques'>
+                    Advanced GlassyUI Techniques
+                  </option>
+                  <option value='GlassyUI Best Practices'>
+                    GlassyUI Best Practices
+                  </option>
+                  <option value='Contributing to GlassyUI'>
+                    Contributing to GlassyUI
+                  </option>
+                  <option value='React and GlassyUI Integration'>
+                    React and GlassyUI Integration
+                  </option>
+                  <option value='GlassyUI in Real Projects'>
+                    GlassyUI in Real Projects
+                  </option>
+                  <option value='GlassyUI Updates'>GlassyUI Updates</option>
+                </optgroup>
+              </select>
+            </div>
+
+            {submitMessage && (
+              <p className='stories-success'>{submitMessage}</p>
+            )}
 
             <button
-              onClick={handleSubmit}
-              className='w-full bg-blue-500 hover:bg-blue-600 hover:text-white text-white font-semibold py-2 rounded-md focus:outline-none'
+              type='submit'
+              disabled={isSubmitting}
+              className='stories-submit'
             >
-              Post Experience
+              <Send size={16} />
+              {isSubmitting ? 'Posting...' : 'Post Your Story'}
             </button>
           </form>
         </div>
