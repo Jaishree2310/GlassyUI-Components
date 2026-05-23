@@ -49,12 +49,16 @@ const ComponentCard: React.FC<ComponentCardProps> = ({
 }) => {
   return (
     <div
-      className={`${getGlassyClasses()} p-6 flex flex-col h-full cursor-pointer group transition-all duration-300 hover:bg-white/20 hover:scale-105 hover:shadow-xl`}
+      className={`${getGlassyClasses()} p-8 flex flex-col h-full cursor-pointer group transition-all duration-500 hover:bg-white/10 hover:-translate-y-2 hover:shadow-2xl border border-white/10 rounded-3xl backdrop-blur-xl overflow-hidden relative`}
       onClick={onClick}
     >
       <div className='flex items-center mb-4'>
-        <div className='p-2 bg-white/20 rounded-lg mr-4'>{icon}</div>
-        <h3 className='text-xl font-bold'>{title}</h3>
+        <div className='p-3 bg-gradient-to-br from-pink-500/20 to-purple-500/20 rounded-2xl mr-4 border border-white/10 shadow-lg'>
+          {icon}
+        </div>
+        <h3 className='text-2xl font-bold tracking-wide group-hover:text-pink-200 transition-colors duration-300'>
+          {title}
+        </h3>
         {status && (
           <span className='ml-2 px-2 py-1 bg-green-200 text-green-700 text-xs font-medium rounded'>
             {status}

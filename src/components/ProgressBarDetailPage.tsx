@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ArrowLeft, Copy, Check } from 'lucide-react';
 import BackToTopButton from './BackToTop';
+import ColorPicker from './ColorPicker';
 
 type Theme = 'pink' | 'brown' | 'white' | 'black' | 'pop';
 
@@ -225,13 +226,23 @@ function App() {
           <label htmlFor='colorPicker' className='mr-2'>
             Choose Color:
           </label>
-          <input
-            type='color'
-            id='colorPicker'
-            value={customColor}
-            onChange={e => setCustomColor(e.target.value)}
-            className='rounded-md cursor-pointer'
-          />
+          <div className='flex space-x-2'>
+            <ColorPicker value={customColor} onChange={setCustomColor} />
+            <div className='flex items-center border-b border-white/30 focus-within:border-white transition-colors'>
+              <span className='text-white/50 font-mono text-sm pl-1'>#</span>
+              <input
+                type='text'
+                value={customColor.replace('#', '')}
+                onChange={e => {
+                  const val = e.target.value.replace(/[^0-9a-fA-F]/g, '');
+                  setCustomColor(`#${val.slice(0, 6)}`);
+                }}
+                className='bg-transparent w-20 py-1 px-1 text-white font-mono uppercase outline-none text-sm tracking-widest'
+                placeholder='FFFFFF'
+                maxLength={6}
+              />
+            </div>
+          </div>
         </div>
 
         <div className='mb-4'>
