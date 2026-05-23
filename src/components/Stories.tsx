@@ -7,7 +7,7 @@ interface Post {
   date: string;
 }
 
-const Stories = () => {
+const Stories: React.FC = () => {
   const [posts, setPosts] = useState<Post[]>([]);
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
@@ -22,11 +22,9 @@ const Stories = () => {
         if (response.ok) {
           const data = await response.json();
           setPosts(data);
-        } else {
-          console.error('Failed to fetch posts');
         }
-      } catch (error) {
-        console.error('Error fetching posts:', error);
+      } catch (err) {
+        console.error('Error fetching posts:', err);
       }
     };
 
@@ -35,45 +33,37 @@ const Stories = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-
-    if (title && content && category) {
-      const newPost = {
-        title,
-        content,
-        category,
-        date: new Date().toISOString(),
-      };
-
-      try {
-        const response = await fetch(
-          'http://localhost:5000/api/stories/saveposts',
-          {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(newPost),
-          },
-        );
-
-        if (response.ok) {
-          const savedPost = await response.json();
-          setPosts([savedPost, ...posts]);
-        } else {
-          console.error('Failed to save the post');
-        }
-      } catch (error) {
-        console.error('Error saving the post:', error);
+    if (!title || !content || !category) return;
+    const newPost = {
+      title,
+      content,
+      category,
+      date: new Date().toISOString(),
+    };
+    try {
+      const response = await fetch(
+        'http://localhost:5000/api/stories/saveposts',
+        {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(newPost),
+        },
+      );
+      if (response.ok) {
+        const saved = await response.json();
+        setPosts([saved, ...posts]);
+        setTitle('');
+        setContent('');
+        setCategory('');
       }
-
-      setTitle('');
-      setContent('');
-      setCategory('');
+    } catch (err) {
+      console.error('Error saving post:', err);
     }
   };
 
   return (
-    <div className='relative min-h-screen overflow-hidden bg-[#03010f] text-white'>
+    <div className='relative min-h-screen bg-[#03010f] text-white'>
+      <style>{`.stories-select option{background: #0f172a; color: #e6eef8;}`}</style>
       <div className='pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(124,58,237,0.24),transparent_30%),radial-gradient(circle_at_top_right,rgba(34,211,238,0.18),transparent_26%),radial-gradient(circle_at_bottom,rgba(244,114,182,0.14),transparent_30%)]' />
       <div className='pointer-events-none absolute -left-36 top-24 h-72 w-72 rounded-full bg-violet-500/20 blur-3xl' />
       <div className='pointer-events-none absolute -right-24 top-1/2 h-80 w-80 rounded-full bg-cyan-400/10 blur-3xl' />
@@ -109,45 +99,40 @@ const Stories = () => {
           <div
             className={`space-y-6 ${posts.length === 0 ? 'hidden' : 'flex-1'}`}
           >
-            {posts.length === 0
-              ? null
-              : posts.map((post, index) => (
-                  <article
-                    key={index}
-                    className='glassmorphism rounded-3xl border border-white/15 bg-white/10 p-6 shadow-[0_20px_60px_rgba(2,6,23,0.35)] backdrop-blur-xl transition-transform duration-300 hover:-translate-y-1 hover:border-white/25 sm:p-8'
-                  >
-                    <div className='mb-4 flex flex-wrap items-center justify-between gap-3'>
-                      <p className='inline-flex items-center rounded-full border border-cyan-300/20 bg-cyan-300/10 px-3 py-1 text-xs font-medium text-cyan-100'>
-                        {post.category}
-                      </p>
-                      <p className='text-xs text-slate-400'>
-                        {new Date(post.date).toLocaleDateString()}
-                      </p>
-                    </div>
-                    <h3 className='text-2xl font-semibold text-white'>
-                      {post.title}
-                    </h3>
-                    <p className='mt-4 leading-7 text-slate-300'>
-                      {post.content}
+            {posts.length > 0 &&
+              posts.map((post, idx) => (
+                <article
+                  key={idx}
+                  className='glassmorphism rounded-3xl border border-white/15 bg-white/10 p-6 shadow-[0_20px_60px_rgba(2,6,23,0.35)] backdrop-blur-xl transition-transform duration-300 hover:-translate-y-1 hover:border-white/25 sm:p-8'
+                >
+                  <div className='mb-4 flex flex-wrap items-center justify-between gap-3'>
+                    <p className='inline-flex items-center rounded-full border border-cyan-300/20 bg-cyan-300/10 px-3 py-1 text-xs font-medium text-cyan-100'>
+                      {post.category}
                     </p>
-                    <div className='mt-6 flex justify-end'>
-                      <button
-                        type='button'
-                        className='rounded-full border border-white/15 bg-white/10 px-4 py-2 text-sm font-medium text-white transition-colors duration-300 hover:bg-white/20'
-                      >
-                        Read More
-                      </button>
-                    </div>
-                  </article>
-                ))}
+                    <p className='text-xs text-slate-400'>
+                      {new Date(post.date).toLocaleDateString()}
+                    </p>
+                  </div>
+                  <h3 className='text-2xl font-semibold text-white'>
+                    {post.title}
+                  </h3>
+                  <p className='mt-4 leading-7 text-slate-300'>
+                    {post.content}
+                  </p>
+                  <div className='mt-6 flex justify-end'>
+                    <button
+                      type='button'
+                      className='rounded-full border border-white/15 bg-white/10 px-4 py-2 text-sm font-medium text-white transition-colors duration-300 hover:bg-white/20'
+                    >
+                      Read More
+                    </button>
+                  </div>
+                </article>
+              ))}
           </div>
 
           <div
-            className={`glassmorphism w-full rounded-3xl border border-white/15 bg-white/10 p-6 shadow-[0_24px_70px_rgba(2,6,23,0.4)] backdrop-blur-xl ${
-              posts.length === 0
-                ? 'mx-auto max-w-xl'
-                : 'lg:sticky lg:top-24 lg:w-[420px] lg:mx-auto'
-            }`}
+            className={`glassmorphism w-full rounded-3xl border border-white/15 bg-white/10 p-6 shadow-[0_24px_70px_rgba(2,6,23,0.4)] backdrop-blur-xl ${posts.length === 0 ? 'mx-auto max-w-xl' : 'lg:sticky lg:top-24 lg:w-[420px] lg:mx-auto'}`}
           >
             <form className='space-y-4' onSubmit={handleSubmit}>
               <div>
@@ -172,7 +157,7 @@ const Stories = () => {
                   value={content}
                   onChange={e => setContent(e.target.value)}
                   className='h-36 w-full rounded-2xl border border-white/15 bg-white/10 px-4 py-3 text-white placeholder:text-slate-400 outline-none transition-colors duration-300 focus:border-cyan-300/50 focus:bg-white/15'
-                ></textarea>
+                />
               </div>
 
               <div>
@@ -182,7 +167,7 @@ const Stories = () => {
                 <select
                   value={category}
                   onChange={e => setCategory(e.target.value)}
-                  className='block w-full rounded-2xl border border-white/15 bg-white/10 px-4 py-3 text-white outline-none transition-colors duration-300 focus:border-cyan-300/50 focus:bg-white/15'
+                  className='stories-select block w-full rounded-2xl border border-white/15 bg-white/10 px-4 py-3 text-white outline-none transition-colors duration-300 focus:border-cyan-300/50 focus:bg-white/15'
                 >
                   <option value='' disabled className='bg-slate-950'>
                     Select Category
