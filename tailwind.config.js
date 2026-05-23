@@ -5,7 +5,7 @@ module.exports = {
       backdropFilter: {
         none: 'none',
         blur: 'blur(20px)',
-        darkmode: 'class',
+        darkMode: 'class',
       },
       animation: {
         blob: 'blob 7s infinite',
