@@ -3,7 +3,6 @@ import { Star, Code, Package, Zap } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import './GlassyUILandingPage.css';
 import gsap from 'gsap';
-import Footer from './Footer';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 
@@ -90,7 +89,7 @@ const GlassyUILandingPage: React.FC = () => {
       <div className='homeGSap relative z-10 w-full max-w-4xl mt-4'>
         <header className='w-full flex justify-between items-center mb-6'>
           <div className='text-2xl font-bold text-white'>
-            <span className='text-blue-400'>Glassy</span>UI
+            <span className='text-blue-400 font-mono'>Glassy</span>UI
           </div>
           <a
             href={githubRepoUrl}
@@ -102,14 +101,13 @@ const GlassyUILandingPage: React.FC = () => {
             <span>Star the repo</span>
           </a>
         </header>
-
         <main
           className='text-center p-12 rounded-xl backdrop-filter backdrop-blur-lg bg-white bg-opacity-10 shadow-lg border border-white border-opacity-20 relative'
           data-aos='flip-up'
           data-aos-duration='2500'
         >
           <h1 className='text-7xl font-bold mb-4 text-white'>
-            <span className='animated-glossy-text'>Glassy UI</span>
+            <span className='animated-glossy-text'>GlassyUI</span>
           </h1>
           <p className='text-2xl mb-8 text-white'>
             A sleek glassmorphism UI library for modern web applications.

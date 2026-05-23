@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import gsap from 'gsap';
+import { Star } from 'lucide-react';
 import { useAuth } from '../login/contexts/authContext/index';
 import UserAccount from '../login/UserAccount';
 
@@ -28,12 +29,15 @@ const Header: React.FC = () => {
   }, []);
 
   const { currentUser, userLoggedIn } = useAuth();
+  const githubRepoUrl = 'https://github.com/Jaishree2310/GlassyUI-Components';
 
   return (
     <nav style={navStyle}>
-      <h1 className='text-white text-[20px] font-bold'>
-        <span className='text-blue-400'>Glass</span>UI
-      </h1>
+      <Link to='/' style={{ textDecoration: 'none' }}>
+        <h1 className='text-white text-[20px] font-bold cursor-pointer hover:opacity-90 transition-opacity'>
+          <span className='text-blue-400'>Glassy</span>UI
+        </h1>
+      </Link>
       <ul style={ulStyle}>
         <li style={liStyle} className='navbar-item'>
           <Link
@@ -86,60 +90,41 @@ const Header: React.FC = () => {
           </Link>
         </li>
       </ul>
-      {userLoggedIn && currentUser ? (
-        <UserAccount
-          email={currentUser.email ?? ''}
-          username={currentUser.displayName ?? ''}
-        />
-      ) : (
-        <ul className='text-white flex gap-12 justify-center items-center'>
-          <li
-            style={linkStyle}
-            onMouseEnter={e => (e.currentTarget.style.color = '#fde047')}
-            onMouseLeave={e => (e.currentTarget.style.color = 'white')}
-            className='cursor-pointer'
-          >
-            {/* <Link
-              to='/signin'
-              style={linkStyle}
-              onMouseEnter={e => (e.currentTarget.style.color = '#fde047')}
-              onMouseLeave={e => (e.currentTarget.style.color = 'white')}
-            >
-              Sign in
-            </Link> */}
-          </li>
-          <li
-            style={linkStyle}
-            onMouseEnter={e => (e.currentTarget.style.color = '#fde047')}
-            onMouseLeave={e => (e.currentTarget.style.color = 'white')}
-            className='cursor-pointer'
-          >
-            {/* <Link
-              to='/signup'
-              style={linkStyle}
-              onMouseEnter={e => (e.currentTarget.style.color = '#fde047')}
-              onMouseLeave={e => (e.currentTarget.style.color = 'white')}
-            >
-              Sign Up
-            </Link> */}
-          </li>
-        </ul>
-      )}
+      <div className='flex items-center gap-4 navbar-item'>
+        <a
+          href={githubRepoUrl}
+          target='_blank'
+          rel='noopener noreferrer'
+          className='flex items-center space-x-2 text-sm text-white hover:text-yellow-300 transition-colors duration-300 px-4 py-1.5 rounded-full border border-white border-opacity-20 bg-white bg-opacity-10 backdrop-blur-sm'
+        >
+          <Star size={16} className='text-yellow-300' />
+          <span>Star the repo</span>
+        </a>
+        {userLoggedIn && currentUser && (
+          <UserAccount
+            email={currentUser.email ?? ''}
+            username={currentUser.displayName ?? ''}
+          />
+        )}
+      </div>
     </nav>
   );
 };
 
 const navStyle: React.CSSProperties = {
-  padding: '10px',
+  padding: '12px 24px',
   position: 'fixed',
   top: '0',
+  left: '0',
   width: '100%',
   zIndex: 1000,
-  backdropFilter: 'blur(10px)',
-  WebkitBackdropFilter: 'blur(10px)',
-  boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
+  background: 'rgba(15, 23, 42, 0.45)',
+  backdropFilter: 'blur(12px)',
+  WebkitBackdropFilter: 'blur(12px)',
+  borderBottom: '1px solid rgba(255, 255, 255, 0.08)',
+  boxShadow: '0 4px 30px rgba(0, 0, 0, 0.1)',
   display: 'flex',
-  justifyContent: 'space-around',
+  justifyContent: 'space-between',
   alignItems: 'center',
 };
 
@@ -148,19 +133,20 @@ const ulStyle: React.CSSProperties = {
   margin: 0,
   padding: 0,
   display: 'flex',
-  justifyContent: 'flex-end',
-  marginRight: '50px',
-  gap: '20px',
+  justifyContent: 'center',
+  alignItems: 'center',
+  gap: '24px',
 };
 
 const liStyle: React.CSSProperties = {
-  margin: '0 10px',
+  margin: 0,
 };
 
 const linkStyle: React.CSSProperties = {
   color: 'white',
   textDecoration: 'none',
   transition: 'color 0.3s ease',
+  fontWeight: 500,
 };
 
 export default Header;
