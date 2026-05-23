@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import BackToTopButton from './BackToTop';
+import { PenLine, BookOpen, Tag, Send } from 'lucide-react';
 
 interface Post {
   title: string;
@@ -12,6 +14,8 @@ const Stories: React.FC = () => {
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
   const [category, setCategory] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitMessage, setSubmitMessage] = useState('');
 
   useEffect(() => {
     const fetchPosts = async () => {
@@ -27,7 +31,6 @@ const Stories: React.FC = () => {
         console.error('Error fetching posts:', err);
       }
     };
-
     fetchPosts();
   }, []);
 
