@@ -42,7 +42,7 @@ const GlassyUILandingPage: React.FC = () => {
   }, []);
 
   return (
-    <div className='min-h-screen flex flex-col items-center justify-center pt-10 font-mono relative overflow-hidden bg-gradient-to-br from-gray-800 via-gray-900 to-black'>
+    <div className='min-h-screen flex flex-col items-center justify-center pt-24 pb-12 font-sans relative overflow-hidden bg-gradient-to-br from-gray-800 via-gray-900 to-black'>
       <div
         className='absolute inset-0 w-full h-full opacity-20'
         style={{
@@ -59,7 +59,7 @@ const GlassyUILandingPage: React.FC = () => {
           {' '}
           {/* Adjusted mb-8 to mb-4 */}
           <div className='text-2xl font-bold text-white'>
-            <span className='text-blue-400'>Glassy</span>UI
+            <span className='text-blue-400 font-mono'>Glassy</span>UI
           </div>
           <a
             href={githubRepoUrl}
@@ -71,15 +71,13 @@ const GlassyUILandingPage: React.FC = () => {
             <span>Star the repo</span>
           </a>
         </header>
-
         <main
           className={` text-center p-12 rounded-xl backdrop-filter backdrop-blur-lg bg-white bg-opacity-10 shadow-lg border border-white border-opacity-20 relative`}
-          style={{ marginTop: '20px' }} // Added marginTop for spacing
           data-aos='flip-up'
           data-aos-duration='2500'
         >
           <h1 className='text-7xl font-bold mb-4 text-white'>
-            <span className='animated-glossy-text'>Glassy UI</span>
+            <span className='animated-glossy-text'>GlassyUI</span>
           </h1>
           <p className='text-2xl mb-8 text-white'>
             A sleek glassmorphism UI library for modern web applications.
