@@ -57,7 +57,7 @@ const AboutUsPage: React.FC = () => {
                   Developers
                 </h3>
                 <p className='text-gray-300 text-sm leading-relaxed'>
-                  Whether you're just starting out or a seasoned expert, your
+                  Whether you are just starting out or a seasoned expert, your
                   skills can help shape our offerings.
                 </p>
               </div>

@@ -51,32 +51,12 @@ const Header: React.FC = () => {
         </li>
         <li style={liStyle} className='navbar-item'>
           <Link
-            to='/donate'
-            style={linkStyle}
-            onMouseEnter={e => (e.currentTarget.style.color = '#fde047')}
-            onMouseLeave={e => (e.currentTarget.style.color = 'white')}
-          >
-            Sponsor
-          </Link>
-        </li>
-        <li style={liStyle} className='navbar-item'>
-          <Link
             to='/about'
             style={linkStyle}
             onMouseEnter={e => (e.currentTarget.style.color = '#fde047')}
             onMouseLeave={e => (e.currentTarget.style.color = 'white')}
           >
             About Us
-          </Link>
-        </li>
-        <li style={liStyle} className='navbar-item'>
-          <Link
-            to='/contact'
-            style={linkStyle}
-            onMouseEnter={e => (e.currentTarget.style.color = '#fde047')}
-            onMouseLeave={e => (e.currentTarget.style.color = 'white')}
-          >
-            Contact Us
           </Link>
         </li>
         <li style={liStyle} className='navbar-item'>
