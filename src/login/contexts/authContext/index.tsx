@@ -34,6 +34,10 @@ export function AuthProvider({ children }: AuthProviderProps) {
   const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
+    if (!auth) {
+      setLoading(false);
+      return;
+    }
     const unsubscribe = onAuthStateChanged(auth, initializeUser);
     return unsubscribe;
   }, []);
