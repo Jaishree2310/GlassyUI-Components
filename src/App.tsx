@@ -9,6 +9,7 @@ import {
 } from 'react-router-dom';
 
 import ScrollProgressBar from './components/ScrollProgress'; // Import your ScrollProgressBar component
+import ScrollToTop from './components/ScrollToTop';
 import GlassyUILandingPage from './components/GlassyUILandingPage';
 import GlassyUIComponentsPage from './components/GlassyUIComponentsPage';
 import ButtonDetailsPage from './components/ButtonDetailsPage';
@@ -80,6 +81,7 @@ const ThemeToggle: React.FC = () => {
 const App: React.FC = () => {
   return (
     <Router>
+      <ScrollToTop />
       <Header />
       <AiChatbot />
       {/* <ThemeToggle /> */}
