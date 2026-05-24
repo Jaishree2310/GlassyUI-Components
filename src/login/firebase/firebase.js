@@ -1,9 +1,6 @@
 import { initializeApp } from 'firebase/app';
 import { getAuth } from 'firebase/auth';
 
-// Your web app's Firebase configuration
-// Create an accont on firebase and you get all this configuration just replace that with this
-// Then your sign-in / sign-up feature will work smothly
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
   authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
@@ -14,7 +11,19 @@ const firebaseConfig = {
   measurementId: process.env.REACT_APP_FIREBASE_MEASUREMENT_ID,
 };
 
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
+/** @type {import('firebase/auth').Auth | null} */
+let auth = null;
+/** @type {import('firebase/app').FirebaseApp | null} */
+let app = null;
+
+try {
+  app = initializeApp(firebaseConfig);
+  auth = getAuth(app);
+} catch (e) {
+  console.warn(
+    'Firebase initialization failed — auth features disabled:',
+    e.message,
+  );
+}
+
 export { auth, app };
