@@ -253,7 +253,7 @@ const Toast: React.FC<ToastProps> = ({ id, title, message, autoDismiss = 9000, t
             <pre className='bg-gray-800 text-white p-6 rounded-lg overflow-x-auto whitespace-pre-wrap max-sm:p-2 max-sm:text-[0.55rem]'>
               {generatorCode}
             </pre>
-            <CopyButton text={generatorCode} codeKey='basicUsage' />
+            <CopyButton text={generatorCode} codeKey='generatorCode' />
           </div>
           <h2 className='text-3xl font-bold mb-6 text-gray-100'>
             Toast Component
@@ -262,7 +262,7 @@ const Toast: React.FC<ToastProps> = ({ id, title, message, autoDismiss = 9000, t
             <pre className='bg-gray-800 text-white p-6 rounded-lg overflow-x-auto whitespace-pre-wrap max-sm:p-2 max-sm:text-[0.55rem]'>
               {toastCode}
             </pre>
-            <CopyButton text={toastCode} codeKey='basicUsage' />
+            <CopyButton text={toastCode} codeKey='toastCode' />
           </div>
           <h2 className='text-3xl font-bold mb-6 text-gray-100'>
             Aniamtion CSS
@@ -271,7 +271,7 @@ const Toast: React.FC<ToastProps> = ({ id, title, message, autoDismiss = 9000, t
             <pre className='bg-gray-800 text-white p-6 rounded-lg overflow-x-auto whitespace-pre-wrap max-sm:p-2 max-sm:text-[0.55rem]'>
               {animationCSS}
             </pre>
-            <CopyButton text={animationCSS} codeKey='basicUsage' />
+            <CopyButton text={animationCSS} codeKey='animationCSS' />
           </div>
         </div>
 

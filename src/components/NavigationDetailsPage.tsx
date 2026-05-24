@@ -34,7 +34,7 @@ const NavigationDetailsPage: React.FC = () => {
       {copiedText ? (
         <Check size={16} className='text-green-600' />
       ) : (
-        <Copy size={16} className='text-gray-800' />
+        <Copy size={16} className='text-gray-100' />
       )}
     </button>
   );
