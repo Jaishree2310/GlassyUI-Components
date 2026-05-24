@@ -22,6 +22,11 @@ import {
   Sparkles,
 } from 'lucide-react';
 import { HiOutlineWrenchScrewdriver } from 'react-icons/hi2';
+import { HiOutlineSquares2X2 } from 'react-icons/hi2';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+
+// Define the ComponentCardProps interface
 
 interface ComponentCardProps {
   title: string;
@@ -196,10 +201,11 @@ const GlassyUIComponentsPage: React.FC = () => {
       onClick: () => navigate('/spinner'),
     },
     {
-      title: 'Glass Generator',
-      description: 'Create stunning glassmorphic effects with a visual editor.',
-      icon: <Sparkles size={22} />,
-      onClick: () => navigate('/generator'),
+      title: 'Skeleton Loader',
+      description:
+        'Reusable glassmorphism-inspired skeleton loaders for elegant loading states.',
+      icon: <HiOutlineSquares2X2 size={24} />,
+      onClick: () => navigate('/skeleton-loader'),
     },
   ];
 
