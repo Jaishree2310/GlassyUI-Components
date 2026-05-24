@@ -105,6 +105,13 @@ const GlassyUIComponentsPage: React.FC = () => {
 
   const componentsData = [
     {
+      title: 'Tooltip',
+      description:
+        'A context-linked hover popover component featuring a frosted glass background aesthetic.',
+      icon: <MessageSquare size={24} />,
+      onClick: () => navigate('/tooltip-details'),
+    },
+    {
       title: 'Toast',
       description:
         'Glassmorphic Toast Component. Click the button below to try it out!',
