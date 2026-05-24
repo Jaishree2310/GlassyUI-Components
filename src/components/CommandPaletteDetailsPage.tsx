@@ -40,8 +40,43 @@ const CommandPaletteDetailsPage: React.FC = () => {
   }>({});
 
   const getGlassyClasses = (opacity = 20) => {
-    return `backdrop-filter backdrop-blur-lg bg-white bg-opacity-${opacity} 
-    border border-white border-opacity-20 rounded-lg shadow-lg transition-all duration-300`;
+    const backgroundOpacityClasses: Record<number, string> = {
+      0: 'bg-opacity-0',
+      5: 'bg-opacity-5',
+      10: 'bg-opacity-10',
+      15: 'bg-opacity-15',
+      20: 'bg-opacity-20',
+      25: 'bg-opacity-25',
+      30: 'bg-opacity-30',
+      35: 'bg-opacity-35',
+      40: 'bg-opacity-40',
+      45: 'bg-opacity-45',
+      50: 'bg-opacity-50',
+      55: 'bg-opacity-55',
+      60: 'bg-opacity-60',
+      65: 'bg-opacity-65',
+      70: 'bg-opacity-70',
+      75: 'bg-opacity-75',
+      80: 'bg-opacity-80',
+      85: 'bg-opacity-85',
+      90: 'bg-opacity-90',
+      95: 'bg-opacity-95',
+      100: 'bg-opacity-100',
+    };
+
+    return [
+      'backdrop-filter',
+      'backdrop-blur-lg',
+      'bg-white',
+      backgroundOpacityClasses[opacity] ?? 'bg-opacity-20',
+      'border',
+      'border-white',
+      'border-opacity-20',
+      'rounded-lg',
+      'shadow-lg',
+      'transition-all',
+      'duration-300',
+    ].join(' ');
   };
 
   const copyToClipboard = (text: string, key: string) => {
