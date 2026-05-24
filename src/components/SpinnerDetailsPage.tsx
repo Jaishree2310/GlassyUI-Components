@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ArrowLeft, Copy, Check } from 'lucide-react';
 import BackToTopButton from './BackToTop';
+import ColorPicker from './ColorPicker';
 
 const SpinnerDetailsPage: React.FC = () => {
   const navigate = useNavigate();
@@ -64,7 +65,7 @@ const SpinnerDetailsPage: React.FC = () => {
 />`;
 
   return (
-    <div className='min-h-screen p-8 font-sans bg-gradient-to-r from-gray-800 via-gray-900 to-black text-white relative'>
+    <div className='min-h-screen pt-24 px-8 pb-8 font-sans bg-gradient-to-r from-gray-800 via-gray-900 to-black text-white relative'>
       <BackToTopButton />
       <div className='relative z-10'>
         <button
@@ -148,18 +149,23 @@ const SpinnerDetailsPage: React.FC = () => {
                 Color
               </label>
               <div className='flex items-center'>
-                <input
-                  type='color'
-                  value={customColor}
-                  onChange={e => setCustomColor(e.target.value)}
-                  className='w-8 h-8 rounded-full border-2 border-white shadow-lg mr-4'
-                />
-                <input
-                  type='text'
-                  value={customColor}
-                  onChange={e => setCustomColor(e.target.value)}
-                  className='bg-transparent border-b border-gray-400 w-full py-1 px-2 text-white'
-                />
+                <ColorPicker value={customColor} onChange={setCustomColor} />
+                <div className='flex items-center border-b border-white/30 focus-within:border-white transition-colors'>
+                  <span className='text-white/50 font-mono text-sm pl-1'>
+                    #
+                  </span>
+                  <input
+                    type='text'
+                    value={customColor.replace('#', '')}
+                    onChange={e => {
+                      const val = e.target.value.replace(/[^0-9a-fA-F]/g, '');
+                      setCustomColor(`#${val.slice(0, 6)}`);
+                    }}
+                    className='bg-transparent w-20 py-1 px-1 text-white font-mono uppercase outline-none text-sm tracking-widest'
+                    placeholder='FFFFFF'
+                    maxLength={6}
+                  />
+                </div>
               </div>
             </div>
 
