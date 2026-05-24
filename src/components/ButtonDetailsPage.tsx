@@ -68,7 +68,7 @@ function Example() {
 
   const themedButtonCode = `<Button
   style={{
-    backgroundColor: '${customBg}40',
+    backgroundColor: '${customBg}',
     color: '${customText}',
     borderColor: '${customBorder}'
   }}
