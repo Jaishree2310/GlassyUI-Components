@@ -9,6 +9,7 @@ import {
 } from 'react-router-dom';
 
 import ScrollProgressBar from './components/ScrollProgress'; // Import your ScrollProgressBar component
+import ScrollToTop from './components/ScrollToTop';
 import GlassyUILandingPage from './components/GlassyUILandingPage';
 import GlassyUIComponentsPage from './components/GlassyUIComponentsPage';
 import ButtonDetailsPage from './components/ButtonDetailsPage';
@@ -81,6 +82,7 @@ const ThemeToggle: React.FC = () => {
 const App: React.FC = () => {
   return (
     <Router>
+      <ScrollToTop />
       <Header />
       <AiChatbot />
       {/* <ThemeToggle /> */}
@@ -132,12 +134,9 @@ const App: React.FC = () => {
 
         <Route path='*' element={<NotFoundPage />} />
       </Routes>
-      <ConditionalFooter />
+      <Footer />
     </Router>
   );
 };
-const ConditionalFooter: React.FC = () => {
-  const location = useLocation();
-  return location.pathname === '/' ? null : <Footer />;
-};
+
 export default App;

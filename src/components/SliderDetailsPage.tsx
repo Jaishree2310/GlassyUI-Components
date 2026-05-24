@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ArrowLeft, Copy, Check } from 'lucide-react';
 import BackToTopButton from './BackToTop';
+import ColorPicker from './ColorPicker';
 
 const SliderDetailsPage: React.FC = () => {
   const navigate = useNavigate();
@@ -68,7 +69,7 @@ const SliderDetailsPage: React.FC = () => {
   return (
     <div className='min-h-screen p-8 font-sans bg-gradient-to-r from-gray-800 via-gray-900 to-black text-white relative'>
       <BackToTopButton />
-      <nav className='mb-8 flex items-center justify-between relative z-10'>
+      <nav className='mt-20 mb-8 flex items-center justify-between relative z-10'>
         <button
           onClick={handleBackToComponents}
           className={`flex items-center ${getGlassyClasses()} px-4 py-2 hover:bg-opacity-20 text-white`}
@@ -189,13 +190,34 @@ const SliderDetailsPage: React.FC = () => {
               <label className='block text-sm font-medium text-white'>
                 Background Color
               </label>
-              <input
+              {/* <input
                 type='color'
                 value={customBgColor}
                 onChange={e => setCustomBgColor(e.target.value)}
                 className='w-8 h-8 cursor-pointer border-none bg-transparent'
-              />
-              <span className='text-sm p-2 font-semibold'>{customBgColor}</span>
+              /> */}
+              <div className='flex space-x-2'>
+                <ColorPicker
+                  value={customBgColor}
+                  onChange={setCustomBgColor}
+                />
+                <div className='flex items-center border-b border-white/30 focus-within:border-white transition-colors'>
+                  <span className='text-white/50 font-mono text-sm pl-1'>
+                    #
+                  </span>
+                  <input
+                    type='text'
+                    value={customBgColor.replace('#', '')}
+                    onChange={e => {
+                      const val = e.target.value.replace(/[^0-9a-fA-F]/g, '');
+                      setCustomBgColor(`#${val.slice(0, 6)}`);
+                    }}
+                    className='bg-transparent w-20 py-1 px-1 text-white font-mono uppercase outline-none text-sm tracking-widest'
+                    placeholder='FFFFFF'
+                    maxLength={6}
+                  />
+                </div>
+              </div>
             </div>
             <div className='mt-8'>
               <h4 className='text-xl font-semibold mb-4'>Generated Code</h4>
