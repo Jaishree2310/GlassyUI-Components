@@ -268,6 +268,13 @@ const GlassyUIComponentsPage: React.FC = () => {
       icon: <HiOutlineWrenchScrewdriver size={24} />,
       onClick: () => navigate('/spinner'),
     },
+    {
+      title: 'Stepper',
+      description:
+        'A multi-step progress indicator with full glassmorphism styling.',
+      icon: <AlignStartVertical size={24} />,
+      onClick: () => navigate('/stepper-details'),
+    },
   ];
 
   const [filteredData, setFilteredData] = useState(componentsData);
