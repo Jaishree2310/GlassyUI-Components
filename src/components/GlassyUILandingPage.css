@@ -260,27 +260,13 @@
     0 8px 32px rgba(124, 58, 237, 0.35),
     inset 0 1px 0 rgba(255, 255, 255, 0.15);
 }
-.cta-primary::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(135deg, #8b5cf6, #06b6d4);
-  opacity: 0;
-  transition: opacity 0.25s ease;
-}
-.cta-primary:hover::after {
-  opacity: 1;
-}
 .cta-primary:hover {
+  background: linear-gradient(135deg, #8b5cf6, #06b6d4);
   transform: translateY(-2px);
   box-shadow:
     0 0 0 1px rgba(124, 58, 237, 0.5),
     0 12px 40px rgba(124, 58, 237, 0.5),
     inset 0 1px 0 rgba(255, 255, 255, 0.2);
-}
-.cta-primary > * {
-  position: relative;
-  z-index: 1;
 }
 .cta-primary svg {
   transition: transform 0.2s ease;
