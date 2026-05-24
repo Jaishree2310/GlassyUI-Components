@@ -1,133 +1,187 @@
 import React from 'react';
 
+const sections = [
+  {
+    title: 'Acceptance of Terms',
+    content:
+      'By accessing or using GlassyUI-Components, you agree to abide by these Terms. If you disagree with any part of these terms, please refrain from using this library.',
+  },
+  {
+    title: 'User Obligations',
+    content:
+      'Users must use the components responsibly, providing proper attribution as required. Redistribution without modification is prohibited.',
+  },
+  {
+    title: 'Intellectual Property Rights',
+    content:
+      'GlassyUI-Components and its designs are the intellectual property of the creators and contributors.',
+  },
+  {
+    title: 'Limitation of Liability',
+    content:
+      'We are not liable for any damages arising from the use or misuse of GlassyUI-Components.',
+  },
+  {
+    title: 'Termination',
+    content:
+      'We reserve the right to terminate access to GlassyUI-Components for users who violate these Terms.',
+  },
+  {
+    title: 'Modification of Terms',
+    content:
+      'We reserve the right to modify these Terms at any time. Changes will be announced through official channels.',
+  },
+  {
+    title: 'Privacy Policy',
+    content:
+      'We respect your privacy. Any data collected is handled according to our Privacy Policy.',
+  },
+  {
+    title: 'Third-Party Links',
+    content:
+      'We are not responsible for the content or practices of third-party services linked through our platform.',
+  },
+  {
+    title: 'User-Generated Content',
+    content:
+      'Any contributions made to GlassyUI-Components must align with our community guidelines and open-source policies.',
+  },
+  {
+    title: 'Governing Law',
+    content:
+      'These Terms are governed in accordance with applicable intellectual property and open-source laws.',
+  },
+];
+
 export const TermsOfUse: React.FC = () => {
   return (
-    <>
-      <div className='bg-gray-50 dark:bg-gray-900 py-20'>
-        <div className='max-w-4xl mx-auto p-8 bg-white dark:bg-gray-800 shadow-md rounded-lg glass-effect'>
-          <h1 className='text-4xl font-bold text-center text-blue-600 dark:text-blue-300 mb-6'>
-            <h1 className='text-white text-4xl font-bold'>
-              <span className='text-blue-400'>Glass</span>UI
-            </h1>{' '}
+    <div className='relative min-h-screen overflow-hidden bg-[#050816] text-white pt-32 pb-20 px-4'>
+      {/* Animated Background Blobs */}
+      <div className='absolute top-20 left-10 w-72 h-72 bg-cyan-500/10 rounded-full blur-3xl animate-blob'></div>
+
+      <div className='absolute top-40 right-10 w-72 h-72 bg-purple-500/10 rounded-full blur-3xl animate-blob animation-delay-2000'></div>
+
+      <div className='absolute bottom-10 left-1/2 w-72 h-72 bg-pink-500/10 rounded-full blur-3xl animate-blob animation-delay-4000'></div>
+
+      <div className='relative max-w-6xl mx-auto'>
+        {/* Hero Section */}
+        <div className='text-center mb-16'>
+          <h1
+            className='
+              text-4xl
+              md:text-5xl
+              font-bold
+              tracking-tight
+              mb-6
+              bg-gradient-to-r
+              from-purple-300
+              via-violet-400
+              to-cyan-300
+              bg-clip-text
+              text-transparent
+            '
+          >
             Terms of Use
           </h1>
 
-          {/* Acceptance of Terms */}
-          <section className='mb-8'>
-            <h2 className='text-2xl font-semibold text-gray-800 dark:text-gray-200 mb-4 border-b-2 border-blue-500 pb-2'>
-              1. Acceptance of Terms
-            </h2>
-            <p className='text-gray-700 dark:text-gray-300'>
-              By accessing or using GlassyUI-Components, you agree to abide by
-              these Terms. If you disagree with any part of these terms, please
-              refrain from using this library.
-            </p>
-          </section>
+          <p className='max-w-3xl mx-auto text-gray-400 text-base md:text-lg leading-8'>
+            Please read these terms carefully before using GlassyUI Components.
+            By accessing the platform, you agree to follow all community, usage,
+            and contribution guidelines.
+          </p>
+        </div>
 
-          {/* User Obligations */}
-          <section className='mb-8'>
-            <h2 className='text-2xl font-semibold text-gray-800 dark:text-gray-200 mb-4 border-b-2 border-blue-500 pb-2'>
-              2. User Obligations
-            </h2>
-            <p className='text-gray-700 dark:text-gray-300'>
-              Users must use the components responsibly, providing proper
-              attribution as required. Redistribution without modification is
-              prohibited.
-            </p>
-          </section>
+        {/* Cards Grid */}
+        <div className='grid gap-8 md:grid-cols-2'>
+          {sections.map((section, index) => (
+            <div
+              key={index}
+              className='
+                group
+                relative
+                overflow-hidden
+                rounded-[28px]
+                border
+                border-purple-500/10
+                bg-[#120B2A]/40
+                backdrop-blur-md
+                p-6
+                transition-all
+                duration-500
+                hover:-translate-y-1
+                hover:border-cyan-400/30
+                hover:bg-[#181235]/60
+                hover:shadow-[0_0_30px_rgba(139,92,246,0.18)]
+              '
+            >
+              {/* Hover Glow Overlay */}
+              <div
+                className='
+                  absolute
+                  inset-0
+                  opacity-0
+                  group-hover:opacity-100
+                  transition-opacity
+                  duration-500
+                  bg-gradient-to-br
+                  from-cyan-500/5
+                  via-transparent
+                  to-purple-500/10
+                  pointer-events-none
+                '
+              ></div>
 
-          {/* Intellectual Property */}
-          <section className='mb-8'>
-            <h2 className='text-2xl font-semibold text-gray-800 dark:text-gray-200 mb-4 border-b-2 border-blue-500 pb-2'>
-              3. Intellectual Property Rights
-            </h2>
-            <p className='text-gray-700 dark:text-gray-300'>
-              GlassyUI-Components and its designs are the intellectual property
-              of the creators and contributors.
-            </p>
-          </section>
+              {/* Content */}
+              <div className='relative z-10'>
+                {/* Number Badge */}
+                <div
+                  className='
+                    w-10
+                    h-10
+                    rounded-xl
+                    bg-purple-500/10
+                    border
+                    border-purple-400/20
+                    flex
+                    items-center
+                    justify-center
+                    text-purple-300
+                    font-semibold
+                    mb-5
+                    transition-all
+                    duration-500
+                    group-hover:border-cyan-400/30
+                    group-hover:text-cyan-300
+                    group-hover:bg-cyan-400/10
+                  '
+                >
+                  {index + 1}
+                </div>
 
-          {/* Limitation of Liability */}
-          <section className='mb-8'>
-            <h2 className='text-2xl font-semibold text-gray-800 dark:text-gray-200 mb-4 border-b-2 border-blue-500 pb-2'>
-              4. Limitation of Liability
-            </h2>
-            <p className='text-gray-700 dark:text-gray-300'>
-              We are not liable for any damages arising from the use or misuse
-              of GlassyUI-Components.
-            </p>
-          </section>
+                {/* Title */}
+                <h2
+                  className='
+                    text-xl
+                    font-semibold
+                    mb-4
+                    text-white
+                    transition-colors
+                    duration-300
+                    group-hover:text-cyan-200
+                  '
+                >
+                  {section.title}
+                </h2>
 
-          {/* Termination */}
-          <section className='mb-8'>
-            <h2 className='text-2xl font-semibold text-gray-800 dark:text-gray-200 mb-4 border-b-2 border-blue-500 pb-2'>
-              5. Termination
-            </h2>
-            <p className='text-gray-700 dark:text-gray-300'>
-              We reserve the right to terminate access to GlassyUI-Components
-              for users who violate these Terms.
-            </p>
-          </section>
-
-          {/* Modification of Terms */}
-          <section className='mb-8'>
-            <h2 className='text-2xl font-semibold text-gray-800 dark:text-gray-200 mb-4 border-b-2 border-blue-500 pb-2'>
-              6. Modification of Terms
-            </h2>
-            <p className='text-gray-700 dark:text-gray-300'>
-              We reserve the right to modify these Terms at any time. Changes
-              will be announced through our GitHub repository or other official
-              channels.
-            </p>
-          </section>
-
-          {/* Privacy Policy */}
-          <section className='mb-8'>
-            <h2 className='text-2xl font-semibold text-gray-800 dark:text-gray-200 mb-4 border-b-2 border-blue-500 pb-2'>
-              7. Privacy Policy
-            </h2>
-            <p className='text-gray-700 dark:text-gray-300'>
-              We respect your privacy. Any data collected is handled according
-              to our Privacy Policy, accessible through our main website.
-            </p>
-          </section>
-
-          {/* Third-Party Links */}
-          <section className='mb-8'>
-            <h2 className='text-2xl font-semibold text-gray-800 dark:text-gray-200 mb-4 border-b-2 border-blue-500 pb-2'>
-              8. Third-Party Links
-            </h2>
-            <p className='text-gray-700 dark:text-gray-300'>
-              Our library may contain links to third-party websites or services.
-              We are not responsible for the content, policies, or practices of
-              these external sites.
-            </p>
-          </section>
-
-          {/* User-Generated Content */}
-          <section className='mb-8'>
-            <h2 className='text-2xl font-semibold text-gray-800 dark:text-gray-200 mb-4 border-b-2 border-blue-500 pb-2'>
-              9. User-Generated Content
-            </h2>
-            <p className='text-gray-700 dark:text-gray-300'>
-              Any contributions or modifications made to GlassyUI-Components are
-              welcome but must align with our community guidelines and
-              open-source policies.
-            </p>
-          </section>
-
-          {/* Governing Law */}
-          <section className='mb-8'>
-            <h2 className='text-2xl font-semibold text-gray-800 dark:text-gray-200 mb-4 border-b-2 border-blue-500 pb-2'>
-              10. Governing Law
-            </h2>
-            <p className='text-gray-700 dark:text-gray-300'>
-              These Terms are governed by and construed in accordance with the
-              applicable intellectual property laws and open-source policies.
-            </p>
-          </section>
+                {/* Content */}
+                <p className='text-gray-400 leading-7 text-[15px] group-hover:text-gray-300 transition-colors duration-300'>
+                  {section.content}
+                </p>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
-    </>
+    </div>
   );
 };
