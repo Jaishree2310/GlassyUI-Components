@@ -10,6 +10,8 @@ import {
 
 import ScrollProgressBar from './components/ScrollProgress'; // Import your ScrollProgressBar component
 import ScrollToTop from './components/ScrollToTop';
+import FloatingBottomBar from './components/FloatingBottomBar';
+import BackToTopButton from './components/BackToTop';
 import GlassyUILandingPage from './components/GlassyUILandingPage';
 import GlassyUIComponentsPage from './components/GlassyUIComponentsPage';
 import ButtonDetailsPage from './components/ButtonDetailsPage';
@@ -84,6 +86,7 @@ const App: React.FC = () => {
       <ScrollToTop />
       <Header />
       <AiChatbot />
+      <BackToTopButton />
       {/* <ThemeToggle /> */}
       <ScrollProgressBar /> {/* Add the ScrollProgressBar component here */}
       <Routes>
@@ -133,6 +136,7 @@ const App: React.FC = () => {
         <Route path='*' element={<NotFoundPage />} />
       </Routes>
       <Footer />
+      <FloatingBottomBar />
     </Router>
   );
 };

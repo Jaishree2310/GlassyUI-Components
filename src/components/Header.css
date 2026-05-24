@@ -300,3 +300,10 @@
     padding: 7px 10px;
   }
 }
+
+@media (max-width: 1023px) {
+  .hamburger,
+  .github-pill {
+    display: none !important;
+  }
+}
