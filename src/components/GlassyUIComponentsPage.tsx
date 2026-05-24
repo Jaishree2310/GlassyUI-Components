@@ -201,6 +201,13 @@ const GlassyUIComponentsPage: React.FC = () => {
       icon: <Sparkles size={22} />,
       onClick: () => navigate('/generator'),
     },
+    {
+      title: 'Command Palette',
+      description:
+        'Modern Spotlight-style command menu with glassmorphism effects.',
+      icon: <Search size={22} />,
+      onClick: () => navigate('/command-palette'),
+    },
   ];
 
   const [filteredData, setFilteredData] = useState(componentsData);

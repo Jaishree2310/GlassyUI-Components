@@ -47,6 +47,7 @@ import ProductCardDetailsPage from './components/ProductCardDetailsPage';
 import ContactUs from './components/ContactUs';
 import AiChatbot from './components/AIChatbot';
 import { TermsOfUse } from './components/TermsOfUse';
+import CommandPaletteDetailsPage from './components/CommandPaletteDetailsPage';
 
 import Stories from './components/Stories';
 // import Register from './login/SignUp';
@@ -122,6 +123,10 @@ const App: React.FC = () => {
         <Route path='/spinner' element={<SpinnerDetailsPage />} />
         <Route path='/product-details' element={<ProductCardDetailsPage />} />
         <Route path='/gallery-details' element={<GalleryDetailsPage />} />
+        <Route
+          path='/command-palette'
+          element={<CommandPaletteDetailsPage />}
+        />
         <Route path='/contact' element={<ContactUs />} />
         <Route path='/termsOfUse' element={<TermsOfUse />} />
 
