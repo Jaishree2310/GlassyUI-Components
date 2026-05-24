@@ -134,27 +134,18 @@
 .shine-effect:hover::before {
   opacity: 1;
 }
-.parallax-card {
-  position: relative;
-  transition: transform 0.2s ease;
-  transform-style: preserve-3d;
-  will-change: transform;
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
-.parallax-glow {
-  position: absolute;
-  inset: 0;
-  border-radius: 20px;
-  pointer-events: none;
-  background: radial-gradient(
-    circle,
-    rgba(255,255,255,0.3),
-    transparent 70%
-  );
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.parallax-card:hover .parallax-glow {
-  opacity: 1;
+.animate-fadeIn {
+  animation: fadeIn 0.2s ease-in-out;
 }
