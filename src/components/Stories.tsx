@@ -14,7 +14,6 @@ const Stories = () => {
   const [category, setCategory] = useState('');
 
   useEffect(() => {
-    // Fetch posts from the backend API
     const fetchPosts = async () => {
       try {
         const response = await fetch(
@@ -59,7 +58,7 @@ const Stories = () => {
 
         if (response.ok) {
           const savedPost = await response.json();
-          setPosts([savedPost, ...posts]); // Add the new post to state
+          setPosts([savedPost, ...posts]);
         } else {
           console.error('Failed to save the post');
         }
@@ -67,7 +66,6 @@ const Stories = () => {
         console.error('Error saving the post:', error);
       }
 
-      // Clear form fields
       setTitle('');
       setContent('');
       setCategory('');
@@ -75,14 +73,21 @@ const Stories = () => {
   };
 
   return (
-    <>
+    <div className='min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900'>
       <h1 className='text-3xl font-bold text-center mb-5 text-gray-100 mt-20'>
         Real Stories, Real Advice: Share Your Experience
       </h1>
+      {posts.length === 0 && (
+        <p className='text-gray-400 text-center mb-6'>
+          No posts yet. Share your experience!
+        </p>
+      )}
 
-      <div className='flex flex-col lg:flex-row items-start gap-8 px-6 lg:px-20 mb-14'>
+      <div className='flex flex-col lg:flex-row items-start justify-center gap-8 px-6 lg:px-20 mb-14'>
         {/* Left side - Posts */}
-        <div className='flex-1 space-y-6'>
+        <div
+          className={`space-y-6 ${posts.length === 0 ? 'hidden' : 'flex-1'}`}
+        >
           {posts.length === 0 ? (
             <p className='text-gray-400 text-center'>
               No posts yet. Share your experience!
@@ -116,7 +121,7 @@ const Stories = () => {
         </div>
 
         {/* Right side - Form */}
-        <div className='w-full lg:w-1/3 bg-gray-800 p-6 rounded-lg shadow-md'>
+        <div className='w-full lg:w-2/5 bg-gray-800 p-6 rounded-lg shadow-md'>
           <form className='space-y-4'>
             <input
               type='text'
@@ -139,7 +144,6 @@ const Stories = () => {
               <option value='' disabled>
                 Select Category
               </option>
-
               <optgroup label='GlassyUI-Components'>
                 <option value='GlassyUI Introduction'>
                   GlassyUI Introduction
@@ -175,7 +179,7 @@ const Stories = () => {
           </form>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
