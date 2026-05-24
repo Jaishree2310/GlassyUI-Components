@@ -27,10 +27,6 @@ const MONTHS = [
   'December',
 ];
 
-const currentYear = new Date().getFullYear();
-// Show a generous range: 10 years back, 10 years forward
-const YEARS = Array.from({ length: 21 }, (_, i) => currentYear - 10 + i);
-
 // ─── MonthYearPicker ──────────────────────────────────────────────────────────
 interface MonthYearPickerProps {
   activeStartDate: Date;
@@ -66,7 +62,12 @@ const MonthYearPicker: React.FC<MonthYearPickerProps> = ({
       {/* Year row */}
       <div className='flex items-center justify-between mb-3 select-none'>
         <button
-          onClick={() => setPickerYear(y => y - 1)}
+          type='button'
+          onClick={() => {
+            const previousYear = pickerYear - 1;
+            setPickerYear(previousYear);
+            onSelect(new Date(previousYear, activeStartDate.getMonth(), 1));
+          }}
           className='p-1 rounded-lg hover:bg-white/10 transition-colors'
           aria-label='Previous year'
         >
@@ -74,7 +75,12 @@ const MonthYearPicker: React.FC<MonthYearPickerProps> = ({
         </button>
         <span className='font-bold text-lg tracking-wide'>{pickerYear}</span>
         <button
-          onClick={() => setPickerYear(y => y + 1)}
+          type='button'
+          onClick={() => {
+            const nextYear = pickerYear + 1;
+            setPickerYear(nextYear);
+            onSelect(new Date(nextYear, activeStartDate.getMonth(), 1));
+          }}
           className='p-1 rounded-lg hover:bg-white/10 transition-colors'
           aria-label='Next year'
         >
@@ -90,6 +96,7 @@ const MonthYearPicker: React.FC<MonthYearPickerProps> = ({
             pickerYear === activeStartDate.getFullYear();
           return (
             <button
+              type='button'
               key={month}
               onClick={() => {
                 onSelect(new Date(pickerYear, idx, 1));
@@ -165,15 +172,16 @@ const CalendarDetail: React.FC = () => {
 
   // ── Custom navigation label (clickable → picker) ───────────────────────────
   const customNavigationLabel = ({
-    date: labelDate,
+    activeStartDate: labelDate,
   }: {
-    date: Date;
+    activeStartDate: Date;
     label: string;
     locale: string | undefined;
     view: string;
   }) => (
     <div className='relative flex justify-center'>
       <button
+        type='button'
         onClick={e => {
           e.stopPropagation();
           setShowPicker(prev => !prev);
@@ -204,7 +212,6 @@ const CalendarDetail: React.FC = () => {
           onClose={() => setShowPicker(false)}
           onSelect={d => {
             setActiveStartDate(d);
-            setShowPicker(false);
           }}
         />
       )}
@@ -273,11 +280,6 @@ const CalendarDetail: React.FC = () => {
 };`;
 
   const remindersExampleCode = `// ── Example: Using onChange to drive a reminders / modal system ──────────────
-//
-// 1. Keep an array of reminder objects keyed by ISO date string.
-// 2. In your onChange handler, look up reminders for the selected date.
-// 3. Open a modal (or side panel) pre-populated with those reminders.
-
 interface Reminder {
   id: string;
   time: string;
@@ -297,11 +299,10 @@ const CalendarWithReminders: React.FC = () => {
   const handleDateChange: CalendarProps['onChange'] = (newDate) => {
     if (newDate instanceof Date) {
       setSelectedDate(newDate);
-      // Build the same key format used in remindersMap
       const key = newDate.toISOString().slice(0, 10); // "YYYY-MM-DD"
       const dayReminders = remindersMap[key] ?? [];
       setReminders(dayReminders);
-      setModalOpen(true); // Open reminder modal on every date click
+      setModalOpen(true);
     }
   };
 
@@ -394,7 +395,6 @@ const CalendarWithReminders: React.FC = () => {
                 <td className='p-2'>month</td>
                 <td className='p-2'>The view to show: month, year, decade</td>
               </tr>
-              {/* ── NEW props ── */}
               <tr>
                 <td className='p-2'>activeStartDate</td>
                 <td className='p-2'>Date</td>
@@ -441,7 +441,6 @@ const CalendarWithReminders: React.FC = () => {
           Calendar Component Example
         </h2>
         <div className='flex flex-col lg:flex-row gap-8'>
-          {/* Calendar widget */}
           <div className='p-4 bg-white bg-opacity-10 rounded-lg mb-4'>
             <h2 className='mt-4 mb-4 font-bold flex justify-center text-xl text-blue-200'>
               Selected Date:{' '}
@@ -465,7 +464,6 @@ const CalendarWithReminders: React.FC = () => {
               className='custom-calendar'
             />
 
-            {/* Legend */}
             <div className='mt-4 flex gap-4 justify-center text-sm text-gray-300'>
               <span className='flex items-center gap-1.5'>
                 <span className='inline-block w-4 h-4 rounded border-2 border-green-400 bg-transparent' />
@@ -478,7 +476,6 @@ const CalendarWithReminders: React.FC = () => {
             </div>
           </div>
 
-          {/* Code */}
           <div className='lg:w-2/3'>
             <h3 className='text-xl font-semibold mb-4 text-white'>Code</h3>
             <div className='relative'>
@@ -511,14 +508,11 @@ const CalendarWithReminders: React.FC = () => {
           <CopyButton text={remindersExampleCode} codeKey='RemindersExample' />
         </div>
 
-        {/* Callout */}
         <div className='mt-6 border border-blue-400/40 bg-blue-500/10 rounded-xl p-4 text-blue-200 text-sm leading-relaxed'>
           <strong className='block mb-1 text-blue-300'>💡 Tip</strong>
           Replace the static <code>remindersMap</code> object with a call to
-          your backend or a state-management store (Zustand, Redux, React Query)
-          to persist reminders across sessions. The calendar's{' '}
-          <code>tileContent</code> prop can additionally render a small dot
-          indicator on dates that have reminders.
+          your backend or a state-management store to persist reminders across
+          sessions.
         </div>
       </section>
 
@@ -535,7 +529,7 @@ const CalendarWithReminders: React.FC = () => {
         }
 
         .react-calendar__navigation {
-          position: relative; /* anchor for the picker dropdown */
+          position: relative;
         }
 
         .react-calendar__navigation button {
@@ -578,21 +572,19 @@ const CalendarWithReminders: React.FC = () => {
           transform: scale(1.05);
         }
 
-        /* ── Selected date ── */
         .react-calendar__tile--active {
           background: rgba(0, 255, 0, 0.5) !important;
+          color: white !important;
         }
 
-        /* ── Today highlight: distinct ring, NOT the green fill ── */
         .react-calendar__tile.is-today {
-          border: 2.5px solid #4ade80 !important; /* green-400 */
+          border: 2.5px solid #4ade80 !important;
           border-radius: 6px;
           box-shadow: 0 0 0 3px rgba(74, 222, 128, 0.25);
           background: rgba(74, 222, 128, 0.08) !important;
           font-weight: 700;
         }
 
-        /* When today is also selected, show both cues */
         .react-calendar__tile--active.is-today {
           background: rgba(0, 255, 0, 0.45) !important;
           border: 2.5px solid #86efac !important;
