@@ -27,8 +27,8 @@ const Stories: React.FC = () => {
           const data = await response.json();
           setPosts(data);
         }
-      } catch (error) {
-        console.error('Error fetching posts:', error);
+      } catch (err) {
+        console.error('Error fetching posts:', err);
       }
     };
     fetchPosts();
@@ -45,7 +45,6 @@ const Stories: React.FC = () => {
       category,
       date: new Date().toISOString(),
     };
-
     try {
       const response = await fetch(
         'http://localhost:5000/api/stories/saveposts',
