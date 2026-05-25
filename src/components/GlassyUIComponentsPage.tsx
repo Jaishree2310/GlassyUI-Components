@@ -219,13 +219,21 @@ const GlassyUIComponentsPage: React.FC = () => {
   const [filteredData, setFilteredData] = useState(componentsData);
 
   useEffect(() => {
-    const q = searchFilter.trim().toLowerCase();
-    setFilteredData(
-      q
-        ? componentsData.filter(c => c.title.toLowerCase().includes(q))
-        : componentsData,
-    );
-    setCurrentPage(1);
+    const timer = setTimeout(() => {
+      const q = searchFilter.trim().toLowerCase();
+      setFilteredData(
+        q
+          ? componentsData.filter(
+              c =>
+                c.title.toLowerCase().includes(q) ||
+                c.description.toLowerCase().includes(q),
+            )
+          : componentsData,
+      );
+      setCurrentPage(1);
+    }, 150);
+
+    return () => clearTimeout(timer);
   }, [searchFilter]);
 
   const totalPages = Math.ceil(filteredData.length / componentsPerPage);
@@ -274,6 +282,12 @@ const GlassyUIComponentsPage: React.FC = () => {
               </button>
             )}
           </div>
+          {searchFilter.trim() && filteredData.length > 0 && (
+            <p className='cp-search-result-count'>
+              {filteredData.length} result{filteredData.length !== 1 ? 's' : ''}{' '}
+              for &quot;{searchFilter.trim()}&quot;
+            </p>
+          )}
         </div>
 
         {/* Grid */}

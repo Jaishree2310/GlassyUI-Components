@@ -64,7 +64,7 @@ const GlassmorphismGenerator: React.FC = () => {
   border border-white border-opacity-20 rounded-lg shadow-lg transition-all duration-300`;
   };
   return (
-    <div className='min-h-screen flex flex-col gap-6 justify-center items-center px-6 bg-gradient-to-br from-gray-800 via-gray-900 to-black text-white p-8'>
+    <div className='min-h-screen flex flex-col gap-6 justify-center items-center px-6 bg-gradient-to-br from-gray-800 via-gray-900 to-black text-white pt-24 px-8 pb-8'>
       <div className='w-full mb-0 pb-0'>
         <button
           onClick={() => navigate(-1)}

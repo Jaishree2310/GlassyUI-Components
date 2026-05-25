@@ -442,6 +442,14 @@ code {
   color: #94a3b8;
 }
 
+.cp-search-result-count {
+  font-size: 0.78rem;
+  color: rgba(255, 255, 255, 0.45);
+  margin-top: 0.5rem;
+  text-align: center;
+  letter-spacing: 0.01em;
+}
+
 /* Grid */
 .cp-grid-layout {
   display: grid;
