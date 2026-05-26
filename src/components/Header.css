@@ -293,10 +293,4 @@
   .header-inner {
     padding: 0 20px;
   }
-  .github-pill span:not(.github-star-badge) {
-    display: none;
-  }
-  .github-pill {
-    padding: 7px 10px;
-  }
 }
