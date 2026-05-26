@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ArrowLeft, Copy, Check } from 'lucide-react';
 import BackToTopButton from './BackToTop';
+import ColorPicker from './ColorPicker';
 
 const ButtonDetailsPage: React.FC = () => {
   const navigate = useNavigate();
@@ -67,7 +68,7 @@ function Example() {
 
   const themedButtonCode = `<Button
   style={{
-    backgroundColor: '${customBg}40',
+    backgroundColor: '${customBg}',
     color: '${customText}',
     borderColor: '${customBorder}'
   }}
@@ -90,7 +91,7 @@ function Example() {
 </Button>`;
 
   return (
-    <div className='min-h-screen p-8 font-sans bg-gradient-to-r from-gray-800 via-gray-900 to-black text-white relative'>
+    <div className='min-h-screen pt-24 px-8 pb-8 font-sans bg-gradient-to-r from-gray-800 via-gray-900 to-black text-white relative'>
       <BackToTopButton />
       <div className='relative z-10'>
         <button
@@ -191,18 +192,23 @@ function Example() {
                   Background Color
                 </label>
                 <div className='flex items-center'>
-                  <input
-                    type='color'
-                    value={customBg}
-                    onChange={e => setCustomBg(e.target.value)}
-                    className='w-8 h-8 rounded-full border-2 border-white shadow-lg mr-4'
-                  />
-                  <input
-                    type='text'
-                    value={customBg}
-                    onChange={e => setCustomBg(e.target.value)}
-                    className='bg-transparent border-b border-gray-400 w-full py-1 px-2 text-white'
-                  />
+                  <ColorPicker value={customBg} onChange={setCustomBg} />
+                  <div className='flex items-center border-b border-white/30 focus-within:border-white transition-colors'>
+                    <span className='text-white/50 font-mono text-sm pl-1'>
+                      #
+                    </span>
+                    <input
+                      type='text'
+                      value={customBg.replace('#', '')}
+                      onChange={e => {
+                        const val = e.target.value.replace(/[^0-9a-fA-F]/g, '');
+                        setCustomBg(`#${val.slice(0, 6)}`);
+                      }}
+                      className='bg-transparent w-20 py-1 px-1 text-white font-mono uppercase outline-none text-sm tracking-widest'
+                      placeholder='FFFFFF'
+                      maxLength={6}
+                    />
+                  </div>
                 </div>
               </div>
               <div className={`${getGlassyClasses(10)} p-6`}>
@@ -210,18 +216,23 @@ function Example() {
                   Text Color
                 </label>
                 <div className='flex items-center'>
-                  <input
-                    type='color'
-                    value={customText}
-                    onChange={e => setCustomText(e.target.value)}
-                    className='w-8 h-8 rounded-full border-2 border-white shadow-lg mr-4'
-                  />
-                  <input
-                    type='text'
-                    value={customText}
-                    onChange={e => setCustomText(e.target.value)}
-                    className='bg-transparent border-b border-gray-400 w-full py-1 px-2 text-white'
-                  />
+                  <ColorPicker value={customText} onChange={setCustomText} />
+                  <div className='flex items-center border-b border-white/30 focus-within:border-white transition-colors'>
+                    <span className='text-white/50 font-mono text-sm pl-1'>
+                      #
+                    </span>
+                    <input
+                      type='text'
+                      value={customText.replace('#', '')}
+                      onChange={e => {
+                        const val = e.target.value.replace(/[^0-9a-fA-F]/g, '');
+                        setCustomText(`#${val.slice(0, 6)}`);
+                      }}
+                      className='bg-transparent w-20 py-1 px-1 text-white font-mono uppercase outline-none text-sm tracking-widest'
+                      placeholder='FFFFFF'
+                      maxLength={6}
+                    />
+                  </div>
                 </div>
               </div>
               <div className={`${getGlassyClasses(10)} p-6`}>
@@ -229,18 +240,26 @@ function Example() {
                   Border Color
                 </label>
                 <div className='flex items-center'>
-                  <input
-                    type='color'
+                  <ColorPicker
                     value={customBorder}
-                    onChange={e => setCustomBorder(e.target.value)}
-                    className='w-8 h-8 rounded-full border-2 border-white shadow-lg mr-4'
+                    onChange={setCustomBorder}
                   />
-                  <input
-                    type='text'
-                    value={customBorder}
-                    onChange={e => setCustomBorder(e.target.value)}
-                    className='bg-transparent border-b border-gray-400 w-full py-1 px-2 text-white'
-                  />
+                  <div className='flex items-center border-b border-white/30 focus-within:border-white transition-colors'>
+                    <span className='text-white/50 font-mono text-sm pl-1'>
+                      #
+                    </span>
+                    <input
+                      type='text'
+                      value={customBorder.replace('#', '')}
+                      onChange={e => {
+                        const val = e.target.value.replace(/[^0-9a-fA-F]/g, '');
+                        setCustomBorder(`#${val.slice(0, 6)}`);
+                      }}
+                      className='bg-transparent w-20 py-1 px-1 text-white font-mono uppercase outline-none text-sm tracking-widest'
+                      placeholder='FFFFFF'
+                      maxLength={6}
+                    />
+                  </div>
                 </div>
               </div>
             </div>

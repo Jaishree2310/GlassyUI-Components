@@ -1,26 +1,29 @@
 import { initializeApp } from 'firebase/app';
 import { getAuth } from 'firebase/auth';
 
-// Your web app's Firebase configuration
-// Create an accont on firebase and you get all this configuration just replace that with this
-// Then your sign-in / sign-up feature will work smothly
 const firebaseConfig = {
-  apiKey: 'AIzaSyBTMlmquV6yW7bMSkPk4cETVqKsUK_aEjY',
-
-  authDomain: 'gssoc-passop.firebaseapp.com',
-
-  projectId: 'gssoc-passop',
-
-  storageBucket: 'gssoc-passop.firebasestorage.app',
-
-  messagingSenderId: '596205653550',
-
-  appId: '1:596205653550:web:9af96a57fdf1c3609399bf',
-
-  measurementId: 'G-812J1WK5X0',
+  apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
+  authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
+  projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
+  storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
+  appId: process.env.REACT_APP_FIREBASE_APP_ID,
+  measurementId: process.env.REACT_APP_FIREBASE_MEASUREMENT_ID,
 };
 
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
+/** @type {import('firebase/auth').Auth | null} */
+let auth = null;
+/** @type {import('firebase/app').FirebaseApp | null} */
+let app = null;
+
+try {
+  app = initializeApp(firebaseConfig);
+  auth = getAuth(app);
+} catch (e) {
+  console.warn(
+    'Firebase initialization failed — auth features disabled:',
+    e.message,
+  );
+}
+
 export { auth, app };

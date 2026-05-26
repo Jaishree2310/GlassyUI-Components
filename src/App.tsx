@@ -10,6 +10,7 @@ import {
 } from 'react-router-dom';
 
 import ScrollProgressBar from './components/ScrollProgress'; // Import your ScrollProgressBar component
+import ScrollToTop from './components/ScrollToTop';
 import GlassyUILandingPage from './components/GlassyUILandingPage';
 import GlassyUIComponentsPage from './components/GlassyUIComponentsPage';
 import ButtonDetailsPage from './components/ButtonDetailsPage';
@@ -104,6 +105,50 @@ const App: React.FC = () => {
           <Route path='/gallery-details' element={<GalleryDetailsPage />} />
           <Route path='/contact' element={<ContactUs />} />
           <Route path='/termsOfUse' element={<TermsOfUse />} />
+    <Router>
+      <ScrollToTop />
+      <Header />
+      <AiChatbot />
+      {/* <ThemeToggle /> */}
+      <ScrollProgressBar /> {/* Add the ScrollProgressBar component here */}
+      <Routes>
+        <Route path='/' element={<GlassyUILandingPage />} />
+        <Route path='/components' element={<GlassyUIComponentsPage />} />
+        <Route path='/toast-page' element={<ToastPage />} />
+        <Route path='/button-details' element={<ButtonDetailsPage />} />
+        <Route path='/card-details' element={<CardDetailsPage />} />
+        <Route
+          path='/progress-bar-details'
+          element={<ProgressBarDetailPage />}
+        />
+        <Route path='/pricing-details' element={<PricingDetailPage />} />
+        <Route path='/popup-details' element={<PopupDetailPage />} />
+        <Route path='/input-details' element={<InputDetailPage />} />
+        <Route path='/textarea-details' element={<TextareaDetailPage />} />
+        <Route path='/tooltip-details' element={<TooltipDetailsPage />} />
+        <Route path='/speed-dial-details' element={<SpeedDialDetailsPage />} />
+        <Route path='/modal-details' element={<ModalDetailsPage />} />
+        <Route path='/navigation-details' element={<NavigationDetailsPage />} />
+        <Route path='/generator' element={<GlassMorphismGenrator />} />
+        <Route path='/slider-details' element={<SliderDetailsPage />} />
+        <Route path='/back-to-top-details' element={<BackToTopDetailsPage />} />
+        <Route path='/dropdown-details' element={<DropdowndetailsPage />} />
+        <Route path='/authentication-card' element={<AuthenticationCard />} />
+        <Route path='/accordion-details' element={<AccordionDetails />} />
+        <Route path='/contributors' element={<ContributorsPage />} />
+        <Route path='/donate' element={<DonationPage />} />
+        <Route path='/about' element={<AboutUsPage />} />
+        <Route path='/contact-details' element={<ContactUsDetailsPage />} />
+        <Route path='/pagination-details' element={<PaginationDetails />} />
+        <Route path='/testimonial-details' element={<TestimonialDetails />} />
+        <Route path='/calendar-details' element={<CalendarDetails />} />
+        <Route path='/statistic-details' element={<Statistic />} />
+        <Route path='/checkbox' element={<Checkbox />} />
+        <Route path='/spinner' element={<SpinnerDetailsPage />} />
+        <Route path='/product-details' element={<ProductCardDetailsPage />} />
+        <Route path='/gallery-details' element={<GalleryDetailsPage />} />
+        <Route path='/contact' element={<ContactUs />} />
+        <Route path='/termsOfUse' element={<TermsOfUse />} />
 
           <Route path='/stories' element={<Stories />} />
 
@@ -117,10 +162,11 @@ const App: React.FC = () => {
         <ConditionalFooter />
       </Router>
     </ThemeProvider>
+        <Route path='*' element={<NotFoundPage />} />
+      </Routes>
+      <Footer />
+    </Router>
   );
 };
-const ConditionalFooter: React.FC = () => {
-  const location = useLocation();
-  return location.pathname === '/' ? null : <Footer />;
-};
+
 export default App;

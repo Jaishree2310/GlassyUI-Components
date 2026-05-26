@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import { ArrowLeft, Copy, Check, X } from 'lucide-react';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 const getGlassyClasses = (opacity = 20) => {
   return `backdrop-filter backdrop-blur-lg bg-white bg-opacity-${opacity} 
@@ -18,6 +18,16 @@ type ModalProps = {
 
 const Modal: React.FC<ModalProps> = props => {
   const { imageUrl, heading, paragraph, CTA, unmount, onCtaClick } = props;
+
+  useEffect(() => {
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+    };
+  }, []);
+
   return (
     <div className=' w-[35vw] h-[40vh] fixed z-10 mt-9 top-15 left-10 bg-opacity-50 backdrop-blur-sm flex items-center justify-center bg-black/20'>
       <div className=' min-w-[30vw] relative h-auto min-h-[30vh] flex flex-col items-center justify-center gap-6 p-4 backdrop-filter backdrop-blur-xl bg-white/50 border border-white/20 rounded-xl shadow-lg transition-all duration-300'>
@@ -122,7 +132,7 @@ const Modal: React.FC<ModalProps> = (props) => {
   );
 
   return (
-    <div className='min-h-screen p-8 font-sans bg-gradient-to-r from-gray-800 via-gray-900 to-black text-white relative'>
+    <div className='min-h-screen pt-24 px-8 pb-8 font-sans bg-gradient-to-r from-gray-800 via-gray-900 to-black text-white relative'>
       <button
         onClick={() => navigate(-1)}
         className={`mb-8 flex items-center ${getGlassyClasses(10)} px-4 py-2 hover:bg-white/40 transition-all duration-300 text-gray-100`}

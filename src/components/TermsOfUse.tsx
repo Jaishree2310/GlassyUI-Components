@@ -1,5 +1,4 @@
 import React from 'react';
-import Footer from './Footer';
 
 export const TermsOfUse: React.FC = () => {
   return (
@@ -129,7 +128,6 @@ export const TermsOfUse: React.FC = () => {
           </section>
         </div>
       </div>
-      <Footer />
     </>
   );
 };
