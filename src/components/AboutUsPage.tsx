@@ -185,7 +185,7 @@ const AboutUsPage: React.FC = () => {
         background: `url('/path/to/A_detailed_dark_blue_grid_background_with_square_b.png') no-repeat center center fixed`, // Set the background image
         backgroundSize: 'cover', // Ensure the background image covers the entire screen
         minHeight: '100vh', // Set the minimum height of the page to the full viewport height
-        padding: '20px',
+        padding: '100px 20px 20px 20px',
       }}
     >
       <AboutUsContainer>
@@ -250,44 +250,44 @@ const AboutUsPage: React.FC = () => {
       </AboutUsContainer>
     </div>
   );
-  return (
-    <div className='min-h-screen font-sans bg-gradient-to-br from-gray-800 via-gray-900 to-black text-white'>
-      <BackToTopButton />
-      <div style={pageContainerStyle}>
-        <div style={aboutContainerStyle}>
-          <h1 style={headingStyle}>About Us</h1>
-          <p style={paragraphStyle}>
-            At <strong>GlassyUI-Components</strong>, we are more than just a
-            library. We are a community-driven organization dedicated to making
-            a meaningful impact in the world of web development. Our mission is
-            clear, to unite creators, foster collaboration, and pave the way for
-            a brighter future through innovation.
-          </p>
-          <h2 style={subheadingStyle}>Who We Welcome:</h2>
-          <ul style={listStyle}>
-            <li style={listItemStyle}>
-              <strong>Developers</strong>: Whether you're just starting out or a
-              seasoned expert, your skills can help shape our offerings.
-            </li>
-            <li style={listItemStyle}>
-              <strong>Designers</strong>: Bring your unique vision and
-              creativity to enhance our beautiful glassmorphism components.
-            </li>
-            <li style={listItemStyle}>
-              <strong>Contributors</strong>: If you share our passion for
-              building stunning user experiences, we invite you to join our
-              journey.
-            </li>
-          </ul>
-          <p style={paragraphStyle}>
-            Together, we can achieve incredible things! Let's collaborate,
-            innovate, and transform ideas into reality. Join us in crafting a
-            more beautiful and functional web for everyone.
-          </p>
-        </div>
-      </div>
-    </div>
-  );
+  // return (
+  //   <div className='min-h-screen font-sans bg-gradient-to-br from-gray-800 via-gray-900 to-black text-white'>
+  //     <BackToTopButton />
+  //     <div style={pageContainerStyle}>
+  //       <div style={aboutContainerStyle}>
+  //         <h1 style={headingStyle}>About Us</h1>
+  //         <p style={paragraphStyle}>
+  //           At <strong>GlassyUI-Components</strong>, we are more than just a
+  //           library. We are a community-driven organization dedicated to making
+  //           a meaningful impact in the world of web development. Our mission is
+  //           clear, to unite creators, foster collaboration, and pave the way for
+  //           a brighter future through innovation.
+  //         </p>
+  //         <h2 style={subheadingStyle}>Who We Welcome:</h2>
+  //         <ul style={listStyle}>
+  //           <li style={listItemStyle}>
+  //             <strong>Developers</strong>: Whether you're just starting out or a
+  //             seasoned expert, your skills can help shape our offerings.
+  //           </li>
+  //           <li style={listItemStyle}>
+  //             <strong>Designers</strong>: Bring your unique vision and
+  //             creativity to enhance our beautiful glassmorphism components.
+  //           </li>
+  //           <li style={listItemStyle}>
+  //             <strong>Contributors</strong>: If you share our passion for
+  //             building stunning user experiences, we invite you to join our
+  //             journey.
+  //           </li>
+  //         </ul>
+  //         <p style={paragraphStyle}>
+  //           Together, we can achieve incredible things! Let's collaborate,
+  //           innovate, and transform ideas into reality. Join us in crafting a
+  //           more beautiful and functional web for everyone.
+  //         </p>
+  //       </div>
+  //     </div>
+  //   </div>
+  // );
 };
 
 const pageContainerStyle: React.CSSProperties = {

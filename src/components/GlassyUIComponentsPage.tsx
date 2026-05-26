@@ -339,20 +339,12 @@ const GlassyUIComponentsPage: React.FC = () => {
   );
 
   return (
-    <div className='min-h-screen font-sans bg-gradient-to-br from-gray-800 via-gray-900 to-black text-white'>
+    <div className='min-h-screen font-sans bg-gradient-to-br from-gray-800 via-gray-900 to-black text-white pt-20'>
       <BackToTopButton />
       <div className='container mx-auto px-4 py-8 lg:py-12'>
-        <header className='flex justify-between items-center mb-16 px-6 py-4 rounded-lg pl-0'>
+        <header className='flex justify-end items-center mb-16 px-6 py-4 rounded-lg pl-0'>
           <div
-            className='text-3xl lg:text-4xl font-extrabold tracking-tight cursor-pointer hover:text-pink-300 transition-colors duration-300 text-white'
-            onClick={() => navigate('/')}
-            data-aos='fade-right'
-          >
-            GlassyUI
-          </div>
-
-          <div
-            className='flex items-center bg-gradient-to-r from-slate-800 via-slate-700 to-slate-900 text-white w-2/5 rounded-lg shadow-lg overflow-hidden'
+            className='flex items-center bg-gradient-to-r from-slate-800 via-slate-700 to-slate-900 text-white w-full md:w-2/5 rounded-lg shadow-lg overflow-hidden'
             data-aos='fade-left'
           >
             <input

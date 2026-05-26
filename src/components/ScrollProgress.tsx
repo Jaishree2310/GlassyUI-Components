@@ -29,6 +29,7 @@ const ScrollProgressBar: React.FC = () => {
         backgroundColor: 'white', // Change this color as needed
         transition: 'width 0.2s ease-in-out',
         zIndex: 9999, // High z-index to appear on top of all other elements
+        pointerEvents: 'none',
       }}
     />
   );

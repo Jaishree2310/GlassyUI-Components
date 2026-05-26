@@ -32,7 +32,7 @@ const DonationPage: React.FC = () => {
 
   const containerStyle: React.CSSProperties = {
     maxWidth: '500px',
-    margin: '70px auto',
+    margin: '100px auto',
     padding: '40px',
     background:
       'linear-gradient(180deg, rgba(255, 255, 255, 0.01), rgba(255, 255, 255, 0.1)',

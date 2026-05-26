@@ -4,6 +4,7 @@ import {
   doSignInWithEmailAndPassword,
   doSignInWithGoogle,
 } from './firebase/auth';
+
 import { useAuth } from './contexts/authContext';
 
 const SignIn: React.FC = () => {

@@ -1,4 +1,11 @@
 import React, { useState, useEffect } from 'react';
+import BackToTopButton from './BackToTop';
+import {
+  MessageSquare,
+  Send,
+  Calendar as CalendarIcon,
+  Tag,
+} from 'lucide-react';
 
 interface Post {
   title: string;
@@ -7,14 +14,14 @@ interface Post {
   date: string;
 }
 
-const Stories = () => {
+const Stories: React.FC = () => {
   const [posts, setPosts] = useState<Post[]>([]);
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
   const [category, setCategory] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    // Fetch posts from the backend API
     const fetchPosts = async () => {
       try {
         const response = await fetch(
@@ -38,6 +45,7 @@ const Stories = () => {
     e.preventDefault();
 
     if (title && content && category) {
+      setIsLoading(true);
       const newPost = {
         title,
         content,
@@ -59,123 +67,192 @@ const Stories = () => {
 
         if (response.ok) {
           const savedPost = await response.json();
-          setPosts([savedPost, ...posts]); // Add the new post to state
+          setPosts([savedPost, ...posts]);
+          setTitle('');
+          setContent('');
+          setCategory('');
+          alert('Experience posted successfully!');
         } else {
           console.error('Failed to save the post');
+          alert('Failed to save the post. Is the backend running?');
         }
       } catch (error) {
         console.error('Error saving the post:', error);
+        alert('Error saving the post. Please try again later.');
+      } finally {
+        setIsLoading(false);
       }
-
-      // Clear form fields
-      setTitle('');
-      setContent('');
-      setCategory('');
+    } else {
+      alert('Please fill in all fields.');
     }
   };
 
   return (
-    <>
-      <h1 className='text-3xl font-bold text-center mb-5 text-gray-100 mt-20'>
-        Real Stories, Real Advice: Share Your Experience
-      </h1>
+    <div className='min-h-screen bg-gradient-to-br from-gray-800 via-gray-900 to-black text-white pt-24 pb-12 px-4 md:px-8'>
+      <BackToTopButton />
 
-      <div className='flex flex-col lg:flex-row items-start gap-8 px-6 lg:px-20 mb-14'>
-        {/* Left side - Posts */}
-        <div className='flex-1 space-y-6'>
-          {posts.length === 0 ? (
-            <p className='text-gray-400 text-center'>
-              No posts yet. Share your experience!
-            </p>
-          ) : (
-            posts.map((post, index) => (
-              <div
-                key={index}
-                className='bg-gray-800 text-white shadow-lg rounded-xl p-8 border border-gray-700 hover:shadow-xl transition-all duration-300 ease-in-out'
-              >
-                <h3 className='text-2xl font-bold text-gray-100 mb-2'>
-                  {post.title}
-                </h3>
-                <p className='text-sm text-indigo-400 font-medium mb-6'>
-                  {post.category}
+      <div className='max-w-7xl mx-auto'>
+        <header className='text-center mb-16'>
+          <h1 className='text-4xl md:text-6xl font-extrabold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500'>
+            Real Stories, Real Advice
+          </h1>
+          <p className='text-lg md:text-xl text-gray-300 max-w-2xl mx-auto'>
+            Share your experiences with GlassyUI and join our community of
+            creators.
+          </p>
+        </header>
+
+        <div className='flex flex-col lg:flex-row gap-12'>
+          {/* Left side - Posts */}
+          <div className='flex-1 space-y-8'>
+            <h2 className='text-2xl font-bold flex items-center gap-2 mb-6'>
+              <MessageSquare className='text-blue-400' />
+              Community Experiences
+            </h2>
+
+            {posts.length === 0 ? (
+              <div className='backdrop-blur-md bg-white/5 border border-white/10 rounded-2xl p-12 text-center'>
+                <p className='text-gray-400 text-lg'>
+                  No stories shared yet. Be the first to share your experience!
                 </p>
-                <p className='text-gray-300 leading-relaxed mb-4'>
-                  {post.content}
-                </p>
-                <div className='flex items-center justify-between'>
-                  <p className='text-xs text-gray-500'>
-                    {new Date(post.date).toLocaleDateString()}
-                  </p>
-                  <button className='text-indigo-500 text-sm font-medium border border-indigo-100 rounded-full px-4 py-1 hover:bg-indigo-700 transition-colors'>
-                    Read More
-                  </button>
-                </div>
               </div>
-            ))
-          )}
-        </div>
+            ) : (
+              <div className='grid gap-6'>
+                {posts.map((post, index) => (
+                  <div
+                    key={index}
+                    className='backdrop-blur-md bg-white/5 border border-white/10 rounded-2xl p-8 hover:bg-white/10 transition-all duration-300 shadow-xl group'
+                  >
+                    <div className='flex justify-between items-start mb-4'>
+                      <h3 className='text-2xl font-bold text-white group-hover:text-blue-400 transition-colors'>
+                        {post.title}
+                      </h3>
+                      <span className='px-3 py-1 bg-blue-500/20 text-blue-300 text-xs font-semibold rounded-full border border-blue-500/30 flex items-center gap-1'>
+                        <Tag size={12} />
+                        {post.category}
+                      </span>
+                    </div>
+                    <p className='text-gray-300 leading-relaxed mb-6'>
+                      {post.content}
+                    </p>
+                    <div className='flex items-center justify-between text-sm text-gray-400 border-t border-white/10 pt-4'>
+                      <span className='flex items-center gap-2'>
+                        <CalendarIcon size={14} />
+                        {new Date(post.date).toLocaleDateString(undefined, {
+                          year: 'numeric',
+                          month: 'long',
+                          day: 'numeric',
+                        })}
+                      </span>
+                      <button className='text-blue-400 hover:text-blue-300 font-medium transition-colors'>
+                        Read More
+                      </button>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
 
-        {/* Right side - Form */}
-        <div className='w-full lg:w-1/3 bg-gray-800 p-6 rounded-lg shadow-md'>
-          <form className='space-y-4'>
-            <input
-              type='text'
-              placeholder='Title of your story'
-              value={title}
-              onChange={e => setTitle(e.target.value)}
-              className='w-full p-3 rounded-md border border-gray-600 bg-gray-700 text-white focus:outline-none focus:border-blue-500'
-            />
-            <textarea
-              placeholder='Write about your story...'
-              value={content}
-              onChange={e => setContent(e.target.value)}
-              className='w-full p-3 h-32 rounded-md border border-gray-600 bg-gray-700 text-white focus:outline-none focus:border-blue-500'
-            ></textarea>
-            <select
-              value={category}
-              onChange={e => setCategory(e.target.value)}
-              className='block w-full px-4 py-2 bg-gray-700 text-white border border-gray-600 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500'
-            >
-              <option value='' disabled>
-                Select Category
-              </option>
+          {/* Right side - Form */}
+          <div className='w-full lg:w-1/3'>
+            <div className='sticky top-28'>
+              <div className='backdrop-blur-xl bg-white/10 border border-white/20 rounded-2xl p-8 shadow-2xl'>
+                <h2 className='text-2xl font-bold mb-6 flex items-center gap-2'>
+                  <Send className='text-purple-400' />
+                  Share Your Story
+                </h2>
+                <form className='space-y-6' onSubmit={handleSubmit}>
+                  <div>
+                    <label className='block text-sm font-medium text-gray-300 mb-2'>
+                      Title
+                    </label>
+                    <input
+                      type='text'
+                      placeholder='Title of your story'
+                      value={title}
+                      onChange={e => setTitle(e.target.value)}
+                      className='w-full p-3 rounded-xl border border-white/10 bg-white/5 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500/50 transition-all'
+                      required
+                    />
+                  </div>
 
-              <optgroup label='GlassyUI-Components'>
-                <option value='GlassyUI Introduction'>
-                  GlassyUI Introduction
-                </option>
-                <option value='Customizing GlassyUI Components'>
-                  Customizing GlassyUI Components
-                </option>
-                <option value='Advanced GlassyUI Techniques'>
-                  Advanced GlassyUI Techniques
-                </option>
-                <option value='GlassyUI Best Practices'>
-                  GlassyUI Best Practices
-                </option>
-                <option value='Contributing to GlassyUI'>
-                  Contributing to GlassyUI
-                </option>
-                <option value='React and GlassyUI Integration'>
-                  React and GlassyUI Integration
-                </option>
-                <option value='GlassyUI in Real Projects'>
-                  GlassyUI in Real Projects
-                </option>
-                <option value='GlassyUI Updates'>GlassyUI Updates</option>
-              </optgroup>
-            </select>
+                  <div>
+                    <label className='block text-sm font-medium text-gray-300 mb-2'>
+                      Story
+                    </label>
+                    <textarea
+                      placeholder='Write about your story...'
+                      value={content}
+                      onChange={e => setContent(e.target.value)}
+                      className='w-full p-3 h-40 rounded-xl border border-white/10 bg-white/5 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500/50 transition-all resize-none'
+                      required
+                    ></textarea>
+                  </div>
 
-            <button
-              onClick={handleSubmit}
-              className='w-full bg-blue-500 hover:bg-blue-600 hover:text-white text-white font-semibold py-2 rounded-md focus:outline-none'
-            >
-              Post Experience
-            </button>
-          </form>
+                  <div>
+                    <label className='block text-sm font-medium text-gray-300 mb-2'>
+                      Category
+                    </label>
+                    <select
+                      value={category}
+                      onChange={e => setCategory(e.target.value)}
+                      className='w-full p-3 rounded-xl border border-white/10 bg-gray-800 text-white focus:outline-none focus:ring-2 focus:ring-blue-500/50 transition-all'
+                      required
+                    >
+                      <option value='' disabled>
+                        Select Category
+                      </option>
+                      <optgroup
+                        label='GlassyUI-Components'
+                        className='bg-gray-900'
+                      >
+                        <option value='GlassyUI Introduction'>
+                          GlassyUI Introduction
+                        </option>
+                        <option value='Customizing GlassyUI Components'>
+                          Customizing GlassyUI Components
+                        </option>
+                        <option value='Advanced GlassyUI Techniques'>
+                          Advanced GlassyUI Techniques
+                        </option>
+                        <option value='GlassyUI Best Practices'>
+                          GlassyUI Best Practices
+                        </option>
+                        <option value='Contributing to GlassyUI'>
+                          Contributing to GlassyUI
+                        </option>
+                        <option value='React and GlassyUI Integration'>
+                          React and GlassyUI Integration
+                        </option>
+                        <option value='GlassyUI in Real Projects'>
+                          GlassyUI in Real Projects
+                        </option>
+                        <option value='GlassyUI Updates'>
+                          GlassyUI Updates
+                        </option>
+                      </optgroup>
+                    </select>
+                  </div>
+
+                  <button
+                    type='submit'
+                    disabled={isLoading}
+                    className={`w-full py-4 rounded-xl font-bold text-white transition-all duration-300 transform hover:scale-[1.02] active:scale-[0.98] ${
+                      isLoading
+                        ? 'bg-gray-600 cursor-not-allowed'
+                        : 'bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 shadow-lg shadow-blue-500/20'
+                    }`}
+                  >
+                    {isLoading ? 'Posting...' : 'Post Experience'}
+                  </button>
+                </form>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
