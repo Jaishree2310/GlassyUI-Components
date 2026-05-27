@@ -1,27 +1,27 @@
-import React, { useEffect, useState } from 'react';
-import BackToTopButton from './BackToTop';
-import { useNavigate } from 'react-router-dom';
 import {
-  ArrowRight,
-  Info,
-  Box,
-  Type,
-  Sliders,
-  MessageSquare,
-  Layout,
   AlignLeft,
-  ArrowUp,
-  DollarSign,
-  ThumbsUpIcon,
-  Contact,
-  Search,
-  Calendar,
   AlignStartVertical,
-  ShoppingCart,
+  ArrowRight,
+  ArrowUp,
+  Box,
+  Calendar,
+  Contact,
+  DollarSign,
   GalleryThumbnails,
+  Info,
+  Layout,
+  MessageSquare,
+  Search,
+  ShoppingCart,
+  Sliders,
   Sparkles,
+  ThumbsUpIcon,
+  Type,
 } from 'lucide-react';
+import React, { useEffect, useState } from 'react';
 import { HiOutlineWrenchScrewdriver } from 'react-icons/hi2';
+import { useNavigate } from 'react-router-dom';
+import BackToTopButton from './BackToTop';
 
 interface ComponentCardProps {
   title: string;
@@ -200,6 +200,18 @@ const GlassyUIComponentsPage: React.FC = () => {
       description: 'Create stunning glassmorphic effects with a visual editor.',
       icon: <Sparkles size={22} />,
       onClick: () => navigate('/generator'),
+    },
+    {
+      title: 'Glass Shockwave Reveal',
+      description: 'Click-to-reveal glass with ripple shockwave animation.',
+      icon: <Sparkles size={22} />,
+      onClick: () => navigate('/glass-shockwave'),
+    },
+    {
+      title: 'Glass Memory Trail',
+      description: 'Interactive glass that remembers cursor movement.',
+      icon: <Sparkles size={22} />,
+      onClick: () => navigate('/glass-memory-trail'),
     },
   ];
 
