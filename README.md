@@ -155,6 +155,21 @@ function App() {
 }
 ```
 
+Component Contribution Rules
+
+Please follow this order while adding components:
+
+Basic Usage
+Props
+Customizable Component
+Theme
+Example
+Copy Code
+
+Example:
+
+Button Component
+Progress Bar Component
 ## 🚀 Future Enhancements / Roadmap
 
 | Feature/Improvement               | Description                                                                                               |
