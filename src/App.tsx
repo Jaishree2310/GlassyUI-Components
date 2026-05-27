@@ -11,6 +11,8 @@ import {
 import ScrollProgressBar from './components/ScrollProgress';
 import ScrollProgressBar from './components/ScrollProgress'; // Import your ScrollProgressBar component
 import ScrollToTop from './components/ScrollToTop';
+import FloatingBottomBar from './components/FloatingBottomBar';
+import BackToTopButton from './components/BackToTop';
 import GlassyUILandingPage from './components/GlassyUILandingPage';
 import GlassyUIComponentsPage from './components/GlassyUIComponentsPage';
 import ButtonDetailsPage from './components/ButtonDetailsPage';
@@ -32,6 +34,7 @@ import AboutUsPage from './components/AboutUsPage';
 import Header from './components/Header';
 import BackToTopDetailsPage from './components/BackToTopDetailsPage';
 import DropdowndetailsPage from './components/DropdowndetailsPage';
+import StepperDetailsPage from './components/StepperDetailsPage';
 import AuthenticationCard from './components/AuthenticationCards';
 import ToastPage from './components/ToastPage';
 import AccordionDetails from './components/AccordionDetails';
@@ -84,6 +87,7 @@ const App: React.FC = () => {
       <ScrollToTop />
       <Header />
       <AiChatbot />
+      <BackToTopButton />
       {/* <ThemeToggle /> */}
       <ScrollProgressBar />
       <Routes>
@@ -108,6 +112,7 @@ const App: React.FC = () => {
         <Route path='/slider-details' element={<SliderDetailsPage />} />
         <Route path='/back-to-top-details' element={<BackToTopDetailsPage />} />
         <Route path='/dropdown-details' element={<DropdowndetailsPage />} />
+        <Route path='/stepper-details' element={<StepperDetailsPage />} />
         <Route path='/authentication-card' element={<AuthenticationCard />} />
         <Route path='/accordion-details' element={<AccordionDetails />} />
         <Route path='/contributors' element={<ContributorsPage />} />
@@ -130,6 +135,7 @@ const App: React.FC = () => {
         <Route path='*' element={<NotFoundPage />} />
       </Routes>
       <Footer />
+      <FloatingBottomBar />
     </Router>
   );
 };
