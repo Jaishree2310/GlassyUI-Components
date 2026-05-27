@@ -32,7 +32,12 @@ const Header: React.FC = () => {
     >
       <div className='header-inner'>
         {/* Logo */}
-        <Link to='/' className='header-logo'>
+        <Link
+          to='/'
+          className='header-logo'
+          aria-label='Go to homepage'
+          onClick={() => window.scrollTo(0, 0)}
+        >
           <div className='logo-mark'>G</div>
           <span className='logo-wordmark'>
             <span className='logo-accent'>Glassy</span>UI
