@@ -78,6 +78,7 @@ This open-source library features stunning React components designed with a capt
 - **Textareas:** Stylish textareas with a glassy touch.
 - **Modals:** Elegant modals featuring the glassmorphism effect.
 - **Navigation Bar:** Modern navigation bars with a glassy theme.
+- **Stepper:** A customizable, responsive multi-step wizard and progress indicator styled with premium glassmorphism.
 
 ## 🛠️ Tech Stack
 
