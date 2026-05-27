@@ -257,14 +257,14 @@ const AuthenticationCardDetailsPage: React.FC = () => {
           </div>
           <div className='mb-6'>
             <label
-              htmlFor='password'
+              htmlFor='confirm-password'
               className='block text-sm font-medium mb-2'
             >
               Confirm Password:
             </label>
             <input
               type='password'
-              id='password'
+              id='confirm-password'
               className='w-full px-3 py-2 border rounded-md bg-white bg-opacity-40 backdrop-filter backdrop-blur-sm'
               placeholder='Enter your password'
             />
@@ -578,12 +578,12 @@ const AuthenticationCardDetailsPage: React.FC = () => {
             />
           </div>
           <div className="mb-6">
-            <label htmlFor="password" className="block text-sm font-medium mb-2">
+            <label htmlFor="confirm-password" className="block text-sm font-medium mb-2">
               Confirm Password:
             </label>
             <input
               type="password"
-              id="password"
+              id="confirm-password"
               className="w-full px-3 py-2 border rounded-md bg-white bg-opacity-40 backdrop-filter backdrop-blur-sm"
               placeholder="Enter your password"
             />
@@ -645,12 +645,12 @@ const AuthenticationCardDetailsPage: React.FC = () => {
             />
           </div>
           <div className="mb-6">
-            <label htmlFor="password" className="block text-sm font-medium mb-2">
+            <label htmlFor="confirm-password" className="block text-sm font-medium mb-2">
               Confirm Password:
             </label>
             <input
               type="password"
-              id="password"
+              id="confirm-password"
               className="w-full px-3 py-2 border rounded-md bg-white bg-opacity-40 backdrop-filter backdrop-blur-sm"
               placeholder="Enter your password"
             />

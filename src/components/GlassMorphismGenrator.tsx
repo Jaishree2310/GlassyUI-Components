@@ -235,10 +235,10 @@ const GlassmorphismGenerator: React.FC = () => {
               <span className='text-white/50 font-mono text-sm pl-1'>#</span>
               <input
                 type='text'
-                value={bgColor.replace('#', '')}
+                value={shadowColor.replace('#', '')}
                 onChange={e => {
                   const val = e.target.value.replace(/[^0-9a-fA-F]/g, '');
-                  setBgColor(`#${val.slice(0, 6)}`);
+                  setShadowColor(`#${val.slice(0, 6)}`);
                 }}
                 className='bg-transparent w-20 py-1 px-1 text-white font-mono uppercase outline-none text-sm tracking-widest'
                 placeholder='FFFFFF'

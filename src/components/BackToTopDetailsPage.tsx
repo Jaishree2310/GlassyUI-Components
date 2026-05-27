@@ -130,13 +130,15 @@ const BackToTopDetailsPage: React.FC = () => {
             Customize the button's style through the className prop or inline
             styles.
           </p>
-          <button
-            className={`fixed bottom-5 right-5 py-3 px-5 bg-blue-500 rounded-full text-white shadow-lg transition-transform hover:scale-105`}
-            title='Back to Top'
-            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-          >
-            ↑
-          </button>
+          <div className='flex justify-center p-4 bg-white bg-opacity-10 rounded-lg'>
+            <button
+              className={`py-3 px-5 bg-blue-500 rounded-full text-white shadow-lg transition-transform hover:scale-105`}
+              title='Back to Top'
+              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+            >
+              ↑ Demo Button (Click to scroll)
+            </button>
+          </div>
         </div>
       </div>
     </div>
