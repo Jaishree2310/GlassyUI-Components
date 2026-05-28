@@ -31,6 +31,7 @@ const StatisticDetails: React.FC = () => {
       onClick={() => copyToClipboard(text, codeKey)}
       className={`absolute top-2 right-2 ${getGlassyClasses()} p-2 hover:bg-white/40 transition-all duration-300 z-10`}
       title='Copy to clipboard'
+      aria-label='Copy to clipboard'
     >
       {copiedStates[codeKey] ? (
         <Check size={16} className='text-green-600' />

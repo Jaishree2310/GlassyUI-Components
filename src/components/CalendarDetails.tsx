@@ -49,6 +49,7 @@ const CalendarDetail: React.FC = () => {
       onClick={() => copyToClipboard(text, codeKey)}
       className={`absolute top-4 right-4 p-2 bg-white bg-opacity-20 rounded-lg shadow-lg hover:bg-opacity-30`}
       title='Copy to clipboard'
+      aria-label='Copy to clipboard'
     >
       {copiedStates[codeKey] ? <Check size={20} /> : <Copy size={20} />}
     </button>

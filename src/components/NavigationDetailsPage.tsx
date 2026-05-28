@@ -30,6 +30,7 @@ const NavigationDetailsPage: React.FC = () => {
       onClick={() => copyToClipboard(text, codeKey)}
       className={`absolute top-2 right-2 ${getGlassyClasses()} p-2 hover:bg-white/40 transition-all duration-300 z-10`}
       title='Copy to clipboard'
+      aria-label='Copy to clipboard'
     >
       {copiedText ? (
         <Check size={16} className='text-green-600' />
@@ -191,6 +192,7 @@ const NavigationDetailsPage: React.FC = () => {
               <button
                 className='md:hidden flex items-center justify-start p-3'
                 onClick={() => setMenuOpen(!menuOpen)}
+                aria-label='Toggle navigation menu'
               >
                 <Menu size={20} className='mr-2' />
               </button>
