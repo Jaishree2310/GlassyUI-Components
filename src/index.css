@@ -442,6 +442,14 @@ code {
   color: #94a3b8;
 }
 
+.cp-search-result-count {
+  font-size: 0.78rem;
+  color: rgba(255, 255, 255, 0.45);
+  margin-top: 0.5rem;
+  text-align: center;
+  letter-spacing: 0.01em;
+}
+
 /* Grid */
 .cp-grid-layout {
   display: grid;
@@ -1557,5 +1565,15 @@ code {
     padding: 16px 24px 24px;
     flex-direction: column;
     align-items: flex-start;
+  }
+}
+
+div.min-h-screen.p-8.bg-gradient-to-r.from-gray-800.via-gray-900.to-black {
+  padding-top: 100px;
+}
+
+@media (max-width: 640px) {
+  div.min-h-screen.p-8.bg-gradient-to-r.from-gray-800.via-gray-900.to-black {
+    padding-top: 80px;
   }
 }
