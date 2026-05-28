@@ -35,7 +35,7 @@ const CalendarDetail: React.FC = () => {
         () => setCopiedStates(prev => ({ ...prev, [key]: false })),
         2000,
       );
-    });
+    }).catch(err => console.error('Failed to copy:', err));
   };
   const getGlassyClasses = () => {
     return 'bg-white bg-opacity-20 rounded-lg shadow-lg'; // Customize as needed
