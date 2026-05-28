@@ -649,9 +649,20 @@ code {
   color: #f8fafc;
   position: relative;
   overflow-x: hidden;
+  overflow-y: auto;
   font-family:
     -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', sans-serif;
   padding: 130px 24px 80px;
+}
+
+.about-footer {
+  margin-top: 60px;
+  text-align: center;
+  padding-bottom: 40px;
+}
+
+.about-section {
+  margin-bottom: 40px;
 }
 
 .about-orb-1 {
