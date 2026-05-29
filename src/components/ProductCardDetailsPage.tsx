@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
+import PageShell from './PageShell';
 import { useNavigate } from 'react-router-dom';
 import { ArrowLeft, Copy, Check } from 'lucide-react';
 
@@ -214,202 +215,194 @@ const ProductCardDetailsPage: React.FC = () => {
         };`;
 
   return (
-    <div className='min-h-screen pt-24 px-8 pb-8 font-sans bg-gradient-to-r from-gray-800 via-gray-900 to-black text-white relative'>
-      <div className='relative z-10'>
-        <button
-          onClick={() => navigate(-1)}
-          className={`mb-8 flex items-center ${getGlassyClasses(10)} px-4 py-2 hover:bg-white/40 transition-all duration-300 text-gray-300`}
-        >
-          <ArrowLeft size={20} className='mr-2' />
-          Back to Components
-        </button>
+    <PageShell>
+      <button
+        onClick={() => navigate(-1)}
+        className={`mb-8 flex items-center ${getGlassyClasses(10)} px-4 py-2 hover:bg-white/40 transition-all duration-300 text-gray-300`}
+      >
+        <ArrowLeft size={20} className='mr-2' />
+        Back to Components
+      </button>
 
-        <h1 className='text-6xl font-bold mb-8 text-white'>Product Card</h1>
-        <p className='text-xl mb-8 text-white'>
-          A simple product card to showcase an item for sale.
+      <h1 className='text-6xl font-bold mb-8 text-white'>Product Card</h1>
+      <p className='text-xl mb-8 text-white'>
+        A simple product card to showcase an item for sale.
+      </p>
+
+      <div className={`${getGlassyClasses()} p-8 mb-8 relative`}>
+        <h2 className='text-3xl font-bold mb-6 text-white'>Basic Usage</h2>
+        <div className='relative'>
+          <pre className='bg-gray-800 text-white p-6 rounded-lg overflow-x-auto whitespace-pre-wrap max-sm:text-[0.55rem]'>
+            {productCardCode}
+          </pre>
+          <CopyButton text={productCardCode} codeKey='productCard' />
+        </div>
+      </div>
+
+      <div className={`${getGlassyClasses()} p-8 mb-8 relative`}>
+        <h2 className='text-3xl font-bold mb-6 text-white'>SVG&apos;s Used</h2>
+        <div className='relative'>
+          <pre className='bg-gray-800 text-white p-6 rounded-lg overflow-x-auto whitespace-pre-wrap max-sm:text-[0.55rem]'>
+            {svgUsed}
+          </pre>
+          <CopyButton text={svgUsed} codeKey='svgUsed' />
+        </div>
+      </div>
+
+      <div className={`${getGlassyClasses()} p-8 mb-8`}>
+        <h2 className='text-3xl font-bold mb-6 text-white'>Props</h2>
+        <div className='overflow-x-auto'>
+          <table className='w-full'>
+            <thead>
+              <tr className='bg-white bg-opacity-20'>
+                <th className='text-left p-2 text-gray-300'>Prop</th>
+                <th className='text-left p-2 text-gray-300'>Type</th>
+                <th className='text-left p-2 text-gray-300'>Default</th>
+                <th className='text-left p-2 text-gray-300'>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td className='p-2 text-gray-200'>product</td>
+                <td className='p-2 text-gray-200'>object</td>
+                <td className='p-2 text-gray-200'>-</td>
+                <td className='p-2 text-gray-200'>
+                  An object containing product details such as name, original
+                  price, discounted price, and discount percentage.
+                </td>
+              </tr>
+              <tr>
+                <td className='p-2 text-gray-200'>product.name</td>
+                <td className='p-2 text-gray-200'>string</td>
+                <td className='p-2 text-gray-200'>-</td>
+                <td className='p-2 text-gray-200'>The name of the product.</td>
+              </tr>
+              <tr>
+                <td className='p-2 text-gray-200'>product.originalPrice</td>
+                <td className='p-2 text-gray-200'>number</td>
+                <td className='p-2 text-gray-200'>-</td>
+                <td className='p-2 text-gray-200'>
+                  The original price of the product before discount.
+                </td>
+              </tr>
+              <tr>
+                <td className='p-2 text-gray-200'>product.discountedPrice</td>
+                <td className='p-2 text-gray-200'>number</td>
+                <td className='p-2 text-gray-200'>-</td>
+                <td className='p-2 text-gray-200'>
+                  The price after applying the discount.
+                </td>
+              </tr>
+              <tr>
+                <td className='p-2 text-gray-200'>
+                  product.discountPercentage
+                </td>
+                <td className='p-2 text-gray-200'>number</td>
+                <td className='p-2 text-gray-200'>-</td>
+                <td className='p-2 text-gray-200'>
+                  The discount percentage applied to the product.
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div className={`${getGlassyClasses()} p-8 mb-8`}>
+        <h2 className='text-3xl font-bold mb-6 text-white'>
+          Product Card Example
+        </h2>
+        <p className='mb-6 text-lg text-white'>
+          Customize the card&apos;s style through the className prop or inline
+          styles.
         </p>
-
-        <div className={`${getGlassyClasses()} p-8 mb-8 relative`}>
-          <h2 className='text-3xl font-bold mb-6 text-white'>Basic Usage</h2>
-          <div className='relative'>
-            <pre className='bg-gray-800 text-white p-6 rounded-lg overflow-x-auto whitespace-pre-wrap max-sm:text-[0.55rem]'>
-              {productCardCode}
-            </pre>
-            <CopyButton text={productCardCode} codeKey='productCard' />
-          </div>
-        </div>
-
-        <div className={`${getGlassyClasses()} p-8 mb-8 relative`}>
-          <h2 className='text-3xl font-bold mb-6 text-white'>
-            SVG&apos;s Used
-          </h2>
-          <div className='relative'>
-            <pre className='bg-gray-800 text-white p-6 rounded-lg overflow-x-auto whitespace-pre-wrap max-sm:text-[0.55rem]'>
-              {svgUsed}
-            </pre>
-            <CopyButton text={svgUsed} codeKey='svgUsed' />
-          </div>
-        </div>
-
-        <div className={`${getGlassyClasses()} p-8 mb-8`}>
-          <h2 className='text-3xl font-bold mb-6 text-white'>Props</h2>
-          <div className='overflow-x-auto'>
-            <table className='w-full'>
-              <thead>
-                <tr className='bg-white bg-opacity-20'>
-                  <th className='text-left p-2 text-gray-300'>Prop</th>
-                  <th className='text-left p-2 text-gray-300'>Type</th>
-                  <th className='text-left p-2 text-gray-300'>Default</th>
-                  <th className='text-left p-2 text-gray-300'>Description</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td className='p-2 text-gray-200'>product</td>
-                  <td className='p-2 text-gray-200'>object</td>
-                  <td className='p-2 text-gray-200'>-</td>
-                  <td className='p-2 text-gray-200'>
-                    An object containing product details such as name, original
-                    price, discounted price, and discount percentage.
-                  </td>
-                </tr>
-                <tr>
-                  <td className='p-2 text-gray-200'>product.name</td>
-                  <td className='p-2 text-gray-200'>string</td>
-                  <td className='p-2 text-gray-200'>-</td>
-                  <td className='p-2 text-gray-200'>
-                    The name of the product.
-                  </td>
-                </tr>
-                <tr>
-                  <td className='p-2 text-gray-200'>product.originalPrice</td>
-                  <td className='p-2 text-gray-200'>number</td>
-                  <td className='p-2 text-gray-200'>-</td>
-                  <td className='p-2 text-gray-200'>
-                    The original price of the product before discount.
-                  </td>
-                </tr>
-                <tr>
-                  <td className='p-2 text-gray-200'>product.discountedPrice</td>
-                  <td className='p-2 text-gray-200'>number</td>
-                  <td className='p-2 text-gray-200'>-</td>
-                  <td className='p-2 text-gray-200'>
-                    The price after applying the discount.
-                  </td>
-                </tr>
-                <tr>
-                  <td className='p-2 text-gray-200'>
-                    product.discountPercentage
-                  </td>
-                  <td className='p-2 text-gray-200'>number</td>
-                  <td className='p-2 text-gray-200'>-</td>
-                  <td className='p-2 text-gray-200'>
-                    The discount percentage applied to the product.
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-
-        <div className={`${getGlassyClasses()} p-8 mb-8`}>
-          <h2 className='text-3xl font-bold mb-6 text-white'>
-            Product Card Example
-          </h2>
-          <p className='mb-6 text-lg text-white'>
-            Customize the card&apos;s style through the className prop or inline
-            styles.
-          </p>
-          <section className={`${getGlassyClasses()} p-6 mb-14 relative`}>
-            <div className='container px-5 py-16 mx-auto'>
-              <div className='lg:w-full mx-auto flex flex-wrap'>
-                <img
-                  alt='ecommerce'
-                  className='lg:w-1/2 w-full  h-[430px] object-cover object-top rounded-[25px]'
-                  src='https://rukminim2.flixcart.com/image/416/416/xif0q/shoe/y/3/3/10-mexico-11-10-asian-lgrey-black-original-imah5agrpzsagpy2.jpeg?q=70&crop=false'
-                />
-                <div className='lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0'>
-                  <h2 className='text-sm title-font text-gray-300 tracking-widest'>
-                    ASIAN
-                  </h2>
-                  <h1 className='text-white text-3xl title-font font-medium mb-1'>
-                    Casual Sneakers Shoes For Men Mexico-11
-                  </h1>
-                  <div className='flex mb-4'>
-                    <span className='flex items-center'>
-                      {Array(4).fill(svgs.star)}
-                      {svgs.star} {/* Non-filled star */}
-                      <span className='ml-3'>15 Reviews</span>
-                    </span>
-                    <span className='flex ml-3 pl-3 py-2 border-l-2 border-[#535d6a] text-gray-500 space-x-2'>
-                      <a>{svgs.facebook}</a>
-                      <a>{svgs.twitter}</a>
-                      <a>{svgs.chat}</a>
-                    </span>
-                  </div>
-                  <p className='leading-relaxed'>
-                    These casual Mexico-11 sneakers offer ultimate comfort and
-                    style for your everyday use. Crafted with a breathable mesh
-                    upper and durable sole, they are perfect for walks, runs, or
-                    casual outings. The versatile grey color goes well with
-                    various outfits, making it a wardrobe staple.
-                  </p>
-                  <div className='flex mt-6 items-center pb-5 border-b-2 border-[#535d6a] mb-5'>
-                    <div className='flex'>
-                      <span className='mr-3 text-gray-300'>Color</span>
-                      <button className='border-2 border-[#535d6a] rounded-full w-6 h-6 focus:outline-none'></button>
-                      <button className='border-2 border-[#535d6a] ml-1 bg-gray-700 rounded-full w-6 h-6 focus:outline-none'></button>
-                      <button className='border-2 border-[#535d6a] ml-1 bg-blue-500 rounded-full w-6 h-6 focus:outline-none'></button>
-                    </div>
-                    <div className='flex ml-6 items-center'>
-                      <span className='mr-3 text-gray-300'>Size</span>
-                      <div className='relative'>
-                        <select className='rounded border cursor-pointer bg-gray-300 text-black border-gray-700 focus:ring-2 focus:ring-blue-900 bg-transparent appearance-none py-2 focus:outline-none focus:border-blue-500 pl-3 pr-10'>
-                          <option className='bg-gray-300 cursor-pointer'>
-                            8
-                          </option>
-                          <option className='bg-gray-300 cursor-pointer'>
-                            9
-                          </option>
-                          <option className='bg-gray-300 cursor-pointer'>
-                            10
-                          </option>
-                          <option className='bg-gray-300 cursor-pointer'>
-                            11
-                          </option>
-                        </select>
-                        <span className='absolute right-0 top-0 h-full w-10 text-center text-gray-600 pointer-events-none flex items-center justify-center'>
-                          {svgs.dropdownArrow}
-                        </span>
-                      </div>
-                    </div>
-                  </div>
+        <section className={`${getGlassyClasses()} p-6 mb-14 relative`}>
+          <div className='container px-5 py-16 mx-auto'>
+            <div className='lg:w-full mx-auto flex flex-wrap'>
+              <img
+                alt='ecommerce'
+                className='lg:w-1/2 w-full  h-[430px] object-cover object-top rounded-[25px]'
+                src='https://rukminim2.flixcart.com/image/416/416/xif0q/shoe/y/3/3/10-mexico-11-10-asian-lgrey-black-original-imah5agrpzsagpy2.jpeg?q=70&crop=false'
+              />
+              <div className='lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0'>
+                <h2 className='text-sm title-font text-gray-300 tracking-widest'>
+                  ASIAN
+                </h2>
+                <h1 className='text-white text-3xl title-font font-medium mb-1'>
+                  Casual Sneakers Shoes For Men Mexico-11
+                </h1>
+                <div className='flex mb-4'>
+                  <span className='flex items-center'>
+                    {Array(4).fill(svgs.star)}
+                    {svgs.star} {/* Non-filled star */}
+                    <span className='ml-3'>15 Reviews</span>
+                  </span>
+                  <span className='flex ml-3 pl-3 py-2 border-l-2 border-[#535d6a] text-gray-500 space-x-2'>
+                    <a>{svgs.facebook}</a>
+                    <a>{svgs.twitter}</a>
+                    <a>{svgs.chat}</a>
+                  </span>
+                </div>
+                <p className='leading-relaxed'>
+                  These casual Mexico-11 sneakers offer ultimate comfort and
+                  style for your everyday use. Crafted with a breathable mesh
+                  upper and durable sole, they are perfect for walks, runs, or
+                  casual outings. The versatile grey color goes well with
+                  various outfits, making it a wardrobe staple.
+                </p>
+                <div className='flex mt-6 items-center pb-5 border-b-2 border-[#535d6a] mb-5'>
                   <div className='flex'>
-                    <div className='flex items-center'>
-                      <span className='title-font font-medium text-2xl text-white'>
-                        ₹846.00
-                      </span>
-                      <span className='ml-4 text-gray-500 line-through text-lg'>
-                        ₹1499.00
-                      </span>
-                      <span className='ml-4 text-green-500 text-lg'>
-                        43% off
+                    <span className='mr-3 text-gray-300'>Color</span>
+                    <button className='border-2 border-[#535d6a] rounded-full w-6 h-6 focus:outline-none'></button>
+                    <button className='border-2 border-[#535d6a] ml-1 bg-gray-700 rounded-full w-6 h-6 focus:outline-none'></button>
+                    <button className='border-2 border-[#535d6a] ml-1 bg-blue-500 rounded-full w-6 h-6 focus:outline-none'></button>
+                  </div>
+                  <div className='flex ml-6 items-center'>
+                    <span className='mr-3 text-gray-300'>Size</span>
+                    <div className='relative'>
+                      <select className='rounded border cursor-pointer bg-gray-300 text-black border-gray-700 focus:ring-2 focus:ring-blue-900 bg-transparent appearance-none py-2 focus:outline-none focus:border-blue-500 pl-3 pr-10'>
+                        <option className='bg-gray-300 cursor-pointer'>
+                          8
+                        </option>
+                        <option className='bg-gray-300 cursor-pointer'>
+                          9
+                        </option>
+                        <option className='bg-gray-300 cursor-pointer'>
+                          10
+                        </option>
+                        <option className='bg-gray-300 cursor-pointer'>
+                          11
+                        </option>
+                      </select>
+                      <span className='absolute right-0 top-0 h-full w-10 text-center text-gray-600 pointer-events-none flex items-center justify-center'>
+                        {svgs.dropdownArrow}
                       </span>
                     </div>
-                    <button className='flex ml-auto text-white bg-blue-500 border-0 py-2 px-6 focus:outline-none hover:bg-blue-600 rounded'>
-                      Add to Cart
-                    </button>
-                    <button className='rounded-full w-10 h-10 bg-gray-800 p-0 border-0 inline-flex items-center justify-center text-gray-500 ml-4'>
-                      {svgs.heart}
-                    </button>
                   </div>
+                </div>
+                <div className='flex'>
+                  <div className='flex items-center'>
+                    <span className='title-font font-medium text-2xl text-white'>
+                      ₹846.00
+                    </span>
+                    <span className='ml-4 text-gray-500 line-through text-lg'>
+                      ₹1499.00
+                    </span>
+                    <span className='ml-4 text-green-500 text-lg'>43% off</span>
+                  </div>
+                  <button className='flex ml-auto text-white bg-blue-500 border-0 py-2 px-6 focus:outline-none hover:bg-blue-600 rounded'>
+                    Add to Cart
+                  </button>
+                  <button className='rounded-full w-10 h-10 bg-gray-800 p-0 border-0 inline-flex items-center justify-center text-gray-500 ml-4'>
+                    {svgs.heart}
+                  </button>
                 </div>
               </div>
             </div>
-          </section>
-        </div>
+          </div>
+        </section>
       </div>
-    </div>
+    </PageShell>
   );
 };
 
