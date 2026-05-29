@@ -120,7 +120,7 @@ const Stories: React.FC = () => {
                     {post.content}
                   </p>
                   <div className='mt-6 flex justify-end'>
-                    <button
+                    <button aria-label="button"
                       type='button'
                       className='rounded-full border border-white/15 bg-white/10 px-4 py-2 text-sm font-medium text-white transition-colors duration-300 hover:bg-white/20'
                     >
@@ -199,7 +199,7 @@ const Stories: React.FC = () => {
                 </select>
               </div>
 
-              <button
+              <button aria-label="button"
                 type='submit'
                 className='w-full rounded-2xl bg-gradient-to-r from-violet-500 via-cyan-500 to-fuchsia-500 px-4 py-3 font-semibold text-white shadow-[0_12px_30px_rgba(34,211,238,0.25)] transition-transform duration-300 hover:-translate-y-0.5'
               >

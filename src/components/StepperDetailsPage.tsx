@@ -63,7 +63,7 @@ export const StepperDetailsPage: React.FC = () => {
     text,
     codeKey,
   }) => (
-    <button
+    <button aria-label="button"
       onClick={() => copyToClipboard(text, codeKey)}
       className={`absolute top-2 right-2 ${getGlassyClasses(10)} p-2 hover:bg-opacity-40 transition-all duration-300 z-10`}
       title='Copy to clipboard'
@@ -150,7 +150,7 @@ export const StepperDetailsPage: React.FC = () => {
       <BackToTopButton />
 
       {/* Back Navigation Button */}
-      <button
+      <button aria-label="button"
         onClick={() => navigate('/components')}
         className={`mb-8 flex items-center ${getGlassyClasses(10)} px-4 py-2 hover:bg-opacity-40 transition-all duration-300 text-gray-100`}
       >
@@ -310,7 +310,7 @@ function App() {
               </label>
               <div className='flex gap-2'>
                 {[0, 1, 2, 3, 4].map(idx => (
-                  <button
+                  <button aria-label="button"
                     key={idx}
                     onClick={() => setSandboxActiveStep(idx)}
                     className={`flex-1 py-1 rounded text-xs font-bold transition-all ${
@@ -330,7 +330,7 @@ function App() {
               <label className='block mb-2 font-semibold'>Orientation</label>
               <div className='flex gap-2'>
                 {(['horizontal', 'vertical'] as const).map(dir => (
-                  <button
+                  <button aria-label="button"
                     key={dir}
                     onClick={() => setSandboxOrientation(dir)}
                     className={`flex-1 py-1 capitalize rounded text-xs font-bold transition-all ${
@@ -366,7 +366,7 @@ function App() {
               <label className='block mb-2 font-semibold'>Blur level</label>
               <div className='flex gap-1.5'>
                 {(['sm', 'md', 'lg', 'xl'] as const).map(bl => (
-                  <button
+                  <button aria-label="button"
                     key={bl}
                     onClick={() => setSandboxBlur(bl)}
                     className={`flex-1 py-1 uppercase rounded text-xs font-bold transition-all ${
@@ -424,7 +424,7 @@ function App() {
               </label>
               <div className='flex gap-1.5'>
                 {(['solid', 'dashed', 'gradient'] as const).map(cs => (
-                  <button
+                  <button aria-label="button"
                     key={cs}
                     onClick={() => setSandboxConnectorStyle(cs)}
                     className={`flex-1 py-1 capitalize rounded text-xs font-bold transition-all ${
@@ -615,7 +615,7 @@ function App() {
 
             {/* Actions */}
             <div className='flex justify-between items-center mt-8 border-t border-white/10 pt-4'>
-              <button
+              <button aria-label="button"
                 disabled={checkoutStep === 0}
                 onClick={() => setCheckoutStep(prev => prev - 1)}
                 className={`px-4 py-1.5 rounded-lg text-sm font-semibold transition-all ${
@@ -628,14 +628,14 @@ function App() {
               </button>
 
               {checkoutStep < 3 ? (
-                <button
+                <button aria-label="button"
                   onClick={() => setCheckoutStep(prev => prev + 1)}
                   className='px-4 py-1.5 bg-white bg-opacity-10 hover:bg-opacity-25 border border-white/20 text-white font-semibold text-sm rounded-lg shadow-sm transition-all animate-pulse'
                 >
                   {checkoutStep === 2 ? 'Place Order' : 'Next Step'}
                 </button>
               ) : (
-                <button
+                <button aria-label="button"
                   onClick={() => {
                     setCheckoutStep(0);
                     setShippingName('');

@@ -33,7 +33,7 @@ const ButtonDetailsPage: React.FC = () => {
     text,
     codeKey,
   }) => (
-    <button
+    <button aria-label="button"
       onClick={() => copyToClipboard(text, codeKey)}
       className={`absolute top-2 right-2 ${getGlassyClasses()} p-2 hover:bg-white/40 transition-all duration-300 z-10`}
       title='Copy to clipboard'
@@ -94,7 +94,7 @@ function Example() {
     <div className='min-h-screen pt-24 px-8 pb-8 font-sans bg-gradient-to-r from-gray-800 via-gray-900 to-black text-white relative'>
       <BackToTopButton />
       <div className='relative z-10'>
-        <button
+        <button aria-label="button"
           onClick={() => navigate(-1)}
           className={`mb-8 flex items-center ${getGlassyClasses(10)} px-4 py-2 hover:bg-white/40 transition-all duration-300 text-white`}
         >
@@ -172,7 +172,7 @@ function Example() {
               </h3>
               <div className='flex space-x-4 mb-4'>
                 {instagramThemes.map((color, index) => (
-                  <button
+                  <button aria-label="button"
                     key={index}
                     className='w-8 h-8 rounded-full border-2 border-white shadow-lg transition-transform hover:scale-110'
                     style={{ backgroundColor: color }}
@@ -265,7 +265,7 @@ function Example() {
             </div>
 
             <div className='relative mt-8'>
-              <button
+              <button aria-label="button"
                 className={`py-3 px-6 text-lg font-semibold rounded-lg ${getGlassyClasses()} hover:bg-white/40 transition-transform hover:scale-110`}
                 style={{
                   backgroundColor: `${customBg}40`,
@@ -288,7 +288,7 @@ function Example() {
           <p className='mb-6 text-lg text-white'>
             A button that triggers an alert message when clicked.
           </p>
-          <button
+          <button aria-label="button"
             onClick={() => alert('Button clicked!')}
             className={`${getGlassyClasses()} px-6 py-3 text-lg font-semibold rounded-lg hover:bg-white/40 transition-transform hover:scale-110 text-white`}
           >
@@ -309,7 +309,7 @@ function Example() {
           <p className='mb-6 text-lg text-white'>
             A button that spans the full width of its container.
           </p>
-          <button
+          <button aria-label="button"
             className={`w-full py-3 text-lg font-semibold rounded-lg ${getGlassyClasses()} hover:bg-white/40 transition-transform hover:scale-105 text-white`}
           >
             Full Width Button

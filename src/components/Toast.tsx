@@ -49,7 +49,7 @@ const Toast: React.FC<ToastProps> = ({
         <h1>{title}</h1>
         <p className={`opacity-70`}>{message}</p>
       </div>
-      <button
+      <button aria-label="button"
         onClick={e => {
           e.currentTarget.parentElement?.classList.add('hide-toast');
           setTimeout(() => {

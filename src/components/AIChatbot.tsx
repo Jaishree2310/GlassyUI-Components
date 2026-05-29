@@ -164,7 +164,7 @@ const AiChatbot: React.FC = () => {
                   </p>
                 </div>
               </div>
-              <button
+              <button aria-label="button"
                 onClick={() => setIsOpen(false)}
                 className='p-1.5 rounded-full hover:bg-white/10 transition-colors text-white/70 hover:text-white'
                 aria-label='Close Chat'
@@ -252,7 +252,7 @@ const AiChatbot: React.FC = () => {
       </AnimatePresence>
 
       {/* Floating Toggle Button */}
-      <button
+      <button aria-label="button"
         onClick={() => setIsOpen(!isOpen)}
         className='p-4 rounded-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 text-white shadow-lg border border-white/20 hover:scale-110 active:scale-95 transition-all duration-300 flex items-center justify-center relative group'
         aria-label='Open Chat'

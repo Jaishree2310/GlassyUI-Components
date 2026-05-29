@@ -40,7 +40,7 @@ const CopyButton: React.FC<{ text: string; codeKey: string }> = ({
     {},
   );
   return (
-    <button
+    <button aria-label="button"
       onClick={() => copyToClipboard(text, codeKey, setCopiedStates)}
       className={`absolute top-2 right-2 ${getGlassyClasses()} p-2 hover:bg-white/40 transition-all duration-300 z-10`}
       aria-label='Copy to clipboard'
@@ -168,7 +168,7 @@ const SpeedDialDetailsPage: React.FC = () => {
       <BackToTopButton />
       <div className='relative z-10'>
         {/* Back Button */}
-        <button
+        <button aria-label="button"
           onClick={() => navigate(-1)}
           className={`mb-8 flex items-center ${getGlassyClasses()} px-4 py-2 hover:bg-white/40 transition-all duration-300 text-gray-100`}
         >

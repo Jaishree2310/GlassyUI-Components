@@ -16,7 +16,7 @@ const Button: React.FC<ButtonProps> = ({
   className = '',
   style = {},
 }) => (
-  <button
+  <button aria-label="button"
     onClick={onClick}
     className={`px-4 py-2 rounded-lg transition-all transform hover:-translate-y-1 hover:shadow-lg ${className}`}
     style={style}
@@ -32,7 +32,7 @@ const CopyButton: React.FC<{
   copyToClipboard: (text: string, key: string) => void;
   getGlassyClasses: () => string;
 }> = ({ text, codeKey, copiedStates, copyToClipboard, getGlassyClasses }) => (
-  <button
+  <button aria-label="button"
     onClick={() => copyToClipboard(text, codeKey)}
     className={`absolute top-4 right-4 ${getGlassyClasses()} p-2 hover:bg-opacity-20 transition-all duration-300`}
     title='Copy to clipboard'
@@ -87,7 +87,7 @@ const Popup: React.FC<PopupProps> = ({
           background: `rgba(${parseInt(bg.slice(1, 3), 16)}, ${parseInt(bg.slice(3, 5), 16)}, ${parseInt(bg.slice(5, 7), 16)}, ${opacity})`,
         }}
       >
-        <button
+        <button aria-label="button"
           onClick={onClose}
           className='absolute top-2 right-2 text-gray-500 hover:text-gray-700'
         >
@@ -185,7 +185,7 @@ const CustomPopup: React.FC<{
         <label className='block mb-2'>Theme:</label>
         <div className='flex space-x-2'>
           {(['blue', 'brown', 'white', 'black', 'custom'] as const).map(t => (
-            <button
+            <button aria-label="button"
               key={t}
               className={`w-6 h-6 rounded-full ${t === theme ? 'ring-2 ring-offset-2 ring-blue-500' : ''}`}
               style={{
@@ -392,7 +392,7 @@ const PopupDetailPage: React.FC = () => {
   return (
     <div className='min-h-screen pt-24 px-8 pb-8 font-sans bg-gradient-to-r from-gray-800 via-gray-900 to-black text-white relative'>
       <BackToTopButton />
-      <button
+      <button aria-label="button"
         onClick={() => navigate(-1)}
         className={`mb-8 flex items-center ${getGlassyClasses(10)} px-4 py-2 hover:bg-white/40 transition-all duration-300 text-gray-100`}
       >
@@ -414,7 +414,7 @@ const PopupDetailPage: React.FC = () => {
         <h2 className='text-3xl font-bold mb-4 text-gray-100'>Basic Usage</h2>
         <pre className='bg-gray-800 text-white p-4 rounded-lg overflow-x-auto max-sm:text-[0.55rem]'>
           {`<div>
-  <button onClick={openPopup}>Open Popup</button>
+  <button aria-label="button" onClick={openPopup}>Open Popup</button>
   <Popup
     isOpen={isPopupOpen}
     onClose={closePopup}
@@ -442,7 +442,7 @@ function App() {
 
   return (
     <div>
-      <button onClick={openPopup}>Open Popup</button>
+      <button aria-label="button" onClick={openPopup}>Open Popup</button>
 
       <Popup
         isOpen={isPopupOpen}

@@ -143,7 +143,7 @@ export default function ContributorsPage() {
 
             {totalPages > 1 && (
               <div className='cp-pagination' style={{ marginTop: 48 }}>
-                <button
+                <button aria-label="button"
                   className='cp-page-btn'
                   onClick={() => setCurrentPage(p => Math.max(1, p - 1))}
                   disabled={currentPage === 1}
@@ -153,7 +153,7 @@ export default function ContributorsPage() {
                 <span style={{ color: '#64748b', fontSize: 13.5 }}>
                   Page {currentPage} of {totalPages}
                 </span>
-                <button
+                <button aria-label="button"
                   className='cp-page-btn'
                   onClick={() =>
                     setCurrentPage(p => Math.min(totalPages, p + 1))

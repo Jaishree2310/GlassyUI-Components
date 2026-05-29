@@ -81,7 +81,7 @@ const Register = () => {
               {errorMessage}
             </span>
           )}
-          <button
+          <button aria-label="button"
             type='submit'
             disabled={isRegistering}
             className={`w-full py-2 mt-4 text-white font-medium hover:text-white rounded-lg ${isRegistering ? 'bg-gray-600 cursor-not-allowed' : 'bg-blue-600 hover:bg-blue-700 shadow-lg transition duration-300'}`}

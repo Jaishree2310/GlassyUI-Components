@@ -225,7 +225,7 @@ const ColorPicker: React.FC<ColorPickerProps> = ({
         </label>
       )}
 
-      <button
+      <button aria-label="button"
         ref={triggerRef}
         onClick={() => setOpen(!open)}
         className={`flex items-center gap-3 ${getGlassyClasses(20)} px-2 py-2 hover:bg-opacity-30 active:scale-95 transition-transform`}
@@ -286,7 +286,7 @@ const ColorPicker: React.FC<ColorPickerProps> = ({
                 }}
               />
               {'EyeDropper' in window && (
-                <button
+                <button aria-label="button"
                   onClick={handleEyeDropper}
                   className={`${getGlassyClasses(20)} p-1.5 hover:bg-opacity-30 text-white flex-shrink-0`}
                 >

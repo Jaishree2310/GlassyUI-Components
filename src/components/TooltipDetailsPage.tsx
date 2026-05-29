@@ -31,7 +31,7 @@ const TooltipDetailsPage: React.FC = () => {
     text,
     codeKey,
   }) => (
-    <button
+    <button aria-label="button"
       onClick={() => copyToClipboard(text, codeKey)}
       className={`absolute top-2 right-2 ${getGlassyClasses()} p-2 hover:bg-white/40 transition-all duration-300 z-10`}
       title='Copy to clipboard'
@@ -49,7 +49,7 @@ const TooltipDetailsPage: React.FC = () => {
 function Example() {
   return (
     <Tooltip text="This is a tooltip!" position="top">
-      <button className={getGlassyClasses()}>
+      <button aria-label="button" className={getGlassyClasses()}>
         Hover me
       </button>
     </Tooltip>
@@ -57,25 +57,25 @@ function Example() {
 }`;
 
   const topTooltipCode = `<Tooltip text="Tooltip on top!" position="top">
-  <button className={getGlassyClasses()}>
+  <button aria-label="button" className={getGlassyClasses()}>
     Top
   </button>
 </Tooltip>`;
 
   const bottomTooltipCode = `<Tooltip text="Tooltip on bottom!" position="bottom">
-  <button className={getGlassyClasses()}>
+  <button aria-label="button" className={getGlassyClasses()}>
     Bottom
   </button>
 </Tooltip>`;
 
   const leftTooltipCode = `<Tooltip text="Tooltip on left!" position="left">
-  <button className={getGlassyClasses()}>
+  <button aria-label="button" className={getGlassyClasses()}>
     Left
   </button>
 </Tooltip>`;
 
   const rightTooltipCode = `<Tooltip text="Tooltip on right!" position="right">
-  <button className={getGlassyClasses()}>
+  <button aria-label="button" className={getGlassyClasses()}>
     Right
   </button>
 </Tooltip>`;
@@ -87,7 +87,7 @@ function Example() {
   bgColor="bg-blue-500/20"
   textColor="text-white"
 >
-  <button className={getGlassyClasses()}>
+  <button aria-label="button" className={getGlassyClasses()}>
     Advanced Tooltip
   </button>
 </Tooltip>`;
@@ -97,7 +97,7 @@ function Example() {
       <BackToTopButton />
 
       <div className='relative z-10'>
-        <button
+        <button aria-label="button"
           onClick={() => navigate(-1)}
           className={`mb-8 flex items-center ${getGlassyClasses(
             10,
@@ -199,23 +199,23 @@ function Example() {
 
           <div className='flex justify-around py-12 flex-wrap gap-4'>
             <Tooltip text='Tooltip on top!' position='top'>
-              <button className={`${getGlassyClasses()} px-4 py-2`}>Top</button>
+              <button aria-label="button" className={`${getGlassyClasses()} px-4 py-2`}>Top</button>
             </Tooltip>
 
             <Tooltip text='Tooltip on bottom!' position='bottom'>
-              <button className={`${getGlassyClasses()} px-4 py-2`}>
+              <button aria-label="button" className={`${getGlassyClasses()} px-4 py-2`}>
                 Bottom
               </button>
             </Tooltip>
 
             <Tooltip text='Tooltip on left!' position='left'>
-              <button className={`${getGlassyClasses()} px-4 py-2`}>
+              <button aria-label="button" className={`${getGlassyClasses()} px-4 py-2`}>
                 Left
               </button>
             </Tooltip>
 
             <Tooltip text='Tooltip on right!' position='right'>
-              <button className={`${getGlassyClasses()} px-4 py-2`}>
+              <button aria-label="button" className={`${getGlassyClasses()} px-4 py-2`}>
                 Right
               </button>
             </Tooltip>
@@ -267,7 +267,7 @@ function Example() {
                 bgColor='bg-blue-500/20'
                 textColor='text-white'
               >
-                <button className={`${getGlassyClasses()} px-4 py-2`}>
+                <button aria-label="button" className={`${getGlassyClasses()} px-4 py-2`}>
                   Advanced Tooltip
                 </button>
               </Tooltip>

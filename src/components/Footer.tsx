@@ -143,7 +143,7 @@ const Footer: React.FC = () => {
                 required
                 className='footer-input'
               />
-              <button
+              <button aria-label="button"
                 type='submit'
                 disabled={isSubmitting}
                 className='footer-submit'

@@ -53,7 +53,7 @@ const SliderDetailsPage: React.FC = () => {
     text,
     codeKey,
   }) => (
-    <button
+    <button aria-label="button"
       onClick={() => copyToClipboard(text, codeKey)}
       className={`absolute top-4 right-4 ${getGlassyClasses()} p-2 hover:bg-opacity-20 text-white`}
       title='Copy to clipboard'
@@ -70,7 +70,7 @@ const SliderDetailsPage: React.FC = () => {
     <div className='min-h-screen pt-24 px-8 pb-8 font-sans bg-gradient-to-r from-gray-800 via-gray-900 to-black text-white relative'>
       <BackToTopButton />
       <nav className=' mb-8 flex items-center justify-between relative z-10'>
-        <button
+        <button aria-label="button"
           onClick={handleBackToComponents}
           className={`flex items-center ${getGlassyClasses()} px-4 py-2 hover:bg-opacity-20 text-white`}
         >

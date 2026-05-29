@@ -297,7 +297,7 @@ const GlassyUIComponentsPage: React.FC = () => {
               onChange={e => setSearchFilter(e.target.value)}
             />
             {searchFilter && (
-              <button
+              <button aria-label="button"
                 className='cp-search-clear'
                 onClick={() => setSearchFilter('')}
               >
@@ -319,7 +319,7 @@ const GlassyUIComponentsPage: React.FC = () => {
             <div className='cp-empty-icon'>◇</div>
             <h2 className='cp-empty-title'>No components found</h2>
             <p className='cp-empty-desc'>Try a different search term.</p>
-            <button
+            <button aria-label="button"
               className='cp-empty-btn'
               onClick={() => setSearchFilter('')}
             >
@@ -337,7 +337,7 @@ const GlassyUIComponentsPage: React.FC = () => {
         {/* Pagination */}
         {totalPages > 1 && (
           <div className='cp-pagination'>
-            <button
+            <button aria-label="button"
               className='cp-page-btn'
               onClick={() => setCurrentPage(p => Math.max(1, p - 1))}
               disabled={currentPage === 1}
@@ -346,7 +346,7 @@ const GlassyUIComponentsPage: React.FC = () => {
             </button>
             <div className='cp-page-nums'>
               {Array.from({ length: totalPages }, (_, i) => i + 1).map(n => (
-                <button
+                <button aria-label="button"
                   key={n}
                   className={`cp-page-num${n === currentPage ? ' cp-page-num--active' : ''}`}
                   onClick={() => setCurrentPage(n)}
@@ -355,7 +355,7 @@ const GlassyUIComponentsPage: React.FC = () => {
                 </button>
               ))}
             </div>
-            <button
+            <button aria-label="button"
               className='cp-page-btn'
               onClick={() => setCurrentPage(p => Math.min(totalPages, p + 1))}
               disabled={currentPage === totalPages}

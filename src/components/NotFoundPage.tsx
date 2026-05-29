@@ -17,7 +17,7 @@ const NotFoundPage: React.FC = () => {
           Sorry, we couldn&apos;t find the page you&apos;re looking for. It may
           have been moved, deleted, or never existed.
         </p>
-        <button className='notfound-btn' onClick={() => navigate('/')}>
+        <button aria-label="button" className='notfound-btn' onClick={() => navigate('/')}>
           Back to Home <ArrowRight size={16} />
         </button>
       </div>

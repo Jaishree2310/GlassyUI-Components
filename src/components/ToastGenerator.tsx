@@ -91,7 +91,7 @@ const ToastGenerator: React.FC<GeneratorProps> = ({ toaster }) => {
 
   return (
     <>
-      <button
+      <button aria-label="button"
         className={`${getGlassyClasses()} px-4 py-2 hover:bg-white/20`}
         onClick={addItem}
       >

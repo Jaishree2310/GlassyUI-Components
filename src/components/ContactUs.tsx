@@ -187,7 +187,7 @@ const ContactUs = () => {
               </div>
             </div>
 
-            <button
+            <button aria-label="button"
               type='submit'
               className='bg-blue-600 text-white py-3 px-8 rounded-lg font-bold hover:bg-blue-700 transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none'
             >

@@ -45,7 +45,7 @@ const CalendarDetail: React.FC = () => {
     text,
     codeKey,
   }) => (
-    <button
+    <button aria-label="button"
       onClick={() => copyToClipboard(text, codeKey)}
       className={`absolute top-4 right-4 p-2 bg-white bg-opacity-20 rounded-lg shadow-lg hover:bg-opacity-30`}
       title='Copy to clipboard'
@@ -75,7 +75,7 @@ const CalendarDetail: React.FC = () => {
     <div className='min-h-screen pt-24 px-8 pb-8 font-sans bg-gradient-to-r from-gray-800 via-gray-900 to-black text-white relative flex flex-col '>
       <BackToTopButton />
       <nav className='mb-8 flex items-center justify-between relative z-10'>
-        <button
+        <button aria-label="button"
           onClick={handleBackToComponents}
           className={`flex items-center p-2 bg-white bg-opacity-20 rounded-lg shadow-lg hover:bg-opacity-30`}
         >
