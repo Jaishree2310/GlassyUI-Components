@@ -8,6 +8,12 @@ import AccordionDetails from './components/AccordionDetails';
 import AiChatbot from './components/AIChatbot';
 import AuthenticationCard from './components/AuthenticationCards';
 import BackToTopDetailsPage from './components/BackToTopDetailsPage';
+import ScrollProgressBar from './components/ScrollProgress'; // Import your ScrollProgressBar component
+import ScrollToTop from './components/ScrollToTop';
+import FloatingBottomBar from './components/FloatingBottomBar';
+import BackToTopButton from './components/BackToTop';
+import GlassyUILandingPage from './components/GlassyUILandingPage';
+import GlassyUIComponentsPage from './components/GlassyUIComponentsPage';
 import ButtonDetailsPage from './components/ButtonDetailsPage';
 import CalendarDetails from './components/CalendarDetails';
 import CardDetailsPage from './components/CardDetailsPage';
@@ -17,6 +23,13 @@ import ContactUsDetailsPage from './components/ContactUsDetailsPage';
 import ContributorsPage from './components/ContributorsPage';
 import DonationPage from './components/DonationPage';
 import DropdowndetailsPage from './components/DropdowndetailsPage';
+import StepperDetailsPage from './components/StepperDetailsPage';
+import AuthenticationCard from './components/AuthenticationCards';
+import ToastPage from './components/ToastPage';
+import AccordionDetails from './components/AccordionDetails';
+import ContactUsDetailsPage from './components/ContactUsDetailsPage';
+import PaginationDetails from './components/PaginationDetails';
+import TestimonialDetails from './components/TestimonialDetails';
 import Footer from './components/Footer';
 import GalleryDetailsPage from './components/GalleryDetailsPage';
 import GlassMemoryTrail from './components/GlassMemoryTrial';
@@ -80,6 +93,7 @@ const App: React.FC = () => {
       <ScrollToTop />
       <Header />
       <AiChatbot />
+      <BackToTopButton />
       {/* <ThemeToggle /> */}
       <ScrollProgressBar /> {/* Add the ScrollProgressBar component here */}
       <Routes>
@@ -104,6 +118,7 @@ const App: React.FC = () => {
         <Route path='/slider-details' element={<SliderDetailsPage />} />
         <Route path='/back-to-top-details' element={<BackToTopDetailsPage />} />
         <Route path='/dropdown-details' element={<DropdowndetailsPage />} />
+        <Route path='/stepper-details' element={<StepperDetailsPage />} />
         <Route path='/authentication-card' element={<AuthenticationCard />} />
         <Route path='/accordion-details' element={<AccordionDetails />} />
         <Route path='/contributors' element={<ContributorsPage />} />
@@ -131,6 +146,7 @@ const App: React.FC = () => {
         <Route path='*' element={<NotFoundPage />} />
       </Routes>
       <Footer />
+      <FloatingBottomBar />
     </Router>
   );
 };
