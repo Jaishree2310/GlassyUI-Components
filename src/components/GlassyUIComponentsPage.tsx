@@ -19,6 +19,7 @@ import {
   AlignStartVertical,
   ShoppingCart,
   GalleryThumbnails,
+  PanelTop, // icon for Tabs
   Sparkles,
 } from 'lucide-react';
 import { HiOutlineWrenchScrewdriver } from 'react-icons/hi2';
@@ -207,6 +208,11 @@ const GlassyUIComponentsPage: React.FC = () => {
       onClick: () => navigate('/gallery-details'),
     },
     {
+      title: 'Glassmorphism Effect Generator',
+      description: 'Create stunning Glassmorphic effects with ease.',
+      onClick: () => navigate('/generator'),
+    },
+    {
       title: 'Calendar',
       description: 'Calendar component with glassmorphic styling.',
       icon: <Calendar size={22} />,
@@ -224,6 +230,13 @@ const GlassyUIComponentsPage: React.FC = () => {
       icon: <HiOutlineWrenchScrewdriver size={22} />,
       onClick: () => navigate('/spinner'),
     },
+    // ── NEW ──
+    {
+      title: 'Tabs',
+      description:
+        'Flexible tab switcher with default, pill, underline, and vertical variants — all with a frosted glass look.',
+      icon: <PanelTop size={24} />,
+      onClick: () => navigate('/tabs-details'),
     {
       title: 'Stepper',
       description:
