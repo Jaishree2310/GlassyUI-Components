@@ -32,7 +32,7 @@ const CollapsibleAccordion: React.FC<{
           >
             {item.title}
             <span
-              className={`transform transition-transform duration-300 ${activeIndex === index ? 'rotate-180' : ''}`}
+              className={`transform transition-transform duration-300  ease-in-out ${activeIndex === index ? 'rotate-180' : ''}`}
             >
               ⌄
             </span>
@@ -40,13 +40,15 @@ const CollapsibleAccordion: React.FC<{
 
           {/* Accordion Content */}
           <div
-            className={`overflow-hidden transition-all duration-500 ${
+            className={`overflow-hidden transition-[max-height,opacity] duration-300 ease-in-out bg-gray-800 text-gray-200 ${
               activeIndex === index
-                ? 'max-h-screen p-4 bg-gray-800 text-gray-200'
-                : 'max-h-0'
+                ? 'max-h-40 opacity-100'
+                : 'max-h-0 opacity-0'
             }`}
           >
-            <p>{item.content}</p>
+            <div className='p-4'>
+              <p>{item.content}</p>
+            </div>
           </div>
         </div>
       ))}
