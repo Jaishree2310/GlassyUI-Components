@@ -68,6 +68,7 @@ body.light-theme .enhanced-bg {
   border-radius: 50%;
   opacity: 0.8;
   animation: float 10s ease-in-out infinite;
+  will-change: transform;
 }
 
 /* Floating Animation */
@@ -140,6 +141,7 @@ code {
   -webkit-backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.18);
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  will-change: transform, backdrop-filter;
 }
 
 /* Fade In Effect */
@@ -152,6 +154,7 @@ code {
 
 .fade-in {
   animation: fade 350ms ease-out;
+  will-change: transform, opacity;
 }
 
 /* Toast Animations */
@@ -160,8 +163,8 @@ code {
   opacity: 1;
   overflow: hidden;
   max-height: 400px;
-  opacity: 1;
   transform: translateX(0);
+  will-change: transform, opacity, max-height;
 }
 
 .hide-toast {
@@ -229,6 +232,7 @@ code {
   pointer-events: none;
   opacity: 0;
   transition: opacity 0.3s ease;
+  will-change: transform, opacity;
 }
 
 .shine-effect:hover::before {
@@ -272,10 +276,12 @@ code {
 
 .animate-float {
   animation: float 6s ease-in-out infinite;
+  will-change: transform;
 }
 
 .animate-float-slow {
   animation: float-slow 8s ease-in-out infinite;
+  will-change: transform;
 }
 
 /* ── COMPONENTS PAGE ─────────────────────────────────── */
@@ -308,6 +314,7 @@ code {
   top: -200px;
   left: -200px;
   animation: orb1 22s ease-in-out infinite;
+  will-change: transform;
 }
 
 .cp-orb-2 {
@@ -318,6 +325,7 @@ code {
   bottom: 0;
   right: -100px;
   animation: orb2 28s ease-in-out infinite;
+  will-change: transform;
 }
 
 .cp-grid {
@@ -1575,5 +1583,40 @@ div.min-h-screen.p-8.bg-gradient-to-r.from-gray-800.via-gray-900.to-black {
 @media (max-width: 640px) {
   div.min-h-screen.p-8.bg-gradient-to-r.from-gray-800.via-gray-900.to-black {
     padding-top: 80px;
+  }
+}
+
+/* ── PERFORMANCE MODE (Adaptive Rendering) ───────────────── */
+body.performance-mode .glassmorphism,
+body.performance-mode .frosted-glass,
+@media (prefers-reduced-transparency: reduce) {
+  .glassmorphism,
+  .frosted-glass {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    background: rgba(30, 30, 45, 0.95) !important;
+    box-shadow: 0 4px 16px 0 rgba(0, 0, 0, 0.5) !important;
+  }
+  .cp-orb-1, .cp-orb-2, .about-orb-1, .about-orb-2 {
+    display: none !important;
+  }
+}
+
+body.performance-mode *,
+@media (prefers-reduced-motion: reduce) {
+  .animate-blob,
+  .animate-float,
+  .animate-float-slow,
+  .shine-effect::before,
+  .cp-orb-1,
+  .cp-orb-2,
+  .about-orb-1,
+  .about-orb-2,
+  .coding-symbol {
+    animation-play-state: paused !important;
+    transition: none !important;
+  }
+  * {
+    scroll-behavior: auto !important;
   }
 }
