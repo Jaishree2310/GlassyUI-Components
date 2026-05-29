@@ -22,7 +22,7 @@ const CollapsibleAccordion: React.FC<{
           className='rounded-2xl border border-gray-600 overflow-hidden'
         >
           {/* Accordion Button */}
-          <button
+          <button aria-label="button"
             className={`w-full text-left p-4 transition-all duration-300 ${
               activeIndex === index
                 ? 'bg-white/30 text-white'
@@ -79,7 +79,7 @@ const AccordionDetails: React.FC = () => {
     text,
     codeKey,
   }) => (
-    <button
+    <button aria-label="button"
       onClick={() => copyToClipboard(text, codeKey)}
       className={`absolute top-2 right-2 ${getGlassyClasses()} p-2 hover:bg-white/40 transition-all duration-300 z-10`}
       title='Copy to clipboard'
@@ -121,7 +121,7 @@ const AccordionDetails: React.FC = () => {
     <div className="space-y-4">
       {items.map((item, index) => (
         <div key={index}>
-          <button onClick={() => toggleAccordion(index)}>{item.title}</button>
+          <button aria-label="button" onClick={() => toggleAccordion(index)}>{item.title}</button>
           {activeIndex === index && <div>{item.content}</div>}
         </div>
       ))}
@@ -133,7 +133,7 @@ const AccordionDetails: React.FC = () => {
     <div className='min-h-screen pt-24 px-8 pb-8 font-sans bg-gradient-to-r from-gray-800 via-gray-900 to-black text-white relative'>
       <BackToTopButton />
       <div className='relative z-10'>
-        <button
+        <button aria-label="button"
           onClick={() => navigate(-1)}
           className={`mb-8 flex items-center ${getGlassyClasses(10)} px-4 py-2 hover:bg-white/40 transition-all duration-300 text-white`}
         >

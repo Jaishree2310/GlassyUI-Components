@@ -28,7 +28,7 @@ const BackToTopDetailsPage: React.FC = () => {
     text,
     codeKey,
   }) => (
-    <button
+    <button aria-label="button"
       onClick={() => copyToClipboard(text, codeKey)}
       className={`absolute top-2 right-2 ${getGlassyClasses()} p-2 hover:bg-white/40 transition-all duration-300 z-10`}
       title='Copy to clipboard'
@@ -52,7 +52,7 @@ const BackToTopDetailsPage: React.FC = () => {
   };
 
   return (
-    <button
+    <button aria-label="button"
       onClick={handleScroll}
       className="fixed bottom-5 right-5 py-3 px-5 bg-blue-500 rounded-full text-white shadow-lg transition-transform hover:scale-105"
       title="Back to Top"
@@ -65,7 +65,7 @@ const BackToTopDetailsPage: React.FC = () => {
   return (
     <div className='min-h-screen pt-24 px-8 pb-8 font-sans bg-gradient-to-r from-gray-800 via-gray-900 to-black text-white relative'>
       <div className='relative z-10'>
-        <button
+        <button aria-label="button"
           onClick={() => navigate(-1)}
           className={`mb-8 flex items-center ${getGlassyClasses(10)} px-4 py-2 hover:bg-white/40 transition-all duration-300 text-gray-300`}
         >
@@ -130,7 +130,7 @@ const BackToTopDetailsPage: React.FC = () => {
             Customize the button's style through the className prop or inline
             styles.
           </p>
-          <button
+          <button aria-label="button"
             className={`fixed bottom-5 right-5 py-3 px-5 bg-blue-500 rounded-full text-white shadow-lg transition-transform hover:scale-105`}
             title='Back to Top'
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}

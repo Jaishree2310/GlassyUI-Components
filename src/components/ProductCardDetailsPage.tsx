@@ -27,7 +27,7 @@ const ProductCardDetailsPage: React.FC = () => {
     text,
     codeKey,
   }) => (
-    <button
+    <button aria-label="button"
       onClick={() => copyToClipboard(text, codeKey)}
       className={`absolute top-2 right-2 ${getGlassyClasses()} p-2 hover:bg-white/40 transition-all duration-300 z-10`}
       title='Copy to clipboard'
@@ -143,9 +143,9 @@ const ProductCardDetailsPage: React.FC = () => {
                         <div className="flex mt-6 items-center pb-5 border-b-2 border-[#535d6a] mb-5">
                             <div className="flex">
                                 <span className="mr-3 text-gray-300">Color</span>
-                                <button className="border-2 border-[#535d6a] rounded-full w-6 h-6 focus:outline-none"></button>
-                                <button className="border-2 border-[#535d6a] ml-1 bg-gray-700 rounded-full w-6 h-6 focus:outline-none"></button>
-                                <button className="border-2 border-[#535d6a] ml-1 bg-blue-500 rounded-full w-6 h-6 focus:outline-none"></button>
+                                <button aria-label="button" className="border-2 border-[#535d6a] rounded-full w-6 h-6 focus:outline-none"></button>
+                                <button aria-label="button" className="border-2 border-[#535d6a] ml-1 bg-gray-700 rounded-full w-6 h-6 focus:outline-none"></button>
+                                <button aria-label="button" className="border-2 border-[#535d6a] ml-1 bg-blue-500 rounded-full w-6 h-6 focus:outline-none"></button>
                             </div>
                             <div className="flex ml-6 items-center">
                                 <span className="mr-3 text-gray-300">Size</span>
@@ -168,8 +168,8 @@ const ProductCardDetailsPage: React.FC = () => {
                                 <span className="ml-4 text-gray-500 line-through text-lg">₹1499.00</span>
                                 <span className="ml-4 text-green-500 text-lg">43% off</span>
                             </div>
-                            <button className="flex ml-auto text-white bg-blue-500 border-0 py-2 px-6 focus:outline-none hover:bg-blue-600 rounded">Add to Cart</button>
-                            <button className="rounded-full w-10 h-10 bg-gray-800 p-0 border-0 inline-flex items-center justify-center text-gray-500 ml-4">
+                            <button aria-label="button" className="flex ml-auto text-white bg-blue-500 border-0 py-2 px-6 focus:outline-none hover:bg-blue-600 rounded">Add to Cart</button>
+                            <button aria-label="button" className="rounded-full w-10 h-10 bg-gray-800 p-0 border-0 inline-flex items-center justify-center text-gray-500 ml-4">
                                 {svgs.heart}
                             </button>
                         </div>
@@ -216,7 +216,7 @@ const ProductCardDetailsPage: React.FC = () => {
   return (
     <div className='min-h-screen pt-24 px-8 pb-8 font-sans bg-gradient-to-r from-gray-800 via-gray-900 to-black text-white relative'>
       <div className='relative z-10'>
-        <button
+        <button aria-label="button"
           onClick={() => navigate(-1)}
           className={`mb-8 flex items-center ${getGlassyClasses(10)} px-4 py-2 hover:bg-white/40 transition-all duration-300 text-gray-300`}
         >
@@ -357,9 +357,9 @@ const ProductCardDetailsPage: React.FC = () => {
                   <div className='flex mt-6 items-center pb-5 border-b-2 border-[#535d6a] mb-5'>
                     <div className='flex'>
                       <span className='mr-3 text-gray-300'>Color</span>
-                      <button className='border-2 border-[#535d6a] rounded-full w-6 h-6 focus:outline-none'></button>
-                      <button className='border-2 border-[#535d6a] ml-1 bg-gray-700 rounded-full w-6 h-6 focus:outline-none'></button>
-                      <button className='border-2 border-[#535d6a] ml-1 bg-blue-500 rounded-full w-6 h-6 focus:outline-none'></button>
+                      <button aria-label="button" className='border-2 border-[#535d6a] rounded-full w-6 h-6 focus:outline-none'></button>
+                      <button aria-label="button" className='border-2 border-[#535d6a] ml-1 bg-gray-700 rounded-full w-6 h-6 focus:outline-none'></button>
+                      <button aria-label="button" className='border-2 border-[#535d6a] ml-1 bg-blue-500 rounded-full w-6 h-6 focus:outline-none'></button>
                     </div>
                     <div className='flex ml-6 items-center'>
                       <span className='mr-3 text-gray-300'>Size</span>
@@ -396,10 +396,10 @@ const ProductCardDetailsPage: React.FC = () => {
                         43% off
                       </span>
                     </div>
-                    <button className='flex ml-auto text-white bg-blue-500 border-0 py-2 px-6 focus:outline-none hover:bg-blue-600 rounded'>
+                    <button aria-label="button" className='flex ml-auto text-white bg-blue-500 border-0 py-2 px-6 focus:outline-none hover:bg-blue-600 rounded'>
                       Add to Cart
                     </button>
-                    <button className='rounded-full w-10 h-10 bg-gray-800 p-0 border-0 inline-flex items-center justify-center text-gray-500 ml-4'>
+                    <button aria-label="button" className='rounded-full w-10 h-10 bg-gray-800 p-0 border-0 inline-flex items-center justify-center text-gray-500 ml-4'>
                       {svgs.heart}
                     </button>
                   </div>

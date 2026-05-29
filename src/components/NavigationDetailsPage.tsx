@@ -26,7 +26,7 @@ const NavigationDetailsPage: React.FC = () => {
     text,
     codeKey,
   }) => (
-    <button
+    <button aria-label="button"
       onClick={() => copyToClipboard(text, codeKey)}
       className={`absolute top-2 right-2 ${getGlassyClasses()} p-2 hover:bg-white/40 transition-all duration-300 z-10`}
       title='Copy to clipboard'
@@ -50,7 +50,7 @@ const NavigationDetailsPage: React.FC = () => {
 
     return `
   <nav className="${getGlassyClasses()} flex justify-around flex-col md:flex-row mt-4 py-2">
-    <button 
+    <button aria-label="button" 
       className="md:hidden flex items-center justify-start p-3"
       onClick={() => setMenuOpen(!menuOpen)}
     >
@@ -60,21 +60,21 @@ const NavigationDetailsPage: React.FC = () => {
       <ul className="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-5 p-3 m-2">
         <li>
           <a href="#home" className="hover:bg-white/20 hover:text-pink-600 rounded flex justify-center ">
-            <button onClick={() => setSelected('Home')} className="hover:text-pink-600 px-2 py-1 rounded ${selectedClass('Home')}">
+            <button aria-label="button" onClick={() => setSelected('Home')} className="hover:text-pink-600 px-2 py-1 rounded ${selectedClass('Home')}">
               Home
             </button>
           </a>
         </li>
         <li>
           <a href="#about" className="hover:bg-white/20 hover:text-pink-600 rounded flex justify-center">
-            <button onClick={() => setSelected('About')} className="hover:text-pink-600 px-2 py-1 rounded ${selectedClass('About')}">
+            <button aria-label="button" onClick={() => setSelected('About')} className="hover:text-pink-600 px-2 py-1 rounded ${selectedClass('About')}">
               About
             </button>
           </a>
         </li>
         <li>
           <a href="#contact" className="hover:bg-white/20 hover:text-pink-600 rounded flex justify-center">
-            <button onClick={() => setSelected('Contact')} className="hover:text-pink-600 px-2 py-1 rounded ${selectedClass('Contact')}">
+            <button aria-label="button" onClick={() => setSelected('Contact')} className="hover:text-pink-600 px-2 py-1 rounded ${selectedClass('Contact')}">
               Contact
             </button>
           </a>
@@ -91,7 +91,7 @@ const NavigationDetailsPage: React.FC = () => {
     <div className='min-h-screen pt-24 px-8 pb-8 font-sans bg-gradient-to-r from-gray-800 via-gray-900 to-black text-white relative'>
       <BackToTopButton />
       <div className='relative z-10'>
-        <button
+        <button aria-label="button"
           onClick={handleBackToComponents}
           className={`mb-8 flex items-center ${getGlassyClasses()} px-4 py-2 hover:bg-white/40 transition-all duration-300 text-gray-100`}
         >
@@ -188,7 +188,7 @@ const NavigationDetailsPage: React.FC = () => {
             <nav
               className={`${getGlassyClasses()} flex justify-around flex-col md:flex-row mt-4 py-2`}
             >
-              <button
+              <button aria-label="button"
                 className='md:hidden flex items-center justify-start p-3'
                 onClick={() => setMenuOpen(!menuOpen)}
               >
@@ -202,7 +202,7 @@ const NavigationDetailsPage: React.FC = () => {
                     href='#home'
                     className='hover:bg-white/50 hover:text-pink-600 rounded flex justify-center '
                   >
-                    <button
+                    <button aria-label="button"
                       onClick={() => setSelected('Home')}
                       className={` hover:text-pink-600 px-2 py-1 rounded ${selected === 'Home' ? 'bg-pink-300 text-pink-600' : ''}`}
                     >
@@ -213,7 +213,7 @@ const NavigationDetailsPage: React.FC = () => {
                     href='#about'
                     className='hover:bg-white/50 hover:text-pink-600 rounded flex justify-center'
                   >
-                    <button
+                    <button aria-label="button"
                       onClick={() => setSelected('About')}
                       className={` hover:text-pink-600 px-2 py-1 rounded ${selected === 'About' ? 'bg-pink-300 text-pink-600' : ''}`}
                     >
@@ -224,7 +224,7 @@ const NavigationDetailsPage: React.FC = () => {
                     href='#contact'
                     className='hover:bg-white/50 hover:text-pink-600 rounded flex justify-center'
                   >
-                    <button
+                    <button aria-label="button"
                       onClick={() => setSelected('Contact')}
                       className={` hover:text-pink-600 px-2 py-1 rounded ${selected === 'Contact' ? 'bg-pink-300 text-pink-600' : ''}`}
                     >

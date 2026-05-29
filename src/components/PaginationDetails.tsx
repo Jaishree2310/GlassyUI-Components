@@ -28,7 +28,7 @@ const PaginationDetails: React.FC = () => {
     text,
     codeKey,
   }) => (
-    <button
+    <button aria-label="button"
       onClick={() => copyToClipboard(text, codeKey)}
       className={`absolute top-2 right-2 ${getGlassyClasses()} p-2 hover:bg-white/40 transition-all duration-300 z-10`}
       title='Copy to clipboard'
@@ -43,7 +43,7 @@ const PaginationDetails: React.FC = () => {
 
   const basicPaginationCode = `
     <div className="flex justify-center items-center space-x-2" onClick={e => e.stopPropagation()}>
-      <button
+      <button aria-label="button"
         onClick={() => handlePageChange(currentPage - 1)}
         disabled={currentPage === 1}
         className={\`px-4 py-2 rounded-full transition-colors duration-200 border border-gray-500 \${ 
@@ -57,7 +57,7 @@ const PaginationDetails: React.FC = () => {
   
       {currentPage > 2 && (
         <>
-          <button
+          <button aria-label="button"
             onClick={() => handlePageChange(1)}
             className="px-4 py-2 rounded-full transition-colors duration-200 border border-gray-500 bg-gray-600 text-white hover:bg-gray-700"
           >
@@ -70,7 +70,7 @@ const PaginationDetails: React.FC = () => {
       )}
   
       {getVisiblePages().map((page) => (
-        <button
+        <button aria-label="button"
           key={page}
           onClick={() => handlePageChange(page)}
           className={\`px-4 py-2 rounded-full transition-colors duration-200 border border-gray-500 \${ 
@@ -86,7 +86,7 @@ const PaginationDetails: React.FC = () => {
           {currentPage < totalPages - Math.floor(maxVisiblePages / 2) - 1 && (
             <span className="px-3 text-gray-400">...</span>
           )}
-          <button
+          <button aria-label="button"
             onClick={() => handlePageChange(totalPages)}
             className="px-4 py-2 rounded-full transition-colors duration-200 border border-gray-500 bg-gray-600 text-white hover:bg-gray-700"
           >
@@ -95,7 +95,7 @@ const PaginationDetails: React.FC = () => {
         </>
       )}
   
-      <button
+      <button aria-label="button"
         onClick={() => handlePageChange(currentPage + 1)}
         disabled={currentPage === totalPages}
         className={\`px-4 py-2 rounded-full transition-colors duration-200 border border-gray-500 \${ 
@@ -171,7 +171,7 @@ const PaginationDetails: React.FC = () => {
     <div className='min-h-screen pt-24 px-8 pb-8 font-sans bg-gradient-to-r from-gray-800 via-gray-900 to-black text-white relative'>
       <BackToTopButton />
       <div className='relative z-10'>
-        <button
+        <button aria-label="button"
           onClick={() => navigate(-1)}
           className={`mb-8 flex items-center ${getGlassyClasses(10)} px-4 py-2 hover:bg-white/40 transition-all duration-300 text-white`}
         >
@@ -268,7 +268,7 @@ const PaginationDetails: React.FC = () => {
               e.stopPropagation();
             }}
           >
-            <button
+            <button aria-label="button"
               onClick={() => handlePageChange(currentPage - 1)}
               disabled={currentPage === 1}
               className={`px-4 py-2 rounded-full transition-colors duration-200 border border-gray-500 ${
@@ -283,7 +283,7 @@ const PaginationDetails: React.FC = () => {
             {/* Conditionally show first page and ellipsis */}
             {currentPage > 2 && (
               <>
-                <button
+                <button aria-label="button"
                   onClick={() => handlePageChange(1)}
                   className='px-4 py-2 rounded-full transition-colors duration-200 border border-gray-500 bg-gray-600 text-white hover:bg-gray-700'
                 >
@@ -297,7 +297,7 @@ const PaginationDetails: React.FC = () => {
 
             {/* Render visible pages */}
             {getVisiblePages().map(page => (
-              <button
+              <button aria-label="button"
                 key={page}
                 onClick={() => handlePageChange(page)}
                 className={`px-4 py-2 rounded-full transition-colors duration-200 border border-gray-500 ${
@@ -317,7 +317,7 @@ const PaginationDetails: React.FC = () => {
                   totalPages - Math.floor(maxVisiblePages / 2) - 1 && (
                   <span className='px-3 text-gray-400'>...</span>
                 )}
-                <button
+                <button aria-label="button"
                   onClick={() => handlePageChange(totalPages)}
                   className='px-4 py-2 rounded-full transition-colors duration-200 border border-gray-500 bg-gray-600 text-white hover:bg-gray-700'
                 >
@@ -326,7 +326,7 @@ const PaginationDetails: React.FC = () => {
               </>
             )}
 
-            <button
+            <button aria-label="button"
               onClick={() => handlePageChange(currentPage + 1)}
               disabled={currentPage === totalPages}
               className={`px-4 py-2 rounded-full transition-colors duration-200 border border-gray-500 ${

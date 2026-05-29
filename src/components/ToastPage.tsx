@@ -35,7 +35,7 @@ const CopyButton: React.FC<{ text: string; codeKey: string }> = ({
     {},
   );
   return (
-    <button
+    <button aria-label="button"
       onClick={() => copyToClipboard(text, codeKey, setCopiedStates)}
       className={`absolute top-2 right-2 ${getGlassyClasses()} p-2 hover:bg-white/40 transition-all duration-300 z-10`}
       aria-label='Copy to clipboard'
@@ -96,7 +96,7 @@ const ToastGenerator: React.FC<GeneratorProps> = ({toaster}) => {
       
   return (
     <>
-    <button className={\`\${getGlassyClasses()} px-4 py-2 hover:bg-white/20\`}
+    <button aria-label="button" className={\`\${getGlassyClasses()} px-4 py-2 hover:bg-white/20\`}
     onClick={addItem}>
         Show Toast
     </button>
@@ -145,7 +145,7 @@ const Toast: React.FC<ToastProps> = ({ id, title, message, autoDismiss = 9000, t
       <h1>{title}</h1>
       <p className={\`opacity-70\`}>{message}</p>
       </div>
-      <button onClick={(e)=>{
+      <button aria-label="button" onClick={(e)=>{
         e.currentTarget.parentElement?.classList.add('hide-toast') 
         setTimeout(()=> {removeItem(id)},400);
         }} className={\`\${getGlassyClasses()} w-10 h-10\`} style={{flex: "1 0 auto"}}>
@@ -217,7 +217,7 @@ const Toast: React.FC<ToastProps> = ({ id, title, message, autoDismiss = 9000, t
       <BackToTopButton />
       <div className='relative z-10'>
         {/* Back Button */}
-        <button
+        <button aria-label="button"
           onClick={() => navigate(-1)}
           className={`mb-8 flex items-center ${getGlassyClasses()} px-4 py-2 hover:bg-white/40 transition-all duration-300 text-white`}
         >

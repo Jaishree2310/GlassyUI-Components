@@ -18,7 +18,7 @@ const Accordion: React.FC<AccordionProps> = ({ title, content }) => {
 
   return (
     <div className={`${getGlassyClasses()} mb-4`}>
-      <button
+      <button aria-label="button"
         onClick={toggleAccordion}
         className='w-full text-left px-4 py-2 focus:outline-none'
       >

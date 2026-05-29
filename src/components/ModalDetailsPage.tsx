@@ -44,7 +44,7 @@ const Modal: React.FC<ModalProps> = props => {
           />
         )}
         <p className='text-black'>{paragraph}</p>
-        <button
+        <button aria-label="button"
           onClick={onCtaClick}
           className={`px-3 py-1 rounded hover:bg-opacity-50 font-medium text-gray-100 transition-colors duration-300`}
           style={{ backgroundColor: CTA.color }}
@@ -80,7 +80,7 @@ const Modal: React.FC<ModalProps> = (props) => {
           <h1 className="text-black text-2xl font-bold">{heading}</h1>
           {imageUrl && <img src={props.imageUrl} alt="image" className="w-[80%] h-[20vw] object-cover" />}
           <p className="text-gray-100">{paragraph}</p>
-            <button onClick={onCtaClick} className={\`px-3 py-1 rounded hover:bg-opacity-50 font-medium text-gray-100 transition-colors duration-300\`} style={{backgroundColor: CTA.color}}>
+            <button aria-label="button" onClick={onCtaClick} className={\`px-3 py-1 rounded hover:bg-opacity-50 font-medium text-gray-100 transition-colors duration-300\`} style={{backgroundColor: CTA.color}}>
               {CTA.text}
             </button>
         </div>
@@ -93,7 +93,7 @@ const Modal: React.FC<ModalProps> = (props) => {
     const [modal, setModal] = useState(false);
     return (
       <>
-        <button onClick={() => setModal(true)}>Open Modal</button>
+        <button aria-label="button" onClick={() => setModal(true)}>Open Modal</button>
         {modal && (
           <Modal
             heading='This is a heading'
@@ -118,7 +118,7 @@ const Modal: React.FC<ModalProps> = (props) => {
     text,
     codeKey,
   }) => (
-    <button
+    <button aria-label="button"
       onClick={() => copyToClipboard(text, codeKey)}
       className={`absolute top-2 right-2 ${getGlassyClasses()} p-2 hover:bg-white/40 transition-all duration-300 z-10`}
       title='Copy to clipboard'
@@ -133,7 +133,7 @@ const Modal: React.FC<ModalProps> = (props) => {
 
   return (
     <div className='min-h-screen pt-24 px-8 pb-8 font-sans bg-gradient-to-r from-gray-800 via-gray-900 to-black text-white relative'>
-      <button
+      <button aria-label="button"
         onClick={() => navigate(-1)}
         className={`mb-8 flex items-center ${getGlassyClasses(10)} px-4 py-2 hover:bg-white/40 transition-all duration-300 text-gray-100`}
       >
@@ -147,7 +147,7 @@ const Modal: React.FC<ModalProps> = (props) => {
 
       <div className={`${getGlassyClasses()} p-6 mb-14 relative`}>
         <h2 className='text-3xl font-bold mb-6 text-gray-100'>Basic Usage</h2>
-        <button
+        <button aria-label="button"
           onClick={() => setModal(true)}
           className={`mb-8 flex items-center ${getGlassyClasses()} px-4 py-2 hover:bg-white/40 transition-all duration-300 text-gray-100`}
         >

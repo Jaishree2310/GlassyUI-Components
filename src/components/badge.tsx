@@ -34,7 +34,7 @@ const CustomBadge: React.FC = () => {
         <label className="block text-white mb-2">Theme:</label>
         <div className="flex space-x-2">
           {(['blue', 'green', 'red', 'purple', 'rainbow'] as BadgeTheme[]).map((t) => (
-            <button
+            <button aria-label="button"
               key={t}
               className={`w-6 h-6 rounded-full ${t === theme ? 'ring-2 ring-offset-2 ring-blue-500' : ''}`}
               style={{ background: t === 'rainbow' ? 'linear-gradient(45deg, red, orange, yellow, green, blue, indigo, violet)' : getThemeColors(t).bg }}
@@ -83,7 +83,7 @@ const BadgeDetailPage: React.FC = () => {
   };
 
   const CopyButton: React.FC<{ text: string, codeKey: string }> = ({ text, codeKey }) => (
-    <button
+    <button aria-label="button"
       onClick={() => copyToClipboard(text, codeKey)}
       className={`absolute top-4 right-4 p-2 hover:bg-opacity-20 transition-all duration-300`}
       title="Copy to clipboard"

@@ -32,7 +32,7 @@ const PricingDetailPage: React.FC = () => {
     text,
     codeKey,
   }) => (
-    <button
+    <button aria-label="button"
       onClick={() => copyToClipboard(text, codeKey)}
       className={`absolute top-2 right-2 ${getGlassyClasses()} p-2 hover:bg-white/40 transition-all duration-300 z-10`}
       title='Copy to clipboard'
@@ -103,7 +103,7 @@ const plans = [
 
 <div className="flex items-center gap-3">
   <span className={billingCycle === 'monthly' ? 'text-white' : 'text-gray-400'}>Monthly</span>
-  <button
+  <button aria-label="button"
     role="switch"
     aria-checked={billingCycle === 'yearly'}
     onClick={() => setBillingCycle(billingCycle === 'monthly' ? 'yearly' : 'monthly')}
@@ -287,7 +287,7 @@ const plans = [
     <div className='min-h-screen pt-24 px-8 pb-8 font-sans bg-gradient-to-r from-gray-800 via-gray-900 to-black text-white relative'>
       <BackToTopButton />
       <div className='relative z-10'>
-        <button
+        <button aria-label="button"
           onClick={() => navigate(-1)}
           className={`mb-8 flex items-center ${getGlassyClasses(10)} px-4 py-2 hover:bg-white/40 transition-all duration-300 text-gray-300`}
         >
@@ -397,7 +397,7 @@ const plans = [
                         </li>
                       ))}
                     </ul>
-                    <button
+                    <button aria-label="button"
                       type='button'
                       className={`mt-8 w-full rounded-full bg-gradient-to-r ${plan.accent} px-4 py-3 text-sm font-semibold text-white transition-all duration-300 hover:-translate-y-0.5 ${plan.glow}`}
                     >

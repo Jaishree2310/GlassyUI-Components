@@ -45,7 +45,7 @@ const CustomTextArea: React.FC = () => {
           {(
             ['blue', 'brown', 'white', 'black', 'rainbow'] as CustomTheme[]
           ).map(t => (
-            <button
+            <button aria-label="button"
               key={t}
               className={`w-6 h-6 rounded-full ${t === theme ? 'ring-2 ring-offset-2 ring-blue-500' : ''}`}
               style={{
@@ -148,7 +148,7 @@ const TextareaDetailPage: React.FC = () => {
     text,
     codeKey,
   }) => (
-    <button
+    <button aria-label="button"
       onClick={() => copyToClipboard(text, codeKey)}
       className={`absolute top-4 right-4 ${getGlassyClasses()} p-2 hover:bg-opacity-20 transition-all duration-300`}
       title='Copy to clipboard'
@@ -161,7 +161,7 @@ const TextareaDetailPage: React.FC = () => {
     <div className='min-h-screen pt-24 px-8 pb-8 font-sans bg-gradient-to-r from-gray-800 via-gray-900 to-black text-white relative'>
       <BackToTopButton />
       <div className='relative z-10'>
-        <button
+        <button aria-label="button"
           onClick={() => navigate(-1)}
           className={`mb-8 flex items-center ${getGlassyClasses(10)} px-4 py-2 hover:bg-white/40 transition-all duration-300 text-gray-100`}
         >

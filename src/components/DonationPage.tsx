@@ -203,7 +203,7 @@ const DonationPage: React.FC = () => {
         />
         {errors.email && <p style={errorStyle}>{errors.email}</p>}
 
-        <button
+        <button aria-label="button"
           type='submit'
           style={{
             ...buttonStyle,

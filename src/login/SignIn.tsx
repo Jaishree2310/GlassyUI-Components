@@ -84,7 +84,7 @@ const SignIn: React.FC = () => {
             {errorMessage && (
               <span className='text-red-500 font-semibold'>{errorMessage}</span>
             )}
-            <button
+            <button aria-label="button"
               type='submit'
               disabled={isSigningIn}
               className={`w-full px-4 py-2 text-white font-semibold rounded-lg ${isSigningIn ? 'bg-gray-600 cursor-not-allowed' : 'bg-blue-600 hover:bg-blue-700 shadow-lg transition duration-300'}`}
@@ -106,7 +106,7 @@ const SignIn: React.FC = () => {
             <span className='mx-3 text-sm text-gray-400 font-bold'>OR</span>
             <div className='border-b border-gray-600 flex-grow'></div>
           </div>
-          <button
+          <button aria-label="button"
             disabled={isSigningIn}
             onClick={onGoogleSignIn}
             className={`w-full flex items-center justify-center gap-x-3 py-3 px-4 border hover:text-blue-300 border-gray-600 rounded-lg text-gray-200 font-medium ${isSigningIn ? 'cursor-not-allowed bg-gray-700' : 'bg-gradient-to-r from-gray-700 to-gray-800 hover:from-gray-600 hover:to-gray-700 hover:shadow-lg transition-all duration-300 ease-in-out transform hover:-translate-y-0.5 active:scale-95'}`}

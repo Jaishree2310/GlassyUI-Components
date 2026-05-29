@@ -45,7 +45,7 @@ export default function SpeedDial({
       className={`relative mb-3 flex w-fit items-center gap-3 ${direction === "up" || direction === "down" ? "flex-col" : "flex-row"
         }`}
     >
-      <button
+      <button aria-label="button"
         onMouseEnter={handleMouseEnter}
         className={`${getGlassyClasses()} order-0 order-1 flex items-center p-3 text-gray-800 transition-all duration-300 hover:bg-slate-100`}
       >
@@ -58,7 +58,7 @@ export default function SpeedDial({
           } flex items-center gap-3 transition-all duration-500 ease-in-out ${getAnimation()}`}
       >
         {actionButtons.map((action, index) => (
-          <button
+          <button aria-label="button"
             key={index}
             onClick={action.action}
             className={`${getGlassyClasses()} flex items-center p-3 text-gray-800 transition-all duration-300 hover:bg-slate-100`}

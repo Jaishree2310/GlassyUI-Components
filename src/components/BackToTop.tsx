@@ -51,7 +51,7 @@ const BackToTopButton: React.FC = () => {
   return (
     <>
       {isVisible && (
-        <button
+        <button aria-label="button"
           onClick={scrollToTop}
           className='z-50 fixed lg:bottom-[90px] lg:right-6 bottom-[168px] right-4 p-4 rounded-full bg-gradient-to-r from-[#8b5cf6] to-[#3b82f6] hover:from-[#7c3aed] hover:to-[#2563eb] text-white shadow-lg border border-white/20 hover:scale-110 active:scale-95 transition-all duration-300 flex items-center justify-center'
           style={isMobile ? { bottom: '168px', right: '16px' } : undefined}

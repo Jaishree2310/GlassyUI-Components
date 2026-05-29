@@ -82,7 +82,7 @@ const Header: React.FC = () => {
           )}
 
           {/* Mobile hamburger */}
-          <button
+          <button aria-label="button"
             className={`hamburger${menuOpen ? ' hamburger--open' : ''}`}
             onClick={() => setMenuOpen(v => !v)}
             aria-label='Toggle menu'

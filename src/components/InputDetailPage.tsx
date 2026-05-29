@@ -75,7 +75,7 @@ const InputDetailPage: React.FC = () => {
     const copied = copiedStates[codeKey];
 
     return (
-      <button
+      <button aria-label="button"
         onClick={() => copyToClipboard(text, codeKey)}
         className={`
           group absolute top-3 right-3
@@ -188,7 +188,7 @@ const InputDetailPage: React.FC = () => {
       <BackToTopButton />
 
       <nav className='mb-8 flex items-center justify-between relative z-10'>
-        <button
+        <button aria-label="button"
           onClick={handleBackToComponents}
           className={`flex items-center ${getGlassyClasses()} px-4 py-2 hover:bg-opacity-20 text-white`}
         >
