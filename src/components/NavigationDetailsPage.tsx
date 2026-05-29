@@ -19,7 +19,7 @@ const NavigationDetailsPage: React.FC = () => {
     navigator.clipboard.writeText(text).then(() => {
       setCopiedText(text);
       setTimeout(() => setCopiedText(null), 2000);
-    });
+    }).catch((err) => console.error("Failed to copy text: ", err));
   };
 
   const CopyButton: React.FC<{ text: string; codeKey: string }> = ({

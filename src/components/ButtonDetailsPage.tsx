@@ -26,7 +26,7 @@ const ButtonDetailsPage: React.FC = () => {
         () => setCopiedStates(prev => ({ ...prev, [key]: false })),
         2000,
       );
-    });
+    }).catch((err) => console.error("Failed to copy text: ", err));
   };
 
   const CopyButton: React.FC<{ text: string; codeKey: string }> = ({
