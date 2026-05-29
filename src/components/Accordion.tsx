@@ -13,22 +13,27 @@ const Accordion: React.FC<AccordionProps> = ({ title, content }) => {
   };
 
   const getGlassyClasses = () => {
-    return 'backdrop-filter backdrop-blur-md bg-white/10 border border-white/20 rounded-2xl shadow-lg transition-all duration-300';
+    return 'backdrop-filter backdrop-blur-md bg-white/10 border border-white/20 rounded-2xl shadow-lg';
   };
 
   return (
-    <div className={`${getGlassyClasses()} mb-4`}>
+    <div className={`${getGlassyClasses()} mb-4 overflow-hidden`}>
       <button
         onClick={toggleAccordion}
-        className='w-full text-left px-4 py-2 focus:outline-none'
+        className='w-full text-left px-4 py-3 focus:outline-none transition-all duration-300 ease-in-out hover:bg-white/10 hover:scale-[1.01]'
       >
         <h3 className='text-lg font-semibold'>{title}</h3>
       </button>
-      {isOpen && (
-        <div className='px-4 py-2'>
+
+      <div
+        className={`overflow-hidden transition-[max-height,opacity] duration-300 ease-in-out ${
+          isOpen ? 'max-h-40 opacity-100' : 'max-h-0 opacity-0'
+        }`}
+      >
+        <div className='px-4 pb-4'>
           <p>{content}</p>
         </div>
-      )}
+      </div>
     </div>
   );
 };
