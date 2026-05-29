@@ -1,13 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import PricingDetailPage from './components/PricingDetailPage';
 
-import {
-  BrowserRouter as Router,
-  Route,
-  Routes,
-  useLocation,
-} from 'react-router-dom';
+import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 
+import AboutUsPage from './components/AboutUsPage';
+import AccordionDetails from './components/AccordionDetails';
+import AiChatbot from './components/AIChatbot';
+import AuthenticationCard from './components/AuthenticationCards';
+import BackToTopDetailsPage from './components/BackToTopDetailsPage';
 import ScrollProgressBar from './components/ScrollProgress'; // Import your ScrollProgressBar component
 import ScrollToTop from './components/ScrollToTop';
 import FloatingBottomBar from './components/FloatingBottomBar';
@@ -15,23 +15,13 @@ import BackToTopButton from './components/BackToTop';
 import GlassyUILandingPage from './components/GlassyUILandingPage';
 import GlassyUIComponentsPage from './components/GlassyUIComponentsPage';
 import ButtonDetailsPage from './components/ButtonDetailsPage';
+import CalendarDetails from './components/CalendarDetails';
 import CardDetailsPage from './components/CardDetailsPage';
-import ProgressBarDetailPage from './components/ProgressBarDetailPage';
-import PopupDetailPage from './components/PopupDetailPage';
-import InputDetailPage from './components/InputDetailPage';
-import TextareaDetailPage from './components/TextareaDetailPage';
-import NotFoundPage from './components/NotFoundPage';
-import TooltipDetailsPage from './components/TooltipDetailsPage';
-import SpeedDialDetailsPage from './components/SpeedDialDetailsPage';
-import ModalDetailsPage from './components/ModalDetailsPage';
-import NavigationDetailsPage from './components/NavigationDetailsPage';
-import GlassMorphismGenrator from './components/GlassMorphismGenrator';
-import SliderDetailsPage from './components/SliderDetailsPage';
+import Checkbox from './components/Checkbox';
+import ContactUs from './components/ContactUs';
+import ContactUsDetailsPage from './components/ContactUsDetailsPage';
 import ContributorsPage from './components/ContributorsPage';
 import DonationPage from './components/DonationPage';
-import AboutUsPage from './components/AboutUsPage';
-import Header from './components/Header';
-import BackToTopDetailsPage from './components/BackToTopDetailsPage';
 import DropdowndetailsPage from './components/DropdowndetailsPage';
 import StepperDetailsPage from './components/StepperDetailsPage';
 import AuthenticationCard from './components/AuthenticationCards';
@@ -41,17 +31,33 @@ import ContactUsDetailsPage from './components/ContactUsDetailsPage';
 import PaginationDetails from './components/PaginationDetails';
 import TestimonialDetails from './components/TestimonialDetails';
 import Footer from './components/Footer';
-import CalendarDetails from './components/CalendarDetails';
-import Checkbox from './components/Checkbox';
-import Statistic from './components/StatisticDetails';
 import GalleryDetailsPage from './components/GalleryDetailsPage';
-import SpinnerDetailsPage from './components/SpinnerDetailsPage';
+import GlassMemoryTrail from './components/GlassMemoryTrial';
+import GlassMorphismGenrator from './components/GlassMorphismGenrator';
+import GlassShockwaveReveal from './components/GlassShockwaveReveal';
+import GlassyUIComponentsPage from './components/GlassyUIComponentsPage';
+import GlassyUILandingPage from './components/GlassyUILandingPage';
+import Header from './components/Header';
+import InputDetailPage from './components/InputDetailPage';
+import ModalDetailsPage from './components/ModalDetailsPage';
+import NavigationDetailsPage from './components/NavigationDetailsPage';
+import NotFoundPage from './components/NotFoundPage';
+import PaginationDetails from './components/PaginationDetails';
+import PopupDetailPage from './components/PopupDetailPage';
 import ProductCardDetailsPage from './components/ProductCardDetailsPage';
-import ContactUs from './components/ContactUs';
-import AiChatbot from './components/AIChatbot';
-import { TermsOfUse } from './components/TermsOfUse';
-
+import ProgressBarDetailPage from './components/ProgressBarDetailPage';
+import ScrollProgressBar from './components/ScrollProgress'; // Import your ScrollProgressBar component
+import ScrollToTop from './components/ScrollToTop';
+import SliderDetailsPage from './components/SliderDetailsPage';
+import SpeedDialDetailsPage from './components/SpeedDialDetailsPage';
+import SpinnerDetailsPage from './components/SpinnerDetailsPage';
+import Statistic from './components/StatisticDetails';
 import Stories from './components/Stories';
+import { TermsOfUse } from './components/TermsOfUse';
+import TestimonialDetails from './components/TestimonialDetails';
+import TextareaDetailPage from './components/TextareaDetailPage';
+import ToastPage from './components/ToastPage';
+import TooltipDetailsPage from './components/TooltipDetailsPage';
 // import Register from './login/SignUp';
 // import SignIn from './login/SignIn';
 
@@ -129,7 +135,9 @@ const App: React.FC = () => {
         <Route path='/gallery-details' element={<GalleryDetailsPage />} />
         <Route path='/contact' element={<ContactUs />} />
         <Route path='/termsOfUse' element={<TermsOfUse />} />
+        <Route path='/glass-shockwave' element={<GlassShockwaveReveal />} />
 
+        <Route path='/glass-memory-trail' element={<GlassMemoryTrail />} />
         <Route path='/stories' element={<Stories />} />
 
         {/* <Route path='/signup' element={<Register />} /> */}
