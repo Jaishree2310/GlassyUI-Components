@@ -38,7 +38,6 @@ const GlassyUIComponentsPage: React.FC = () => {
 
   const componentsData = [
     {
-
       title: 'Tooltip',
       description:
         'A context-linked hover popover component featuring a frosted glass background aesthetic.',
@@ -65,8 +64,6 @@ const GlassyUIComponentsPage: React.FC = () => {
       onClick: () => navigate('/speed-dial-details'),
     },
     {
-
-
       title: 'Buttons',
       description: 'Sleek, customizable buttons with glassmorphic styling.',
       icon: <Box size={22} />,
@@ -236,6 +233,13 @@ const GlassyUIComponentsPage: React.FC = () => {
       description: 'Create stunning glassmorphic effects with a visual editor.',
       icon: <Sparkles size={22} />,
       onClick: () => navigate('/generator'),
+    },
+    {
+      title: 'Adaptive Intelligence',
+      description:
+        'Live environment-aware glass styling with real-time contrast and glow adaptation.',
+      icon: <Sparkles size={22} />,
+      onClick: () => navigate('/adaptive-background-intelligence'),
     },
   ];
 
