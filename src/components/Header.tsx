@@ -1,5 +1,7 @@
-import React, { useEffect, useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import React, { useEffect, useState, useRef } from 'react';
+import { Link } from 'react-router-dom';
+import gsap from 'gsap';
+import { Menu, X } from 'lucide-react';
 import { useAuth } from '../login/contexts/authContext/index';
 import UserAccount from '../login/UserAccount';
 import './Header.css';
@@ -19,132 +21,184 @@ const Header: React.FC = () => {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  // Close mobile menu on route change
-  useEffect(() => {
-    setMenuOpen(false);
-  }, [location.pathname]);
-
-  const isActive = (path: string) => location.pathname === path;
+  const { currentUser, userLoggedIn } = useAuth();
+  const [menuOpen, setMenuOpen] = useState(false);
+  const mobileMenuRef = useRef<HTMLDivElement | null>(null);
+  const menuIconRef = useRef<HTMLButtonElement | null>(null);
 
   return (
-    <header
-      className={`site-header${scrolled ? ' site-header--scrolled' : ''}`}
-    >
-      <div className='header-inner'>
-        {/* Logo */}
-        <Link to='/' className='header-logo'>
-          <div className='logo-mark'>G</div>
-          <span className='logo-wordmark'>
-            <span className='logo-accent'>Glassy</span>UI
-          </span>
+    <nav style={navStyle}>
+      <h1 className='text-white text-[20px] font-bold z-50'>
+        <span className='text-blue-400'>Glass</span>UI
+      </h1>
+      {/* Hamburger Button */}
+      <button
+        ref={menuIconRef}
+        className='md:hidden text-white z-50 relative w-8 h-8'
+        onClick={() => {
+          if (!menuOpen) {
+            setMenuOpen(true);
+
+            gsap.fromTo(
+              mobileMenuRef.current,
+              {
+                opacity: 0,
+                y: -20,
+              },
+              {
+                opacity: 1,
+                y: 0,
+                duration: 0.35,
+                ease: 'power2.out',
+              },
+            );
+          } else {
+            gsap.to(mobileMenuRef.current, {
+              opacity: 0,
+              y: -20,
+              duration: 0.3,
+              ease: 'power2.in',
+            });
+            setTimeout(() => {
+              setMenuOpen(false);
+            }, 350);
+          }
+        }}
+      >
+        {/* Menu Icon */}
+        <Menu
+          size={28}
+          className={`absolute inset-0 transition-all duration-300 ${
+            menuOpen
+              ? 'opacity-0 rotate-90 scale-50'
+              : 'opacity-100 rotate-0 scale-100'
+          }`}
+        />
+
+        {/* Close Icon */}
+        <X
+          size={28}
+          className={`absolute inset-0 transition-all duration-300 ${
+            menuOpen
+              ? 'opacity-100 rotate-0 scale-100'
+              : 'opacity-0 -rotate-90 scale-50'
+          }`}
+        />
+      </button>
+      {/* Desktop Menu */}
+      <ul className='hidden md:flex' style={ulStyle}>
+        <li style={liStyle} className='navbar-item'>
+          <Link to='/' style={linkStyle}>
+            Home
+          </Link>
+        </li>
+        <li style={liStyle} className='navbar-item'>
+          <Link to='/donate' style={linkStyle}>
+            Sponsor
+          </Link>
+        </li>
+        <li style={liStyle} className='navbar-item'>
+          <Link to='/about' style={linkStyle}>
+            About Us
+          </Link>
+        </li>
+        <li style={liStyle} className='navbar-item'>
+          <Link to='/contact' style={linkStyle}>
+            Contact Us
+          </Link>
+        </li>
+        <li style={liStyle} className='navbar-item'>
+          <Link to='/stories' style={linkStyle}>
+            Stories
+          </Link>
+        </li>
+      </ul>
+      {/* Mobile Menu */}
+      <div
+        ref={mobileMenuRef}
+        className={`absolute top-full left-0 w-full md:hidden
+        bg-black/70
+        backdrop-blur-xl
+        border border-white/10
+        shadow-2xl
+        flex flex-col items-center gap-6 py-6
+        transition-all duration-300
+        ${menuOpen ? 'pointer-events-auto' : 'pointer-events-none hidden'}`}
+      >
+        <Link to='/' style={linkStyle} onClick={() => setMenuOpen(false)}>
+          Home
         </Link>
 
-        {/* Desktop Nav */}
-        <nav className='header-nav' aria-label='Main navigation'>
-          <NavItem to='/' label='Home' active={isActive('/')} />
-          <NavItem
-            to='/components'
-            label='Components'
-            active={isActive('/components')}
-          />
-          <NavItem to='/about' label='About' active={isActive('/about')} />
-          <NavItem
-            to='/contributors'
-            label='Contributors'
-            active={isActive('/contributors')}
-          />
-          <NavItem
-            to='/stories'
-            label='Stories'
-            active={isActive('/stories')}
-          />
-        </nav>
+        <Link to='/donate' style={linkStyle} onClick={() => setMenuOpen(false)}>
+          Sponsor
+        </Link>
 
-        {/* Right actions */}
-        <div className='header-actions'>
-          <a
-            href={githubRepoUrl}
-            target='_blank'
-            rel='noopener noreferrer'
-            className='github-pill'
-            aria-label='Star on GitHub'
-          >
-            <GithubIcon />
-            <span>Star</span>
-            <span className='github-star-badge'>★ {stars}</span>
-          </a>
+        <Link to='/about' style={linkStyle} onClick={() => setMenuOpen(false)}>
+          About Us
+        </Link>
 
-          {userLoggedIn && currentUser && (
-            <UserAccount
-              email={currentUser.email ?? ''}
-              username={currentUser.displayName ?? ''}
-            />
-          )}
-
-          {/* Mobile hamburger */}
-          <button
-            className={`hamburger${menuOpen ? ' hamburger--open' : ''}`}
-            onClick={() => setMenuOpen(v => !v)}
-            aria-label='Toggle menu'
-            aria-expanded={menuOpen}
-          >
-            <span />
-            <span />
-            <span />
-          </button>
-        </div>
-      </div>
-
-      {/* Mobile drawer */}
-      <div className={`mobile-drawer${menuOpen ? ' mobile-drawer--open' : ''}`}>
-        <nav className='mobile-nav' aria-label='Mobile navigation'>
-          <MobileNavItem to='/' label='Home' active={isActive('/')} />
-          <MobileNavItem
-            to='/components'
-            label='Components'
-            active={isActive('/components')}
-          />
-          <MobileNavItem
-            to='/about'
-            label='About'
-            active={isActive('/about')}
-          />
-          <MobileNavItem
-            to='/contributors'
-            label='Contributors'
-            active={isActive('/contributors')}
-          />
-          <MobileNavItem
-            to='/stories'
-            label='Stories'
-            active={isActive('/stories')}
-          />
-        </nav>
-        <a
-          href={githubRepoUrl}
-          target='_blank'
-          rel='noopener noreferrer'
-          className='mobile-github-btn'
+        <Link
+          to='/contact'
+          style={linkStyle}
+          onClick={() => setMenuOpen(false)}
         >
-          <GithubIcon /> Star on GitHub
-        </a>
+          Contact Us
+        </Link>
+
+        <Link
+          to='/stories'
+          style={linkStyle}
+          onClick={() => setMenuOpen(false)}
+        >
+          Stories
+        </Link>
+
+        {/* Auth Section Mobile */}
+        {userLoggedIn && currentUser ? (
+          <UserAccount
+            email={currentUser.email ?? ''}
+            username={currentUser.displayName ?? ''}
+          />
+        ) : null}
       </div>
-    </header>
+
+      {/* Desktop Auth */}
+      <div className='hidden md:flex'>
+        {userLoggedIn && currentUser ? (
+          <UserAccount
+            email={currentUser.email ?? ''}
+            username={currentUser.displayName ?? ''}
+          />
+        ) : null}
+      </div>
+    </nav>
   );
 };
 
-/* ─── Sub-components ─────────────────────────── */
+const navStyle: React.CSSProperties = {
+  padding: '10px',
+  position: 'fixed',
+  top: '0',
+  width: '100%',
+  zIndex: 1000,
+  backdropFilter: 'blur(10px)',
+  WebkitBackdropFilter: 'blur(10px)',
+  boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
+  display: 'flex',
+  justifyContent: 'space-between',
+  alignItems: 'center',
+  paddingLeft: '20px',
+  paddingRight: '20px',
+};
 
-const NavItem: React.FC<{ to: string; label: string; active: boolean }> = ({
-  to,
-  label,
-  active,
-}) => (
-  <Link to={to} className={`nav-item${active ? ' nav-item--active' : ''}`}>
-    {label}
-    {active && <span className='nav-indicator' aria-hidden='true' />}
-  </Link>
-);
+const ulStyle: React.CSSProperties = {
+  listStyleType: 'none',
+  margin: 0,
+  padding: 0,
+  justifyContent: 'flex-end',
+  marginRight: '50px',
+  gap: '20px',
+};
 
 const MobileNavItem: React.FC<{
   to: string;
