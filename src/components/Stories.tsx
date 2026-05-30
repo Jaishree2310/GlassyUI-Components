@@ -17,7 +17,7 @@ const Stories: React.FC = () => {
     const fetchPosts = async () => {
       try {
         const response = await fetch(
-          'http://localhost:5000/api/stories/getposts',
+          `${process.env.REACT_APP_API_BASE_URL}/api/stories/getposts`,
         );
         if (response.ok) {
           const data = await response.json();
@@ -42,7 +42,7 @@ const Stories: React.FC = () => {
     };
     try {
       const response = await fetch(
-        'http://localhost:5000/api/stories/saveposts',
+        `${process.env.REACT_APP_API_BASE_URL}/api/stories/saveposts`,
         {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
