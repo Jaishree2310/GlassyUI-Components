@@ -24,6 +24,7 @@ import SpeedDialDetailsPage from './components/SpeedDialDetailsPage';
 import ModalDetailsPage from './components/ModalDetailsPage';
 import NavigationDetailsPage from './components/NavigationDetailsPage';
 import GlassMorphismGenrator from './components/GlassMorphismGenrator';
+import GlassPlayground from './components/GlassPlayground';
 import SliderDetailsPage from './components/SliderDetailsPage';
 import ContributorsPage from './components/ContributorsPage';
 import DonationPage from './components/DonationPage';
@@ -105,6 +106,7 @@ const App: React.FC = () => {
         <Route path='/modal-details' element={<ModalDetailsPage />} />
         <Route path='/navigation-details' element={<NavigationDetailsPage />} />
         <Route path='/generator' element={<GlassMorphismGenrator />} />
+        <Route path='/glass-tilt-playground' element={<GlassPlayground />} />
         <Route path='/slider-details' element={<SliderDetailsPage />} />
         <Route path='/back-to-top-details' element={<BackToTopDetailsPage />} />
         <Route path='/dropdown-details' element={<DropdowndetailsPage />} />

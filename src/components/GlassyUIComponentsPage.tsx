@@ -20,6 +20,7 @@ import {
   ShoppingCart,
   GalleryThumbnails,
   Sparkles,
+  ScanLine,
 } from 'lucide-react';
 import { HiOutlineWrenchScrewdriver } from 'react-icons/hi2';
 
@@ -200,6 +201,13 @@ const GlassyUIComponentsPage: React.FC = () => {
       description: 'Create stunning glassmorphic effects with a visual editor.',
       icon: <Sparkles size={22} />,
       onClick: () => navigate('/generator'),
+    },
+    {
+      title: '3D Tilt Glass Card',
+      description:
+        'Interactive glass card with live tilt, reflection, and style export.',
+      icon: <ScanLine size={22} />,
+      onClick: () => navigate('/glass-tilt-playground'),
     },
   ];
 
