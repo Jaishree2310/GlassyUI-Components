@@ -1,6 +1,7 @@
 ﻿import React, { useState } from 'react';
 import PageShell from './PageShell';
 import '../index.css';
+import GlassRefractionPanel from './GlassRefractionPanel';
 import { FaClipboard, FaClipboardCheck } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
@@ -252,18 +253,19 @@ const GlassmorphismGenerator: React.FC = () => {
       <div className='grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-[1200px]'>
         <div className='flex flex-col items-center justify-center'>
           <div className='w-[90vw] h-[55vh] max-w-lg bg-gray-900 bg-opacity-80 p-4 rounded-lg shadow-xl flex items-center justify-center'>
-            <div
+            <GlassRefractionPanel
+              className='w-[70vw] h-[40vh] max-w-sm text-center p-4 rounded-xl'
               style={glassStyle}
-              className='w-[70vw] h-[40vh] max-w-sm text-center p-4 rounded-lg'
             >
-              {/* Preview Content */}
-              <h2 className='text-xl font-bold text-white'>
-                Glassmorphism Effect Preview
-              </h2>
-              <p className='text-sm text-white'>
-                This is a preview of the glassmorphism effect.
-              </p>
-            </div>
+              <div className='flex h-full flex-col justify-center items-center gap-4'>
+                <h2 className='text-xl font-bold text-white'>
+                  Glassmorphism Effect Preview
+                </h2>
+                <p className='text-sm text-white'>
+                  This is a preview of the glassmorphism effect.
+                </p>
+              </div>
+            </GlassRefractionPanel>
           </div>
         </div>
 
