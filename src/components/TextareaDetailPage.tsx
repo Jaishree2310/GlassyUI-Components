@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { ArrowLeft, Copy, Check } from 'lucide-react';
-import BackToTopButton from './BackToTop';
+import PageShell from './PageShell';
 
 type Theme = 'pink' | 'brown' | 'white' | 'black';
 type CustomTheme = 'blue' | 'brown' | 'white' | 'black' | 'rainbow';
@@ -158,29 +158,25 @@ const TextareaDetailPage: React.FC = () => {
   );
 
   return (
-    <div className='min-h-screen pt-24 px-8 pb-8 font-sans bg-gradient-to-r from-gray-800 via-gray-900 to-black text-white relative'>
-      <BackToTopButton />
-      <div className='relative z-10'>
-        <button
-          onClick={() => navigate(-1)}
-          className={`mb-8 flex items-center ${getGlassyClasses(10)} px-4 py-2 hover:bg-white/40 transition-all duration-300 text-gray-100`}
-        >
-          <ArrowLeft size={20} className='mr-2' />
-          Back to Components
-        </button>
+    <PageShell>
+      <button
+        onClick={() => navigate(-1)}
+        className={`mb-8 flex items-center ${getGlassyClasses(10)} px-4 py-2 hover:bg-white/40 transition-all duration-300 text-gray-100`}
+      >
+        <ArrowLeft size={20} className='mr-2' />
+        Back to Components
+      </button>
 
-        <h1 className='text-6xl font-bold mb-8 text-white'>
-          TextArea Component
-        </h1>
-        <p className='text-xl mb-8 text-gray-100'>
-          A customizable, glassmorphism-styled Text Area component.
-        </p>
+      <h1 className='text-6xl font-bold mb-8 text-white'>TextArea Component</h1>
+      <p className='text-xl mb-8 text-gray-100'>
+        A customizable, glassmorphism-styled Text Area component.
+      </p>
 
-        {/* Basic Usage */}
-        <div className={`${getGlassyClasses()} p-6 mb-14 relative`}>
-          <h2 className='text-3xl text-gray-100 font-bold mb-4'>Basic Usage</h2>
-          <pre className='bg-gray-800 text-white p-4 rounded-lg overflow-x-auto'>
-            {`function App() {
+      {/* Basic Usage */}
+      <div className={`${getGlassyClasses()} p-6 mb-14 relative`}>
+        <h2 className='text-3xl text-gray-100 font-bold mb-4'>Basic Usage</h2>
+        <pre className='bg-gray-800 text-white p-4 rounded-lg overflow-x-auto'>
+          {`function App() {
   return (
     <textarea
       placeholder="Enter your text here..."
@@ -188,9 +184,9 @@ const TextareaDetailPage: React.FC = () => {
     />
   );
 }`}
-          </pre>
-          <CopyButton
-            text={`function App() {
+        </pre>
+        <CopyButton
+          text={`function App() {
   return (
     <textarea
       placeholder="Enter your text here..."
@@ -198,105 +194,104 @@ const TextareaDetailPage: React.FC = () => {
     />
   );
 }`}
-            codeKey='basicUsage'
-          />
-        </div>
+          codeKey='basicUsage'
+        />
+      </div>
 
-        {/* Props */}
-        <div className={`${getGlassyClasses()} p-6 mb-14`}>
-          <h2 className='text-3xl text-gray-100 font-bold mb-4'>Props</h2>
-          <div className='overflow-x-auto text-gray-200'>
-            <table className='w-full'>
-              <thead>
-                <tr className='bg-white text-gray bg-opacity-20'>
-                  <th className='text-left p-2'>Prop</th>
-                  <th className='text-left p-2'>Type</th>
-                  <th className='text-left p-2'>Default</th>
-                  <th className='text-left p-2'>Description</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td className='p-2'>style</td>
-                  <td className='p-2'>CSSProperties</td>
-                  <td className='p-2'>{}</td>
-                  <td className='p-2'>Inline styles for the textarea</td>
-                </tr>
-                <tr className='bg-white bg-opacity-10'>
-                  <td className='p-2'>className</td>
-                  <td className='p-2'>string</td>
-                  <td className='p-2'>""</td>
-                  <td className='p-2'>
-                    Additional CSS classes to apply to the textarea
-                  </td>
-                </tr>
-                <tr>
-                  <td className='p-2'>placeholder</td>
-                  <td className='p-2'>string</td>
-                  <td className='p-2'>""</td>
-                  <td className='p-2'>Placeholder text for the textarea</td>
-                </tr>
-                <tr className='bg-white bg-opacity-10'>
-                  <td className='p-2'>onChange</td>
-                  <td className='p-2'>function</td>
-                  <td className='p-2'>undefined</td>
-                  <td className='p-2'>
-                    Function to call when the textarea value changes
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-
-        {/* Custom TextArea */}
-        <div className={`${getGlassyClasses()} p-6 text-gray-200 mb-14`}>
-          <CustomTextArea />
-        </div>
-
-        {/* Additional Examples */}
-        <div className={`${getGlassyClasses()} p-6 mt-14`}>
-          <h2 className='text-3xl text-white font-bold'>Additional Examples</h2>
-
-          <h3 className='text-xl text-gray-600 font-semibold mb-2'>
-            With Custom Styling
-          </h3>
-          <div className={`${getGlassyClasses(10)} p-4 mb-6`}>
-            <textarea
-              className='w-full h-32 p-2 bg-gray-100 bg-opacity-50 text-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-blue-500 transition-all duration-300'
-              placeholder='Type something...'
-            />
-          </div>
-          <pre className='bg-gray-800 text-white p-4 rounded-lg overflow-x-auto relative'>
-            {`<textarea
-  className="w-full h-32 p-2"
-  style={{
-    backgroundColor: '#f0f0f0',
-    color: 'gray',
-    borderColor: 'gray',
-    borderWidth: '1px',
-    borderStyle: 'solid'
-  }}
-  placeholder="Type something..."
-/>`}
-          </pre>
-          <CopyButton
-            text={`<textarea
-  className="w-full h-32 p-2"
-  style={{
-    backgroundColor: '#f0f0f0',
-    color: 'gray',
-    borderColor: 'gray',
-    borderWidth: '1px',
-    borderStyle: 'solid'
-  }}
-  placeholder="Type something..."
-/>`}
-            codeKey='customStyling'
-          />
+      {/* Props */}
+      <div className={`${getGlassyClasses()} p-6 mb-14`}>
+        <h2 className='text-3xl text-gray-100 font-bold mb-4'>Props</h2>
+        <div className='overflow-x-auto text-gray-200'>
+          <table className='w-full'>
+            <thead>
+              <tr className='bg-white text-gray bg-opacity-20'>
+                <th className='text-left p-2'>Prop</th>
+                <th className='text-left p-2'>Type</th>
+                <th className='text-left p-2'>Default</th>
+                <th className='text-left p-2'>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td className='p-2'>style</td>
+                <td className='p-2'>CSSProperties</td>
+                <td className='p-2'>{}</td>
+                <td className='p-2'>Inline styles for the textarea</td>
+              </tr>
+              <tr className='bg-white bg-opacity-10'>
+                <td className='p-2'>className</td>
+                <td className='p-2'>string</td>
+                <td className='p-2'>""</td>
+                <td className='p-2'>
+                  Additional CSS classes to apply to the textarea
+                </td>
+              </tr>
+              <tr>
+                <td className='p-2'>placeholder</td>
+                <td className='p-2'>string</td>
+                <td className='p-2'>""</td>
+                <td className='p-2'>Placeholder text for the textarea</td>
+              </tr>
+              <tr className='bg-white bg-opacity-10'>
+                <td className='p-2'>onChange</td>
+                <td className='p-2'>function</td>
+                <td className='p-2'>undefined</td>
+                <td className='p-2'>
+                  Function to call when the textarea value changes
+                </td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
-    </div>
+
+      {/* Custom TextArea */}
+      <div className={`${getGlassyClasses()} p-6 text-gray-200 mb-14`}>
+        <CustomTextArea />
+      </div>
+
+      {/* Additional Examples */}
+      <div className={`${getGlassyClasses()} p-6 mt-14`}>
+        <h2 className='text-3xl text-white font-bold'>Additional Examples</h2>
+
+        <h3 className='text-xl text-gray-600 font-semibold mb-2'>
+          With Custom Styling
+        </h3>
+        <div className={`${getGlassyClasses(10)} p-4 mb-6`}>
+          <textarea
+            className='w-full h-32 p-2 bg-gray-100 bg-opacity-50 text-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-blue-500 transition-all duration-300'
+            placeholder='Type something...'
+          />
+        </div>
+        <pre className='bg-gray-800 text-white p-4 rounded-lg overflow-x-auto relative'>
+          {`<textarea
+  className="w-full h-32 p-2"
+  style={{
+    backgroundColor: '#f0f0f0',
+    color: 'gray',
+    borderColor: 'gray',
+    borderWidth: '1px',
+    borderStyle: 'solid'
+  }}
+  placeholder="Type something..."
+/>`}
+        </pre>
+        <CopyButton
+          text={`<textarea
+  className="w-full h-32 p-2"
+  style={{
+    backgroundColor: '#f0f0f0',
+    color: 'gray',
+    borderColor: 'gray',
+    borderWidth: '1px',
+    borderStyle: 'solid'
+  }}
+  placeholder="Type something..."
+/>`}
+          codeKey='customStyling'
+        />
+      </div>
+    </PageShell>
   );
 };
 
