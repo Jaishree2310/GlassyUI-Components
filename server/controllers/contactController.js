@@ -10,7 +10,7 @@ export async function saveContact(req, res) {
     }
 
     const newContact = new Contact({ fullName, phoneNumber, email, message });
-    sendMailToAdmin(newContact);
+    await sendMailToAdmin(newContact);
 
     await newContact.save();
 

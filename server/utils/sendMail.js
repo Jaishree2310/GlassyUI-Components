@@ -1,7 +1,7 @@
 import nodemailer from 'nodemailer';
 import 'dotenv/config';
 
-const sendMailToAdmin = userdata => {
+const sendMailToAdmin = async userdata => {
   const transporter = nodemailer.createTransport({
     service: 'gmail',
     host: 'smtp.gmail.com',
@@ -13,16 +13,15 @@ const sendMailToAdmin = userdata => {
     },
   });
 
-  async function main() {
-    await transporter.sendMail({
-      from: {
-        name: `GLASSYUI Contact Form - ${new Date().toLocaleString()}`,
-        address: process.env.EMAIL_ID,
-      }, // sender address
-      to: process.env.ADMIN_EMAIL_ID, // list of receivers
-      subject: 'New Contact Form Submission from GLASSYUI ✔', // Subject line
-      text: 'GLASSYUI Contact Form Submission', // plain text body
-      html: `<div style="background: #e3f2fd; color: #333; padding: 20px; font-family: Arial, sans-serif;">
+  return transporter.sendMail({
+    from: {
+      name: `GLASSYUI Contact Form - ${new Date().toLocaleString()}`,
+      address: process.env.EMAIL_ID,
+    }, // sender address
+    to: process.env.ADMIN_EMAIL_ID, // list of receivers
+    subject: 'New Contact Form Submission from GLASSYUI ✔', // Subject line
+    text: 'GLASSYUI Contact Form Submission', // plain text body
+    html: `<div style="background: #e3f2fd; color: #333; padding: 20px; font-family: Arial, sans-serif;">
                         <div style="font-size: 1.5rem; text-align: center; margin-bottom: 20px; color: #0288d1;">
                             GLASSYUI Contact Form Submission
                         </div>
@@ -61,10 +60,7 @@ const sendMailToAdmin = userdata => {
                             </tbody>
                         </table>
                     </div>`, // html body
-    });
-  }
-
-  main().catch(console.error);
+  });
 };
 
 // Export as a named export
