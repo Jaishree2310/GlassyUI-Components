@@ -28,7 +28,7 @@ const ContactUs = () => {
 
     try {
       const response = await fetch(
-        `${process.env.REACT_APP_API_BASE_URL}/api/contact/saveContact`,
+        'http://localhost:5000/api/contact/saveContact',
         {
           method: 'POST',
           headers: {
