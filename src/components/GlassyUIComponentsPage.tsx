@@ -39,6 +39,32 @@ const GlassyUIComponentsPage: React.FC = () => {
 
   const componentsData = [
     {
+      title: 'Tooltip',
+      description:
+        'A context-linked hover popover component featuring a frosted glass background aesthetic.',
+      icon: <MessageSquare size={24} />,
+      onClick: () => navigate('/tooltip-details'),
+    },
+    {
+      title: 'Toast',
+      description:
+        'Glassmorphic Toast Component. Click the button below to try it out!',
+      icon: <MessageSquare size={24} />,
+      onClick: () => navigate('/toast-page/'),
+    },
+    {
+      title: 'Sliders',
+      description: 'Elegant sliders with glassmorphic styling.',
+      icon: <Sliders size={24} />,
+      onClick: () => navigate('/slider-details'),
+    },
+    {
+      title: 'Speed Dial',
+      description: 'Speed dial with glassmorphism effect.',
+      icon: <Info size={24} />,
+      onClick: () => navigate('/speed-dial-details'),
+    },
+    {
       title: 'Buttons',
       description: 'Sleek, customizable buttons with glassmorphic styling.',
       icon: <Box size={22} />,
@@ -197,17 +223,32 @@ const GlassyUIComponentsPage: React.FC = () => {
       onClick: () => navigate('/spinner'),
     },
     {
+      title: 'Stepper',
+      description:
+        'A customizable, responsive multi-step wizard and progress indicator styled with premium glassmorphism.',
+      icon: <AlignStartVertical size={22} />,
+      onClick: () => navigate('/stepper-details'),
+    },
+    {
       title: 'Glass Generator',
       description: 'Create stunning glassmorphic effects with a visual editor.',
       icon: <Sparkles size={22} />,
       onClick: () => navigate('/generator'),
     },
     {
+main
       title: '3D Tilt Glass Card',
       description:
         'Interactive glass card with live tilt, reflection, and style export.',
       icon: <ScanLine size={22} />,
       onClick: () => navigate('/glass-tilt-playground'),
+
+      title: 'Adaptive Intelligence',
+      description:
+        'Live environment-aware glass styling with real-time contrast and glow adaptation.',
+      icon: <Sparkles size={22} />,
+      onClick: () => navigate('/adaptive-background-intelligence'),
+ main
     },
   ];
 

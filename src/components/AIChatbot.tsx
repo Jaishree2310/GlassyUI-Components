@@ -69,6 +69,7 @@ const getBotResponse = (query: string): string => {
 
 const AiChatbot: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState<boolean>(window.innerWidth < 1024);
   const [messages, setMessages] = useState<Message[]>([
     {
       id: 'welcome',
@@ -86,6 +87,14 @@ const AiChatbot: React.FC = () => {
       chatEndRef.current.scrollIntoView({ behavior: 'smooth' });
     }
   }, [messages, isTyping]);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 1024);
+    };
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   const handleSendMessage = () => {
     if (!inputValue.trim()) return;
@@ -122,7 +131,10 @@ const AiChatbot: React.FC = () => {
   };
 
   return (
-    <div className='fixed bottom-6 right-6 z-50 font-sans'>
+    <div
+      className='fixed lg:bottom-6 lg:right-6 bottom-[100px] right-4 z-50 font-sans flex flex-col items-end'
+      style={isMobile ? { bottom: '100px', right: '16px' } : undefined}
+    >
       <AnimatePresence>
         {isOpen && (
           <motion.div

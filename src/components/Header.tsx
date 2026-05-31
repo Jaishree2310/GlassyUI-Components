@@ -28,7 +28,7 @@ const Header: React.FC = () => {
 
   return (
     <header
-      className={`site-header${scrolled ? ' site-header--scrolled' : ''}`}
+      className={`site-header adaptive-glass${scrolled ? ' site-header--scrolled' : ''}`}
     >
       <div className='header-inner'>
         {/* Logo */}
@@ -52,6 +52,11 @@ const Header: React.FC = () => {
             to='/contributors'
             label='Contributors'
             active={isActive('/contributors')}
+          />
+          <NavItem
+            to='/adaptive-background-intelligence'
+            label='Adaptive AI'
+            active={isActive('/adaptive-background-intelligence')}
           />
           <NavItem
             to='/stories'
@@ -113,6 +118,11 @@ const Header: React.FC = () => {
             to='/contributors'
             label='Contributors'
             active={isActive('/contributors')}
+          />
+          <MobileNavItem
+            to='/adaptive-background-intelligence'
+            label='Adaptive AI'
+            active={isActive('/adaptive-background-intelligence')}
           />
           <MobileNavItem
             to='/stories'

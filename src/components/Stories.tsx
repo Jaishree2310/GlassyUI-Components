@@ -17,7 +17,7 @@ const Stories: React.FC = () => {
     const fetchPosts = async () => {
       try {
         const response = await fetch(
-          'http://localhost:5000/api/stories/getposts',
+          `${process.env.REACT_APP_API_URL}/api/stories/getposts`,
         );
         if (response.ok) {
           const data = await response.json();
@@ -42,7 +42,7 @@ const Stories: React.FC = () => {
     };
     try {
       const response = await fetch(
-        'http://localhost:5000/api/stories/saveposts',
+        `${process.env.REACT_APP_API_URL}/api/stories/saveposts`,
         {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
@@ -62,7 +62,7 @@ const Stories: React.FC = () => {
   };
 
   return (
-    <div className='relative min-h-screen bg-[#03010f] text-white'>
+    <div className='relative min-h-screen bg-[#03010f] text-white overflow-x-hidden'>
       <style>{`.stories-select option{background: #0f172a; color: #e6eef8;}`}</style>
       <div className='pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(124,58,237,0.24),transparent_30%),radial-gradient(circle_at_top_right,rgba(34,211,238,0.18),transparent_26%),radial-gradient(circle_at_bottom,rgba(244,114,182,0.14),transparent_30%)]' />
       <div className='pointer-events-none absolute -left-36 top-24 h-72 w-72 rounded-full bg-violet-500/20 blur-3xl' />
