@@ -2,7 +2,7 @@ import nodemailer from 'nodemailer';
 import dotenv from 'dotenv';
 dotenv.config();
 
-const sendMailToSubscriber = userdata => {
+const sendMailToSubscriber = async userdata => {
   const transporter = nodemailer.createTransport({
     service: 'gmail',
     host: 'smtp.gmail.com',
@@ -14,16 +14,15 @@ const sendMailToSubscriber = userdata => {
     },
   });
 
-  async function main() {
-    await transporter.sendMail({
-      from: {
-        name: 'GlassyUI-Components',
-        address: process.env.EMAIL_ID,
-      },
-      to: userdata.email,
-      subject: 'Welcome to GlassyUI-Components! 🎉',
-      text: 'Thank you for subscribing to GlassyUI-Components!',
-      html: `
+  return transporter.sendMail({
+    from: {
+      name: 'GlassyUI-Components',
+      address: process.env.EMAIL_ID,
+    },
+    to: userdata.email,
+    subject: 'Welcome to GlassyUI-Components! 🎉',
+    text: 'Thank you for subscribing to GlassyUI-Components!',
+    html: `
                 <div style="background-color: #e0f7fa; color: #333; padding: 20px; font-family: Arial, sans-serif;">
                     <div style="max-width: 600px; margin: 0 auto; background: rgba(255, 255, 255, 0.8); padding: 20px; border-radius: 15px; box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); backdrop-filter: blur(10px);">
                         <h2 style="text-align: center; color: #00acc1;">Welcome to GlassyUI-Components, ${userdata.name}!</h2>
@@ -50,10 +49,7 @@ const sendMailToSubscriber = userdata => {
                     </div>
                 </div>
             `,
-    });
-  }
-
-  main().catch(console.error);
+  });
 };
 
 export { sendMailToSubscriber };
