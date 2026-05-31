@@ -19,7 +19,10 @@ const Stories: React.FC = () => {
         const response = await fetch(
           `${process.env.REACT_APP_API_URL}/api/stories/getposts`,
         );
-        if (response.ok) {
+        if (
+          response.ok &&
+          response.headers.get('Content-Type')?.includes('application/json')
+        ) {
           const data = await response.json();
           setPosts(data);
         }
@@ -100,9 +103,9 @@ const Stories: React.FC = () => {
             className={`space-y-6 ${posts.length === 0 ? 'hidden' : 'flex-1'}`}
           >
             {posts.length > 0 &&
-              posts.map((post, idx) => (
+              posts.map(post => (
                 <article
-                  key={idx}
+                  key={post.title + post.date}
                   className='glassmorphism rounded-3xl border border-white/15 bg-white/10 p-6 shadow-[0_20px_60px_rgba(2,6,23,0.35)] backdrop-blur-xl transition-transform duration-300 hover:-translate-y-1 hover:border-white/25 sm:p-8'
                 >
                   <div className='mb-4 flex flex-wrap items-center justify-between gap-3'>
