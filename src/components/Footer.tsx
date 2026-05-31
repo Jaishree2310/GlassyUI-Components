@@ -12,7 +12,7 @@ const Footer: React.FC = () => {
     setIsSubmitting(true);
     try {
       const response = await fetch(
-        'http://localhost:5000/api/newsletter/subscribe',
+        `${process.env.REACT_APP_API_BASE_URL}/api/newsletter/subscribe`,
         {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
