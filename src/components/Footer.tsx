@@ -31,7 +31,7 @@ const Footer: React.FC = () => {
   };
 
   return (
-    <footer className='footer-root'>
+    <footer className='footer-root adaptive-glass'>
       <div className='footer-glow-left' />
       <div className='footer-glow-right' />
 
@@ -100,6 +100,11 @@ const Footer: React.FC = () => {
             </li>
             <li>
               <FooterLink to='/generator'>Generator</FooterLink>
+            </li>
+            <li>
+              <FooterLink to='/adaptive-background-intelligence'>
+                Adaptive Intelligence
+              </FooterLink>
             </li>
             <li>
               <FooterLink to='/contributors'>Contributors</FooterLink>
