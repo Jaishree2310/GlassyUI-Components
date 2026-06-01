@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ArrowLeft, Copy, Check, CreditCard, Wifi } from 'lucide-react';
-import BackToTopButton from './BackToTop';
+import PageShell from './PageShell';
 
 interface ThemeColors {
   bg: string;
@@ -172,8 +172,7 @@ const CardDetailsPage: React.FC = () => {
   );
 
   return (
-    <div className='min-h-screen p-8 font-sans bg-gradient-to-r from-gray-800 via-gray-900 to-black text-white relative'>
-      <BackToTopButton />
+    <PageShell>
       <button
         onClick={() => navigate(-1)}
         className={`mb-8 flex items-center ${getGlassyClasses(10)} px-4 py-2 hover:bg-opacity-20 text-white`}
@@ -378,7 +377,7 @@ function Example() {
           </div>
         </div>
       </section>
-    </div>
+    </PageShell>
   );
 };
 

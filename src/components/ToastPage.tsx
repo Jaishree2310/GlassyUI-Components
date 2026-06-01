@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ArrowLeft, Check, Copy } from 'lucide-react';
 
-import BackToTopButton from './BackToTop';
+import PageShell from './PageShell';
 import ToastGenerator from './ToastGenerator';
 import Toast from './Toast';
 
@@ -90,9 +90,7 @@ const ToastGenerator: React.FC<GeneratorProps> = ({toaster}) => {
     }, 10000); // 3000ms = 3 seconds
   };
 
-    const getGlassyClasses = () => {
-        return "backdrop-filter backdrop-blur-md bg-white/10 border border-white/20 rounded-2xl shadow-lg transition-all duration-300";
-      };
+  
       
   return (
     <>
@@ -128,9 +126,6 @@ const Toast: React.FC<ToastProps> = ({ id, title, message, autoDismiss = 9000, t
     return () => clearTimeout(timer);
   },[])
 
-  const getGlassyClasses = () => {
-    return "backdrop-filter backdrop-blur-md bg-white/10 border border-white/20 rounded-2xl shadow-lg transition-all duration-300";
-  };
 
   const removeItem = (id: number) => {
     toaster(prevItems => prevItems.filter(item => item.id !== id));
@@ -198,7 +193,7 @@ const Toast: React.FC<ToastProps> = ({ id, title, message, autoDismiss = 9000, t
 `;
 
   return (
-    <div className='min-h-screen p-8 font-sans bg-gradient-to-r from-gray-800 via-gray-900 to-black text-white relative'>
+    <PageShell>
       <div
         className={`fixed w-screen h-screen flex flex-col gap-4 justify-end items-end z-[51] pointer-events-none bottom-0 right-0 p-4`}
       >
@@ -214,12 +209,11 @@ const Toast: React.FC<ToastProps> = ({ id, title, message, autoDismiss = 9000, t
           );
         })}
       </div>
-      <BackToTopButton />
       <div className='relative z-10'>
         {/* Back Button */}
         <button
           onClick={() => navigate(-1)}
-          className={`mb-8 flex items-center ${getGlassyClasses()} px-4 py-2 hover:bg-white/40 transition-all duration-300 text-gray-100`}
+          className={`mb-8 flex items-center ${getGlassyClasses()} px-4 py-2 hover:bg-white/40 transition-all duration-300 text-white`}
         >
           <ArrowLeft size={20} className='mr-2' />
           Back to Components
@@ -331,7 +325,7 @@ const Toast: React.FC<ToastProps> = ({ id, title, message, autoDismiss = 9000, t
           </div>
         </div>
       </div>
-    </div>
+    </PageShell>
   );
 };
 

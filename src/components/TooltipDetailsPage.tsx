@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ArrowLeft, Copy, Check } from 'lucide-react';
 import Tooltip from './Tooltip';
-import BackToTopButton from './BackToTop';
+import PageShell from './PageShell';
 
 const TooltipDetailsPage: React.FC = () => {
   const navigate = useNavigate();
@@ -93,200 +93,189 @@ function Example() {
 </Tooltip>`;
 
   return (
-    <div className='min-h-screen p-8 font-sans bg-gradient-to-r from-gray-800 via-gray-900 to-black text-white relative'>
-      <BackToTopButton />
+    <PageShell>
+      <button
+        onClick={() => navigate(-1)}
+        className={`mb-8 flex items-center ${getGlassyClasses(
+          10,
+        )} px-4 py-2 hover:bg-white/40 transition-all duration-300 text-gray-100`}
+      >
+        <ArrowLeft size={20} className='mr-2' />
+        Back to Components
+      </button>
 
-      <div className='relative z-10'>
-        <button
-          onClick={() => navigate(-1)}
-          className={`mb-8 flex items-center ${getGlassyClasses(
-            10,
-          )} px-4 py-2 hover:bg-white/40 transition-all duration-300 text-gray-100`}
-        >
-          <ArrowLeft size={20} className='mr-2' />
-          Back to Components
-        </button>
+      <h1 className='text-6xl font-bold mb-8 text-white'>Tooltip</h1>
 
-        <h1 className='text-6xl font-bold mb-8 text-white'>Tooltip</h1>
+      <p className='text-xl mb-8 text-gray-100'>
+        A customizable, glassmorphism styled tooltip component.
+      </p>
 
-        <p className='text-xl mb-8 text-gray-100'>
-          A customizable, glassmorphism styled tooltip component.
+      {/* Basic Usage */}
+      <div className={`${getGlassyClasses()} p-8 mb-8 relative`}>
+        <h2 className='text-3xl font-bold mb-6 text-gray-100'>Basic Usage</h2>
+
+        <div className='relative'>
+          <pre className='bg-gray-800 text-white p-6 rounded-lg overflow-x-auto whitespace-pre-wrap max-sm:text-[0.55rem]'>
+            {basicUsageCode}
+          </pre>
+
+          <CopyButton text={basicUsageCode} codeKey='basicUsage' />
+        </div>
+      </div>
+
+      {/* Props Table */}
+      <div className={`${getGlassyClasses()} p-8 mb-8`}>
+        <h2 className='text-3xl font-bold mb-6 text-gray-100'>Props</h2>
+
+        <div className='overflow-x-auto'>
+          <table className='w-full'>
+            <thead>
+              <tr className='bg-white bg-opacity-20'>
+                <th className='text-left p-2 text-gray-100'>Prop</th>
+                <th className='text-left p-2 text-gray-100'>Type</th>
+                <th className='text-left p-2 text-gray-100'>Default</th>
+                <th className='text-left p-2 text-gray-100'>Description</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr>
+                <td className='p-2 text-gray-300'>text</td>
+                <td className='p-2 text-gray-300'>string</td>
+                <td className='p-2 text-gray-300'>-</td>
+                <td className='p-2 text-gray-300'>
+                  The text to display inside the tooltip
+                </td>
+              </tr>
+
+              <tr className='bg-white bg-opacity-10'>
+                <td className='p-2 text-gray-300'>position</td>
+                <td className='p-2 text-gray-300'>string</td>
+                <td className='p-2 text-gray-300'>top</td>
+                <td className='p-2 text-gray-300'>
+                  Tooltip position (top, bottom, left, right)
+                </td>
+              </tr>
+
+              <tr>
+                <td className='p-2 text-gray-300'>delay</td>
+                <td className='p-2 text-gray-300'>number</td>
+                <td className='p-2 text-gray-300'>200</td>
+                <td className='p-2 text-gray-300'>
+                  Delay before showing tooltip
+                </td>
+              </tr>
+
+              <tr className='bg-white bg-opacity-10'>
+                <td className='p-2 text-gray-300'>bgColor</td>
+                <td className='p-2 text-gray-300'>string</td>
+                <td className='p-2 text-gray-300'>bg-white/10</td>
+                <td className='p-2 text-gray-300'>Custom background color</td>
+              </tr>
+
+              <tr>
+                <td className='p-2 text-gray-300'>textColor</td>
+                <td className='p-2 text-gray-300'>string</td>
+                <td className='p-2 text-gray-300'>text-black</td>
+                <td className='p-2 text-gray-300'>Custom text color</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      {/* Tooltip Positions */}
+      <div className={`${getGlassyClasses()} p-8 mb-8`}>
+        <h2 className='text-3xl font-bold mb-6 text-gray-100'>
+          Tooltip Positions
+        </h2>
+
+        <p className='mb-6 text-lg text-gray-300'>
+          Display tooltips in different positions around the element.
         </p>
 
-        {/* Basic Usage */}
-        <div className={`${getGlassyClasses()} p-8 mb-8 relative`}>
-          <h2 className='text-3xl font-bold mb-6 text-gray-100'>Basic Usage</h2>
+        <div className='flex justify-around py-12 flex-wrap gap-4'>
+          <Tooltip text='Tooltip on top!' position='top'>
+            <button className={`${getGlassyClasses()} px-4 py-2`}>Top</button>
+          </Tooltip>
 
-          <div className='relative'>
-            <pre className='bg-gray-800 text-white p-6 rounded-lg overflow-x-auto whitespace-pre-wrap max-sm:text-[0.55rem]'>
-              {basicUsageCode}
-            </pre>
+          <Tooltip text='Tooltip on bottom!' position='bottom'>
+            <button className={`${getGlassyClasses()} px-4 py-2`}>
+              Bottom
+            </button>
+          </Tooltip>
 
-            <CopyButton text={basicUsageCode} codeKey='basicUsage' />
-          </div>
+          <Tooltip text='Tooltip on left!' position='left'>
+            <button className={`${getGlassyClasses()} px-4 py-2`}>Left</button>
+          </Tooltip>
+
+          <Tooltip text='Tooltip on right!' position='right'>
+            <button className={`${getGlassyClasses()} px-4 py-2`}>Right</button>
+          </Tooltip>
         </div>
 
-        {/* Props Table */}
-        <div className={`${getGlassyClasses()} p-8 mb-8`}>
-          <h2 className='text-3xl font-bold mb-6 text-gray-100'>Props</h2>
+        <div className='relative mt-8'>
+          <pre className='bg-gray-800 text-white p-6 rounded-lg overflow-x-auto whitespace-pre-wrap max-sm:text-[0.55rem]'>
+            {topTooltipCode}
+          </pre>
 
-          <div className='overflow-x-auto'>
-            <table className='w-full'>
-              <thead>
-                <tr className='bg-white bg-opacity-20'>
-                  <th className='text-left p-2 text-gray-100'>Prop</th>
-                  <th className='text-left p-2 text-gray-100'>Type</th>
-                  <th className='text-left p-2 text-gray-100'>Default</th>
-                  <th className='text-left p-2 text-gray-100'>Description</th>
-                </tr>
-              </thead>
-
-              <tbody>
-                <tr>
-                  <td className='p-2 text-gray-300'>text</td>
-                  <td className='p-2 text-gray-300'>string</td>
-                  <td className='p-2 text-gray-300'>-</td>
-                  <td className='p-2 text-gray-300'>
-                    The text to display inside the tooltip
-                  </td>
-                </tr>
-
-                <tr className='bg-white bg-opacity-10'>
-                  <td className='p-2 text-gray-300'>position</td>
-                  <td className='p-2 text-gray-300'>string</td>
-                  <td className='p-2 text-gray-300'>top</td>
-                  <td className='p-2 text-gray-300'>
-                    Tooltip position (top, bottom, left, right)
-                  </td>
-                </tr>
-
-                <tr>
-                  <td className='p-2 text-gray-300'>delay</td>
-                  <td className='p-2 text-gray-300'>number</td>
-                  <td className='p-2 text-gray-300'>200</td>
-                  <td className='p-2 text-gray-300'>
-                    Delay before showing tooltip
-                  </td>
-                </tr>
-
-                <tr className='bg-white bg-opacity-10'>
-                  <td className='p-2 text-gray-300'>bgColor</td>
-                  <td className='p-2 text-gray-300'>string</td>
-                  <td className='p-2 text-gray-300'>bg-white/10</td>
-                  <td className='p-2 text-gray-300'>Custom background color</td>
-                </tr>
-
-                <tr>
-                  <td className='p-2 text-gray-300'>textColor</td>
-                  <td className='p-2 text-gray-300'>string</td>
-                  <td className='p-2 text-gray-300'>text-black</td>
-                  <td className='p-2 text-gray-300'>Custom text color</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
+          <CopyButton text={topTooltipCode} codeKey='topTooltip' />
         </div>
 
-        {/* Tooltip Positions */}
-        <div className={`${getGlassyClasses()} p-8 mb-8`}>
+        <div className='relative mt-8'>
+          <pre className='bg-gray-800 text-white p-6 rounded-lg overflow-x-auto whitespace-pre-wrap max-sm:text-[0.55rem]'>
+            {bottomTooltipCode}
+          </pre>
+
+          <CopyButton text={bottomTooltipCode} codeKey='bottomTooltip' />
+        </div>
+
+        <div className='relative mt-8'>
+          <pre className='bg-gray-800 text-white p-6 rounded-lg overflow-x-auto whitespace-pre-wrap max-sm:text-[0.55rem]'>
+            {leftTooltipCode}
+          </pre>
+
+          <CopyButton text={leftTooltipCode} codeKey='leftTooltip' />
+        </div>
+
+        <div className='relative mt-8'>
+          <pre className='bg-gray-800 text-white p-6 rounded-lg overflow-x-auto whitespace-pre-wrap max-sm:text-[0.55rem]'>
+            {rightTooltipCode}
+          </pre>
+
+          <CopyButton text={rightTooltipCode} codeKey='rightTooltip' />
+        </div>
+
+        {/* Advanced Example */}
+        <div className='mt-12'>
           <h2 className='text-3xl font-bold mb-6 text-gray-100'>
-            Tooltip Positions
+            Advanced Tooltip Example
           </h2>
 
-          <p className='mb-6 text-lg text-gray-300'>
-            Display tooltips in different positions around the element.
-          </p>
-
-          <div className='flex justify-around py-12 flex-wrap gap-4'>
-            <Tooltip text='Tooltip on top!' position='top'>
-              <button className={`${getGlassyClasses()} px-4 py-2`}>Top</button>
-            </Tooltip>
-
-            <Tooltip text='Tooltip on bottom!' position='bottom'>
+          <div className='flex justify-center py-8'>
+            <Tooltip
+              text='Advanced Tooltip!'
+              position='top'
+              delay={500}
+              bgColor='bg-blue-500/20'
+              textColor='text-white'
+            >
               <button className={`${getGlassyClasses()} px-4 py-2`}>
-                Bottom
-              </button>
-            </Tooltip>
-
-            <Tooltip text='Tooltip on left!' position='left'>
-              <button className={`${getGlassyClasses()} px-4 py-2`}>
-                Left
-              </button>
-            </Tooltip>
-
-            <Tooltip text='Tooltip on right!' position='right'>
-              <button className={`${getGlassyClasses()} px-4 py-2`}>
-                Right
+                Advanced Tooltip
               </button>
             </Tooltip>
           </div>
 
           <div className='relative mt-8'>
             <pre className='bg-gray-800 text-white p-6 rounded-lg overflow-x-auto whitespace-pre-wrap max-sm:text-[0.55rem]'>
-              {topTooltipCode}
+              {advancedTooltipCode}
             </pre>
 
-            <CopyButton text={topTooltipCode} codeKey='topTooltip' />
-          </div>
-
-          <div className='relative mt-8'>
-            <pre className='bg-gray-800 text-white p-6 rounded-lg overflow-x-auto whitespace-pre-wrap max-sm:text-[0.55rem]'>
-              {bottomTooltipCode}
-            </pre>
-
-            <CopyButton text={bottomTooltipCode} codeKey='bottomTooltip' />
-          </div>
-
-          <div className='relative mt-8'>
-            <pre className='bg-gray-800 text-white p-6 rounded-lg overflow-x-auto whitespace-pre-wrap max-sm:text-[0.55rem]'>
-              {leftTooltipCode}
-            </pre>
-
-            <CopyButton text={leftTooltipCode} codeKey='leftTooltip' />
-          </div>
-
-          <div className='relative mt-8'>
-            <pre className='bg-gray-800 text-white p-6 rounded-lg overflow-x-auto whitespace-pre-wrap max-sm:text-[0.55rem]'>
-              {rightTooltipCode}
-            </pre>
-
-            <CopyButton text={rightTooltipCode} codeKey='rightTooltip' />
-          </div>
-
-          {/* Advanced Example */}
-          <div className='mt-12'>
-            <h2 className='text-3xl font-bold mb-6 text-gray-100'>
-              Advanced Tooltip Example
-            </h2>
-
-            <div className='flex justify-center py-8'>
-              <Tooltip
-                text='Advanced Tooltip!'
-                position='top'
-                delay={500}
-                bgColor='bg-blue-500/20'
-                textColor='text-white'
-              >
-                <button className={`${getGlassyClasses()} px-4 py-2`}>
-                  Advanced Tooltip
-                </button>
-              </Tooltip>
-            </div>
-
-            <div className='relative mt-8'>
-              <pre className='bg-gray-800 text-white p-6 rounded-lg overflow-x-auto whitespace-pre-wrap max-sm:text-[0.55rem]'>
-                {advancedTooltipCode}
-              </pre>
-
-              <CopyButton
-                text={advancedTooltipCode}
-                codeKey='advancedTooltip'
-              />
-            </div>
+            <CopyButton text={advancedTooltipCode} codeKey='advancedTooltip' />
           </div>
         </div>
       </div>
-    </div>
+    </PageShell>
   );
 };
 

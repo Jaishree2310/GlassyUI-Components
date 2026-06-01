@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from 'react';
+﻿import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ArrowLeft, Copy, Check } from 'lucide-react';
 import Calendar, { CalendarProps } from 'react-calendar'; // Import CalendarProps
 import 'react-calendar/dist/Calendar.css';
-import BackToTopButton from './BackToTop';
+import PageShell from './PageShell';
+import { getGlassyClasses } from '../utils/glassy';
 
 const CalendarDetail: React.FC = () => {
   const navigate = useNavigate();
@@ -37,9 +38,6 @@ const CalendarDetail: React.FC = () => {
       );
     });
   };
-  const getGlassyClasses = () => {
-    return 'bg-white bg-opacity-20 rounded-lg shadow-lg'; // Customize as needed
-  };
 
   const CopyButton: React.FC<{ text: string; codeKey: string }> = ({
     text,
@@ -72,8 +70,7 @@ const CalendarDetail: React.FC = () => {
   };
 
   return (
-    <div className='min-h-screen p-8 font-sans bg-gradient-to-r from-gray-800 via-gray-900 to-black text-white relative flex flex-col '>
-      <BackToTopButton />
+    <PageShell>
       <nav className='mb-8 flex items-center justify-between relative z-10'>
         <button
           onClick={handleBackToComponents}
@@ -216,7 +213,7 @@ const CalendarDetail: React.FC = () => {
       </section>
 
       {/* Inline Styles for Calendar Tiles */}
-      <style jsx>{`
+      <style>{`
         .custom-calendar {
           width: 100%;
           max-width: 400px;
@@ -274,7 +271,7 @@ const CalendarDetail: React.FC = () => {
           color: rgba(255, 255, 255, 0.7); /* Lighter color for day labels */
         }
       `}</style>
-    </div>
+    </PageShell>
   );
 };
 

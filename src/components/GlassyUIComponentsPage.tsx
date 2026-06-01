@@ -38,6 +38,32 @@ const GlassyUIComponentsPage: React.FC = () => {
 
   const componentsData = [
     {
+      title: 'Tooltip',
+      description:
+        'A context-linked hover popover component featuring a frosted glass background aesthetic.',
+      icon: <MessageSquare size={24} />,
+      onClick: () => navigate('/tooltip-details'),
+    },
+    {
+      title: 'Toast',
+      description:
+        'Glassmorphic Toast Component. Click the button below to try it out!',
+      icon: <MessageSquare size={24} />,
+      onClick: () => navigate('/toast-page/'),
+    },
+    {
+      title: 'Sliders',
+      description: 'Elegant sliders with glassmorphic styling.',
+      icon: <Sliders size={24} />,
+      onClick: () => navigate('/slider-details'),
+    },
+    {
+      title: 'Speed Dial',
+      description: 'Speed dial with glassmorphism effect.',
+      icon: <Info size={24} />,
+      onClick: () => navigate('/speed-dial-details'),
+    },
+    {
       title: 'Buttons',
       description: 'Sleek, customizable buttons with glassmorphic styling.',
       icon: <Box size={22} />,
@@ -196,23 +222,45 @@ const GlassyUIComponentsPage: React.FC = () => {
       onClick: () => navigate('/spinner'),
     },
     {
+      title: 'Stepper',
+      description:
+        'A customizable, responsive multi-step wizard and progress indicator styled with premium glassmorphism.',
+      icon: <AlignStartVertical size={22} />,
+      onClick: () => navigate('/stepper-details'),
+    },
+    {
       title: 'Glass Generator',
       description: 'Create stunning glassmorphic effects with a visual editor.',
       icon: <Sparkles size={22} />,
       onClick: () => navigate('/generator'),
+    },
+    {
+      title: 'Adaptive Intelligence',
+      description:
+        'Live environment-aware glass styling with real-time contrast and glow adaptation.',
+      icon: <Sparkles size={22} />,
+      onClick: () => navigate('/adaptive-background-intelligence'),
     },
   ];
 
   const [filteredData, setFilteredData] = useState(componentsData);
 
   useEffect(() => {
-    const q = searchFilter.trim().toLowerCase();
-    setFilteredData(
-      q
-        ? componentsData.filter(c => c.title.toLowerCase().includes(q))
-        : componentsData,
-    );
-    setCurrentPage(1);
+    const timer = setTimeout(() => {
+      const q = searchFilter.trim().toLowerCase();
+      setFilteredData(
+        q
+          ? componentsData.filter(
+              c =>
+                c.title.toLowerCase().includes(q) ||
+                c.description.toLowerCase().includes(q),
+            )
+          : componentsData,
+      );
+      setCurrentPage(1);
+    }, 150);
+
+    return () => clearTimeout(timer);
   }, [searchFilter]);
 
   const totalPages = Math.ceil(filteredData.length / componentsPerPage);
@@ -261,6 +309,12 @@ const GlassyUIComponentsPage: React.FC = () => {
               </button>
             )}
           </div>
+          {searchFilter.trim() && filteredData.length > 0 && (
+            <p className='cp-search-result-count'>
+              {filteredData.length} result{filteredData.length !== 1 ? 's' : ''}{' '}
+              for &quot;{searchFilter.trim()}&quot;
+            </p>
+          )}
         </div>
 
         {/* Grid */}

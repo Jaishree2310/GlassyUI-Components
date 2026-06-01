@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
+import PageShell from './PageShell';
 import { useNavigate } from 'react-router-dom';
 import { ArrowLeft, Copy, Check } from 'lucide-react';
 
@@ -137,133 +138,131 @@ const StatisticDetails: React.FC = () => {
     `;
 
   return (
-    <div className='min-h-screen p-8 font-sans bg-gradient-to-r from-gray-800 via-gray-900 to-black text-white relative'>
-      <div className='relative z-10'>
-        <button
-          onClick={() => navigate(-1)}
-          className={`mb-8 flex items-center ${getGlassyClasses(10)} px-4 py-2 hover:bg-white/40 transition-all duration-300 text-gray-300`}
-        >
-          <ArrowLeft size={20} className='mr-2' />
-          Back to Components
-        </button>
+    <PageShell>
+      <button
+        onClick={() => navigate(-1)}
+        className={`mb-8 flex items-center ${getGlassyClasses(10)} px-4 py-2 hover:bg-white/40 transition-all duration-300 text-gray-300`}
+      >
+        <ArrowLeft size={20} className='mr-2' />
+        Back to Components
+      </button>
 
-        <h1 className='text-6xl font-bold mb-8 text-white'>
-          Statistic Component
-        </h1>
-        <p className='text-xl mb-8 text-white'>
-          A simple component to display user statistic.
-        </p>
+      <h1 className='text-6xl font-bold mb-8 text-white'>
+        Statistic Component
+      </h1>
+      <p className='text-xl mb-8 text-white'>
+        A simple component to display user statistic.
+      </p>
 
-        <div className={`${getGlassyClasses()} p-6 mb-14 relative`}>
-          <h2 className='text-3xl font-bold mb-6 text-white'>Basic Usage</h2>
-          <div className='relative'>
-            <pre className='bg-gray-800 text-white p-6 rounded-lg overflow-x-auto whitespace-pre-wrap max-sm:text-[0.55rem]'>
-              {statisticCode}
-            </pre>
-            <CopyButton text={statisticCode} codeKey='statistic' />
-          </div>
+      <div className={`${getGlassyClasses()} p-6 mb-14 relative`}>
+        <h2 className='text-3xl font-bold mb-6 text-white'>Basic Usage</h2>
+        <div className='relative'>
+          <pre className='bg-gray-800 text-white p-6 rounded-lg overflow-x-auto whitespace-pre-wrap max-sm:text-[0.55rem]'>
+            {statisticCode}
+          </pre>
+          <CopyButton text={statisticCode} codeKey='statistic' />
         </div>
-
-        <div className={`${getGlassyClasses()} p-6 mb-14`}>
-          <h2 className='text-3xl font-bold mb-6 text-white'>Props</h2>
-          <div className='overflow-x-auto'>
-            <table className='w-full'>
-              <thead>
-                <tr className='bg-white bg-opacity-20'>
-                  <th className='text-left p-2 text-gray-300'>Prop</th>
-                  <th className='text-left p-2 text-gray-300'>Type</th>
-                  <th className='text-left p-2 text-gray-300'>Default</th>
-                  <th className='text-left p-2 text-gray-300'>Description</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td className='p-2 text-gray-200'>downloads</td>
-                  <td className='p-2 text-gray-200'>number</td>
-                  <td className='p-2 text-gray-200'>2700</td>
-                  <td className='p-2 text-gray-200'>
-                    The number of downloads to display
-                  </td>
-                </tr>
-                <tr className='bg-white bg-opacity-10'>
-                  <td className='p-2 text-gray-200'>users</td>
-                  <td className='p-2 text-gray-200'>number</td>
-                  <td className='p-2 text-gray-200'>1300</td>
-                  <td className='p-2 text-gray-200'>
-                    The number of users to display
-                  </td>
-                </tr>
-                <tr>
-                  <td className='p-2 text-gray-200'>files</td>
-                  <td className='p-2 text-gray-200'>number</td>
-                  <td className='p-2 text-gray-200'>74</td>
-                  <td className='p-2 text-gray-200'>
-                    The number of files to display
-                  </td>
-                </tr>
-                <tr className='bg-white bg-opacity-10'>
-                  <td className='p-2 text-gray-200'>places</td>
-                  <td className='p-2 text-gray-200'>number</td>
-                  <td className='p-2 text-gray-200'>46</td>
-                  <td className='p-2 text-gray-200'>
-                    The number of places to display
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-
-        <div className={`${getGlassyClasses()} p-6 mb-14 relative`}>
-          <h2 className='text-3xl font-bold mb-6 text-white'>
-            Example Props Array
-          </h2>
-          <div className='relative'>
-            <pre className='bg-gray-800 text-white p-6 rounded-lg overflow-x-auto whitespace-pre-wrap max-sm:text-[0.55rem]'>
-              {exampleProps}
-            </pre>
-            <CopyButton text={exampleProps} codeKey='props' />
-          </div>
-        </div>
-
-        <section className={`${getGlassyClasses()} p-6 mb-14`}>
-          <h2 className='text-2xl font-bold mb-4 text-white'>
-            Statistic Example
-          </h2>
-          <section className={`${getGlassyClasses()} p-6 mb-14`}>
-            <div className='container px-5 py-24 mx-auto'>
-              <div className='flex flex-wrap -m-4 text-center'>
-                {statsData.map((stat, index) => (
-                  <div
-                    key={index}
-                    className='p-4 md:w-1/4 sm:w-1/2 w-full cursor-pointer'
-                  >
-                    <div className='border-2 border-gray-300 px-4 py-6 rounded-lg'>
-                      <svg
-                        fill='none'
-                        stroke='currentColor'
-                        strokeLinecap='round'
-                        strokeLinejoin='round'
-                        strokeWidth='2'
-                        className={`${stat.iconColor} w-12 h-12 mb-3 inline-block`}
-                        viewBox='0 0 24 24'
-                      >
-                        <path d={stat.iconPath1}></path>
-                        {stat.iconPath2 && <path d={stat.iconPath2}></path>}
-                      </svg>
-                      <h2 className='title-font font-medium text-3xl text-white'>
-                        {stat.number}
-                      </h2>
-                      <p className='leading-relaxed'>{stat.label}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </section>
-        </section>
       </div>
-    </div>
+
+      <div className={`${getGlassyClasses()} p-6 mb-14`}>
+        <h2 className='text-3xl font-bold mb-6 text-white'>Props</h2>
+        <div className='overflow-x-auto'>
+          <table className='w-full'>
+            <thead>
+              <tr className='bg-white bg-opacity-20'>
+                <th className='text-left p-2 text-gray-300'>Prop</th>
+                <th className='text-left p-2 text-gray-300'>Type</th>
+                <th className='text-left p-2 text-gray-300'>Default</th>
+                <th className='text-left p-2 text-gray-300'>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td className='p-2 text-gray-200'>downloads</td>
+                <td className='p-2 text-gray-200'>number</td>
+                <td className='p-2 text-gray-200'>2700</td>
+                <td className='p-2 text-gray-200'>
+                  The number of downloads to display
+                </td>
+              </tr>
+              <tr className='bg-white bg-opacity-10'>
+                <td className='p-2 text-gray-200'>users</td>
+                <td className='p-2 text-gray-200'>number</td>
+                <td className='p-2 text-gray-200'>1300</td>
+                <td className='p-2 text-gray-200'>
+                  The number of users to display
+                </td>
+              </tr>
+              <tr>
+                <td className='p-2 text-gray-200'>files</td>
+                <td className='p-2 text-gray-200'>number</td>
+                <td className='p-2 text-gray-200'>74</td>
+                <td className='p-2 text-gray-200'>
+                  The number of files to display
+                </td>
+              </tr>
+              <tr className='bg-white bg-opacity-10'>
+                <td className='p-2 text-gray-200'>places</td>
+                <td className='p-2 text-gray-200'>number</td>
+                <td className='p-2 text-gray-200'>46</td>
+                <td className='p-2 text-gray-200'>
+                  The number of places to display
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div className={`${getGlassyClasses()} p-6 mb-14 relative`}>
+        <h2 className='text-3xl font-bold mb-6 text-white'>
+          Example Props Array
+        </h2>
+        <div className='relative'>
+          <pre className='bg-gray-800 text-white p-6 rounded-lg overflow-x-auto whitespace-pre-wrap max-sm:text-[0.55rem]'>
+            {exampleProps}
+          </pre>
+          <CopyButton text={exampleProps} codeKey='props' />
+        </div>
+      </div>
+
+      <section className={`${getGlassyClasses()} p-6 mb-14`}>
+        <h2 className='text-2xl font-bold mb-4 text-white'>
+          Statistic Example
+        </h2>
+        <section className={`${getGlassyClasses()} p-6 mb-14`}>
+          <div className='container px-5 py-24 mx-auto'>
+            <div className='flex flex-wrap -m-4 text-center'>
+              {statsData.map((stat, index) => (
+                <div
+                  key={index}
+                  className='p-4 md:w-1/4 sm:w-1/2 w-full cursor-pointer'
+                >
+                  <div className='border-2 border-gray-300 px-4 py-6 rounded-lg'>
+                    <svg
+                      fill='none'
+                      stroke='currentColor'
+                      strokeLinecap='round'
+                      strokeLinejoin='round'
+                      strokeWidth='2'
+                      className={`${stat.iconColor} w-12 h-12 mb-3 inline-block`}
+                      viewBox='0 0 24 24'
+                    >
+                      <path d={stat.iconPath1}></path>
+                      {stat.iconPath2 && <path d={stat.iconPath2}></path>}
+                    </svg>
+                    <h2 className='title-font font-medium text-3xl text-white'>
+                      {stat.number}
+                    </h2>
+                    <p className='leading-relaxed'>{stat.label}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      </section>
+    </PageShell>
   );
 };
 

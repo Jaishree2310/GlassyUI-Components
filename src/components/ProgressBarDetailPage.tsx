@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react';
+﻿import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ArrowLeft, Copy, Check } from 'lucide-react';
-import BackToTopButton from './BackToTop';
+import PageShell from './PageShell';
+import { getGlassyClasses } from '../utils/glassy';
 import ColorPicker from './ColorPicker';
 
 type Theme = 'pink' | 'brown' | 'white' | 'black' | 'pop';
@@ -23,10 +24,6 @@ const ProgressBar: React.FC<ProgressBarProps> = ({
     sm: 'h-2',
     md: 'h-4',
     lg: 'h-6',
-  };
-
-  const getGlassyClasses = () => {
-    return 'backdrop-filter backdrop-blur-md bg-white bg-opacity-30 border border-white border-opacity-20 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 max-sm:px-0';
   };
 
   return (
@@ -110,8 +107,7 @@ const ProgressBarDetailPage: React.FC = () => {
   };
 
   return (
-    <div className='min-h-screen p-8 font-sans bg-gradient-to-r from-gray-800 via-gray-900 to-black text-white relative'>
-      <BackToTopButton />
+    <PageShell>
       <button
         onClick={() => navigate(-1)}
         className={`mb-8 flex items-center ${getGlassyClasses(10)} px-4 py-2 hover:bg-opacity-40 transition-all duration-300  text-gray-100`}
@@ -398,7 +394,7 @@ const AnimatedProgress = () => {
           </div>
         </div>
       </div>
-    </div>
+    </PageShell>
   );
 };
 
