@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {
   ArrowLeft,
@@ -13,7 +13,7 @@ import {
   Award,
   BookOpen,
 } from 'lucide-react';
-import BackToTopButton from './BackToTop';
+import PageShell from './PageShell';
 import Stepper from './Stepper';
 
 export const StepperDetailsPage: React.FC = () => {
@@ -146,9 +146,7 @@ export const StepperDetailsPage: React.FC = () => {
 />`;
 
   return (
-    <div className='min-h-screen p-8 font-sans bg-gradient-to-r from-gray-800 via-gray-900 to-black text-white relative'>
-      <BackToTopButton />
-
+    <PageShell>
       {/* Back Navigation Button */}
       <button
         onClick={() => navigate('/components')}
@@ -700,7 +698,7 @@ function App() {
           </div>
         </div>
       </div>
-    </div>
+    </PageShell>
   );
 };
 
