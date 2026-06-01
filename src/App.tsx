@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, useMemo } from 'react';
+import React, { useEffect, useRef, useMemo } from 'react';
 import PricingDetailPage from './components/PricingDetailPage';
 import useAdaptiveBackgroundIntelligence from './hooks/useAdaptiveBackgroundIntelligence';
 
