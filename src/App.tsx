@@ -50,6 +50,7 @@ import ProductCardDetailsPage from './components/ProductCardDetailsPage';
 import ContactUs from './components/ContactUs';
 import AiChatbot from './components/AIChatbot';
 import AdaptiveBackgroundIntelligenceDemo from './components/AdaptiveBackgroundIntelligenceDemo';
+import ComponentPlaygroundPage from './components/ComponentPlaygroundPage';
 import { TermsOfUse } from './components/TermsOfUse';
 
 import Stories from './components/Stories';
@@ -189,6 +190,7 @@ const App: React.FC = () => {
               element={<NavigationDetailsPage />}
             />
             <Route path='/generator' element={<GlassMorphismGenrator />} />
+            <Route path='/playground' element={<ComponentPlaygroundPage />} />
             <Route path='/slider-details' element={<SliderDetailsPage />} />
             <Route
               path='/back-to-top-details'

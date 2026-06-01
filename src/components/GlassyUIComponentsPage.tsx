@@ -20,6 +20,7 @@ import {
   ShoppingCart,
   GalleryThumbnails,
   Sparkles,
+  MonitorPlay,
 } from 'lucide-react';
 import { HiOutlineWrenchScrewdriver } from 'react-icons/hi2';
 
@@ -233,6 +234,13 @@ const GlassyUIComponentsPage: React.FC = () => {
       description: 'Create stunning glassmorphic effects with a visual editor.',
       icon: <Sparkles size={22} />,
       onClick: () => navigate('/generator'),
+    },
+    {
+      title: 'Playground',
+      description:
+        'Experiment with live component props, theme toggles, and generated code.',
+      icon: <MonitorPlay size={22} />,
+      onClick: () => navigate('/playground'),
     },
     {
       title: 'Adaptive Intelligence',
