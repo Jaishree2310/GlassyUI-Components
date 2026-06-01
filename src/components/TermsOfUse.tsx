@@ -74,59 +74,6 @@ const sections = [
   },
 ];
 
-const sections = [
-  {
-    title: 'Acceptance of Terms',
-    content:
-      'By accessing or using GlassyUI-Components, you agree to abide by these Terms. If you disagree with any part of these terms, please refrain from using this library.',
-  },
-  {
-    title: 'User Obligations',
-    content:
-      'Users must use the components responsibly, providing proper attribution as required. Redistribution without modification is prohibited.',
-  },
-  {
-    title: 'Intellectual Property Rights',
-    content:
-      'GlassyUI-Components and its designs are the intellectual property of the creators and contributors.',
-  },
-  {
-    title: 'Limitation of Liability',
-    content:
-      'We are not liable for any damages arising from the use or misuse of GlassyUI-Components.',
-  },
-  {
-    title: 'Termination',
-    content:
-      'We reserve the right to terminate access to GlassyUI-Components for users who violate these Terms.',
-  },
-  {
-    title: 'Modification of Terms',
-    content:
-      'We reserve the right to modify these Terms at any time. Changes will be announced through official channels.',
-  },
-  {
-    title: 'Privacy Policy',
-    content:
-      'We respect your privacy. Any data collected is handled according to our Privacy Policy.',
-  },
-  {
-    title: 'Third-Party Links',
-    content:
-      'We are not responsible for the content or practices of third-party services linked through our platform.',
-  },
-  {
-    title: 'User-Generated Content',
-    content:
-      'Any contributions made to GlassyUI-Components must align with our community guidelines and open-source policies.',
-  },
-  {
-    title: 'Governing Law',
-    content:
-      'These Terms are governed in accordance with applicable intellectual property and open-source laws.',
-  },
-];
-
 export const TermsOfUse: React.FC = () => {
   const [activeSection, setActiveSection] = useState<number | null>(null);
 
