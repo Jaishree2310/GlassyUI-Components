@@ -1,0 +1,127 @@
+.page-shell {
+  min-height: 100vh;
+  background: #03010f;
+  color: #f8fafc;
+  font-family:
+    -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', sans-serif;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* ── CONTENT ─────────────────────────────────────── */
+.ps-content {
+  position: relative;
+  z-index: 10;
+  padding: 6rem 2rem 2rem; /* 96px top clears the fixed header */
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* ── GRID OVERLAY ────────────────────────────────── */
+.ps-grid {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+/* ── ORBS — shared base ──────────────────────────── */
+.ps-orb {
+  position: fixed;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+  will-change: transform;
+}
+
+/* Purple — top left */
+.ps-orb-1 {
+  width: 800px;
+  height: 800px;
+  background: radial-gradient(circle at center, #7c3aed88, #4c1d9500);
+  filter: blur(80px);
+  top: -250px;
+  left: -250px;
+  animation: ps-orb1 22s ease-in-out infinite;
+}
+
+/* Cyan — bottom right */
+.ps-orb-2 {
+  width: 700px;
+  height: 700px;
+  background: radial-gradient(circle at center, #0891b288, #164e6300);
+  filter: blur(80px);
+  bottom: -200px;
+  right: -200px;
+  animation: ps-orb2 28s ease-in-out infinite;
+}
+
+/* Pink — mid right */
+.ps-orb-3 {
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle at center, #be185d66, #83184300);
+  filter: blur(70px);
+  top: 45%;
+  right: 10%;
+  animation: ps-orb3 20s ease-in-out infinite;
+}
+
+/* Teal — mid left */
+.ps-orb-4 {
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle at center, #06b6d455, #00000000);
+  filter: blur(60px);
+  top: 60%;
+  left: 5%;
+  animation: ps-orb1 30s ease-in-out infinite reverse;
+}
+
+/* ── ORB KEYFRAMES ───────────────────────────────── */
+@keyframes ps-orb1 {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(60px, 80px) scale(1.08);
+  }
+  66% {
+    transform: translate(-40px, 40px) scale(0.95);
+  }
+}
+
+@keyframes ps-orb2 {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(-80px, -60px) scale(1.05);
+  }
+  66% {
+    transform: translate(40px, -40px) scale(1.12);
+  }
+}
+
+@keyframes ps-orb3 {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(-60px, 70px) scale(1.15);
+  }
+}
+
+/* ── REDUCED MOTION ──────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .ps-orb {
+    animation: none;
+  }
+}
