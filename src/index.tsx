@@ -3,8 +3,8 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import './index.css';
 import { AuthProvider } from './login/contexts/authContext';
+import { GlassyProvider } from './components/GlassyProvider';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement,
@@ -12,7 +12,9 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <AuthProvider>
-      <App />
+      <GlassyProvider>
+        <App />
+      </GlassyProvider>
     </AuthProvider>
   </React.StrictMode>,
 );

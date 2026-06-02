@@ -55,32 +55,9 @@ import { TermsOfUse } from './components/TermsOfUse';
 import Stories from './components/Stories';
 // import Register from './login/SignUp';
 // import SignIn from './login/SignIn';
+import ThemeWidget from './components/ThemeWidget';
 
-const ThemeToggle: React.FC = () => {
-  const [theme, setTheme] = useState(localStorage.getItem('theme') || 'light');
 
-  useEffect(() => {
-    if (theme === 'dark') {
-      document.documentElement.classList.add('dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-    }
-    localStorage.setItem('theme', theme);
-  }, [theme]);
-
-  const toggleTheme = () => {
-    setTheme(theme === 'light' ? 'dark' : 'light');
-  };
-
-  return (
-    <button
-      onClick={toggleTheme}
-      className='p-2 bg-gray-200 dark:bg-gray-800 text-black dark:text-white rounded'
-    >
-      {theme === 'light' ? 'Switch to Dark Mode' : 'Switch to Light Mode'}
-    </button>
-  );
-};
 
 const App: React.FC = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -162,7 +139,7 @@ const App: React.FC = () => {
         <Header />
         <AiChatbot />
         <BackToTopButton />
-        {/* <ThemeToggle /> */}
+        <ThemeWidget />
         <div className='adaptive-glass page-shell'>
           <Routes>
             <Route path='/' element={<GlassyUILandingPage />} />

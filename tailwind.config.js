@@ -2,6 +2,13 @@ module.exports = {
   content: ['./src/**/*.{js,jsx,ts,tsx}'],
   theme: {
     extend: {
+      colors: {
+        glass: 'rgba(var(--glass-bg), var(--glass-bg-opacity))',
+        'glass-border': 'rgba(var(--glass-border), var(--glass-border-opacity))',
+      },
+      backdropBlur: {
+        glassy: 'var(--glass-blur)',
+      },
       backdropFilter: {
         none: 'none',
         blur: 'blur(20px)',
@@ -26,9 +33,6 @@ module.exports = {
           },
         },
       },
-      /*backgroundImage: {
-        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-      },*/
     },
   },
   variants: {
