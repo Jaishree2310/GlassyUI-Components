@@ -192,3 +192,13 @@ button[aria-label="Close Chat"]:hover {
   transform: scale(1.05);
   transition: all 0.2s ease;
 }
+
+@supports not (
+  (backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))
+) {
+  .glassmorphism {
+    background: rgba(255, 255, 255, 0.78);
+    border-color: rgba(255, 255, 255, 0.42);
+    box-shadow: 0 14px 36px rgba(31, 38, 135, 0.28);
+  }
+}

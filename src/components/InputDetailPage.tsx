@@ -1,7 +1,7 @@
-import { ArrowLeft, Check, Copy, Search } from 'lucide-react';
+﻿import { ArrowLeft, Check, Copy, Search } from 'lucide-react';
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import BackToTopButton from './BackToTop';
+import PageShell from './PageShell';
 
 interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   icon?: React.ReactNode;
@@ -184,9 +184,7 @@ const InputDetailPage: React.FC = () => {
   };
 
   return (
-    <div className='min-h-screen pt-24 px-8 pb-8 font-sans bg-gradient-to-r from-gray-800 via-gray-900 to-black text-white relative'>
-      <BackToTopButton />
-
+    <PageShell>
       <nav className='mb-8 flex items-center justify-between relative z-10'>
         <button
           onClick={handleBackToComponents}
@@ -310,7 +308,7 @@ const InputDetailPage: React.FC = () => {
           </div>
         </div>
       </section>
-    </div>
+    </PageShell>
   );
 };
 

@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import BackToTopButton from './BackToTop';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
+
 import {
   ArrowRight,
   Info,
@@ -32,214 +34,264 @@ interface ComponentCardProps {
 
 const GlassyUIComponentsPage: React.FC = () => {
   const navigate = useNavigate();
-  const [currentPage, setCurrentPage] = useState(1);
+
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const [currentPage, setCurrentPage] = useState(() => {
+    return Number(searchParams.get('page')) || 1;
+  });
+
   const [searchFilter, setSearchFilter] = useState('');
   const componentsPerPage = 9;
 
   const componentsData = [
     {
-
       title: 'Tooltip',
       description:
         'A context-linked hover popover component featuring a frosted glass background aesthetic.',
       icon: <MessageSquare size={24} />,
-      onClick: () => navigate('/tooltip-details'),
+      onClick: () =>
+        navigate('/tooltip-details', { state: { fromPage: currentPage } }),
     },
     {
       title: 'Toast',
       description:
         'Glassmorphic Toast Component. Click the button below to try it out!',
       icon: <MessageSquare size={24} />,
-      onClick: () => navigate('/toast-page/'),
+      onClick: () =>
+        navigate('/toast-page/', { state: { fromPage: currentPage } }),
     },
     {
       title: 'Sliders',
       description: 'Elegant sliders with glassmorphic styling.',
       icon: <Sliders size={24} />,
-      onClick: () => navigate('/slider-details'),
+      onClick: () =>
+        navigate('/slider-details', { state: { fromPage: currentPage } }),
     },
     {
       title: 'Speed Dial',
       description: 'Speed dial with glassmorphism effect.',
       icon: <Info size={24} />,
-      onClick: () => navigate('/speed-dial-details'),
+      onClick: () =>
+        navigate('/speed-dial-details', { state: { fromPage: currentPage } }),
     },
     {
-
-
       title: 'Buttons',
       description: 'Sleek, customizable buttons with glassmorphic styling.',
       icon: <Box size={22} />,
-      onClick: () => navigate('/button-details'),
+      onClick: () =>
+        navigate('/button-details', { state: { fromPage: currentPage } }),
     },
     {
       title: 'Cards',
       description: 'Versatile content containers with a frosted glass effect.',
       icon: <Layout size={22} />,
-      onClick: () => navigate('/card-details'),
+      onClick: () =>
+        navigate('/card-details', { state: { fromPage: currentPage } }),
     },
     {
       title: 'Inputs',
       description: 'Elegant input fields with a glass-like appearance.',
       icon: <Type size={22} />,
-      onClick: () => navigate('/input-details'),
+      onClick: () =>
+        navigate('/input-details', { state: { fromPage: currentPage } }),
     },
     {
       title: 'Modals',
       description: 'Eye-catching dialog boxes with glassmorphism effects.',
       icon: <MessageSquare size={22} />,
-      onClick: () => navigate('/modal-details'),
+      onClick: () =>
+        navigate('/modal-details', { state: { fromPage: currentPage } }),
     },
     {
       title: 'Toast',
       description: 'Glassmorphic Toast notifications. Click to try them out!',
       icon: <MessageSquare size={22} />,
-      onClick: () => navigate('/toast-page/'),
+      onClick: () =>
+        navigate('/toast-page/', { state: { fromPage: currentPage } }),
     },
     {
       title: 'Sliders',
       description: 'Elegant sliders with glassmorphic styling.',
       icon: <Sliders size={22} />,
-      onClick: () => navigate('/slider-details'),
+      onClick: () =>
+        navigate('/slider-details', { state: { fromPage: currentPage } }),
     },
     {
       title: 'Progress Bars',
       description: 'Stylish progress indicators with a glass-like finish.',
       icon: <Sliders size={22} />,
-      onClick: () => navigate('/progress-bar-details'),
+      onClick: () =>
+        navigate('/progress-bar-details', { state: { fromPage: currentPage } }),
     },
     {
       title: 'Tooltip',
       description: 'Accessible tooltips with glassmorphic styling.',
       icon: <Info size={22} />,
-      onClick: () => navigate('/tooltip-details'),
+      onClick: () =>
+        navigate('/tooltip-details', { state: { fromPage: currentPage } }),
     },
     {
       title: 'Speed Dial',
       description: 'Speed dial with glassmorphism effect.',
       icon: <Info size={22} />,
-      onClick: () => navigate('/speed-dial-details'),
+      onClick: () =>
+        navigate('/speed-dial-details', { state: { fromPage: currentPage } }),
     },
     {
       title: 'Navigation',
       description: 'Sleek navigation components with a frosted glass look.',
       icon: <ArrowRight size={22} />,
-      onClick: () => navigate('/navigation-details'),
+      onClick: () =>
+        navigate('/navigation-details', { state: { fromPage: currentPage } }),
     },
     {
       title: 'Popups',
       description:
         'Attention-grabbing popup notifications with glassmorphic styling.',
       icon: <MessageSquare size={22} />,
-      onClick: () => navigate('/popup-details'),
+      onClick: () =>
+        navigate('/popup-details', { state: { fromPage: currentPage } }),
     },
     {
       title: 'Textarea',
       description: 'Multi-line input fields with elegant glassmorphic design.',
       icon: <AlignLeft size={22} />,
-      onClick: () => navigate('/textarea-details'),
+      onClick: () =>
+        navigate('/textarea-details', { state: { fromPage: currentPage } }),
     },
     {
       title: 'Back to Top',
       description: 'A button that scrolls the page back to the top smoothly.',
       icon: <ArrowUp size={22} />,
-      onClick: () => navigate('/back-to-top-details'),
+      onClick: () =>
+        navigate('/back-to-top-details', { state: { fromPage: currentPage } }),
     },
     {
       title: 'Pricing Plans',
       description: 'Choose a pricing plan that suits your needs.',
       icon: <DollarSign size={22} />,
-      onClick: () => navigate('/pricing-details'),
+      onClick: () =>
+        navigate('/pricing-details', { state: { fromPage: currentPage } }),
     },
     {
       title: 'Dropdown Menu',
       description: 'Select an option from the dropdown menu.',
       icon: <AlignLeft size={22} />,
-      onClick: () => navigate('/dropdown-details'),
+      onClick: () =>
+        navigate('/dropdown-details', { state: { fromPage: currentPage } }),
     },
     {
       title: 'Authentication Cards',
       description: 'Sign-in and sign-up cards with frosted glass effect.',
       icon: <Layout size={22} />,
-      onClick: () => navigate('/authentication-card'),
+      onClick: () =>
+        navigate('/authentication-card', { state: { fromPage: currentPage } }),
     },
     {
       title: 'Accordion',
       description: 'Collapsible content sections with glassmorphic styling.',
       icon: <Layout size={22} />,
-      onClick: () => navigate('/accordion-details'),
+      onClick: () =>
+        navigate('/accordion-details', { state: { fromPage: currentPage } }),
     },
     {
       title: 'Pagination',
       description: 'Pagination component with glassmorphic styling.',
       icon: <Layout size={22} />,
-      onClick: () => navigate('/pagination-details'),
+      onClick: () =>
+        navigate('/pagination-details', { state: { fromPage: currentPage } }),
     },
     {
       title: 'Testimonial',
       description: 'Beautiful testimonial cards with glassmorphic styling.',
       icon: <ThumbsUpIcon size={22} />,
-      onClick: () => navigate('/testimonial-details'),
+      onClick: () =>
+        navigate('/testimonial-details', { state: { fromPage: currentPage } }),
     },
     {
       title: 'Contact Form',
       description: 'Contact form component with glassmorphic styling.',
       icon: <Contact size={22} />,
-      onClick: () => navigate('/contact-details'),
+      onClick: () =>
+        navigate('/contact-details', { state: { fromPage: currentPage } }),
     },
     {
       title: 'Product Card',
       description:
         'E-Commerce product card component with glassmorphic styling.',
       icon: <ShoppingCart size={22} />,
-      onClick: () => navigate('/product-details'),
+      onClick: () =>
+        navigate('/product-details', { state: { fromPage: currentPage } }),
     },
     {
       title: 'Statistic',
       description: 'Display key metrics with glassmorphic statistic cards.',
       icon: <AlignStartVertical size={22} />,
-      onClick: () => navigate('/statistic-details'),
+      onClick: () =>
+        navigate('/statistic-details', { state: { fromPage: currentPage } }),
     },
     {
       title: 'Gallery',
       description: 'Image gallery component with glassmorphic styling.',
       icon: <GalleryThumbnails size={22} />,
-      onClick: () => navigate('/gallery-details'),
+      onClick: () =>
+        navigate('/gallery-details', { state: { fromPage: currentPage } }),
     },
     {
       title: 'Calendar',
       description: 'Calendar component with glassmorphic styling.',
       icon: <Calendar size={22} />,
-      onClick: () => navigate('/calendar-details'),
+      onClick: () =>
+        navigate('/calendar-details', { state: { fromPage: currentPage } }),
     },
     {
       title: 'Checkbox',
       description: 'Checkbox component with glassmorphic styling.',
       icon: <Layout size={22} />,
-      onClick: () => navigate('/checkbox'),
+      onClick: () =>
+        navigate('/checkbox', { state: { fromPage: currentPage } }),
     },
     {
       title: 'Spinner',
       description: 'Design and customize CSS spinners for your projects.',
       icon: <HiOutlineWrenchScrewdriver size={22} />,
-      onClick: () => navigate('/spinner'),
+      onClick: () => navigate('/spinner', { state: { fromPage: currentPage } }),
     },
     {
       title: 'Stepper',
       description:
         'A customizable, responsive multi-step wizard and progress indicator styled with premium glassmorphism.',
       icon: <AlignStartVertical size={22} />,
-      onClick: () => navigate('/stepper-details'),
+      onClick: () =>
+        navigate('/stepper-details', { state: { fromPage: currentPage } }),
     },
     {
       title: 'Glass Generator',
       description: 'Create stunning glassmorphic effects with a visual editor.',
       icon: <Sparkles size={22} />,
-      onClick: () => navigate('/generator'),
+      onClick: () =>
+        navigate('/generator', { state: { fromPage: currentPage } }),
+    },
+    {
+      title: 'Adaptive Intelligence',
+      description:
+        'Live environment-aware glass styling with real-time contrast and glow adaptation.',
+      icon: <Sparkles size={22} />,
+      onClick: () =>
+        navigate('/adaptive-background-intelligence', {
+          state: { fromPage: currentPage },
+        }),
     },
   ];
-
   const [filteredData, setFilteredData] = useState(componentsData);
+
+  useEffect(() => {
+    const pageInUrl = Number(searchParams.get('page')) || 1;
+    if (pageInUrl !== currentPage) {
+      setSearchParams({ page: String(currentPage) }, { replace: true });
+    }
+  }, [currentPage]);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -253,7 +305,7 @@ const GlassyUIComponentsPage: React.FC = () => {
             )
           : componentsData,
       );
-      setCurrentPage(1);
+      if (q) setCurrentPage(1);
     }, 150);
 
     return () => clearTimeout(timer);
@@ -339,7 +391,7 @@ const GlassyUIComponentsPage: React.FC = () => {
           <div className='cp-pagination'>
             <button
               className='cp-page-btn'
-              onClick={() => setCurrentPage(p => Math.max(1, p - 1))}
+              onClick={() => setCurrentPage((p: number) => Math.max(1, p - 1))}
               disabled={currentPage === 1}
             >
               ← Prev
@@ -357,7 +409,9 @@ const GlassyUIComponentsPage: React.FC = () => {
             </div>
             <button
               className='cp-page-btn'
-              onClick={() => setCurrentPage(p => Math.min(totalPages, p + 1))}
+              onClick={() =>
+                setCurrentPage((p: number) => Math.min(totalPages, p + 1))
+              }
               disabled={currentPage === totalPages}
             >
               Next →

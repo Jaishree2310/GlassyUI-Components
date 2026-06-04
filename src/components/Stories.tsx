@@ -17,7 +17,7 @@ const Stories: React.FC = () => {
     const fetchPosts = async () => {
       try {
         const response = await fetch(
-          'http://localhost:5000/api/stories/getposts',
+          `${process.env.REACT_APP_API_URL}/api/stories/getposts`,
         );
         if (response.ok) {
           const data = await response.json();
@@ -42,7 +42,7 @@ const Stories: React.FC = () => {
     };
     try {
       const response = await fetch(
-        'http://localhost:5000/api/stories/saveposts',
+        `${process.env.REACT_APP_API_URL}/api/stories/saveposts`,
         {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
@@ -63,8 +63,7 @@ const Stories: React.FC = () => {
 
   return (
     <div className='relative min-h-screen bg-[#03010f] text-white overflow-x-hidden'>
-      <style>{`.stories-select option{background: #0f172a; color: #e6eef8;}`}</style>
-      <div className='pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(124,58,237,0.24),transparent_30%),radial-gradient(circle_at_top_right,rgba(34,211,238,0.18),transparent_26%),radial-gradient(circle_at_bottom,rgba(244,114,182,0.14),transparent_30%)]' />
+      <style>{`.stories-select option{background:#0b1220;color:#f8fafc;padding:10px}.stories-select optgroup{background:#0b1220;color:#7dd3fc;font-weight:700}`}</style>
       <div className='pointer-events-none absolute -left-36 top-24 h-72 w-72 rounded-full bg-violet-500/20 blur-3xl' />
       <div className='pointer-events-none absolute -right-24 top-1/2 h-80 w-80 rounded-full bg-cyan-400/10 blur-3xl' />
 
@@ -167,7 +166,7 @@ const Stories: React.FC = () => {
                 <select
                   value={category}
                   onChange={e => setCategory(e.target.value)}
-                  className='stories-select block w-full rounded-2xl border border-white/15 bg-white/10 px-4 py-3 text-white outline-none transition-colors duration-300 focus:border-cyan-300/50 focus:bg-white/15'
+                  className='stories-select block w-full rounded-2xl border border-cyan-400/20 bg-white/10 backdrop-blur-xl px-4 py-3 text-white shadow-[0_0_0_1px_rgba(34,211,238,0.15),0_8px_24px_rgba(34,211,238,0.12)] outline-none transition-all duration-300 focus:border-cyan-300/50 focus:bg-white/15 focus:shadow-[0_0_0_1px_rgba(34,211,238,0.3),0_12px_32px_rgba(34,211,238,0.2)]'
                 >
                   <option value='' disabled className='bg-slate-950'>
                     Select Category
@@ -201,7 +200,7 @@ const Stories: React.FC = () => {
 
               <button
                 type='submit'
-                className='w-full rounded-2xl bg-gradient-to-r from-violet-500 via-cyan-500 to-fuchsia-500 px-4 py-3 font-semibold text-white shadow-[0_12px_30px_rgba(34,211,238,0.25)] transition-transform duration-300 hover:-translate-y-0.5'
+                className='w-full rounded-2xl bg-gradient-to-r from-violet-600 to-cyan-600 border border-white/10 px-4 py-3 font-semibold text-white shadow-[0_0_0_1px_rgba(124,58,237,0.25),0_8px_32px_rgba(124,58,237,0.35),inset_0_1px_0_rgba(255,255,255,0.12)] backdrop-blur-sm transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_0_0_1px_rgba(124,58,237,0.4),0_12px_40px_rgba(124,58,237,0.5),inset_0_1px_0_rgba(255,255,255,0.18)]'
               >
                 Post Experience
               </button>
