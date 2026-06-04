@@ -200,7 +200,7 @@ const Stories: React.FC = () => {
 
               <button
                 type='submit'
-                className='w-full rounded-2xl bg-gradient-to-r from-violet-500 via-cyan-500 to-fuchsia-500 px-4 py-3 font-semibold text-white shadow-[0_12px_30px_rgba(34,211,238,0.25)] transition-transform duration-300 hover:-translate-y-0.5'
+                className='w-full rounded-2xl bg-gradient-to-r from-violet-600 to-cyan-600 border border-white/10 px-4 py-3 font-semibold text-white shadow-[0_0_0_1px_rgba(124,58,237,0.25),0_8px_32px_rgba(124,58,237,0.35),inset_0_1px_0_rgba(255,255,255,0.12)] backdrop-blur-sm transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_0_0_1px_rgba(124,58,237,0.4),0_12px_40px_rgba(124,58,237,0.5),inset_0_1px_0_rgba(255,255,255,0.18)]'
               >
                 Post Experience
               </button>
