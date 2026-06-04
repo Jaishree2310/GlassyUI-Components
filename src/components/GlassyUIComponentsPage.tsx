@@ -22,6 +22,7 @@ import {
   ShoppingCart,
   GalleryThumbnails,
   Sparkles,
+  MousePointer,
 } from 'lucide-react';
 import { HiOutlineWrenchScrewdriver } from 'react-icons/hi2';
 
@@ -282,6 +283,14 @@ const GlassyUIComponentsPage: React.FC = () => {
         navigate('/adaptive-background-intelligence', {
           state: { fromPage: currentPage },
         }),
+    },
+    {
+      title: 'Animated Cursor',
+      description:
+        'A customizable animated cursor that smoothly follows the pointer with hover animations and glassmorphic styling.',
+      icon: <MousePointer size={22} />,
+      onClick: () =>
+        navigate('/animated-cursor', { state: { fromPage: currentPage } }),
     },
   ];
   const [filteredData, setFilteredData] = useState(componentsData);
