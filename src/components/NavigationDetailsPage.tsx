@@ -1,5 +1,5 @@
 ﻿import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { ArrowLeft, Copy, Check, Menu, Home } from 'lucide-react';
 
 import PageShell from './PageShell';
@@ -11,10 +11,11 @@ border border-white border-opacity-20 rounded-lg shadow-lg transition-all durati
 
 const NavigationDetailsPage: React.FC = () => {
   const navigate = useNavigate();
+  const location = useLocation();
   const [copiedText, setCopiedText] = useState<string | null>(null);
   const [menuOpen, setMenuOpen] = useState<boolean>(false);
   const [selected, setSelected] = useState<string>('Home');
-
+  const returnPage = location.state?.fromPage || 1;
   const copyToClipboard = (text: string, key: string) => {
     navigator.clipboard.writeText(text).then(() => {
       setCopiedText(text);
@@ -40,7 +41,7 @@ const NavigationDetailsPage: React.FC = () => {
   );
 
   const handleBackToComponents = () => {
-    navigate('/components');
+    navigate(-1);
   };
 
   function getNavigationCode() {
@@ -90,7 +91,7 @@ const NavigationDetailsPage: React.FC = () => {
   return (
     <PageShell>
       <button
-        onClick={handleBackToComponents}
+        onClick={() => navigate('/components', { state: { returnPage } })}
         className={`mb-8 flex items-center ${getGlassyClasses()} px-4 py-2 hover:bg-white/40 transition-all duration-300 text-gray-100`}
       >
         <ArrowLeft size={20} className='mr-2' />
