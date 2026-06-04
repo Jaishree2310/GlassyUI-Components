@@ -1734,7 +1734,6 @@ div.min-h-screen.p-8.bg-gradient-to-r.from-gray-800.via-gray-900.to-black {
 
 /* Mobile Responsiveness */
 @media screen and (max-width: 768px) {
-
   .navbar {
     flex-direction: column;
     align-items: center;
@@ -1754,7 +1753,6 @@ div.min-h-screen.p-8.bg-gradient-to-r.from-gray-800.via-gray-900.to-black {
 
 /* Small Mobile Devices */
 @media screen and (max-width: 480px) {
-
   .navbar {
     padding: 0.8rem;
   }
@@ -1768,5 +1766,29 @@ div.min-h-screen.p-8.bg-gradient-to-r.from-gray-800.via-gray-900.to-black {
     width: 100%;
     display: block;
     padding: 0.5rem 0;
+  }
+}
+
+@supports not (
+  (backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))
+) {
+  .adaptive-glass {
+    background: rgba(15, 23, 42, 0.88);
+    border-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 18px 48px rgba(2, 6, 23, 0.38);
+  }
+
+  .glassmorphism,
+  .frosted-glass {
+    background: rgba(255, 255, 255, 0.78);
+    border-color: rgba(255, 255, 255, 0.42);
+    box-shadow: 0 14px 36px rgba(31, 38, 135, 0.28);
+  }
+
+  .contrib-stat-card,
+  .notfound-card {
+    background: rgba(15, 23, 42, 0.82);
+    border-color: rgba(255, 255, 255, 0.16);
+    box-shadow: 0 18px 48px rgba(2, 6, 23, 0.35);
   }
 }
