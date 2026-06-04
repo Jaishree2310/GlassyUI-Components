@@ -71,12 +71,12 @@ const AdaptiveBackgroundIntelligenceDemo: React.FC = () => {
   );
 
   return (
-    <div className='min-h-screen bg-[#020617] text-white px-6 py-8'>
+    <div className='min-h-screen bg-transparent text-slate-800 dark:text-white px-6 py-8'>
       <div className='max-w-6xl mx-auto'>
         <div className='mb-6'>
           <button
             onClick={() => navigate(-1)}
-            className='inline-flex items-center rounded-full border border-white/20 bg-white/10 px-4 py-2 text-sm font-medium text-white transition hover:bg-white/20'
+            className='inline-flex items-center rounded-full border border-slate-200 dark:border-white/20 bg-slate-100 dark:bg-white/10 px-4 py-2 text-sm font-medium text-slate-700 dark:text-white transition hover:bg-slate-200 dark:hover:bg-white/20'
           >
             <ArrowLeft size={18} className='mr-2' />
             Back to Components
@@ -84,13 +84,13 @@ const AdaptiveBackgroundIntelligenceDemo: React.FC = () => {
         </div>
 
         <div className='mb-8'>
-          <p className='mb-2 inline-flex rounded-full bg-cyan-500/20 px-3 py-1 text-xs font-semibold uppercase tracking-[0.24em] text-cyan-200'>
+          <p className='mb-2 inline-flex rounded-full bg-cyan-500/20 px-3 py-1 text-xs font-semibold uppercase tracking-[0.24em] text-cyan-700 dark:text-cyan-200'>
             New intelligence layer
           </p>
-          <h1 className='text-4xl font-bold md:text-5xl'>
+          <h1 className='text-4xl font-bold md:text-5xl text-slate-800 dark:text-white'>
             Adaptive Background Intelligence
           </h1>
-          <p className='mt-3 max-w-3xl text-base text-slate-200 md:text-lg'>
+          <p className='mt-3 max-w-3xl text-base text-slate-600 dark:text-slate-200 md:text-lg'>
             Real-time glassmorphism tuning traces the live scene behind the
             card, adjusting blur, opacity, glow, border visibility, and text
             contrast to stay readable across changing environments.
@@ -98,35 +98,35 @@ const AdaptiveBackgroundIntelligenceDemo: React.FC = () => {
         </div>
 
         <div className='grid gap-6 lg:grid-cols-[1.3fr_0.7fr]'>
-          <div className='relative overflow-hidden rounded-[28px] border border-white/10 bg-slate-950/70 p-1 shadow-2xl'>
+          <div className='relative overflow-hidden rounded-[28px] border border-slate-200 dark:border-white/10 bg-slate-100/50 dark:bg-slate-950/70 p-1 shadow-2xl'>
             <canvas
               ref={canvasRef}
-              className='h-[420px] w-full rounded-[26px] border border-white/10 bg-slate-950/40'
+              className='h-[420px] w-full rounded-[26px] border border-slate-200 dark:border-white/10 bg-slate-100/30 dark:bg-slate-950/40'
             />
             <div className='absolute inset-4 flex items-end'>
               <div
                 className='relative z-10 w-full max-w-md rounded-[26px] p-5 md:p-6'
                 style={surfaceStyle}
               >
-                <p className='text-xs uppercase tracking-[0.28em] text-white/70'>
+                <p className='text-xs uppercase tracking-[0.28em] text-inherit opacity-70'>
                   Adaptive glass surface
                 </p>
                 <h2 className='mt-3 text-2xl font-semibold'>
                   Environmental glass rendering
                 </h2>
-                <p className='mt-2 text-sm text-white/80'>
+                <p className='mt-2 text-sm text-inherit opacity-80'>
                   Blur, transparency, border emphasis, and glow all shift as the
                   sampled background changes, keeping the interface polished and
                   legible.
                 </p>
                 <div className='mt-4 flex flex-wrap gap-2 text-xs font-medium'>
-                  <span className='rounded-full bg-white/15 px-3 py-1'>
+                  <span className='rounded-full bg-current/10 text-inherit px-3 py-1'>
                     Dynamic blur
                   </span>
-                  <span className='rounded-full bg-white/15 px-3 py-1'>
+                  <span className='rounded-full bg-current/10 text-inherit px-3 py-1'>
                     Auto contrast
                   </span>
-                  <span className='rounded-full bg-white/15 px-3 py-1'>
+                  <span className='rounded-full bg-current/10 text-inherit px-3 py-1'>
                     Smart glow
                   </span>
                 </div>
@@ -134,15 +134,17 @@ const AdaptiveBackgroundIntelligenceDemo: React.FC = () => {
             </div>
           </div>
 
-          <div className='rounded-[28px] border border-white/10 bg-white/5 p-6 backdrop-blur-md'>
+          <div className='rounded-[28px] border border-slate-200 dark:border-white/10 bg-slate-50/50 dark:bg-white/5 p-6 backdrop-blur-md'>
             <div className='mb-5 flex items-center justify-between'>
               <div>
-                <p className='text-sm font-medium uppercase tracking-[0.28em] text-cyan-200'>
+                <p className='text-sm font-medium uppercase tracking-[0.28em] text-cyan-600 dark:text-cyan-200'>
                   Live metrics
                 </p>
-                <h2 className='mt-1 text-xl font-semibold'>Adaptive profile</h2>
+                <h2 className='mt-1 text-xl font-semibold text-slate-800 dark:text-white'>
+                  Adaptive profile
+                </h2>
               </div>
-              <span className='rounded-full bg-emerald-500/20 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.2em] text-emerald-200'>
+              <span className='rounded-full bg-emerald-500/20 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.2em] text-emerald-600 dark:text-emerald-200'>
                 Realtime
               </span>
             </div>
@@ -170,19 +172,23 @@ const AdaptiveBackgroundIntelligenceDemo: React.FC = () => {
               ].map(([label, value]) => (
                 <div
                   key={label}
-                  className='rounded-2xl border border-white/10 bg-slate-950/70 px-4 py-3'
+                  className='rounded-2xl border border-slate-200 dark:border-white/10 bg-white dark:bg-slate-950/70 px-4 py-3'
                 >
                   <div className='flex items-center justify-between text-sm'>
-                    <span className='text-slate-300'>{label}</span>
-                    <span className='font-semibold text-white'>{value}</span>
+                    <span className='text-slate-500 dark:text-slate-300'>
+                      {label}
+                    </span>
+                    <span className='font-semibold text-slate-800 dark:text-white'>
+                      {value}
+                    </span>
                   </div>
                 </div>
               ))}
             </div>
 
-            <div className='mt-6 rounded-2xl border border-cyan-400/20 bg-cyan-500/10 p-4 text-sm text-cyan-50'>
+            <div className='mt-6 rounded-2xl border border-cyan-400/25 dark:border-cyan-400/20 bg-cyan-50/50 dark:bg-cyan-500/10 p-4 text-sm text-cyan-800 dark:text-cyan-50'>
               <p className='font-semibold'>How it works</p>
-              <p className='mt-2 text-cyan-100/90'>
+              <p className='mt-2 text-cyan-900/90 dark:text-cyan-100/90'>
                 The live canvas is sampled continuously, brightness and color
                 complexity are analyzed, and adaptive glass values are
                 recalculated on the fly for a balanced and accessible interface.
