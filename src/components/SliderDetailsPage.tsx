@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
+﻿import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ArrowLeft, Copy, Check } from 'lucide-react';
-import BackToTopButton from './BackToTop';
+import PageShell from './PageShell';
 import ColorPicker from './ColorPicker';
 
 const SliderDetailsPage: React.FC = () => {
@@ -67,8 +67,7 @@ const SliderDetailsPage: React.FC = () => {
   };
 
   return (
-    <div className='min-h-screen pt-24 px-8 pb-8 font-sans bg-gradient-to-r from-gray-800 via-gray-900 to-black text-white relative'>
-      <BackToTopButton />
+    <PageShell>
       <nav className=' mb-8 flex items-center justify-between relative z-10'>
         <button
           onClick={handleBackToComponents}
@@ -231,7 +230,7 @@ const SliderDetailsPage: React.FC = () => {
           </div>
         </div>
       </section>
-    </div>
+    </PageShell>
   );
 };
 

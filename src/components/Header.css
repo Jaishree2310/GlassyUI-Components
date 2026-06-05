@@ -294,3 +294,14 @@
     padding: 0 20px;
   }
 }
+
+@supports not (
+  (backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))
+) {
+  .site-header--scrolled,
+  .mobile-drawer {
+    background: rgba(3, 1, 15, 0.96);
+    border-color: rgba(255, 255, 255, 0.12);
+    box-shadow: 0 12px 36px rgba(0, 0, 0, 0.38);
+  }
+}
