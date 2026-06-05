@@ -1829,6 +1829,44 @@ body.performance-mode *,
   }
 }
 
+/* Theme-aware shadow system for glassmorphism components */
+:root {
+  --shadow-light: rgba(255, 255, 255, 0.3);
+  --shadow-dark: rgba(0, 0, 0, 0.3);
+  --shadow-light-sm: 0 1px 2px var(--shadow-light);
+  --shadow-light-md: 0 4px 6px var(--shadow-light);
+  --shadow-light-lg: 0 10px 15px var(--shadow-light);
+  --shadow-dark-sm: 0 1px 2px var(--shadow-dark);
+  --shadow-dark-md: 0 4px 6px var(--shadow-dark);
+  --shadow-dark-lg: 0 10px 15px var(--shadow-dark);
+}
+
+/* Light theme shadow utilities */
+.shadow-light-sm {
+  box-shadow: var(--shadow-light-sm);
+}
+
+.shadow-light-md {
+  box-shadow: var(--shadow-light-md);
+}
+
+.shadow-light-lg {
+  box-shadow: var(--shadow-light-lg);
+}
+
+/* Dark theme shadow utilities for improved visibility on dark backgrounds */
+.shadow-dark-sm {
+  box-shadow: var(--shadow-dark-sm);
+}
+
+.shadow-dark-md {
+  box-shadow: var(--shadow-dark-md);
+}
+
+.shadow-dark-lg {
+  box-shadow: var(--shadow-dark-lg);
+}
+
 /* Performance optimization utilities */
 .will-change-transform {
   will-change: transform;
