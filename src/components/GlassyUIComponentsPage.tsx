@@ -22,6 +22,14 @@ import {
   ShoppingCart,
   GalleryThumbnails,
   Sparkles,
+  FolderClosed,
+  User,
+  Upload,
+  Bell,
+  GitCommit,
+  ChevronRight,
+  Menu,
+  Tag,
 } from 'lucide-react';
 import { HiOutlineWrenchScrewdriver } from 'react-icons/hi2';
 
@@ -282,6 +290,74 @@ const GlassyUIComponentsPage: React.FC = () => {
         navigate('/adaptive-background-intelligence', {
           state: { fromPage: currentPage },
         }),
+    },
+    {
+      title: 'Tabs',
+      description: 'Glassy tabbed navigation for switching content panels.',
+      icon: <FolderClosed size={22} />,
+      onClick: () =>
+        navigate('/tabs-details', { state: { fromPage: currentPage } }),
+    },
+    {
+      title: 'Avatar',
+      description: 'Profile/image avatar component with elegant glass styling.',
+      icon: <User size={22} />,
+      onClick: () =>
+        navigate('/avatar-details', { state: { fromPage: currentPage } }),
+    },
+    {
+      title: 'File Uploader',
+      description:
+        'Drag & drop or button-based file input with frosted overlay.',
+      icon: <Upload size={22} />,
+      onClick: () =>
+        navigate('/file-uploader-details', {
+          state: { fromPage: currentPage },
+        }),
+    },
+    {
+      title: 'Badge',
+      description: 'Glassy notification dots or status badges.',
+      icon: <Bell size={22} />,
+      onClick: () =>
+        navigate('/badge-details', { state: { fromPage: currentPage } }),
+    },
+    {
+      title: 'Timeline',
+      description: 'Vertical/horizontal timeline for events with glass cards.',
+      icon: <GitCommit size={22} />,
+      onClick: () =>
+        navigate('/timeline-details', { state: { fromPage: currentPage } }),
+    },
+    {
+      title: 'Breadcrumbs',
+      description: 'Navigation trail with a glassy aesthetic.',
+      icon: <ChevronRight size={22} />,
+      onClick: () =>
+        navigate('/breadcrumbs-details', { state: { fromPage: currentPage } }),
+    },
+    {
+      title: 'Sidebar/Drawer',
+      description: 'Slide-out panel component using frosted glass.',
+      icon: <Menu size={22} />,
+      onClick: () =>
+        navigate('/sidebar-details', { state: { fromPage: currentPage } }),
+    },
+    {
+      title: 'Calendar Picker',
+      description: 'Date/time picker popover with glass effect.',
+      icon: <Calendar size={22} />,
+      onClick: () =>
+        navigate('/calendar-picker-details', {
+          state: { fromPage: currentPage },
+        }),
+    },
+    {
+      title: 'Chip/Tag',
+      description: 'Small glassmorphic indicators for categories and filters.',
+      icon: <Tag size={22} />,
+      onClick: () =>
+        navigate('/chip-details', { state: { fromPage: currentPage } }),
     },
   ];
   const [filteredData, setFilteredData] = useState(componentsData);

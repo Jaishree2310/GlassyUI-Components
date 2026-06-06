@@ -53,6 +53,15 @@ import AdaptiveBackgroundIntelligenceDemo from './components/AdaptiveBackgroundI
 import { TermsOfUse } from './components/TermsOfUse';
 
 import Stories from './components/Stories';
+import TabsDetailsPage from './components/TabsDetailsPage';
+import AvatarDetailsPage from './components/AvatarDetailsPage';
+import FileUploaderDetailsPage from './components/FileUploaderDetailsPage';
+import BadgeDetailsPage from './components/BadgeDetailsPage';
+import TimelineDetailsPage from './components/TimelineDetailsPage';
+import BreadcrumbsDetailsPage from './components/BreadcrumbsDetailsPage';
+import SidebarDetailsPage from './components/SidebarDetailsPage';
+import CalendarPickerDetailsPage from './components/CalendarPickerDetailsPage';
+import ChipDetailsPage from './components/ChipDetailsPage';
 // import Register from './login/SignUp';
 // import SignIn from './login/SignIn';
 
@@ -227,6 +236,24 @@ const App: React.FC = () => {
             <Route path='/termsOfUse' element={<TermsOfUse />} />
 
             <Route path='/stories' element={<Stories />} />
+            <Route path='/tabs-details' element={<TabsDetailsPage />} />
+            <Route path='/avatar-details' element={<AvatarDetailsPage />} />
+            <Route
+              path='/file-uploader-details'
+              element={<FileUploaderDetailsPage />}
+            />
+            <Route path='/badge-details' element={<BadgeDetailsPage />} />
+            <Route path='/timeline-details' element={<TimelineDetailsPage />} />
+            <Route
+              path='/breadcrumbs-details'
+              element={<BreadcrumbsDetailsPage />}
+            />
+            <Route path='/sidebar-details' element={<SidebarDetailsPage />} />
+            <Route
+              path='/calendar-picker-details'
+              element={<CalendarPickerDetailsPage />}
+            />
+            <Route path='/chip-details' element={<ChipDetailsPage />} />
 
             {/* <Route path='/signup' element={<Register />} /> */}
             {/* <Route path='/signin' element={<SignIn />} /> */}
