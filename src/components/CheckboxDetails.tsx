@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ArrowLeft, Copy, Check } from 'lucide-react';
-import BackToTopButton from './BackToTop';
+import PageShell from './PageShell';
 
 // Custom Checkbox component
 const Checkbox = ({
@@ -120,80 +120,77 @@ const CheckboxDetailsPage: React.FC = () => {
   );
 
   return (
-    <div className='min-h-screen pt-24 px-8 pb-8 font-sans bg-gradient-to-r from-gray-800 via-gray-900 to-black text-white relative'>
-      <BackToTopButton />
-      <div className='relative z-10'>
-        <button
-          onClick={() => navigate(-1)}
-          className={`mb-8 flex items-center ${getGlassyClasses(10)} px-4 py-2 hover:bg-white/40 transition-all duration-300 text-white`}
-        >
-          <ArrowLeft size={20} className='mr-2' />
-          Back to Components
-        </button>
+    <PageShell>
+      <button
+        onClick={() => navigate(-1)}
+        className={`mb-8 flex items-center ${getGlassyClasses(10)} px-4 py-2 hover:bg-white/40 transition-all duration-300 text-white`}
+      >
+        <ArrowLeft size={20} className='mr-2' />
+        Back to Components
+      </button>
 
-        <h1 className='text-6xl font-bold mb-8 text-white'>Checkbox</h1>
-        <p className='text-xl mb-8 text-white'>
-          A customizable, glassmorphism-styled checkbox component.
+      <h1 className='text-6xl font-bold mb-8 text-white'>Checkbox</h1>
+      <p className='text-xl mb-8 text-white'>
+        A customizable, glassmorphism-styled checkbox component.
+      </p>
+
+      {/* Basic Usage */}
+      <div className={`${getGlassyClasses()} p-6 mb-14 relative`}>
+        <h2 className='text-3xl font-bold mb-6 text-white'>Basic Usage</h2>
+        <div className='relative'>
+          <pre className='bg-gray-800 text-white p-6 rounded-lg overflow-x-auto whitespace-pre-wrap max-sm:text-[0.55rem]'>
+            {basicUsageCode}
+          </pre>
+          <CopyButton text={basicUsageCode} codeKey='basicUsage' />
+        </div>
+      </div>
+
+      {/* Props */}
+      <div className={`${getGlassyClasses()} p-6 mb-14`}>
+        <h2 className='text-3xl font-bold mb-6 text-white'>Props</h2>
+        <div className='overflow-x-auto'>{propsTable}</div>
+      </div>
+
+      {/* Customizable Checkbox */}
+      <div className={`${getGlassyClasses()} p-6 mb-14`}>
+        <h2 className='text-3xl font-bold mb-6 text-white'>
+          Customizable Checkbox
+        </h2>
+        <p className='mb-6 text-lg text-white'>
+          A customizable checkbox that allows you to adjust its background,
+          border, and text colors.
         </p>
-
-        {/* Basic Usage */}
-        <div className={`${getGlassyClasses()} p-6 mb-14 relative`}>
-          <h2 className='text-3xl font-bold mb-6 text-white'>Basic Usage</h2>
-          <div className='relative'>
-            <pre className='bg-gray-800 text-white p-6 rounded-lg overflow-x-auto whitespace-pre-wrap max-sm:text-[0.55rem]'>
-              {basicUsageCode}
-            </pre>
-            <CopyButton text={basicUsageCode} codeKey='basicUsage' />
-          </div>
-        </div>
-
-        {/* Props */}
-        <div className={`${getGlassyClasses()} p-6 mb-14`}>
-          <h2 className='text-3xl font-bold mb-6 text-white'>Props</h2>
-          <div className='overflow-x-auto'>{propsTable}</div>
-        </div>
-
-        {/* Customizable Checkbox */}
-        <div className={`${getGlassyClasses()} p-6 mb-14`}>
-          <h2 className='text-3xl font-bold mb-6 text-white'>
-            Customizable Checkbox
-          </h2>
-          <p className='mb-6 text-lg text-white'>
-            A customizable checkbox that allows you to adjust its background,
-            border, and text colors.
-          </p>
-          <div className='relative mt-8'>
-            <Checkbox
-              checked={isChecked}
-              onChange={() => setIsChecked(!isChecked)}
-              label='Custom Styled Checkbox'
-            />
-            <pre className='bg-gray-800 text-white p-6 rounded-lg mt-4 overflow-x-auto whitespace-pre-wrap max-sm:text-[0.55rem]'>
-              {customizableCheckboxCode}
-            </pre>
-            <CopyButton
-              text={customizableCheckboxCode}
-              codeKey='customizableCheckbox'
-            />
-          </div>
-        </div>
-
-        {/* Disabled Checkbox */}
-        <div className={`${getGlassyClasses()} p-6 mb-14`}>
-          <h2 className='text-3xl font-bold mb-6 text-white'>
-            Disabled Checkbox
-          </h2>
-          <p className='mb-6 text-lg text-white'>
-            A checkbox that is disabled and cannot be clicked.
-          </p>
+        <div className='relative mt-8'>
           <Checkbox
-            checked={false}
-            onChange={() => {}}
-            label='Disabled Checkbox'
+            checked={isChecked}
+            onChange={() => setIsChecked(!isChecked)}
+            label='Custom Styled Checkbox'
+          />
+          <pre className='bg-gray-800 text-white p-6 rounded-lg mt-4 overflow-x-auto whitespace-pre-wrap max-sm:text-[0.55rem]'>
+            {customizableCheckboxCode}
+          </pre>
+          <CopyButton
+            text={customizableCheckboxCode}
+            codeKey='customizableCheckbox'
           />
         </div>
       </div>
-    </div>
+
+      {/* Disabled Checkbox */}
+      <div className={`${getGlassyClasses()} p-6 mb-14`}>
+        <h2 className='text-3xl font-bold mb-6 text-white'>
+          Disabled Checkbox
+        </h2>
+        <p className='mb-6 text-lg text-white'>
+          A checkbox that is disabled and cannot be clicked.
+        </p>
+        <Checkbox
+          checked={false}
+          onChange={() => {}}
+          label='Disabled Checkbox'
+        />
+      </div>
+    </PageShell>
   );
 };
 

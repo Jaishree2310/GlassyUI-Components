@@ -12,7 +12,8 @@ import {
 } from 'lucide-react';
 import Calendar, { CalendarProps } from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
-import BackToTopButton from './BackToTop';
+import PageShell from './PageShell';
+import { getGlassyClasses } from '../utils/glassy';
 
 // ─── Constants ────────────────────────────────────────────────────────────────
 const MONTHS = [
@@ -359,7 +360,8 @@ const CalendarDetail: React.FC = () => {
 
   return (
     <div className='min-h-screen pt-24 px-8 pb-8 font-sans bg-gradient-to-r from-gray-800 via-gray-900 to-black text-white relative flex flex-col'>
-      <BackToTopButton />
+    <PageShell>
+       <BackToTopButton />
       <nav className='mb-8 flex items-center justify-between relative z-10'>
         <button
           onClick={() => navigate('/components')}
@@ -524,65 +526,8 @@ const CalendarDetail: React.FC = () => {
         </div>
       </section>
 
-      {/* ── Props Table Documentation Metric ── */}
-      <section className='p-6 mb-14 bg-white bg-opacity-20 rounded-lg shadow-lg relative'>
-        <h2 className='text-3xl font-bold mb-4 text-gray-100'>
-          Architecture Documentation APIs
-        </h2>
-        <div className='overflow-x-auto'>
-          <table className='w-full text-sm text-left'>
-            <thead>
-              <tr className='bg-white bg-opacity-20 text-gray-200 font-semibold'>
-                <th className='p-3 rounded-l-lg'>Prop Context Hook</th>
-                <th className='p-3'>Type Model</th>
-                <th className='p-3'>Fallback Default</th>
-                <th className='p-3 rounded-r-lg'>
-                  Structural Purpose Description
-                </th>
-              </tr>
-            </thead>
-            <tbody className='divide-y divide-white/5 text-gray-300'>
-              <tr>
-                <td className='p-3 font-mono text-green-300'>
-                  activeStartDate
-                </td>
-                <td className='p-3 font-mono'>Date</td>
-                <td className='p-3'>current month</td>
-                <td className='p-3'>
-                  Tracks the top-level month representation viewport boundary.
-                  Required for dropdown calendar jumps.
-                </td>
-              </tr>
-              <tr className='bg-white bg-opacity-5'>
-                <td className='p-3 font-mono text-green-300'>tileClassName</td>
-                <td className='p-3 font-mono'>{`({ date, view }) => string | null`}</td>
-                <td className='p-3'>-</td>
-                <td className='p-3'>
-                  Dynamically pipes individual conditional string tokens onto
-                  individual days to append custom layouts like active event
-                  dots or today outlines.
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </section>
-
-      {/* ── Implementation Integration Code Section ── */}
-      <section className={`${getGlassyClasses()} p-6 relative`}>
-        <h3 className='text-xl font-bold mb-4 text-white'>
-          Implementation Source Code
-        </h3>
-        <div className='relative'>
-          <pre className='bg-gray-800 text-white p-4 rounded-lg overflow-x-auto text-sm max-h-[380px] whitespace-pre-wrap break-words font-mono'>
-            <code>{basicExampleCode}</code>
-          </pre>
-          <CopyButton text={basicExampleCode} codeKey='CalendarExample' />
-        </div>
-      </section>
-
-      {/* ── Embedded Scope Scoped Global Styles Override ── */}
-      <style jsx>{`
+      {/* Inline Styles for Calendar Tiles */}
+      <style>{`
         .custom-calendar {
           width: 100%;
           max-width: 100%;
@@ -708,7 +653,7 @@ const CalendarDetail: React.FC = () => {
           background-position: right 0.5rem center;
         }
       `}</style>
-    </div>
+    </PageShell>
   );
 };
 
