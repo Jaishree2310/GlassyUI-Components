@@ -1,13 +1,8 @@
-import React, { useState, useEffect, useRef, useMemo } from 'react';
+import React, { useEffect, useRef, useMemo } from 'react';
 import PricingDetailPage from './components/PricingDetailPage';
 import useAdaptiveBackgroundIntelligence from './hooks/useAdaptiveBackgroundIntelligence';
 
-import {
-  BrowserRouter as Router,
-  Route,
-  Routes,
-  useLocation,
-} from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 import ScrollToTop from './components/ScrollToTop';
 import FloatingBottomBar from './components/FloatingBottomBar';
@@ -51,6 +46,8 @@ import ContactUs from './components/ContactUs';
 import AiChatbot from './components/AIChatbot';
 import AdaptiveBackgroundIntelligenceDemo from './components/AdaptiveBackgroundIntelligenceDemo';
 import { TermsOfUse } from './components/TermsOfUse';
+import AnimatedCursorPage from './components/AnimatedCursorPage';
+import AnimatedCursor from './components/AnimatedCursor';
 
 import Stories from './components/Stories';
 import TabsDetailsPage from './components/TabsDetailsPage';
@@ -64,32 +61,6 @@ import CalendarPickerDetailsPage from './components/CalendarPickerDetailsPage';
 import ChipDetailsPage from './components/ChipDetailsPage';
 // import Register from './login/SignUp';
 // import SignIn from './login/SignIn';
-
-const ThemeToggle: React.FC = () => {
-  const [theme, setTheme] = useState(localStorage.getItem('theme') || 'light');
-
-  useEffect(() => {
-    if (theme === 'dark') {
-      document.documentElement.classList.add('dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-    }
-    localStorage.setItem('theme', theme);
-  }, [theme]);
-
-  const toggleTheme = () => {
-    setTheme(theme === 'light' ? 'dark' : 'light');
-  };
-
-  return (
-    <button
-      onClick={toggleTheme}
-      className='p-2 bg-gray-200 dark:bg-gray-800 text-black dark:text-white rounded'
-    >
-      {theme === 'light' ? 'Switch to Dark Mode' : 'Switch to Light Mode'}
-    </button>
-  );
-};
 
 const App: React.FC = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -171,9 +142,10 @@ const App: React.FC = () => {
         <Header />
         <AiChatbot />
         <BackToTopButton />
-        {/* <ThemeToggle /> */}
+        <AnimatedCursor />
         <div className='adaptive-glass page-shell'>
           <Routes>
+            <Route path='/animated-cursor' element={<AnimatedCursorPage />} />
             <Route path='/' element={<GlassyUILandingPage />} />
             <Route path='/components' element={<GlassyUIComponentsPage />} />
             <Route path='/toast-page' element={<ToastPage />} />

@@ -22,7 +22,7 @@ const UserAccount: React.FC<UserAccountProps> = ({ email, username }) => {
         {avatarLetter}
       </div>
       <button
-        className=' text-red-500 text-sm font-medium hover:underline'
+        className=' text-red-500 bg-white dark:bg-black dark:text-white text-sm font-medium hover:underline'
         onClick={doSignOut}
       >
         Sign Out
