@@ -4,6 +4,7 @@ import { useAuth } from '../login/contexts/authContext/index';
 import UserAccount from '../login/UserAccount';
 import './Header.css';
 import { useGitHubStars } from '../hooks/useGitHubStars';
+import GoogleTranslate from './GoogleTranslator';
 
 const Header: React.FC = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -67,6 +68,7 @@ const Header: React.FC = () => {
 
         {/* Right actions */}
         <div className='header-actions'>
+          <GoogleTranslate />
           <a
             href={githubRepoUrl}
             target='_blank'
