@@ -52,6 +52,8 @@ import ContactUs from './components/ContactUs';
 import AiChatbot from './components/AIChatbot';
 import AdaptiveBackgroundIntelligenceDemo from './components/AdaptiveBackgroundIntelligenceDemo';
 import { TermsOfUse } from './components/TermsOfUse';
+import AnimatedCursorPage from './components/AnimatedCursorPage';
+import AnimatedCursor from './components/AnimatedCursor';
 
 import Stories from './components/Stories';
 // import Register from './login/SignUp';
@@ -220,9 +222,11 @@ main
         <Header />
         <AiChatbot />
         <BackToTopButton />
+        <AnimatedCursor />
         {/* <ThemeToggle /> */}
         <div className='adaptive-glass page-shell'>
           <Routes>
+            <Route path='/animated-cursor' element={<AnimatedCursorPage />} />
             <Route path='/' element={<GlassyUILandingPage />} />
             <Route path='/components' element={<GlassyUIComponentsPage />} />
             <Route path='/toast-page' element={<ToastPage />} />

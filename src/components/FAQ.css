@@ -54,3 +54,13 @@
     font-size: 1rem;
   }
 }
+
+@supports not (
+  (backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))
+) {
+  .faq-item {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.32);
+    box-shadow: 0 12px 30px rgba(15, 23, 42, 0.24);
+  }
+}
