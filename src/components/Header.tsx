@@ -8,10 +8,22 @@ import { useGitHubStars } from '../hooks/useGitHubStars';
 const Header: React.FC = () => {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [perfMode, setPerfMode] = useState(() => {
+    return localStorage.getItem('performanceMode') === 'true';
+  });
   const location = useLocation();
   const { currentUser, userLoggedIn } = useAuth();
   const stars = useGitHubStars();
   const githubRepoUrl = 'https://github.com/Jaishree2310/GlassyUI-Components';
+
+  useEffect(() => {
+    if (perfMode) {
+      document.body.classList.add('performance-mode');
+    } else {
+      document.body.classList.remove('performance-mode');
+    }
+    localStorage.setItem('performanceMode', perfMode.toString());
+  }, [perfMode]);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -67,6 +79,19 @@ const Header: React.FC = () => {
 
         {/* Right actions */}
         <div className='header-actions'>
+          <button
+            onClick={() => setPerfMode(!perfMode)}
+            className={`github-pill ${perfMode ? 'perf-active' : ''}`}
+            aria-label='Toggle Performance Mode'
+            style={{
+              marginRight: '8px',
+              cursor: 'pointer',
+              background: perfMode ? 'rgba(124, 58, 237, 0.2)' : '',
+            }}
+          >
+            <span>{perfMode ? '⚡ Fast Mode' : '✨ Rich Mode'}</span>
+          </button>
+
           <a
             href={githubRepoUrl}
             target='_blank'
