@@ -62,7 +62,7 @@ const InputDetailPage: React.FC = () => {
         () => setCopiedStates(prev => ({ ...prev, [key]: false })),
         2000,
       );
-    });
+    }).catch((err) => console.error("Failed to copy text: ", err));
   };
 
   // =========================

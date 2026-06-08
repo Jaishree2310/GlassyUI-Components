@@ -79,7 +79,7 @@ const BadgeDetailPage: React.FC = () => {
     navigator.clipboard.writeText(text).then(() => {
       setCopiedStates(prev => ({ ...prev, [key]: true }));
       setTimeout(() => setCopiedStates(prev => ({ ...prev, [key]: false })), 2000);
-    });
+    }).catch((err) => console.error("Failed to copy text: ", err));
   };
 
   const CopyButton: React.FC<{ text: string, codeKey: string }> = ({ text, codeKey }) => (
