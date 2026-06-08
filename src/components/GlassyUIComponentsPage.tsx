@@ -104,13 +104,6 @@ const GlassyUIComponentsPage: React.FC = () => {
         navigate('/modal-details', { state: { fromPage: currentPage } }),
     },
     {
-      title: 'Toast',
-      description: 'Glassmorphic Toast notifications. Click to try them out!',
-      icon: <MessageSquare size={22} />,
-      onClick: () =>
-        navigate('/toast-page/', { state: { fromPage: currentPage } }),
-    },
-    {
       title: 'Sliders',
       description: 'Elegant sliders with glassmorphic styling.',
       icon: <Sliders size={22} />,
