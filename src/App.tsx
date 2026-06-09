@@ -1,5 +1,7 @@
 import React, { useEffect, useRef, useMemo } from 'react';
 import PricingDetailPage from './components/PricingDetailPage';
+import { GlassyProvider } from './components/GlassyProvider';
+import ThemeCustomizer from './components/ThemeCustomizer';
 import useAdaptiveBackgroundIntelligence from './hooks/useAdaptiveBackgroundIntelligence';
 
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';

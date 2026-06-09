@@ -380,6 +380,11 @@ const GlassyUIComponentsPage: React.FC = () => {
     return () => clearTimeout(timer);
   }, [searchFilter]);
 
+  //Scroll to top on using Pagination
+  useEffect(() => {
+    window.scrollTo({ top: 70, behavior: 'smooth' });
+  }, [currentPage]);
+
   const totalPages = Math.ceil(filteredData.length / componentsPerPage);
   const currentComponents = filteredData.slice(
     (currentPage - 1) * componentsPerPage,
