@@ -10,8 +10,13 @@
  *   <div className={getGlassyClasses()}>...</div>
  *   <div className={getGlassyClasses(10, true)}>...</div>
  */
-export const getGlassyClasses = (opacity: number = 20, optimizePerformance: boolean = true): string => {
+export const getGlassyClasses = (
+  opacity: number = 20,
+  optimizePerformance: boolean = true,
+): string => {
   const baseClasses = `backdrop-filter backdrop-blur-lg bg-white bg-opacity-${opacity} border border-white border-opacity-20 rounded-lg shadow-lg transition-all duration-300`;
-  const performanceClasses = optimizePerformance ? 'will-change-transform will-change-opacity' : '';
+  const performanceClasses = optimizePerformance
+    ? 'will-change-transform will-change-opacity'
+    : '';
   return `${baseClasses} ${performanceClasses}`.trim();
 };
