@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import BackToTopButton from './BackToTop';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useSearchParams } from 'react-router-dom';
 
 import {
@@ -312,6 +312,11 @@ const GlassyUIComponentsPage: React.FC = () => {
 
     return () => clearTimeout(timer);
   }, [searchFilter]);
+
+  //Scroll to top on using Pagination
+  useEffect(() => {
+    window.scrollTo({ top: 70, behavior: 'smooth' });
+  }, [currentPage]);
 
   const totalPages = Math.ceil(filteredData.length / componentsPerPage);
   const currentComponents = filteredData.slice(

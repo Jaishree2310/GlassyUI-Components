@@ -40,7 +40,7 @@ const AnimatedCursorPage: React.FC = () => {
             <tr className='border-b border-white/5'>
               <td className='py-2'>color</td>
               <td>string</td>
-              <td>"255,255,255"</td>
+              <td>&quot;255,255,255&quot;</td>
               <td>RGB values as a string</td>
             </tr>
             <tr className='border-b border-white/5'>
