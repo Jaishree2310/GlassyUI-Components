@@ -142,23 +142,23 @@ const AiChatbot: React.FC = () => {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 50, scale: 0.9 }}
             transition={{ duration: 0.3, ease: 'easeOut' }}
-            className='w-[350px] sm:w-[400px] h-[500px] rounded-2xl border border-white/20 shadow-2xl backdrop-blur-xl bg-slate-900/80 text-white flex flex-col overflow-hidden mb-4'
+            className='w-[350px] sm:w-[400px] h-[500px] rounded-2xl border shadow-2xl backdrop-blur-xl bg-white/85 dark:bg-slate-900/80 border-slate-200 dark:border-white/20 text-slate-800 dark:text-white flex flex-col overflow-hidden mb-4'
           >
             {/* Chat Header */}
-            <div className='px-6 py-4 border-b border-white/10 flex items-center justify-between bg-gradient-to-r from-blue-600/30 to-purple-600/30'>
+            <div className='px-6 py-4 border-b border-slate-200 dark:border-white/10 flex items-center justify-between bg-gradient-to-r from-blue-600/30 to-purple-600/30'>
               <div className='flex items-center gap-3'>
-                <div className='p-2 rounded-lg bg-blue-500/20 border border-blue-400/30 text-blue-400'>
+                <div className='p-2 rounded-lg bg-blue-500/20 border border-blue-400/30 text-blue-500 dark:text-blue-400'>
                   <Bot size={20} />
                 </div>
                 <div>
-                  <h3 className='font-semibold text-sm flex items-center gap-1.5'>
+                  <h3 className='font-semibold text-sm flex items-center gap-1.5 text-slate-800 dark:text-white'>
                     GlassyUI Assistant
                     <Sparkles
                       size={12}
-                      className='text-yellow-300 animate-pulse'
+                      className='text-yellow-500 dark:text-yellow-300 animate-pulse'
                     />
                   </h3>
-                  <p className='text-[10px] text-green-400 font-light flex items-center gap-1'>
+                  <p className='text-[10px] text-green-600 dark:text-green-400 font-medium dark:font-light flex items-center gap-1'>
                     <span className='w-1.5 h-1.5 rounded-full bg-green-500 animate-ping' />
                     Online & Ready
                   </p>
@@ -166,7 +166,7 @@ const AiChatbot: React.FC = () => {
               </div>
               <button
                 onClick={() => setIsOpen(false)}
-                className='p-1.5 rounded-full hover:bg-white/10 transition-colors text-white/70 hover:text-white'
+                className='p-1.5 rounded-full hover:bg-slate-200/50 dark:hover:bg-white/10 transition-colors text-slate-500 dark:text-white/70 hover:text-slate-800 dark:hover:text-white'
                 aria-label='Close Chat'
               >
                 <X size={18} />
@@ -183,8 +183,8 @@ const AiChatbot: React.FC = () => {
                   <div
                     className={`p-2 h-8 w-8 rounded-full flex items-center justify-center shrink-0 border ${
                       msg.sender === 'user'
-                        ? 'bg-blue-600/20 border-blue-500/30 text-blue-300'
-                        : 'bg-white/5 border-white/10 text-purple-300'
+                        ? 'bg-blue-600/20 border-blue-500/30 text-blue-600 dark:text-blue-300'
+                        : 'bg-slate-100 dark:bg-white/5 border-slate-200 dark:border-white/10 text-purple-600 dark:text-purple-300'
                     }`}
                   >
                     {msg.sender === 'user' ? (
@@ -196,8 +196,8 @@ const AiChatbot: React.FC = () => {
                   <div
                     className={`p-3.5 rounded-2xl text-sm leading-relaxed border ${
                       msg.sender === 'user'
-                        ? 'bg-blue-600/20 border-blue-500/30 text-white rounded-tr-none'
-                        : 'bg-white/5 border-white/10 text-gray-200 rounded-tl-none'
+                        ? 'bg-blue-600/10 dark:bg-blue-600/20 border-blue-500/20 dark:border-blue-500/30 text-slate-800 dark:text-white rounded-tr-none'
+                        : 'bg-slate-100/80 dark:bg-white/5 border-slate-200 dark:border-white/10 text-slate-700 dark:text-gray-200 rounded-tl-none'
                     }`}
                   >
                     {msg.text}
@@ -207,20 +207,20 @@ const AiChatbot: React.FC = () => {
 
               {isTyping && (
                 <div className='flex gap-3 max-w-[85%]'>
-                  <div className='p-2 h-8 w-8 rounded-full bg-white/5 border border-white/10 flex items-center justify-center shrink-0 text-purple-300'>
+                  <div className='p-2 h-8 w-8 rounded-full bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 flex items-center justify-center shrink-0 text-purple-600 dark:text-purple-300'>
                     <Bot size={14} />
                   </div>
-                  <div className='p-3.5 rounded-2xl rounded-tl-none bg-white/5 border border-white/10 flex items-center gap-1.5'>
+                  <div className='p-3.5 rounded-2xl rounded-tl-none bg-slate-100/80 dark:bg-white/5 border border-slate-200 dark:border-white/10 flex items-center gap-1.5'>
                     <span
-                      className='w-2 h-2 rounded-full bg-white/40 animate-bounce'
+                      className='w-2 h-2 rounded-full bg-slate-400 dark:bg-white/40 animate-bounce'
                       style={{ animationDelay: '0ms' }}
                     />
                     <span
-                      className='w-2 h-2 rounded-full bg-white/40 animate-bounce'
+                      className='w-2 h-2 rounded-full bg-slate-400 dark:bg-white/40 animate-bounce'
                       style={{ animationDelay: '150ms' }}
                     />
                     <span
-                      className='w-2 h-2 rounded-full bg-white/40 animate-bounce'
+                      className='w-2 h-2 rounded-full bg-slate-400 dark:bg-white/40 animate-bounce'
                       style={{ animationDelay: '300ms' }}
                     />
                   </div>
@@ -230,14 +230,14 @@ const AiChatbot: React.FC = () => {
             </div>
 
             {/* Chat Input */}
-            <div className='p-4 border-t border-white/10 bg-black/20 flex gap-2 items-center'>
+            <div className='p-4 border-t border-slate-200 dark:border-white/10 bg-slate-100/50 dark:bg-black/20 flex gap-2 items-center'>
               <input
                 type='text'
                 placeholder='Ask me a question...'
                 value={inputValue}
                 onChange={e => setInputValue(e.target.value)}
                 onKeyDown={handleKeyDown}
-                className='flex-1 px-4 py-2.5 rounded-xl border border-white/10 bg-white/5 text-white placeholder-white/30 focus:outline-none focus:border-blue-500/50 transition-colors text-sm'
+                className='flex-1 px-4 py-2.5 rounded-xl border border-slate-200 dark:border-white/10 bg-white dark:bg-white/5 text-slate-800 dark:text-white placeholder-slate-400 dark:placeholder-white/30 focus:outline-none focus:border-blue-500/50 transition-colors text-sm'
               />
               <button
                 onClick={handleSendMessage}

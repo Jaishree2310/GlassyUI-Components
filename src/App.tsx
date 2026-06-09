@@ -1,8 +1,10 @@
-import React, { useState, useEffect, useRef, useMemo } from 'react';
+import React, { useEffect, useRef, useMemo } from 'react';
 import PricingDetailPage from './components/PricingDetailPage';
+import { GlassyProvider } from './components/GlassyProvider';
+import ThemeCustomizer from './components/ThemeCustomizer';
 import useAdaptiveBackgroundIntelligence from './hooks/useAdaptiveBackgroundIntelligence';
 
-import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 import ScrollToTop from './components/ScrollToTop';
 import FloatingBottomBar from './components/FloatingBottomBar';
@@ -51,6 +53,8 @@ import ContactUs from './components/ContactUs';
 import AiChatbot from './components/AIChatbot';
 import AdaptiveBackgroundIntelligenceDemo from './components/AdaptiveBackgroundIntelligenceDemo';
 import { TermsOfUse } from './components/TermsOfUse';
+import AnimatedCursorPage from './components/AnimatedCursorPage';
+import AnimatedCursor from './components/AnimatedCursor';
 
 import Stories from './components/Stories';
 import { TermsOfUse } from './components/TermsOfUse';
@@ -60,32 +64,6 @@ import ToastPage from './components/ToastPage';
 import TooltipDetailsPage from './components/TooltipDetailsPage';
 // import Register from './login/SignUp';
 // import SignIn from './login/SignIn';
-
-const ThemeToggle: React.FC = () => {
-  const [theme, setTheme] = useState(localStorage.getItem('theme') || 'light');
-
-  useEffect(() => {
-    if (theme === 'dark') {
-      document.documentElement.classList.add('dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-    }
-    localStorage.setItem('theme', theme);
-  }, [theme]);
-
-  const toggleTheme = () => {
-    setTheme(theme === 'light' ? 'dark' : 'light');
-  };
-
-  return (
-    <button
-      onClick={toggleTheme}
-      className='p-2 bg-gray-200 dark:bg-gray-800 text-black dark:text-white rounded'
-    >
-      {theme === 'light' ? 'Switch to Dark Mode' : 'Switch to Light Mode'}
-    </button>
-  );
-};
 
 const App: React.FC = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -302,6 +280,110 @@ const App: React.FC = () => {
         <FloatingBottomBar />
       </Router>
     </div>
+    <GlassyProvider>
+      <div className='adaptive-app-shell' style={adaptiveStyle}>
+        <canvas
+          ref={canvasRef}
+          className='adaptive-sampler'
+          aria-hidden='true'
+        />
+        <Router>
+          <ScrollToTop />
+          <Header />
+          <AiChatbot />
+          <BackToTopButton />
+          <AnimatedCursor />
+          <ThemeCustomizer />
+          {/* <ThemeToggle /> */}
+          <div className='adaptive-glass page-shell'>
+            <Routes>
+              <Route path='/animated-cursor' element={<AnimatedCursorPage />} />
+              <Route path='/' element={<GlassyUILandingPage />} />
+              <Route path='/components' element={<GlassyUIComponentsPage />} />
+              <Route path='/toast-page' element={<ToastPage />} />
+              <Route path='/button-details' element={<ButtonDetailsPage />} />
+              <Route path='/card-details' element={<CardDetailsPage />} />
+              <Route
+                path='/progress-bar-details'
+                element={<ProgressBarDetailPage />}
+              />
+              <Route path='/pricing-details' element={<PricingDetailPage />} />
+              <Route path='/popup-details' element={<PopupDetailPage />} />
+              <Route path='/input-details' element={<InputDetailPage />} />
+              <Route
+                path='/textarea-details'
+                element={<TextareaDetailPage />}
+              />
+              <Route path='/tooltip-details' element={<TooltipDetailsPage />} />
+              <Route
+                path='/speed-dial-details'
+                element={<SpeedDialDetailsPage />}
+              />
+              <Route path='/modal-details' element={<ModalDetailsPage />} />
+              <Route
+                path='/navigation-details'
+                element={<NavigationDetailsPage />}
+              />
+              <Route path='/generator' element={<GlassMorphismGenrator />} />
+              <Route path='/slider-details' element={<SliderDetailsPage />} />
+              <Route
+                path='/back-to-top-details'
+                element={<BackToTopDetailsPage />}
+              />
+              <Route
+                path='/dropdown-details'
+                element={<DropdowndetailsPage />}
+              />
+              <Route path='/stepper-details' element={<StepperDetailsPage />} />
+              <Route
+                path='/authentication-card'
+                element={<AuthenticationCard />}
+              />
+              <Route path='/accordion-details' element={<AccordionDetails />} />
+              <Route path='/contributors' element={<ContributorsPage />} />
+              <Route path='/donate' element={<DonationPage />} />
+              <Route path='/about' element={<AboutUsPage />} />
+              <Route
+                path='/contact-details'
+                element={<ContactUsDetailsPage />}
+              />
+              <Route
+                path='/pagination-details'
+                element={<PaginationDetails />}
+              />
+              <Route
+                path='/testimonial-details'
+                element={<TestimonialDetails />}
+              />
+              <Route path='/calendar-details' element={<CalendarDetails />} />
+              <Route path='/statistic-details' element={<Statistic />} />
+              <Route path='/checkbox' element={<Checkbox />} />
+              <Route path='/spinner' element={<SpinnerDetailsPage />} />
+              <Route
+                path='/product-details'
+                element={<ProductCardDetailsPage />}
+              />
+              <Route path='/gallery-details' element={<GalleryDetailsPage />} />
+              <Route path='/contact' element={<ContactUs />} />
+              <Route
+                path='/adaptive-background-intelligence'
+                element={<AdaptiveBackgroundIntelligenceDemo />}
+              />
+              <Route path='/termsOfUse' element={<TermsOfUse />} />
+
+              <Route path='/stories' element={<Stories />} />
+
+              {/* <Route path='/signup' element={<Register />} /> */}
+              {/* <Route path='/signin' element={<SignIn />} /> */}
+
+              <Route path='*' element={<NotFoundPage />} />
+            </Routes>
+          </div>
+          <Footer />
+          <FloatingBottomBar />
+        </Router>
+      </div>
+    </GlassyProvider>
   );
 };
 
