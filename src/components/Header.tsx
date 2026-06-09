@@ -83,7 +83,11 @@ const Header: React.FC = () => {
             onClick={() => setPerfMode(!perfMode)}
             className={`github-pill ${perfMode ? 'perf-active' : ''}`}
             aria-label='Toggle Performance Mode'
-            style={{ marginRight: '8px', cursor: 'pointer', background: perfMode ? 'rgba(124, 58, 237, 0.2)' : '' }}
+            style={{
+              marginRight: '8px',
+              cursor: 'pointer',
+              background: perfMode ? 'rgba(124, 58, 237, 0.2)' : '',
+            }}
           >
             <span>{perfMode ? '⚡ Fast Mode' : '✨ Rich Mode'}</span>
           </button>

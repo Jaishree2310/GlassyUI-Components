@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import BackToTopButton from './BackToTop';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useSearchParams } from 'react-router-dom';
 
 import {
