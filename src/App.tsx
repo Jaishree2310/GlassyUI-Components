@@ -48,12 +48,11 @@ import ContactUs from './components/ContactUs';
 import AiChatbot from './components/AIChatbot';
 import AdaptiveBackgroundIntelligenceDemo from './components/AdaptiveBackgroundIntelligenceDemo';
 import { TermsOfUse } from './components/TermsOfUse';
+import TabsDetailsPage from './components/TabsDetails'; // ── NEW ──
 import AnimatedCursorPage from './components/AnimatedCursorPage';
 import AnimatedCursor from './components/AnimatedCursor';
 
 import Stories from './components/Stories';
-// import Register from './login/SignUp';
-// import SignIn from './login/SignIn';
 
 const App: React.FC = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -233,6 +232,11 @@ const App: React.FC = () => {
       </div>
     </GlassyProvider>
   );
+};
+
+const ConditionalFooter: React.FC = () => {
+  const location = useLocation();
+  return location.pathname === '/' ? null : <Footer />;
 };
 
 export default App;
