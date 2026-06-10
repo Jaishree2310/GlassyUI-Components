@@ -132,8 +132,15 @@ const AiChatbot: React.FC = () => {
 
   return (
     <div
-      className='fixed lg:bottom-6 lg:right-6 bottom-[100px] right-4 z-50 font-sans flex flex-col items-end'
-      style={isMobile ? { bottom: '100px', right: '16px' } : undefined}
+      className='fixed lg:bottom-6 lg:right-6 bottom-[100px] right-4 max-[375px]:bottom-[80px] max-[375px]:right-2 z-50 font-sans flex flex-col items-end'
+      style={
+        isMobile
+          ? {
+              bottom: window.innerWidth <= 375 ? '80px' : '100px',
+              right: window.innerWidth <= 375 ? '8px' : '16px',
+            }
+          : undefined
+      }
     >
       <AnimatePresence>
         {isOpen && (

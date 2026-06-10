@@ -1,3 +1,13 @@
+declare global {
+  interface Window {
+    googleTranslateInit: () => void;
+    google: {
+      translate: {
+        TranslateElement: any;
+      };
+    };
+  }
+}
 import React, { useEffect } from 'react';
 
 const GoogleTranslate = () => {
