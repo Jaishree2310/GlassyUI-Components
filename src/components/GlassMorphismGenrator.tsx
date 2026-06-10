@@ -1,4 +1,4 @@
-﻿import React, { useState } from 'react';
+import React, { useState } from 'react';
 import PageShell from './PageShell';
 import '../index.css';
 import GlassRefractionPanel from './GlassRefractionPanel';
@@ -50,17 +50,6 @@ const GlassmorphismGenerator: React.FC = () => {
     });
   };
 
-  const handleColorChange = (
-    e: React.ChangeEvent<HTMLInputElement>,
-    setColorFunction: React.Dispatch<React.SetStateAction<string>>,
-  ) => {
-    const hexColor = e.target.value; // Get the hex value from the input
-    // Convert hex to rgba format with current opacity
-    const r = parseInt(hexColor.slice(1, 3), 16);
-    const g = parseInt(hexColor.slice(3, 5), 16);
-    const b = parseInt(hexColor.slice(5, 7), 16);
-    setColorFunction(`rgba(${r}, ${g}, ${b}, ${opacity})`); // Keep opacity as is
-  };
   const getGlassyClasses = (opacity = 20) => {
     return `backdrop-filter backdrop-blur-lg bg-white bg-opacity-${opacity} 
   border border-white border-opacity-20 rounded-lg shadow-lg transition-all duration-300`;
@@ -221,7 +210,7 @@ const GlassmorphismGenerator: React.FC = () => {
 
         <div className='glassmorphism p-2 rounded-md   '>
           <label
-            htmlFor='bgColor'
+            htmlFor='shadowColor'
             className='block text-sm font-medium text-white mb-1'
           >
             Shadow Color
@@ -237,10 +226,11 @@ const GlassmorphismGenerator: React.FC = () => {
               <span className='text-white/50 font-mono text-sm pl-1'>#</span>
               <input
                 type='text'
-                value={bgColor.replace('#', '')}
+                id='shadowColor'
+                value={shadowColor.replace('#', '')}
                 onChange={e => {
                   const val = e.target.value.replace(/[^0-9a-fA-F]/g, '');
-                  setBgColor(`#${val.slice(0, 6)}`);
+                  setShadowColor(`#${val.slice(0, 6)}`);
                 }}
                 className='bg-transparent w-20 py-1 px-1 text-white font-mono uppercase outline-none text-sm tracking-widest'
                 placeholder='FFFFFF'
