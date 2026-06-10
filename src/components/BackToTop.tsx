@@ -1,12 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { ChevronUp } from 'lucide-react';
 
-let globalMountedCount = 0;
-
 const BackToTopButton: React.FC = () => {
   const [isVisible, setIsVisible] = useState<boolean>(false);
-  const [shouldRender, setShouldRender] = useState<boolean>(false);
-  const [isMobile, setIsMobile] = useState<boolean>(window.innerWidth < 1024);
+  const [isMobile, setIsMobile] = useState<boolean>(false);
 
   // Show button when the user scrolls down 100px
   const toggleVisibility = (): void => {
@@ -26,10 +23,7 @@ const BackToTopButton: React.FC = () => {
   };
 
   useEffect(() => {
-    globalMountedCount++;
-    if (globalMountedCount === 1) {
-      setShouldRender(true);
-    }
+    setIsMobile(window.innerWidth < 1024);
 
     const handleResize = () => {
       setIsMobile(window.innerWidth < 1024);
@@ -40,13 +34,10 @@ const BackToTopButton: React.FC = () => {
 
     // Cleanup event listener on component unmount
     return () => {
-      globalMountedCount--;
       window.removeEventListener('scroll', toggleVisibility);
       window.removeEventListener('resize', handleResize);
     };
   }, []);
-
-  if (!shouldRender) return null;
 
   return (
     <>
