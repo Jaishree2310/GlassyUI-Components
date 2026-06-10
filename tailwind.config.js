@@ -1,11 +1,20 @@
 module.exports = {
   content: ['./src/**/*.{js,jsx,ts,tsx}'],
+  darkMode: 'class',
   theme: {
     extend: {
+      backdropBlur: {
+        glassy: 'var(--glass-blur)',
+      },
+      backgroundColor: {
+        glassy: 'rgba(var(--glass-bg-rgb), var(--glass-bg-opacity))',
+      },
+      borderColor: {
+        glassy: 'rgba(var(--glass-border-rgb), var(--glass-border-opacity))',
+      },
       backdropFilter: {
         none: 'none',
         blur: 'blur(20px)',
-        darkMode: 'class',
       },
       animation: {
         blob: 'blob 7s infinite',

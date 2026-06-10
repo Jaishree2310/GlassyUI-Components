@@ -1,0 +1,91 @@
+.glass-refraction-panel {
+  position: relative;
+  overflow: hidden;
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.14);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 20px 60px rgba(15, 23, 42, 0.24);
+  backdrop-filter: blur(22px);
+  -webkit-backdrop-filter: blur(22px);
+  transform-style: preserve-3d;
+  transition:
+    transform 0.22s ease,
+    box-shadow 0.22s ease;
+  will-change: transform, box-shadow;
+  transform: perspective(900px) rotateX(calc(var(--glass-tilt-x, 0deg)))
+    rotateY(calc(var(--glass-tilt-y, 0deg)));
+}
+
+.glass-refraction-panel:hover {
+  box-shadow: 0 28px 68px rgba(15, 23, 42, 0.32);
+}
+
+.glass-refraction-panel * {
+  position: relative;
+  z-index: 1;
+}
+
+.glass-refraction-sheen,
+.glass-refraction-highlight {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.glass-refraction-sheen {
+  background:
+    radial-gradient(
+      circle at calc(var(--glass-light-x, 0.5) * 100%)
+        calc(var(--glass-light-y, 0.5) * 100%),
+      rgba(255, 255, 255, 0.42),
+      transparent 28%
+    ),
+    radial-gradient(
+      circle at 20% 18%,
+      rgba(255, 255, 255, 0.12),
+      transparent 22%
+    );
+  filter: blur(14px);
+  opacity: 0.9;
+  mix-blend-mode: screen;
+  transition: background 0.12s ease;
+}
+
+.glass-refraction-highlight {
+  background: linear-gradient(
+    120deg,
+    rgba(255, 255, 255, 0.18),
+    rgba(255, 255, 255, 0.02) 40%,
+    transparent 65%
+  );
+  opacity: calc(0.35 + var(--glass-depth, 0));
+  transform: translate3d(
+    calc((var(--glass-refraction-x, 0.5) - 0.5) * 10px),
+    calc((var(--glass-refraction-y, 0.5) - 0.5) * 10px),
+    0
+  );
+}
+
+.glass-refraction-panel::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(
+    circle at 85% 15%,
+    rgba(255, 255, 255, 0.08),
+    transparent 25%
+  );
+}
+
+.glass-refraction-panel > .glass-refraction-sheen,
+.glass-refraction-panel > .glass-refraction-highlight {
+  transition:
+    transform 0.18s ease,
+    opacity 0.18s ease;
+}
+
+.glass-refraction-panel .glass-refraction-highlight {
+  mix-blend-mode: screen;
+}
