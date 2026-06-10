@@ -53,8 +53,15 @@ const BackToTopButton: React.FC = () => {
       {isVisible && (
         <button
           onClick={scrollToTop}
-          className='z-50 fixed lg:bottom-[90px] lg:right-6 bottom-[168px] right-4 p-4 rounded-full bg-gradient-to-r from-[#8b5cf6] to-[#3b82f6] hover:from-[#7c3aed] hover:to-[#2563eb] text-white shadow-lg border border-white/20 hover:scale-110 active:scale-95 transition-all duration-300 flex items-center justify-center'
-          style={isMobile ? { bottom: '168px', right: '16px' } : undefined}
+          className='z-50 fixed lg:bottom-[90px] lg:right-6 bottom-[168px] right-4 max-[375px]:right-2 max-[375px]:bottom-[148px] max-[375px]:p-2.5 p-4 rounded-full bg-gradient-to-r from-[#8b5cf6] to-[#3b82f6] hover:from-[#7c3aed] hover:to-[#2563eb] text-white shadow-lg border border-white/20 hover:scale-110 active:scale-95 transition-all duration-300 flex items-center justify-center'
+          style={
+            isMobile
+              ? {
+                  bottom: window.innerWidth <= 375 ? '148px' : '168px',
+                  right: window.innerWidth <= 375 ? '8px' : '16px',
+                }
+              : undefined
+          }
           title='Back to Top'
         >
           <ChevronUp size={24} />

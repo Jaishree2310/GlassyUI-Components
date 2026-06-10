@@ -1117,3 +1117,28 @@
     grid-template-columns: 1fr;
   }
 }
+/* ── MOBILE FLOATING BUTTON FIX (320px–375px) ── */
+@media (max-width: 375px) {
+  /* Shrink hero CTA star button so it doesn't overflow */
+  .hero-cta.cta-secondary {
+    font-size: 0.75rem;
+    padding: 0.5rem 0.75rem;
+    gap: 0.4rem;
+  }
+
+  .cta-stars {
+    display: none;
+  }
+}
+
+@media (max-width: 320px) {
+  .hero-cta-group {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .hero-cta {
+    width: 100%;
+    justify-content: center;
+  }
+}

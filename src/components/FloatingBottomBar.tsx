@@ -24,7 +24,7 @@ const FloatingBottomBar: React.FC = () => {
   ];
 
   return (
-    <div className='fixed bottom-4 left-1/2 z-[100] flex w-[95%] max-w-[500px] -translate-x-1/2 items-center justify-center gap-3 lg:hidden'>
+    <div className='fixed bottom-4 left-1/2 z-[100] flex w-[95%] max-w-[500px] max-[375px]:w-[92%] max-[375px]:bottom-2 max-[375px]:gap-0 -translate-x-1/2 items-center justify-center gap-3 lg:hidden'>
       {/* Main Navigation Pill */}
       <div className='flex flex-1 items-center justify-around rounded-full bg-[#0a0710]/95 p-2 px-3 shadow-2xl backdrop-blur-xl border border-white/5'>
         {navItems.map(item => (
@@ -47,13 +47,13 @@ const FloatingBottomBar: React.FC = () => {
         ))}
       </div>
 
-      {/* GitHub Button */}
-      <div className='relative shrink-0'>
+      {/* GitHub Button — hidden on screens ≤375px to prevent overflow */}
+      <div className='relative shrink-0 max-[375px]:hidden'>
         <a
           href={githubRepoUrl}
           target='_blank'
           rel='noopener noreferrer'
-          className='flex h-[60px] w-[60px] items-center justify-center rounded-full bg-gradient-to-br from-[#ff4d79] to-[#ff2a5f] text-white shadow-[0_8px_20px_rgba(255,42,95,0.4)] transition-transform hover:scale-105 active:scale-95 border-2 border-[#161122]'
+          className='flex h-[60px] w-[60px] items-center justify-center rounded-full bg-gradient-to-br from-[#ff4d79] to-[#ff2a5f]'
           aria-label='Star on GitHub'
         >
           <Github size={28} strokeWidth={2} />
