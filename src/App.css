@@ -50,6 +50,49 @@
   animation: fadeIn 0.2s ease-in-out;
   will-change: transform, opacity;
 }
+/* ===== FIX FOR AI CHAT CLOSE BUTTON ===== */
+
+/* Force close button to be clickable */
+button[aria-label="Close Chat"] {
+  pointer-events: auto !important;
+  cursor: pointer !important;
+  z-index: 99999 !important;
+  position: relative !important;
+  background: transparent !important;
+}
+
+/* Ensure the X button is above everything */
+button[aria-label="Close Chat"] svg {
+  pointer-events: none !important;
+}
+
+/* Make sure the chat panel doesn't block its own buttons */
+.fixed.z-50,
+.fixed.lg\:bottom-6,
+.backdrop-blur-xl,
+.bg-slate-900\/80 {
+  pointer-events: auto !important;
+}
+
+/* Ensure all buttons inside chat are clickable */
+[class*="backdrop-blur"] button,
+[class*="bg-slate"] button {
+  pointer-events: auto !important;
+  position: relative !important;
+  z-index: 10 !important;
+}
+
+/* Fix for any overlay that might be blocking */
+div[class*="fixed"][class*="z-50"] {
+  z-index: 9999 !important;
+}
+
+/* Hover effect for close button */
+button[aria-label="Close Chat"]:hover {
+  background: rgba(255, 255, 255, 0.1) !important;
+  transform: scale(1.05);
+  transition: all 0.2s ease;
+}
 
 @supports not (
   (backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))
