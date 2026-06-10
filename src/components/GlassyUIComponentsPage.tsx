@@ -22,7 +22,11 @@ import {
   ShoppingCart,
   GalleryThumbnails,
   Sparkles,
+ main
+  ScanLine,
+
   MousePointer,
+ main
 } from 'lucide-react';
 import { HiOutlineWrenchScrewdriver } from 'react-icons/hi2';
 
@@ -268,10 +272,21 @@ const GlassyUIComponentsPage: React.FC = () => {
         navigate('/generator', { state: { fromPage: currentPage } }),
     },
     {
+main
+      title: '3D Tilt Glass Card',
+      description:
+        'Interactive glass card with live tilt, reflection, and style export.',
+      icon: <ScanLine size={22} />,
+      onClick: () => navigate('/glass-tilt-playground'),
+
       title: 'Adaptive Intelligence',
       description:
         'Live environment-aware glass styling with real-time contrast and glow adaptation.',
       icon: <Sparkles size={22} />,
+ main
+      onClick: () => navigate('/adaptive-background-intelligence'),
+ main
+
       onClick: () =>
         navigate('/adaptive-background-intelligence', {
           state: { fromPage: currentPage },
@@ -284,6 +299,7 @@ const GlassyUIComponentsPage: React.FC = () => {
       icon: <MousePointer size={22} />,
       onClick: () =>
         navigate('/animated-cursor', { state: { fromPage: currentPage } }),
+ main
     },
   ];
   const [filteredData, setFilteredData] = useState(componentsData);

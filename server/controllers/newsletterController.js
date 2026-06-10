@@ -11,7 +11,7 @@ export async function saveNewsletter(req, res) {
 
     // Create new contact document
     const newNewsLetter = new NewsLetter({ name, email });
-    sendMailToSubscriber(newNewsLetter);
+    await sendMailToSubscriber(newNewsLetter);
     await newNewsLetter.save();
     res
       .status(201)
