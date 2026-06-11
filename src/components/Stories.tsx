@@ -19,7 +19,10 @@ const Stories: React.FC = () => {
         const response = await fetch(
           `${process.env.REACT_APP_API_URL}/api/stories/getposts`,
         );
-        if (response.ok) {
+        if (
+          response.ok &&
+          response.headers.get('Content-Type')?.includes('application/json')
+        ) {
           const data = await response.json();
           setPosts(data);
         }
@@ -99,10 +102,10 @@ const Stories: React.FC = () => {
             className={`space-y-6 ${posts.length === 0 ? 'hidden' : 'flex-1'}`}
           >
             {posts.length > 0 &&
-              posts.map((post, idx) => (
+              posts.map(post => (
                 <article
-                  key={idx}
-                  className='glassmorphism rounded-3xl border border-slate-200/50 dark:border-white/15 bg-white/40 dark:bg-white/10 p-6 shadow-[0_20px_60px_rgba(2,6,23,0.35)] backdrop-blur-xl transition-transform duration-300 hover:-translate-y-1 hover:border-slate-300 dark:hover:border-white/25 sm:p-8'
+                  key={post.title + post.date}
+                  className='glassmorphism rounded-3xl border border-white/15 bg-white/10 p-6 shadow-[0_20px_60px_rgba(2,6,23,0.35)] backdrop-blur-xl transition-transform duration-300 hover:-translate-y-1 hover:border-white/25 sm:p-8'
                 >
                   <div className='mb-4 flex flex-wrap items-center justify-between gap-3'>
                     <p className='inline-flex items-center rounded-full border border-cyan-500/20 dark:border-cyan-300/20 bg-cyan-500/10 dark:bg-cyan-300/10 px-3 py-1 text-xs font-medium text-cyan-800 dark:text-cyan-100'>
