@@ -1,4 +1,5 @@
-import { useEffect, useMemo, useRef } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
+
 import { useNavigate } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
 import useAdaptiveBackgroundIntelligence from '../hooks/useAdaptiveBackgroundIntelligence';
@@ -8,6 +9,12 @@ const AdaptiveBackgroundIntelligenceDemo: React.FC = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const adaptiveMetrics = useAdaptiveBackgroundIntelligence(canvasRef);
 
+  const [blur, setBlur] = useState(12);
+  const [opacity, setOpacity] = useState(28);
+  const [borderOpacity, setBorderOpacity] = useState(30);
+  const [glowIntensity, setGlowIntensity] = useState(24);
+  const [shadowSoftness, setShadowSoftness] = useState(22);
+  const [textColor, setTextColor] = useState('#FFFFFF');
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
@@ -60,14 +67,18 @@ const AdaptiveBackgroundIntelligenceDemo: React.FC = () => {
 
   const surfaceStyle = useMemo(
     () => ({
-      backdropFilter: `blur(${adaptiveMetrics.blur}px)`,
-      WebkitBackdropFilter: `blur(${adaptiveMetrics.blur}px)`,
-      background: adaptiveMetrics.baseTint,
-      border: `1px solid rgba(255, 255, 255, ${adaptiveMetrics.borderOpacity})`,
-      boxShadow: `0 0 ${adaptiveMetrics.shadowSoftness}px rgba(14, 116, 144, ${adaptiveMetrics.glowIntensity})`,
-      color: adaptiveMetrics.textColor,
+      backdropFilter: `blur(${blur}px)`,
+      WebkitBackdropFilter: `blur(${blur}px)`,
+
+      background: `linear-gradient(135deg,rgba(15,23,42,${opacity / 100}),rgba(30,41,59,${opacity / 100}))`,
+
+      border: `1px solid rgba(255,255,255,${borderOpacity / 100})`,
+
+      boxShadow: `0 0 ${shadowSoftness}px rgba(14,116,144,${glowIntensity / 100})`,
+
+      color: textColor,
     }),
-    [adaptiveMetrics],
+    [blur, opacity, borderOpacity, glowIntensity, shadowSoftness, textColor],
   );
 
   return (
@@ -101,9 +112,9 @@ const AdaptiveBackgroundIntelligenceDemo: React.FC = () => {
           <div className='relative overflow-hidden rounded-[28px] border border-white/10 bg-slate-950/70 p-1 shadow-2xl'>
             <canvas
               ref={canvasRef}
-              className='h-[420px] w-full rounded-[26px] border border-white/10 bg-slate-950/40'
+              className='h-[420px] w-full  rounded-[26px] border border-white/10 bg-slate-950/40'
             />
-            <div className='absolute inset-4 flex items-end'>
+            <div className=' flex justify-center mt-4'>
               <div
                 className='relative z-10 w-full max-w-md rounded-[26px] p-5 md:p-6'
                 style={surfaceStyle}
@@ -147,38 +158,62 @@ const AdaptiveBackgroundIntelligenceDemo: React.FC = () => {
               </span>
             </div>
 
-            <div className='space-y-3'>
+            <div className='space-y-2'>
               {[
-                ['Blur intensity', `${adaptiveMetrics.blur.toFixed(0)}px`],
-                [
-                  'Transparency',
-                  `${Math.round(adaptiveMetrics.opacity * 100)}%`,
-                ],
-                [
-                  'Border visibility',
-                  `${Math.round(adaptiveMetrics.borderOpacity * 100)}%`,
-                ],
-                [
-                  'Glow strength',
-                  `${Math.round(adaptiveMetrics.glowIntensity * 100)}%`,
-                ],
-                [
-                  'Shadow softness',
-                  `${Math.round(adaptiveMetrics.shadowSoftness)}px`,
-                ],
-                ['Text contrast', adaptiveMetrics.textColor],
-              ].map(([label, value]) => (
+                ['Blur intensity', blur, setBlur],
+                ['Transparency', opacity, setOpacity],
+                ['Border visibility', borderOpacity, setBorderOpacity],
+                ['Glow strength', glowIntensity, setGlowIntensity],
+                ['Shadow softness', shadowSoftness, setShadowSoftness],
+              ].map(([label, value, setter]) => (
                 <div
-                  key={label}
+                  key={label as string}
                   className='rounded-2xl border border-white/10 bg-slate-950/70 px-4 py-3'
                 >
                   <div className='flex items-center justify-between text-sm'>
-                    <span className='text-slate-300'>{label}</span>
-                    <span className='font-semibold text-white'>{value}</span>
+                    <span className='text-slate-300'>{label as string}</span>
+
+                    <input
+                      type='number'
+                      value={value as number}
+                      onChange={e =>
+                        (
+                          setter as React.Dispatch<React.SetStateAction<number>>
+                        )(Number(e.target.value))
+                      }
+                      className='w-20 rounded bg-slate-800 px-2 py-1 text-white outline-none'
+                    />
                   </div>
                 </div>
               ))}
+
+              <div className='rounded-2xl border border-white/10 bg-slate-950/70 px-4 py-3'>
+                <div className='flex items-center justify-between text-sm'>
+                  <span className='text-slate-300'>Text contrast</span>
+
+                  <input
+                    type='text'
+                    value={textColor}
+                    onChange={e => setTextColor(e.target.value)}
+                    className='w-28 rounded bg-slate-800 px-2 py-1 text-white outline-none'
+                    placeholder='#FFFFFF'
+                  />
+                </div>
+              </div>
             </div>
+            <button
+              onClick={() => {
+                setBlur(16);
+                setOpacity(28);
+                setBorderOpacity(24);
+                setGlowIntensity(30);
+                setShadowSoftness(22);
+                setTextColor('#FFFFFF');
+              }}
+              className='mt-4 w-full rounded-xl bg-cyan-500/20 px-4 py-3 font-medium text-cyan-200 transition hover:bg-cyan-500/30'
+            >
+              Reset
+            </button>
 
             <div className='mt-6 rounded-2xl border border-cyan-400/20 bg-cyan-500/10 p-4 text-sm text-cyan-50'>
               <p className='font-semibold'>How it works</p>
