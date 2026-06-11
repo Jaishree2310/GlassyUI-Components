@@ -65,29 +65,28 @@ const Stories: React.FC = () => {
   };
 
   return (
-    <div className='relative min-h-screen bg-[#03010f] text-white overflow-x-hidden'>
-      <style>{`.stories-select option{background: #0f172a; color: #e6eef8;}`}</style>
-      <div className='pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(124,58,237,0.24),transparent_30%),radial-gradient(circle_at_top_right,rgba(34,211,238,0.18),transparent_26%),radial-gradient(circle_at_bottom,rgba(244,114,182,0.14),transparent_30%)]' />
+    <div className='relative min-h-screen bg-transparent text-inherit overflow-x-hidden'>
+      <style>{`.stories-select option{background:#0b1220;color:#f8fafc;padding:10px}.stories-select optgroup{background:#0b1220;color:#7dd3fc;font-weight:700}`}</style>
       <div className='pointer-events-none absolute -left-36 top-24 h-72 w-72 rounded-full bg-violet-500/20 blur-3xl' />
       <div className='pointer-events-none absolute -right-24 top-1/2 h-80 w-80 rounded-full bg-cyan-400/10 blur-3xl' />
 
       <div className='relative z-10 mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8'>
         <div className='mx-auto mb-8 max-w-3xl text-center'>
-          <span className='glassmorphism inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm text-white/80'>
-            <span className='h-2 w-2 rounded-full bg-cyan-300 shadow-[0_0_12px_rgba(34,211,238,0.9)]' />
+          <span className='glassmorphism inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm text-slate-800 dark:text-white/80'>
+            <span className='h-2 w-2 rounded-full bg-cyan-500 dark:bg-cyan-300 shadow-[0_0_12px_rgba(34,211,238,0.9)]' />
             Community Stories
           </span>
-          <h1 className='mt-6 text-4xl font-extrabold tracking-tight text-white sm:text-5xl'>
+          <h1 className='mt-6 text-4xl font-extrabold tracking-tight text-slate-800 dark:text-white sm:text-5xl'>
             Real Stories, Real Advice
           </h1>
-          <p className='mx-auto mt-4 max-w-2xl text-base leading-7 text-slate-300 sm:text-lg'>
+          <p className='mx-auto mt-4 max-w-2xl text-base leading-7 text-slate-600 dark:text-slate-300 sm:text-lg'>
             Share your experience with GlassyUI and read how others are using
             the library in real projects.
           </p>
         </div>
 
         {posts.length === 0 && (
-          <p className='mb-6 text-center text-slate-400'>
+          <p className='mb-6 text-center text-slate-500 dark:text-slate-400'>
             No posts yet. Share your experience!
           </p>
         )}
@@ -109,23 +108,23 @@ const Stories: React.FC = () => {
                   className='glassmorphism rounded-3xl border border-white/15 bg-white/10 p-6 shadow-[0_20px_60px_rgba(2,6,23,0.35)] backdrop-blur-xl transition-transform duration-300 hover:-translate-y-1 hover:border-white/25 sm:p-8'
                 >
                   <div className='mb-4 flex flex-wrap items-center justify-between gap-3'>
-                    <p className='inline-flex items-center rounded-full border border-cyan-300/20 bg-cyan-300/10 px-3 py-1 text-xs font-medium text-cyan-100'>
+                    <p className='inline-flex items-center rounded-full border border-cyan-500/20 dark:border-cyan-300/20 bg-cyan-500/10 dark:bg-cyan-300/10 px-3 py-1 text-xs font-medium text-cyan-800 dark:text-cyan-100'>
                       {post.category}
                     </p>
-                    <p className='text-xs text-slate-400'>
+                    <p className='text-xs text-slate-500 dark:text-slate-400'>
                       {new Date(post.date).toLocaleDateString()}
                     </p>
                   </div>
-                  <h3 className='text-2xl font-semibold text-white'>
+                  <h3 className='text-2xl font-semibold text-slate-800 dark:text-white'>
                     {post.title}
                   </h3>
-                  <p className='mt-4 leading-7 text-slate-300'>
+                  <p className='mt-4 leading-7 text-slate-600 dark:text-slate-300'>
                     {post.content}
                   </p>
                   <div className='mt-6 flex justify-end'>
                     <button
                       type='button'
-                      className='rounded-full border border-white/15 bg-white/10 px-4 py-2 text-sm font-medium text-white transition-colors duration-300 hover:bg-white/20'
+                      className='rounded-full border border-slate-200 dark:border-white/15 bg-slate-100 dark:bg-white/10 px-4 py-2 text-sm font-medium text-slate-700 dark:text-white transition-colors duration-300 hover:bg-slate-200 dark:hover:bg-white/20'
                     >
                       Read More
                     </button>
@@ -135,11 +134,11 @@ const Stories: React.FC = () => {
           </div>
 
           <div
-            className={`glassmorphism w-full rounded-3xl border border-white/15 bg-white/10 p-6 shadow-[0_24px_70px_rgba(2,6,23,0.4)] backdrop-blur-xl ${posts.length === 0 ? 'mx-auto max-w-xl' : 'lg:sticky lg:top-24 lg:w-[420px] lg:mx-auto'}`}
+            className={`glassmorphism w-full rounded-3xl border border-slate-200/50 dark:border-white/15 bg-white/40 dark:bg-white/10 p-6 shadow-[0_24px_70px_rgba(2,6,23,0.4)] backdrop-blur-xl ${posts.length === 0 ? 'mx-auto max-w-xl' : 'lg:sticky lg:top-24 lg:w-[420px] lg:mx-auto'}`}
           >
             <form className='space-y-4' onSubmit={handleSubmit}>
               <div>
-                <label className='mb-2 block text-sm font-medium text-slate-200'>
+                <label className='mb-2 block text-sm font-medium text-slate-700 dark:text-slate-200'>
                   Story title
                 </label>
                 <input
@@ -147,30 +146,30 @@ const Stories: React.FC = () => {
                   placeholder='Title of your story'
                   value={title}
                   onChange={e => setTitle(e.target.value)}
-                  className='w-full rounded-2xl border border-white/15 bg-white/10 px-4 py-3 text-white placeholder:text-slate-400 outline-none transition-colors duration-300 focus:border-cyan-300/50 focus:bg-white/15'
+                  className='w-full rounded-2xl border border-slate-200 dark:border-white/15 bg-white/50 dark:bg-white/10 px-4 py-3 text-slate-800 dark:text-white placeholder:text-slate-500 dark:placeholder:text-slate-400 outline-none transition-colors duration-300 focus:border-cyan-500/50 focus:bg-white dark:focus:bg-white/15'
                 />
               </div>
 
               <div>
-                <label className='mb-2 block text-sm font-medium text-slate-200'>
+                <label className='mb-2 block text-sm font-medium text-slate-700 dark:text-slate-200'>
                   Your story
                 </label>
                 <textarea
                   placeholder='Write about your story...'
                   value={content}
                   onChange={e => setContent(e.target.value)}
-                  className='h-36 w-full rounded-2xl border border-white/15 bg-white/10 px-4 py-3 text-white placeholder:text-slate-400 outline-none transition-colors duration-300 focus:border-cyan-300/50 focus:bg-white/15'
+                  className='h-36 w-full rounded-2xl border border-slate-200 dark:border-white/15 bg-white/50 dark:bg-white/10 px-4 py-3 text-slate-800 dark:text-white placeholder:text-slate-500 dark:placeholder:text-slate-400 outline-none transition-colors duration-300 focus:border-cyan-500/50 focus:bg-white dark:focus:bg-white/15'
                 />
               </div>
 
               <div>
-                <label className='mb-2 block text-sm font-medium text-slate-200'>
+                <label className='mb-2 block text-sm font-medium text-slate-700 dark:text-slate-200'>
                   Category
                 </label>
                 <select
                   value={category}
                   onChange={e => setCategory(e.target.value)}
-                  className='stories-select block w-full rounded-2xl border border-white/15 bg-white/10 px-4 py-3 text-white outline-none transition-colors duration-300 focus:border-cyan-300/50 focus:bg-white/15'
+                  className='stories-select block w-full rounded-2xl border border-slate-200 dark:border-cyan-400/20 bg-white/50 dark:bg-white/10 backdrop-blur-xl px-4 py-3 text-slate-800 dark:text-white shadow-[0_0_0_1px_rgba(34,211,238,0.08),0_8px_24px_rgba(34,211,238,0.06)] dark:shadow-[0_0_0_1px_rgba(34,211,238,0.15),0_8px_24px_rgba(34,211,238,0.12)] outline-none transition-all duration-300 focus:border-cyan-500/50 focus:bg-white dark:focus:bg-white/15 focus:shadow-[0_0_0_1px_rgba(34,211,238,0.2),0_12px_32px_rgba(34,211,238,0.1)] dark:focus:shadow-[0_0_0_1px_rgba(34,211,238,0.3),0_12px_32px_rgba(34,211,238,0.2)]'
                 >
                   <option value='' disabled className='bg-slate-950'>
                     Select Category
@@ -204,7 +203,7 @@ const Stories: React.FC = () => {
 
               <button
                 type='submit'
-                className='w-full rounded-2xl bg-gradient-to-r from-violet-500 via-cyan-500 to-fuchsia-500 px-4 py-3 font-semibold text-white shadow-[0_12px_30px_rgba(34,211,238,0.25)] transition-transform duration-300 hover:-translate-y-0.5'
+                className='w-full rounded-2xl bg-gradient-to-r from-violet-600 to-cyan-600 border border-white/10 px-4 py-3 font-semibold text-white shadow-[0_0_0_1px_rgba(124,58,237,0.25),0_8px_32px_rgba(124,58,237,0.35),inset_0_1px_0_rgba(255,255,255,0.12)] backdrop-blur-sm transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_0_0_1px_rgba(124,58,237,0.4),0_12px_40px_rgba(124,58,237,0.5),inset_0_1px_0_rgba(255,255,255,0.18)]'
               >
                 Post Experience
               </button>

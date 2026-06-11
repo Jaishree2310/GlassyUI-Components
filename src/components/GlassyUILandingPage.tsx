@@ -11,6 +11,7 @@ import {
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import './GlassyUILandingPage.css';
+import GlassRefractionPanel from './GlassRefractionPanel';
 import gsap from 'gsap';
 import { useGitHubStars } from '../hooks/useGitHubStars';
 
@@ -204,9 +205,11 @@ const GlassyUILandingPage: React.FC = () => {
           </div>
         </div>
 
-        {/* Floating preview card */}
+        {/* Floating preview card with interactive light refraction */}
         <div className='hero-preview'>
-          <PreviewCard />
+          <GlassRefractionPanel className='hero-preview-panel'>
+            <PreviewCard />
+          </GlassRefractionPanel>
           <div className='preview-glow' />
         </div>
       </section>
