@@ -56,8 +56,7 @@ const Toast: React.FC<ToastProps> = ({
             removeItem(id);
           }, 400);
         }}
-        className={`${getGlassyClasses()} w-10 h-10`}
-        style={{ flex: '1 0 auto' }}
+        className={`${getGlassyClasses()} w-10 h-10 flex-[1_0_auto]`}
       >
         ❌
       </button>

@@ -1,0 +1,232 @@
+// Variables for easy customization
+$glass-bg: rgba(255, 255, 255, 0.1);
+$glass-border: rgba(255, 255, 255, 0.2);
+$glass-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+$glass-blur: blur(8px);
+
+$transition-speed: 0.3s;
+$transition-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+// Color Variants
+$colors: (
+  'primary': #3b82f6,
+  'success': #10b981,
+  'warning': #f59e0b,
+  'danger': #ef4444,
+  'info': #0ea5e9,
+);
+
+// Size Variants
+$sizes: (
+  'sm': (
+    wrapper: 1rem,
+    check: 0.6rem,
+    border: 1px,
+    label: 0.875rem,
+  ),
+  'md': (
+    wrapper: 1.25rem,
+    check: 0.8rem,
+    border: 1.5px,
+    label: 1rem,
+  ),
+  'lg': (
+    wrapper: 1.5rem,
+    check: 1rem,
+    border: 2px,
+    label: 1.125rem,
+  ),
+);
+
+.glassy-checkbox-container {
+  display: inline-flex;
+  align-items: flex-start;
+  cursor: pointer;
+  position: relative;
+  -webkit-user-select: none;
+  user-select: none;
+  gap: 0.5rem;
+  font-family: inherit;
+
+  &--disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+}
+
+.glassy-checkbox-input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+  margin: 0;
+}
+
+.glassy-checkbox-control {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.375rem;
+  background: $glass-bg;
+  -webkit-backdrop-filter: $glass-blur;
+  backdrop-filter: $glass-blur;
+  border: 1px solid $glass-border;
+  box-shadow: $glass-shadow;
+  transition: all $transition-speed ease;
+  position: relative;
+  overflow: hidden;
+  flex-shrink: 0;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 0;
+    height: 0;
+    background: radial-gradient(
+      circle,
+      rgba(255, 255, 255, 0.8) 0%,
+      rgba(255, 255, 255, 0) 70%
+    );
+    opacity: 0;
+    transition:
+      width 0.3s ease,
+      height 0.3s ease,
+      opacity 0.3s ease;
+    border-radius: 50%;
+    pointer-events: none;
+  }
+
+  svg {
+    stroke-dasharray: 24;
+    stroke-dashoffset: 24;
+    transition: stroke-dashoffset $transition-speed $transition-bounce;
+    color: white;
+    z-index: 1;
+  }
+}
+
+.glassy-checkbox-container:hover:not(.glassy-checkbox-container--disabled) {
+  .glassy-checkbox-control {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 255, 255, 0.3);
+    box-shadow: 0 4px 16px rgba(255, 255, 255, 0.1);
+  }
+}
+
+.glassy-checkbox-input:focus-visible + .glassy-checkbox-control {
+  outline: 2px solid rgba(255, 255, 255, 0.8);
+  outline-offset: 2px;
+  box-shadow: 0 0 12px 2px rgba(255, 255, 255, 0.3);
+}
+
+// Generate Size Styles
+@each $name, $size in $sizes {
+  .glassy-checkbox-container--#{$name} {
+    .glassy-checkbox-control {
+      width: map-get($size, wrapper);
+      height: map-get($size, wrapper);
+      border-width: map-get($size, border);
+
+      svg {
+        width: map-get($size, check);
+        height: map-get($size, check);
+      }
+    }
+
+    .glassy-checkbox-label {
+      font-size: map-get($size, label);
+      margin-top: calc(
+        (map-get($size, wrapper) - map-get($size, label) * 1.5) / 2
+      ); // Center line-height
+    }
+  }
+}
+
+// Generate Color Styles for Checked/Indeterminate States
+@each $name, $color in $colors {
+  .glassy-checkbox-container--#{$name} {
+    .glassy-checkbox-input:checked + .glassy-checkbox-control,
+    .glassy-checkbox-input:indeterminate + .glassy-checkbox-control {
+      background: rgba($color, 0.8);
+      border-color: rgba($color, 0.6);
+      box-shadow:
+        0 0 10px rgba($color, 0.4),
+        inset 0 0 10px rgba(255, 255, 255, 0.2);
+
+      svg {
+        stroke-dashoffset: 0;
+      }
+
+      &::before {
+        width: 150%;
+        height: 150%;
+        opacity: 0.1;
+      }
+    }
+
+    &:hover:not(.glassy-checkbox-container--disabled) {
+      .glassy-checkbox-input:checked + .glassy-checkbox-control,
+      .glassy-checkbox-input:indeterminate + .glassy-checkbox-control {
+        background: rgba($color, 0.9);
+        box-shadow:
+          0 0 15px rgba($color, 0.6),
+          inset 0 0 10px rgba(255, 255, 255, 0.3);
+      }
+    }
+
+    .glassy-checkbox-input:focus-visible + .glassy-checkbox-control {
+      outline-color: rgba($color, 0.6);
+    }
+  }
+}
+
+// Error State
+.glassy-checkbox-container--error {
+  .glassy-checkbox-control {
+    border-color: map-get($colors, 'danger');
+    box-shadow: 0 0 8px rgba(map-get($colors, 'danger'), 0.3);
+  }
+
+  .glassy-checkbox-label,
+  .glassy-checkbox-helper-text {
+    color: map-get($colors, 'danger');
+  }
+}
+
+.glassy-checkbox-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.glassy-checkbox-label {
+  color: inherit;
+  line-height: 1.5;
+  transition: color 0.2s ease;
+}
+
+.glassy-checkbox-helper-text {
+  font-size: 0.75rem;
+  opacity: 0.7;
+  margin-top: 0.25rem;
+}
+
+/* Indeterminate animation specific */
+.glassy-checkbox-input:indeterminate
+  + .glassy-checkbox-control
+  svg.indeterminate-icon {
+  stroke-dasharray: 24;
+  stroke-dashoffset: 0;
+  animation: indeterminate-dash 0.3s $transition-bounce;
+}
+
+@keyframes indeterminate-dash {
+  0% {
+    stroke-dashoffset: 24;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}

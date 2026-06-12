@@ -1710,7 +1710,20 @@ div.min-h-screen.p-8.bg-gradient-to-r.from-gray-800.via-gray-900.to-black {
 
 /* ── PERFORMANCE MODE (Adaptive Rendering) ───────────────── */
 body.performance-mode .glassmorphism,
-body.performance-mode .frosted-glass,
+body.performance-mode .frosted-glass {
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  background: rgba(30, 30, 45, 0.95) !important;
+  box-shadow: 0 4px 16px 0 rgba(0, 0, 0, 0.5) !important;
+}
+
+body.performance-mode .cp-orb-1,
+body.performance-mode .cp-orb-2,
+body.performance-mode .about-orb-1,
+body.performance-mode .about-orb-2 {
+  display: none !important;
+}
+
 @media (prefers-reduced-transparency: reduce) {
   .glassmorphism,
   .frosted-glass {
@@ -1727,7 +1740,12 @@ body.performance-mode .frosted-glass,
   }
 }
 
-body.performance-mode *,
+body.performance-mode * {
+  animation-play-state: paused !important;
+  transition: none !important;
+  scroll-behavior: auto !important;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .animate-blob,
   .animate-float,
