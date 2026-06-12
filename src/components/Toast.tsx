@@ -29,9 +29,10 @@ const Toast: React.FC<ToastProps> = ({
   useEffect(() => {
     const timer = setTimeout(() => {
       setHide(true);
+      setTimeout(() => removeItem(id), 400);
     }, autoDismiss);
     return () => clearTimeout(timer);
-  }, []);
+  }, [autoDismiss, id]);
 
   const getGlassyClasses = () => {
     return 'backdrop-filter backdrop-blur-md bg-white/10 border border-white/20 rounded-2xl shadow-lg transition-all duration-300';
