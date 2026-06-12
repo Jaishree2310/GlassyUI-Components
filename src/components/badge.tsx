@@ -1,138 +1,131 @@
-import React, { useState } from 'react';
-import { Copy, Check } from 'lucide-react';
-import BackToTopButton from './BackToTop';
+import React from 'react';
 
-type BadgeTheme = 'blue' | 'green' | 'red' | 'purple' | 'rainbow';
+export interface BadgeProps {
+  children?: React.ReactNode;
+  content?: string | number;
+  variant?: 'dot' | 'count' | 'pill';
+  themeColor?: 'blue' | 'green' | 'red' | 'purple' | 'rainbow' | string;
+  pulse?: boolean;
+  position?:
+    | 'top-right'
+    | 'top-left'
+    | 'bottom-right'
+    | 'bottom-left'
+    | 'inline';
+  glassEffect?: boolean;
+  glassOpacity?: number;
+}
 
-const CustomBadge: React.FC = () => {
-  const [theme, setTheme] = useState<BadgeTheme>('blue');
+const themeColorMap = {
+  blue: '#3B82F6',
+  green: '#10B981',
+  red: '#EF4444',
+  purple: '#8B5CF6',
+  rainbow: 'linear-gradient(45deg, #ff007f, #7f00ff, #00f0ff, #00ff7f)',
+};
 
-  const getThemeColors = (theme: BadgeTheme) => {
-    switch (theme) {
-      case 'blue':
-        return { bg: '#007bff', textColor: 'white' };
-      case 'green':
-        return { bg: '#28a745', textColor: 'white' };
-      case 'red':
-        return { bg: '#dc3545', textColor: 'white' };
-      case 'purple':
-        return { bg: '#6f42c1', textColor: 'white' };
-      case 'rainbow':
-        return { bg: 'linear-gradient(45deg, red, orange, yellow, green, blue, indigo, violet)', textColor: 'white' };
+export const Badge: React.FC<BadgeProps> = ({
+  children,
+  content,
+  variant = 'count',
+  themeColor = 'red',
+  pulse = false,
+  position = 'top-right',
+  glassEffect = true,
+  glassOpacity = 0.25,
+}) => {
+  const isInline = position === 'inline';
+
+  // Get matching style for theme color
+  const getThemeBackground = () => {
+    if (themeColor in themeColorMap) {
+      return themeColorMap[themeColor as keyof typeof themeColorMap];
+    }
+    return themeColor; // Custom HEX, RGB or Gradient
+  };
+
+  const getPositionClasses = () => {
+    switch (position) {
+      case 'top-right':
+        return 'absolute top-0 right-0 transform translate-x-1/3 -translate-y-1/3';
+      case 'top-left':
+        return 'absolute top-0 left-0 transform -translate-x-1/3 -translate-y-1/3';
+      case 'bottom-right':
+        return 'absolute bottom-0 right-0 transform translate-x-1/3 translate-y-1/3';
+      case 'bottom-left':
+        return 'absolute bottom-0 left-0 transform -translate-x-1/3 translate-y-1/3';
+      case 'inline':
       default:
-        return { bg: '#007bff', textColor: 'white' };
+        return 'relative inline-flex ml-2';
     }
   };
 
-  const themeColors = getThemeColors(theme);
-
-  return (
-    <div className="p-4 rounded-lg">
-      <h2 className="text-2xl text-white font-bold mb-4">Custom Badge</h2>
-      <p className="text-gray-200 mb-4">Select a theme for your badge.</p>
-      <div className="mb-4">
-        <label className="block text-white mb-2">Theme:</label>
-        <div className="flex space-x-2">
-          {(['blue', 'green', 'red', 'purple', 'rainbow'] as BadgeTheme[]).map((t) => (
-            <button
-              key={t}
-              className={`w-6 h-6 rounded-full ${t === theme ? 'ring-2 ring-offset-2 ring-blue-500' : ''}`}
-              style={{ background: t === 'rainbow' ? 'linear-gradient(45deg, red, orange, yellow, green, blue, indigo, violet)' : getThemeColors(t).bg }}
-              onClick={() => setTheme(t)}
-            />
-          ))}
-        </div>
-      </div>
-
-      <div
-        className="inline-block p-2 rounded-lg"
-        style={{
-          backgroundColor: themeColors.bg,
-          color: themeColors.textColor,
-        }}
-      >
-        Custom Badge
-      </div>
-
-      <div className="mt-4 bg-gray-800 p-2 rounded">
-        <pre className="text-sm">
-          {`<div
-  style={{
-    backgroundColor: '${themeColors.bg}',
-    color: '${themeColors.textColor}',
-    padding: '0.5rem 1rem',
-    borderRadius: '0.25rem',
-  }}
->
-  Custom Badge
-</div>`}
-        </pre>
-      </div>
-    </div>
-  );
-};
-
-const BadgeDetailPage: React.FC = () => {
-  const [copiedStates, setCopiedStates] = useState<{ [key: string]: boolean }>({});
-
-  const copyToClipboard = (text: string, key: string) => {
-    navigator.clipboard.writeText(text).then(() => {
-      setCopiedStates(prev => ({ ...prev, [key]: true }));
-      setTimeout(() => setCopiedStates(prev => ({ ...prev, [key]: false })), 2000);
-    });
+  const badgeStyle = {
+    background: getThemeBackground(),
+    boxShadow: `0 2px 10px rgba(0, 0, 0, 0.2), 0 0 8px ${
+      themeColor in themeColorMap
+        ? themeColorMap[themeColor as keyof typeof themeColorMap]
+        : themeColor
+    }60`,
   };
 
-  const CopyButton: React.FC<{ text: string, codeKey: string }> = ({ text, codeKey }) => (
-    <button
-      onClick={() => copyToClipboard(text, codeKey)}
-      className={`absolute top-4 right-4 p-2 hover:bg-opacity-20 transition-all duration-300`}
-      title="Copy to clipboard"
-    >
-      {copiedStates[codeKey] ? <Check size={20} /> : <Copy size={20} />}
-    </button>
-  );
+  const getGlassyStyles = () => {
+    if (glassEffect) {
+      return {
+        backgroundColor: `rgba(255, 255, 255, ${glassOpacity})`,
+        border: '1px solid rgba(255, 255, 255, 0.25)',
+        backdropFilter: 'blur(8px)',
+        WebkitBackdropFilter: 'blur(8px)',
+        color: '#ffffff',
+        boxShadow: '0 4px 12px rgba(0, 0, 0, 0.15)',
+      };
+    }
+    return badgeStyle;
+  };
+
+  const renderBadge = () => {
+    if (variant === 'dot') {
+      return (
+        <span className={`flex h-3 w-3 relative`}>
+          {pulse && (
+            <span
+              className='animate-ping absolute inline-flex h-full w-full rounded-full opacity-75'
+              style={{ background: getThemeBackground() }}
+            />
+          )}
+          <span
+            style={getGlassyStyles()}
+            className={`relative inline-flex rounded-full h-3 w-3 border border-slate-950/20`}
+          />
+        </span>
+      );
+    }
+
+    const paddingClasses =
+      variant === 'pill'
+        ? 'px-2 py-0.5 text-[0.68rem]'
+        : 'px-1.5 py-0.5 text-[0.62rem] min-w-[1.25rem] h-5 justify-center';
+
+    return (
+      <span
+        style={getGlassyStyles()}
+        className={`inline-flex items-center font-bold leading-none rounded-full text-white border border-white/10 select-none ${paddingClasses}`}
+      >
+        {content}
+      </span>
+    );
+  };
+
+  if (isInline) {
+    return renderBadge();
+  }
 
   return (
-    <div className="min-h-screen p-8 font-mono relative">
-      <BackToTopButton />
-
-      <div className="relative z-10 text-white">
-        <h1 className="text-4xl font-bold mb-8">Badge Component</h1>
-
-        {/* Custom Badge */}
-        <div className="p-6 text-gray-200 mb-8">
-          <CustomBadge />
-        </div>
-
-        {/* Basic Usage */}
-        <div className="p-6 mb-8 relative">
-          <h2 className="text-2xl text-gray-100 font-bold mb-4">Basic Usage</h2>
-          <pre className="bg-gray-800 text-white p-4 rounded-lg overflow-x-auto">
-            {`<div
-  style={{
-    backgroundColor: '#007bff',
-    color: 'white',
-    padding: '0.5rem 1rem',
-    borderRadius: '0.25rem',
-  }}
->
-  Custom Badge
-</div>`}
-          </pre>
-          <CopyButton text={`<div
-  style={{
-    backgroundColor: '#007bff',
-    color: 'white',
-    padding: '0.5rem 1rem',
-    borderRadius: '0.25rem',
-  }}
->
-  Custom Badge
-</div>`} codeKey="basicUsage" />
-        </div>
-      </div>
+    <div className='relative inline-block'>
+      {children}
+      <div className={`z-10 ${getPositionClasses()}`}>{renderBadge()}</div>
     </div>
   );
 };
 
-export default BadgeDetailPage;
+export default Badge;
