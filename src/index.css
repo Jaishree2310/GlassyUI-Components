@@ -1858,6 +1858,74 @@ body.performance-mode *,
   contain: strict;
 }
 
+/* Accessibility: Keyboard navigation and focus visible indicators */
+:focus-visible {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+}
+
+/* Skip to main content link for keyboard users */
+.skip-to-main {
+  position: absolute;
+  left: -9999px;
+  z-index: 999;
+}
+
+.skip-to-main:focus {
+  left: 0;
+  top: 0;
+  padding: 1rem;
+  background-color: #1f2937;
+  color: white;
+}
+
+/* Ensure interactive elements have adequate touch targets (at least 44x44 px) */
+button,
+a[href],
+input[type='button'],
+input[type='submit'],
+input[type='reset'],
+[role='button'],
+[role='link'] {
+  min-height: 44px;
+  min-width: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Reduce motion for users who prefer reduced animations */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: more) {
+  button,
+  [role='button'] {
+    border: 2px solid currentColor;
+  }
+
+  input,
+  textarea,
+  select {
+    border: 2px solid currentColor;
+  }
+}
+
 @supports not (
   (backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))
 ) {
