@@ -8,12 +8,13 @@ const DonationPage: React.FC = () => {
     name: '',
     email: '',
   });
-  const [errors, setErrors] = useState({
+  const [errors, setErrors] = useState<Record<string, string>>({
     amount: '',
     name: '',
     email: '',
   });
 
+  const [success, setSuccess] = useState(false);
   const donationSchema = z.object({
     amount: z
       .string()
@@ -24,20 +25,31 @@ const DonationPage: React.FC = () => {
   });
 
   useEffect(() => {
-    document.body.style.backgroundColor = '#3f434a';
+    document.body.style.backgroundColor =
+      'radial-gradient(circle at top, #1e293b, #0f172a)';
     return () => {
       document.body.style.backgroundColor = '';
     };
   }, []);
 
+  const sponsorBenefits = [
+    '🚀 Brand Visibility',
+    '🌍 Community Reach',
+    '🤝 Open Source Support',
+    '⭐ Early Access Updates',
+  ];
+
   const containerStyle: React.CSSProperties = {
-    maxWidth: '500px',
+    width: '100%',
+    maxWidth: '700px',
     margin: '70px auto',
     padding: '40px',
     background:
-      'linear-gradient(180deg, rgba(255, 255, 255, 0.01), rgba(255, 255, 255, 0.1)',
+      'linear-gradient(180deg, rgba(255, 255, 255, 0.01), rgba(255, 255, 255, 0.1))',
     borderRadius: '20px',
     border: '1px solid rgba(255, 255, 255, 0.2)',
+    backdropFilter: 'blur(16px)',
+    boxShadow: '0 20px 60px rgba(0,0,0,0.25)',
     textAlign: 'center',
     fontFamily: "'Poppins', sans-serif",
     color: '#ffffff',
@@ -131,32 +143,84 @@ const DonationPage: React.FC = () => {
     e.preventDefault();
     try {
       donationSchema.parse(formData);
-      setErrors({ amount: '', name: '', email: '' });
-      alert('Form submitted successfully!');
-    } catch (err: any) {
-      const formattedErrors: any = {};
-      err.errors.forEach((error: any) => {
-        formattedErrors[error.path[0]] = error.message;
+
+      setErrors({
+        amount: '',
+        name: '',
+        email: '',
       });
-      setErrors(formattedErrors);
+
+      setSuccess(true);
+
+      setFormData({
+        amount: '',
+        name: '',
+        email: '',
+      });
+    } catch (err) {
+      if (err instanceof z.ZodError) {
+        const formattedErrors: Record<string, string> = {};
+
+        err.errors.forEach(error => {
+          formattedErrors[String(error.path[0])] = error.message;
+        });
+
+        setErrors(formattedErrors);
+      }
     }
   };
 
   return (
     <div style={containerStyle}>
-      <h1 style={headingStyle}>Support Us!</h1>
+      <h1 style={headingStyle}>Become a Sponsor 🚀</h1>
       <p style={paragraphStyle}>
-        Your contributions help us continue our work.
+        Support GlassyUI and help us create modern open-source glassmorphism
+        components for developers worldwide. Your contribution helps us improve,
+        maintain, and expand the project.
       </p>
+      <div
+        style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fit,minmax(180px,1fr))',
+          gap: '12px',
+          marginBottom: '30px',
+        }}
+      >
+        {sponsorBenefits.map(item => (
+          <div
+            key={item}
+            style={{
+              padding: '14px',
+              borderRadius: '14px',
+              background: 'rgba(255,255,255,0.08)',
+              border: '1px solid rgba(255,255,255,0.15)',
+              transition: 'all 0.3s ease',
+              cursor: 'pointer',
+              boxShadow: '0 8px 20px rgba(0,0,0,0.15)',
+            }}
+            onMouseEnter={e => {
+              e.currentTarget.style.transform = 'translateY(-5px)';
+              e.currentTarget.style.boxShadow = '0 12px 30px rgba(0,0,0,0.25)';
+            }}
+            onMouseLeave={e => {
+              e.currentTarget.style.transform = 'translateY(0)';
+              e.currentTarget.style.boxShadow = '0 8px 20px rgba(0,0,0,0.15)';
+            }}
+          >
+            {item}
+          </div>
+        ))}
+      </div>
       <form noValidate style={formStyle} onSubmit={handleSubmit}>
         <label htmlFor='amount' style={labelStyle}>
-          Donation Amount:
+          Sponsorship Amount:
         </label>
         <input
-          type='text'
+          type='number'
           id='amount'
           name='amount'
-          placeholder='Enter amount in Rupees'
+          aria-label='Sponsorship Amount'
+          placeholder='₹500'
           style={{
             ...inputStyle,
             ...(formData.amount ? inputFocusStyle : {}),
@@ -174,6 +238,7 @@ const DonationPage: React.FC = () => {
           type='text'
           id='name'
           name='name'
+          aria-label='Name'
           placeholder='Enter your name'
           style={{
             ...inputStyle,
@@ -192,6 +257,7 @@ const DonationPage: React.FC = () => {
           type='email'
           id='email'
           name='email'
+          aria-label='Email'
           placeholder='Enter your email'
           style={{
             ...inputStyle,
@@ -212,8 +278,19 @@ const DonationPage: React.FC = () => {
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
         >
-          Donate Now
+          ❤️ Become a Sponsor
         </button>
+        {success && (
+          <p
+            style={{
+              color: '#4ade80',
+              marginTop: '15px',
+              fontWeight: 600,
+            }}
+          >
+            Thank you for supporting GlassyUI ❤️
+          </p>
+        )}
       </form>
     </div>
   );
