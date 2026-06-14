@@ -5,10 +5,18 @@ const Footer: React.FC = () => {
   const [email, setEmail] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [emailError, setEmailError] = useState('');
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    if (!email) return;
+    const isValidEmail = (email: string) =>
+      /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+
+    if (!isValidEmail(email)) {
+      setEmailError('Please enter a valid email address.');
+      return;
+    }
+    setEmailError('');
     setIsSubmitting(true);
     try {
       const response = await fetch(
@@ -136,18 +144,26 @@ const Footer: React.FC = () => {
           </p>
           {submitted ? (
             <div className='footer-subscribed'>
-              <span>✓</span> You're subscribed — thanks!
+              <span>✓</span> You&apos;re subscribed — thanks!
             </div>
           ) : (
             <form onSubmit={handleSubmit} className='footer-form' noValidate>
               <input
                 type='email'
                 value={email}
-                onChange={e => setEmail(e.target.value)}
+                onChange={e => {
+                  setEmail(e.target.value);
+                  setEmailError('');
+                }}
                 placeholder='your@email.com'
                 required
                 className='footer-input'
               />
+              {emailError && (
+                <p style={{ color: 'red', fontSize: '12px', marginTop: '4px' }}>
+                  {emailError}
+                </p>
+              )}
               <button
                 type='submit'
                 disabled={isSubmitting}
